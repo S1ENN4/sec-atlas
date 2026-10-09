@@ -46,12 +46,15 @@ export interface Topic {
 }
 
 // A relation is between two composite ids; the slug-only form is gone.
+// The `sourceHandle` / `targetHandle` fields were dropped when the
+// knowledge-graph renderer moved to a generic layout driven by
+// `DomainGraphLayout.crossRelations` and `DomainGraphLayout.conceptAttachments`
+// (which still carry their own per-edge handle ids). Nothing reads the
+// relation-level handles anymore — see T4.
 export interface Relation {
   source: TopicRef;
   target: TopicRef;
   label: string;
-  sourceHandle: string;
-  targetHandle: string;
   animated?: boolean;
 }
 

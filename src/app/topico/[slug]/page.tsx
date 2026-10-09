@@ -129,27 +129,43 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
               const source = getTopic(r.source);
               const target = getTopic(r.target);
               if (!source || !target) return null;
+              // When a relation endpoint IS the current topic, render it as
+              // plain text (not a Link) so the connections list never points
+              // back at the page the user is already reading. Keeping the
+              // label and the rest of the row intact.
+              const sourceIsCurrent = source.slug === slug;
+              const targetIsCurrent = target.slug === slug;
+              const sourceNode = sourceIsCurrent ? (
+                <span className="font-medium text-foreground">{source.title}</span>
+              ) : (
+                <Link
+                  href={`/topico/${source.slug}`}
+                  className="font-medium text-foreground transition-colors hover:text-primary"
+                >
+                  {source.title}
+                </Link>
+              );
+              const targetNode = targetIsCurrent ? (
+                <span className="font-medium text-foreground">{target.title}</span>
+              ) : (
+                <Link
+                  href={`/topico/${target.slug}`}
+                  className="font-medium text-foreground transition-colors hover:text-primary"
+                >
+                  {target.title}
+                </Link>
+              );
               return (
                 <li
                   key={`${r.source}->${r.target}`}
                   className="flex flex-wrap items-center gap-2 text-sm"
                 >
-                  <Link
-                    href={`/topico/${source.slug}`}
-                    className="font-medium text-foreground transition-colors hover:text-primary"
-                  >
-                    {source.title}
-                  </Link>
+                  {sourceNode}
                   <span className="inline-flex items-center gap-1.5 font-mono text-xs text-muted-foreground">
                     <MoveRight className="size-3.5 text-primary/70" />
                     {r.label}
                   </span>
-                  <Link
-                    href={`/topico/${target.slug}`}
-                    className="font-medium text-foreground transition-colors hover:text-primary"
-                  >
-                    {target.title}
-                  </Link>
+                  {targetNode}
                 </li>
               );
             })}

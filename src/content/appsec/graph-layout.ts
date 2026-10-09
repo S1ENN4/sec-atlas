@@ -28,6 +28,7 @@ export const graphLayout: DomainGraphLayout = {
     secrets: { x: 0, y: 300 },
     sast: { x: 280, y: 170 },
     sca: { x: 280, y: 350 },
+    cicd: { x: 560, y: 300 },
     sbom: { x: 840, y: 520 },
     dast: { x: 1120, y: 300 },
   },

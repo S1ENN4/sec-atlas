@@ -13,12 +13,14 @@ export type { CodeSample, Topic, TopicKind, TopicSection } from "@/content/types
 // Legacy Relation shape: `source` and `target` are slugs, not composite ids.
 // All current relations live inside the appsec domain, so flattening is just
 // dropping the `{ domain }` wrapper.
+// The per-relation `sourceHandle` / `targetHandle` were dropped from the
+// canonical Relation type when the knowledge-graph renderer moved to a
+// generic layout driven by DomainGraphLayout. The legacy shim mirrors the
+// trimmed shape so consumer code keeps compiling.
 export interface Relation {
   source: string;
   target: string;
   label: string;
-  sourceHandle: string;
-  targetHandle: string;
   animated?: boolean;
 }
 
@@ -26,8 +28,6 @@ const flatten = (r: import("@/content/types").Relation): Relation => ({
   source: r.source.slug,
   target: r.target.slug,
   label: r.label,
-  sourceHandle: r.sourceHandle,
-  targetHandle: r.targetHandle,
   ...(r.animated ? { animated: r.animated } : {}),
 });
 

@@ -5,6 +5,7 @@
   "description": "Knowledge base interativa de seguranca de aplicacoes: SAST, DAST, SCA, pipelines e CI/CD.",
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node --import ./scripts/content-alias-loader.mjs scripts/validate-content.mjs",
     "build": "next build"
   },
   "dependencies": {

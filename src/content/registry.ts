@@ -14,7 +14,12 @@ import type {
   TopicKind,
   TopicRef,
 } from "./types";
-import { GlossaryGroup } from "./types";
+// `GlossaryGroup` is exported only as a `type` / `interface`; importing it
+// without the `type` keyword works for the TypeScript compiler (the binding
+// is silently elided) but trips Node's strict ESM resolution under
+// `--experimental-strip-types` because there is no runtime export. Marking
+// the import as type-only keeps the source compatible with both toolchains.
+import type { GlossaryGroup } from "./types";
 
 // Re-export the structural types so consumers (e.g. DomainGraph) can keep
 // a single import path through the registry.
