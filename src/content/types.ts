@@ -89,4 +89,59 @@ export interface Domain extends DomainMeta {
   relations: Relation[];
   pipeline: PipelineStage[];
   glossary: GlossaryGroup[];
+  // Optional: per-domain knowledge-graph layout consumed by the generic
+  // renderer (see `src/components/domain-graph.tsx`). Domains without a
+  // layout don't render a graph.
+  graphLayout?: DomainGraphLayout;
+}
+
+// -- Knowledge-graph layout ----------------------------------------------------
+// Owned by the content layer so each domain can describe how its concepts are
+// arranged. The generic renderer reads this verbatim — no domain constants
+// live in the component.
+
+// Position of a single concept card on the canvas (slug-keyed, includes the
+// "layer" concepts rendered as dashed cards).
+export interface GraphPosition {
+  x: number;
+  y: number;
+}
+
+// A concept → stage spoke edge (a "this concept attaches to that stage"
+// relationship). Handle ids follow the React Flow handle conventions used
+// by the StageNode / ConceptNode renderers.
+export interface GraphConceptAttachment {
+  slug: string;
+  stageId: string;
+  sourceHandle: string;
+  targetHandle: string;
+}
+
+// A cross-concept relation edge. `source` / `target` are either a concept
+// slug or a `stage-<id>` stage-node id; `dashed` enables the tracejado
+// stroke variant; `arrow: false` suppresses the arrow marker. `label`
+// is rendered as the edge label.
+export interface GraphRelation {
+  id: string;
+  source: string;
+  target: string;
+  sourceHandle: string;
+  targetHandle: string;
+  label: string;
+  dashed?: boolean;
+  arrow?: boolean;
+}
+
+export interface DomainGraphLayout {
+  columnWidth: number;
+  stageY: number;
+  layerSlugs: string[];
+  layerPositions: Record<string, GraphPosition>;
+  conceptPositions: Record<string, GraphPosition>;
+  conceptAttachments: GraphConceptAttachment[];
+  crossRelations: GraphRelation[];
+  // Route the stage node click should push to. Today every stage routes to
+  // the same CI/CD overview topic; domains with per-stage pages would
+  // override this with a function (future work).
+  stageHref: string;
 }

@@ -5,14 +5,32 @@
 
 import type {
   Domain,
+  DomainGraphLayout,
   DomainId,
   DomainMeta,
   PipelineStage,
   Relation,
   Topic,
+  TopicKind,
   TopicRef,
 } from "./types";
 import { GlossaryGroup } from "./types";
+
+// Re-export the structural types so consumers (e.g. DomainGraph) can keep
+// a single import path through the registry.
+export type {
+  Domain,
+  DomainGraphLayout,
+  DomainId,
+  DomainMeta,
+  PipelineItem,
+  PipelineStage,
+  Relation,
+  Topic,
+  TopicKind,
+  TopicRef,
+} from "./types";
+export type { GlossaryGroup } from "./types";
 
 import { appsec } from "./appsec";
 
@@ -106,4 +124,8 @@ export function getPipeline(domainId: DomainId): PipelineStage[] {
 
 export function getGlossary(domainId: DomainId): GlossaryGroup[] {
   return domains[domainId]?.glossary ?? [];
+}
+
+export function getGraphLayout(domainId: DomainId): DomainGraphLayout | undefined {
+  return domains[domainId]?.graphLayout;
 }
