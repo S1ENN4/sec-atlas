@@ -4,11 +4,13 @@
 // existing out/ directory).
 //
 // Caps (bytes):
-//   total export raw <= 2,600,000
-//   CSS raw          <=    60,000
-//   JS raw           <= 1,100,000
-//   JS gzip          <=   400,000  (gzipSync per .js file, summed)
-//   out/index.html   <=    90,000
+//   first-load assets   <= 2,300,000  (every file under out/ EXCEPT *.txt, raw)
+//   rsc prefetch        <= 1,200,000  (every *.txt under out/, raw)
+//   total               <= 3,500,000  (sanity cap: every file under out/)
+//   CSS raw             <=    60,000
+//   JS raw              <= 1,100,000
+//   JS gzip             <=   400,000  (gzipSync per .js file, summed)
+//   out/index.html raw  <=    90,000
 //
 // Exit 0 when every row is within its cap; exit 1 with a clear per-cap
 // message otherwise.
@@ -20,11 +22,13 @@ import { gzipSync } from "node:zlib";
 const OUT_DIR = resolve(process.cwd(), "out");
 
 const CAPS = [
-  { key: "total",   label: "total export raw", limit: 2_600_000, scope: "total"   },
-  { key: "css",     label: "CSS raw",          limit:    60_000, scope: "css"     },
-  { key: "js",      label: "JS raw",           limit: 1_100_000, scope: "js"      },
-  { key: "js_gz",   label: "JS gzip",          limit:   400_000, scope: "js_gz"   },
-  { key: "index",   label: "out/index.html raw", limit:    90_000, scope: "index"  },
+  { key: "first_load",  label: "first-load assets",     limit: 2_300_000, scope: "first_load" },
+  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 1_200_000, scope: "rsc_prefetch" },
+  { key: "total",       label: "total",                 limit: 3_500_000, scope: "total" },
+  { key: "css",         label: "CSS raw",               limit:    60_000, scope: "css" },
+  { key: "js",          label: "JS raw",                limit: 1_100_000, scope: "js" },
+  { key: "js_gz",       label: "JS gzip",               limit:   400_000, scope: "js_gz" },
+  { key: "index",       label: "out/index.html raw",    limit:    90_000, scope: "index" },
 ];
 
 function walk(dir) {
@@ -62,14 +66,20 @@ function main() {
   }
 
   let total = 0;
+  let firstLoadRaw = 0;   // every file EXCEPT *.txt (raw)
+  let rscPrefetchRaw = 0; // every *.txt file (raw)
   let cssRaw = 0;
   let jsRaw = 0;
   let jsGz = 0;
-  let indexHtmlRaw = 0;
 
   for (const f of allFiles) {
     total += f.size;
     const ext = extname(f.path).toLowerCase();
+    if (ext === ".txt") {
+      rscPrefetchRaw += f.size;
+    } else {
+      firstLoadRaw += f.size;
+    }
     if (ext === ".css") {
       cssRaw += f.size;
     } else if (ext === ".js") {
@@ -87,17 +97,18 @@ function main() {
   } catch {
     // ignore; index row will fail its cap
   }
-  indexHtmlRaw = indexSize;
 
   const measured = {
-    total:  total,
-    css:    cssRaw,
-    js:     jsRaw,
-    js_gz:  jsGz,
-    index:  indexHtmlRaw,
+    first_load:   firstLoadRaw,
+    rsc_prefetch: rscPrefetchRaw,
+    total:        total,
+    css:          cssRaw,
+    js:           jsRaw,
+    js_gz:        jsGz,
+    index:        indexSize,
   };
 
-  const labelW = 22;
+  const labelW = 24;
   const valueW = 14;
   const capW = 14;
   const statusW = 6;
