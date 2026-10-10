@@ -39,37 +39,15 @@ export type { GlossaryGroup } from "./types";
 
 import { appsec } from "./appsec";
 import { cloudsec } from "./cloudsec";
+import { aiAgents } from "./ai-agents";
 
 // Domain metadata for all known domains — `domainMeta` is the only place the
 // DomainId → route map and per-domain status/accent are pinned. `appsec` is
-// "live" today and ships the curated reference content; `cloudsec` ships the
-// skeleton (status "draft", validator still passes via R1–R5 only) and is the
-// landing spot of T13–T17; `ai-agents` remains the empty placeholder until
-// its turn comes. The empty placeholder reuses the AppSec badge palette so
-// any early `kindMeta[k].label` lookup in a future shell still returns a
-// non-empty string.
-
-// AppSec badge palette — reused by the empty `ai-agents` placeholder so
-// future incidental accesses (e.g. dev-time shells) don't crash on
-// undefined labels. The real `appsec.kindMeta` lives in `src/content/appsec`
-// with the same shape.
-const PLACEHOLDER_KIND_META: Domain["kindMeta"] = {
-  tecnica: { label: "técnica de teste", dot: "bg-emerald-400", text: "text-emerald-400" },
-  pratica: { label: "prática", dot: "bg-sky-400", text: "text-sky-400" },
-  conceito: { label: "conceito", dot: "bg-amber-400", text: "text-amber-400" },
-};
-
-const aiAgents: Domain = {
-  id: "ai-agents",
-  route: "/agentes",
-  status: "draft",
-  accent: "violet",
-  kindMeta: PLACEHOLDER_KIND_META,
-  topics: [],
-  relations: [],
-  pipeline: [],
-  glossary: [],
-};
+// "live" today and ships the curated reference content; `cloudsec` and
+// `ai-agents` ship as draft skeletons (validator passes via R1–R5 only;
+// the R6 live content floor only runs on `status: "live"`). Topic bodies
+// land in the content waves (T14–T17 for cloudsec, T19–T22 for agents);
+// T23 flips a domain to `live` once its content meets the floor.
 
 export const domains: Record<DomainId, Domain> = {
   appsec,

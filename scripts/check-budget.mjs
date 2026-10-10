@@ -4,9 +4,9 @@
 // existing out/ directory).
 //
 // Caps (bytes):
-//   first-load assets   <= 2,650,000  (every file under out/ EXCEPT *.txt, raw)
-//   rsc prefetch        <= 1,825,000  (every *.txt under out/, raw)
-//   total               <= 4,425,000  (sanity cap: every file under out/)
+//   first-load assets   <= 3,150,000  (every file under out/ EXCEPT *.txt, raw)
+//   rsc prefetch        <= 2,625,000  (every *.txt under out/, raw)
+//   total               <= 5,725,000  (sanity cap: every file under out/)
 //   CSS raw             <=    60,000
 //   JS raw              <= 1,100,000
 //   JS gzip             <=   400,000  (gzipSync per .js file, summed)
@@ -30,6 +30,13 @@
 //     headroom untouched), but pushed rsc prefetch +6KB over the
 //     previous cap and total +49KB. Caps nudged up by another 25KB
 //     (rsc prefetch) and 75KB (total) for headroom on the live floor.
+//   - T18 ai-agents skeleton: 15 new SSG topic routes + 1 home page
+//     (+ slug page shells for the draft domain). Measured ~440KB over
+//     first-load, ~751KB over rsc prefetch, ~1.24MB over total (each
+//     draft SSG route carries ~50KB RSC HTML; 15 topics ≈ 750KB). Caps
+//     raised +500KB/+800KB/+1.3MB to 3,150,000/2,625,000/5,725,000,
+//     leaving ~50-60KB headroom per capped row for T19-22 topic bodies
+//     landing on the same skeleton without another immediate bump.
 //
 // Exit 0 when every row is within its cap; exit 1 with a clear per-cap
 // message otherwise.
@@ -41,9 +48,9 @@ import { gzipSync } from "node:zlib";
 const OUT_DIR = resolve(process.cwd(), "out");
 
 const CAPS = [
-  { key: "first_load",  label: "first-load assets",     limit: 2_650_000, scope: "first_load" },
-  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 1_825_000, scope: "rsc_prefetch" },
-  { key: "total",       label: "total",                 limit: 4_425_000, scope: "total" },
+  { key: "first_load",  label: "first-load assets",     limit: 3_150_000, scope: "first_load" },
+  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 2_625_000, scope: "rsc_prefetch" },
+  { key: "total",       label: "total",                 limit: 5_725_000, scope: "total" },
   { key: "css",         label: "CSS raw",               limit:    60_000, scope: "css" },
   { key: "js",          label: "JS raw",                limit: 1_100_000, scope: "js" },
   { key: "js_gz",       label: "JS gzip",               limit:   400_000, scope: "js_gz" },
