@@ -4,13 +4,23 @@
 // existing out/ directory).
 //
 // Caps (bytes):
-//   first-load assets   <= 2,300,000  (every file under out/ EXCEPT *.txt, raw)
-//   rsc prefetch        <= 1,200,000  (every *.txt under out/, raw)
-//   total               <= 3,500,000  (sanity cap: every file under out/)
+//   first-load assets   <= 2,400,000  (every file under out/ EXCEPT *.txt, raw)
+//   rsc prefetch        <= 1,500,000  (every *.txt under out/, raw)
+//   total               <= 3,800,000  (sanity cap: every file under out/)
 //   CSS raw             <=    60,000
 //   JS raw              <= 1,100,000
 //   JS gzip             <=   400,000  (gzipSync per .js file, summed)
 //   out/index.html raw  <=    90,000
+//
+// History:
+//   - 7ff9e3f (T6): caps sized for 1 domain, 8 topics
+//   - T13 cloudsec skeleton (10 more SSG routes + 1 home page) bumped
+//     the first-load +9KB, rsc_prefetch +213KB, total +222KB. Caps
+//     raised by ~100/300/300KB respectively to accommodate the second
+//     domain while keeping the same per-page shape (RSC overhead per
+//     topic route is ~26KB raw; 10 new topics ≈ 260KB which fits the
+//     new 1.5MB rsc_prefetch ceiling with ~90KB of headroom for
+//     future domain growth).
 //
 // Exit 0 when every row is within its cap; exit 1 with a clear per-cap
 // message otherwise.
@@ -22,9 +32,9 @@ import { gzipSync } from "node:zlib";
 const OUT_DIR = resolve(process.cwd(), "out");
 
 const CAPS = [
-  { key: "first_load",  label: "first-load assets",     limit: 2_300_000, scope: "first_load" },
-  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 1_200_000, scope: "rsc_prefetch" },
-  { key: "total",       label: "total",                 limit: 3_500_000, scope: "total" },
+  { key: "first_load",  label: "first-load assets",     limit: 2_400_000, scope: "first_load" },
+  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 1_500_000, scope: "rsc_prefetch" },
+  { key: "total",       label: "total",                 limit: 3_800_000, scope: "total" },
   { key: "css",         label: "CSS raw",               limit:    60_000, scope: "css" },
   { key: "js",          label: "JS raw",                limit: 1_100_000, scope: "js" },
   { key: "js_gz",       label: "JS gzip",               limit:   400_000, scope: "js_gz" },
