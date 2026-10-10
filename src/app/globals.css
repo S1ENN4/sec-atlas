@@ -18,6 +18,64 @@
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
+
+  /* Motion easing curves — referenced by --animate-* utilities below */
+  --ease-out-cubic: cubic-bezier(0.33, 1, 0.68, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+
+  /* Motion utility animations (consumed via `animate-{name}` Tailwind utilities).
+   * Durations are picked from the design spec: page-enter 240ms, hero-enter 400ms,
+   * chip-in 150ms. The `reveal` keyframe is defined for future use (scroll-cued
+   * entrances) but has no `animate-reveal` class because reveals run on their
+   * own timeline (animation-timeline: view()), not the standard animation API.
+   */
+  --animate-page-enter: page-enter 240ms var(--ease-out-quart) both;
+  --animate-hero-enter: hero-enter 400ms var(--ease-out-quart) both;
+  --animate-chip-in: chip-in 150ms var(--ease-out-cubic) both;
+
+  @keyframes page-enter {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes hero-enter {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes chip-in {
+    from {
+      opacity: 0;
+      transform: translateY(3px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes reveal {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
 
 :root {
@@ -98,4 +156,22 @@ body {
   --primary: oklch(0.74 0.18 295);
   --primary-foreground: oklch(0.16 0.04 295);
   --ring: oklch(0.74 0.18 295 / 0.55);
+}
+
+/* Defensive reduced-motion rule. Clamps every animation and transition to a
+ * near-zero duration and one iteration when the OS-level preference is set,
+ * and disables smooth-scroll. Lives at the file root so it overrides any
+ * motion declared in @theme (including the keyframes above).
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto !important;
+  }
 }
