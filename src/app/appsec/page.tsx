@@ -42,7 +42,7 @@ export default function AppsecHome() {
       </section>
 
       <section id="mapa" className="mx-auto max-w-6xl scroll-mt-20 px-4 pb-16">
-        <h2 className="font-mono text-sm uppercase tracking-wider text-muted-foreground">
+        <h2 className="reveal font-mono text-sm uppercase tracking-wider text-muted-foreground">
           mapa de conceitos
         </h2>
         <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
@@ -55,7 +55,7 @@ export default function AppsecHome() {
       </section>
 
       <section id="pipeline" className="mx-auto max-w-6xl scroll-mt-20 px-4 pb-16">
-        <h2 className="font-mono text-sm uppercase tracking-wider text-muted-foreground">
+        <h2 className="reveal font-mono text-sm uppercase tracking-wider text-muted-foreground">
           pipeline e2e
         </h2>
         <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
@@ -68,7 +68,7 @@ export default function AppsecHome() {
       </section>
 
       <section id="topicos" className="mx-auto max-w-6xl scroll-mt-20 px-4 pb-24">
-        <h2 className="font-mono text-sm uppercase tracking-wider text-muted-foreground">tópicos</h2>
+        <h2 className="reveal font-mono text-sm uppercase tracking-wider text-muted-foreground">tópicos</h2>
         <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {topics.map((t) => (
             <Link
@@ -77,7 +77,7 @@ export default function AppsecHome() {
               transitionTypes={["nav-forward"]}
               className="group"
             >
-              <Card className="h-full transition-colors group-hover:border-primary/60">
+              <Card className="reveal h-full transition-colors group-hover:border-primary/60">
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <TopicIcon slug={t.slug} className="size-5 text-primary" />

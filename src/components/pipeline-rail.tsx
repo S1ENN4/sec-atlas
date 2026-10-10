@@ -12,7 +12,7 @@ export function PipelineRail({ domain = "appsec" }: { domain?: DomainId }) {
         <ol className="flex min-w-max snap-x gap-10 lg:grid lg:min-w-0 lg:grid-cols-3 lg:gap-y-14">
           {pipelineStages.map((stage, i) => (
             <li key={stage.id} className="relative w-[240px] shrink-0 snap-start lg:w-auto">
-              <div className="flex h-full flex-col rounded-xl border border-border bg-card p-4">
+              <div className="reveal flex h-full flex-col rounded-xl border border-border bg-card p-4">
                 <div className="flex items-baseline gap-2">
                   <span className="font-mono text-xs text-primary/60">{stage.index}</span>
                   <span className="font-mono text-sm font-semibold">{stage.name}</span>

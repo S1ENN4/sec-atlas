@@ -158,6 +158,21 @@ body {
   --ring: oklch(0.74 0.18 295 / 0.55);
 }
 
+/* Scroll-driven reveals. Bound to the section scroll view timeline so a
+ * `.reveal` element fades up over the first 30% of its entry into the
+ * viewport. The whole block sits behind `@supports (animation-timeline:
+ * view())` so unsupported engines ignore it entirely — no fallback JS, no
+ * opacity:0 defaults. The `reveal` keyframe above carries translateY(10px)
+ * -> 0 with opacity, the same shape used by `animate-page-enter`.
+ */
+@supports (animation-timeline: view()) {
+  .reveal {
+    animation: reveal linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 30%;
+  }
+}
+
 /* Defensive reduced-motion rule. Clamps every animation and transition to a
  * near-zero duration and one iteration when the OS-level preference is set,
  * and disables smooth-scroll. Lives at the file root so it overrides any
