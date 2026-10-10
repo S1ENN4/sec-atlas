@@ -35,7 +35,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
   const meta = kindMeta[topic.kind];
 
   return (
-    <article data-domain="appsec" className="mx-auto max-w-3xl px-4 pb-24 pt-10">
+    <article data-domain="appsec" className="animate-page-enter mx-auto max-w-3xl px-4 pb-24 pt-10">
       <Link
         href="/appsec#mapa"
         className="inline-flex items-center gap-2 font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"

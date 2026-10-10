@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function GlossarioPage() {
   return (
-    <article className="mx-auto max-w-3xl px-4 pb-24 pt-10">
+    <article className="animate-page-enter mx-auto max-w-3xl px-4 pb-24 pt-10">
       <header>
         <p className="font-mono text-xs uppercase tracking-wider text-primary">referência</p>
         <h1 className="mt-2 text-3xl font-bold tracking-tight md:text-4xl">Glossário</h1>

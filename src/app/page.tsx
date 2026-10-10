@@ -30,7 +30,7 @@ export default function Home() {
   const draftCount = domainList.length - liveCount;
 
   return (
-    <div className="mx-auto max-w-6xl px-4 pb-10 pt-12 md:pt-20">
+    <div className="animate-page-enter mx-auto max-w-6xl px-4 pb-10 pt-12 md:pt-20">
       <header className="grid gap-6 md:grid-cols-[2fr_1fr] md:items-end">
         <div>
           <Badge
@@ -50,19 +50,19 @@ export default function Home() {
         </div>
         <dl className="font-mono text-xs text-muted-foreground md:text-right">
           <div className="flex items-baseline justify-between gap-3 md:justify-end md:gap-6">
-            <dt className="text-muted-foreground/70">domínios</dt>
+            <dt className="text-muted-foreground">domínios</dt>
             <dd className="text-base text-foreground">
               {domainList.length.toString().padStart(2, "0")}
             </dd>
           </div>
           <div className="mt-1 flex items-baseline justify-between gap-3 md:justify-end md:gap-6">
-            <dt className="text-muted-foreground/70">live</dt>
+            <dt className="text-muted-foreground">live</dt>
             <dd className="text-base text-primary">
               {liveCount.toString().padStart(2, "0")}
             </dd>
           </div>
           <div className="mt-1 flex items-baseline justify-between gap-3 md:justify-end md:gap-6">
-            <dt className="text-muted-foreground/70">draft</dt>
+            <dt className="text-muted-foreground">draft</dt>
             <dd className="text-base text-amber-400/90">
               {draftCount.toString().padStart(2, "0")}
             </dd>
@@ -81,6 +81,7 @@ export default function Home() {
             <Link
               key={d.id}
               href={d.route}
+              transitionTypes={["nav-forward"]}
               className="group block focus:outline-none"
             >
               <div data-domain={d.id} className="h-full">

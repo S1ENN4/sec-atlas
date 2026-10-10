@@ -13,7 +13,7 @@ const NEXT_TOPICS = [
 
 export default function AgentsPlaceholder() {
   return (
-    <div data-domain="ai-agents" className="mx-auto max-w-3xl px-4 pb-24 pt-12 md:pt-16">
+    <div data-domain="ai-agents" className="animate-page-enter mx-auto max-w-3xl px-4 pb-24 pt-12 md:pt-16">
       <Link
         href="/"
         className="inline-flex items-center gap-2 font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"
