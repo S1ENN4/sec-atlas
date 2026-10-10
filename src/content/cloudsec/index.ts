@@ -12,6 +12,7 @@ import { loggingDetection } from "./topics/logging-detection";
 import { zeroTrust } from "./topics/zero-trust";
 import { relations } from "./relations";
 import { pipeline } from "./pipeline";
+import { glossary } from "./glossary";
 import { graphLayout } from "./graph-layout";
 
 // Per-domain kind metadata. CloudSec drops the "de teste" qualifier from
@@ -44,6 +45,6 @@ export const cloudsec: Domain = {
   ],
   relations,
   pipeline,
-  glossary: [], // T15 populates
+  glossary,
   graphLayout,
 };

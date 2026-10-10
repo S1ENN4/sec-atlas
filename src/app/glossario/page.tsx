@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 
 import { GlossaryExplorer } from "@/components/glossary-explorer";
-import { glossary } from "@/lib/glossary";
+import { getAllGlossaries } from "@/lib/glossary";
 
 export const metadata: Metadata = {
   title: "glossário",
   description:
-    "Todas as terminologias de AppSec em um lugar: OWASP Top 10, CVE, CWE, CVSS, EPSS, SBOM, SLSA e o resto.",
+    "Todas as terminologias de AppSec e CloudSec em um lugar: OWASP Top 10, CVE, CWE, IAM, zero trust, CSPM, CWPP e o resto.",
 };
 
 export default function GlossarioPage() {
@@ -17,12 +17,13 @@ export default function GlossarioPage() {
         <h1 className="mt-2 text-3xl font-bold tracking-tight md:text-4xl">Glossário</h1>
         <p className="mt-3 text-lg text-muted-foreground">
           Toda a sopa de letrinhas em um lugar: siglas, identificadores, frameworks e conceitos — o
-          que cada um significa e onde se conecta com o resto.
+          que cada um significa e onde se conecta com o resto. Os termos de AppSec e CloudSec
+          convivem aqui, com filtro por domínio quando você quer focar.
         </p>
       </header>
 
       <div className="mt-8">
-        <GlossaryExplorer groups={glossary} />
+        <GlossaryExplorer groups={getAllGlossaries()} />
       </div>
     </article>
   );
