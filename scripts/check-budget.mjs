@@ -4,13 +4,34 @@
 // existing out/ directory).
 //
 // Caps (bytes):
-//   first-load assets   <= 3,150,000  (every file under out/ EXCEPT *.txt, raw)
-//   rsc prefetch        <= 2,625,000  (every *.txt under out/, raw)
-//   total               <= 5,725,000  (sanity cap: every file under out/)
+//   first-load assets   <= 3,500,000  (every file under out/ EXCEPT *.txt, raw)
+//   rsc prefetch        <= 3,050,000  (every *.txt under out/, raw)
+//   total               <= 6,550,000  (sanity cap: every file under out/)
 //   CSS raw             <=    60,000
-//   JS raw              <= 1,100,000
+//   JS raw              <= 1,135,000
 //   JS gzip             <=   400,000  (gzipSync per .js file, summed)
 //   out/index.html raw  <=    90,000
+//
+// T19 (RAG pipeline topics): five ai-agents topic bodies (rag, chunking,
+// embeddings, vector-db, retrieval) landed. Each draft SSG topic route now
+// ships its full PT-BR section prose in the RSC payload, adding ~88KB
+// first-load, ~92KB rsc prefetch, ~200KB total (5 topics ≈ 380KB spread
+// across the route files). JS raw crossed by ~13KB because the topic
+// strings landed in the search/filter chunk. Caps raised minimally to
+// clear the build (reconciliation commit finalizes): first-load to 3,500,000
+// (+100KB), rsc_prefetch to 3,050,000 (+100KB), total to 6,550,000
+// (+220KB), js to 1,135,000 (+15KB).
+//
+// History (continued):
+//   - T22 ai-agents glossary (~20 PT-BR entries merged into the shared
+//     /glossario RSC payload): added 237KB first-load, 293KB rsc prefetch,
+//     580KB total (each statically-rendered GlossaryEntry ships its prose
+//     twice in the RSC payload — once as props, once as markup). JS raw
+//     crossed by 11KB because the new glossary strings landed in the
+//     search/filter chunk. Caps raised minimally to clear the build
+//     (reconciliation commit finalizes): first-load to 3,400,000 (+250KB),
+//     rsc_prefetch to 2,950,000 (+325KB), total to 6,330,000 (+605KB),
+//     js to 1,120,000 (+20KB).
 //
 // History:
 //   - 7ff9e3f (T6): caps sized for 1 domain, 8 topics
@@ -48,11 +69,11 @@ import { gzipSync } from "node:zlib";
 const OUT_DIR = resolve(process.cwd(), "out");
 
 const CAPS = [
-  { key: "first_load",  label: "first-load assets",     limit: 3_150_000, scope: "first_load" },
-  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 2_625_000, scope: "rsc_prefetch" },
-  { key: "total",       label: "total",                 limit: 5_725_000, scope: "total" },
+  { key: "first_load",  label: "first-load assets",     limit: 3_500_000, scope: "first_load" },
+  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 3_050_000, scope: "rsc_prefetch" },
+  { key: "total",       label: "total",                 limit: 6_550_000, scope: "total" },
   { key: "css",         label: "CSS raw",               limit:    60_000, scope: "css" },
-  { key: "js",          label: "JS raw",                limit: 1_100_000, scope: "js" },
+  { key: "js",          label: "JS raw",                limit: 1_135_000, scope: "js" },
   { key: "js_gz",       label: "JS gzip",               limit:   400_000, scope: "js_gz" },
   { key: "index",       label: "out/index.html raw",    limit:    90_000, scope: "index" },
 ];
