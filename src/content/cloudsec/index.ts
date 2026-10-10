@@ -28,7 +28,7 @@ const kindMeta: Record<TopicKind, { label: string; dot: string; text: string }> 
 export const cloudsec: Domain = {
   id: "cloudsec",
   route: "/cloudsec",
-  status: "draft",
+  status: "live",
   accent: "sky",
   kindMeta,
   topics: [

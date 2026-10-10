@@ -25,6 +25,11 @@
 //     the same wave added another ~111KB first-load, ~204KB rsc
 //     prefetch and ~414KB total. Caps raised by ~250/300/550KB to
 //     keep roughly the same headroom-to-content ratio as before.
+//   - T16 added the last two cloudsec topic bodies (logging-detection +
+//     zero-trust) without crossing the first-load ceiling (~0 KB
+//     headroom untouched), but pushed rsc prefetch +6KB over the
+//     previous cap and total +49KB. Caps nudged up by another 25KB
+//     (rsc prefetch) and 75KB (total) for headroom on the live floor.
 //
 // Exit 0 when every row is within its cap; exit 1 with a clear per-cap
 // message otherwise.
@@ -37,8 +42,8 @@ const OUT_DIR = resolve(process.cwd(), "out");
 
 const CAPS = [
   { key: "first_load",  label: "first-load assets",     limit: 2_650_000, scope: "first_load" },
-  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 1_800_000, scope: "rsc_prefetch" },
-  { key: "total",       label: "total",                 limit: 4_350_000, scope: "total" },
+  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 1_825_000, scope: "rsc_prefetch" },
+  { key: "total",       label: "total",                 limit: 4_425_000, scope: "total" },
   { key: "css",         label: "CSS raw",               limit:    60_000, scope: "css" },
   { key: "js",          label: "JS raw",                limit: 1_100_000, scope: "js" },
   { key: "js_gz",       label: "JS gzip",               limit:   400_000, scope: "js_gz" },

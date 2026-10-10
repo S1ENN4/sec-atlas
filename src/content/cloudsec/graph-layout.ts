@@ -25,8 +25,8 @@ export const graphLayout: DomainGraphLayout = {
 
   layerSlugs: ["zero-trust"],
   layerPositions: {
-    // Far-left dashed card; emits the "informa" relation rightward into
-    // network.
+    // Far-left dashed card; emits the dashed "concept overlay" relations
+    // rightward into the protecting concepts (IAM + network).
     "zero-trust": { x: -180, y: 300 },
   },
 
@@ -59,22 +59,38 @@ export const graphLayout: DomainGraphLayout = {
     { slug: "logging-detection", stageId: "detectar", sourceHandle: "s-t", targetHandle: "t-b" },
   ],
 
-  // Cross-concept relations. The dashed style marks the conceptual
-  // overlay (zero-trust → network); the solid arrow style marks the
-  // functional downstream edges (cspm→iam, cwpp→k8s, logging→cspm).
+  // Cross-concept relations. Edges are drawn from `source` (a concept
+  // slug or `stage-<id>`) to `target`, using whatever handles keep the
+  // smoothstep from doubling back on itself. Two visual flavours:
+  //   dashed + arrow:false  → concept overlay (zero-trust → X)
+  //   solid + arrow        → functional downstream flow (everything else)
+  // A few long-diagonal relations (logging-detection → iam) are
+  // intentionally omitted from the canvas; they live in
+  // `relations.ts` and surface on the topic page's connections list,
+  // which the topic page renders server-side.
   crossRelations: [
     {
-      id: "informa",
+      id: "guia-o-modelo",
       source: "zero-trust",
-      target: "network",
+      target: "iam",
       sourceHandle: "s-r",
       targetHandle: "t-l",
-      label: "informa",
+      label: "guia o modelo",
       dashed: true,
       arrow: false,
     },
     {
-      id: "audita",
+      id: "segmenta-identidade",
+      source: "zero-trust",
+      target: "network",
+      sourceHandle: "s-r",
+      targetHandle: "t-l",
+      label: "segmenta por identidade",
+      dashed: true,
+      arrow: false,
+    },
+    {
+      id: "audita-iam",
       source: "cspm",
       target: "iam",
       sourceHandle: "s-t",
@@ -82,20 +98,68 @@ export const graphLayout: DomainGraphLayout = {
       label: "audita",
     },
     {
-      id: "protege",
+      id: "audita-postura-k8s",
+      source: "cspm",
+      target: "kubernetes",
+      sourceHandle: "s-t",
+      targetHandle: "t-l",
+      label: "audita a postura",
+    },
+    {
+      id: "monitora-runtime",
+      source: "cwpp",
+      target: "containers",
+      sourceHandle: "s-t",
+      targetHandle: "t-l",
+      label: "monitora o runtime",
+    },
+    {
+      id: "detecta-comportamento",
       source: "cwpp",
       target: "kubernetes",
       sourceHandle: "s-t",
       targetHandle: "t-l",
-      label: "protege",
+      label: "detecta comportamento",
     },
     {
-      id: "alimenta",
+      id: "alimenta-postura",
       source: "logging-detection",
       target: "cspm",
       sourceHandle: "s-t",
       targetHandle: "t-l",
-      label: "alimenta",
+      label: "alimenta a postura",
+    },
+    {
+      id: "fornece-trilha",
+      source: "logging-detection",
+      target: "cwpp",
+      sourceHandle: "s-t",
+      targetHandle: "t-l",
+      label: "fornece a trilha",
+    },
+    {
+      id: "autoriza-chaves",
+      source: "iam",
+      target: "kms-crypto",
+      sourceHandle: "s-t",
+      targetHandle: "t-l",
+      label: "autoriza o acesso a chaves",
+    },
+    {
+      id: "cifra-segredos",
+      source: "kms-crypto",
+      target: "secrets-cloud",
+      sourceHandle: "s-t",
+      targetHandle: "t-l",
+      label: "cifra os segredos",
+    },
+    {
+      id: "isola-rede",
+      source: "network",
+      target: "containers",
+      sourceHandle: "s-t",
+      targetHandle: "t-l",
+      label: "isola a rede",
     },
   ],
 
