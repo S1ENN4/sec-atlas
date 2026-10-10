@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Inter, JetBrains_Mono } from "next/font/google";
 
+import { MotionProvider } from "@/components/motion/provider";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
@@ -23,9 +24,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="pt-BR" className={`${inter.variable} ${jetbrains.variable}`}>
       <body className="flex min-h-svh flex-col font-sans antialiased">
-        <SiteHeader />
-        <main className="flex-1">{children}</main>
-        <SiteFooter />
+        <MotionProvider>
+          <SiteHeader />
+          <main className="flex-1">{children}</main>
+          <SiteFooter />
+        </MotionProvider>
       </body>
     </html>
   );
