@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "prebuild": "node --import ./scripts/content-alias-loader.mjs scripts/validate-content.mjs",
-    "build": "next build"
+    "build": "next build && node scripts/check-budget.mjs"
   },
   "dependencies": {
     "@radix-ui/react-slot": "1.4.0",
