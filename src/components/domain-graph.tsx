@@ -47,9 +47,25 @@ type AnyFlowNode = StageFlowNode | ConceptFlowNode;
 
 const hidden = "!opacity-0";
 
-function StageNode({ data }: NodeProps<StageFlowNode>) {
+interface StageNodeActivate {
+  onActivate: () => void;
+}
+
+function StageNode({ data, onActivate }: NodeProps<StageFlowNode> & StageNodeActivate) {
+  const label = `Abrir ${data.name}`;
   return (
-    <div className="w-[240px] cursor-pointer rounded-lg border border-primary/30 bg-card px-3 py-2.5 shadow transition-colors hover:border-primary/70">
+    <div
+      role="button"
+      tabIndex={0}
+      aria-label={label}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onActivate();
+        }
+      }}
+      className="w-[240px] cursor-pointer rounded-lg border border-primary/30 bg-card px-3 py-2.5 shadow transition-colors hover:border-primary/70 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+    >
       <Handle id="t-l" type="target" position={Position.Left} className={hidden} />
       <Handle id="t-b" type="target" position={Position.Bottom} className={hidden} />
       <Handle id="s-r" type="source" position={Position.Right} className={hidden} />
@@ -64,14 +80,24 @@ function StageNode({ data }: NodeProps<StageFlowNode>) {
 
 interface ConceptNodeProps extends NodeProps<ConceptFlowNode> {
   domainMeta: Record<TopicKind, { dot: string; label: string; text: string }>;
+  onActivate: () => void;
 }
 
-function ConceptNode({ data, domainMeta }: ConceptNodeProps) {
+function ConceptNode({ data, domainMeta, onActivate }: ConceptNodeProps) {
   const meta = domainMeta[data.kind];
   return (
     <div
+      role="button"
+      tabIndex={0}
+      aria-label={`Abrir tópico ${data.title}`}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onActivate();
+        }
+      }}
       className={cn(
-        "w-[240px] cursor-pointer rounded-xl border bg-card px-4 py-3 shadow transition-colors hover:border-primary/70",
+        "w-[240px] cursor-pointer rounded-xl border bg-card px-4 py-3 shadow transition-colors hover:border-primary/70 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         data.dashed ? "border-dashed border-border" : "border-border"
       )}
     >
@@ -225,20 +251,33 @@ function DomainGraphInner({ domainId }: DomainGraphProps) {
     [edges, edgeStyles]
   );
 
-  // Inject domain kind metadata into the ConceptNode renderer through
-  // closure capture: each domain's `kindMeta` controls badge color/label
-  // for concept cards. StageNode does not need it.
+  // Inject domain kind metadata + activate handler into each custom node
+  // renderer through closure capture. StageNode only needs the activation
+  // callback (all stage nodes share the same `stageHref`); ConceptNode also
+  // receives `domain.kindMeta` so concept cards can render their kind badge
+  // color/label per the active domain. Guarded on `ready`: when no layout is
+  // registered the graph stays empty and the inner nodes are never mounted,
+  // so the closures are inert and we don't need to dereference `layout`.
   const renderNodeTypes = useMemo(
     () => ({
-      stage: StageNode as unknown as React.ComponentType<NodeProps>,
+      stage: ((props: NodeProps<StageFlowNode>) => (
+        <StageNode
+          {...props}
+          onActivate={() => {
+            if (!layout) return;
+            router.push(layout.stageHref);
+          }}
+        />
+      )) as unknown as React.ComponentType<NodeProps>,
       topic: ((props: NodeProps<ConceptFlowNode>) => (
         <ConceptNode
           {...props}
           domainMeta={domain.kindMeta as unknown as Record<TopicKind, { dot: string; label: string; text: string }>}
+          onActivate={() => router.push(`${domainMeta[domainId].route}/topico/${props.data.slug}`)}
         />
       )) as unknown as React.ComponentType<NodeProps>,
     }),
-    [domain.kindMeta]
+    [domain.kindMeta, domainId, layout, router]
   );
 
   const onNodeClick = useMemo(
@@ -287,7 +326,7 @@ function DomainGraphInner({ domainId }: DomainGraphProps) {
             </span>
           </div>
         ))}
-        <span className="ml-auto font-mono text-[10px] text-muted-foreground/70">
+        <span className="ml-auto font-mono text-[10px] text-muted-foreground">
           linhas animadas = fluxo da esteira · tracejado = relação · clique num nó
         </span>
       </div>

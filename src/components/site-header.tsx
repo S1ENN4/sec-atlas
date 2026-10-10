@@ -11,7 +11,7 @@ export function SiteHeader() {
           <ShieldCheck className="size-5 text-primary" />
           appsec<span className="text-primary">/</span>kb
         </Link>
-        <nav className="flex min-w-0 items-center gap-0.5 overflow-x-auto text-[13px] text-muted-foreground sm:gap-1 sm:text-sm [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <nav aria-label="Principal" className="flex min-w-0 items-center gap-0.5 overflow-x-auto text-[13px] text-muted-foreground sm:gap-1 sm:text-sm [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {Object.values(domainMeta).map((d) => (
             <Link
               key={d.id}

@@ -35,7 +35,7 @@ export function GlossaryExplorer({ groups }: { groups: GlossaryGroup[] }) {
         onChange={(e) => setQuery(e.target.value)}
         placeholder="filtrar termos... (ex.: cve, injecao, sbom, gate)"
         aria-label="filtrar termos do glossário"
-        className="w-full rounded-lg border border-border bg-card px-4 py-2.5 font-mono text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-primary/60 focus:outline-none"
+        className="w-full rounded-lg border border-border bg-card px-4 py-2.5 font-mono text-sm text-foreground placeholder:text-muted-foreground focus:border-primary/60 focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none"
       />
 
       {filtered.length === 0 ? (
