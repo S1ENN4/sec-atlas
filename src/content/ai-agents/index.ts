@@ -18,6 +18,7 @@ import { guardrails } from "./topics/guardrails";
 
 import { relations } from "./relations";
 import { pipeline } from "./pipeline";
+import { glossary } from "./glossary";
 import { graphLayout } from "./graph-layout";
 
 // Per-domain kind metadata. AI-Agents renames the pratica kind to "componente"
@@ -25,12 +26,6 @@ import { graphLayout } from "./graph-layout";
 // practice) and drops the "de teste" qualifier from tecnica (RAG techniques
 // aren't tests either). The dot/text colors stay the same as the other
 // domains so badges read visually identical — only the textual label differs.
-//
-// Glossário é esvaziado por enquanto: T22 preenche os ~20 termos da spec
-// (retrieval, reranking, BM25, similaridade de cosseno, HNSW, ANN,
-// contexto, alucinação, function calling, agente, grafo de agente, MCP
-// server, MCP tool vs resource, DeepAgents, SWE-bench, judge, rubrica,
-// baseline, prompt injection, PII).
 const kindMeta: Record<TopicKind, { label: string; dot: string; text: string }> = {
   tecnica: { label: "técnica", dot: "bg-emerald-400", text: "text-emerald-400" },
   pratica: { label: "componente", dot: "bg-sky-400", text: "text-sky-400" },
@@ -67,6 +62,6 @@ export const aiAgents: Domain = {
   ],
   relations,
   pipeline,
-  glossary: [],
+  glossary,
   graphLayout,
 };
