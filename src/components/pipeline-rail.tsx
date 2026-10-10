@@ -26,7 +26,7 @@ export function PipelineRail({ domain = "appsec" }: { domain?: DomainId }) {
                       <Link
                         key={item.label}
                         href={`${route}/topico/${item.slug}`}
-                        className="rounded-md border border-border bg-muted/40 px-2 py-1 font-mono text-[11px] text-foreground/80 transition-colors hover:border-primary/60 hover:text-primary"
+                        className="rounded-md border border-border bg-muted/40 px-2 py-1 font-mono text-[11px] text-foreground/80 transition-colors duration-[120ms] hover:border-primary/60 hover:bg-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                       >
                         {item.label}
                       </Link>

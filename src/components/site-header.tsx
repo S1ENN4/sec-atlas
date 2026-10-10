@@ -7,7 +7,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-3 px-4">
-        <Link href="/" className="flex shrink-0 items-center gap-2 font-mono text-sm font-semibold">
+        <Link href="/" className="flex shrink-0 items-center gap-2 font-mono text-sm font-semibold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm">
           <ShieldCheck className="size-5 text-primary" />
           appsec<span className="text-primary">/</span>kb
         </Link>
@@ -16,7 +16,7 @@ export function SiteHeader() {
             <Link
               key={d.id}
               href={d.route}
-              className="shrink-0 rounded-md px-2 py-1.5 font-mono text-[11px] uppercase tracking-wider transition-colors hover:text-foreground sm:px-3 sm:text-[13px]"
+              className="shrink-0 rounded-md px-2 py-1.5 font-mono text-[11px] uppercase tracking-wider transition-colors duration-[120ms] hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:px-3 sm:text-[13px]"
             >
               {d.id}
             </Link>
@@ -24,31 +24,31 @@ export function SiteHeader() {
           <span aria-hidden className="mx-1 h-5 w-px shrink-0 bg-border/70" />
           <Link
             href="/appsec#mapa"
-            className="shrink-0 rounded-md px-2 py-1.5 transition-colors hover:text-foreground sm:px-3"
+            className="shrink-0 rounded-md px-2 py-1.5 transition-colors duration-[120ms] hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:px-3"
           >
             mapa
           </Link>
           <Link
             href="/appsec#pipeline"
-            className="shrink-0 rounded-md px-2 py-1.5 transition-colors hover:text-foreground sm:px-3"
+            className="shrink-0 rounded-md px-2 py-1.5 transition-colors duration-[120ms] hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:px-3"
           >
             pipeline
           </Link>
           <Link
             href="/appsec#topicos"
-            className="shrink-0 rounded-md px-2 py-1.5 transition-colors hover:text-foreground sm:px-3"
+            className="shrink-0 rounded-md px-2 py-1.5 transition-colors duration-[120ms] hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:px-3"
           >
             tópicos
           </Link>
           <Link
             href="/glossario"
-            className="shrink-0 rounded-md px-2 py-1.5 transition-colors hover:text-foreground sm:px-3"
+            className="shrink-0 rounded-md px-2 py-1.5 transition-colors duration-[120ms] hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:px-3"
           >
             glossário
           </Link>
           <Link
             href="/seguranca"
-            className="shrink-0 rounded-md px-2 py-1.5 transition-colors hover:text-foreground sm:px-3"
+            className="shrink-0 rounded-md px-2 py-1.5 transition-colors duration-[120ms] hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:px-3"
           >
             segurança
           </Link>

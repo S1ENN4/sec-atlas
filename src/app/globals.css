@@ -135,6 +135,57 @@ body {
   border: 1px solid var(--border);
   border-radius: 0.5rem;
   overflow: hidden;
+  transition: background-color 120ms var(--ease-out-cubic);
+}
+
+.react-flow__controls-button {
+  transition:
+    background-color 120ms var(--ease-out-cubic),
+    color 120ms var(--ease-out-cubic),
+    border-color 120ms var(--ease-out-cubic);
+}
+
+/* React Flow ships `.react-flow__edge.animated path` at 0.5s linear. We need
+ * a slower, deliberate dash rhythm (1.4s) for the spine flow so it reads as
+ * ambient motion rather than noise. Prefixed with `.react-flow` to win the
+ * specificity battle against the library's own selector.
+ */
+.react-flow .react-flow__edge.animated path {
+  animation-duration: 1.4s;
+}
+
+/* Entrance state. DomainGraph mounts with `.graph-entering` on its wrapper;
+ * every RF node starts at opacity 0 so we can stagger them in via WAAPI from
+ * `onInit`. The class is removed once the stagger settles. */
+.graph-entering .react-flow__node {
+  opacity: 0;
+}
+
+/* Per-node hover + press polish. The StageNode and ConceptNode inner divs
+ * are `role="button"`; the selectors below win over Tailwind utilities by
+ * higher specificity (`.react-flow__node > div` beats any single-class
+ * utility). Property transitions:
+ *   - border-color + box-shadow: 150ms ease-out-cubic (hover ring)
+ *   - transform: 80ms ease-out-cubic (press scale)
+ * The two durations share an easing but apply to different properties —
+ * CSS lets us list them as a single `transition` shorthand.
+ */
+.react-flow__node > div {
+  transition:
+    border-color 150ms var(--ease-out-cubic),
+    box-shadow 150ms var(--ease-out-cubic),
+    transform 80ms var(--ease-out-cubic);
+}
+
+.react-flow__node > div:hover {
+  border-color: oklch(0.78 0.19 155 / 0.7);
+  box-shadow:
+    0 0 0 1px oklch(0.78 0.19 155 / 0.35),
+    0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+.react-flow__node > div:active {
+  transform: scale(0.985);
 }
 
 /* Per-domain accent overrides. Each domain page wraps its content in a
