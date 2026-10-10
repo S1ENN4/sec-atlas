@@ -21,14 +21,16 @@ export const zeroTrust: Topic = {
     {
       heading: "Os principios",
       body: [
-        "NIST SP 800-207 fixa cinco princípios que aparecem em toda implementação séria. Não são exclusivos - na prática são combinados - mas servem de régua para saber se a arquitetura em estudo é zero-trust ou 'VPN com MFA'.",
+        "NIST SP 800-207 define sete princípios que aparecem em toda implementação séria de zero-trust. Não são exclusivos, na prática são combinados, mas servem de régua para saber se a arquitetura em estudo é zero-trust ou apenas 'VPN com MFA'.",
       ],
       bullets: [
-        "nunca confiar, sempre verificar: cada request é avaliado, mesmo o que veio do mesmo IP dez segundos atrás",
-        "identidade é o novo perímetro: usuário, workload e device ganham identidade própria, e a autorização viaja junto deles (SPIFFE, mTLS, tokens curtos)",
-        "privilégio mínimo por padrão: cada sujeito ganha só o que precisa para a tarefa atual, em janela curta, com revogação central",
-        "assume-breach: a postura parte de que o atacante já está dentro; logs, segmentação e detecção ficam em primeiro plano, não em plano B",
-        "verificação contínua: postura do device, geografia, horário e sinal de risco reavaliados a cada chamada - autenticação não é evento único",
+        "todo dado e todo serviço vale como recurso: hosts, containers, SaaS e APIs internas deixam de escapar por estarem 'dentro'",
+        "toda comunicação é criptografada e autenticada, venha da rede interna ou da internet",
+        "acesso é por sessão, não por conexão persistente: cada sessão é avaliada do zero",
+        "política é dinâmica, combina identidade do cliente, postura do device, serviço, localização e sinal de risco",
+        "postura e integridade de todo ativo, próprio ou de terceiro, é monitorada o tempo todo",
+        "autenticação e autorização são aplicadas antes do acesso, sem exceção por posição na rede",
+        "a empresa coleta o máximo de telemetria possível sobre ativos, rede e comunicações e usa isso para ajustar a própria postura",
       ],
     },
     {

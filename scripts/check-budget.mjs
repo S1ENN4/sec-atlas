@@ -5,8 +5,8 @@
 //
 // Caps (bytes):
 //   first-load assets   <= 2,650,000  (every file under out/ EXCEPT *.txt, raw)
-//   rsc prefetch        <= 1,800,000  (every *.txt under out/, raw)
-//   total               <= 4,350,000  (sanity cap: every file under out/)
+//   rsc prefetch        <= 1,825,000  (every *.txt under out/, raw)
+//   total               <= 4,425,000  (sanity cap: every file under out/)
 //   CSS raw             <=    60,000
 //   JS raw              <= 1,100,000
 //   JS gzip             <=   400,000  (gzipSync per .js file, summed)

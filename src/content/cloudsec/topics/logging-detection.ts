@@ -60,8 +60,8 @@ export const loggingDetection: Topic = {
       code: [
         {
           language: "yaml",
-          filename: "regra EventBridge - alerta GuardDuty crítico",
-          code: "description: \"Encaminha findings críticos do GuardDuty para a fila do SOAR\"\nstate: enabled\ntargetArn: arn:aws:sqs:us-east-1:111122223333:soar-ingest\nruleBinding:\n  eventBusName: default\n  pattern: |\n    {\n      \"source\": [\"aws.guardduty\"],\n      \"detail-type\": [\"GuardDuty Finding\"],\n      \"detail\": {\n        \"severity\": [ { \"numeric\": [\">=\", 7.0] } ],\n        \"type\": [\n          \"Recon:EC2/PortScan\",\n          \"CredentialAccess:IAMUser/AnomalousAPI_CALL\",\n          \"Exfiltration:S3/AnomalousIP\",\n          \"Persistence:IAMUser/NetworkPermissions\",\n          \"PrivilegeEscalation:IAMUser/AdministrativePermissions\"\n        ]\n      }\n    }",
+          filename: "regra EventBridge (AWS::Events::Rule) - alerta GuardDuty crítico",
+          code: "Description: \"Encaminha findings críticos do GuardDuty para a fila do SOAR\"\nState: ENABLED\nEventBusName: default\nEventPattern: |\n  {\n    \"source\": [\"aws.guardduty\"],\n    \"detail-type\": [\"GuardDuty Finding\"],\n    \"detail\": {\n      \"severity\": [{ \"numeric\": [\">=\", 7] }],\n      \"type\": [\n        \"Recon:EC2/PortProbeUnprotectedPort\",\n        \"Recon:EC2/PortProbeOpenPort\",\n        \"UnauthorizedAccess:IAMUser/InstanceCredentialExfiltration\",\n        \"CredentialAccess:IAMUser/AnomalousBehaviors\",\n        \"Policy:IAMUser/RootCredentialUsage\",\n        \"Persistence:IAMUser/NetworkPermissions\",\n        \"PrivilegeEscalation:IAMUser/AdministrativePermissions\",\n        \"Exfiltration:S3/MaliciousIPCaller\"\n      ]\n    }\n  }\nTargets:\n  - Id: SOARIngestTarget\n    Arn: arn:aws:sqs:us-east-1:111122223333:soar-ingest",
         },
       ],
     },
