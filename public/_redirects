@@ -1,0 +1,9 @@
+# Host-level redirects (Netlify / Cloudflare Pages format).
+# Fragment (#) destinations are not supported by these hosts; the canonical
+# client-side anchors on /appsec#mapa etc. live in src/components/site-header.tsx.
+#
+# /topico/* used to be the canonical topic path before per-domain routing
+# landed. External links pointing at the old URL get a permanent redirect
+# to the new AppSec-scoped path.
+
+/topico/*  /appsec/topico/:splat  301

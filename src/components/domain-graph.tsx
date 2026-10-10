@@ -25,7 +25,7 @@ import "@xyflow/react/dist/style.css";
 
 import { TopicIcon } from "@/components/topic-icon";
 import { cn } from "@/lib/utils";
-import { domains, getTopic, type DomainGraphLayout, type DomainId, type PipelineStage, type TopicKind } from "@/content/registry";
+import { domains, domainMeta, getTopic, type DomainGraphLayout, type DomainId, type PipelineStage, type TopicKind } from "@/content/registry";
 
 interface StageNodeData extends Record<string, unknown> {
   index: string;
@@ -245,13 +245,14 @@ function DomainGraphInner({ domainId }: DomainGraphProps) {
     () =>
       (_: React.MouseEvent, node: { id: string }) => {
         if (!layout) return;
+        const route = domainMeta[domainId].route;
         if (node.id.startsWith("stage-")) {
           router.push(layout.stageHref);
         } else {
-          router.push(`/topico/${node.id}`);
+          router.push(`${route}/topico/${node.id}`);
         }
       },
-    [router, layout]
+    [router, layout, domainId]
   );
 
   return (

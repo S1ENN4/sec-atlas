@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 
-import { getTopic } from "@/lib/topics";
+import { domainMeta, getTopic } from "@/content/registry";
 import type { GlossaryGroup } from "@/lib/glossary";
 
 const normalize = (s: string) =>
@@ -72,7 +72,7 @@ export function GlossaryExplorer({ groups }: { groups: GlossaryGroup[] }) {
                       {entry.meaning}
                       {topic ? (
                         <Link
-                          href={`/topico/${topic.slug}`}
+                          href={`${domainMeta[topic.domain].route}/topico/${topic.slug}`}
                           className="ml-2 whitespace-nowrap font-mono text-xs text-primary/90 transition-colors hover:text-primary"
                         >
                           → {topic.title}

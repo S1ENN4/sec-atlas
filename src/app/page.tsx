@@ -1,90 +1,124 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
-import { StudyGraph } from "@/components/study-graph";
-import { PipelineRail } from "@/components/pipeline-rail";
-import { TopicIcon } from "@/components/topic-icon";
+import { domains, type DomainId } from "@/content/registry";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { kindMeta, topics } from "@/lib/topics";
 import { cn } from "@/lib/utils";
 
+const DOMAIN_LABELS: Record<DomainId, { name: string; pitch: string }> = {
+  appsec: {
+    name: "AppSec",
+    pitch:
+      "SAST, DAST, SCA, secrets, SBOM e a esteira — o mapa interativo que mostra cada verificação e onde ela entra na pipeline.",
+  },
+  cloudsec: {
+    name: "CloudSec",
+    pitch:
+      "Postura em cloud, IAM, segmentação e supply chain — um grafo próprio, mesmo estilo do AppSec. Conteúdo entra nas ondas 3/4.",
+  },
+  "ai-agents": {
+    name: "Agents",
+    pitch:
+      "Segurança para agentes e workloads de IA — prompt injection, tool sandboxing, tracing de ações. Conteúdo entra nas ondas 3/4.",
+  },
+};
+
 export default function Home() {
+  const domainList = Object.values(domains);
+  const liveCount = domainList.filter((d) => d.status === "live").length;
+  const draftCount = domainList.length - liveCount;
+
   return (
-    <div>
-      <section className="mx-auto max-w-6xl px-4 pb-10 pt-16 text-center md:pt-24">
-        <Badge variant="outline" className="font-mono text-xs font-normal text-muted-foreground">
-          knowledge base · devsecops
-        </Badge>
-        <h1 className="mt-6 text-4xl font-bold tracking-tight md:text-6xl">
-          Segurança de software, <span className="text-primary">mapeada</span>.
-        </h1>
-        <p className="mx-auto mt-4 max-w-2xl text-muted-foreground md:text-lg">
-          Um mapa interativo dos conceitos que protegem uma pipeline: SAST, DAST, SCA, secrets
-          scanning, SBOM e CI/CD — o que cada um faz, onde entra e como se conectam.
-        </p>
-        <p className="mt-6 font-mono text-xs text-primary/80">$ clique em um nó para abrir o tópico</p>
-      </section>
-
-      <section id="mapa" className="mx-auto max-w-6xl scroll-mt-20 px-4 pb-16">
-        <h2 className="font-mono text-sm uppercase tracking-wider text-muted-foreground">
-          mapa de conceitos
-        </h2>
-        <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
-          Organizado pela esteira: cada verificação fica na coluna do seu estágio. Linhas animadas
-          são o fluxo da CI/CD; tracejados são relações entre conceitos.
-        </p>
-        <div className="mt-6">
-          <StudyGraph />
+    <div className="mx-auto max-w-6xl px-4 pb-10 pt-12 md:pt-20">
+      <header className="grid gap-6 md:grid-cols-[2fr_1fr] md:items-end">
+        <div>
+          <Badge
+            variant="outline"
+            className="font-mono text-xs font-normal text-muted-foreground"
+          >
+            knowledge base · segurança de software
+          </Badge>
+          <h1 className="mt-6 text-4xl font-bold tracking-tight md:text-6xl">
+            Segurança de software,{" "}
+            <span className="text-primary">mapeada por domínio.</span>
+          </h1>
+          <p className="mt-4 max-w-2xl text-muted-foreground md:text-lg">
+            Cada domínio é um grafo independente: conceitos, esteira, conexões e glossário.
+            Comece pelo que está pronto, volte quando os outros saírem do forno.
+          </p>
         </div>
-      </section>
+        <dl className="font-mono text-xs text-muted-foreground md:text-right">
+          <div className="flex items-baseline justify-between gap-3 md:justify-end md:gap-6">
+            <dt className="text-muted-foreground/70">domínios</dt>
+            <dd className="text-base text-foreground">
+              {domainList.length.toString().padStart(2, "0")}
+            </dd>
+          </div>
+          <div className="mt-1 flex items-baseline justify-between gap-3 md:justify-end md:gap-6">
+            <dt className="text-muted-foreground/70">live</dt>
+            <dd className="text-base text-primary">
+              {liveCount.toString().padStart(2, "0")}
+            </dd>
+          </div>
+          <div className="mt-1 flex items-baseline justify-between gap-3 md:justify-end md:gap-6">
+            <dt className="text-muted-foreground/70">draft</dt>
+            <dd className="text-base text-amber-400/90">
+              {draftCount.toString().padStart(2, "0")}
+            </dd>
+          </div>
+        </dl>
+      </header>
 
-      <section id="pipeline" className="mx-auto max-w-6xl scroll-mt-20 px-4 pb-16">
-        <h2 className="font-mono text-sm uppercase tracking-wider text-muted-foreground">
-          pipeline e2e
-        </h2>
-        <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
-          O caminho de um commit até produção — e a verificação que mora em cada etapa. Cada chip
-          abre o tópico correspondente.
-        </p>
-        <div className="mt-6">
-          <PipelineRail />
-        </div>
-      </section>
+      <hr className="mt-10 border-border/60" />
 
-      <section id="topicos" className="mx-auto max-w-6xl scroll-mt-20 px-4 pb-24">
-        <h2 className="font-mono text-sm uppercase tracking-wider text-muted-foreground">tópicos</h2>
-        <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {topics.map((t) => (
-            <Link key={t.slug} href={`/topico/${t.slug}`} className="group">
-              <Card className="h-full transition-colors group-hover:border-primary/60">
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <TopicIcon slug={t.slug} className="size-5 text-primary" />
-                    <ArrowRight className="size-4 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
-                  </div>
-                  <CardTitle className="pt-2">{t.title}</CardTitle>
-                  <CardDescription className="leading-snug">{t.tagline}</CardDescription>
-                  <div className="flex flex-wrap items-center gap-2 pt-2">
-                    <span
+      <section className="mt-10 grid gap-5 md:grid-cols-3">
+        {domainList.map((d) => {
+          const meta = DOMAIN_LABELS[d.id];
+          const count = d.topics.length;
+          const isLive = d.status === "live";
+          return (
+            <Link
+              key={d.id}
+              href={d.route}
+              className="group block focus:outline-none"
+            >
+              <div data-domain={d.id} className="h-full">
+                <Card className="h-full transition-colors group-hover:border-primary/60">
+                  <CardHeader>
+                    <div className="flex items-center justify-between">
+                      <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+                        {d.id}
+                      </span>
+                      {isLive ? (
+                        <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+                          {count} {count === 1 ? "tópico" : "tópicos"}
+                        </span>
+                      ) : (
+                        <span className="rounded-md border border-amber-400/30 px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-amber-400/80">
+                          em breve
+                        </span>
+                      )}
+                    </div>
+                    <CardTitle className="pt-2 text-2xl">{meta.name}</CardTitle>
+                    <CardDescription className="leading-snug">
+                      {meta.pitch}
+                    </CardDescription>
+                    <div
                       className={cn(
-                        "font-mono text-[10px] uppercase tracking-wider",
-                        kindMeta[t.kind].text
+                        "flex items-center gap-1.5 pt-3 font-mono text-xs",
+                        isLive ? "text-primary/80" : "text-muted-foreground"
                       )}
                     >
-                      {kindMeta[t.kind].label}
-                    </span>
-                    {t.stage ? (
-                      <span className="font-mono text-[10px] text-muted-foreground">
-                        · stage: {t.stage}
-                      </span>
-                    ) : null}
-                  </div>
-                </CardHeader>
-              </Card>
+                      {isLive ? "abrir mapa" : "notificar"}
+                      <ArrowUpRight className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </div>
+                  </CardHeader>
+                </Card>
+              </div>
             </Link>
-          ))}
-        </div>
+          );
+        })}
       </section>
     </div>
   );

@@ -78,3 +78,24 @@ body {
   border-radius: 0.5rem;
   overflow: hidden;
 }
+
+/* Per-domain accent overrides. Each domain page wraps its content in a
+ * `data-domain` attribute; the selectors below scope --primary / --ring to
+ * that subtree so links, badges, hover borders and focus rings pick up the
+ * domain's accent without forking the underlying components.
+ *
+ * AppSec keeps the emerald defaults from :root (live today). Draft domains
+ * (cloudsec → sky, ai-agents → violet) ship a light + ring pair tuned for AA
+ * contrast on the dark surface used elsewhere in the site.
+ */
+[data-domain="cloudsec"] {
+  --primary: oklch(0.8 0.16 230);
+  --primary-foreground: oklch(0.16 0.04 230);
+  --ring: oklch(0.8 0.16 230 / 0.55);
+}
+
+[data-domain="ai-agents"] {
+  --primary: oklch(0.74 0.18 295);
+  --primary-foreground: oklch(0.16 0.04 295);
+  --ring: oklch(0.74 0.18 295 / 0.55);
+}

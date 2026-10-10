@@ -81,9 +81,7 @@ export const graphLayout: DomainGraphLayout = {
   ],
 
   // The route the stage-node click pushes to. Today every stage routes to
-  // the same CI/CD overview topic.
-  // TODO(task-5): once per-domain route prefixing lands the stageHref will
-  // become "/appsec/topico/cicd" — the domain-graph renderer will read it
-  // directly, so this single string is the only place to update.
-  stageHref: "/topico/cicd",
+  // the same CI/CD overview topic; domains with per-stage pages would
+  // override this with a function (future work).
+  stageHref: "/appsec/topico/cicd",
 };

@@ -5,3 +5,7 @@ out/
 next-env.d.ts
 .DS_Store
 Thumbs.db
+
+# Dev artifacts next dev re-creates in repo root.
+AGENTS.md
+CLAUDE.md

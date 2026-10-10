@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { MoveDown, MoveRight } from "lucide-react";
 
-import { pipelineStages } from "@/lib/pipeline";
+import { domainMeta, getPipeline, type DomainId } from "@/content/registry";
 
-export function PipelineRail() {
+export function PipelineRail({ domain = "appsec" }: { domain?: DomainId }) {
+  const route = domainMeta[domain].route;
+  const pipelineStages = getPipeline(domain);
   return (
     <div>
       <div className="overflow-x-auto pb-2 lg:overflow-visible">
@@ -23,7 +25,7 @@ export function PipelineRail() {
                     item.slug ? (
                       <Link
                         key={item.label}
-                        href={`/topico/${item.slug}`}
+                        href={`${route}/topico/${item.slug}`}
                         className="rounded-md border border-border bg-muted/40 px-2 py-1 font-mono text-[11px] text-foreground/80 transition-colors hover:border-primary/60 hover:text-primary"
                       >
                         {item.label}

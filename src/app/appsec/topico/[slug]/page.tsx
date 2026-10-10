@@ -6,10 +6,11 @@ import { ArrowLeft, MoveRight } from "lucide-react";
 import { TopicIcon } from "@/components/topic-icon";
 import { PipelineRail } from "@/components/pipeline-rail";
 import { Badge } from "@/components/ui/badge";
-import { getTopic, kindMeta, relationsOf, topics } from "@/lib/topics";
+import { appsec } from "@/content/appsec";
+import { kindMeta, getTopic, relationsOf } from "@/lib/topics";
 
 export function generateStaticParams() {
-  return topics.map((t) => ({ slug: t.slug }));
+  return appsec.topics.map((t) => ({ slug: t.slug }));
 }
 
 export const dynamicParams = false;
@@ -34,9 +35,9 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
   const meta = kindMeta[topic.kind];
 
   return (
-    <article className="mx-auto max-w-3xl px-4 pb-24 pt-10">
+    <article data-domain="appsec" className="mx-auto max-w-3xl px-4 pb-24 pt-10">
       <Link
-        href="/#mapa"
+        href="/appsec#mapa"
         className="inline-flex items-center gap-2 font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"
       >
         <ArrowLeft className="size-3.5" /> voltar ao mapa
@@ -139,7 +140,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
                 <span className="font-medium text-foreground">{source.title}</span>
               ) : (
                 <Link
-                  href={`/topico/${source.slug}`}
+                  href={`/appsec/topico/${source.slug}`}
                   className="font-medium text-foreground transition-colors hover:text-primary"
                 >
                   {source.title}
@@ -149,7 +150,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
                 <span className="font-medium text-foreground">{target.title}</span>
               ) : (
                 <Link
-                  href={`/topico/${target.slug}`}
+                  href={`/appsec/topico/${target.slug}`}
                   className="font-medium text-foreground transition-colors hover:text-primary"
                 >
                   {target.title}
