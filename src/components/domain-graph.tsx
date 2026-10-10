@@ -337,11 +337,12 @@ function DomainGraphInner({ domainId }: DomainGraphProps) {
   );
 
   // Entrance stagger. Adds `.graph-entering` to the wrapper so the CSS
-  // starts every node at `opacity: 0`; then a WAAPI pass animates each node
-  // (opacity 0→1 + translateY 6px→0) with a per-index delay capped at 10 to
-  // keep the longest node settling within ~720ms. When the user prefers
-  // reduced motion we skip the entire dance — nodes stay visible from frame
-  // 0 and fitView jumps.
+  // starts every node CARD at `opacity: 0`; then a WAAPI pass animates each
+  // card (opacity 0→1 + translateY 6px→0) with a per-index delay capped at 10
+  // to keep the longest node settling within ~720ms. The positioned
+  // `.react-flow__node` itself is never touched, leaving React Flow's x/y
+  // `transform` intact. When the user prefers reduced motion we skip the
+  // entire dance — nodes stay visible from frame 0 and fitView jumps.
   const playEntrance = useCallback(() => {
     if (entranceRanRef.current) return;
     if (!wrapperRef.current || !ready) return;
@@ -356,10 +357,16 @@ function DomainGraphInner({ domainId }: DomainGraphProps) {
     // Wait two RAFs so RF's first commit lands before we query the DOM.
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        const els = Array.from(wrapper.querySelectorAll<HTMLElement>(".react-flow__node"));
-        els.forEach((el, i) => {
+        // Animate the INNER card div (`.react-flow__node > div`), never the
+        // positioned `.react-flow__node` itself: React Flow stores each node's
+        // x/y in an inline `transform` on the outer element, and animating
+        // `transform` there would override it and collapse every node onto a
+        // single point. The inner card has no positioning transform, so a
+        // `translateY` rise is safe there.
+        const els = Array.from(wrapper.querySelectorAll<HTMLElement>(".react-flow__node > div"));
+        const animations = els.map((el, i) => {
           const delay = Math.min(i, 10) * 36;
-          el.animate(
+          return el.animate(
             [
               { opacity: 0, transform: "translateY(6px)" },
               { opacity: 1, transform: "translateY(0)" },
@@ -372,10 +379,19 @@ function DomainGraphInner({ domainId }: DomainGraphProps) {
             }
           );
         });
-        // Remove the gating class once the longest delay + duration elapses
-        // so any subsequent node mutation is no longer forced invisible.
-        const total = Math.min(els.length, 11) * 36 + 360;
-        window.setTimeout(() => wrapper.classList.remove("graph-entering"), total);
+        // Once every stagger animation settles, remove the gating class AND
+        // clear each card's animation + inline styles so no lingering
+        // fill/override survives on any node or card. `anim.finished` rejects
+        // if the animation is cancelled, so swallow that to keep the gate
+        // removal deterministic.
+        Promise.all(animations.map((a) => a.finished.catch(() => {}))).then(() => {
+          animations.forEach((a) => a.cancel());
+          els.forEach((el) => {
+            el.style.opacity = "";
+            el.style.transform = "";
+          });
+          wrapper.classList.remove("graph-entering");
+        });
       });
     });
   }, [ready, reduced]);

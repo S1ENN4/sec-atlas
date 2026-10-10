@@ -155,9 +155,12 @@ body {
 }
 
 /* Entrance state. DomainGraph mounts with `.graph-entering` on its wrapper;
- * every RF node starts at opacity 0 so we can stagger them in via WAAPI from
- * `onInit`. The class is removed once the stagger settles. */
-.graph-entering .react-flow__node {
+ * every RF node's INNER card starts at opacity 0 so we can stagger them in
+ * via WAAPI from `onInit`. We gate the inner card (`.react-flow__node > div`),
+ * not the positioned node itself, so React Flow's own positioning `transform`
+ * on `.react-flow__node` is never overridden. The class is removed once the
+ * stagger settles. */
+.graph-entering .react-flow__node > div {
   opacity: 0;
 }
 
