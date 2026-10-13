@@ -19,7 +19,7 @@ export function SiteFooter() {
     .join(" · ");
 
   return (
-    <footer className="border-t border-border/60">
+    <footer className="border-t border-border/60 print:hidden">
       <div className="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-8 font-mono text-xs text-muted-foreground md:flex-row md:items-center md:justify-between">
         <span>
           appsec<span className="text-primary">/</span>kb — conteúdo educacional
@@ -27,6 +27,7 @@ export function SiteFooter() {
         <div className="flex flex-col gap-1 md:items-end">
           <span>{counts}</span>
           <span>100% estático · sem rastreamento · sem cookies</span>
+          <span>seu progresso fica só neste navegador</span>
         </div>
       </div>
     </footer>

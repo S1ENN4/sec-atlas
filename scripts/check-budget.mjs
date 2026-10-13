@@ -4,13 +4,13 @@
 // existing out/ directory).
 //
 // Caps (bytes):
-//   first-load assets   <= 3,600,000  (every file under out/ EXCEPT *.txt, raw)
-//   rsc prefetch        <= 3,050,000  (every *.txt under out/, raw)
-//   total               <= 6,650,000  (sanity cap: every file under out/)
-//   CSS raw             <=    60,000
-//   JS raw              <= 1,200,000
-//   JS gzip             <=   400,000  (gzipSync per .js file, summed)
-//   out/index.html raw  <=    50,000
+//   first-load assets   <= 4,300,000  (every file under out/ EXCEPT *.txt, raw)
+//   rsc prefetch        <= 4,050,000  (every *.txt under out/, raw)
+//   total               <= 8,350,000  (sanity cap: every file under out/)
+//   CSS raw             <=    72,000
+//   JS raw              <= 1,030,000
+//   JS gzip             <=   330,000  (gzipSync per .js file, summed)
+//   out/index.html raw  <=    46,000
 //
 // T26 budget calibration (post-audit): measured numbers right after T22
 // were first-load 3,459,024 (cap 3,500,000, +1.17% headroom < 2% — too
@@ -75,6 +75,19 @@
 //     leaving ~50-60KB headroom per capped row for T19-22 topic bodies
 //     landing on the same skeleton without another immediate bump.
 //
+// Study-features wave (search, side panel, quizzes, paths, scenarios,
+// cross-domain bridges, 2 new topics + CI/CD on the AppSec map): baseline
+// before the wave was first-load 3,465,224 / rsc 2,985,188 / total
+// 6,450,412 / css 59,414 / js 1,134,920 / js_gz 364,488 / index 31,349.
+// After: first-load 4,119,839 / rsc 3,884,506 / total 8,004,345 / css
+// 68,779 / js 986,929 / js_gz 310,858 / index 43,568. The growth is page
+// weight (4 new routes, 2 topics, a trail nav + bridges block on all 37
+// topic pages, the map's data now travelling in the RSC payload). Client
+// JS went DOWN 13%: the map, list and glossary no longer import the full
+// content registry (topic bodies stay on the server) and the quiz bank and
+// search index are static JSON fetched on demand. Caps re-floored to ~4%
+// headroom over the new measurements; JS caps were tightened, not raised.
+//
 // Exit 0 when every row is within its cap; exit 1 with a clear per-cap
 // message otherwise.
 
@@ -85,13 +98,13 @@ import { gzipSync } from "node:zlib";
 const OUT_DIR = resolve(process.cwd(), "out");
 
 const CAPS = [
-  { key: "first_load",  label: "first-load assets",     limit: 3_600_000, scope: "first_load" },
-  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 3_050_000, scope: "rsc_prefetch" },
-  { key: "total",       label: "total",                 limit: 6_650_000, scope: "total" },
-  { key: "css",         label: "CSS raw",               limit:    60_000, scope: "css" },
-  { key: "js",          label: "JS raw",                limit: 1_200_000, scope: "js" },
-  { key: "js_gz",       label: "JS gzip",               limit:   400_000, scope: "js_gz" },
-  { key: "index",       label: "out/index.html raw",    limit:    50_000, scope: "index" },
+  { key: "first_load",  label: "first-load assets",     limit: 4_300_000, scope: "first_load" },
+  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 4_050_000, scope: "rsc_prefetch" },
+  { key: "total",       label: "total",                 limit: 8_350_000, scope: "total" },
+  { key: "css",         label: "CSS raw",               limit:    72_000, scope: "css" },
+  { key: "js",          label: "JS raw",                limit: 1_030_000, scope: "js" },
+  { key: "js_gz",       label: "JS gzip",               limit:   330_000, scope: "js_gz" },
+  { key: "index",       label: "out/index.html raw",    limit:    46_000, scope: "index" },
 ];
 
 function walk(dir) {

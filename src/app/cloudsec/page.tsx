@@ -38,7 +38,7 @@ export default function CloudsecHome() {
           className="animate-hero-enter mt-6 font-mono text-xs text-primary/80"
           style={{ animationDelay: "220ms" }}
         >
-          $ clique em um nó para abrir o tópico
+          $ clique num card para ver os detalhes · ctrl+k para buscar
         </p>
       </section>
 

@@ -17,7 +17,7 @@ const principles = [
   {
     icon: EyeOff,
     title: "Zero coleta de dados",
-    body: "Sem analytics, sem telemetria, sem cookies, sem fingerprinting, sem scripts de terceiros. Nada sobre você sai do seu navegador porque nada é pedido.",
+    body: "Sem analytics, sem telemetria, sem cookies, sem fingerprinting, sem scripts de terceiros. Nada sobre você sai do seu navegador porque nada é pedido. O único dado guardado é o seu progresso de estudo (tópicos marcados e notas de quiz), em localStorage, só neste navegador e apagável a qualquer momento em /trilhas.",
   },
   {
     icon: PackageCheck,

@@ -7,14 +7,22 @@
 export type { GlossaryEntry, GlossaryGroup } from "@/content/types";
 export type { DomainId } from "@/content/types";
 
-import { domains } from "@/content/registry";
+import { domains, domainMeta, getTopic } from "@/content/registry";
 import { appsec } from "@/content/appsec";
-import type { DomainId, GlossaryGroup } from "@/content/types";
+import type { DomainId, GlossaryEntry, GlossaryGroup } from "@/content/types";
 
 // A glossary group tagged with the domain it belongs to. The page-level
 // explorer uses this to render a per-domain chip filter and to label groups
 // when the "todos" view is active.
-export type DomainGlossaryGroup = GlossaryGroup & { domain: DomainId };
+export type ResolvedGlossaryEntry = GlossaryEntry & {
+  // The entry's topic reference resolved on the server, so the client-side
+  // explorer needn't import the whole content registry.
+  resolved?: { domain: DomainId; slug: string; title: string; href: string };
+};
+export type DomainGlossaryGroup = Omit<GlossaryGroup, "entries"> & {
+  domain: DomainId;
+  entries: ResolvedGlossaryEntry[];
+};
 
 // Legacy export — kept so any older caller that still imports `glossary`
 // keeps working. Today only the page reads this; new code should prefer
@@ -29,7 +37,16 @@ export function getAllGlossaries(): DomainGlossaryGroup[] {
   const out: DomainGlossaryGroup[] = [];
   for (const domainId of Object.keys(domains) as DomainId[]) {
     for (const group of domains[domainId].glossary) {
-      out.push({ ...group, domain: domainId });
+      out.push({
+        ...group,
+        domain: domainId,
+        entries: group.entries.map((entry) => {
+          const t = entry.topic ? getTopic(entry.topic) : undefined;
+          return t
+            ? { ...entry, resolved: { domain: t.domain, slug: t.slug, title: t.title, href: `${domainMeta[t.domain].route}/topico/${t.slug}` } }
+            : entry;
+        }),
+      });
     }
   }
   return out;

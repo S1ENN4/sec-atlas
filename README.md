@@ -27,6 +27,10 @@ src/
   content/
     types.ts                 tipos compartilhados (Domain, Relation, PipelineStage, ...)
     registry.ts              agrega domínios e expõe o contrato público
+    quiz/                    banco de perguntas por domínio (QuizBank, 3+ perguntas por tópico)
+    bridges.ts               pontes entre domínios ("o mesmo problema, em outro domínio")
+    paths.ts                 trilhas de estudo (ordem sugerida de tópicos)
+    scenarios.ts             cenários de ataque passo a passo (/cenarios)
     <domain>/
       index.ts               pacote do domínio (Domain = topics + relations + pipeline + glossary + graphLayout)
       pipeline.ts            estágios da esteira (PipelineStage[])
@@ -39,12 +43,23 @@ src/app/
   page.tsx                   hub (/)
   seguranca/page.tsx         /seguranca, postura dogfooding
   glossario/page.tsx         /glossario
+  trilhas/page.tsx           /trilhas (trilhas de estudo + progresso)
+  cenarios/page.tsx          /cenarios (siga o ataque)
+  search-index.json/         índice de busca estático (buscado sob demanda pela paleta Ctrl+K)
+  quiz.json/                 banco de quiz estático (buscado quando o quiz chega perto da tela)
   appsec/                    /appsec (home + topico/[slug] dinâmico)
   cloudsec/                  /cloudsec (home + topico/[slug] dinâmico)
   agentes/                   /agentes (home + topico/[slug] dinâmico)
 src/components/              UI compartilhada (cards, badges, header, footer, motion/)
+  domain-graph.tsx           wrapper de servidor: reduz o domínio a GraphData enxuto
+  domain-graph-client.tsx    renderer do mapa (React Flow): foco, filtros, painel, deep link ?foco=<slug>
+  graph-panel.tsx            painel de detalhes do nó selecionado
+  domain-list.tsx            visão em lista por etapa (padrão no celular)
+  search-palette.tsx         busca global (Ctrl/Cmd+K ou "/")
+  quiz.tsx, path-card.tsx    quiz por tópico e trilhas, com progresso
+src/lib/progress.ts          progresso de estudo em localStorage (nenhum dado sai do navegador)
 scripts/
-  validate-content.mjs       prebuild: regras R1 a R6
+  validate-content.mjs       prebuild: regras R1 a R8
   check-budget.mjs           pós-build: caps de tamanho
   content-alias-loader.mjs   loader de alias `@/*` para Node
   resolve-alias.mjs          helper
@@ -114,7 +129,11 @@ O caminho canônico, do começo ao fim:
 
 4. **Costure o lado textual**. Em `src/content/<domain>/relations.ts` entram as conexões mostradas na página do tópico; se o tópico fizer parte da esteira, adicione `{ label, slug: "<slug>" }` no item do stage correspondente em `pipeline.ts`.
 
-5. **Valide** rodando `npm run build`. O `prebuild` (`scripts/validate-content.mjs`) executa R1 a R6 e quebra o build antes do `next build` se algo falhar.
+5. **Escreva o quiz** em `src/content/quiz/<domain>.ts` (`QuizBank`, chaveado pelo slug): no mínimo 3 perguntas com exatamente 4 opções distintas, `answer` entre 0 e 3 e `explain` não vazio (R7). A ordem das opções é embaralhada na tela, então a resposta certa pode ficar em qualquer posição no arquivo.
+
+6. **Opcional, mas recomendado**: ligue o tópico a outros domínios em `src/content/bridges.ts`, inclua-o numa trilha em `src/content/paths.ts` ou num passo de cenário em `src/content/scenarios.ts` (R8 garante que nada aponte para tópico inexistente), e adicione um ícone em `src/components/topic-icon.tsx`.
+
+7. **Valide** rodando `npm run build`. O `prebuild` (`scripts/validate-content.mjs`) executa R1 a R8 e quebra o build antes do `next build` se algo falhar.
 
 ### Regras do validador
 
@@ -126,6 +145,8 @@ O caminho canônico, do começo ao fim:
 | R4    | Toda `GlossaryEntry.topic` (campo opcional) resolve; cross-domain é permitido                  |
 | R5    | Em domínios com `graphLayout`, todo tópico tem posição e não há posições órfãs                  |
 | R6    | Floor de conteúdo por tópico, em domínios com `status: "live"`: `sections.length >= 4` E (`code >= 1` OU `bullets >= 3`) E `tagline` não vazia E `tools.length >= 3`. Em `status: "draft"`, R6 é pulado e só R1 a R5 rodam |
+| R7    | Todo tópico tem quiz válido (>= 3 perguntas, 4 opções distintas, `answer` em 0..3, `explain` não vazio) e não há quiz órfão |
+| R8    | Pontes, trilhas e cenários só apontam para tópicos existentes; pontes cruzam domínios; todo `stageId` de cenário existe na esteira do domínio |
 
 Os limiares de R6 espelham os 8 tópicos de referência do AppSec. Não suba os caps por conteúdo novo sem necessidade: ajuste o conteúdo até caber.
 
@@ -134,7 +155,7 @@ Os limiares de R6 espelham os 8 tópicos de referência do AppSec. Não suba os 
 ```bash
 npm install        # uma vez; o lockfile é versionado
 npm run dev        # desenvolvimento em http://localhost:3000
-npm run build      # prebuild (R1 a R6) + next build (gera out/) + check-budget
+npm run build      # prebuild (R1 a R8) + next build (gera out/) + check-budget
 ```
 
 `npm run build` é, na ordem: `prebuild` (validator) → `next build` (gera `out/`) → `check-budget.mjs` (confere os caps). Se o validator falhar, `next build` nem roda. Se o budget falhar, o build retorna código 1 com a linha que estourou.
@@ -151,13 +172,13 @@ Os limites ficam em `scripts/check-budget.mjs` (bytes):
 
 | métrica            | cap atual    |
 |--------------------|--------------|
-| first-load assets  | 3.600.000    |
-| rsc prefetch       | 3.050.000    |
-| total              | 6.650.000    |
-| CSS raw            | 60.000       |
-| JS raw             | 1.200.000    |
-| JS gzip            | 400.000      |
-| `out/index.html`   | 50.000       |
+| first-load assets  | 4.300.000    |
+| rsc prefetch       | 4.050.000    |
+| total              | 8.350.000    |
+| CSS raw            | 72.000       |
+| JS raw             | 1.030.000    |
+| JS gzip            | 330.000      |
+| `out/index.html`   | 46.000       |
 
 Cada bump nesses números tem commit de reconciliação e motivo no header do script. Se o conteúdo novo pedir mais, siga o mesmo padrão: bump mínimo + parágrafo explicando qual conteúdo forçou.
 
@@ -185,4 +206,4 @@ Dependência fixa em `motion@14.1.0` (vide `package.json`).
 
 ## Postura de segurança
 
-Sem backend, sem banco, sem formulários, sem analytics, sem cookies, sem scripts de terceiros. Dependências com versões exatas e lockfile versionado. Fontes e assets self-hosted. A KB pratica o que publica: o checklist inteiro está em [/seguranca](/seguranca), com a CSP real e os trade-offs honestos.
+Sem backend, sem banco, sem formulários, sem analytics, sem cookies, sem scripts de terceiros. O único dado guardado é o progresso de estudo, em `localStorage`, apenas no navegador do leitor. Dependências com versões exatas e lockfile versionado. Fontes e assets self-hosted. A KB pratica o que publica: o checklist inteiro está em [/seguranca](/seguranca), com a CSP real e os trade-offs honestos.

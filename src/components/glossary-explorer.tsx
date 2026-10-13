@@ -3,7 +3,6 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 
-import { domainMeta, getTopic } from "@/content/registry";
 import { cn } from "@/lib/utils";
 import type { DomainGlossaryGroup } from "@/lib/glossary";
 
@@ -131,7 +130,7 @@ export function GlossaryExplorer({ groups }: { groups: DomainGlossaryGroup[] }) 
               </h2>
               <dl className="mt-4 space-y-3">
                 {group.entries.map((entry) => {
-                  const topic = entry.topic ? getTopic(entry.topic) : undefined;
+                  const topic = entry.resolved;
                   // A glossary entry may reference a topic from a different
                   // domain (the validator's R4 rule explicitly allows
                   // cross-domain refs). When it does, we surface a small
@@ -169,7 +168,7 @@ export function GlossaryExplorer({ groups }: { groups: DomainGlossaryGroup[] }) 
                                   </span>
                                 ) : null}
                                 <Link
-                                  href={`${domainMeta[topic.domain].route}/topico/${topic.slug}`}
+                                  href={topic.href}
                                   className="font-mono text-xs text-primary/90 transition-colors duration-[120ms] hover:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                                 >
                                   → {topic.title}

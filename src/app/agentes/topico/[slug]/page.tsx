@@ -4,6 +4,10 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, MoveRight } from "lucide-react";
 
 import { TopicIcon } from "@/components/topic-icon";
+import { Quiz } from "@/components/quiz";
+import { TopicBridges } from "@/components/topic-bridges";
+import { TopicPathNav } from "@/components/topic-path-nav";
+import { TopicToolbar } from "@/components/topic-toolbar";
 import { Badge } from "@/components/ui/badge";
 import { aiAgents } from "@/content/ai-agents";
 import { getTopic, relationsOf } from "@/content/registry";
@@ -74,6 +78,8 @@ export default async function TopicPage({
         </div>
         <p className="mt-3 text-lg text-muted-foreground">{topic.tagline}</p>
       </header>
+
+      <TopicToolbar domain="ai-agents" slug={slug} />
 
       <div className="mt-6 flex flex-wrap gap-2">
         {topic.tools.map((tool) => (
@@ -175,6 +181,10 @@ export default async function TopicPage({
           </ul>
         </section>
       ) : null}
+
+      <TopicPathNav domain="ai-agents" slug={slug} />
+      <TopicBridges domain="ai-agents" slug={slug} />
+      <Quiz domain="ai-agents" slug={slug} />
     </article>
   );
 }

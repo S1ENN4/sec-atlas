@@ -255,3 +255,31 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* Print / save-as-PDF: drop the dark theme for ink-friendly tokens. Header,
+ * footer, toolbar, quiz and the search palette carry `print:hidden` and are
+ * removed from the page; what is left is the topic content. */
+@media print {
+  :root {
+    --background: #fff;
+    --foreground: #111;
+    --card: #fff;
+    --card-foreground: #111;
+    --muted: #f1f1f1;
+    --muted-foreground: #444;
+    --border: #cfcfcf;
+    --primary: #0b6b46;
+    --accent: #f1f1f1;
+  }
+  body {
+    background: #fff;
+    color: #111;
+  }
+  pre,
+  figure {
+    break-inside: avoid;
+  }
+  a {
+    text-decoration: none;
+  }
+}

@@ -21,3 +21,11 @@ export const bridges: Bridge[] = [
   { a: c("incident-response"), b: g("regression-evals"), label: "todo incidente vira um caso de teste" },
   { a: c("kms-crypto"), b: g("vector-db"), label: "cifrar o índice com chave gerenciada" },
 ];
+
+// Bridges touching a topic, normalised so `other` is always the far end.
+export function bridgesOf(ref: { domain: string; slug: string }) {
+  const same = (r: { domain: string; slug: string }) => r.domain === ref.domain && r.slug === ref.slug;
+  return bridges.flatMap((b) =>
+    same(b.a) ? [{ other: b.b, label: b.label }] : same(b.b) ? [{ other: b.a, label: b.label }] : [],
+  );
+}

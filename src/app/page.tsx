@@ -1,8 +1,9 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Route, Search, Swords } from "lucide-react";
 
 import { domains, type DomainId } from "@/content/registry";
 import { Badge } from "@/components/ui/badge";
+import { ProgressSummary } from "@/components/progress-summary";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
@@ -27,6 +28,27 @@ const DOMAIN_LABELS: Record<DomainId, { name: string; pitch: string }> = {
       "Segurança para agentes e workloads de IA — RAG, tool calling, MCP, guardrails. Mapa completo.",
   },
 };
+
+const EXPLORE = [
+  {
+    href: "/trilhas",
+    icon: Route,
+    title: "Trilhas de estudo",
+    body: "Uma ordem pensada para cada objetivo, com progresso salvo no seu navegador.",
+  },
+  {
+    href: "/cenarios",
+    icon: Swords,
+    title: "Siga o ataque",
+    body: "Acompanhe um incidente passo a passo e descubra qual controle barra cada movimento.",
+  },
+  {
+    href: "/glossario",
+    icon: Search,
+    title: "Glossário e busca",
+    body: "Toda a sopa de letrinhas em um lugar. Em qualquer página, Ctrl+K busca tópicos e termos.",
+  },
+];
 
 export default function Home() {
   const domainList = Object.values(domains);
@@ -79,7 +101,17 @@ export default function Home() {
 
       <hr className="mt-10 border-border/60" />
 
-      <section className="mt-10 grid gap-5 md:grid-cols-3">
+      <section className="mt-10">
+        <ProgressSummary
+          domains={domainList.map((d) => ({
+            id: d.id,
+            name: DOMAIN_LABELS[d.id].name,
+            slugs: d.topics.map((t) => t.slug),
+          }))}
+        />
+      </section>
+
+      <section className="mt-6 grid gap-5 md:grid-cols-3">
         {domainList.map((d, i) => {
           const meta = DOMAIN_LABELS[d.id];
           // Topic count is derived from the registry, not hardcoded. The hub
@@ -140,6 +172,25 @@ export default function Home() {
             </Link>
           );
         })}
+      </section>
+
+      <section aria-labelledby="explore-title" className="mt-14">
+        <h2 id="explore-title" className="font-mono text-sm uppercase tracking-wider text-muted-foreground">
+          formas de explorar
+        </h2>
+        <div className="mt-4 grid gap-4 md:grid-cols-3">
+          {EXPLORE.map((e) => (
+            <Link
+              key={e.href}
+              href={e.href}
+              className="group rounded-xl border border-border bg-card p-5 transition-[transform,border-color] duration-200 hover:-translate-y-0.5 hover:border-primary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              <e.icon className="size-5 text-primary" aria-hidden />
+              <p className="mt-3 font-semibold">{e.title}</p>
+              <p className="mt-1 text-sm leading-snug text-muted-foreground">{e.body}</p>
+            </Link>
+          ))}
+        </div>
       </section>
     </div>
   );

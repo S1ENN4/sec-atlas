@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { Inter, JetBrains_Mono } from "next/font/google";
 
 import { MotionProvider } from "@/components/motion/provider";
+import { SearchPalette } from "@/components/search-palette";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
@@ -34,6 +35,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <SiteHeader />
           <main id="conteudo" className="flex-1">{children}</main>
           <SiteFooter />
+          <SearchPalette />
         </MotionProvider>
       </body>
     </html>

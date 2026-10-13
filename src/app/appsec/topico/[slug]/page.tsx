@@ -4,6 +4,10 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, MoveRight } from "lucide-react";
 
 import { TopicIcon } from "@/components/topic-icon";
+import { Quiz } from "@/components/quiz";
+import { TopicBridges } from "@/components/topic-bridges";
+import { TopicPathNav } from "@/components/topic-path-nav";
+import { TopicToolbar } from "@/components/topic-toolbar";
 import { PipelineRail } from "@/components/pipeline-rail";
 import { Badge } from "@/components/ui/badge";
 import { appsec } from "@/content/appsec";
@@ -61,6 +65,8 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
         </div>
         <p className="mt-3 text-lg text-muted-foreground">{topic.tagline}</p>
       </header>
+
+      <TopicToolbar domain="appsec" slug={slug} />
 
       <div className="mt-6 flex flex-wrap gap-2">
         {topic.tools.map((tool) => (
@@ -173,6 +179,10 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
           </ul>
         </section>
       ) : null}
+
+      <TopicPathNav domain="appsec" slug={slug} />
+      <TopicBridges domain="appsec" slug={slug} />
+      <Quiz domain="appsec" slug={slug} />
     </article>
   );
 }
