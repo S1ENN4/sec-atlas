@@ -22,6 +22,20 @@ const DOMAIN_LABEL: Record<string, string> = {
   "ai-agents": "AI Agents",
 };
 
+// Cross-domain link badge — small mono chip rendered next to the topic link
+// when an entry's `topic` lives in a domain DIFFERENT from the group that
+// owns the entry. Keeps the reader oriented across the multi-domain
+// glossary: a "RAG" entry under the appsec group can link to the agents
+// topic and the chip will read "agentes". Uses the lowercase route name
+// (matching `domainMeta[id].route` semantics: "/agentes" → "agentes") so
+// the badge is visually distinct from the full DOMAIN_LABEL seen on the
+// chip row.
+const DOMAIN_BADGE_LABEL: Record<string, string> = {
+  appsec: "appsec",
+  cloudsec: "cloudsec",
+  "ai-agents": "agentes",
+};
+
 type DomainFilter = "all" | string;
 
 export function GlossaryExplorer({ groups }: { groups: DomainGlossaryGroup[] }) {
@@ -118,6 +132,15 @@ export function GlossaryExplorer({ groups }: { groups: DomainGlossaryGroup[] }) 
               <dl className="mt-4 space-y-3">
                 {group.entries.map((entry) => {
                   const topic = entry.topic ? getTopic(entry.topic) : undefined;
+                  // A glossary entry may reference a topic from a different
+                  // domain (the validator's R4 rule explicitly allows
+                  // cross-domain refs). When it does, we surface a small
+                  // domain chip so the destination isn't ambiguous. Same-
+                  // domain refs stay unbadged — the link reads as "→ RAG"
+                  // and the reader already knows it's in this glossary's
+                  // domain from the section header.
+                  const isCrossDomain =
+                    topic !== undefined && topic.domain !== group.domain;
                   return (
                     <div
                       key={`${group.domain}-${group.id}-${entry.term}`}
@@ -136,12 +159,22 @@ export function GlossaryExplorer({ groups }: { groups: DomainGlossaryGroup[] }) 
                       <dd className="mt-1 text-sm leading-relaxed text-foreground/85">
                         {entry.meaning}
                         {topic ? (
-                          <Link
-                            href={`${domainMeta[topic.domain].route}/topico/${topic.slug}`}
-                            className="ml-2 whitespace-nowrap font-mono text-xs text-primary/90 transition-colors duration-[120ms] hover:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                          >
-                            → {topic.title}
-                          </Link>
+                          <span className="ml-2 inline-flex flex-wrap items-center gap-2 whitespace-nowrap align-baseline">
+                                {isCrossDomain ? (
+                                  <span
+                                    data-cross-domain={topic.domain}
+                                    className="rounded-full border border-border bg-card px-2 py-0.5 font-mono text-[10px] normal-case tracking-normal text-foreground/70"
+                                  >
+                                    {DOMAIN_BADGE_LABEL[topic.domain] ?? topic.domain}
+                                  </span>
+                                ) : null}
+                                <Link
+                                  href={`${domainMeta[topic.domain].route}/topico/${topic.slug}`}
+                                  className="font-mono text-xs text-primary/90 transition-colors duration-[120ms] hover:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                                >
+                                  → {topic.title}
+                                </Link>
+                              </span>
                         ) : null}
                       </dd>
                     </div>

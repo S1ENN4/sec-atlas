@@ -6,6 +6,10 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
+// Domain-card copy is the only place on the hub where human-friendly names
+// and pitches live. Order is implicit via the registry: `Object.values(domains)`
+// returns keys in insertion order — `appsec`, `cloudsec`, `ai-agents` — so the
+// three cards render AppSec → CloudSec → Agents without an explicit list.
 const DOMAIN_LABELS: Record<DomainId, { name: string; pitch: string }> = {
   appsec: {
     name: "AppSec",
@@ -15,12 +19,12 @@ const DOMAIN_LABELS: Record<DomainId, { name: string; pitch: string }> = {
   cloudsec: {
     name: "CloudSec",
     pitch:
-      "Postura em cloud, IAM, segmentação e supply chain — um grafo próprio, mesmo estilo do AppSec. Conteúdo entra nas ondas 3/4.",
+      "Postura em cloud, IAM, segmentação e supply chain — um grafo próprio, mesmo estilo do AppSec, com 10 tópicos navegáveis.",
   },
   "ai-agents": {
     name: "Agents",
     pitch:
-      "Segurança para agentes e workloads de IA — prompt injection, tool sandboxing, tracing de ações. Conteúdo entra nas ondas 3/4.",
+      "Segurança para agentes e workloads de IA — RAG, tool calling, MCP, guardrails. Mapa completo, 15 tópicos navegáveis.",
   },
 };
 
@@ -45,7 +49,7 @@ export default function Home() {
           </h1>
           <p className="mt-4 max-w-2xl text-muted-foreground md:text-lg">
             Cada domínio é um grafo independente: conceitos, esteira, conexões e glossário.
-            Comece pelo que está pronto, volte quando os outros saírem do forno.
+            Três mapas prontos, todos com o mesmo nível de profundidade.
           </p>
         </div>
         <dl className="font-mono text-xs text-muted-foreground md:text-right">
@@ -63,7 +67,10 @@ export default function Home() {
           </div>
           <div className="mt-1 flex items-baseline justify-between gap-3 md:justify-end md:gap-6">
             <dt className="text-muted-foreground">draft</dt>
-            <dd className="text-base text-amber-400/90">
+            <dd className={cn(
+              "text-base",
+              draftCount > 0 ? "text-amber-400/90" : "text-muted-foreground/50",
+            )}>
               {draftCount.toString().padStart(2, "0")}
             </dd>
           </div>
@@ -75,6 +82,12 @@ export default function Home() {
       <section className="mt-10 grid gap-5 md:grid-cols-3">
         {domainList.map((d) => {
           const meta = DOMAIN_LABELS[d.id];
+          // Topic count is derived from the registry, not hardcoded. The hub
+          // always renders the count (no "em breve" branch) — T23 flipped
+          // every domain to `live`, so the badge is informational, not a
+          // promise. The live/draft branch on the action text remains as
+          // a future-proof switch so a new draft domain wouldn't ship a
+          // dead "abrir mapa" CTA.
           const count = d.topics.length;
           const isLive = d.status === "live";
           return (
@@ -85,21 +98,22 @@ export default function Home() {
               className="group block focus:outline-none"
             >
               <div data-domain={d.id} className="h-full">
-                <Card className="h-full transition-colors group-hover:border-primary/60">
+                <Card className="relative h-full overflow-hidden transition-colors group-hover:border-primary/60">
+                  {/* Accent stripe — picks up each domain's --primary token via
+                      the wrapping `data-domain` attribute, so the three cards
+                      are visually distinct without any domain-specific CSS. */}
+                  <span
+                    aria-hidden
+                    className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent opacity-70"
+                  />
                   <CardHeader>
                     <div className="flex items-center justify-between">
                       <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
                         {d.id}
                       </span>
-                      {isLive ? (
-                        <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
-                          {count} {count === 1 ? "tópico" : "tópicos"}
-                        </span>
-                      ) : (
-                        <span className="rounded-md border border-amber-400/30 px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-amber-400/80">
-                          em breve
-                        </span>
-                      )}
+                      <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+                        {count} {count === 1 ? "tópico" : "tópicos"}
+                      </span>
                     </div>
                     <CardTitle className="pt-2 text-2xl">{meta.name}</CardTitle>
                     <CardDescription className="leading-snug">
@@ -108,7 +122,7 @@ export default function Home() {
                     <div
                       className={cn(
                         "flex items-center gap-1.5 pt-3 font-mono text-xs",
-                        isLive ? "text-primary/80" : "text-muted-foreground"
+                        isLive ? "text-primary/80" : "text-muted-foreground",
                       )}
                     >
                       {isLive ? "abrir mapa" : "notificar"}

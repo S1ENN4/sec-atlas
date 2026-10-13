@@ -3,6 +3,15 @@ import { ShieldCheck } from "lucide-react";
 
 import { domainMeta } from "@/content/registry";
 
+// Global nav. Lists every domain route (driven by `domainMeta`, so the row
+// stays in lock-step with the registry as new domains are added) plus the
+// two reference routes — `/glossario` and `/seguranca` — which are
+// domain-agnostic by design. AppSec-specific in-page anchors
+// (#mapa/#pipeline/#topicos) live on the AppSec home page itself; with
+// three live domains, surfacing them in the global nav would duplicate
+// the same anchors available on every domain page, so they are kept out
+// of the switcher for consistency.
+
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur">
@@ -11,7 +20,10 @@ export function SiteHeader() {
           <ShieldCheck className="size-5 text-primary" />
           appsec<span className="text-primary">/</span>kb
         </Link>
-        <nav aria-label="Principal" className="flex min-w-0 items-center gap-0.5 overflow-x-auto text-[13px] text-muted-foreground sm:gap-1 sm:text-sm [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <nav
+          aria-label="Principal"
+          className="flex min-w-0 items-center gap-0.5 overflow-x-auto text-[13px] text-muted-foreground sm:gap-1 sm:text-sm [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
           {Object.values(domainMeta).map((d) => (
             <Link
               key={d.id}
@@ -22,24 +34,6 @@ export function SiteHeader() {
             </Link>
           ))}
           <span aria-hidden className="mx-1 h-5 w-px shrink-0 bg-border/70" />
-          <Link
-            href="/appsec#mapa"
-            className="shrink-0 rounded-md px-2 py-1.5 transition-colors duration-[120ms] hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:px-3"
-          >
-            mapa
-          </Link>
-          <Link
-            href="/appsec#pipeline"
-            className="shrink-0 rounded-md px-2 py-1.5 transition-colors duration-[120ms] hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:px-3"
-          >
-            pipeline
-          </Link>
-          <Link
-            href="/appsec#topicos"
-            className="shrink-0 rounded-md px-2 py-1.5 transition-colors duration-[120ms] hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:px-3"
-          >
-            tópicos
-          </Link>
           <Link
             href="/glossario"
             className="shrink-0 rounded-md px-2 py-1.5 transition-colors duration-[120ms] hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:px-3"

@@ -35,10 +35,12 @@ const kindMeta: Record<TopicKind, { label: string; dot: string; text: string }> 
 export const aiAgents: Domain = {
   id: "ai-agents",
   route: "/agentes",
-  // Domain ships as draft: the validator's R6 (live content floor — every
-  // topic needs >=4 sections and code OR bullets) only runs on live domains,
-  // and the topic bodies will be filled in T19-21. T23 flips this flag.
-  status: "draft",
+  // Domain is live: R19-T22 filled every one of the 15 topic bodies to the
+  // verified R6 floor (≥4 sections + code-or-bullets + non-empty tagline +
+  // ≥3 tools) and shipped the 3 ai-agents glossary groups, so the R6 live
+  // content floor now runs over every ai-agents topic on every validator
+  // invocation. T23 flips this flag to activate R6 across the catalogue.
+  status: "live",
   // Violet accent matches the [data-domain="ai-agents"] token override in
   // src/app/globals.css.
   accent: "violet",
