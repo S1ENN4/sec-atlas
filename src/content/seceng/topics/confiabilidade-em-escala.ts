@@ -9,7 +9,7 @@ export const confiabilidadeEmEscala: Topic = {
     "Em sistemas distribuídos tudo falha, em algum momento. O que separa uma plataforma de segurança confiável é como ela se comporta quando isso acontece: sem perder evento e sem agir duas vezes.",
   kind: "pratica",
   stage: "escalar",
-  tools: ["Go", "Apache Kafka", "Redis", "Temporal"],
+  tools: ["Redis", "Temporal", "Envoy", "Prometheus"],
   sections: [
     {
       heading: "O que é",
@@ -36,16 +36,16 @@ export const confiabilidadeEmEscala: Topic = {
       ],
       code: [
         {
-          language: "go",
-          filename: "retry.go",
-          code: "func Retry(ctx context.Context, max int, base time.Duration, fn func() error) error {\n\tvar err error\n\tfor i := 0; i < max; i++ {\n\t\tif err = fn(); err == nil {\n\t\t\treturn nil\n\t\t}\n\t\t// backoff exponencial com jitter total: espera em [0, base*2^i)\n\t\tlimit := base << i\n\t\tsleep := time.Duration(rand.Int63n(int64(limit)))\n\t\tselect {\n\t\tcase <-ctx.Done():\n\t\t\treturn ctx.Err()\n\t\tcase <-time.After(sleep):\n\t\t}\n\t}\n\treturn fmt.Errorf(\"esgotou %d tentativas: %w\", max, err)\n}",
+          language: "python",
+          filename: "retry.py",
+          code: "import random\nimport time\n\n\ndef retry(fn, max_attempts=5, base=0.2):\n    for i in range(max_attempts):\n        try:\n            return fn()\n        except Exception as err:\n            if i == max_attempts - 1:\n                raise RuntimeError(f\"esgotou {max_attempts} tentativas\") from err\n            # backoff exponencial com jitter total: espera em [0, base * 2**i)\n            time.sleep(random.uniform(0, base * 2 ** i))",
         },
       ],
     },
     {
       heading: "Backpressure e isolamento",
       bullets: [
-        "Backpressure: filas e canais com limite. Quando o consumidor não acompanha, o produtor desacelera ou o excesso é descartado de forma consciente, em vez de a memória crescer até o processo morrer.",
+        "Backpressure: filas e buffers com limite. Quando o consumidor não acompanha, o produtor desacelera ou o excesso é descartado de forma consciente, em vez de a memória crescer até o processo morrer.",
         "Circuit breaker: depois de falhas seguidas, parar de chamar a dependência por um tempo e responder com um fallback definido.",
         "Bulkheads: pools separados por dependência, para que a lentidão de uma não consuma os recursos de todas.",
         "Timeouts em toda chamada externa, com prazo menor que o do chamador.",

@@ -26,7 +26,7 @@ const DOMAIN_LABELS: Record<DomainId, { name: string; pitch: string }> = {
   seceng: {
     name: "Engenharia",
     pitch:
-      "Construir a plataforma de segurança: IaC e policy as code, CI/CD endurecido, Go e Kafka em escala, automação e IA com os pés no chão.",
+      "Construir a plataforma de segurança: IaC e policy as code, CI/CD endurecido, confiabilidade em escala, automação e IA com os pés no chão.",
   },
   secops: {
     name: "SecOps",

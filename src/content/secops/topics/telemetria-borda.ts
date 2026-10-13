@@ -9,7 +9,7 @@ export const telemetriaBorda: Topic = {
     "Detecção boa começa em dado bom: um pipeline que recebe o tráfego da borda e da aplicação, normaliza, enriquece e guarda de um jeito que dê para consultar em segundos.",
   kind: "tecnica",
   stage: "observar",
-  tools: ["Cloudflare Logpush", "BigQuery", "Vector", "Kafka"],
+  tools: ["Cloudflare Logpush", "BigQuery", "Vector", "Fluent Bit"],
   sections: [
     {
       heading: "O que é",

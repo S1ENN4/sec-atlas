@@ -32,7 +32,7 @@ export default function SecengHome() {
           style={{ animationDelay: "140ms" }}
         >
           Um mapa interativo da engenharia por trás da segurança: IaC, políticas como código, esteiras
-          endurecidas, Go e Kafka em escala, automação e IA, do código à plataforma.
+          endurecidas, confiabilidade em escala, automação e IA, do código à plataforma.
         </p>
         <p
           className="animate-hero-enter mt-6 font-mono text-xs text-primary/80"

@@ -2,7 +2,7 @@ import type { PipelineStage } from "@/content/types";
 
 // Four-stage security-engineering lifecycle: you DEFINE controls as code,
 // DELIVER them through a hardened pipeline, run them at SCALE on services you
-// own (Go, Kafka), and AUTOMATE the response. `plataforma-como-produto` is a
+// own (reliability, observability), and AUTOMATE the response. `plataforma-como-produto` is a
 // dashed layer: it is the mindset that ties all four together.
 
 export const pipeline: PipelineStage[] = [
@@ -34,10 +34,8 @@ export const pipeline: PipelineStage[] = [
     id: "escalar",
     index: "03",
     name: "escalar",
-    description: "serviços e pipelines que aguentam o volume",
+    description: "pipelines que aguentam volume e falha",
     items: [
-      { label: "serviços em Go", slug: "go-para-seguranca" },
-      { label: "eventos com Kafka", slug: "kafka-eventos" },
       { label: "retries, idempotência e backpressure", slug: "confiabilidade-em-escala" },
       { label: "observar o próprio pipeline", slug: "observabilidade-plataforma" },
     ],

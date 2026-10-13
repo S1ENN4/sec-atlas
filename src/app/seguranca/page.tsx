@@ -366,7 +366,7 @@ out/index.html raw            28.307 B    cap    50.000  OK`}
           <li className="flex gap-3 leading-relaxed text-foreground/85">
             <span className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary" />
             <span>
-              <strong className="font-semibold">Cinco domínios, 55 tópicos</strong>: o
+              <strong className="font-semibold">Cinco domínios, 53 tópicos</strong>: o
               catálogo cobre AppSec, CloudSec, Agentes, SecOps e Engenharia, todos com status{" "}
               <code className="font-mono text-xs">live</code> e passando no validador. A
               superfície de conteúdo cresceu desde a primeira publicação desta página,

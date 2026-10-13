@@ -4,7 +4,7 @@ Knowledge base visual de segurança de software, organizada por domínios. Cada 
 
 ## Visão geral
 
-- **5 domínios, 55 tópicos** (9 appsec + 11 cloudsec + 15 ai-agents + 10 secops + 10 seceng)
+- **5 domínios, 53 tópicos** (9 appsec + 11 cloudsec + 15 ai-agents + 10 secops + 8 seceng)
 - **Next.js 16** (App Router) com `output: "export"`, site 100% estático, sem servidor
 - **Tailwind CSS 4** + componentes no estilo shadcn/ui
 - **React Flow** (`@xyflow/react`) para o grafo de estudos
@@ -188,9 +188,9 @@ Os limites ficam em `scripts/check-budget.mjs` (bytes):
 
 | métrica            | cap atual    |
 |--------------------|--------------|
-| first-load assets  | 6.350.000    |
-| rsc prefetch       | 6.950.000    |
-| total              | 13.300.000   |
+| first-load assets  | 6.200.000    |
+| rsc prefetch       | 6.750.000    |
+| total              | 12.950.000   |
 | CSS raw            | 72.000       |
 | JS raw             | 1.030.000    |
 | JS gzip            | 330.000      |

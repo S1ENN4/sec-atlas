@@ -12,7 +12,7 @@ export const changelog: ChangelogEntry[] = [
     date: "2026-10-13",
     title: "Novo domínio: Engenharia de segurança",
     items: [
-      "Mapa com 10 tópicos: IaC seguro, policy as code, hardening de CI/CD, Go, Kafka, confiabilidade em escala, observabilidade da plataforma, automação (SOAR), IA na segurança e segurança como produto.",
+      "Mapa com 8 tópicos: IaC seguro, policy as code, hardening de CI/CD, confiabilidade em escala, observabilidade da plataforma, automação (SOAR), IA na segurança e segurança como produto.",
       "Trilha de estudo, cenário de ataque (esteira comprometida) e quiz em todos os tópicos.",
       "Pontes com AppSec, CloudSec, SecOps e agentes de IA.",
     ],

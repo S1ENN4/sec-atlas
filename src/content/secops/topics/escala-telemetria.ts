@@ -9,7 +9,7 @@ export const escalaTelemetria: Topic = {
     "A mesma consulta que roda em segundos com um milhão de eventos pode custar uma fortuna com um trilhão. Escalar a segurança é um problema de design de dados.",
   kind: "conceito",
   stage: "observar",
-  tools: ["BigQuery", "ClickHouse", "Apache Kafka", "Cloudflare Logpush"],
+  tools: ["BigQuery", "ClickHouse", "Cloudflare Logpush", "Vector"],
   sections: [
     {
       heading: "O que é",

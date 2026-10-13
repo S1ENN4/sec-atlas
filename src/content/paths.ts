@@ -103,15 +103,13 @@ export const paths: StudyPath[] = [
   {
     id: "engenharia-de-seguranca",
     title: "Engenharia de segurança em escala",
-    description: "Da infraestrutura como código ao pipeline de eventos com Go e Kafka: como construir a plataforma de segurança.",
+    description: "Da infraestrutura como código à automação com freios: como construir a plataforma de segurança.",
     level: "intermediário",
     steps: [
       { ref: e("iac-seguro"), why: "Comece pelo que você provisiona: infraestrutura revisada e escaneada." },
       { ref: e("policy-as-code"), why: "Regras executáveis que valem para todo mundo." },
       { ref: e("cicd-hardening"), why: "A esteira que entrega tudo precisa ser confiável." },
-      { ref: e("go-para-seguranca"), why: "Serviços simples de operar e que aguentam volume." },
-      { ref: e("kafka-eventos"), why: "O log durável entre a borda e a detecção." },
-      { ref: e("confiabilidade-em-escala"), why: "Falha acontece: não perder nem duplicar decisão." },
+      { ref: e("confiabilidade-em-escala"), why: "Em escala, falha acontece: não perder nem duplicar decisão." },
       { ref: e("observabilidade-plataforma"), why: "Saber quando o próprio pipeline está cego." },
       { ref: e("automacao-soar"), why: "Resposta automática com freios." },
       { ref: e("ia-na-seguranca"), why: "Acelerar a triagem sem confiar às cegas." },

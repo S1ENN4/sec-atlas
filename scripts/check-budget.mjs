@@ -4,9 +4,9 @@
 // existing out/ directory).
 //
 // Caps (bytes):
-//   first-load assets   <= 6,350,000  (every file under out/ EXCEPT *.txt, raw)
-//   rsc prefetch        <= 6,950,000  (every *.txt under out/, raw)
-//   total               <= 13,300,000  (sanity cap: every file under out/)
+//   first-load assets   <= 6,200,000  (every file under out/ EXCEPT *.txt, raw)
+//   rsc prefetch        <= 6,750,000  (every *.txt under out/, raw)
+//   total               <= 12,950,000  (sanity cap: every file under out/)
 //   CSS raw             <=    72,000
 //   JS raw              <= 1,030,000
 //   JS gzip             <=   330,000  (gzipSync per .js file, summed)
@@ -116,6 +116,11 @@
 // totals scale this way; if the catalogue keeps growing, revisit that
 // duplication before raising these again.
 //
+// Go/Kafka topics dropped from the security-engineering domain (8 topics
+// left): measured first-load 6,011,135 / rsc 6,547,594 / total 12,558,729 /
+// css 70,305 / js 978,865 / js_gz 309,873 / index 66,920. Caps pulled back
+// down to ~3% headroom over those numbers.
+//
 // Exit 0 when every row is within its cap; exit 1 with a clear per-cap
 // message otherwise.
 
@@ -126,9 +131,9 @@ import { gzipSync } from "node:zlib";
 const OUT_DIR = resolve(process.cwd(), "out");
 
 const CAPS = [
-  { key: "first_load",  label: "first-load assets",     limit: 6_350_000, scope: "first_load" },
-  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 6_950_000, scope: "rsc_prefetch" },
-  { key: "total",       label: "total",                 limit: 13_300_000, scope: "total" },
+  { key: "first_load",  label: "first-load assets",     limit: 6_200_000, scope: "first_load" },
+  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 6_750_000, scope: "rsc_prefetch" },
+  { key: "total",       label: "total",                 limit: 12_950_000, scope: "total" },
   { key: "css",         label: "CSS raw",               limit:    72_000, scope: "css" },
   { key: "js",          label: "JS raw",                limit: 1_030_000, scope: "js" },
   { key: "js_gz",       label: "JS gzip",               limit:   330_000, scope: "js_gz" },

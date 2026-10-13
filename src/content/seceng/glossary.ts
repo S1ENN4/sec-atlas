@@ -44,18 +44,6 @@ export const glossary: GlossaryGroup[] = [
     title: "escala e confiabilidade",
     entries: [
       {
-        term: "Consumer group",
-        meaning:
-          "Conjunto de consumidores Kafka que dividem as partições de um tópico entre si. Cada partição é lida por um só consumidor do grupo, o que define o teto de paralelismo.",
-        topic: "kafka-eventos",
-      },
-      {
-        term: "Offset",
-        meaning:
-          "Posição de um consumidor em uma partição do log. Confirmar o offset só depois de processar dá semântica at-least-once.",
-        topic: "kafka-eventos",
-      },
-      {
         term: "Lag",
         meaning:
           "Distância entre o fim do log e a posição do consumidor. É o sinal mais direto de que a detecção está atrasada.",

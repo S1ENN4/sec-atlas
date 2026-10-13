@@ -36,7 +36,7 @@ export const observabilidadePlataforma: Topic = {
         {
           language: "yaml",
           filename: "alerts.yml (Prometheus)",
-          code: "groups:\n  - name: security-pipeline\n    rules:\n      - alert: DetectionLagHigh\n        expr: max(kafka_consumergroup_lag{group=\"detect-login-failures\"}) > 50000\n        for: 5m\n        labels: { severity: page }\n        annotations:\n          summary: \"Detecção atrasada: lag acima de 50k eventos há 5 min\"\n\n      - alert: EdgeSourceSilent\n        expr: sum(rate(edge_events_received_total[5m])) by (source) == 0\n        for: 10m\n        labels: { severity: page }\n        annotations:\n          summary: \"Fonte {{ $labels.source }} sem eventos há 10 min\"",
+          code: "groups:\n  - name: security-pipeline\n    rules:\n      - alert: DetectionLagHigh\n        expr: max(pipeline_consumer_lag{group=\"detect-login-failures\"}) > 50000\n        for: 5m\n        labels: { severity: page }\n        annotations:\n          summary: \"Detecção atrasada: lag acima de 50k eventos há 5 min\"\n\n      - alert: EdgeSourceSilent\n        expr: sum(rate(edge_events_received_total[5m])) by (source) == 0\n        for: 10m\n        labels: { severity: page }\n        annotations:\n          summary: \"Fonte {{ $labels.source }} sem eventos há 10 min\"",
         },
       ],
     },

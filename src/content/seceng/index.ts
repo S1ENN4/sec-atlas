@@ -3,10 +3,8 @@ import type { Domain, TopicKind } from "@/content/types";
 import { automacaoSoar } from "./topics/automacao-soar";
 import { cicdHardening } from "./topics/cicd-hardening";
 import { confiabilidadeEmEscala } from "./topics/confiabilidade-em-escala";
-import { goParaSeguranca } from "./topics/go-para-seguranca";
 import { iacSeguro } from "./topics/iac-seguro";
 import { iaNaSeguranca } from "./topics/ia-na-seguranca";
-import { kafkaEventos } from "./topics/kafka-eventos";
 import { observabilidadePlataforma } from "./topics/observabilidade-plataforma";
 import { plataformaComoProduto } from "./topics/plataforma-como-produto";
 import { policyAsCode } from "./topics/policy-as-code";
@@ -31,8 +29,6 @@ export const seceng: Domain = {
     iacSeguro,
     policyAsCode,
     cicdHardening,
-    goParaSeguranca,
-    kafkaEventos,
     confiabilidadeEmEscala,
     observabilidadePlataforma,
     automacaoSoar,
