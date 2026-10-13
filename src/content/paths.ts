@@ -4,6 +4,7 @@ const a = (slug: string) => ({ domain: "appsec" as const, slug });
 const c = (slug: string) => ({ domain: "cloudsec" as const, slug });
 const g = (slug: string) => ({ domain: "ai-agents" as const, slug });
 const s = (slug: string) => ({ domain: "secops" as const, slug });
+const e = (slug: string) => ({ domain: "seceng" as const, slug });
 
 // Curated study paths. Order matters: each step assumes the previous ones.
 // Every ref must resolve to a topic (validator R8).
@@ -97,6 +98,24 @@ export const paths: StudyPath[] = [
       { ref: s("runbooks-e-hardening"), why: "Contenção rápida e correção que fecha a porta." },
       { ref: s("slos-soc"), why: "Provar que funciona e ajustar toda semana." },
       { ref: s("defesa-em-camadas"), why: "O desenho que une tudo: onde cada controle vive e o que acontece se ele falha." },
+    ],
+  },
+  {
+    id: "engenharia-de-seguranca",
+    title: "Engenharia de segurança em escala",
+    description: "Da infraestrutura como código ao pipeline de eventos com Go e Kafka: como construir a plataforma de segurança.",
+    level: "intermediário",
+    steps: [
+      { ref: e("iac-seguro"), why: "Comece pelo que você provisiona: infraestrutura revisada e escaneada." },
+      { ref: e("policy-as-code"), why: "Regras executáveis que valem para todo mundo." },
+      { ref: e("cicd-hardening"), why: "A esteira que entrega tudo precisa ser confiável." },
+      { ref: e("go-para-seguranca"), why: "Serviços simples de operar e que aguentam volume." },
+      { ref: e("kafka-eventos"), why: "O log durável entre a borda e a detecção." },
+      { ref: e("confiabilidade-em-escala"), why: "Falha acontece: não perder nem duplicar decisão." },
+      { ref: e("observabilidade-plataforma"), why: "Saber quando o próprio pipeline está cego." },
+      { ref: e("automacao-soar"), why: "Resposta automática com freios." },
+      { ref: e("ia-na-seguranca"), why: "Acelerar a triagem sem confiar às cegas." },
+      { ref: e("plataforma-como-produto"), why: "O caminho seguro precisa ser o mais fácil." },
     ],
   },
 ];

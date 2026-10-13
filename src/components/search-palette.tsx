@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 
 interface Item {
   k: "t" | "g";
-  d: "appsec" | "cloudsec" | "ai-agents" | "secops";
+  d: "appsec" | "cloudsec" | "ai-agents" | "secops" | "seceng";
   t: string;
   s: string;
   u: string;
@@ -16,7 +16,7 @@ interface Item {
   x?: string;
 }
 
-const ROUTES: Record<Item["d"], string> = { appsec: "/appsec", cloudsec: "/cloudsec", "ai-agents": "/agentes", secops: "/secops" };
+const ROUTES: Record<Item["d"], string> = { appsec: "/appsec", cloudsec: "/cloudsec", "ai-agents": "/agentes", secops: "/secops", seceng: "/engenharia" };
 
 const norm = (s: string) =>
   s

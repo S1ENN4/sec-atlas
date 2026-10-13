@@ -23,6 +23,11 @@ const DOMAIN_LABELS: Record<DomainId, { name: string; pitch: string }> = {
     pitch:
       "Postura em cloud, IAM, segmentação e supply chain — um grafo próprio, mesmo estilo do AppSec.",
   },
+  seceng: {
+    name: "Engenharia",
+    pitch:
+      "Construir a plataforma de segurança: IaC e policy as code, CI/CD endurecido, Go e Kafka em escala, automação e IA com os pés no chão.",
+  },
   secops: {
     name: "SecOps",
     pitch:
@@ -79,7 +84,7 @@ export default function Home() {
           </h1>
           <p className="mt-4 max-w-2xl text-muted-foreground md:text-lg">
             Cada domínio é um grafo independente: conceitos, esteira, conexões e glossário.
-            Quatro mapas prontos, todos com o mesmo nível de profundidade.
+            Cinco mapas prontos, todos com o mesmo nível de profundidade.
           </p>
         </div>
         <dl className="font-mono text-xs text-muted-foreground md:text-right">
@@ -119,7 +124,7 @@ export default function Home() {
         />
       </section>
 
-      <section className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <section className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {domainList.map((d, i) => {
           const meta = DOMAIN_LABELS[d.id];
           // Topic count is derived from the registry, not hardcoded. The hub

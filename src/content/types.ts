@@ -4,7 +4,7 @@
 // composite id (DomainId + slug) so that two domains can ship a topic with the
 // same short slug without colliding.
 
-export type DomainId = "appsec" | "cloudsec" | "ai-agents" | "secops";
+export type DomainId = "appsec" | "cloudsec" | "ai-agents" | "secops" | "seceng";
 
 export interface DomainMeta {
   id: DomainId;

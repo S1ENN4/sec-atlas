@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: "Siga um incidente passo a passo e descubra qual controle barra cada movimento do atacante.",
 };
 
-const NAMES: Record<string, string> = { appsec: "AppSec", cloudsec: "CloudSec", "ai-agents": "Agents", secops: "SecOps" };
+const NAMES: Record<string, string> = { appsec: "AppSec", cloudsec: "CloudSec", "ai-agents": "Agents", secops: "SecOps", seceng: "Engenharia" };
 
 export default function CenariosPage() {
   const data: ScenarioData[] = scenarios.map((sc) => ({

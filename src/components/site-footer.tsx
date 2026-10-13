@@ -12,6 +12,7 @@ const DOMAIN_BADGE_LABEL: Record<string, string> = {
   cloudsec: "cloudsec",
   "ai-agents": "agentes",
   secops: "secops",
+  seceng: "engenharia",
 };
 
 export function SiteFooter() {

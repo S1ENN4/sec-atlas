@@ -15,6 +15,7 @@ const TITLES: Record<DomainId, string> = {
   cloudsec: "CloudSec",
   "ai-agents": "Agentes de IA",
   secops: "SecOps e defesa L7",
+  seceng: "Engenharia de segurança",
 };
 
 export default function FontesPage() {

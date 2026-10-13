@@ -10,6 +10,15 @@ export interface ChangelogEntry {
 export const changelog: ChangelogEntry[] = [
   {
     date: "2026-10-13",
+    title: "Novo domínio: Engenharia de segurança",
+    items: [
+      "Mapa com 10 tópicos: IaC seguro, policy as code, hardening de CI/CD, Go, Kafka, confiabilidade em escala, observabilidade da plataforma, automação (SOAR), IA na segurança e segurança como produto.",
+      "Trilha de estudo, cenário de ataque (esteira comprometida) e quiz em todos os tópicos.",
+      "Pontes com AppSec, CloudSec, SecOps e agentes de IA.",
+    ],
+  },
+  {
+    date: "2026-10-13",
     title: "Novo domínio: SecOps e defesa L7",
     items: [
       "Mapa com 10 tópicos: telemetria de borda, escala, ataques L7, engenharia de detecção, WAF, rate limiting, bot management, runbooks, SLOs de SOC e defesa em camadas.",

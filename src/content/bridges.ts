@@ -4,6 +4,7 @@ const a = (slug: string) => ({ domain: "appsec" as const, slug });
 const c = (slug: string) => ({ domain: "cloudsec" as const, slug });
 const g = (slug: string) => ({ domain: "ai-agents" as const, slug });
 const s = (slug: string) => ({ domain: "secops" as const, slug });
+const e = (slug: string) => ({ domain: "seceng" as const, slug });
 
 // Cross-domain bridges: the same underlying problem showing up in two
 // domains. Each shows on both topic pages. Keep labels short, they read as
@@ -27,6 +28,17 @@ export const bridges: Bridge[] = [
   { a: c("incident-response"), b: s("runbooks-e-hardening"), label: "o runbook de L7 é um caso específico da resposta geral" },
   { a: s("bot-management"), b: g("guardrails"), label: "distinguir automação legítima de abuso vale também para agentes" },
   { a: s("detection-engineering"), b: g("evals"), label: "detecção e avaliação medem precisão e recall do mesmo jeito" },
+  { a: a("cicd"), b: e("cicd-hardening"), label: "a esteira vista como alvo: o mesmo pipeline, agora endurecido" },
+  { a: a("devsecops"), b: e("policy-as-code"), label: "gates e políticas, escritos como código executável" },
+  { a: c("cspm"), b: e("iac-seguro"), label: "o CSPM vê o ambiente; o IaC seguro corrige na origem e pega o drift" },
+  { a: c("secrets-cloud"), b: e("cicd-hardening"), label: "OIDC no lugar de segredos estáticos na esteira" },
+  { a: s("telemetria-borda"), b: e("kafka-eventos"), label: "o pipeline de eventos que transporta a telemetria" },
+  { a: s("escala-telemetria"), b: e("confiabilidade-em-escala"), label: "volume e falha: escalar sem perder nem duplicar" },
+  { a: s("detection-engineering"), b: e("go-para-seguranca"), label: "detecções com estado rodando como serviços em Go" },
+  { a: s("runbooks-e-hardening"), b: e("automacao-soar"), label: "o runbook que vira playbook automatizado, com freios" },
+  { a: s("slos-soc"), b: e("observabilidade-plataforma"), label: "SLOs do SOC e SLOs da própria plataforma" },
+  { a: g("guardrails"), b: e("ia-na-seguranca"), label: "o mesmo cuidado com entrada e saída do modelo" },
+  { a: g("tool-calling"), b: e("automacao-soar"), label: "ação disparada por modelo precisa dos mesmos freios de um playbook" },
   { a: c("kms-crypto"), b: g("vector-db"), label: "cifrar o índice com chave gerenciada" },
 ];
 

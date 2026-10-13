@@ -39,4 +39,12 @@ export const sources: Record<DomainId, Source[]> = {
     { label: "OWASP Automated Threats", href: "https://owasp.org/www-project-automated-threats-to-web-applications/", note: "taxonomia de ameaças automatizadas" },
     { label: "MITRE ATT&CK", href: "https://attack.mitre.org/", note: "táticas e técnicas de adversários" },
   ],
+  seceng: [
+    { label: "Go: Effective Go", href: "https://go.dev/doc/effective_go", note: "idiomas da linguagem" },
+    { label: "Apache Kafka: documentação", href: "https://kafka.apache.org/documentation/", note: "tópicos, partições, consumer groups, semântica" },
+    { label: "Open Policy Agent", href: "https://www.openpolicyagent.org/docs/latest/", note: "policy as code com Rego" },
+    { label: "Terraform: documentação", href: "https://developer.hashicorp.com/terraform/docs", note: "IaC, estado remoto e módulos" },
+    { label: "SLSA", href: "https://slsa.dev/", note: "níveis de integridade da cadeia de build" },
+    { label: "OpenTelemetry", href: "https://opentelemetry.io/docs/", note: "métricas, traces e logs padronizados" },
+  ],
 };

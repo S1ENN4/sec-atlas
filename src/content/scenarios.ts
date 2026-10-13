@@ -4,6 +4,7 @@ const a = (slug: string) => ({ domain: "appsec" as const, slug });
 const c = (slug: string) => ({ domain: "cloudsec" as const, slug });
 const g = (slug: string) => ({ domain: "ai-agents" as const, slug });
 const s = (slug: string) => ({ domain: "secops" as const, slug });
+const e = (slug: string) => ({ domain: "seceng" as const, slug });
 
 // Attack scenarios. Each step names a stage of the domain's pipeline (so the
 // UI can light it up) and the topic whose control answers it.
@@ -187,6 +188,52 @@ export const scenarios: Scenario[] = [
         control: s("slos-soc"),
         stops:
           "MTTT, MTTC, precisão e recall do incidente alimentam o tuning semanal: apertar o que deixou passar, afrouxar o que bloqueou cliente.",
+      },
+    ],
+  },
+  {
+    id: "esteira-comprometida",
+    domain: "seceng",
+    title: "A esteira comprometida",
+    summary:
+      "Uma ação de terceiros usada no CI é adulterada. Veja onde cada controle de engenharia reduz o estrago, da definição à automação.",
+    steps: [
+      {
+        stageId: "entregar",
+        happens:
+          "Uma ação de terceiros referenciada por tag é reapontada para código malicioso e passa a rodar em todos os builds, com acesso aos segredos da esteira.",
+        control: e("cicd-hardening"),
+        stops:
+          "Ações fixadas por SHA, permissões mínimas por job e credenciais via OIDC (sem segredo estático) limitam o que o código malicioso consegue roubar.",
+      },
+      {
+        stageId: "definir",
+        happens:
+          "O código malicioso tenta alterar o Terraform para abrir um bucket público e um grupo de segurança para a internet.",
+        control: e("policy-as-code"),
+        stops:
+          "A política avalia o plano antes do apply e nega a mudança, com uma mensagem clara do que violou.",
+      },
+      {
+        stageId: "definir",
+        happens: "Um recurso é alterado direto no console, fora do código, para contornar a revisão.",
+        control: e("iac-seguro"),
+        stops: "A detecção de drift compara o estado real com o código e alerta sobre a divergência.",
+      },
+      {
+        stageId: "escalar",
+        happens:
+          "O incidente dispara milhares de alertas ao mesmo tempo e o pipeline de detecção passa a atrasar.",
+        control: e("observabilidade-plataforma"),
+        stops: "O alerta de lag do consumidor avisa que a detecção está atrasada, antes que o atraso vire cegueira.",
+      },
+      {
+        stageId: "automatizar",
+        happens:
+          "A automação de resposta tenta bloquear todas as origens suspeitas de uma vez, incluindo uma faixa de clientes legítimos.",
+        control: e("automacao-soar"),
+        stops:
+          "O alcance acima do limite exige aprovação humana, e todo bloqueio tem prazo (TTL) e auditoria, então o erro é contido e reversível.",
       },
     ],
   },

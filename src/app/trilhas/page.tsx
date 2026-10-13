@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: "Ordens sugeridas para estudar AppSec, CloudSec e agentes de IA, com progresso salvo no seu navegador.",
 };
 
-const NAMES: Record<string, string> = { appsec: "AppSec", cloudsec: "CloudSec", "ai-agents": "Agents", secops: "SecOps" };
+const NAMES: Record<string, string> = { appsec: "AppSec", cloudsec: "CloudSec", "ai-agents": "Agents", secops: "SecOps", seceng: "Engenharia" };
 
 export default function TrilhasPage() {
   const totals: DomainTotals[] = (Object.values(domains) as Domain[]).map((d) => ({
