@@ -55,6 +55,15 @@ export const sources: Record<DomainId, Source[]> = {
     { label: "Model Context Protocol", href: "https://modelcontextprotocol.io/", note: "protocolo aberto para conectar agentes a ferramentas" },
     { label: "git worktree", href: "https://git-scm.com/docs/git-worktree", note: "vários diretórios de trabalho para o mesmo repositório" },
   ],
+  devops: [
+    { label: "DORA research", href: "https://dora.dev/", note: "medidas e capacidades de entrega de software" },
+    { label: "Google SRE books", href: "https://sre.google/books/", note: "SLOs, error budgets e gestão de incidentes" },
+    { label: "Kubernetes: documentação", href: "https://kubernetes.io/docs/home/", note: "conceitos, objetos e tarefas" },
+    { label: "Terraform: documentação", href: "https://developer.hashicorp.com/terraform/docs", note: "IaC, estado remoto e módulos" },
+    { label: "Docker: boas práticas de build", href: "https://docs.docker.com/build/building/best-practices/", note: "imagens pequenas, multi-stage e cache" },
+    { label: "OpenTelemetry", href: "https://opentelemetry.io/docs/", note: "métricas, traces e logs padronizados" },
+    { label: "Prometheus", href: "https://prometheus.io/docs/introduction/overview/", note: "métricas, consultas e alertas" },
+  ],
   seceng: [
     { label: "Open Policy Agent", href: "https://www.openpolicyagent.org/docs/latest/", note: "policy as code com Rego" },
     { label: "Terraform: documentação", href: "https://developer.hashicorp.com/terraform/docs", note: "IaC, estado remoto e módulos" },

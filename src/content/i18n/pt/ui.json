@@ -372,6 +372,42 @@
       "t": "mapeada.",
       "h": "effd347c"
     },
+    "domains.devops.badge": {
+      "t": "base de conhecimento · devops",
+      "h": "bcf6f9b5"
+    },
+    "domains.devops.lead": {
+      "t": "O chão onde DevOps e DevSecOps se apoiam: Linux, Git, containers, pipelines, releases, infraestrutura como código, Kubernetes, observabilidade e confiabilidade.",
+      "h": "0b4baf60"
+    },
+    "domains.devops.mapIntro": {
+      "t": "Cada tópico fica na coluna da fase a que pertence. Passe o mouse sobre um card para ver onde ele se liga; linhas tracejadas são relações entre tópicos.",
+      "h": "67e2e8d9"
+    },
+    "domains.devops.name": {
+      "t": "DevOps",
+      "h": "7f3f11f5"
+    },
+    "domains.devops.pipelineIntro": {
+      "t": "Fundamentos, entrega, provisionamento e operação: cada peça tem um lugar no ciclo. Cada chip abre o tópico correspondente.",
+      "h": "1b1b1cd1"
+    },
+    "domains.devops.pipelineTitle": {
+      "t": "do commit à produção saudável",
+      "h": "a9f7b42a"
+    },
+    "domains.devops.pitch": {
+      "t": "Do commit à produção e de volta: o ciclo de entrega, como construí-lo rápido e seguro e como mantê-lo saudável depois que roda.",
+      "h": "0d3f29c9"
+    },
+    "domains.devops.title": {
+      "t": "Fundamentos de DevOps,",
+      "h": "1eddc94a"
+    },
+    "domains.devops.titleAccent": {
+      "t": "mapeados.",
+      "h": "effd347c"
+    },
     "domains.owasp.badge": {
       "t": "base de conhecimento · owasp top 10",
       "h": "472e61ee"

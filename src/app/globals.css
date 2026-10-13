@@ -241,6 +241,12 @@ body {
   --ring: oklch(0.78 0.2 330 / 0.55);
 }
 
+[data-domain="devops"] {
+  --primary: oklch(0.8 0.17 55);
+  --primary-foreground: oklch(0.18 0.05 55);
+  --ring: oklch(0.8 0.17 55 / 0.55);
+}
+
 [data-domain="ai-agents"] {
   --primary: oklch(0.74 0.18 295);
   --primary-foreground: oklch(0.16 0.04 295);

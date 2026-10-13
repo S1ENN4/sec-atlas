@@ -103,6 +103,18 @@ export const levels: Record<string, LevelInfo> = {
   "vibecoding/verification-loop": { level: 2, requires: ["vibecoding/vibe-spectrum"] },
   "vibecoding/parallel-agents": { level: 3, requires: ["vibecoding/context-engineering", "vibecoding/verification-loop"] },
   "vibecoding/agent-security": { level: 3, requires: ["vibecoding/verification-loop", "appsec/secrets"] },
+
+  // --- DevOps ----------------------------------------
+  "devops/linux-and-networking": { level: 1 },
+  "devops/git-workflows": { level: 1 },
+  "devops/container-images": { level: 1, requires: ["devops/linux-and-networking"] },
+  "devops/delivery-lifecycle": { level: 1, requires: ["devops/git-workflows"] },
+  "devops/ci-pipelines": { level: 2, requires: ["devops/git-workflows", "devops/delivery-lifecycle"] },
+  "devops/infrastructure-as-code": { level: 2, requires: ["devops/linux-and-networking"] },
+  "devops/kubernetes-basics": { level: 2, requires: ["devops/container-images"] },
+  "devops/observability": { level: 2, requires: ["devops/linux-and-networking"] },
+  "devops/release-strategies": { level: 3, requires: ["devops/ci-pipelines", "devops/kubernetes-basics"] },
+  "devops/sre-reliability": { level: 3, requires: ["devops/observability"] },
 };
 
 export const levelOf = (domain: string, slug: string): Level => levels[`${domain}/${slug}`]?.level ?? 1;

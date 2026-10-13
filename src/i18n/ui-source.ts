@@ -637,5 +637,17 @@ export const ui = {
         "From design to operations: every risk has a phase where prevention is cheap. Each chip opens the matching topic.",
       loop: "",
     },
+    devops: {
+      name: "DevOps",
+      badge: "knowledge base · devops",
+      title: "DevOps foundations,",
+      titleAccent: "mapped.",
+      lead: "The ground DevOps and DevSecOps stand on: Linux, Git, containers, pipelines, releases, infrastructure as code, Kubernetes, observability and reliability.",
+      pitch: "From commit to production and back: the delivery loop, how to build it fast and safe, and how to keep it healthy once it runs.",
+      mapIntro: "Each topic sits in the column of the phase it belongs to. Hover a card to see where it attaches; dashed lines are relations between topics.",
+      pipelineTitle: "from commit to healthy production",
+      pipelineIntro: "Foundations, delivery, provisioning and operations: every piece has a place in the loop. Each chip opens the matching topic.",
+      loop: "",
+    },
   },
 } as const;

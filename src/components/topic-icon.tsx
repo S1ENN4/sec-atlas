@@ -51,6 +51,7 @@ import {
   PencilRuler,
   FileCheck2,
   TriangleAlert,
+  Terminal,
   type LucideIcon,
 } from "lucide-react";
 
@@ -121,6 +122,17 @@ const icons: Record<string, LucideIcon> = {
   "parallel-agents": GitBranch,
   "verification-loop": ClipboardCheck,
   "agent-security": ShieldAlert,
+  // devops
+  "linux-and-networking": Terminal,
+  "git-workflows": GitBranch,
+  "container-images": Container,
+  "delivery-lifecycle": Workflow,
+  "ci-pipelines": Rocket,
+  "release-strategies": Waypoints,
+  "infrastructure-as-code": FileCode,
+  "kubernetes-basics": Boxes,
+  "observability": Activity,
+  "sre-reliability": HeartPulse,
   // ai-agents
   rag: Library,
   chunking: Scissors,

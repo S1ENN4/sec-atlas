@@ -7,11 +7,20 @@ const s = (slug: string) => ({ domain: "secops" as const, slug });
 const e = (slug: string) => ({ domain: "seceng" as const, slug });
 const o = (slug: string) => ({ domain: "owasp" as const, slug });
 const v = (slug: string) => ({ domain: "vibecoding" as const, slug });
+const d = (slug: string) => ({ domain: "devops" as const, slug });
 
 // Cross-domain bridges: the same underlying problem showing up in two
 // domains. Each shows on both topic pages. Keep labels short, they read as
 // "<this topic> <label> <other topic>".
 export const bridges: Bridge[] = [
+  { a: d("infrastructure-as-code"), b: e("iac-seguro"), label: "a base; o outro cuida de escaneá-la e protegê-la" },
+  { a: d("ci-pipelines"), b: e("cicd-hardening"), label: "a esteira que funciona precisa ser também a esteira confiável" },
+  { a: d("ci-pipelines"), b: a("cicd"), label: "onde cada verificação de segurança se encaixa na esteira" },
+  { a: d("container-images"), b: c("containers"), label: "a imagem boa e o cluster seguro: duas metades do mesmo problema" },
+  { a: d("kubernetes-basics"), b: c("containers"), label: "o mesmo cluster visto como plataforma e como superfície de ataque" },
+  { a: d("observability"), b: s("telemetria-borda"), label: "a mesma disciplina de telemetria, de plataforma e de segurança" },
+  { a: d("sre-reliability"), b: s("slos-soc"), label: "SLOs e orçamento de erro, aplicados à detecção" },
+  { a: d("release-strategies"), b: s("waf"), label: "observação, shadow e enforcement: a mesma escada gradual" },
   { a: v("agent-security"), b: g("guardrails"), label: "os mesmos limites, aplicados ao agente que escreve código" },
   { a: v("agent-security"), b: g("mcp"), label: "todo servidor MCP conectado amplia o que o agente pode fazer" },
   { a: v("agent-security"), b: a("secrets"), label: "segredo fora do alcance do agente e fora do prompt" },

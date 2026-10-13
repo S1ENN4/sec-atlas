@@ -4,14 +4,14 @@
 // existing out/ directory).
 //
 // Caps (bytes):
-//   first-load assets   <= 9,400,000   (shared + heaviest locale)  (every file under out/ EXCEPT *.txt, raw)
-//   rsc prefetch        <= 10,900,000   (shared + heaviest locale)  (every *.txt under out/, raw)
-//   total               <= 20,300,000  (shared + heaviest locale)
-//   all locales         <= 56,300,000  (sanity: en + pt + es together)  (sanity cap: every file under out/)
+//   first-load assets   <= 10,370,000   (shared + heaviest locale)  (every file under out/ EXCEPT *.txt, raw)
+//   rsc prefetch        <= 12,250,000   (shared + heaviest locale)  (every *.txt under out/, raw)
+//   total               <= 22,620,000  (shared + heaviest locale)
+//   all locales         <= 63,100,000  (sanity: en + pt + es together)  (sanity cap: every file under out/)
 //   CSS raw             <=    77,000
 //   JS raw              <= 1,030,000
 //   JS gzip             <=   330,000  (gzipSync per .js file, summed)
-//   hub html (<locale>.html) <= 86,800
+//   hub html (<locale>.html) <= 92,300
 //
 // T26 budget calibration (post-audit): measured numbers right after T22
 // were first-load 3,459,024 (cap 3,500,000, +1.17% headroom < 2% — too
@@ -45,6 +45,9 @@
 // rsc 10,576,347 / total 19,707,129 / all locales 54,634,724 / hub html 84,299.
 // Each domain adds ~8-10% because every topic page ships html + three RSC
 // copies; caps stay ~3% above measured so a regression is still caught.
+//
+// DevOps domain: 10 more topics x 3 locales. Measured: first-load 10,064,870 /
+// rsc 11,894,342 / total 21,959,212 / all locales 61,241,186 / hub html 89,612.
 //
 // T19 (RAG pipeline topics): five ai-agents topic bodies (rag, chunking,
 // embeddings, vector-db, retrieval) landed. Each draft SSG topic route now
@@ -162,14 +165,14 @@ import { gzipSync } from "node:zlib";
 const OUT_DIR = resolve(process.cwd(), "out");
 
 const CAPS = [
-  { key: "first_load",  label: "first-load assets",     limit: 9_400_000, scope: "first_load" },
-  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 10_900_000, scope: "rsc_prefetch" },
-  { key: "total",       label: "total",                 limit: 20_300_000, scope: "total" },
-  { key: "all_locales", label: "all locales (sanity)", limit: 56_300_000, scope: "all_locales" },
+  { key: "first_load",  label: "first-load assets",     limit: 10_370_000, scope: "first_load" },
+  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 12_250_000, scope: "rsc_prefetch" },
+  { key: "total",       label: "total",                 limit: 22_620_000, scope: "total" },
+  { key: "all_locales", label: "all locales (sanity)", limit: 63_100_000, scope: "all_locales" },
   { key: "css",         label: "CSS raw",               limit:    77_000, scope: "css" },
   { key: "js",          label: "JS raw",                limit: 1_030_000, scope: "js" },
   { key: "js_gz",       label: "JS gzip",               limit:   330_000, scope: "js_gz" },
-  { key: "index",       label: "out/index.html raw",    limit:    86_800, scope: "index" },
+  { key: "index",       label: "out/index.html raw",    limit:    92_300, scope: "index" },
 ];
 
 function walk(dir) {

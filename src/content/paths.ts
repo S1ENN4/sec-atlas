@@ -7,6 +7,7 @@ const s = (slug: string) => ({ domain: "secops" as const, slug });
 const e = (slug: string) => ({ domain: "seceng" as const, slug });
 const o = (slug: string) => ({ domain: "owasp" as const, slug });
 const v = (slug: string) => ({ domain: "vibecoding" as const, slug });
+const dv = (slug: string) => ({ domain: "devops" as const, slug });
 
 // Curated study paths. Order matters: each step assumes the previous ones.
 // Every ref must resolve to a topic (validator R8).
@@ -151,6 +152,24 @@ export const paths: StudyPath[] = [
       { ref: v("verification-loop"), why: "Confiar só no que você consegue checar." },
       { ref: v("parallel-agents"), why: "Vários agentes sem caos: worktrees, multiplexadores e revisão." },
       { ref: v("agent-security"), why: "O agente lê texto não confiável e roda comandos: proteja-o." },
+    ],
+  },
+  {
+    id: "devops-do-zero",
+    title: "DevOps do zero à produção",
+    description: "A base que DevOps e DevSecOps exigem, na ordem em que cada peça se apoia na anterior.",
+    level: "beginner",
+    steps: [
+      { ref: dv("linux-and-networking"), why: "O chão: processos, permissões, DNS, TCP e TLS." },
+      { ref: dv("git-workflows"), why: "Toda mudança entra pela revisão e pelo controle de versão." },
+      { ref: dv("container-images"), why: "Empacotar a aplicação de forma pequena, reproduzível e segura." },
+      { ref: dv("delivery-lifecycle"), why: "O ciclo que você vai automatizar e os princípios por trás." },
+      { ref: dv("ci-pipelines"), why: "Pipelines rápidos e confiáveis, claros quando falham." },
+      { ref: dv("infrastructure-as-code"), why: "Ambientes descritos em código e reproduzíveis." },
+      { ref: dv("kubernetes-basics"), why: "Rodar contêineres em cluster com limites e verificações." },
+      { ref: dv("release-strategies"), why: "Canary, blue/green e flags: lançar sem apostar tudo." },
+      { ref: dv("observability"), why: "Saber o que o sistema faz e alertar sobre o que importa." },
+      { ref: dv("sre-reliability"), why: "SLOs, orçamento de erro e aprendizado com cada falha." },
     ],
   },
 ];
