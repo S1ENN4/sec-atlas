@@ -39,6 +39,12 @@ export const sources: Record<DomainId, Source[]> = {
     { label: "OWASP Automated Threats", href: "https://owasp.org/www-project-automated-threats-to-web-applications/", note: "taxonomia de ameaças automatizadas" },
     { label: "MITRE ATT&CK", href: "https://attack.mitre.org/", note: "táticas e técnicas de adversários" },
   ],
+  owasp: [
+    { label: "OWASP Top 10:2025", href: "https://top10.owasp.org/2025", note: "a lista oficial de categorias de risco" },
+    { label: "OWASP Cheat Sheet Series", href: "https://cheatsheetseries.owasp.org/", note: "guias práticos de correção por tema" },
+    { label: "OWASP ASVS", href: "https://owasp.org/www-project-application-security-verification-standard/", note: "requisitos verificáveis de segurança" },
+    { label: "OWASP WSTG", href: "https://owasp.org/www-project-web-security-testing-guide/", note: "guia de testes de segurança web" },
+  ],
   seceng: [
     { label: "Open Policy Agent", href: "https://www.openpolicyagent.org/docs/latest/", note: "policy as code com Rego" },
     { label: "Terraform: documentação", href: "https://developer.hashicorp.com/terraform/docs", note: "IaC, estado remoto e módulos" },

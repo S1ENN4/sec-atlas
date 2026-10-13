@@ -5,6 +5,7 @@ const c = (slug: string) => ({ domain: "cloudsec" as const, slug });
 const g = (slug: string) => ({ domain: "ai-agents" as const, slug });
 const s = (slug: string) => ({ domain: "secops" as const, slug });
 const e = (slug: string) => ({ domain: "seceng" as const, slug });
+const o = (slug: string) => ({ domain: "owasp" as const, slug });
 
 // Curated study paths. Order matters: each step assumes the previous ones.
 // Every ref must resolve to a topic (validator R8).
@@ -114,6 +115,24 @@ export const paths: StudyPath[] = [
       { ref: e("automacao-soar"), why: "Resposta automática com freios." },
       { ref: e("ia-na-seguranca"), why: "Acelerar a triagem sem confiar às cegas." },
       { ref: e("plataforma-como-produto"), why: "O caminho seguro precisa ser o mais fácil." },
+    ],
+  },
+  {
+    id: "owasp-top-10",
+    title: "OWASP Top 10, do código à operação",
+    description: "Os dez riscos mais importantes em aplicações web, na ordem em que fazem mais sentido para aprender, cada um com código que falha, código que resiste e o teste que prova.",
+    level: "beginner",
+    steps: [
+      { ref: o("broken-access-control"), why: "O risco número um: quem pode fazer o quê, em toda requisição." },
+      { ref: o("injection"), why: "Dado virando instrução: o padrão por trás de SQLi, XSS e comandos." },
+      { ref: o("authentication-failures"), why: "Provar quem é o usuário sem abrir a porta para ninguém mais." },
+      { ref: o("cryptographic-failures"), why: "Proteger dados em repouso e em trânsito sem inventar algoritmo." },
+      { ref: o("security-misconfiguration"), why: "Software correto, configuração insegura: o erro mais barato de achar." },
+      { ref: o("insecure-design"), why: "A falha que está na ideia, não no código." },
+      { ref: o("supply-chain-failures"), why: "Você entrega o código dos outros junto com o seu." },
+      { ref: o("integrity-failures"), why: "Provar que o que roda é o que deveria rodar." },
+      { ref: o("logging-alerting-failures"), why: "Ver o ataque enquanto ele acontece." },
+      { ref: o("exceptional-conditions"), why: "O que acontece quando algo dá errado também é segurança." },
     ],
   },
 ];

@@ -48,14 +48,14 @@ export const roles: Role[] = [
       {
         level: 1,
         goal: "Understand how software is delivered and where security fits.",
-        topics: ["appsec/shift-left", "appsec/cicd", "appsec/secrets"],
+        topics: ["appsec/shift-left", "appsec/cicd", "appsec/secrets", "owasp/broken-access-control", "owasp/injection", "owasp/authentication-failures"],
         outside: ["How the web works: HTTP, sessions, authentication and authorization", "The OWASP Top 10 and one programming language you can read well", "Git and a pull-request workflow"],
         project: "Add secret scanning and a pre-commit hook to one of your own repositories, and document what it catches.",
       },
       {
         level: 2,
         goal: "Operate the core checks and judge their results.",
-        topics: ["appsec/sast", "appsec/sca", "appsec/threat-modeling", "appsec/dast"],
+        topics: ["appsec/sast", "appsec/sca", "appsec/threat-modeling", "appsec/dast", "owasp/insecure-design", "owasp/cryptographic-failures", "owasp/security-misconfiguration"],
         outside: ["Reading code in the stack you protect", "Manual testing with an intercepting proxy", "Writing a clear, actionable vulnerability report"],
         project: "Run SAST, SCA and DAST against a deliberately vulnerable app, triage every finding and write up which ones are real.",
       },

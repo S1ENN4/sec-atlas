@@ -5,7 +5,7 @@ import type { DomainId } from "@/content/types";
 export type ExploreGroupId = "build" | "cloud" | "operate" | "ai";
 
 export const exploreGroups: { id: ExploreGroupId; domains: DomainId[] }[] = [
-  { id: "build", domains: ["appsec", "seceng"] },
+  { id: "build", domains: ["appsec", "owasp", "seceng"] },
   { id: "cloud", domains: ["cloudsec"] },
   { id: "operate", domains: ["secops"] },
   { id: "ai", domains: ["ai-agents"] },

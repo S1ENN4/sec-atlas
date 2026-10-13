@@ -4,14 +4,14 @@
 // existing out/ directory).
 //
 // Caps (bytes):
-//   first-load assets   <= 7,420,000   (shared + heaviest locale)  (every file under out/ EXCEPT *.txt, raw)
-//   rsc prefetch        <= 8,070,000   (shared + heaviest locale)  (every *.txt under out/, raw)
-//   total               <= 15,500,000  (shared + heaviest locale)
-//   all locales         <= 42,200,000  (sanity: en + pt + es together)  (sanity cap: every file under out/)
+//   first-load assets   <= 8,500,000   (shared + heaviest locale)  (every file under out/ EXCEPT *.txt, raw)
+//   rsc prefetch        <= 9,620,000   (shared + heaviest locale)  (every *.txt under out/, raw)
+//   total               <= 18,150,000  (shared + heaviest locale)
+//   all locales         <= 49,900,000  (sanity: en + pt + es together)  (sanity cap: every file under out/)
 //   CSS raw             <=    77,000
 //   JS raw              <= 1,030,000
 //   JS gzip             <=   330,000  (gzipSync per .js file, summed)
-//   hub html (<locale>.html) <= 75,500
+//   hub html (<locale>.html) <= 81,000
 //
 // T26 budget calibration (post-audit): measured numbers right after T22
 // were first-load 3,459,024 (cap 3,500,000, +1.17% headroom < 2% — too
@@ -34,6 +34,12 @@
 // with its RSC payload, plus the careers/journey UI strings. Measured after
 // the change: first-load 7,202,886 / rsc 7,846,988 / total 15,049,874 /
 // all locales 40,955,211 / css 75,547. Caps set ~3% above that.
+//
+// OWASP Top 10 domain: 10 code-heavy topics x 3 locales. A topic page costs
+// about the same as an existing one (html + three copies of its RSC payload),
+// so the budget grows with page count. Measured: first-load 8,263,937 / rsc
+// 9,339,968 / total 17,603,905 / all locales 48,470,602 / hub html 78,805.
+// Caps set ~3% above that. Reducing the RSC duplication is a tracked follow-up.
 //
 // T19 (RAG pipeline topics): five ai-agents topic bodies (rag, chunking,
 // embeddings, vector-db, retrieval) landed. Each draft SSG topic route now
@@ -151,14 +157,14 @@ import { gzipSync } from "node:zlib";
 const OUT_DIR = resolve(process.cwd(), "out");
 
 const CAPS = [
-  { key: "first_load",  label: "first-load assets",     limit: 7_420_000, scope: "first_load" },
-  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 8_070_000, scope: "rsc_prefetch" },
-  { key: "total",       label: "total",                 limit: 15_500_000, scope: "total" },
-  { key: "all_locales", label: "all locales (sanity)", limit: 42_200_000, scope: "all_locales" },
+  { key: "first_load",  label: "first-load assets",     limit: 8_500_000, scope: "first_load" },
+  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 9_620_000, scope: "rsc_prefetch" },
+  { key: "total",       label: "total",                 limit: 18_150_000, scope: "total" },
+  { key: "all_locales", label: "all locales (sanity)", limit: 49_900_000, scope: "all_locales" },
   { key: "css",         label: "CSS raw",               limit:    77_000, scope: "css" },
   { key: "js",          label: "JS raw",                limit: 1_030_000, scope: "js" },
   { key: "js_gz",       label: "JS gzip",               limit:   330_000, scope: "js_gz" },
-  { key: "index",       label: "out/index.html raw",    limit:    75_500, scope: "index" },
+  { key: "index",       label: "out/index.html raw",    limit:    81_000, scope: "index" },
 ];
 
 function walk(dir) {

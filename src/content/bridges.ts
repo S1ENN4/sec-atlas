@@ -5,11 +5,25 @@ const c = (slug: string) => ({ domain: "cloudsec" as const, slug });
 const g = (slug: string) => ({ domain: "ai-agents" as const, slug });
 const s = (slug: string) => ({ domain: "secops" as const, slug });
 const e = (slug: string) => ({ domain: "seceng" as const, slug });
+const o = (slug: string) => ({ domain: "owasp" as const, slug });
 
 // Cross-domain bridges: the same underlying problem showing up in two
 // domains. Each shows on both topic pages. Keep labels short, they read as
 // "<this topic> <label> <other topic>".
 export const bridges: Bridge[] = [
+  { a: o("injection"), b: a("sast"), label: "é o padrão que a análise estática procura no código" },
+  { a: o("injection"), b: s("ataques-l7"), label: "visto de fora: as assinaturas na borda" },
+  { a: o("supply-chain-failures"), b: a("sca"), label: "é o que a análise de composição verifica" },
+  { a: o("supply-chain-failures"), b: a("sbom"), label: "o inventário que responde \"estamos afetados?\"" },
+  { a: o("insecure-design"), b: a("threat-modeling"), label: "o método que encontra a falha antes do código" },
+  { a: o("broken-access-control"), b: c("iam"), label: "a mesma regra de menor privilégio, na nuvem" },
+  { a: o("cryptographic-failures"), b: c("kms-crypto"), label: "chaves e criptografia gerenciadas, sem código próprio" },
+  { a: o("security-misconfiguration"), b: c("cspm"), label: "a verificação contínua da configuração" },
+  { a: o("security-misconfiguration"), b: e("iac-seguro"), label: "configuração segura nasce no código de infraestrutura" },
+  { a: o("logging-alerting-failures"), b: s("detection-engineering"), label: "o log vira detecção versionada" },
+  { a: o("authentication-failures"), b: s("bot-management"), label: "credential stuffing é, antes de tudo, tráfego automatizado" },
+  { a: o("integrity-failures"), b: e("cicd-hardening"), label: "o pipeline é parte do que precisa ser íntegro" },
+  { a: o("exceptional-conditions"), b: e("confiabilidade-em-escala"), label: "falhar fechado e de forma idempotente" },
   { a: a("secrets"), b: c("secrets-cloud"), label: "é o mesmo problema: segredo fora do código" },
   { a: a("sca"), b: c("containers"), label: "alimenta: a imagem herda as dependências" },
   { a: a("sbom"), b: c("containers"), label: "inventaria o que vai dentro da imagem" },

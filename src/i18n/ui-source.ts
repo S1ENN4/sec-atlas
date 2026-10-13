@@ -607,5 +607,20 @@ export const ui = {
         "From definition as code to automation: the control lives in every phase. Each chip opens the matching topic.",
       loop: "",
     },
+    owasp: {
+      name: "OWASP Top 10",
+      badge: "knowledge base · owasp top 10",
+      title: "The OWASP Top 10,",
+      titleAccent: "in code.",
+      lead: "Each of the ten web risks explained, with vulnerable and fixed code in several languages, and the test that proves the fix.",
+      pitch:
+        "The ten risks that matter most in web applications: what they are, how they are attacked, the code that fails, the code that holds, and how to verify it.",
+      mapIntro:
+        "Each risk sits in the column of the phase where its fix is cheapest. Hover a card to see where it attaches; dashed lines are relations between risks.",
+      pipelineTitle: "where each risk is decided",
+      pipelineIntro:
+        "From design to operations: every risk has a phase where prevention is cheap. Each chip opens the matching topic.",
+      loop: "",
+    },
   },
 } as const;

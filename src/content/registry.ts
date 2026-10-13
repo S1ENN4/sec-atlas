@@ -42,6 +42,7 @@ import { cloudsec } from "./cloudsec";
 import { aiAgents } from "./ai-agents";
 import { secops } from "./secops";
 import { seceng } from "./seceng";
+import { owasp } from "./owasp";
 
 // Domain metadata for all known domains — `domainMeta` is the only place the
 // DomainId → route map and per-domain status/accent are pinned. `appsec` is
@@ -57,6 +58,7 @@ export const domains: Record<DomainId, Domain> = {
   "ai-agents": aiAgents,
   secops,
   seceng,
+  owasp,
 };
 
 // Per-domain metadata table (route + status + accent) keyed by DomainId.

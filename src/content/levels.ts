@@ -80,6 +80,18 @@ export const levels: Record<string, LevelInfo> = {
   "seceng/automacao-soar": { level: 3, requires: ["seceng/confiabilidade-em-escala"] },
   "seceng/ia-na-seguranca": { level: 3, requires: ["seceng/automacao-soar", "ai-agents/llm"] },
   "seceng/plataforma-como-produto": { level: 3, requires: ["seceng/cicd-hardening", "seceng/policy-as-code"] },
+
+  // --- OWASP Top 10:2025 ---------------------------------------------------
+  "owasp/broken-access-control": { level: 1 },
+  "owasp/injection": { level: 1 },
+  "owasp/authentication-failures": { level: 1 },
+  "owasp/cryptographic-failures": { level: 2, requires: ["owasp/authentication-failures"] },
+  "owasp/security-misconfiguration": { level: 2 },
+  "owasp/insecure-design": { level: 2, requires: ["owasp/broken-access-control"] },
+  "owasp/logging-alerting-failures": { level: 2, requires: ["owasp/broken-access-control"] },
+  "owasp/exceptional-conditions": { level: 2, requires: ["owasp/logging-alerting-failures"] },
+  "owasp/supply-chain-failures": { level: 2, requires: ["appsec/sca"] },
+  "owasp/integrity-failures": { level: 3, requires: ["owasp/supply-chain-failures", "owasp/cryptographic-failures"] },
 };
 
 export const levelOf = (domain: string, slug: string): Level => levels[`${domain}/${slug}`]?.level ?? 1;

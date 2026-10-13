@@ -229,6 +229,12 @@ body {
   --ring: oklch(0.76 0.16 10 / 0.55);
 }
 
+[data-domain="owasp"] {
+  --primary: oklch(0.84 0.18 120);
+  --primary-foreground: oklch(0.18 0.05 120);
+  --ring: oklch(0.84 0.18 120 / 0.55);
+}
+
 [data-domain="ai-agents"] {
   --primary: oklch(0.74 0.18 295);
   --primary-foreground: oklch(0.16 0.04 295);

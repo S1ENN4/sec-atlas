@@ -372,6 +372,42 @@
       "t": "mapeada.",
       "h": "effd347c"
     },
+    "domains.owasp.badge": {
+      "t": "base de conhecimento · owasp top 10",
+      "h": "472e61ee"
+    },
+    "domains.owasp.lead": {
+      "t": "Cada um dos dez riscos web explicado, com código vulnerável e corrigido em várias linguagens e o teste que prova a correção.",
+      "h": "2c369f6c"
+    },
+    "domains.owasp.mapIntro": {
+      "t": "Cada risco fica na coluna da fase em que a correção é mais barata. Passe o mouse sobre um card para ver onde ele se liga; linhas tracejadas são relações entre riscos.",
+      "h": "7650d8e5"
+    },
+    "domains.owasp.name": {
+      "t": "OWASP Top 10",
+      "h": "2f85ef74"
+    },
+    "domains.owasp.pipelineIntro": {
+      "t": "Do design à operação: cada risco tem uma fase em que prevenir é barato. Cada chip abre o tópico correspondente.",
+      "h": "5e65306b"
+    },
+    "domains.owasp.pipelineTitle": {
+      "t": "onde cada risco é decidido",
+      "h": "ec2593ce"
+    },
+    "domains.owasp.pitch": {
+      "t": "Os dez riscos que mais importam em aplicações web: o que são, como são atacados, o código que falha, o código que resiste e como verificar.",
+      "h": "8315d6a3"
+    },
+    "domains.owasp.title": {
+      "t": "O OWASP Top 10,",
+      "h": "58bf851b"
+    },
+    "domains.owasp.titleAccent": {
+      "t": "em código.",
+      "h": "751bf351"
+    },
     "domains.seceng.badge": {
       "t": "knowledge base · engenharia",
       "h": "1f6526b7"

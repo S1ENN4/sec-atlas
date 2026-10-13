@@ -46,6 +46,11 @@ import {
   Workflow,
   Wrench,
   ClipboardList,
+  SlidersHorizontal,
+  Syringe,
+  PencilRuler,
+  FileCheck2,
+  TriangleAlert,
   type LucideIcon,
 } from "lucide-react";
 
@@ -95,6 +100,17 @@ const icons: Record<string, LucideIcon> = {
   "automacao-soar": Hammer,
   "ia-na-seguranca": Sparkles,
   "plataforma-como-produto": Layers,
+  // owasp
+  "broken-access-control": KeyRound,
+  "security-misconfiguration": SlidersHorizontal,
+  "supply-chain-failures": PackageSearch,
+  "cryptographic-failures": Lock,
+  injection: Syringe,
+  "insecure-design": PencilRuler,
+  "authentication-failures": Fingerprint,
+  "integrity-failures": FileCheck2,
+  "logging-alerting-failures": ScrollText,
+  "exceptional-conditions": TriangleAlert,
   // ai-agents
   rag: Library,
   chunking: Scissors,
