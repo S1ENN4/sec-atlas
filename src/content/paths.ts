@@ -6,6 +6,7 @@ const g = (slug: string) => ({ domain: "ai-agents" as const, slug });
 const s = (slug: string) => ({ domain: "secops" as const, slug });
 const e = (slug: string) => ({ domain: "seceng" as const, slug });
 const o = (slug: string) => ({ domain: "owasp" as const, slug });
+const v = (slug: string) => ({ domain: "vibecoding" as const, slug });
 
 // Curated study paths. Order matters: each step assumes the previous ones.
 // Every ref must resolve to a topic (validator R8).
@@ -133,6 +134,23 @@ export const paths: StudyPath[] = [
       { ref: o("integrity-failures"), why: "Provar que o que roda é o que deveria rodar." },
       { ref: o("logging-alerting-failures"), why: "Ver o ataque enquanto ele acontece." },
       { ref: o("exceptional-conditions"), why: "O que acontece quando algo dá errado também é segurança." },
+    ],
+  },
+  {
+    id: "vibecoding-com-criterio",
+    title: "Código com IA, com critério",
+    description: "Do que essas ferramentas são até usá-las com segurança: camadas, comparação, contexto, paralelismo, verificação e segurança do agente.",
+    level: "beginner",
+    steps: [
+      { ref: v("vibe-spectrum"), why: "O espectro: de autocomplete a agentes autônomos, e onde cada um serve." },
+      { ref: v("harness-and-model"), why: "Modelo, harness e provedor: a confusão que explica quase tudo." },
+      { ref: v("agent-tools-compared"), why: "Claude Code, OpenCode, OMP, OMO, herdr: o que cada um é de verdade." },
+      { ref: v("model-choice"), why: "Modelos de ponta, baratos e abertos: custo, velocidade e para onde vai seu código." },
+      { ref: v("when-to-use-what"), why: "Da tarefa para a ferramenta, o modelo e o nível de autonomia." },
+      { ref: v("context-engineering"), why: "O que o agente vê decide a qualidade do que ele faz." },
+      { ref: v("verification-loop"), why: "Confiar só no que você consegue checar." },
+      { ref: v("parallel-agents"), why: "Vários agentes sem caos: worktrees, multiplexadores e revisão." },
+      { ref: v("agent-security"), why: "O agente lê texto não confiável e roda comandos: proteja-o." },
     ],
   },
 ];

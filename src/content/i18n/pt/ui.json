@@ -480,6 +480,42 @@
       "t": "mapeadas.",
       "h": "effd347c"
     },
+    "domains.vibecoding.badge": {
+      "t": "base de conhecimento · ferramentas de código com IA",
+      "h": "24a65eac"
+    },
+    "domains.vibecoding.lead": {
+      "t": "O que Claude Code, OpenCode, OMP, OMO, herdr e os modelos por trás deles realmente são, como diferem, quando usar cada um e como manter o resultado seguro.",
+      "h": "08ffcb37"
+    },
+    "domains.vibecoding.mapIntro": {
+      "t": "Cada tópico fica na coluna da fase a que pertence. Passe o mouse sobre um card para ver onde ele se liga; linhas tracejadas são relações entre tópicos.",
+      "h": "67e2e8d9"
+    },
+    "domains.vibecoding.name": {
+      "t": "Vibecoding",
+      "h": "5075e1fb"
+    },
+    "domains.vibecoding.pipelineIntro": {
+      "t": "Entenda as ferramentas, escolha pela tarefa, conduza com bom contexto e verifique tudo. Cada chip abre o tópico correspondente.",
+      "h": "2c1ebbed"
+    },
+    "domains.vibecoding.pipelineTitle": {
+      "t": "do entender ao confiar",
+      "h": "e92c0159"
+    },
+    "domains.vibecoding.pitch": {
+      "t": "Programar com IA sem o hype: as camadas (modelo, harness, provedor), as ferramentas comparadas, engenharia de contexto, agentes em paralelo, verificação e segurança do agente.",
+      "h": "b9a26386"
+    },
+    "domains.vibecoding.title": {
+      "t": "Ferramentas de código com IA,",
+      "h": "375bae9a"
+    },
+    "domains.vibecoding.titleAccent": {
+      "t": "decifradas.",
+      "h": "1c1f7736"
+    },
     "footer.about": {
       "t": "sobre",
       "h": "5780daf6"

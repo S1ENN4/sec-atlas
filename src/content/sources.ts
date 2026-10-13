@@ -45,6 +45,16 @@ export const sources: Record<DomainId, Source[]> = {
     { label: "OWASP ASVS", href: "https://owasp.org/www-project-application-security-verification-standard/", note: "requisitos verificáveis de segurança" },
     { label: "OWASP WSTG", href: "https://owasp.org/www-project-web-security-testing-guide/", note: "guia de testes de segurança web" },
   ],
+  vibecoding: [
+    { label: "Claude Code: documentação", href: "https://docs.claude.com/en/docs/claude-code/overview", note: "agente de terminal da Anthropic: permissões, hooks, skills e MCP" },
+    { label: "OpenCode", href: "https://opencode.ai/", note: "agente de código aberto, independente de provedor" },
+    { label: "oh-my-pi (OMP)", href: "https://github.com/can1357/oh-my-pi", note: "agente de terminal derivado do Pi, com edição estruturada, LSP e subagentes" },
+    { label: "Oh My OpenAgent (OMO)", href: "https://github.com/code-yeongyu/oh-my-opencode", note: "plugin de orquestração multiagente para o OpenCode" },
+    { label: "herdr", href: "https://github.com/herdrdev/herdr", note: "multiplexador de terminal para vários agentes de código" },
+    { label: "AGENTS.md", href: "https://agents.md/", note: "convenção de instruções para agentes de código" },
+    { label: "Model Context Protocol", href: "https://modelcontextprotocol.io/", note: "protocolo aberto para conectar agentes a ferramentas" },
+    { label: "git worktree", href: "https://git-scm.com/docs/git-worktree", note: "vários diretórios de trabalho para o mesmo repositório" },
+  ],
   seceng: [
     { label: "Open Policy Agent", href: "https://www.openpolicyagent.org/docs/latest/", note: "policy as code com Rego" },
     { label: "Terraform: documentação", href: "https://developer.hashicorp.com/terraform/docs", note: "IaC, estado remoto e módulos" },

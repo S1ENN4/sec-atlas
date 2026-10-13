@@ -6,11 +6,20 @@ const g = (slug: string) => ({ domain: "ai-agents" as const, slug });
 const s = (slug: string) => ({ domain: "secops" as const, slug });
 const e = (slug: string) => ({ domain: "seceng" as const, slug });
 const o = (slug: string) => ({ domain: "owasp" as const, slug });
+const v = (slug: string) => ({ domain: "vibecoding" as const, slug });
 
 // Cross-domain bridges: the same underlying problem showing up in two
 // domains. Each shows on both topic pages. Keep labels short, they read as
 // "<this topic> <label> <other topic>".
 export const bridges: Bridge[] = [
+  { a: v("agent-security"), b: g("guardrails"), label: "os mesmos limites, aplicados ao agente que escreve código" },
+  { a: v("agent-security"), b: g("mcp"), label: "todo servidor MCP conectado amplia o que o agente pode fazer" },
+  { a: v("agent-security"), b: a("secrets"), label: "segredo fora do alcance do agente e fora do prompt" },
+  { a: v("agent-security"), b: a("sca"), label: "dependência inventada pelo agente precisa passar pela mesma verificação" },
+  { a: v("verification-loop"), b: a("sast"), label: "o gate que vale para qualquer autor, humano ou agente" },
+  { a: v("verification-loop"), b: a("devsecops"), label: "gates automáticos na esteira, sem exceção para código gerado" },
+  { a: v("context-engineering"), b: g("tool-calling"), label: "ferramentas e permissões decidem o que o agente consegue fazer" },
+  { a: v("parallel-agents"), b: e("cicd-hardening"), label: "agentes autônomos exigem a mesma disciplina de runners e credenciais" },
   { a: o("injection"), b: a("sast"), label: "é o padrão que a análise estática procura no código" },
   { a: o("injection"), b: s("ataques-l7"), label: "visto de fora: as assinaturas na borda" },
   { a: o("supply-chain-failures"), b: a("sca"), label: "é o que a análise de composição verifica" },

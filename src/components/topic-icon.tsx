@@ -111,6 +111,16 @@ const icons: Record<string, LucideIcon> = {
   "integrity-failures": FileCheck2,
   "logging-alerting-failures": ScrollText,
   "exceptional-conditions": TriangleAlert,
+  // vibecoding
+  "vibe-spectrum": SlidersHorizontal,
+  "harness-and-model": Layers,
+  "agent-tools-compared": Scale,
+  "model-choice": Gauge,
+  "when-to-use-what": Waypoints,
+  "context-engineering": Boxes,
+  "parallel-agents": GitBranch,
+  "verification-loop": ClipboardCheck,
+  "agent-security": ShieldAlert,
   // ai-agents
   rag: Library,
   chunking: Scissors,

@@ -8,5 +8,5 @@ export const exploreGroups: { id: ExploreGroupId; domains: DomainId[] }[] = [
   { id: "build", domains: ["appsec", "owasp", "seceng"] },
   { id: "cloud", domains: ["cloudsec"] },
   { id: "operate", domains: ["secops"] },
-  { id: "ai", domains: ["ai-agents"] },
+  { id: "ai", domains: ["ai-agents", "vibecoding"] },
 ];

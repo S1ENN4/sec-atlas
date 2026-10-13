@@ -92,6 +92,17 @@ export const levels: Record<string, LevelInfo> = {
   "owasp/exceptional-conditions": { level: 2, requires: ["owasp/logging-alerting-failures"] },
   "owasp/supply-chain-failures": { level: 2, requires: ["appsec/sca"] },
   "owasp/integrity-failures": { level: 3, requires: ["owasp/supply-chain-failures", "owasp/cryptographic-failures"] },
+
+  // --- Vibecoding ------------------------------------------------------------
+  "vibecoding/vibe-spectrum": { level: 1 },
+  "vibecoding/harness-and-model": { level: 1 },
+  "vibecoding/agent-tools-compared": { level: 1, requires: ["vibecoding/harness-and-model"] },
+  "vibecoding/model-choice": { level: 2, requires: ["vibecoding/harness-and-model"] },
+  "vibecoding/when-to-use-what": { level: 2, requires: ["vibecoding/agent-tools-compared", "vibecoding/model-choice"] },
+  "vibecoding/context-engineering": { level: 2, requires: ["vibecoding/harness-and-model"] },
+  "vibecoding/verification-loop": { level: 2, requires: ["vibecoding/vibe-spectrum"] },
+  "vibecoding/parallel-agents": { level: 3, requires: ["vibecoding/context-engineering", "vibecoding/verification-loop"] },
+  "vibecoding/agent-security": { level: 3, requires: ["vibecoding/verification-loop", "appsec/secrets"] },
 };
 
 export const levelOf = (domain: string, slug: string): Level => levels[`${domain}/${slug}`]?.level ?? 1;

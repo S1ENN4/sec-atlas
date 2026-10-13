@@ -282,7 +282,7 @@ export const roles: Role[] = [
       {
         level: 3,
         goal: "Govern agents, third-party tools and quality over time.",
-        topics: ["ai-agents/mcp", "ai-agents/agent-frameworks", "ai-agents/orchestration", "ai-agents/llm-as-judge", "ai-agents/regression-evals", "seceng/ia-na-seguranca"],
+        topics: ["ai-agents/mcp", "ai-agents/agent-frameworks", "ai-agents/orchestration", "ai-agents/llm-as-judge", "ai-agents/regression-evals", "seceng/ia-na-seguranca", "vibecoding/agent-security", "vibecoding/verification-loop"],
         outside: ["Supply-chain review of tools, plugins and servers", "Red-teaming methodology for AI systems", "Policy and risk management frameworks for AI"],
         project: "Build a regression suite from real failures and wire it as a gate that blocks prompt or model changes that make it worse.",
       },

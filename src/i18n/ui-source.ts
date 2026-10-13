@@ -607,6 +607,21 @@ export const ui = {
         "From definition as code to automation: the control lives in every phase. Each chip opens the matching topic.",
       loop: "",
     },
+    vibecoding: {
+      name: "Vibecoding",
+      badge: "knowledge base · ai coding tools",
+      title: "AI coding tools,",
+      titleAccent: "decoded.",
+      lead: "What Claude Code, OpenCode, OMP, OMO, herdr and the models behind them really are, how they differ, when to use each, and how to keep the result safe.",
+      pitch:
+        "AI-assisted coding without the hype: the layers (model, harness, provider), the tools compared, context engineering, parallel agents, verification and agent security.",
+      mapIntro:
+        "Each topic sits in the column of the phase it belongs to. Hover a card to see where it attaches; dashed lines are relations between topics.",
+      pipelineTitle: "from understanding to trusting",
+      pipelineIntro:
+        "Understand the tools, choose by task, drive them with good context, and verify everything. Each chip opens the matching topic.",
+      loop: "",
+    },
     owasp: {
       name: "OWASP Top 10",
       badge: "knowledge base · owasp top 10",
