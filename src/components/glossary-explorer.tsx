@@ -19,6 +19,7 @@ const DOMAIN_LABEL: Record<string, string> = {
   appsec: "AppSec",
   cloudsec: "CloudSec",
   "ai-agents": "AI Agents",
+  secops: "SecOps",
 };
 
 // Cross-domain link badge — small mono chip rendered next to the topic link
@@ -33,6 +34,7 @@ const DOMAIN_BADGE_LABEL: Record<string, string> = {
   appsec: "appsec",
   cloudsec: "cloudsec",
   "ai-agents": "agentes",
+  secops: "secops",
 };
 
 type DomainFilter = "all" | string;

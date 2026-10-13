@@ -1,10 +1,10 @@
 # appsec/kb
 
-Knowledge base visual de segurança de software, organizada por domínios. Cada domínio é um grafo independente: conceitos, esteira, conexões e glossário, renderizados do mesmo jeito. Três mapas prontos (`appsec`, `cloudsec`, `ai-agents`), todos com a mesma profundidade.
+Knowledge base visual de segurança de software, organizada por domínios. Cada domínio é um grafo independente: conceitos, esteira, conexões e glossário, renderizados do mesmo jeito. Quatro mapas prontos (`appsec`, `cloudsec`, `ai-agents`, `secops`), todos com a mesma profundidade.
 
 ## Visão geral
 
-- **3 domínios, 33 tópicos** (8 appsec + 10 cloudsec + 15 ai-agents)
+- **4 domínios, 45 tópicos** (9 appsec + 11 cloudsec + 15 ai-agents + 10 secops)
 - **Next.js 16** (App Router) com `output: "export"`, site 100% estático, sem servidor
 - **Tailwind CSS 4** + componentes no estilo shadcn/ui
 - **React Flow** (`@xyflow/react`) para o grafo de estudos
@@ -103,7 +103,7 @@ O caminho canônico, do começo ao fim:
    import type { Topic } from "@/content/types";
 
    export const <slug>: Topic = {
-     domain: "<domain>",            // "appsec" | "cloudsec" | "ai-agents"
+     domain: "<domain>",            // "appsec" | "cloudsec" | "ai-agents" | "secops"
      slug: "<slug>",                // único dentro do domínio
      title: "...",
      short: "...",
@@ -188,13 +188,13 @@ Os limites ficam em `scripts/check-budget.mjs` (bytes):
 
 | métrica            | cap atual    |
 |--------------------|--------------|
-| first-load assets  | 4.700.000    |
-| rsc prefetch       | 4.600.000    |
-| total              | 9.300.000    |
+| first-load assets  | 5.500.000    |
+| rsc prefetch       | 5.750.000    |
+| total              | 11.250.000   |
 | CSS raw            | 72.000       |
 | JS raw             | 1.030.000    |
 | JS gzip            | 330.000      |
-| `out/index.html`   | 57.000       |
+| `out/index.html`   | 63.000       |
 
 Cada bump nesses números tem commit de reconciliação e motivo no header do script. Se o conteúdo novo pedir mais, siga o mesmo padrão: bump mínimo + parágrafo explicando qual conteúdo forçou.
 

@@ -286,10 +286,11 @@ upgrade-insecure-requests`}
               cada tópico em domínio{" "}
               <code className="font-mono text-xs">live</code>, ≥ 4 seções e{" "}
               <code className="font-mono text-xs">(code ≥ 1 OR bullets ≥ 3)</code> e
-              tagline não vazia e ≥ 3 ferramentas. Hoje os três domínios (
+              tagline não vazia e ≥ 3 ferramentas. Hoje os quatro domínios (
               <code className="font-mono text-xs">appsec</code>,{" "}
               <code className="font-mono text-xs">cloudsec</code>,{" "}
-              <code className="font-mono text-xs">ai-agents</code>) são live e cobrem
+              <code className="font-mono text-xs">ai-agents</code>,{" "}
+              <code className="font-mono text-xs">secops</code>) são live e cobrem
               33 tópicos no total, todos passando.
             </span>
           </li>
@@ -364,8 +365,8 @@ out/index.html raw            28.307 B    cap    50.000  OK`}
           <li className="flex gap-3 leading-relaxed text-foreground/85">
             <span className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary" />
             <span>
-              <strong className="font-semibold">Três domínios, 33 tópicos</strong>: o
-              catálogo cobre AppSec, CloudSec e Agentes, todos com status{" "}
+              <strong className="font-semibold">Quatro domínios, 45 tópicos</strong>: o
+              catálogo cobre AppSec, CloudSec, Agentes e SecOps, todos com status{" "}
               <code className="font-mono text-xs">live</code> e passando no validador. A
               superfície de conteúdo cresceu desde a primeira publicação desta página,
               e o R6 (piso de conteúdo live) é o que segura a régua.

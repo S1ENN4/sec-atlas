@@ -3,6 +3,7 @@ import type { Bridge } from "@/content/types";
 const a = (slug: string) => ({ domain: "appsec" as const, slug });
 const c = (slug: string) => ({ domain: "cloudsec" as const, slug });
 const g = (slug: string) => ({ domain: "ai-agents" as const, slug });
+const s = (slug: string) => ({ domain: "secops" as const, slug });
 
 // Cross-domain bridges: the same underlying problem showing up in two
 // domains. Each shows on both topic pages. Keep labels short, they read as
@@ -19,6 +20,13 @@ export const bridges: Bridge[] = [
   { a: c("iam"), b: g("agent-frameworks"), label: "privilégio mínimo vale para o agente também" },
   { a: c("logging-detection"), b: g("evals"), label: "observar em produção alimenta a avaliação" },
   { a: c("incident-response"), b: g("regression-evals"), label: "todo incidente vira um caso de teste" },
+  { a: a("dast"), b: s("waf"), label: "acha a falha; o WAF mitiga enquanto ela não é corrigida (patch virtual)" },
+  { a: a("sast"), b: s("runbooks-e-hardening"), label: "o hardening do pós-incidente vira regra e correção no código" },
+  { a: c("network"), b: s("defesa-em-camadas"), label: "segmentação e borda desenhadas juntas" },
+  { a: c("logging-detection"), b: s("telemetria-borda"), label: "mesma ideia de sinal, aplicada ao tráfego L7" },
+  { a: c("incident-response"), b: s("runbooks-e-hardening"), label: "o runbook de L7 é um caso específico da resposta geral" },
+  { a: s("bot-management"), b: g("guardrails"), label: "distinguir automação legítima de abuso vale também para agentes" },
+  { a: s("detection-engineering"), b: g("evals"), label: "detecção e avaliação medem precisão e recall do mesmo jeito" },
   { a: c("kms-crypto"), b: g("vector-db"), label: "cifrar o índice com chave gerenciada" },
 ];
 

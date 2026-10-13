@@ -1,4 +1,5 @@
 import {
+  Activity,
   Binary,
   Boxes,
   Bot,
@@ -9,10 +10,12 @@ import {
   Database,
   FileJson,
   Fingerprint,
+  Flame,
   Gauge,
   GitBranch,
   History,
   KeyRound,
+  Layers,
   Library,
   Lock,
   MoveLeft,
@@ -20,6 +23,7 @@ import {
   PackageSearch,
   Plug,
   Radar,
+  Timer,
   Scale,
   ScanEye,
   ScanSearch,
@@ -35,6 +39,7 @@ import {
   Waypoints,
   Workflow,
   Wrench,
+  ClipboardList,
   type LucideIcon,
 } from "lucide-react";
 
@@ -64,6 +69,17 @@ const icons: Record<string, LucideIcon> = {
   "logging-detection": ScrollText,
   "zero-trust": ShieldOff,
   "incident-response": Siren,
+  // secops
+  "telemetria-borda": Activity,
+  "escala-telemetria": Database,
+  "ataques-l7": Flame,
+  "detection-engineering": Crosshair,
+  waf: ShieldHalf,
+  "rate-limiting": Timer,
+  "bot-management": Bot,
+  "runbooks-e-hardening": ClipboardList,
+  "slos-soc": Gauge,
+  "defesa-em-camadas": Layers,
   // ai-agents
   rag: Library,
   chunking: Scissors,

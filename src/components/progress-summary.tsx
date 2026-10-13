@@ -40,7 +40,7 @@ export function ProgressSummary({ domains }: { domains: DomainTotals[] }) {
         </p>
       </div>
 
-      <div className="mt-4 grid gap-4 sm:grid-cols-3">
+      <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {domains.map((d) => {
           const n = d.slugs.filter((s) => state.seen[`${d.id}/${s}`]).length;
           const pct = d.slugs.length ? Math.round((n / d.slugs.length) * 100) : 0;

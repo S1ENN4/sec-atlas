@@ -10,6 +10,15 @@ export interface ChangelogEntry {
 export const changelog: ChangelogEntry[] = [
   {
     date: "2026-10-13",
+    title: "Novo domínio: SecOps e defesa L7",
+    items: [
+      "Mapa com 10 tópicos: telemetria de borda, escala, ataques L7, engenharia de detecção, WAF, rate limiting, bot management, runbooks, SLOs de SOC e defesa em camadas.",
+      "Trilha de estudo e cenário de ataque (credential stuffing) do novo domínio, com quiz em todos os tópicos.",
+      "Pontes com AppSec, CloudSec e agentes de IA.",
+    ],
+  },
+  {
+    date: "2026-10-13",
     title: "Landing pessoal, páginas de apoio e fontes",
     items: [
       "Apresentação no topo do hub, página Sobre (experiência, formação, certificações), resumo em inglês e links de contato.",

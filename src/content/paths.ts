@@ -3,6 +3,7 @@ import type { StudyPath } from "@/content/types";
 const a = (slug: string) => ({ domain: "appsec" as const, slug });
 const c = (slug: string) => ({ domain: "cloudsec" as const, slug });
 const g = (slug: string) => ({ domain: "ai-agents" as const, slug });
+const s = (slug: string) => ({ domain: "secops" as const, slug });
 
 // Curated study paths. Order matters: each step assumes the previous ones.
 // Every ref must resolve to a topic (validator R8).
@@ -78,6 +79,24 @@ export const paths: StudyPath[] = [
       { ref: c("iam"), why: "A workload roda com o mínimo de privilégio." },
       { ref: c("cspm"), why: "A postura do ambiente é vigiada continuamente." },
       { ref: c("incident-response"), why: "Quando algo escapa, a resposta já está ensaiada." },
+    ],
+  },
+  {
+    id: "defesa-l7",
+    title: "Defesa L7 e operação de SOC",
+    description: "Do log ao bloqueio: observe, detecte, aja e meça, como um programa de defesa de borda de verdade.",
+    level: "intermediário",
+    steps: [
+      { ref: s("telemetria-borda"), why: "Sem dado bom, não há detecção boa." },
+      { ref: s("escala-telemetria"), why: "Como manter tudo rápido e barato quando o volume explode." },
+      { ref: s("ataques-l7"), why: "As assinaturas dos ataques que você vai procurar." },
+      { ref: s("detection-engineering"), why: "Transformar padrões em detecções versionadas e medidas." },
+      { ref: s("waf"), why: "Agir com cuidado: observação, shadow e enforcement." },
+      { ref: s("rate-limiting"), why: "Limitar abuso sem punir quem usa de verdade." },
+      { ref: s("bot-management"), why: "Separar automação legítima de abuso automatizado." },
+      { ref: s("runbooks-e-hardening"), why: "Contenção rápida e correção que fecha a porta." },
+      { ref: s("slos-soc"), why: "Provar que funciona e ajustar toda semana." },
+      { ref: s("defesa-em-camadas"), why: "O desenho que une tudo: onde cada controle vive e o que acontece se ele falha." },
     ],
   },
 ];

@@ -40,6 +40,7 @@ export type { GlossaryGroup } from "./types";
 import { appsec } from "./appsec";
 import { cloudsec } from "./cloudsec";
 import { aiAgents } from "./ai-agents";
+import { secops } from "./secops";
 
 // Domain metadata for all known domains — `domainMeta` is the only place the
 // DomainId → route map and per-domain status/accent are pinned. `appsec` is
@@ -53,6 +54,7 @@ export const domains: Record<DomainId, Domain> = {
   appsec,
   cloudsec,
   "ai-agents": aiAgents,
+  secops,
 };
 
 // Per-domain metadata table (route + status + accent) keyed by DomainId.

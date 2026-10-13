@@ -7,7 +7,7 @@ import { useProgress } from "@/lib/progress";
 import { cn } from "@/lib/utils";
 
 export interface PathCardStep {
-  domain: "appsec" | "cloudsec" | "ai-agents";
+  domain: "appsec" | "cloudsec" | "ai-agents" | "secops";
   slug: string;
   title: string;
   why: string;

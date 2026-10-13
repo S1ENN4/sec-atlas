@@ -31,4 +31,12 @@ export const sources: Record<DomainId, Source[]> = {
     { label: "Model Context Protocol", href: "https://modelcontextprotocol.io/", note: "especificação e documentação do MCP" },
     { label: "MITRE ATLAS", href: "https://atlas.mitre.org/", note: "táticas e técnicas contra sistemas de IA" },
   ],
+  secops: [
+    { label: "Cloudflare WAF", href: "https://developers.cloudflare.com/waf/", note: "regras gerenciadas, regras customizadas e ações" },
+    { label: "Cloudflare Rate limiting rules", href: "https://developers.cloudflare.com/waf/rate-limiting-rules/", note: "características, períodos e mitigação" },
+    { label: "Cloudflare Bots", href: "https://developers.cloudflare.com/bots/", note: "bot management, score e desafios" },
+    { label: "OWASP Core Rule Set", href: "https://coreruleset.org/", note: "conjunto aberto de regras de WAF" },
+    { label: "OWASP Automated Threats", href: "https://owasp.org/www-project-automated-threats-to-web-applications/", note: "taxonomia de ameaças automatizadas" },
+    { label: "MITRE ATT&CK", href: "https://attack.mitre.org/", note: "táticas e técnicas de adversários" },
+  ],
 };

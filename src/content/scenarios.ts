@@ -3,6 +3,7 @@ import type { Scenario } from "@/content/types";
 const a = (slug: string) => ({ domain: "appsec" as const, slug });
 const c = (slug: string) => ({ domain: "cloudsec" as const, slug });
 const g = (slug: string) => ({ domain: "ai-agents" as const, slug });
+const s = (slug: string) => ({ domain: "secops" as const, slug });
 
 // Attack scenarios. Each step names a stage of the domain's pipeline (so the
 // UI can light it up) and the topic whose control answers it.
@@ -140,6 +141,52 @@ export const scenarios: Scenario[] = [
         control: g("regression-evals"),
         stops:
           "O caso do incidente já virou um teste de regressão, e a nova variação é pega no PR.",
+      },
+    ],
+  },
+  {
+    id: "credential-stuffing",
+    domain: "secops",
+    title: "Credential stuffing no login",
+    summary:
+      "Uma botnet testa milhões de pares usuário/senha vazados no seu endpoint de login. Veja como cada fase do ciclo de defesa entra em ação.",
+    steps: [
+      {
+        stageId: "observar",
+        happens:
+          "Começa uma onda de requisições ao endpoint de login. Nada em uma requisição isolada parece errado: o pico só aparece no conjunto.",
+        control: s("telemetria-borda"),
+        stops:
+          "Eventos normalizados e enriquecidos (ASN, score de bot, conta tentada) permitem ver volume, falhas e origens quase em tempo real.",
+      },
+      {
+        stageId: "detectar",
+        happens:
+          "A botnet espalha o ataque por milhares de IPs, então nenhum IP passa de um limite simples.",
+        control: s("detection-engineering"),
+        stops:
+          "Uma detecção por ASN e fingerprint, com z-score sobre as falhas por minuto, destaca o desvio que o IP sozinho escondia.",
+      },
+      {
+        stageId: "agir",
+        happens: "A detecção dispara e é preciso reagir sem derrubar clientes reais no mesmo login.",
+        control: s("rate-limiting"),
+        stops:
+          "Limite por conta e por ASN, com desafio no primeiro excesso e bloqueio curto na reincidência, contém a onda sem punir o usuário legítimo.",
+      },
+      {
+        stageId: "agir",
+        happens: "O atacante troca user agents e passa a imitar um navegador.",
+        control: s("bot-management"),
+        stops:
+          "A pontuação por fingerprint e comportamento continua marcando a automação, e o desafio gerenciado encarece o ataque em escala.",
+      },
+      {
+        stageId: "medir",
+        happens: "Passado o incidente, é preciso saber se a defesa funcionou e quanto custou em falso positivo.",
+        control: s("slos-soc"),
+        stops:
+          "MTTT, MTTC, precisão e recall do incidente alimentam o tuning semanal: apertar o que deixou passar, afrouxar o que bloqueou cliente.",
       },
     ],
   },
