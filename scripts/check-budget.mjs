@@ -4,14 +4,14 @@
 // existing out/ directory).
 //
 // Caps (bytes):
-//   first-load assets   <= 10,370,000   (shared + heaviest locale)  (every file under out/ EXCEPT *.txt, raw)
-//   rsc prefetch        <= 12,250,000   (shared + heaviest locale)  (every *.txt under out/, raw)
-//   total               <= 22,620,000  (shared + heaviest locale)
-//   all locales         <= 63,100,000  (sanity: en + pt + es together)  (sanity cap: every file under out/)
+//   first-load assets   <= 12,000,000   (shared + heaviest locale)  (every file under out/ EXCEPT *.txt, raw)
+//   rsc prefetch        <= 14,700,000   (shared + heaviest locale)  (every *.txt under out/, raw)
+//   total               <= 26,700,000   (shared + heaviest locale)
+//   all locales         <= 75,000,000   (sanity: en + pt + es together)  (sanity cap: every file under out/)
 //   CSS raw             <=    77,000
-//   JS raw              <= 1,030,000
+//   JS raw              <= 1,070,000
 //   JS gzip             <=   330,000  (gzipSync per .js file, summed)
-//   hub html (<locale>.html) <= 92,300
+//   hub html (<locale>.html) <= 105,000
 //
 // T26 budget calibration (post-audit): measured numbers right after T22
 // were first-load 3,459,024 (cap 3,500,000, +1.17% headroom < 2% — too
@@ -155,6 +155,22 @@
 // re-floored to ~3% headroom over the per-locale numbers; css 71,874, js
 // 986,876 and js_gz 311,694 are global and were already within their caps.
 //
+// Post-Offensive-Security + i18n recalibration: 7 new domains were layered onto
+// the original 3 (careers/journey, OWASP, vibecoding, devops, response, offsec)
+// plus the i18n (en/pt/es) routing — the export now ships the whole site three
+// times (out/en, out/pt, out/es) and a separate all-locales sanity row covers
+// every locale's output together. Each new domain added ~8-10% of bytes (every
+// statically-rendered topic page ships html + three copies of its RSC payload:
+// en, pt, es), and the all-locales row multiplies the page count by the
+// number of locales, so a single 3-locale site roughly triples the
+// all-locales measurement versus the per-locale total. Measured after the
+// wave: first-load 11,634,112 / rsc 14,173,754 / total 25,807,866 / all
+// locales 72,513,770 / js raw 1,031,145 / hub 100,593. CSS raw 76,963 and
+// js_gz 325,805 were already within their caps and were left untouched.
+// Caps recalibrated to ~3% headroom over the new measurements (rounded up to
+// clean numbers so the next rebuild is green); CSS raw's 37-byte margin is
+// kept tight on purpose to preserve the byte ceiling on that row.
+//
 // Exit 0 when every row is within its cap; exit 1 with a clear per-cap
 // message otherwise.
 
@@ -165,14 +181,14 @@ import { gzipSync } from "node:zlib";
 const OUT_DIR = resolve(process.cwd(), "out");
 
 const CAPS = [
-  { key: "first_load",  label: "first-load assets",     limit: 10_370_000, scope: "first_load" },
-  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 12_250_000, scope: "rsc_prefetch" },
-  { key: "total",       label: "total",                 limit: 22_620_000, scope: "total" },
-  { key: "all_locales", label: "all locales (sanity)", limit: 63_100_000, scope: "all_locales" },
+  { key: "first_load",  label: "first-load assets",     limit: 12_000_000, scope: "first_load" },
+  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 14_700_000, scope: "rsc_prefetch" },
+  { key: "total",       label: "total",                 limit: 26_700_000, scope: "total" },
+  { key: "all_locales", label: "all locales (sanity)", limit: 75_000_000, scope: "all_locales" },
   { key: "css",         label: "CSS raw",               limit:    77_000, scope: "css" },
-  { key: "js",          label: "JS raw",                limit: 1_030_000, scope: "js" },
+  { key: "js",          label: "JS raw",                limit: 1_070_000, scope: "js" },
   { key: "js_gz",       label: "JS gzip",               limit:   330_000, scope: "js_gz" },
-  { key: "index",       label: "out/index.html raw",    limit:    92_300, scope: "index" },
+  { key: "index",       label: "out/index.html raw",    limit:   105_000, scope: "index" },
 ];
 
 function walk(dir) {
