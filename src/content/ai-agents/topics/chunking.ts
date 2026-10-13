@@ -48,7 +48,7 @@ export const chunking: Topic = {
         {
           language: "python",
           filename: "chunking/splitter.py",
-          code: "from langchain_text_splitters import RecursiveCharacterTextSplitter\n\nsplitter = RecursiveCharacterTextSplitter(\n    chunk_size=512,\n    chunk_overlap=50,\n    separators=[\n        \"\\n\\n\",     # parágrafo\n        \"\\n\",       # linha\n        \"(?<=[.!?])\"\.\\s+\",  # fim de frase em PT-BR\n        \" \",        # palavra\n        \"\",         # caractere (último caso)\n    ],\n    length_function=len,\n    is_separator_regex=False,\n)\n\nwith open(\"manual.txt\", encoding=\"utf-8\") as f:\n    texto = f.read()\n\nblocos = splitter.split_text(texto)\nfor i, bloco in enumerate(blocos):\n    print(f\"#{i:03d}  {len(bloco)} chars  {bloco[:60].replace(chr(10), ' ')}...\")",
+          code: "from langchain_text_splitters import RecursiveCharacterTextSplitter\n\nsplitter = RecursiveCharacterTextSplitter(\n    chunk_size=512,\n    chunk_overlap=50,\n    separators=[\n        \"\\n\\n\",     # parágrafo\n        \"\\n\",       # linha\n        \"(?<=[.!?])\\\\s+\",  # fim de frase em PT-BR (lookbehind)\n        \" \",        # palavra\n        \"\",         # caractere (último caso)\n    ],\n    length_function=len,\n    is_separator_regex=True,\n)\n\nwith open(\"manual.txt\", encoding=\"utf-8\") as f:\n    texto = f.read()\n\nblocos = splitter.split_text(texto)\nfor i, bloco in enumerate(blocos):\n    print(f\"#{i:03d}  {len(bloco)} chars  {bloco[:60].replace(chr(10), ' ')}...\")",
         },
       ],
     },

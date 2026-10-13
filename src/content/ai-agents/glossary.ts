@@ -74,7 +74,7 @@ export const glossary: GlossaryGroup[] = [
       {
         term: "Agente",
         meaning:
-          "Programa que usa um LLM para decidir o que fazer em cada passo, em vez de seguir um script fixo. Recebe objetivo, escolhe ferramentas, observa resultado, decide o próximo passo, e segue até concluir ou desistir. A diferença para um chatbot é autonomia: o agente sequencia ações fora de uma ordem pré-deﬁnida.",
+          "Programa que usa um LLM para decidir o que fazer em cada passo, em vez de seguir um script fixo. Recebe objetivo, escolhe ferramentas, observa resultado, decide o próximo passo, e segue até concluir ou desistir. A diferença para um chatbot é autonomia: o agente sequencia ações fora de uma ordem pré-definida.",
         topic: "agent-frameworks",
       },
       {
