@@ -8,6 +8,7 @@ import { secengQuiz } from "./seceng";
 import { owaspQuiz } from "./owasp";
 import { vibecodingQuiz } from "./vibecoding";
 import { devopsQuiz } from "./devops";
+import { responseQuiz } from "./response";
 
 export const quizzes: Record<DomainId, QuizBank> = {
   appsec: appsecQuiz,
@@ -18,6 +19,7 @@ export const quizzes: Record<DomainId, QuizBank> = {
   owasp: owaspQuiz,
   vibecoding: vibecodingQuiz,
   devops: devopsQuiz,
+  response: responseQuiz,
 };
 
 export function getQuiz(domain: DomainId, slug: string): QuizQuestion[] {

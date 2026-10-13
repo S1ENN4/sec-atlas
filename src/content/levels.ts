@@ -115,6 +115,16 @@ export const levels: Record<string, LevelInfo> = {
   "devops/observability": { level: 2, requires: ["devops/linux-and-networking"] },
   "devops/release-strategies": { level: 3, requires: ["devops/ci-pipelines", "devops/kubernetes-basics"] },
   "devops/sre-reliability": { level: 3, requires: ["devops/observability"] },
+
+  // --- Incident response ----------------------------------------
+  "response/ir-lifecycle": { level: 1 },
+  "response/threat-intelligence": { level: 1 },
+  "response/triage-and-containment": { level: 2, requires: ["response/ir-lifecycle"] },
+  "response/log-and-timeline-analysis": { level: 2 },
+  "response/ransomware-playbook": { level: 2, requires: ["response/triage-and-containment"] },
+  "response/threat-hunting": { level: 3, requires: ["response/threat-intelligence", "response/log-and-timeline-analysis"] },
+  "response/digital-forensics-basics": { level: 3, requires: ["response/triage-and-containment", "response/log-and-timeline-analysis"] },
+  "response/malware-analysis-basics": { level: 3, requires: ["response/digital-forensics-basics"] }
 };
 
 export const levelOf = (domain: string, slug: string): Level => levels[`${domain}/${slug}`]?.level ?? 1;

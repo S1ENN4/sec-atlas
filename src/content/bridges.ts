@@ -8,11 +8,19 @@ const e = (slug: string) => ({ domain: "seceng" as const, slug });
 const o = (slug: string) => ({ domain: "owasp" as const, slug });
 const v = (slug: string) => ({ domain: "vibecoding" as const, slug });
 const d = (slug: string) => ({ domain: "devops" as const, slug });
+const r = (slug: string) => ({ domain: "response" as const, slug });
 
 // Cross-domain bridges: the same underlying problem showing up in two
 // domains. Each shows on both topic pages. Keep labels short, they read as
 // "<this topic> <label> <other topic>".
 export const bridges: Bridge[] = [
+  { a: r("threat-hunting"), b: s("detection-engineering"), label: "o que a caçada acha vira detecção versionada" },
+  { a: r("log-and-timeline-analysis"), b: s("telemetria-borda"), label: "só dá para reconstruir o que foi coletado" },
+  { a: r("triage-and-containment"), b: c("incident-response"), label: "a mesma contenção, aplicada a contas e recursos de nuvem" },
+  { a: r("ir-lifecycle"), b: s("runbooks-e-hardening"), label: "runbooks são o ciclo ensaiado e escrito" },
+  { a: r("threat-intelligence"), b: s("ataques-l7"), label: "as técnicas observadas na borda alimentam a inteligência e vice-versa" },
+  { a: r("ransomware-playbook"), b: e("confiabilidade-em-escala"), label: "backups que restauram e recuperação em ordem de prioridade" },
+  { a: r("digital-forensics-basics"), b: c("logging-detection"), label: "a evidência de nuvem mora nos logs de auditoria" },
   { a: d("infrastructure-as-code"), b: e("iac-seguro"), label: "a base; o outro cuida de escaneá-la e protegê-la" },
   { a: d("ci-pipelines"), b: e("cicd-hardening"), label: "a esteira que funciona precisa ser também a esteira confiável" },
   { a: d("ci-pipelines"), b: a("cicd"), label: "onde cada verificação de segurança se encaixa na esteira" },

@@ -444,6 +444,42 @@
       "t": "en código.",
       "h": "751bf351"
     },
+    "domains.response.badge": {
+      "t": "base de conocimiento · respuesta a incidentes y forense",
+      "h": "fb0b05eb"
+    },
+    "domains.response.lead": {
+      "t": "Cómo prepararse para, detectar, contener e investigar una intrusión: el ciclo de vida, threat hunting e inteligencia, ransomware, forense y triaje de malware.",
+      "h": "495e4e58"
+    },
+    "domains.response.mapIntro": {
+      "t": "Cada tema está en la columna de la fase a la que pertenece. Pasa el cursor sobre una tarjeta para ver dónde se conecta; las líneas discontinuas son relaciones entre temas.",
+      "h": "67e2e8d9"
+    },
+    "domains.response.name": {
+      "t": "Respuesta a incidentes",
+      "h": "6e590d95"
+    },
+    "domains.response.pipelineIntro": {
+      "t": "Preparar, detectar, responder, investigar: cada fase alimenta a la siguiente y la última mejora la primera. Cada chip abre el tema correspondiente.",
+      "h": "35a33510"
+    },
+    "domains.response.pipelineTitle": {
+      "t": "de la preparación a la evidencia",
+      "h": "d80d82fa"
+    },
+    "domains.response.pitch": {
+      "t": "El lado de quien defiende: una respuesta ensayada, cacerías que se vuelven detecciones, contención cuidadosa y evidencia que se sostiene.",
+      "h": "0fec31cc"
+    },
+    "domains.response.title": {
+      "t": "Respuesta a incidentes,",
+      "h": "9f2f63c1"
+    },
+    "domains.response.titleAccent": {
+      "t": "de la alerta a la evidencia.",
+      "h": "92a8cf59"
+    },
     "domains.seceng.badge": {
       "t": "base de conocimiento · ingeniería",
       "h": "1f6526b7"

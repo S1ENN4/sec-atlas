@@ -52,6 +52,7 @@ import {
   FileCheck2,
   TriangleAlert,
   Terminal,
+  Bug,
   type LucideIcon,
 } from "lucide-react";
 
@@ -133,6 +134,15 @@ const icons: Record<string, LucideIcon> = {
   "kubernetes-basics": Boxes,
   "observability": Activity,
   "sre-reliability": HeartPulse,
+  // response
+  "ir-lifecycle": Siren,
+  "threat-intelligence": ScanEye,
+  "threat-hunting": Crosshair,
+  "log-and-timeline-analysis": History,
+  "triage-and-containment": ShieldAlert,
+  "ransomware-playbook": ShieldOff,
+  "digital-forensics-basics": Fingerprint,
+  "malware-analysis-basics": Bug,
   // ai-agents
   rag: Library,
   chunking: Scissors,

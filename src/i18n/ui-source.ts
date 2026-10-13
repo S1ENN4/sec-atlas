@@ -649,5 +649,17 @@ export const ui = {
       pipelineIntro: "Foundations, delivery, provisioning and operations: every piece has a place in the loop. Each chip opens the matching topic.",
       loop: "",
     },
+    response: {
+      name: "Incident response",
+      badge: "knowledge base · incident response & forensics",
+      title: "Incident response,",
+      titleAccent: "from alert to evidence.",
+      lead: "How to prepare for, detect, contain and investigate an intrusion: the lifecycle, threat hunting and intelligence, ransomware, forensics and malware triage.",
+      pitch: "The defender's side of an attack: a rehearsed response, hunts that become detections, careful containment, and evidence that stands up.",
+      mapIntro: "Each topic sits in the column of the phase it belongs to. Hover a card to see where it attaches; dashed lines are relations between topics.",
+      pipelineTitle: "from preparation to evidence",
+      pipelineIntro: "Prepare, detect, respond, investigate: each phase feeds the next and the last one improves the first. Each chip opens the matching topic.",
+      loop: "",
+    },
   },
 } as const;

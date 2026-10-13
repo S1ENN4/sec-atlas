@@ -8,6 +8,7 @@ const e = (slug: string) => ({ domain: "seceng" as const, slug });
 const o = (slug: string) => ({ domain: "owasp" as const, slug });
 const v = (slug: string) => ({ domain: "vibecoding" as const, slug });
 const dv = (slug: string) => ({ domain: "devops" as const, slug });
+const ir = (slug: string) => ({ domain: "response" as const, slug });
 
 // Curated study paths. Order matters: each step assumes the previous ones.
 // Every ref must resolve to a topic (validator R8).
@@ -170,6 +171,22 @@ export const paths: StudyPath[] = [
       { ref: dv("release-strategies"), why: "Canary, blue/green e flags: lançar sem apostar tudo." },
       { ref: dv("observability"), why: "Saber o que o sistema faz e alertar sobre o que importa." },
       { ref: dv("sre-reliability"), why: "SLOs, orçamento de erro e aprendizado com cada falha." },
+    ],
+  },
+  {
+    id: "resposta-a-incidentes",
+    title: "Resposta a incidentes, do alerta à evidência",
+    description: "Preparar, detectar, conter e investigar: a ordem em que cada habilidade de defesa se apoia na anterior.",
+    level: "intermediate",
+    steps: [
+      { ref: ir("ir-lifecycle"), why: "O ciclo, os papéis e a severidade, antes de qualquer crise." },
+      { ref: ir("threat-intelligence"), why: "Quem ataca, como, e com que confiança sabemos disso." },
+      { ref: ir("log-and-timeline-analysis"), why: "Montar a história a partir de logs com tempo limpo." },
+      { ref: ir("threat-hunting"), why: "Procurar o que os alertas não pegaram, por hipótese." },
+      { ref: ir("triage-and-containment"), why: "Dimensionar e conter sem destruir evidência." },
+      { ref: ir("ransomware-playbook"), why: "O caso mais difícil, tratado como crise de negócio." },
+      { ref: ir("digital-forensics-basics"), why: "Coletar evidência que ninguém consegue contestar." },
+      { ref: ir("malware-analysis-basics"), why: "Triar um arquivo suspeito com segurança e gerar detecção." },
     ],
   },
 ];

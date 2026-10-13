@@ -64,6 +64,16 @@ export const sources: Record<DomainId, Source[]> = {
     { label: "OpenTelemetry", href: "https://opentelemetry.io/docs/", note: "métricas, traces e logs padronizados" },
     { label: "Prometheus", href: "https://prometheus.io/docs/introduction/overview/", note: "métricas, consultas e alertas" },
   ],
+  response: [
+    { label: "NIST SP 800-61: tratamento de incidentes", href: "https://csrc.nist.gov/pubs/sp/800/61/r3/final", note: "ciclo de resposta a incidentes" },
+    { label: "MITRE ATT&CK", href: "https://attack.mitre.org/", note: "táticas e técnicas de adversários" },
+    { label: "CISA #StopRansomware", href: "https://www.cisa.gov/stopransomware", note: "guias de prevenção e resposta a ransomware" },
+    { label: "SANS DFIR", href: "https://www.sans.org/digital-forensics-incident-response/", note: "materiais de forense e resposta a incidentes" },
+    { label: "Volatility Foundation", href: "https://volatilityfoundation.org/", note: "análise forense de memória" },
+    { label: "Sigma", href: "https://sigmahq.io/", note: "formato aberto de regras de detecção" },
+    { label: "YARA", href: "https://virustotal.github.io/yara/", note: "regras para identificar famílias de arquivos" },
+    { label: "STIX e TAXII", href: "https://oasis-open.github.io/cti-documentation/", note: "linguagem e protocolo de troca de inteligência" },
+  ],
   seceng: [
     { label: "Open Policy Agent", href: "https://www.openpolicyagent.org/docs/latest/", note: "policy as code com Rego" },
     { label: "Terraform: documentação", href: "https://developer.hashicorp.com/terraform/docs", note: "IaC, estado remoto e módulos" },
