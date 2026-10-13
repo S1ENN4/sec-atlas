@@ -47,6 +47,34 @@ type AnyFlowNode = StageFlowNode | ConceptFlowNode;
 
 const hidden = "!opacity-0";
 
+// Every card exposes a source + target handle on all four sides so edges can
+// pick the side that faces the other card (see `pickHandles`).
+function AllHandles() {
+  return (
+    <>
+      <Handle id="t-l" type="target" position={Position.Left} className={hidden} />
+      <Handle id="t-r" type="target" position={Position.Right} className={hidden} />
+      <Handle id="t-t" type="target" position={Position.Top} className={hidden} />
+      <Handle id="t-b" type="target" position={Position.Bottom} className={hidden} />
+      <Handle id="s-l" type="source" position={Position.Left} className={hidden} />
+      <Handle id="s-r" type="source" position={Position.Right} className={hidden} />
+      <Handle id="s-t" type="source" position={Position.Top} className={hidden} />
+      <Handle id="s-b" type="source" position={Position.Bottom} className={hidden} />
+    </>
+  );
+}
+
+// Choose the facing sides from the relative position of the two cards so
+// edges never loop around the cards they connect.
+function pickHandles(a: { x: number; y: number }, b: { x: number; y: number }) {
+  const dx = b.x - a.x;
+  const dy = b.y - a.y;
+  if (Math.abs(dx) >= Math.abs(dy)) {
+    return dx >= 0 ? { sourceHandle: "s-r", targetHandle: "t-l" } : { sourceHandle: "s-l", targetHandle: "t-r" };
+  }
+  return dy >= 0 ? { sourceHandle: "s-b", targetHandle: "t-t" } : { sourceHandle: "s-t", targetHandle: "t-b" };
+}
+
 interface StageNodeActivate {
   onActivate: () => void;
 }
@@ -69,9 +97,7 @@ function StageNode({ data, onActivate }: NodeProps<StageFlowNode> & StageNodeAct
       }}
       className="w-[240px] cursor-pointer rounded-lg border border-primary/30 bg-card px-3 py-2.5 shadow focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
     >
-      <Handle id="t-l" type="target" position={Position.Left} className={hidden} />
-      <Handle id="t-b" type="target" position={Position.Bottom} className={hidden} />
-      <Handle id="s-r" type="source" position={Position.Right} className={hidden} />
+      <AllHandles />
       <div className="flex items-baseline gap-2">
         <span className="font-mono text-[11px] text-primary/90">{data.index}</span>
         <span className="font-mono text-sm font-semibold">{data.name}</span>
@@ -104,9 +130,7 @@ function ConceptNode({ data, domainMeta, onActivate }: ConceptNodeProps) {
         data.dashed ? "border-dashed border-border" : "border-border"
       )}
     >
-      <Handle id="t-l" type="target" position={Position.Left} className={hidden} />
-      <Handle id="s-t" type="source" position={Position.Top} className={hidden} />
-      <Handle id="s-r" type="source" position={Position.Right} className={hidden} />
+      <AllHandles />
       <div className="flex items-center gap-2">
         <span className={cn("size-2 shrink-0 rounded-full", meta.dot)} />
         <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
@@ -199,27 +223,30 @@ function buildGraph(
   });
   for (const a of layout.conceptAttachments) {
     edges.push({
-      id: `at-${a.slug}`,
+      id: `at-${a.slug}-${a.stageId}`,
       source: a.slug,
       target: `stage-${a.stageId}`,
-      sourceHandle: a.sourceHandle,
-      targetHandle: a.targetHandle,
-      style: { stroke: "oklch(0.35 0.02 260)", strokeWidth: 1.2 },
+      sourceHandle: "s-t",
+      targetHandle: "t-b",
+      style: { stroke: "oklch(0.45 0.03 260)", strokeWidth: 1.2 },
     });
   }
+  const posOf = new Map<string, { x: number; y: number }>();
+  for (const n of [...stageNodes, ...concepts, ...layers]) posOf.set(n.id, n.position);
   for (const r of layout.crossRelations) {
+    const a = posOf.get(r.source);
+    const b = posOf.get(r.target);
+    const handles = a && b ? pickHandles(a, b) : { sourceHandle: r.sourceHandle, targetHandle: r.targetHandle };
     edges.push({
       id: r.id,
       source: r.source,
       target: r.target,
-      sourceHandle: r.sourceHandle,
-      targetHandle: r.targetHandle,
+      ...handles,
       label: r.label,
-      type: "smoothstep",
       ...(r.arrow === false ? {} : { markerEnd: { type: "arrowclosed" as const } }),
       ...(r.dashed
-        ? { style: { strokeDasharray: "6 4", stroke: "oklch(0.5 0.04 250)" } }
-        : { style: { stroke: "oklch(0.55 0.03 260)" } }),
+        ? { style: { strokeDasharray: "6 4", stroke: "oklch(0.6 0.06 250)", strokeWidth: 1.6 } }
+        : { style: { stroke: "oklch(0.7 0.05 260)", strokeWidth: 1.6 } }),
     });
   }
 
@@ -246,6 +273,20 @@ function useReducedMotion(): boolean {
   return reduced;
 }
 
+// Below 640px a full fit makes card text unreadable; floor the zoom and let
+// the user pan instead.
+function useNarrow(): boolean {
+  const [narrow, setNarrow] = useState(false);
+  useEffect(() => {
+    const mql = window.matchMedia("(max-width: 639px)");
+    setNarrow(mql.matches);
+    const onChange = (e: MediaQueryListEvent) => setNarrow(e.matches);
+    mql.addEventListener("change", onChange);
+    return () => mql.removeEventListener("change", onChange);
+  }, []);
+  return narrow;
+}
+
 // Cubic ease-out — `t => 1 - (1 - t)^3`. Matches the `easeOutCubic` curve
 // commonly used for camera/viewport transitions.
 const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
@@ -255,7 +296,11 @@ function DomainGraphInner({ domainId }: DomainGraphProps) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const entranceRanRef = useRef(false);
   const { fitView } = useReactFlow();
+  const narrow = useNarrow();
   const reduced = useReducedMotion();
+  // Focus mode: while a card is hovered/focused, only its own relations are
+  // shown (with labels); everything else fades into the background.
+  const [activeId, setActiveId] = useState<string | null>(null);
 
   const domain: import("@/content/types").Domain = domains[domainId]!;
   const layout = domain.graphLayout;
@@ -268,11 +313,11 @@ function DomainGraphInner({ domainId }: DomainGraphProps) {
     const el = wrapperRef.current;
     if (!el) return;
     const observer = new ResizeObserver(() => {
-      fitView({ padding: 0.15, duration: reduced ? 0 : 200 });
+      fitView({ padding: 0.15, minZoom: narrow ? 0.55 : undefined, duration: reduced ? 0 : 200 });
     });
     observer.observe(el);
     return () => observer.disconnect();
-  }, [fitView, reduced]);
+  }, [fitView, reduced, narrow]);
 
   const { nodes, edges } = useMemo<BuildResult>(() => {
     if (!layout) return { nodes: [], edges: [] };
@@ -292,8 +337,21 @@ function DomainGraphInner({ domainId }: DomainGraphProps) {
   );
 
   const styledEdges = useMemo<Edge[]>(
-    () => edges.map((e) => ({ ...e, ...edgeStyles })),
-    [edges, edgeStyles]
+    () =>
+      edges.map((e) => {
+        const isSpine = e.id.startsWith("spine-");
+        if (isSpine) return { ...e, ...edgeStyles };
+        const active = activeId !== null && (e.source === activeId || e.target === activeId);
+        const dimmed = !active;
+        return {
+          ...e,
+          ...edgeStyles,
+          label: active ? e.label : undefined,
+          zIndex: active ? 10 : 0,
+          style: { ...e.style, opacity: activeId === null ? 0.35 : dimmed ? 0.08 : 1, transition: "opacity 150ms" },
+        };
+      }),
+    [edges, edgeStyles, activeId]
   );
 
   // Inject domain kind metadata + activate handler into each custom node
@@ -403,14 +461,19 @@ function DomainGraphInner({ domainId }: DomainGraphProps) {
   // `onInit` after its viewport is initialised, which is when fitView has
   // kicked in and every node is in the DOM.
   const handleInit = useCallback(() => {
-    fitView({ padding: 0.15, duration: reduced ? 0 : 360, ease: easeOutCubic });
+    fitView({ padding: 0.15, minZoom: narrow ? 0.55 : undefined, duration: reduced ? 0 : 360, ease: easeOutCubic });
     playEntrance();
-  }, [fitView, reduced, playEntrance]);
+  }, [fitView, reduced, narrow, playEntrance]);
 
   return (
     <div>
       <div
         ref={wrapperRef}
+        onFocusCapture={(e) => {
+          const id = (e.target as HTMLElement).closest<HTMLElement>(".react-flow__node")?.dataset.id;
+          if (id) setActiveId(id);
+        }}
+        onBlurCapture={() => setActiveId(null)}
         className="h-[560px] w-full overflow-hidden rounded-xl border border-border bg-card/40 md:h-[640px]"
       >
         {ready ? (
@@ -425,6 +488,9 @@ function DomainGraphInner({ domainId }: DomainGraphProps) {
             nodesConnectable={false}
             onInit={handleInit}
             onNodeClick={onNodeClick}
+            onNodeMouseEnter={(_, node) => setActiveId(node.id)}
+            onNodeMouseLeave={() => setActiveId(null)}
+            onNodeDragStop={() => setActiveId(null)}
           >
             <Background variant={BackgroundVariant.Dots} gap={24} size={1} color="oklch(0.3 0.02 260)" />
             <Controls showInteractive={false} position="bottom-right" />
@@ -441,7 +507,7 @@ function DomainGraphInner({ domainId }: DomainGraphProps) {
           </div>
         ))}
         <span className="ml-auto font-mono text-[10px] text-muted-foreground">
-          linhas animadas = fluxo da esteira · tracejado = relação · clique num nó
+          linhas animadas = fluxo da esteira · passe o mouse num card para ver as relações dele · clique para abrir
         </span>
       </div>
     </div>

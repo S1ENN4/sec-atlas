@@ -17,20 +17,20 @@ export const graphLayout: DomainGraphLayout = {
   // "layer" — pinned to fixed coordinates rather than a column.
   layerSlugs: ["shift-left", "devsecops"],
   layerPositions: {
-    "shift-left": { x: -320, y: 520 },
-    devsecops: { x: 620, y: 640 },
+    // shift-left sits left of the first stage; devsecops above the test
+    // stage — both short straight edges that cross no cards.
+    "shift-left": { x: -320, y: 200 },
+    devsecops: { x: 560, y: -180 },
   },
 
-  // Explicit concept card positions. The renderer looks each slug up here
-  // (unknown slugs fall back to the per-column heuristic, but AppSec
-  // pins every card for byte-identical output with the pre-refactor code).
+  // Every card sits in the column of its stage.
   conceptPositions: {
-    secrets: { x: 0, y: 300 },
-    sast: { x: 280, y: 170 },
-    sca: { x: 280, y: 350 },
+    secrets: { x: 0, y: 200 },
+    sast: { x: 280, y: 200 },
+    sca: { x: 280, y: 380 },
     cicd: { x: 560, y: 300 },
-    sbom: { x: 840, y: 520 },
-    dast: { x: 1120, y: 300 },
+    sbom: { x: 840, y: 380 },
+    dast: { x: 1120, y: 200 },
   },
 
   // Concept → stage spoke attachments. The renderer's concept node exposes
@@ -39,7 +39,8 @@ export const graphLayout: DomainGraphLayout = {
   conceptAttachments: [
     { slug: "secrets", stageId: "source", sourceHandle: "s-t", targetHandle: "t-b" },
     { slug: "sast", stageId: "build", sourceHandle: "s-t", targetHandle: "t-b" },
-    { slug: "sca", stageId: "package", sourceHandle: "s-r", targetHandle: "t-b" },
+    { slug: "sca", stageId: "build", sourceHandle: "s-t", targetHandle: "t-b" },
+    { slug: "sca", stageId: "package", sourceHandle: "s-t", targetHandle: "t-b" },
     { slug: "sbom", stageId: "package", sourceHandle: "s-t", targetHandle: "t-b" },
     { slug: "dast", stageId: "deploy", sourceHandle: "s-t", targetHandle: "t-b" },
   ],

@@ -29,40 +29,27 @@ export const graphLayout: DomainGraphLayout = {
 
   layerSlugs: ["rag", "llm", "mcp", "guardrails"],
   layerPositions: {
-    // Top dashed card; the retrieval → rag dashed edge drops down from
-    // retrieve into this card.
-    rag: { x: 770, y: -180 },
-    // Above the act column; the llm → agent-frameworks dashed edge runs
-    // straight down into the act concept.
-    llm: { x: 1180, y: -180 },
-    // Right of the act column; tool-calling → mcp dashed edge runs right.
-    mcp: { x: 1480, y: 380 },
-    // Left of the ingest column; guardrails → llm dashed edge runs far
-    // right across the canvas (canonical lambda-shape overlay).
-    guardrails: { x: -300, y: 580 },
+    // Every card sits in the column of its stage; layers are dashed and
+    // placed next to the cards they overlay so no edge crosses a card.
+    rag: { x: 560, y: 380 }, // under retrieval
+    llm: { x: 560, y: 560 }, // feeds agent-frameworks (same row)
+    guardrails: { x: 280, y: 560 }, // filters llm (same row)
+    mcp: { x: 840, y: 200 }, // above tool-calling
   },
 
   conceptPositions: {
-    // ingest column (x ≈ 70 below stage at x=0)
-    chunking: { x: 70, y: 200 },
-
-    // index column (stage at x=280)
-    embeddings: { x: 350, y: 200 },
-    "vector-db": { x: 350, y: 380 },
-
-    // retrieve column (stage at x=560)
-    retrieval: { x: 630, y: 200 },
-
-    // act column (stage at x=840) — 3 concepts stacked
-    "agent-frameworks": { x: 910, y: 200 },
-    "tool-calling": { x: 910, y: 380 },
-    orchestration: { x: 910, y: 560 },
-
-    // evaluate column (stage at x=1120) — 4 concepts stacked
-    evals: { x: 1190, y: 200 },
-    benchmarks: { x: 1190, y: 380 },
-    "llm-as-judge": { x: 1190, y: 560 },
-    "regression-evals": { x: 1190, y: 740 },
+    chunking: { x: 0, y: 200 },
+    embeddings: { x: 280, y: 200 },
+    "vector-db": { x: 280, y: 380 },
+    retrieval: { x: 560, y: 200 },
+    "tool-calling": { x: 840, y: 380 },
+    "agent-frameworks": { x: 840, y: 560 },
+    orchestration: { x: 840, y: 740 },
+    benchmarks: { x: 1120, y: 200 },
+    evals: { x: 1120, y: 380 },
+    "llm-as-judge": { x: 1120, y: 560 },
+    // Beside evals (not under it) so it does not cross other cards.
+    "regression-evals": { x: 1400, y: 380 },
   },
 
   // Concept → stage spoke attachments. The 11 non-layer topics attach to
@@ -208,16 +195,6 @@ export const graphLayout: DomainGraphLayout = {
     },
 
     // evals → rag (dashed overlay)
-    {
-      id: "mede-a-recuperacao",
-      source: "evals",
-      target: "rag",
-      sourceHandle: "s-t",
-      targetHandle: "t-b",
-      label: "mede a recuperação",
-      dashed: true,
-      arrow: false,
-    },
 
     // guardrails → llm (dashed overlay)
     {

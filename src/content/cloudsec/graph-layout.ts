@@ -25,24 +25,27 @@ export const graphLayout: DomainGraphLayout = {
 
   layerSlugs: ["zero-trust"],
   layerPositions: {
-    // Far-left dashed card; emits the dashed "concept overlay" relations
-    // rightward into the protecting concepts (IAM + network).
-    "zero-trust": { x: -180, y: 300 },
+    // Dashed overlay card on the far left, level with the two cards it
+    // overlays (network, iam) so both dashed edges are short and straight.
+    "zero-trust": { x: -300, y: 290 },
   },
 
   conceptPositions: {
-    // Proteger column — 2×3 staggered grid around x≈300.
-    iam: { x: 60, y: 200 },
-    network: { x: 320, y: 200 },
-    kubernetes: { x: 60, y: 380 },
-    containers: { x: 320, y: 380 },
-    "kms-crypto": { x: 60, y: 560 },
-    "secrets-cloud": { x: 320, y: 560 },
+    // Proteger concepts: two sub-columns x 3 rows. Left sub-column sits in
+    // the (empty) inventario column, right sub-column under the stage.
+    // Every related pair is adjacent so no edge crosses another card.
+    network: { x: 0, y: 200 },
+    containers: { x: 280, y: 200 },
+    iam: { x: 0, y: 380 },
+    kubernetes: { x: 280, y: 380 },
+    "kms-crypto": { x: 0, y: 560 },
+    "secrets-cloud": { x: 280, y: 560 },
 
-    // Detectar column — 3 stacked at x=600.
-    cspm: { x: 600, y: 200 },
-    cwpp: { x: 600, y: 400 },
-    "logging-detection": { x: 600, y: 600 },
+    // Detectar column (stage at x=560): logging in the middle so it sits
+    // next to both cwpp and cspm.
+    cwpp: { x: 560, y: 200 },
+    "logging-detection": { x: 560, y: 380 },
+    cspm: { x: 560, y: 560 },
   },
 
   // Concept → stage spoke edges. 6 protecting concepts → proteger
@@ -88,14 +91,6 @@ export const graphLayout: DomainGraphLayout = {
       label: "segmenta por identidade",
       dashed: true,
       arrow: false,
-    },
-    {
-      id: "audita-iam",
-      source: "cspm",
-      target: "iam",
-      sourceHandle: "s-t",
-      targetHandle: "t-l",
-      label: "audita",
     },
     {
       id: "audita-postura-k8s",
