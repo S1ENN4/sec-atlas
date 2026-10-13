@@ -10,6 +10,7 @@ import { secretsCloud } from "./topics/secrets-cloud";
 import { kmsCrypto } from "./topics/kms-crypto";
 import { loggingDetection } from "./topics/logging-detection";
 import { zeroTrust } from "./topics/zero-trust";
+import { incidentResponse } from "./topics/incident-response";
 import { relations } from "./relations";
 import { pipeline } from "./pipeline";
 import { glossary } from "./glossary";
@@ -42,6 +43,7 @@ export const cloudsec: Domain = {
     kmsCrypto,
     loggingDetection,
     zeroTrust,
+    incidentResponse,
   ],
   relations,
   pipeline,

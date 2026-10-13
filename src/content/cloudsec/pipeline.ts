@@ -57,7 +57,7 @@ export const pipeline: PipelineStage[] = [
     name: "responder",
     description: "do alerta à contenção",
     items: [
-      { label: "runbooks e automação" },
+      { label: "runbooks e automação", slug: "incident-response" },
       { label: "isolamento de credenciais" },
       { label: "forense preservada" },
     ],

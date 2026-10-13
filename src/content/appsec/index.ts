@@ -8,6 +8,7 @@ import { secrets } from "./topics/secrets";
 import { sbom } from "./topics/sbom";
 import { shiftLeft } from "./topics/shift-left";
 import { devsecops } from "./topics/devsecops";
+import { threatModeling } from "./topics/threat-modeling";
 import { relations } from "./relations";
 import { pipeline } from "./pipeline";
 import { glossary } from "./glossary";
@@ -28,7 +29,7 @@ export const appsec: Domain = {
   status: "live",
   accent: "emerald",
   kindMeta,
-  topics: [cicd, sast, dast, sca, secrets, sbom, shiftLeft, devsecops],
+  topics: [cicd, sast, dast, sca, secrets, sbom, shiftLeft, devsecops, threatModeling],
   relations,
   pipeline,
   glossary,

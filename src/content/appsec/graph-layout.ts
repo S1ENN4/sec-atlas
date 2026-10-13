@@ -31,6 +31,7 @@ export const graphLayout: DomainGraphLayout = {
     cicd: { x: 560, y: 300 },
     sbom: { x: 840, y: 380 },
     dast: { x: 1120, y: 200 },
+    "threat-modeling": { x: 0, y: 380 },
   },
 
   // Concept → stage spoke attachments. The renderer's concept node exposes
@@ -38,6 +39,8 @@ export const graphLayout: DomainGraphLayout = {
   // exposes `t-l` (left target), `t-b` (bottom target) handles.
   conceptAttachments: [
     { slug: "secrets", stageId: "source", sourceHandle: "s-t", targetHandle: "t-b" },
+    { slug: "threat-modeling", stageId: "source", sourceHandle: "s-t", targetHandle: "t-b" },
+    { slug: "cicd", stageId: "test", sourceHandle: "s-t", targetHandle: "t-b" },
     { slug: "sast", stageId: "build", sourceHandle: "s-t", targetHandle: "t-b" },
     { slug: "sca", stageId: "build", sourceHandle: "s-t", targetHandle: "t-b" },
     { slug: "sca", stageId: "package", sourceHandle: "s-t", targetHandle: "t-b" },
@@ -50,6 +53,16 @@ export const graphLayout: DomainGraphLayout = {
   // registry powers the topic page links, while this list powers the graph
   // — they describe different facets of the same domain.
   crossRelations: [
+    {
+      id: "comeca-no-design",
+      source: "shift-left",
+      target: "threat-modeling",
+      sourceHandle: "s-b",
+      targetHandle: "t-t",
+      label: "começa no design",
+      dashed: true,
+      arrow: false,
+    },
     { id: "gera", source: "sca", target: "sbom", sourceHandle: "s-r", targetHandle: "t-l", label: "gera" },
     {
       id: "complementa",

@@ -12,4 +12,7 @@ export const relations: Relation[] = [
   { source: ref("shift-left"), target: ref("sca"), label: "antecipa" },
   { source: ref("devsecops"), target: ref("cicd"), label: "gates & políticas" },
   { source: ref("sast"), target: ref("dast"), label: "complementa", animated: true },
+  { source: ref("shift-left"), target: ref("threat-modeling"), label: "começa no design" },
+  { source: ref("threat-modeling"), target: ref("sast"), label: "define o que testar" },
+  { source: ref("threat-modeling"), target: ref("devsecops"), label: "vira gate" },
 ];

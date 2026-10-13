@@ -41,4 +41,9 @@ export const relations: Relation[] = [
 
   // Network segmentation isolates container traffic east-west
   { source: ref("network"), target: ref("containers"), label: "isola a rede" },
+
+  // Response: detection signals trigger containment, which acts on identity
+  { source: ref("logging-detection"), target: ref("incident-response"), label: "dispara a resposta" },
+  { source: ref("cwpp"), target: ref("incident-response"), label: "alerta de runtime" },
+  { source: ref("incident-response"), target: ref("iam"), label: "revoga credenciais" },
 ];

@@ -10,6 +10,7 @@ export const pipeline: PipelineStage[] = [
       { label: "secrets scanning", slug: "secrets" },
       { label: "pre-commit hooks", slug: "shift-left" },
       { label: "checks de PR", slug: "shift-left" },
+      { label: "threat model da feature", slug: "threat-modeling" },
     ],
     gate: "nenhum segredo no diff",
   },
@@ -30,6 +31,7 @@ export const pipeline: PipelineStage[] = [
     name: "test",
     description: "unitários, integração e segurança",
     items: [
+      { label: "orquestração da esteira", slug: "cicd" },
       { label: "testes unitários" },
       { label: "testes de integração" },
       { label: "quality gate", slug: "devsecops" },

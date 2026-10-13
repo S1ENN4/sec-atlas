@@ -313,4 +313,30 @@ export const glossary: GlossaryGroup[] = [
       },
     ],
   },
+  {
+    id: "modelagem-de-ameacas",
+    title: "modelagem de ameaças",
+    entries: [
+      {
+        term: "STRIDE",
+        meaning:
+          "Mnemônico de seis categorias de ameaça (Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege) usado como checklist ao percorrer um diagrama de fluxo de dados.",
+        topic: "threat-modeling",
+      },
+      {
+        term: "DFD",
+        aka: "diagrama de fluxo de dados",
+        meaning:
+          "Desenho de atores, processos, armazenamentos e fluxos de um sistema, com as fronteiras de confiança marcadas. É a entrada do threat modeling: as ameaças aparecem onde um fluxo cruza uma fronteira.",
+        topic: "threat-modeling",
+      },
+      {
+        term: "Fronteira de confiança",
+        aka: "trust boundary",
+        meaning:
+          "Linha onde muda o nível de confiança dos dados ou de quem os envia (internet para VPC, serviço para banco, usuário para admin). Tudo que a cruza deve ser autenticado, autorizado e validado.",
+        topic: "threat-modeling",
+      },
+    ],
+  },
 ];

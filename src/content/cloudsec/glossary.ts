@@ -124,4 +124,30 @@ export const glossary: GlossaryGroup[] = [
       },
     ],
   },
+  {
+    id: "resposta-a-incidentes",
+    title: "resposta a incidentes",
+    entries: [
+      {
+        term: "MTTR",
+        aka: "mean time to respond",
+        meaning:
+          "Tempo médio entre a confirmação de um incidente e a sua contenção. É a métrica que mostra se runbooks e automações funcionam de verdade, e a que mais cai quando a resposta é praticada em exercícios.",
+        topic: "incident-response",
+      },
+      {
+        term: "Runbook",
+        meaning:
+          "Roteiro passo a passo para um tipo de incidente (chave vazada, instância comprometida). Escrito antes da crise, testado em game days e, quando possível, transformado em automação.",
+        topic: "incident-response",
+      },
+      {
+        term: "Cadeia de custódia",
+        aka: "chain of custody",
+        meaning:
+          "Registro de quem coletou, guardou e manipulou cada evidência digital, e quando. Sem ela, a prova perde valor para auditoria e para eventual disputa legal.",
+        topic: "incident-response",
+      },
+    ],
+  },
 ];

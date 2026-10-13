@@ -46,6 +46,10 @@ export const graphLayout: DomainGraphLayout = {
     cwpp: { x: 560, y: 200 },
     "logging-detection": { x: 560, y: 380 },
     cspm: { x: 560, y: 560 },
+
+    // Responder column (stage at x=840), level with logging so the
+    // detection -> response edge is a short horizontal line.
+    "incident-response": { x: 840, y: 380 },
   },
 
   // Concept → stage spoke edges. 6 protecting concepts → proteger
@@ -57,6 +61,7 @@ export const graphLayout: DomainGraphLayout = {
     { slug: "containers", stageId: "proteger", sourceHandle: "s-t", targetHandle: "t-b" },
     { slug: "kms-crypto", stageId: "proteger", sourceHandle: "s-t", targetHandle: "t-b" },
     { slug: "secrets-cloud", stageId: "proteger", sourceHandle: "s-t", targetHandle: "t-b" },
+    { slug: "incident-response", stageId: "responder", sourceHandle: "s-t", targetHandle: "t-b" },
     { slug: "cspm", stageId: "detectar", sourceHandle: "s-t", targetHandle: "t-b" },
     { slug: "cwpp", stageId: "detectar", sourceHandle: "s-t", targetHandle: "t-b" },
     { slug: "logging-detection", stageId: "detectar", sourceHandle: "s-t", targetHandle: "t-b" },
@@ -72,6 +77,14 @@ export const graphLayout: DomainGraphLayout = {
   // `relations.ts` and surface on the topic page's connections list,
   // which the topic page renders server-side.
   crossRelations: [
+    {
+      id: "dispara-resposta",
+      source: "logging-detection",
+      target: "incident-response",
+      sourceHandle: "s-r",
+      targetHandle: "t-l",
+      label: "dispara a resposta",
+    },
     {
       id: "guia-o-modelo",
       source: "zero-trust",
