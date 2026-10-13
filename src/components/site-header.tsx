@@ -14,6 +14,7 @@ import { domainMeta } from "@/content/registry";
 // of the switcher for consistency.
 
 const REFERENCE_LINKS = [
+  { href: "/manifesto", label: "manifesto" },
   { href: "/trilhas", label: "trilhas" },
   { href: "/cenarios", label: "cenários" },
   { href: "/glossario", label: "glossário" },
@@ -24,7 +25,7 @@ const REFERENCE_LINKS = [
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b print:hidden border-border/60 bg-background/80 backdrop-blur">
-      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-3 px-4">
+      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-3 px-4">
         <Link href="/" className="flex shrink-0 items-center gap-2 font-mono text-sm font-semibold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm">
           <ShieldCheck className="size-5 text-primary" />
           appsec<span className="text-primary">/</span>kb
@@ -37,7 +38,7 @@ export function SiteHeader() {
             <Link
               key={d.id}
               href={d.route}
-              className="shrink-0 rounded-md px-2 py-1.5 font-mono text-[11px] uppercase tracking-wider transition-colors duration-[120ms] hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:px-3 sm:text-[13px]"
+              className="shrink-0 rounded-md px-2 py-1.5 font-mono text-[11px] uppercase tracking-wider transition-colors duration-[120ms] hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:px-2 sm:text-[12px] xl:px-3 xl:text-[13px]"
             >
               {d.id}
             </Link>
@@ -47,7 +48,7 @@ export function SiteHeader() {
             <Link
               key={l.href}
               href={l.href}
-              className="shrink-0 rounded-md px-2 py-1.5 transition-colors duration-[120ms] hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:px-3"
+              className="shrink-0 rounded-md px-2 py-1.5 transition-colors duration-[120ms] hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:px-2 xl:px-3"
             >
               {l.label}
             </Link>

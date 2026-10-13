@@ -10,7 +10,7 @@ export const dynamic = "force-static";
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = profile.siteUrl.replace(/\/$/, "");
   const lastModified = new Date(profile.contentUpdated);
-  const fixed = ["", "/sobre", "/novidades", "/fontes", "/trilhas", "/cenarios", "/glossario", "/seguranca"];
+  const fixed = ["", "/manifesto", "/sobre", "/novidades", "/fontes", "/trilhas", "/cenarios", "/glossario", "/seguranca"];
   const entries: MetadataRoute.Sitemap = fixed.map((path) => ({
     url: `${base}${path}`,
     lastModified: path === "/novidades" ? new Date(changelog[0].date) : lastModified,

@@ -32,7 +32,9 @@
   "scripts": {
     "dev": "next dev",
     "prebuild": "node --import ./scripts/content-alias-loader.mjs scripts/validate-content.mjs",
-    "build": "next build && node scripts/check-budget.mjs"
+    "build": "next build && node scripts/check-budget.mjs",
+    "mcp": "node --import ./scripts/content-alias-loader.mjs mcp/server.mjs",
+    "test:mcp": "node scripts/mcp-smoke.mjs"
   },
   "dependencies": {
     "@radix-ui/react-slot": "1.4.0",

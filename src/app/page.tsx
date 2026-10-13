@@ -86,6 +86,15 @@ export default function Home() {
             Cada domínio é um grafo independente: conceitos, esteira, conexões e glossário.
             Cinco mapas prontos, todos com o mesmo nível de profundidade.
           </p>
+          <p className="mt-5">
+            <Link
+              href="/manifesto"
+              className="group inline-flex items-center gap-1.5 font-mono text-sm text-primary transition-colors hover:text-primary/80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+            >
+              ler o manifesto: por que este projeto existe
+              <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
+            </Link>
+          </p>
         </div>
         <dl className="font-mono text-xs text-muted-foreground md:text-right">
           <div className="flex items-baseline justify-between gap-3 md:justify-end md:gap-6">

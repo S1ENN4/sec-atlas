@@ -31,6 +31,7 @@ export function SiteFooter() {
             appsec<span className="text-primary">/</span>kb — conteúdo educacional por {profile.name}
           </span>
           <span className="flex flex-wrap gap-x-4">
+            <Link href="/manifesto" className="hover:text-foreground">manifesto</Link>
             <Link href="/sobre" className="hover:text-foreground">sobre</Link>
             <Link href="/novidades" className="hover:text-foreground">novidades</Link>
             <Link href="/fontes" className="hover:text-foreground">fontes</Link>

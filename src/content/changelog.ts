@@ -10,6 +10,15 @@ export interface ChangelogEntry {
 export const changelog: ChangelogEntry[] = [
   {
     date: "2026-10-13",
+    title: "Manifesto e servidor MCP",
+    items: [
+      "Página de manifesto: por que o jeito de ensinar segurança precisa mudar e o que este projeto faz diferente.",
+      "Servidor MCP local (7 ferramentas, sem dependências) para agentes de código lerem, buscarem, validarem e criarem o esqueleto de novos tópicos.",
+      "Smoke test do servidor MCP no CI, com checagem das recusas de segurança.",
+    ],
+  },
+  {
+    date: "2026-10-13",
     title: "Projeto aberto",
     items: [
       "Código sob MIT e conteúdo sob CC BY-SA 4.0, com guia de contribuição, código de conduta e política de segurança.",

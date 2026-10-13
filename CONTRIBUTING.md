@@ -65,6 +65,13 @@ São bem-vindas, com duas condições:
 PRs que parecem texto gerado sem verificação (fontes inventadas, APIs que não
 existem, exemplos que não funcionam) serão fechados.
 
+### Agentes de código e o servidor MCP
+
+Se você usa um agente, conecte o servidor MCP do repositório (veja o README): ele entrega
+as regras do projeto (`get_authoring_guide`), cria o esqueleto de um tópico
+(`scaffold_topic`) e roda o validador (`validate_content`). O servidor ajuda a seguir o
+processo, mas **não substitui a verificação humana**: a política acima continua valendo.
+
 ## Processo de PR
 
 1. Abra uma issue antes de mudanças grandes (um domínio novo, uma refatoração).

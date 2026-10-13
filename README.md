@@ -97,6 +97,7 @@ src/components/              UI compartilhada (cards, badges, header, footer, mo
   quiz.tsx, path-card.tsx    quiz por tópico e trilhas, com progresso
 src/lib/progress.ts          progresso de estudo em localStorage (nenhum dado sai do navegador)
 scripts/
+  mcp-smoke.mjs              teste de fumaça do servidor MCP (npm run test:mcp)
   validate-content.mjs       prebuild: regras R1 a R8
   check-budget.mjs           pós-build: caps de tamanho
   content-alias-loader.mjs   loader de alias `@/*` para Node
@@ -198,6 +199,30 @@ NEXT_PUBLIC_SITE_URL=https://seu-dominio.com npm run build
 
 Sem a variável, o build usa `http://localhost:3000`. Depois de publicar, force o LinkedIn a reler o preview em https://www.linkedin.com/post-inspector/.
 
+## Servidor MCP para agentes
+
+O repositório inclui um servidor [MCP](https://modelcontextprotocol.io/) local, **sem dependências**, para que agentes de código leiam, busquem, validem e estendam o conteúdo com os mesmos guardrails de uma pessoa. Ele fala MCP por stdio e roda a partir da raiz do repositório:
+
+```bash
+npm run mcp        # equivale a: node --import ./scripts/content-alias-loader.mjs mcp/server.mjs
+```
+
+O `.mcp.json` na raiz já registra o servidor (Claude Code pede aprovação na primeira vez). Em outros clientes, use o mesmo comando. Com o Claude Code:
+
+```bash
+claude mcp add appsec-kb -- node --import ./scripts/content-alias-loader.mjs mcp/server.mjs
+```
+
+| Ferramenta | Para quê |
+|---|---|
+| `list_domains`, `list_topics` | mapear domínios, etapas e tópicos existentes |
+| `get_topic`, `search` | ler um tópico em Markdown e buscar conteúdo |
+| `get_authoring_guide` | carregar o CONTRIBUTING e o passo a passo de autoria |
+| `scaffold_topic` | criar o esqueleto de um tópico novo (só um arquivo novo; nunca sobrescreve) |
+| `validate_content` | rodar o validador R1 a R8 |
+
+Segurança do servidor: é local (stdio), não abre portas, **só escreve** em `src/content/<domínio>/topics/<slug>.ts` e recusa domínios, etapas ou slugs inválidos e caminhos fora dessa pasta. O `scaffold_topic` cria só o esqueleto com marcadores `TODO`: registrar o tópico, posicionar no mapa, escrever o quiz e **verificar o conteúdo** continua sendo trabalho de quem contribui. O teste `npm run test:mcp` cobre o protocolo e essas recusas, e roda no CI.
+
 ## Comandos
 
 ```bash
@@ -220,13 +245,13 @@ Os limites ficam em `scripts/check-budget.mjs` (bytes):
 
 | métrica            | cap atual    |
 |--------------------|--------------|
-| first-load assets  | 6.200.000    |
-| rsc prefetch       | 6.750.000    |
-| total              | 12.950.000   |
-| CSS raw            | 72.000       |
+| first-load assets  | 6.400.000    |
+| rsc prefetch       | 7.050.000    |
+| total              | 13.450.000   |
+| CSS raw            | 74.000       |
 | JS raw             | 1.030.000    |
 | JS gzip            | 330.000      |
-| `out/index.html`   | 71.000       |
+| `out/index.html`   | 73.500       |
 
 Cada bump nesses números tem commit de reconciliação e motivo no header do script. Se o conteúdo novo pedir mais, siga o mesmo padrão: bump mínimo + parágrafo explicando qual conteúdo forçou.
 
