@@ -2,7 +2,33 @@
   "name": "appsec-kb",
   "version": "0.1.0",
   "private": true,
-  "description": "Knowledge base interativa de seguranca de aplicacoes: SAST, DAST, SCA, pipelines e CI/CD.",
+  "description": "Knowledge base interativa de segurança de software: mapas por domínio (AppSec, CloudSec, agentes de IA, SecOps e Engenharia de segurança), trilhas, cenários e quizzes.",
+  "license": "MIT",
+  "author": {
+    "name": "Vitor Sienna",
+    "url": "https://www.linkedin.com/in/vitor-sienna/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/S1ENN4/appsec-kb.git"
+  },
+  "bugs": {
+    "url": "https://github.com/S1ENN4/appsec-kb/issues"
+  },
+  "homepage": "https://github.com/S1ENN4/appsec-kb#readme",
+  "keywords": [
+    "appsec",
+    "devsecops",
+    "cloud-security",
+    "secops",
+    "waf",
+    "ai-security",
+    "knowledge-base",
+    "nextjs"
+  ],
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
     "dev": "next dev",
     "prebuild": "node --import ./scripts/content-alias-loader.mjs scripts/validate-content.mjs",

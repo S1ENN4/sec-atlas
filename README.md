@@ -1,6 +1,38 @@
 # appsec/kb
 
-Knowledge base visual de segurança de software, organizada por domínios. Cada domínio é um grafo independente: conceitos, esteira, conexões e glossário, renderizados do mesmo jeito. Cinco mapas prontos (`appsec`, `cloudsec`, `ai-agents`, `secops`, `seceng`), todos com a mesma profundidade.
+[![CI](https://github.com/S1ENN4/appsec-kb/actions/workflows/ci.yml/badge.svg)](https://github.com/S1ENN4/appsec-kb/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/S1ENN4/appsec-kb/actions/workflows/codeql.yml/badge.svg)](https://github.com/S1ENN4/appsec-kb/actions/workflows/codeql.yml)
+[![Código: MIT](https://img.shields.io/badge/código-MIT-blue.svg)](LICENSE)
+[![Conteúdo: CC BY-SA 4.0](https://img.shields.io/badge/conteúdo-CC%20BY--SA%204.0-lightgrey.svg)](LICENSE-CONTENT.md)
+
+**Mapa interativo de segurança de software**, em português: o que cada verificação faz, onde ela entra na esteira e como as peças se conectam. Cada domínio é um grafo independente, com conceitos, esteira, conexões, glossário, trilhas de estudo, cenários de ataque e quizzes.
+
+| Domínio | Rota | Foco |
+|---|---|---|
+| AppSec | `/appsec` | SAST, DAST, SCA, secrets, SBOM, threat modeling e a esteira de CI/CD |
+| CloudSec | `/cloudsec` | IAM, rede, Kubernetes, containers, postura, runtime e resposta a incidentes |
+| Agentes de IA | `/agentes` | RAG, tool calling, MCP, guardrails e avaliação |
+| SecOps | `/secops` | Defesa de borda L7: WAF, rate limiting, bots, detecção e SLOs de SOC |
+| Engenharia | `/engenharia` | IaC seguro, policy as code, hardening de CI/CD, confiabilidade, automação e IA |
+
+Cinco mapas prontos (`appsec`, `cloudsec`, `ai-agents`, `secops`, `seceng`), todos com a mesma profundidade.
+
+## Contribua
+
+O projeto é aberto e **a ajuda mais valiosa é achar e corrigir erros**: segurança com informação imprecisa é pior que segurança ausente.
+
+- Encontrou um erro? Abra uma issue com o modelo **Erro de conteúdo**.
+- Quer escrever um tópico? Veja o [CONTRIBUTING](CONTRIBUTING.md) e a seção [Adicionando um tópico](#adicionando-um-tópico).
+- Achou uma vulnerabilidade no site? Siga a [política de segurança](SECURITY.md) (relato privado).
+
+## Transparência sobre IA
+
+Parte do texto foi produzida com apoio de IA (Claude) e está em **revisão técnica contínua**. Não trate o conteúdo como fonte única: confira as referências em `/fontes`. Contribuições assistidas por IA são bem-vindas, desde que verificadas e declaradas (veja o [CONTRIBUTING](CONTRIBUTING.md)).
+
+## Licenças
+
+- **Código**: [MIT](LICENSE).
+- **Conteúdo** (`src/content/**` e textos longos da documentação): [CC BY-SA 4.0](LICENSE-CONTENT.md). Dados pessoais do mantenedor (`src/content/profile.ts`, página `/sobre`) **não** são licenciados para reuso: substitua-os se fizer um fork.
 
 ## Visão geral
 
@@ -194,7 +226,7 @@ Os limites ficam em `scripts/check-budget.mjs` (bytes):
 | CSS raw            | 72.000       |
 | JS raw             | 1.030.000    |
 | JS gzip            | 330.000      |
-| `out/index.html`   | 69.000       |
+| `out/index.html`   | 71.000       |
 
 Cada bump nesses números tem commit de reconciliação e motivo no header do script. Se o conteúdo novo pedir mais, siga o mesmo padrão: bump mínimo + parágrafo explicando qual conteúdo forçou.
 

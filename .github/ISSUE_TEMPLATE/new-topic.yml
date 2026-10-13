@@ -1,0 +1,43 @@
+name: Proposta de tópico
+description: Sugira um tópico novo, um cenário, uma trilha ou uma ponte entre domínios
+title: "[proposta] "
+labels: ["conteúdo", "proposta"]
+body:
+  - type: input
+    id: domain
+    attributes:
+      label: Domínio
+      description: appsec, cloudsec, ai-agents, secops, seceng (ou proponha um novo)
+    validations:
+      required: true
+  - type: input
+    id: title
+    attributes:
+      label: Título do tópico
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Por que este tópico?
+      description: Que lacuna ele preenche? Que pergunta de quem estuda ele responde?
+    validations:
+      required: true
+  - type: textarea
+    id: outline
+    attributes:
+      label: Esboço
+      description: Seções previstas, exemplo de código e como ele se liga aos tópicos existentes
+  - type: textarea
+    id: sources
+    attributes:
+      label: Fontes primárias
+      description: Documentação, normas e referências em que o tópico se apoia
+    validations:
+      required: true
+  - type: checkboxes
+    id: pr
+    attributes:
+      label: Contribuição
+      options:
+        - label: Quero escrever este tópico (abro um PR depois de alinharmos o escopo)

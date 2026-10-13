@@ -33,7 +33,8 @@ export const profile = {
   links: {
     linkedin: "https://www.linkedin.com/in/vitor-sienna/",
     website: "https://vitorsienna.com/",
-    github: "", // e.g. "https://github.com/<user>"
+    github: "https://github.com/S1ENN4",
+    repo: "https://github.com/S1ENN4/appsec-kb",
     email: "", // shown publicly if filled
   },
 

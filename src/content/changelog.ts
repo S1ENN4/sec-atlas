@@ -10,6 +10,15 @@ export interface ChangelogEntry {
 export const changelog: ChangelogEntry[] = [
   {
     date: "2026-10-13",
+    title: "Projeto aberto",
+    items: [
+      "Código sob MIT e conteúdo sob CC BY-SA 4.0, com guia de contribuição, código de conduta e política de segurança.",
+      "CI com validação de conteúdo e orçamento de tamanho, análise estática (CodeQL) e atualização automática de dependências.",
+      "Modelos de issue para erros de conteúdo e propostas de tópico: correções são o tipo de contribuição mais bem-vindo.",
+    ],
+  },
+  {
+    date: "2026-10-13",
     title: "Novo domínio: Engenharia de segurança",
     items: [
       "Mapa com 8 tópicos: IaC seguro, policy as code, hardening de CI/CD, confiabilidade em escala, observabilidade da plataforma, automação (SOAR), IA na segurança e segurança como produto.",

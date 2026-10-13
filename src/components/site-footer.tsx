@@ -37,6 +37,9 @@ export function SiteFooter() {
             <a href={profile.links.linkedin} target="_blank" rel="noopener noreferrer me" className="hover:text-foreground">
               linkedin
             </a>
+            <a href={profile.links.repo} target="_blank" rel="noopener noreferrer" className="hover:text-foreground">
+              código aberto (MIT / CC BY-SA)
+            </a>
           </span>
         </div>
         <div className="flex flex-col gap-1 md:items-end">

@@ -37,7 +37,7 @@ export const incidentResponse: Topic = {
         {
           language: "bash",
           filename: "contain-key.sh - desativar chave comprometida",
-          code: "USER=svc-deploy\nKEY=AKIAEXAMPLEKEYID\n\n# 1. desativa a chave (não apaga: preserva para forense)\naws iam update-access-key --user-name \"$USER\" \\\n  --access-key-id \"$KEY\" --status Inactive\n\n# 2. nega tudo para sessões já emitidas antes de agora\naws iam put-user-policy --user-name \"$USER\" \\\n  --policy-name quarantine \\\n  --policy-document file://deny-all.json",
+          code: "USER=svc-deploy\nKEY=AKIAIOSFODNN7EXAMPLE\n\n# 1. desativa a chave (não apaga: preserva para forense)\naws iam update-access-key --user-name \"$USER\" \\\n  --access-key-id \"$KEY\" --status Inactive\n\n# 2. nega tudo para sessões já emitidas antes de agora\naws iam put-user-policy --user-name \"$USER\" \\\n  --policy-name quarantine \\\n  --policy-document file://deny-all.json",
         },
       ],
     },

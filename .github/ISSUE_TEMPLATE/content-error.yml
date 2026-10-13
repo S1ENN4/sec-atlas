@@ -1,0 +1,42 @@
+name: Erro de conteúdo
+description: Algo no texto, no quiz, no cenário ou num exemplo está incorreto ou impreciso
+title: "[conteúdo] "
+labels: ["conteúdo", "precisão"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado por ajudar a manter o conteúdo correto. Este é o tipo de contribuição mais valioso do projeto.
+  - type: input
+    id: topic
+    attributes:
+      label: Tópico ou página
+      description: URL ou domínio/slug (por exemplo, `secops/waf`)
+    validations:
+      required: true
+  - type: textarea
+    id: excerpt
+    attributes:
+      label: Trecho incorreto
+      description: Cole o trecho (ou descreva onde está)
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: O que está errado e qual seria a correção
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Fonte
+      description: Link para documentação oficial, norma ou referência que sustenta a correção
+    validations:
+      required: true
+  - type: checkboxes
+    id: pr
+    attributes:
+      label: Contribuição
+      options:
+        - label: Posso abrir um PR com a correção

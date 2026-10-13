@@ -10,7 +10,7 @@
 //   CSS raw             <=    72,000
 //   JS raw              <= 1,030,000
 //   JS gzip             <=   330,000  (gzipSync per .js file, summed)
-//   out/index.html raw  <=    69,000
+//   out/index.html raw  <=    71,000
 //
 // T26 budget calibration (post-audit): measured numbers right after T22
 // were first-load 3,459,024 (cap 3,500,000, +1.17% headroom < 2% — too
@@ -137,7 +137,7 @@ const CAPS = [
   { key: "css",         label: "CSS raw",               limit:    72_000, scope: "css" },
   { key: "js",          label: "JS raw",                limit: 1_030_000, scope: "js" },
   { key: "js_gz",       label: "JS gzip",               limit:   330_000, scope: "js_gz" },
-  { key: "index",       label: "out/index.html raw",    limit:    69_000, scope: "index" },
+  { key: "index",       label: "out/index.html raw",    limit:    71_000, scope: "index" },
 ];
 
 function walk(dir) {

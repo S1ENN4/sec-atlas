@@ -1,0 +1,4 @@
+# Normalise line endings so Windows and Unix contributors get clean diffs.
+* text=auto eol=lf
+*.png binary
+*.woff2 binary

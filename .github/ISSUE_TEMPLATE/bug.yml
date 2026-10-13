@@ -1,0 +1,35 @@
+name: Bug no site
+description: Algo não funciona (mapa, busca, quiz, build, acessibilidade, desempenho)
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: O que aconteceu
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: O que você esperava
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Passos para reproduzir
+      placeholder: |
+        1. Abra /secops
+        2. Clique em ...
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Ambiente
+      description: Navegador e versão, sistema operacional, ou versão do Node (se for o build)
+  - type: markdown
+    attributes:
+      value: |
+        Se for uma **vulnerabilidade de segurança**, não use este formulário: veja a política em SECURITY.md.
