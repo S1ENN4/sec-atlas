@@ -3,6 +3,7 @@ import { ArrowUpRight, Route, Search, Swords } from "lucide-react";
 
 import { domains, type DomainId } from "@/content/registry";
 import { Badge } from "@/components/ui/badge";
+import { ProfileStrip } from "@/components/profile-strip";
 import { ProgressSummary } from "@/components/progress-summary";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
@@ -57,7 +58,9 @@ export default function Home() {
 
   return (
     <div className="animate-page-enter mx-auto max-w-6xl px-4 pb-10 pt-12 md:pt-20">
-      <header className="grid gap-6 md:grid-cols-[2fr_1fr] md:items-end">
+      <ProfileStrip />
+
+      <header className="mt-10 grid gap-6 md:grid-cols-[2fr_1fr] md:items-end">
         <div>
           <Badge
             variant="outline"

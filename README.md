@@ -27,6 +27,9 @@ src/
   content/
     types.ts                 tipos compartilhados (Domain, Relation, PipelineStage, ...)
     registry.ts              agrega domínios e expõe o contrato público
+    profile.ts               seus dados pessoais (hero, /sobre, rodapé): edite só este arquivo
+    sources.ts               fontes primárias por domínio (/fontes)
+    changelog.ts             registro público de mudanças e correções (/novidades)
     quiz/                    banco de perguntas por domínio (QuizBank, 3+ perguntas por tópico)
     bridges.ts               pontes entre domínios ("o mesmo problema, em outro domínio")
     paths.ts                 trilhas de estudo (ordem sugerida de tópicos)
@@ -43,6 +46,9 @@ src/app/
   page.tsx                   hub (/)
   seguranca/page.tsx         /seguranca, postura dogfooding
   glossario/page.tsx         /glossario
+  sobre/ fontes/ novidades/  /sobre (perfil, bastidores), /fontes, /novidades
+  sitemap.ts robots.ts       sitemap.xml e robots.txt estáticos
+  opengraph-image.tsx        imagem de pré-visualização de link (LinkedIn etc.)
   trilhas/page.tsx           /trilhas (trilhas de estudo + progresso)
   cenarios/page.tsx          /cenarios (siga o ataque)
   search-index.json/         índice de busca estático (buscado sob demanda pela paleta Ctrl+K)
@@ -150,6 +156,16 @@ O caminho canônico, do começo ao fim:
 
 Os limiares de R6 espelham os 8 tópicos de referência do AppSec. Não suba os caps por conteúdo novo sem necessidade: ajuste o conteúdo até caber.
 
+## Publicação e link preview
+
+Defina a URL pública no build para o sitemap e as imagens de preview saírem com o domínio certo:
+
+```bash
+NEXT_PUBLIC_SITE_URL=https://seu-dominio.com npm run build
+```
+
+Sem a variável, o build usa `http://localhost:3000`. Depois de publicar, force o LinkedIn a reler o preview em https://www.linkedin.com/post-inspector/.
+
 ## Comandos
 
 ```bash
@@ -172,13 +188,13 @@ Os limites ficam em `scripts/check-budget.mjs` (bytes):
 
 | métrica            | cap atual    |
 |--------------------|--------------|
-| first-load assets  | 4.300.000    |
-| rsc prefetch       | 4.050.000    |
-| total              | 8.350.000    |
+| first-load assets  | 4.700.000    |
+| rsc prefetch       | 4.600.000    |
+| total              | 9.300.000    |
 | CSS raw            | 72.000       |
 | JS raw             | 1.030.000    |
 | JS gzip            | 330.000      |
-| `out/index.html`   | 46.000       |
+| `out/index.html`   | 57.000       |
 
 Cada bump nesses números tem commit de reconciliação e motivo no header do script. Se o conteúdo novo pedir mais, siga o mesmo padrão: bump mínimo + parágrafo explicando qual conteúdo forçou.
 

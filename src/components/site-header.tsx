@@ -18,6 +18,7 @@ const REFERENCE_LINKS = [
   { href: "/cenarios", label: "cenários" },
   { href: "/glossario", label: "glossário" },
   { href: "/seguranca", label: "segurança" },
+  { href: "/sobre", label: "sobre" },
 ];
 
 export function SiteHeader() {

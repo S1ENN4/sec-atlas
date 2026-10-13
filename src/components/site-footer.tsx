@@ -1,3 +1,6 @@
+import Link from "next/link";
+
+import { profile } from "@/content/profile";
 import { domains } from "@/content/registry";
 
 // Map of DomainId → lowercase badge label used in the footer's per-domain
@@ -21,9 +24,19 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-border/60 print:hidden">
       <div className="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-8 font-mono text-xs text-muted-foreground md:flex-row md:items-center md:justify-between">
-        <span>
-          appsec<span className="text-primary">/</span>kb — conteúdo educacional
-        </span>
+        <div className="flex flex-col gap-1">
+          <span>
+            appsec<span className="text-primary">/</span>kb — conteúdo educacional por {profile.name}
+          </span>
+          <span className="flex flex-wrap gap-x-4">
+            <Link href="/sobre" className="hover:text-foreground">sobre</Link>
+            <Link href="/novidades" className="hover:text-foreground">novidades</Link>
+            <Link href="/fontes" className="hover:text-foreground">fontes</Link>
+            <a href={profile.links.linkedin} target="_blank" rel="noopener noreferrer me" className="hover:text-foreground">
+              linkedin
+            </a>
+          </span>
+        </div>
         <div className="flex flex-col gap-1 md:items-end">
           <span>{counts}</span>
           <span>100% estático · sem rastreamento · sem cookies</span>

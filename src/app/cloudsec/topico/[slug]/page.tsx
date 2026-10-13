@@ -7,6 +7,7 @@ import { TopicIcon } from "@/components/topic-icon";
 import { Quiz } from "@/components/quiz";
 import { TopicBridges } from "@/components/topic-bridges";
 import { TopicPathNav } from "@/components/topic-path-nav";
+import { TopicSources } from "@/components/topic-sources";
 import { TopicToolbar } from "@/components/topic-toolbar";
 import { Badge } from "@/components/ui/badge";
 import { cloudsec } from "@/content/cloudsec";
@@ -28,7 +29,12 @@ export async function generateMetadata({
   const { slug } = await params;
   const topic = getTopic({ domain: "cloudsec", slug });
   if (!topic) return {};
-  return { title: topic.title, description: topic.tagline };
+  return {
+    title: topic.title,
+    description: topic.tagline,
+    openGraph: { type: "article", title: topic.title, description: topic.tagline },
+    twitter: { card: "summary_large_image", title: topic.title, description: topic.tagline },
+  };
 }
 
 export default async function TopicPage({
@@ -178,6 +184,7 @@ export default async function TopicPage({
         </section>
       ) : null}
 
+      <TopicSources domain="cloudsec" />
       <TopicPathNav domain="cloudsec" slug={slug} />
       <TopicBridges domain="cloudsec" slug={slug} />
       <Quiz domain="cloudsec" slug={slug} />

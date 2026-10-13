@@ -4,13 +4,13 @@
 // existing out/ directory).
 //
 // Caps (bytes):
-//   first-load assets   <= 4,300,000  (every file under out/ EXCEPT *.txt, raw)
-//   rsc prefetch        <= 4,050,000  (every *.txt under out/, raw)
-//   total               <= 8,350,000  (sanity cap: every file under out/)
+//   first-load assets   <= 4,700,000  (every file under out/ EXCEPT *.txt, raw)
+//   rsc prefetch        <= 4,600,000  (every *.txt under out/, raw)
+//   total               <= 9,300,000  (sanity cap: every file under out/)
 //   CSS raw             <=    72,000
 //   JS raw              <= 1,030,000
 //   JS gzip             <=   330,000  (gzipSync per .js file, summed)
-//   out/index.html raw  <=    46,000
+//   out/index.html raw  <=    57,000
 //
 // T26 budget calibration (post-audit): measured numbers right after T22
 // were first-load 3,459,024 (cap 3,500,000, +1.17% headroom < 2% — too
@@ -88,6 +88,16 @@
 // search index are static JSON fetched on demand. Caps re-floored to ~4%
 // headroom over the new measurements; JS caps were tightened, not raised.
 //
+// Landing-page wave (hero with profile, /sobre, /fontes, /novidades, link
+// preview image, sitemap/robots, OG metadata): measured first-load 4,547,767
+// / rsc 4,457,121 / total 9,004,888 / css 69,740 / js 974,507 / js_gz 308,313
+// / index 55,193. Every new static route costs ~35KB of framework scaffolding
+// (chunk list + RSC bootstrap) before any content; three routes plus the
+// 56KB opengraph-image explain the delta. Topic pages barely moved (the
+// shared sources list lives on /fontes instead of being repeated in all 37
+// topics, which would have added ~1.4MB). Caps re-floored to ~3% headroom;
+// JS caps untouched.
+//
 // Exit 0 when every row is within its cap; exit 1 with a clear per-cap
 // message otherwise.
 
@@ -98,13 +108,13 @@ import { gzipSync } from "node:zlib";
 const OUT_DIR = resolve(process.cwd(), "out");
 
 const CAPS = [
-  { key: "first_load",  label: "first-load assets",     limit: 4_300_000, scope: "first_load" },
-  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 4_050_000, scope: "rsc_prefetch" },
-  { key: "total",       label: "total",                 limit: 8_350_000, scope: "total" },
+  { key: "first_load",  label: "first-load assets",     limit: 4_700_000, scope: "first_load" },
+  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 4_600_000, scope: "rsc_prefetch" },
+  { key: "total",       label: "total",                 limit: 9_300_000, scope: "total" },
   { key: "css",         label: "CSS raw",               limit:    72_000, scope: "css" },
   { key: "js",          label: "JS raw",                limit: 1_030_000, scope: "js" },
   { key: "js_gz",       label: "JS gzip",               limit:   330_000, scope: "js_gz" },
-  { key: "index",       label: "out/index.html raw",    limit:    46_000, scope: "index" },
+  { key: "index",       label: "out/index.html raw",    limit:    57_000, scope: "index" },
 ];
 
 function walk(dir) {
