@@ -41,6 +41,7 @@ export const aiAgents: Domain = {
   // content floor now runs over every ai-agents topic on every validator
   // invocation. T23 flips this flag to activate R6 across the catalogue.
   status: "live",
+  contentLang: "pt", // legacy: migrate to "en" with `npm run i18n -- flip`
   // Violet accent matches the [data-domain="ai-agents"] token override in
   // src/app/globals.css.
   accent: "violet",

@@ -34,7 +34,9 @@
     "prebuild": "node --import ./scripts/content-alias-loader.mjs scripts/validate-content.mjs",
     "build": "next build && node scripts/check-budget.mjs",
     "mcp": "node --import ./scripts/content-alias-loader.mjs mcp/server.mjs",
-    "test:mcp": "node scripts/mcp-smoke.mjs"
+    "test:mcp": "node scripts/mcp-smoke.mjs",
+    "i18n": "node --import ./scripts/content-alias-loader.mjs scripts/i18n.mjs",
+    "test:i18n": "node --import ./scripts/content-alias-loader.mjs scripts/i18n-test.mjs"
   },
   "dependencies": {
     "@radix-ui/react-slot": "1.4.0",

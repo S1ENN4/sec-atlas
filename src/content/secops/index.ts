@@ -27,6 +27,7 @@ export const secops: Domain = {
   id: "secops",
   route: "/secops",
   status: "live",
+  contentLang: "pt", // legacy: migrate to "en" with `npm run i18n -- flip`
   accent: "orange",
   kindMeta,
   topics: [

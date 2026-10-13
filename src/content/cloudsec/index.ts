@@ -30,6 +30,7 @@ export const cloudsec: Domain = {
   id: "cloudsec",
   route: "/cloudsec",
   status: "live",
+  contentLang: "pt", // legacy: migrate to "en" with `npm run i18n -- flip`
   accent: "sky",
   kindMeta,
   topics: [

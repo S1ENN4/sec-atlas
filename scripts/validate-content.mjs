@@ -27,6 +27,7 @@ import { quizzes } from "@/content/quiz";
 import { bridges } from "@/content/bridges";
 import { paths } from "@/content/paths";
 import { scenarios } from "@/content/scenarios";
+import { allUnits, auditAll } from "@/i18n/audit";
 
 // ---------------------------------------------------------------------------
 // Tiny reporting helpers — no external deps.
@@ -298,6 +299,37 @@ const liveDomainIds = allDomainIds.filter((id) => domains[id].status === "live")
     broken.length === 0,
     `${bridges.length} bridges, ${paths.length} paths, ${scenarios.length} scenarios`,
     broken,
+  );
+}
+
+// ---------------------------------------------------------------------------
+// R9: translation drift. English is the source of truth; every translation
+// stores the hash of the source string it was made from.
+//   - a STALE translation (source changed after it) fails the build
+//   - orphan keys, broken placeholders, code samples that changed shape and
+//     "translations" identical to the source fail the build
+//   - MISSING translations are allowed (the site falls back to the source
+//     language with a notice), except in STRICT units (the UI), which must be
+//     100% translated and fresh in every locale
+// Fix a stale entry by re-translating (npm run i18n -- pending/apply), by
+// pruning it (prune), or by confirming the meaning did not change (keep).
+// ---------------------------------------------------------------------------
+{
+  const audits = auditAll();
+  const broken = [];
+  let total = 0;
+  let ok = 0;
+  for (const a of audits) {
+    total += a.report.total;
+    ok += a.report.ok;
+    for (const e of a.errors) broken.push(`${a.locale} ${a.unit.id}: ${e}`);
+  }
+  const units = allUnits().length;
+  record(
+    "R9 translation drift",
+    broken.length === 0,
+    `${units} units, ${ok}/${total} strings translated across locales, 0 stale`,
+    broken.slice(0, 40).concat(broken.length > 40 ? [`... and ${broken.length - 40} more (npm run i18n -- status)`] : []),
   );
 }
 

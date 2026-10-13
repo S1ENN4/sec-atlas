@@ -27,6 +27,7 @@ export const appsec: Domain = {
   id: "appsec",
   route: "/appsec",
   status: "live",
+  contentLang: "pt", // legacy: migrate to "en" with `npm run i18n -- flip`
   accent: "emerald",
   kindMeta,
   topics: [cicd, sast, dast, sca, secrets, sbom, shiftLeft, devsecops, threatModeling],

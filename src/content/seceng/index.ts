@@ -23,6 +23,7 @@ export const seceng: Domain = {
   id: "seceng",
   route: "/engenharia",
   status: "live",
+  contentLang: "pt", // legacy: migrate to "en" with `npm run i18n -- flip`
   accent: "rose",
   kindMeta,
   topics: [

@@ -96,6 +96,10 @@ export interface Domain extends DomainMeta {
   // renderer (see `src/components/domain-graph.tsx`). Domains without a
   // layout don't render a graph.
   graphLayout?: DomainGraphLayout;
+  // Language the domain's strings are authored in. "en" is the source of
+  // truth; "pt" marks LEGACY content that has not been migrated to English
+  // yet (see src/i18n). Defaults to "en".
+  contentLang?: "en" | "pt";
 }
 
 // -- Knowledge-graph layout ----------------------------------------------------

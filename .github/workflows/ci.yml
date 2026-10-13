@@ -31,6 +31,9 @@ jobs:
 
       - run: npm ci
 
+      # The translation drift guarantees are part of the public promise too.
+      - run: npm run test:i18n
+
       # The MCP server is part of the public promise: keep it working.
       - run: npm run test:mcp
 
