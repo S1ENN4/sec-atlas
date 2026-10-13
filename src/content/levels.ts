@@ -124,7 +124,17 @@ export const levels: Record<string, LevelInfo> = {
   "response/ransomware-playbook": { level: 2, requires: ["response/triage-and-containment"] },
   "response/threat-hunting": { level: 3, requires: ["response/threat-intelligence", "response/log-and-timeline-analysis"] },
   "response/digital-forensics-basics": { level: 3, requires: ["response/triage-and-containment", "response/log-and-timeline-analysis"] },
-  "response/malware-analysis-basics": { level: 3, requires: ["response/digital-forensics-basics"] }
+  "response/malware-analysis-basics": { level: 3, requires: ["response/digital-forensics-basics"] },
+
+  // --- Offensive security ----------------------------------------
+  "offsec/engagement-scoping-and-ethics": { level: 1 },
+  "offsec/pentest-methodology": { level: 1, requires: ["offsec/engagement-scoping-and-ethics"] },
+  "offsec/recon-and-attack-surface": { level: 2, requires: ["offsec/pentest-methodology"] },
+  "offsec/web-and-api-testing": { level: 2, requires: ["offsec/pentest-methodology", "owasp/broken-access-control"] },
+  "offsec/reporting-and-remediation": { level: 2, requires: ["offsec/pentest-methodology"] },
+  "offsec/social-engineering-and-phishing": { level: 2, requires: ["offsec/engagement-scoping-and-ethics"] },
+  "offsec/privilege-escalation-paths": { level: 3, requires: ["offsec/web-and-api-testing", "cloudsec/iam"] },
+  "offsec/red-team-and-adversary-emulation": { level: 3, requires: ["offsec/privilege-escalation-paths", "offsec/social-engineering-and-phishing"] },
 };
 
 export const levelOf = (domain: string, slug: string): Level => levels[`${domain}/${slug}`]?.level ?? 1;

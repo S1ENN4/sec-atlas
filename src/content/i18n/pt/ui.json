@@ -408,6 +408,42 @@
       "t": "mapeados.",
       "h": "effd347c"
     },
+    "domains.offsec.badge": {
+      "t": "base de conhecimento · segurança ofensiva",
+      "h": "9aba303a"
+    },
+    "domains.offsec.lead": {
+      "t": "O método, a ética e as lições de testar sistemas de propósito: escopo, reconhecimento, testes web e de API, caminhos de ataque, phishing, red e purple team e relatórios que viram correção.",
+      "h": "9dc4cbb8"
+    },
+    "domains.offsec.mapIntro": {
+      "t": "Cada tópico fica na coluna da fase a que pertence. Passe o mouse sobre um card para ver onde ele se liga; linhas tracejadas são relações entre tópicos.",
+      "h": "67e2e8d9"
+    },
+    "domains.offsec.name": {
+      "t": "Segurança ofensiva",
+      "h": "ac7f259a"
+    },
+    "domains.offsec.pipelineIntro": {
+      "t": "Escopo, descoberta, ataque seguro, relatório: todo engajamento segue este caminho. Cada chip abre o tópico correspondente.",
+      "h": "89af7850"
+    },
+    "domains.offsec.pipelineTitle": {
+      "t": "da permissão à correção",
+      "h": "ee0b2a3f"
+    },
+    "domains.offsec.pitch": {
+      "t": "Pensar como atacante para defender melhor: testes autorizados, método repetível, relatórios honestos e detecção que melhora a cada exercício.",
+      "h": "efc9f14a"
+    },
+    "domains.offsec.title": {
+      "t": "Segurança ofensiva,",
+      "h": "38cd889f"
+    },
+    "domains.offsec.titleAccent": {
+      "t": "com autorização.",
+      "h": "c4d2b5d2"
+    },
     "domains.owasp.badge": {
       "t": "base de conhecimento · owasp top 10",
       "h": "472e61ee"
@@ -1444,9 +1480,17 @@
       "t": "Nuvem e infraestrutura",
       "h": "d3f8fd40"
     },
+    "nav.groups.govern": {
+      "t": "Governança e estratégia",
+      "h": "27ee721f"
+    },
+    "nav.groups.offense": {
+      "t": "Segurança ofensiva",
+      "h": "ac7f259a"
+    },
     "nav.groups.operate": {
-      "t": "Operações e detecção",
-      "h": "e68d18ec"
+      "t": "Operações e resposta",
+      "h": "ef84c756"
     },
     "nav.learn": {
       "t": "Aprender",

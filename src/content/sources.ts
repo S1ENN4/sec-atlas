@@ -74,6 +74,16 @@ export const sources: Record<DomainId, Source[]> = {
     { label: "YARA", href: "https://virustotal.github.io/yara/", note: "regras para identificar famílias de arquivos" },
     { label: "STIX e TAXII", href: "https://oasis-open.github.io/cti-documentation/", note: "linguagem e protocolo de troca de inteligência" },
   ],
+  offsec: [
+    { label: "OWASP Web Security Testing Guide", href: "https://owasp.org/www-project-web-security-testing-guide/", note: "guia detalhado de testes de segurança web" },
+    { label: "PTES", href: "http://www.pentest-standard.org/", note: "fases de um teste de intrusão" },
+    { label: "NIST SP 800-115", href: "https://csrc.nist.gov/pubs/sp/800/115/final", note: "guia técnico de testes de segurança" },
+    { label: "MITRE ATT&CK", href: "https://attack.mitre.org/", note: "táticas e técnicas de adversários" },
+    { label: "OWASP API Security Top 10", href: "https://owasp.org/API-Security/", note: "riscos específicos de APIs" },
+    { label: "FIRST: CVSS", href: "https://www.first.org/cvss/", note: "pontuação técnica de severidade" },
+    { label: "Atomic Red Team", href: "https://github.com/redcanaryco/atomic-red-team", note: "testes pequenos mapeados ao ATT&CK para validar detecção" },
+    { label: "BloodHound", href: "https://bloodhound.specterops.io/", note: "mapeamento de caminhos de ataque em Active Directory" },
+  ],
   seceng: [
     { label: "Open Policy Agent", href: "https://www.openpolicyagent.org/docs/latest/", note: "policy as code com Rego" },
     { label: "Terraform: documentação", href: "https://developer.hashicorp.com/terraform/docs", note: "IaC, estado remoto e módulos" },

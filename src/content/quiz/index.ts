@@ -9,6 +9,7 @@ import { owaspQuiz } from "./owasp";
 import { vibecodingQuiz } from "./vibecoding";
 import { devopsQuiz } from "./devops";
 import { responseQuiz } from "./response";
+import { offsecQuiz } from "./offsec";
 
 export const quizzes: Record<DomainId, QuizBank> = {
   appsec: appsecQuiz,
@@ -20,6 +21,7 @@ export const quizzes: Record<DomainId, QuizBank> = {
   vibecoding: vibecodingQuiz,
   devops: devopsQuiz,
   response: responseQuiz,
+  offsec: offsecQuiz,
 };
 
 export function getQuiz(domain: DomainId, slug: string): QuizQuestion[] {

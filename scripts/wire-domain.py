@@ -150,7 +150,7 @@ if spec.get("sources"):
 # 12. levels
 s = read("src/content/levels.ts")
 nl = nl_of(s)
-body = nl.join(spec["levels"])
+body = nl.join(l if l.rstrip().endswith(",") else l.rstrip() + "," for l in spec["levels"])
 i = s.rindex("};")
 write("src/content/levels.ts", s[:i].rstrip() + nl + nl + f"  // --- {spec['title']} " + "-" * 40 + nl + body + nl + s[i:])
 

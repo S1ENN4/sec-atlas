@@ -1,4 +1,4 @@
-import { Siren, Infinity, Bot, Cloud, ListChecks, Radar, ShieldCheck, Sparkles, Wrench, type LucideIcon } from "lucide-react";
+import { Swords, Siren, Infinity, Bot, Cloud, ListChecks, Radar, ShieldCheck, Sparkles, Wrench, type LucideIcon } from "lucide-react";
 
 import type { DomainId } from "@/content/types";
 
@@ -12,6 +12,7 @@ const icons: Record<DomainId, LucideIcon> = {
   vibecoding: Sparkles,
   "devops": Infinity,
   "response": Siren,
+  "offsec": Swords,
 };
 
 export function DomainIcon({ id, className }: { id: DomainId; className?: string }) {

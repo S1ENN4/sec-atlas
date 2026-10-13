@@ -46,6 +46,7 @@ import { owasp } from "./owasp";
 import { vibecoding } from "./vibecoding";
 import { devops } from "./devops";
 import { response } from "./response";
+import { offsec } from "./offsec";
 
 // Domain metadata for all known domains — `domainMeta` is the only place the
 // DomainId → route map and per-domain status/accent are pinned. `appsec` is
@@ -65,6 +66,7 @@ export const domains: Record<DomainId, Domain> = {
   vibecoding,
   devops,
   response,
+  offsec,
 };
 
 // Per-domain metadata table (route + status + accent) keyed by DomainId.

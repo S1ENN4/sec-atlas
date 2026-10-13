@@ -53,6 +53,8 @@ import {
   TriangleAlert,
   Terminal,
   Bug,
+  Mail,
+  Swords,
   type LucideIcon,
 } from "lucide-react";
 
@@ -143,6 +145,15 @@ const icons: Record<string, LucideIcon> = {
   "ransomware-playbook": ShieldOff,
   "digital-forensics-basics": Fingerprint,
   "malware-analysis-basics": Bug,
+  // offsec
+  "engagement-scoping-and-ethics": Scale,
+  "pentest-methodology": ClipboardList,
+  "recon-and-attack-surface": Radar,
+  "web-and-api-testing": ScanSearch,
+  "privilege-escalation-paths": Waypoints,
+  "social-engineering-and-phishing": Mail,
+  "red-team-and-adversary-emulation": Swords,
+  "reporting-and-remediation": FileCheck2,
   // ai-agents
   rag: Library,
   chunking: Scissors,

@@ -8,7 +8,7 @@ import { useProgress } from "@/lib/progress";
 import { cn } from "@/lib/utils";
 
 export interface PathCardStep {
-  domain: "appsec" | "cloudsec" | "ai-agents" | "secops" | "seceng" | "owasp" | "vibecoding" | "devops" | "response";
+  domain: "appsec" | "cloudsec" | "ai-agents" | "secops" | "seceng" | "owasp" | "vibecoding" | "devops" | "response" | "offsec";
   slug: string;
   title: string;
   why: string;

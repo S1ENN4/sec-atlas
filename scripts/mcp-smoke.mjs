@@ -60,7 +60,7 @@ try {
   check("tools/list exposes the 7 tools", JSON.stringify(names) === JSON.stringify(expected), names.join(","));
 
   const domainsText = txt(await tool("list_domains", {}));
-  check("list_domains lists every domain", ["appsec", "cloudsec", "ai-agents", "secops", "seceng", "owasp", "vibecoding", "devops", "response"].every((d) => domainsText.includes(d)));
+  check("list_domains lists every domain", ["appsec", "cloudsec", "ai-agents", "secops", "seceng", "owasp", "vibecoding", "devops", "response", "offsec"].every((d) => domainsText.includes(d)));
   check("get_topic returns Markdown", txt(await tool("get_topic", { domain: "secops", slug: "waf" })).startsWith("# "));
   check("get_topic unknown slug is an error", (await tool("get_topic", { domain: "secops", slug: "nope" })).result?.isError === true);
   check("search finds a topic", txt(await tool("search", { query: "rate limiting" })).includes("secops/rate-limiting"));
