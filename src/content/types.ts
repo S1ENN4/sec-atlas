@@ -142,6 +142,10 @@ export interface DomainGraphLayout {
   layerPositions: Record<string, GraphPosition>;
   conceptPositions: Record<string, GraphPosition>;
   conceptAttachments: GraphConceptAttachment[];
+  // "always" (default): concept -> stage lines are faintly visible at rest.
+  // "focus": hidden until the card is hovered/selected. Use "focus" when every
+  // card already sits in its stage's column, so the lines add only noise.
+  spokes?: "always" | "focus";
   crossRelations: GraphRelation[];
   // Route the stage node click should push to. Today every stage routes to
   // the same CI/CD overview topic; domains with per-stage pages would

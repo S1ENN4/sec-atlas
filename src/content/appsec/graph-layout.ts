@@ -17,9 +17,9 @@ export const graphLayout: DomainGraphLayout = {
   // "layer" — pinned to fixed coordinates rather than a column.
   layerSlugs: ["shift-left", "devsecops"],
   layerPositions: {
-    // shift-left sits left of the first stage; devsecops above the test
+    // shift-left sits level with (and left of) the first stage; devsecops above the test
     // stage — both short straight edges that cross no cards.
-    "shift-left": { x: -320, y: 200 },
+    "shift-left": { x: -320, y: 20 },
     devsecops: { x: 560, y: -180 },
   },
 
@@ -37,6 +37,10 @@ export const graphLayout: DomainGraphLayout = {
   // Concept → stage spoke attachments. The renderer's concept node exposes
   // `s-t` (top source), `s-r` (right source) handles; the stage node
   // exposes `t-l` (left target), `t-b` (bottom target) handles.
+  // Every card already sits in its stage column, so the concept -> stage
+  // lines only show on hover/selection.
+  spokes: "focus",
+
   conceptAttachments: [
     { slug: "secrets", stageId: "source", sourceHandle: "s-t", targetHandle: "t-b" },
     { slug: "threat-modeling", stageId: "source", sourceHandle: "s-t", targetHandle: "t-b" },
@@ -53,16 +57,6 @@ export const graphLayout: DomainGraphLayout = {
   // registry powers the topic page links, while this list powers the graph
   // — they describe different facets of the same domain.
   crossRelations: [
-    {
-      id: "comeca-no-design",
-      source: "shift-left",
-      target: "threat-modeling",
-      sourceHandle: "s-b",
-      targetHandle: "t-t",
-      label: "começa no design",
-      dashed: true,
-      arrow: false,
-    },
     { id: "gera", source: "sca", target: "sbom", sourceHandle: "s-r", targetHandle: "t-l", label: "gera" },
     {
       id: "complementa",

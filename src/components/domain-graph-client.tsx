@@ -369,7 +369,7 @@ function DomainGraphInner({ data }: DomainGraphProps) {
         const active = activeId !== null && (e.source === activeId || e.target === activeId);
         // Resting opacity: faint, or strong for relations (not spokes) when
         // the reader asked to see everything.
-        const rest = showAll ? (isSpoke ? 0.5 : 0.9) : 0.35;
+        const rest = isSpoke ? (showAll ? 0.5 : layout?.spokes === "focus" ? 0 : 0.35) : showAll ? 0.9 : 0.35;
         return {
           ...e,
           ...edgeStyles,
@@ -384,7 +384,7 @@ function DomainGraphInner({ data }: DomainGraphProps) {
           },
         };
       }),
-    [edges, edgeStyles, activeId, reduced, showAll]
+    [edges, edgeStyles, activeId, reduced, showAll, layout?.spokes]
   );
 
   // Nodes: per-card flags (selected / studied / hidden by the kind filter),
