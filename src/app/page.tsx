@@ -19,12 +19,12 @@ const DOMAIN_LABELS: Record<DomainId, { name: string; pitch: string }> = {
   cloudsec: {
     name: "CloudSec",
     pitch:
-      "Postura em cloud, IAM, segmentação e supply chain — um grafo próprio, mesmo estilo do AppSec, com 10 tópicos navegáveis.",
+      "Postura em cloud, IAM, segmentação e supply chain — um grafo próprio, mesmo estilo do AppSec.",
   },
   "ai-agents": {
     name: "Agents",
     pitch:
-      "Segurança para agentes e workloads de IA — RAG, tool calling, MCP, guardrails. Mapa completo, 15 tópicos navegáveis.",
+      "Segurança para agentes e workloads de IA — RAG, tool calling, MCP, guardrails. Mapa completo.",
   },
 };
 
