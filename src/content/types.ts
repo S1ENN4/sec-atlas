@@ -148,3 +148,58 @@ export interface DomainGraphLayout {
   // override this with a function (future work).
   stageHref: string;
 }
+
+// -- Quiz ----------------------------------------------------------------------
+// One multiple-choice question. `answer` indexes `options`; `explain` is shown
+// after the reader picks. Options are shuffled at render time (stable seed).
+export interface QuizQuestion {
+  q: string;
+  options: string[];
+  answer: number;
+  explain: string;
+}
+
+// Slug-keyed quiz bank for a single domain.
+export type QuizBank = Record<string, QuizQuestion[]>;
+
+// -- Cross-domain bridges ------------------------------------------------------
+// An undirected "these two ideas are the same problem in two domains" link,
+// shown on both topic pages.
+export interface Bridge {
+  a: TopicRef;
+  b: TopicRef;
+  label: string;
+}
+
+// -- Study paths ---------------------------------------------------------------
+export interface PathStep {
+  ref: TopicRef;
+  why: string;
+}
+
+export interface StudyPath {
+  id: string;
+  title: string;
+  description: string;
+  level: "iniciante" | "intermediário";
+  steps: PathStep[];
+}
+
+// -- Attack scenarios ----------------------------------------------------------
+// A walk through a single incident: at each step the attacker (or an accident)
+// does something at a pipeline stage, and one topic's control is what stops,
+// detects or limits it.
+export interface ScenarioStep {
+  stageId: string;
+  happens: string;
+  control: TopicRef;
+  stops: string;
+}
+
+export interface Scenario {
+  id: string;
+  domain: DomainId;
+  title: string;
+  summary: string;
+  steps: ScenarioStep[];
+}

@@ -23,6 +23,10 @@
 //    AppSec topics today; do NOT raise them.)
 
 import { domains, getTopic } from "@/content/registry";
+import { quizzes } from "@/content/quiz";
+import { bridges } from "@/content/bridges";
+import { paths } from "@/content/paths";
+import { scenarios } from "@/content/scenarios";
 
 // ---------------------------------------------------------------------------
 // Tiny reporting helpers — no external deps.
@@ -230,6 +234,71 @@ const liveDomainIds = allDomainIds.filter((id) => domains[id].status === "live")
       broken,
     );
   }
+}
+
+// ---------------------------------------------------------------------------
+// R7: every topic of a live domain has a quiz of >=3 well-formed questions
+// (4 options, `answer` in range, non-empty explanation) and no quiz entry is
+// orphaned.
+// ---------------------------------------------------------------------------
+{
+  let total = 0;
+  const broken = [];
+  for (const id of allDomainIds) {
+    const bank = quizzes[id] ?? {};
+    const slugs = new Set(domains[id].topics.map((t) => t.slug));
+    for (const slug of Object.keys(bank)) {
+      if (!slugs.has(slug)) broken.push(`${id}: quiz for unknown topic "${slug}"`);
+    }
+    for (const t of domains[id].topics) {
+      total++;
+      const qs = bank[t.slug] ?? [];
+      if (qs.length < 3) broken.push(`${id}/${t.slug}: ${qs.length} questions (need >=3)`);
+      qs.forEach((q, i) => {
+        if (!q.q?.trim()) broken.push(`${id}/${t.slug}#${i}: empty question`);
+        if (!Array.isArray(q.options) || q.options.length !== 4)
+          broken.push(`${id}/${t.slug}#${i}: needs exactly 4 options`);
+        else if (new Set(q.options).size !== 4)
+          broken.push(`${id}/${t.slug}#${i}: duplicate options`);
+        if (!Number.isInteger(q.answer) || q.answer < 0 || q.answer > 3)
+          broken.push(`${id}/${t.slug}#${i}: answer out of range`);
+        if (!q.explain?.trim()) broken.push(`${id}/${t.slug}#${i}: empty explanation`);
+      });
+    }
+  }
+  record("R7 quiz coverage", broken.length === 0, `${total - broken.length}/${total} topics have a valid quiz`, broken);
+}
+
+// ---------------------------------------------------------------------------
+// R8: bridges, study paths and scenarios only point at existing topics, and
+// scenario stage ids exist in their domain's pipeline.
+// ---------------------------------------------------------------------------
+{
+  const broken = [];
+  const ok = (ref) => !!getTopic(ref);
+  bridges.forEach((b, i) => {
+    if (!ok(b.a)) broken.push(`bridge #${i}: unknown ${b.a.domain}/${b.a.slug}`);
+    if (!ok(b.b)) broken.push(`bridge #${i}: unknown ${b.b.domain}/${b.b.slug}`);
+    if (b.a.domain === b.b.domain) broken.push(`bridge #${i}: must cross domains`);
+  });
+  for (const p of paths) {
+    if (p.steps.length < 3) broken.push(`path ${p.id}: needs >=3 steps`);
+    for (const st of p.steps)
+      if (!ok(st.ref)) broken.push(`path ${p.id}: unknown ${st.ref.domain}/${st.ref.slug}`);
+  }
+  for (const sc of scenarios) {
+    const stageIds = new Set((domains[sc.domain]?.pipeline ?? []).map((s) => s.id));
+    for (const st of sc.steps) {
+      if (!ok(st.control)) broken.push(`scenario ${sc.id}: unknown ${st.control.domain}/${st.control.slug}`);
+      if (!stageIds.has(st.stageId)) broken.push(`scenario ${sc.id}: unknown stage "${st.stageId}"`);
+    }
+  }
+  record(
+    "R8 bridges/paths/scenarios resolve",
+    broken.length === 0,
+    `${bridges.length} bridges, ${paths.length} paths, ${scenarios.length} scenarios`,
+    broken,
+  );
 }
 
 // ---------------------------------------------------------------------------
