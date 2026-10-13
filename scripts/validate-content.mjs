@@ -28,6 +28,8 @@ import { bridges } from "@/content/bridges";
 import { paths } from "@/content/paths";
 import { scenarios } from "@/content/scenarios";
 import { allUnits, auditAll } from "@/i18n/audit";
+import { levels } from "@/content/levels";
+import { roles } from "@/content/careers";
 
 // ---------------------------------------------------------------------------
 // Tiny reporting helpers — no external deps.
@@ -331,6 +333,74 @@ const liveDomainIds = allDomainIds.filter((id) => domains[id].status === "live")
     `${units} units, ${ok}/${total} strings translated across locales, 0 stale`,
     broken.slice(0, 40).concat(broken.length > 40 ? [`... and ${broken.length - 40} more (npm run i18n -- status)`] : []),
   );
+}
+
+// ---------------------------------------------------------------------------
+// R10: learning levels and prerequisites (the guided Journey).
+//   - every topic has a level (1 foundations, 2 practitioner, 3 advanced)
+//   - no entry for a topic that does not exist
+//   - every `requires` reference resolves, no topic requires itself
+//   - a prerequisite is never of a higher level than the topic that requires it
+//   - the prerequisite graph has no cycles
+// ---------------------------------------------------------------------------
+{
+  const broken = [];
+  const all = new Set();
+  for (const id of allDomainIds) for (const t of domains[id].topics) all.add(`${id}/${t.slug}`);
+  for (const key of all) if (!levels[key]) broken.push(`${key}: no entry in src/content/levels.ts`);
+  for (const [key, info] of Object.entries(levels)) {
+    if (!all.has(key)) broken.push(`${key}: levels entry for a topic that does not exist`);
+    if (![1, 2, 3].includes(info.level)) broken.push(`${key}: level must be 1, 2 or 3`);
+    for (const req of info.requires ?? []) {
+      if (req === key) broken.push(`${key}: requires itself`);
+      else if (!all.has(req)) broken.push(`${key}: requires unknown topic "${req}"`);
+      else if (levels[req] && levels[req].level > info.level) broken.push(`${key}: prerequisite ${req} is a higher level (${levels[req].level} > ${info.level})`);
+    }
+  }
+  // cycle detection (DFS with colours)
+  const colour = new Map();
+  const visit = (k, trail) => {
+    if (colour.get(k) === 2) return;
+    if (colour.get(k) === 1) {
+      broken.push(`cycle: ${[...trail, k].join(" -> ")}`);
+      return;
+    }
+    colour.set(k, 1);
+    for (const r of levels[k]?.requires ?? []) if (all.has(r)) visit(r, [...trail, k]);
+    colour.set(k, 2);
+  };
+  for (const k of Object.keys(levels)) visit(k, []);
+  record("R10 levels and prerequisites", broken.length === 0, `${Object.keys(levels).length} topics leveled, acyclic`, broken);
+}
+
+// ---------------------------------------------------------------------------
+// R11: career roadmaps. Every role has the three stages (levels 1, 2, 3), every
+// topic reference resolves, a stage never lists a topic of a higher level than
+// itself, adjacent roles exist and ids are unique.
+// ---------------------------------------------------------------------------
+{
+  const broken = [];
+  const all = new Set();
+  for (const id of allDomainIds) for (const t of domains[id].topics) all.add(`${id}/${t.slug}`);
+  const ids = new Set();
+  for (const r of roles) {
+    if (ids.has(r.id)) broken.push(`${r.id}: duplicate role id`);
+    ids.add(r.id);
+  }
+  for (const r of roles) {
+    const stageLevels = r.stages.map((s) => s.level).join(",");
+    if (stageLevels !== "1,2,3") broken.push(`${r.id}: stages must be levels 1,2,3 (got ${stageLevels})`);
+    for (const st of r.stages) {
+      if (st.topics.length === 0) broken.push(`${r.id} level ${st.level}: no topics`);
+      for (const ref of st.topics) {
+        if (!all.has(ref)) broken.push(`${r.id}: unknown topic "${ref}"`);
+        else if (levels[ref] && levels[ref].level > st.level) broken.push(`${r.id}: ${ref} is level ${levels[ref].level}, listed in stage ${st.level}`);
+      }
+    }
+    for (const a of r.adjacent) if (!ids.has(a)) broken.push(`${r.id}: unknown adjacent role "${a}"`);
+    if (r.certs.length === 0 && !r.certsNote) broken.push(`${r.id}: needs certs or a certsNote`);
+  }
+  record("R11 career roadmaps", broken.length === 0, `${roles.length} roles, ${roles.reduce((n, r) => n + r.stages.reduce((m, s) => m + s.topics.length, 0), 0)} topic links`, broken);
 }
 
 // ---------------------------------------------------------------------------

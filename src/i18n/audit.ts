@@ -9,7 +9,7 @@ import { globalUnitInfos } from "./globals";
 import { UI_UNIT, uiSource } from "./ui";
 
 export const allUnits = (): UnitInfo[] =>
-  listUnits([{ id: UI_UNIT, source: uiSource, lang: "en", strict: true, group: "ui" }, ...globalUnitInfos()]);
+  listUnits([{ id: UI_UNIT, source: uiSource, lang: "en", strict: true, allProse: true, group: "ui" }, ...globalUnitInfos()]);
 
 export interface UnitAudit {
   unit: UnitInfo;
@@ -30,7 +30,7 @@ export function auditUnit(unit: UnitInfo, locale: Locale): UnitAudit {
 
   // A strict unit is pure prose: a string the engine would skip (its field name
   // collides with an id/enum name) could never be translated.
-  if (unit.strict) {
+  if (unit.allProse) {
     const skipped = skippedStrings(unit.source);
     if (skipped.length) errors.push(`${skipped.length} string(s) can never be translated because their key collides with a reserved field name (rename the key): ${list(skipped)}`);
   }

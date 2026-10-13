@@ -4,11 +4,11 @@
 // existing out/ directory).
 //
 // Caps (bytes):
-//   first-load assets   <= 6,820,000   (shared + heaviest locale)  (every file under out/ EXCEPT *.txt, raw)
-//   rsc prefetch        <= 7,400,000   (shared + heaviest locale)  (every *.txt under out/, raw)
-//   total               <= 14,230,000  (shared + heaviest locale)
-//   all locales         <= 40,000,000  (sanity: en + pt + es together)  (sanity cap: every file under out/)
-//   CSS raw             <=    74,000
+//   first-load assets   <= 7,420,000   (shared + heaviest locale)  (every file under out/ EXCEPT *.txt, raw)
+//   rsc prefetch        <= 8,070,000   (shared + heaviest locale)  (every *.txt under out/, raw)
+//   total               <= 15,500,000  (shared + heaviest locale)
+//   all locales         <= 42,200,000  (sanity: en + pt + es together)  (sanity cap: every file under out/)
+//   CSS raw             <=    77,000
 //   JS raw              <= 1,030,000
 //   JS gzip             <=   330,000  (gzipSync per .js file, summed)
 //   hub html (<locale>.html) <= 75,500
@@ -28,6 +28,12 @@
 // / total: 6,439,640 / css: 57,893 / js: 1,133,379 / js_gz: 364,036 /
 // index: 28,307 } — recorded above; the CAPS array below holds the
 // post-calibration caps.
+//
+// Journey + Careers recalibration: the guided journey (1 page) and careers
+// (index + 6 role roadmaps) add 7 statically rendered pages per locale, each
+// with its RSC payload, plus the careers/journey UI strings. Measured after
+// the change: first-load 7,202,886 / rsc 7,846,988 / total 15,049,874 /
+// all locales 40,955,211 / css 75,547. Caps set ~3% above that.
 //
 // T19 (RAG pipeline topics): five ai-agents topic bodies (rag, chunking,
 // embeddings, vector-db, retrieval) landed. Each draft SSG topic route now
@@ -145,11 +151,11 @@ import { gzipSync } from "node:zlib";
 const OUT_DIR = resolve(process.cwd(), "out");
 
 const CAPS = [
-  { key: "first_load",  label: "first-load assets",     limit: 6_820_000, scope: "first_load" },
-  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 7_400_000, scope: "rsc_prefetch" },
-  { key: "total",       label: "total",                 limit: 14_230_000, scope: "total" },
-  { key: "all_locales", label: "all locales (sanity)", limit: 40_000_000, scope: "all_locales" },
-  { key: "css",         label: "CSS raw",               limit:    74_000, scope: "css" },
+  { key: "first_load",  label: "first-load assets",     limit: 7_420_000, scope: "first_load" },
+  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 8_070_000, scope: "rsc_prefetch" },
+  { key: "total",       label: "total",                 limit: 15_500_000, scope: "total" },
+  { key: "all_locales", label: "all locales (sanity)", limit: 42_200_000, scope: "all_locales" },
+  { key: "css",         label: "CSS raw",               limit:    77_000, scope: "css" },
   { key: "js",          label: "JS raw",                limit: 1_030_000, scope: "js" },
   { key: "js_gz",       label: "JS gzip",               limit:   330_000, scope: "js_gz" },
   { key: "index",       label: "out/index.html raw",    limit:    75_500, scope: "index" },

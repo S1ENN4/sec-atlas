@@ -102,7 +102,8 @@ export interface UnitInfo {
   lang: SourceLang;
   /** Strict units must be 100% translated and fresh in every locale, or the build fails. */
   strict: boolean;
-  /** Code samples inside this unit are part of the text (comments are translatable). */
+  /** The unit is pure prose (the UI dictionary): every string leaf must be translatable. */
+  allProse?: boolean;
   group: string;
 }
 

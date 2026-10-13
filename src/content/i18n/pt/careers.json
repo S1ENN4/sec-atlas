@@ -1,0 +1,632 @@
+{
+  "entries": {
+    "roles.0.dayToDay.0": {
+      "t": "Revisar desenhos e pull requests em busca de problemas de segurança, e explicar a correção em vez de só bloquear.",
+      "h": "8bc8a4cc"
+    },
+    "roles.0.dayToDay.1": {
+      "t": "Operar e ajustar SAST, SCA, DAST e varredura de segredos na pipeline, mantendo o ruído baixo o bastante para os desenvolvedores confiarem neles.",
+      "h": "9ccaf625"
+    },
+    "roles.0.dayToDay.2": {
+      "t": "Priorizar achados pelo risco real, não pela severidade do scanner, e acompanhá-los até o fechamento.",
+      "h": "ea71f9a5"
+    },
+    "roles.0.dayToDay.3": {
+      "t": "Fazer threat modeling de funcionalidades novas com o time antes de o código existir.",
+      "h": "1f5ff19f"
+    },
+    "roles.0.dayToDay.4": {
+      "t": "Responder quando algo escapa: reproduzir, avaliar o impacto e ajudar a entregar a correção.",
+      "h": "9a29aae2"
+    },
+    "roles.0.portfolio.0": {
+      "t": "Um relato de threat model de um sistema real pequeno, com as mitigações que você escolheu e por quê.",
+      "h": "b7b41a8d"
+    },
+    "roles.0.portfolio.1": {
+      "t": "Um repositório de pipeline com SAST, SCA e varredura de segredos com regras ajustadas e um processo de exceção documentado.",
+      "h": "2984d61a"
+    },
+    "roles.0.portfolio.2": {
+      "t": "Um guia curto para desenvolvedores: as cinco classes de vulnerabilidade que mais importam na sua stack e como evitá-las.",
+      "h": "4974aedf"
+    },
+    "roles.0.stages.0.goal": {
+      "t": "Entender como o software é entregue e onde a segurança se encaixa.",
+      "h": "69d3a202"
+    },
+    "roles.0.stages.0.outside.0": {
+      "t": "Como a web funciona: HTTP, sessões, autenticação e autorização",
+      "h": "f1ef5aec"
+    },
+    "roles.0.stages.0.outside.1": {
+      "t": "O OWASP Top 10 e uma linguagem de programação que você leia bem",
+      "h": "9e5082e6"
+    },
+    "roles.0.stages.0.outside.2": {
+      "t": "Git e um fluxo de trabalho com pull requests",
+      "h": "db6746ca"
+    },
+    "roles.0.stages.0.project": {
+      "t": "Adicione varredura de segredos e um hook de pre-commit a um repositório seu, e documente o que ele pega.",
+      "h": "589dbf7f"
+    },
+    "roles.0.stages.1.goal": {
+      "t": "Operar as verificações principais e julgar os resultados delas.",
+      "h": "d047e046"
+    },
+    "roles.0.stages.1.outside.0": {
+      "t": "Ler código na stack que você protege",
+      "h": "7a440930"
+    },
+    "roles.0.stages.1.outside.1": {
+      "t": "Testes manuais com um proxy de interceptação",
+      "h": "a7ccedab"
+    },
+    "roles.0.stages.1.outside.2": {
+      "t": "Escrever um relatório de vulnerabilidade claro e acionável",
+      "h": "8c4d5946"
+    },
+    "roles.0.stages.1.project": {
+      "t": "Rode SAST, SCA e DAST contra um app propositalmente vulnerável, faça a triagem de cada achado e registre quais são reais.",
+      "h": "2171bcc9"
+    },
+    "roles.0.stages.2.goal": {
+      "t": "Conduzir um programa de segurança de aplicações, não só ferramentas.",
+      "h": "6f12d2db"
+    },
+    "roles.0.stages.2.outside.0": {
+      "t": "Revisões de design seguro em sistemas reais",
+      "h": "79972f6b"
+    },
+    "roles.0.stages.2.outside.1": {
+      "t": "Métricas de gestão de vulnerabilidades e priorização",
+      "h": "b6a30a00"
+    },
+    "roles.0.stages.2.outside.2": {
+      "t": "Ensinar e influenciar desenvolvedores em escala",
+      "h": "a5e532d5"
+    },
+    "roles.0.stages.2.project": {
+      "t": "Desenhe uma política de gate para a pipeline (o que bloqueia, o que avisa, o que é isento) e meça a taxa de falso positivo ao longo de um mês.",
+      "h": "fce51662"
+    },
+    "roles.0.summary": {
+      "t": "Um engenheiro de segurança de aplicações encontra e previne vulnerabilidades no código e no desenho dos produtos, e constrói as verificações, a orientação e os hábitos que permitem aos desenvolvedores corrigi-las cedo. O trabalho fica entre segurança e engenharia: metade profundidade técnica, metade influência.",
+      "h": "c4d9f06b"
+    },
+    "roles.0.tagline": {
+      "t": "Deixe o software que a sua empresa entrega difícil de quebrar, sem atrasar quem o escreve.",
+      "h": "59ecc150"
+    },
+    "roles.0.title": {
+      "t": "AppSec Engineer",
+      "h": "71ae3478"
+    },
+    "roles.1.dayToDay.0": {
+      "t": "Cuidar dos controles de segurança do CI/CD: etapas de varredura, gates, assinatura, credenciais de curta duração.",
+      "h": "bb0d3938"
+    },
+    "roles.1.dayToDay.1": {
+      "t": "Revisar infraestrutura como código e aplicar política antes de ela chegar à nuvem.",
+      "h": "592971f6"
+    },
+    "roles.1.dayToDay.2": {
+      "t": "Endurecer imagens de container, clusters e runners, e mantê-los atualizados.",
+      "h": "eb36de14"
+    },
+    "roles.1.dayToDay.3": {
+      "t": "Transformar revisões manuais de segurança em verificações automáticas e versionadas que rodam a cada mudança.",
+      "h": "18725841"
+    },
+    "roles.1.dayToDay.4": {
+      "t": "Medir o atrito (tempo de build, falsos positivos) e removê-lo, para que os times não contornem os controles.",
+      "h": "ed78c698"
+    },
+    "roles.1.portfolio.0": {
+      "t": "Um repositório com uma pipeline endurecida: dependências fixadas, credenciais de nuvem de curta duração, artefatos assinados.",
+      "h": "b76abc69"
+    },
+    "roles.1.portfolio.1": {
+      "t": "Um conjunto de regras de policy as code com testes, mostrando o que cada uma previne.",
+      "h": "feac551f"
+    },
+    "roles.1.portfolio.2": {
+      "t": "Um relato de antes e depois de uma pipeline em que você removeu atrito e manteve (ou melhorou) a cobertura.",
+      "h": "ad7b08aa"
+    },
+    "roles.1.stages.0.goal": {
+      "t": "Conhecer a pipeline, o modelo de identidade e a ideia de shift-left.",
+      "h": "71a8f5a2"
+    },
+    "roles.1.stages.0.outside.0": {
+      "t": "Linux, redes e shell scripting",
+      "h": "81e85bd1"
+    },
+    "roles.1.stages.0.outside.1": {
+      "t": "Git e pelo menos um sistema de CI",
+      "h": "da184be8"
+    },
+    "roles.1.stages.0.outside.2": {
+      "t": "Noções de Docker: imagens, camadas, registries",
+      "h": "4daf3cfe"
+    },
+    "roles.1.stages.0.project": {
+      "t": "Monte uma pipeline de CI para um serviço pequeno que faz lint, testa, varre segredos e publica uma imagem.",
+      "h": "dea749c9"
+    },
+    "roles.1.stages.1.goal": {
+      "t": "Automatizar as principais verificações e proteger a infraestrutura que executa o código.",
+      "h": "ca8b75b6"
+    },
+    "roles.1.stages.1.outside.0": {
+      "t": "Terraform ou outra ferramenta de IaC, escrito para valer",
+      "h": "9990bb64"
+    },
+    "roles.1.stages.1.outside.1": {
+      "t": "Noções de observabilidade: métricas, logs, alertas",
+      "h": "89338bc7"
+    },
+    "roles.1.stages.1.outside.2": {
+      "t": "Os serviços centrais de um provedor de nuvem",
+      "h": "11d32e4a"
+    },
+    "roles.1.stages.1.project": {
+      "t": "Provisione um ambiente pequeno com IaC, varra o código e o plano, e faça o deploy com credenciais de curta duração em vez de chaves guardadas.",
+      "h": "f9a72d7f"
+    },
+    "roles.1.stages.2.goal": {
+      "t": "Tratar a segurança como uma plataforma que os times adotam.",
+      "h": "b74f129e"
+    },
+    "roles.1.stages.2.outside.0": {
+      "t": "Práticas de confiabilidade (SRE): SLOs, resposta a incidentes, engenharia de release",
+      "h": "8f3bb307"
+    },
+    "roles.1.stages.2.outside.1": {
+      "t": "Integridade da cadeia de suprimentos: assinatura e proveniência",
+      "h": "6729c9a7"
+    },
+    "roles.1.stages.2.outside.2": {
+      "t": "Experiência do desenvolvedor como disciplina",
+      "h": "495bf29e"
+    },
+    "roles.1.stages.2.project": {
+      "t": "Publique um template de caminho pavimentado (pipeline + módulo de IaC + política) e meça quantos times o adotam e quanto tempo leva o onboarding.",
+      "h": "9831a7ad"
+    },
+    "roles.1.summary": {
+      "t": "Um engenheiro DevSecOps automatiza a segurança em como o software é construído, entregue e executado: pipelines, infraestrutura como código, containers e controles de nuvem. Onde o AppSec foca em código e design, o DevSecOps foca na máquina que leva isso até a produção.",
+      "h": "d0b14a79"
+    },
+    "roles.1.tagline": {
+      "t": "Construa a pipeline de entrega para que o jeito seguro também seja o jeito fácil.",
+      "h": "f088dfd6"
+    },
+    "roles.1.title": {
+      "t": "DevSecOps Engineer",
+      "h": "6d348a96"
+    },
+    "roles.2.dayToDay.0": {
+      "t": "Construir e manter o CI/CD, os ambientes e a infraestrutura por trás deles.",
+      "h": "19962291"
+    },
+    "roles.2.dayToDay.1": {
+      "t": "Manter as plataformas confiáveis: monitoramento, capacidade, atualizações, plantão.",
+      "h": "55284c71"
+    },
+    "roles.2.dayToDay.2": {
+      "t": "Tornar o caminho padrão para os desenvolvedores rápido e seguro, e documentá-lo.",
+      "h": "a89f40c0"
+    },
+    "roles.2.dayToDay.3": {
+      "t": "Automatizar trabalho repetitivo e padronizar como os serviços são construídos e implantados.",
+      "h": "7bd123d0"
+    },
+    "roles.2.dayToDay.4": {
+      "t": "Trabalhar com segurança para que os controles se encaixem na plataforma em vez de brigar com ela.",
+      "h": "6975c320"
+    },
+    "roles.2.portfolio.0": {
+      "t": "Um repositório de infraestrutura que constrói um ambiente completo do nada, com uma documentação que qualquer pessoa consiga seguir.",
+      "h": "928327d8"
+    },
+    "roles.2.portfolio.1": {
+      "t": "Um relato de plataforma: o que você padronizou, o que deixou flexível e como os times reagiram.",
+      "h": "58d9d8a3"
+    },
+    "roles.2.portfolio.2": {
+      "t": "Uma revisão pós-incidente (real ou simulada) com linha do tempo, causas e as mudanças que vieram depois.",
+      "h": "0ca694ad"
+    },
+    "roles.2.stages.0.goal": {
+      "t": "Aprender os fundamentos de entrega, identidade, redes e logs.",
+      "h": "fde45bd4"
+    },
+    "roles.2.stages.0.outside.0": {
+      "t": "Administração Linux e shell scripting",
+      "h": "cc13f073"
+    },
+    "roles.2.stages.0.outside.1": {
+      "t": "Git, branching e fluxos de release",
+      "h": "419398e4"
+    },
+    "roles.2.stages.0.outside.2": {
+      "t": "Containers e como eles diferem de VMs",
+      "h": "2f9bb18a"
+    },
+    "roles.2.stages.0.project": {
+      "t": "Coloque um app pequeno em container, escreva a pipeline dele e faça o deploy numa VM de nuvem que você provisionou por script.",
+      "h": "54eeb501"
+    },
+    "roles.2.stages.1.goal": {
+      "t": "Descrever infraestrutura como código e operá-la com segurança.",
+      "h": "e870e472"
+    },
+    "roles.2.stages.1.outside.0": {
+      "t": "Terraform ou Pulumi a fundo, com estado remoto e módulos",
+      "h": "a729e6be"
+    },
+    "roles.2.stages.1.outside.1": {
+      "t": "Fundamentos de Kubernetes: workloads, serviços, configuração",
+      "h": "2c33ab82"
+    },
+    "roles.2.stages.1.outside.2": {
+      "t": "Stacks de monitoramento e alertas",
+      "h": "1412a0ba"
+    },
+    "roles.2.stages.1.project": {
+      "t": "Recrie o mesmo ambiente do zero com IaC em um comando, e destrua-o com a mesma limpeza.",
+      "h": "cd9b0123"
+    },
+    "roles.2.stages.2.goal": {
+      "t": "Operar plataformas confiáveis em escala e tratá-las como produtos.",
+      "h": "e97fdbe0"
+    },
+    "roles.2.stages.2.outside.0": {
+      "t": "Prática de SRE: SLOs, error budgets, gestão de incidentes",
+      "h": "a79fc8a2"
+    },
+    "roles.2.stages.2.outside.1": {
+      "t": "Consciência de custo (FinOps) e planejamento de capacidade",
+      "h": "a846abdc"
+    },
+    "roles.2.stages.2.outside.2": {
+      "t": "Design multiambiente e multirregião",
+      "h": "92e92dbd"
+    },
+    "roles.2.stages.2.project": {
+      "t": "Defina SLOs para um serviço, construa os dashboards e alertas deles e faça um game day para testar o runbook.",
+      "h": "d2778be0"
+    },
+    "roles.2.summary": {
+      "t": "Um engenheiro DevOps ou de plataforma constrói e opera os sistemas que os times usam para entregar e operar software: pipelines, ambientes, clusters, observabilidade e as ferramentas em volta. Segurança faz parte do trabalho, mas não é tudo. Esta base cobre a fatia de segurança do cargo; o núcleo operacional aparece como fora dela.",
+      "h": "a422323a"
+    },
+    "roles.2.tagline": {
+      "t": "Faça a entrega de software ser rápida, repetível e segura, para todos os times da empresa.",
+      "h": "a3f15850"
+    },
+    "roles.2.title": {
+      "t": "DevOps / Platform Engineer",
+      "h": "16163908"
+    },
+    "roles.3.dayToDay.0": {
+      "t": "Desenhar identidade e acesso com privilégio mínimo, e revisar as permissões que se acumulam com o tempo.",
+      "h": "076e7aab"
+    },
+    "roles.3.dayToDay.1": {
+      "t": "Segmentar redes e proteger dados com criptografia e chaves bem gerenciadas.",
+      "h": "6a9399ff"
+    },
+    "roles.3.dayToDay.2": {
+      "t": "Acompanhar a postura continuamente e corrigir o drift antes que vire incidente.",
+      "h": "30464b40"
+    },
+    "roles.3.dayToDay.3": {
+      "t": "Proteger containers e clusters Kubernetes, e observar os workloads em runtime.",
+      "h": "113a68f1"
+    },
+    "roles.3.dayToDay.4": {
+      "t": "Construir o logging e os playbooks de resposta usados quando uma conta é comprometida.",
+      "h": "af7d59c6"
+    },
+    "roles.3.portfolio.0": {
+      "t": "Uma arquitetura de referência para uma estrutura de contas segura, com o raciocínio por trás de cada controle.",
+      "h": "8f4818dd"
+    },
+    "roles.3.portfolio.1": {
+      "t": "Módulos de infraestrutura como código que tornam a configuração segura o padrão.",
+      "h": "f59b84a7"
+    },
+    "roles.3.portfolio.2": {
+      "t": "Um runbook para uma credencial comprometida, testado numa conta sandbox.",
+      "h": "595454c9"
+    },
+    "roles.3.stages.0.goal": {
+      "t": "Acertar identidade, rede e logging: eles sustentam todo o resto.",
+      "h": "3c5aab21"
+    },
+    "roles.3.stages.0.outside.0": {
+      "t": "Os serviços centrais de um provedor de nuvem (computação, armazenamento, rede)",
+      "h": "e4e8aca4"
+    },
+    "roles.3.stages.0.outside.1": {
+      "t": "Fundamentos de redes: TCP/IP, DNS, TLS",
+      "h": "c1f4b405"
+    },
+    "roles.3.stages.0.outside.2": {
+      "t": "O modelo de responsabilidade compartilhada",
+      "h": "4d6784db"
+    },
+    "roles.3.stages.0.project": {
+      "t": "Configure uma conta de nuvem pequena com roles de privilégio mínimo, rede privada e logs de auditoria centralizados.",
+      "h": "ed43ca6a"
+    },
+    "roles.3.stages.1.goal": {
+      "t": "Proteger dados, segredos e workloads, e verificar a postura continuamente.",
+      "h": "4e90437e"
+    },
+    "roles.3.stages.1.outside.0": {
+      "t": "Um segundo provedor de nuvem, para ver quais ideias são universais",
+      "h": "a3421f54"
+    },
+    "roles.3.stages.1.outside.1": {
+      "t": "Scripting para automação (Python ou similar)",
+      "h": "17e13982"
+    },
+    "roles.3.stages.1.outside.2": {
+      "t": "Frameworks de conformidade em alto nível",
+      "h": "58f22369"
+    },
+    "roles.3.stages.1.project": {
+      "t": "Escreva verificações para cinco configurações erradas comuns, rode-as contra a sua conta e corrija o que elas acharem.",
+      "h": "0a46bda3"
+    },
+    "roles.3.stages.2.goal": {
+      "t": "Defender clusters e responder quando algo dá errado.",
+      "h": "fdc8f49d"
+    },
+    "roles.3.stages.2.outside.0": {
+      "t": "Forense em nuvem e tratamento de evidências",
+      "h": "d05463a2"
+    },
+    "roles.3.stages.2.outside.1": {
+      "t": "Desenho de landing zones com várias contas",
+      "h": "4840a5e1"
+    },
+    "roles.3.stages.2.outside.2": {
+      "t": "Threat modeling de arquiteturas em nuvem",
+      "h": "7e7ac51c"
+    },
+    "roles.3.stages.2.project": {
+      "t": "Simule uma chave de acesso vazada, contenha-a com o seu próprio runbook e escreva a revisão pós-incidente.",
+      "h": "0072fd5c"
+    },
+    "roles.3.summary": {
+      "t": "Um engenheiro de segurança em nuvem projeta e verifica os controles de ambientes cloud: identidades, redes, proteção de dados, workloads e detecção. O trabalho é, em grande parte, prevenir configuração errada em escala e perceber rápido quando algo se desvia ou é abusado.",
+      "h": "64fab4f4"
+    },
+    "roles.3.tagline": {
+      "t": "Mantenha os ambientes de nuvem configurados, monitorados e recuperáveis enquanto crescem.",
+      "h": "e9351ec0"
+    },
+    "roles.3.title": {
+      "t": "Cloud Security Engineer",
+      "h": "e08fef36"
+    },
+    "roles.4.dayToDay.0": {
+      "t": "Manter o pipeline de telemetria e vigiá-lo em busca de lacunas, atrasos e falhas silenciosas.",
+      "h": "8aa02266"
+    },
+    "roles.4.dayToDay.1": {
+      "t": "Escrever, testar e ajustar detecções para credential stuffing, scraping, injeção e abuso.",
+      "h": "b8452e51"
+    },
+    "roles.4.dayToDay.2": {
+      "t": "Operar WAF, rate limiting e controles de bots: observar primeiro, shadow depois, enforcement por último.",
+      "h": "42d3c688"
+    },
+    "roles.4.dayToDay.3": {
+      "t": "Executar runbooks durante incidentes e transformar o aprendizado em novas detecções e hardening.",
+      "h": "b4ea9a48"
+    },
+    "roles.4.dayToDay.4": {
+      "t": "Reportar precisão, recall e tempos de resposta, e usar isso para decidir o que ajustar em seguida.",
+      "h": "a30446a2"
+    },
+    "roles.4.portfolio.0": {
+      "t": "Uma biblioteca de detecções com testes: casos positivos (ataques) e negativos (tráfego normal).",
+      "h": "0f971c39"
+    },
+    "roles.4.portfolio.1": {
+      "t": "Um runbook com uma escada de escalonamento (desafio, bloqueio curto, bloqueio mais longo) e TTL em toda ação.",
+      "h": "f9d1bd5f"
+    },
+    "roles.4.portfolio.2": {
+      "t": "Um relatório de uma página com precisão, recall e tempo até conter, de um mês de operação.",
+      "h": "7e77d510"
+    },
+    "roles.4.stages.0.goal": {
+      "t": "Saber como os ataques aparecem nos logs e como a telemetria é coletada.",
+      "h": "4a7a97d0"
+    },
+    "roles.4.stages.0.outside.0": {
+      "t": "HTTP a fundo: cabeçalhos, cookies, códigos de status",
+      "h": "e8a6568d"
+    },
+    "roles.4.stages.0.outside.1": {
+      "t": "SQL ou uma linguagem de consulta parecida, usada todo dia",
+      "h": "71e6e341"
+    },
+    "roles.4.stages.0.outside.2": {
+      "t": "O framework MITRE ATT&CK como vocabulário",
+      "h": "1c706723"
+    },
+    "roles.4.stages.0.project": {
+      "t": "Pegue um log de acesso de exemplo, escreva consultas que revelem três padrões de ataque e documente a assinatura de cada um.",
+      "h": "c7d96cdc"
+    },
+    "roles.4.stages.1.goal": {
+      "t": "Escrever detecções e operar controles de borda com segurança.",
+      "h": "16bb26c4"
+    },
+    "roles.4.stages.1.outside.0": {
+      "t": "Uma linguagem de script para cola e testes",
+      "h": "b884bf76"
+    },
+    "roles.4.stages.1.outside.1": {
+      "t": "Noções de estatística: baselines, z-scores, médias móveis",
+      "h": "aaa92cba"
+    },
+    "roles.4.stages.1.outside.2": {
+      "t": "Uma conta real de WAF ou CDN para praticar",
+      "h": "6301a940"
+    },
+    "roles.4.stages.1.project": {
+      "t": "Leve uma detecção por observação, shadow e enforcement, e reporte a taxa de falso positivo em cada etapa.",
+      "h": "31091ccf"
+    },
+    "roles.4.stages.2.goal": {
+      "t": "Escalar o pipeline, automatizar a resposta e provar que funciona.",
+      "h": "fe96598a"
+    },
+    "roles.4.stages.2.outside.0": {
+      "t": "Engenharia de dados para telemetria: particionamento, agregação, custo",
+      "h": "3c15839c"
+    },
+    "roles.4.stages.2.outside.1": {
+      "t": "Plantão e comando de incidentes",
+      "h": "4583eeb9"
+    },
+    "roles.4.stages.2.outside.2": {
+      "t": "Apresentar resultados para a liderança",
+      "h": "bda1102b"
+    },
+    "roles.4.stages.2.project": {
+      "t": "Defina SLOs de triagem e contenção, monte o dashboard e faça um exercício de mesa contra eles.",
+      "h": "a29c4e2f"
+    },
+    "roles.4.summary": {
+      "t": "Um engenheiro de detecção ou de SOC constrói e opera o caminho do log até a ação: coletar telemetria, escrever e ajustar detecções, operar controles como WAF e rate limiting, e medir o quão bem tudo funciona. É engenharia com cronômetro: velocidade, precisão e custo importam.",
+      "h": "6e96715a"
+    },
+    "roles.4.tagline": {
+      "t": "Transforme telemetria bruta em decisões: detecte abuso rápido, aja com cuidado e meça o resultado.",
+      "h": "aea05fcc"
+    },
+    "roles.4.title": {
+      "t": "Detection / SOC Engineer",
+      "h": "d549ffaa"
+    },
+    "roles.5.certsNote": {
+      "t": "Ainda não existe uma certificação madura e amplamente reconhecida: prefira trabalho público, como exercícios do OWASP LLM Top 10, revisões escritas e suítes de avaliação abertas.",
+      "h": "e0e13048"
+    },
+    "roles.5.dayToDay.0": {
+      "t": "Fazer threat modeling de funcionalidades com LLM: que entrada não confiável chega ao modelo e o que ele pode fazer com ela.",
+      "h": "c20a7160"
+    },
+    "roles.5.dayToDay.1": {
+      "t": "Revisar desenhos de recuperação e tool calling em busca de injeção, vazamento de dados e agência excessiva.",
+      "h": "44836e44"
+    },
+    "roles.5.dayToDay.2": {
+      "t": "Projetar guardrails e limites de permissão em volta dos agentes, e testar que eles se mantêm.",
+      "h": "25504601"
+    },
+    "roles.5.dayToDay.3": {
+      "t": "Construir conjuntos de avaliação e testes de regressão para que uma mudança de prompt ou de modelo não enfraqueça a segurança em silêncio.",
+      "h": "d5c3dc77"
+    },
+    "roles.5.dayToDay.4": {
+      "t": "Avaliar ferramentas e servidores de terceiros que os agentes têm permissão de usar.",
+      "h": "43130350"
+    },
+    "roles.5.portfolio.0": {
+      "t": "Um threat model de um agente que lê e-mails e chama ferramentas, com os limites de permissão que você imporia.",
+      "h": "cda0f963"
+    },
+    "roles.5.portfolio.1": {
+      "t": "Uma suíte de avaliação de resistência a prompt injection que roda no CI.",
+      "h": "cf3e2705"
+    },
+    "roles.5.portfolio.2": {
+      "t": "Uma revisão de um servidor de ferramentas de terceiros: que acesso ele pede, o que pode dar errado e o que você restringiria.",
+      "h": "61516867"
+    },
+    "roles.5.stages.0.goal": {
+      "t": "Entender como se comportam modelos de linguagem, embeddings e chunking.",
+      "h": "d2dcdab7"
+    },
+    "roles.5.stages.0.outside.0": {
+      "t": "Python e chamar uma API de modelo",
+      "h": "e07f472e"
+    },
+    "roles.5.stages.0.outside.1": {
+      "t": "Vocabulário básico de aprendizado de máquina",
+      "h": "2b02f27a"
+    },
+    "roles.5.stages.0.outside.2": {
+      "t": "Prompt injection como conceito, e por que é difícil de prevenir por completo",
+      "h": "811c633f"
+    },
+    "roles.5.stages.0.project": {
+      "t": "Monte um app de recuperação minúsculo e anote cada lugar em que texto não confiável chega ao modelo.",
+      "h": "597691df"
+    },
+    "roles.5.stages.1.goal": {
+      "t": "Proteger recuperação, tool calling e os guardrails em volta deles.",
+      "h": "22bce1eb"
+    },
+    "roles.5.stages.1.outside.0": {
+      "t": "Controle de acesso aplicado aos documentos recuperados",
+      "h": "8cd51d95"
+    },
+    "roles.5.stages.1.outside.1": {
+      "t": "Saídas estruturadas e validação de esquema",
+      "h": "175c3cd4"
+    },
+    "roles.5.stages.1.outside.2": {
+      "t": "Fundamentos de segurança de aplicações para o serviço em volta",
+      "h": "7a54c0d2"
+    },
+    "roles.5.stages.1.project": {
+      "t": "Plante uma instrução maliciosa num documento, veja o seu app obedecê-la e corrija com permissões e validação.",
+      "h": "94545f6c"
+    },
+    "roles.5.stages.2.goal": {
+      "t": "Governar agentes, ferramentas de terceiros e a qualidade ao longo do tempo.",
+      "h": "cb139bbe"
+    },
+    "roles.5.stages.2.outside.0": {
+      "t": "Revisão da cadeia de suprimentos de ferramentas, plugins e servidores",
+      "h": "68784096"
+    },
+    "roles.5.stages.2.outside.1": {
+      "t": "Metodologia de red teaming para sistemas de IA",
+      "h": "ff903432"
+    },
+    "roles.5.stages.2.outside.2": {
+      "t": "Frameworks de política e gestão de risco para IA",
+      "h": "2aa54d81"
+    },
+    "roles.5.stages.2.project": {
+      "t": "Monte uma suíte de regressão a partir de falhas reais e ligue-a como um gate que barra mudanças de prompt ou modelo que a piorem.",
+      "h": "d7b68fa4"
+    },
+    "roles.5.summary": {
+      "t": "Um engenheiro de segurança de IA protege aplicações construídas sobre modelos de linguagem e agentes: pipelines de recuperação, tool calling, protocolos como o MCP, e a avaliação que diz se eles são seguros para ir ao ar. A área é jovem e muda rápido, então o trabalho premia fundamentos e medição cuidadosa mais do que truques decorados.",
+      "h": "ae0cbf43"
+    },
+    "roles.5.tagline": {
+      "t": "Proteja sistemas que leem texto não confiável, chamam ferramentas e agem no mundo.",
+      "h": "14b12795"
+    },
+    "roles.5.title": {
+      "t": "AI Security Engineer",
+      "h": "4ad6a4fc"
+    }
+  }
+}

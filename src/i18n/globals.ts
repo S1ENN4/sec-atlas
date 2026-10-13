@@ -3,6 +3,7 @@
 // Portuguese) until migrated; they use the same drift rules as everything else.
 
 import { bridges } from "@/content/bridges";
+import { roles } from "@/content/careers";
 import { changelog } from "@/content/changelog";
 import { paths } from "@/content/paths";
 import { profile } from "@/content/profile";
@@ -29,7 +30,9 @@ const profileSource = () => ({
 // Source labels are names (OWASP Top 10, ...): only the one-line notes translate.
 const sourcesSource = () => ({ notes: Object.fromEntries(Object.entries(sources).map(([d, list]) => [d, list.map((s) => ({ note: s.note }))])) });
 
-export const GLOBAL_UNITS: { id: string; source: () => unknown; strict: boolean }[] = [
+export const GLOBAL_UNITS: { id: string; source: () => unknown; strict: boolean; lang?: SourceLang }[] = [
+  // Authored in English: strict, so all three languages must be complete and fresh.
+  { id: "careers", source: () => ({ roles }), strict: true, lang: "en" },
   { id: "bridges", source: () => ({ items: bridges }), strict: false },
   { id: "paths", source: () => ({ items: paths }), strict: false },
   { id: "scenarios", source: () => ({ items: scenarios }), strict: false },
@@ -39,10 +42,10 @@ export const GLOBAL_UNITS: { id: string; source: () => unknown; strict: boolean 
 ];
 
 export const globalUnitInfos = (): UnitInfo[] =>
-  GLOBAL_UNITS.map((u) => ({ id: u.id, source: u.source(), lang: LANG, strict: u.strict, group: "global" }));
+  GLOBAL_UNITS.map((u) => ({ id: u.id, source: u.source(), lang: u.lang ?? LANG, strict: u.strict, group: u.id === "careers" ? "careers" : "global" }));
 
 const get = (id: string) => GLOBAL_UNITS.find((u) => u.id === id)!;
-const localized = (id: string, locale: Locale) => localizeUnit(id, get(id).source(), LANG, locale);
+const localized = (id: string, locale: Locale) => localizeUnit(id, get(id).source(), get(id).lang ?? LANG, locale);
 
 export const localizedBridges = (locale: Locale): Localized<typeof bridges> => {
   const l = localized("bridges", locale) as Localized<{ items: typeof bridges }>;
@@ -65,4 +68,9 @@ export const localizedSourceNotes = (locale: Locale) =>
 export const localizedProfile = (locale: Locale): Localized<typeof profile> => {
   const l = localized("profile", locale) as Localized<ReturnType<typeof profileSource>>;
   return { ...l, value: { ...profile, ...l.value } };
+};
+
+export const localizedRoles = (locale: Locale): Localized<typeof roles> => {
+  const l = localized("careers", locale) as Localized<{ roles: typeof roles }>;
+  return { ...l, value: l.value.roles };
 };

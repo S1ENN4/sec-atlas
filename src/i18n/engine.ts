@@ -24,7 +24,7 @@ import { createHash } from "node:crypto";
 export const NON_TRANSLATABLE_KEYS = new Set([
   "slug", "domain", "id", "kind", "stage", "stageId", "tools", "topic", "route", "accent", "status",
   "language", "index", "source", "target", "sourceHandle", "targetHandle", "href", "ref", "refs",
-  "level", "requires", "contentLang", "lang", "role", "icon", "url", "date", "period", "key",
+  "level", "requires", "topics", "certs", "adjacent", "contentLang", "lang", "role", "icon", "url", "date", "period", "key",
 ]);
 
 export interface OverlayEntry {

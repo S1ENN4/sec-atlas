@@ -132,6 +132,98 @@
       "t": "en otros dominios",
       "h": "eb6c0e88"
     },
+    "careers.allCareers": {
+      "t": "todas las carreras",
+      "h": "d8f6c8ae"
+    },
+    "careers.certsDisclaimer": {
+      "t": "Ejemplos, no recomendaciones ni requisitos. Consulta los detalles actuales con la entidad emisora.",
+      "h": "bcdc3063"
+    },
+    "careers.certsTitle": {
+      "t": "Certificaciones (ejemplos)",
+      "h": "64e65601"
+    },
+    "careers.dayToDay": {
+      "t": "Un día en el cargo",
+      "h": "ee2301fa"
+    },
+    "careers.description": {
+      "t": "Roadmaps para AppSec, DevSecOps, DevOps, seguridad en la nube, detección y seguridad de IA: en qué consiste el trabajo y cómo llegar.",
+      "h": "357f6971"
+    },
+    "careers.eyebrow": {
+      "t": "carreras",
+      "h": "f37b329c"
+    },
+    "careers.goal": {
+      "t": "Objetivo",
+      "h": "9fe00ace"
+    },
+    "careers.heading": {
+      "t": "Elige un cargo, sigue el roadmap",
+      "h": "d37e82f3"
+    },
+    "careers.inKb": {
+      "t": "Estudia aquí",
+      "h": "72540a65"
+    },
+    "careers.intro": {
+      "t": "Cada roadmap dice cómo es el día a día del cargo, qué temas de aquí estudiar en cada etapa, qué aprender en otros lugares y qué construir para demostrarlo.",
+      "h": "48e0ab1f"
+    },
+    "careers.nextStep": {
+      "t": "Siguiente tema",
+      "h": "f921757e"
+    },
+    "careers.openRoadmap": {
+      "t": "abrir roadmap",
+      "h": "3c67c06e"
+    },
+    "careers.outside": {
+      "t": "Aprende en otros lugares",
+      "h": "2e821dab"
+    },
+    "careers.pageTitle": {
+      "t": "carreras",
+      "h": "f37b329c"
+    },
+    "careers.portfolio": {
+      "t": "Qué mostrar",
+      "h": "f5b39567"
+    },
+    "careers.progress": {
+      "t": "{done} de {total} estudiados",
+      "h": "0210c0aa"
+    },
+    "careers.project": {
+      "t": "Construye esto",
+      "h": "1dc71f4a"
+    },
+    "careers.relatedRoles": {
+      "t": "Cargos relacionados",
+      "h": "e54e0bf5"
+    },
+    "careers.roadmapComplete": {
+      "t": "Todos los temas de este roadmap están estudiados.",
+      "h": "231b2b4a"
+    },
+    "careers.stageComplete": {
+      "t": "etapa completa",
+      "h": "5b513898"
+    },
+    "careers.stageN": {
+      "t": "Etapa {n}",
+      "h": "c8d14d92"
+    },
+    "careers.topicCount": {
+      "t": "{n} temas",
+      "h": "e2f7b1b9"
+    },
+    "careers.viewJourney": {
+      "t": "ver este camino en el mapa del recorrido",
+      "h": "97362af2"
+    },
     "changelog.description": {
       "t": "Qué cambió en este mapa: contenido nuevo, funciones y correcciones.",
       "h": "250b31c3"
@@ -599,6 +691,158 @@
     "hub.titleAccent": {
       "t": "mapeada por dominio.",
       "h": "48f5bbee"
+    },
+    "journey.allDomains": {
+      "t": "todos los dominios",
+      "h": "4d55f586"
+    },
+    "journey.anyRole": {
+      "t": "cualquier carrera",
+      "h": "046ec22f"
+    },
+    "journey.clearRole": {
+      "t": "mostrar todo",
+      "h": "88dc9b07"
+    },
+    "journey.close": {
+      "t": "cerrar",
+      "h": "da38860c"
+    },
+    "journey.description": {
+      "t": "Un mapa guiado de lo básico a lo avanzado: los temas quedan listos a medida que estudias sus requisitos previos.",
+      "h": "00cae3b3"
+    },
+    "journey.eyebrow": {
+      "t": "recorrido guiado",
+      "h": "5289cb8e"
+    },
+    "journey.filterAria": {
+      "t": "Filtrar por dominio",
+      "h": "5c0ec459"
+    },
+    "journey.heading": {
+      "t": "Tu recorrido de aprendizaje",
+      "h": "b42d7d1f"
+    },
+    "journey.intro": {
+      "t": "Empieza por la izquierda y avanza hacia la derecha. Un tema queda listo cuando estudiaste sus requisitos previos. Nada se bloquea: el mapa solo te indica qué leer a continuación.",
+      "h": "396dbd75"
+    },
+    "journey.legendDone": {
+      "t": "estudiado",
+      "h": "0739a9e0"
+    },
+    "journey.legendLocked": {
+      "t": "faltan requisitos previos",
+      "h": "1655af0f"
+    },
+    "journey.legendReady": {
+      "t": "listo para estudiar",
+      "h": "972e7a62"
+    },
+    "journey.level1": {
+      "t": "Fundamentos",
+      "h": "2efa1e75"
+    },
+    "journey.level1Desc": {
+      "t": "Las ideas sobre las que se apoya todo lo demás.",
+      "h": "40efcad0"
+    },
+    "journey.level2": {
+      "t": "Práctica",
+      "h": "cd495e76"
+    },
+    "journey.level2Desc": {
+      "t": "Aplica los controles y haz que funcionen en la práctica.",
+      "h": "6673a384"
+    },
+    "journey.level3": {
+      "t": "Avanzado",
+      "h": "4d064726"
+    },
+    "journey.level3Desc": {
+      "t": "Diseña, escala y opera en profundidad.",
+      "h": "c84d33f2"
+    },
+    "journey.levelComplete": {
+      "t": "nivel completo",
+      "h": "308833c5"
+    },
+    "journey.mapAria": {
+      "t": "Mapa del recorrido de aprendizaje",
+      "h": "8376aa9f"
+    },
+    "journey.mark": {
+      "t": "marcar como estudiado",
+      "h": "65390525"
+    },
+    "journey.nextCta": {
+      "t": "empezar este tema",
+      "h": "665f7a9b"
+    },
+    "journey.nextEmpty": {
+      "t": "Estudiaste todo lo que hay en este mapa. Mira las novedades para ver temas nuevos.",
+      "h": "40decbca"
+    },
+    "journey.nextTitle": {
+      "t": "Tu siguiente paso",
+      "h": "9140334f"
+    },
+    "journey.nodeAria": {
+      "t": "{title}, {state}",
+      "h": "665f193d"
+    },
+    "journey.noPrereqs": {
+      "t": "Sin requisitos previos: un buen lugar para empezar.",
+      "h": "5966e4fe"
+    },
+    "journey.open": {
+      "t": "abrir tema",
+      "h": "2142144a"
+    },
+    "journey.pageTitle": {
+      "t": "recorrido",
+      "h": "7da33f49"
+    },
+    "journey.prerequisites": {
+      "t": "requisitos previos",
+      "h": "b6182e9c"
+    },
+    "journey.progress": {
+      "t": "{done} de {total} estudiados",
+      "h": "0210c0aa"
+    },
+    "journey.roleBanner": {
+      "t": "Mostrando el camino de {role}.",
+      "h": "980bb81d"
+    },
+    "journey.rolesAria": {
+      "t": "Filtrar por carrera",
+      "h": "0cfc37e0"
+    },
+    "journey.stateDone": {
+      "t": "estudiado",
+      "h": "0739a9e0"
+    },
+    "journey.stateLocked": {
+      "t": "faltan {n}",
+      "h": "1afd5d38"
+    },
+    "journey.stateNext": {
+      "t": "siguiente",
+      "h": "edee9402"
+    },
+    "journey.stateReady": {
+      "t": "listo",
+      "h": "75c05337"
+    },
+    "journey.unlocks": {
+      "t": "abre el camino a",
+      "h": "3c62b04f"
+    },
+    "journey.unmark": {
+      "t": "desmarcar como estudiado",
+      "h": "6a844a12"
     },
     "kinds.agentsPratica": {
       "t": "componente",
