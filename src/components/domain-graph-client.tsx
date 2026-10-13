@@ -26,6 +26,7 @@ import { Check } from "lucide-react";
 import { DomainList } from "@/components/domain-list";
 import { GraphPanel } from "@/components/graph-panel";
 import { TopicIcon } from "@/components/topic-icon";
+import { fmt } from "@/i18n/format";
 import { useProgress } from "@/lib/progress";
 import { cn } from "@/lib/utils";
 import type { GraphData } from "@/components/graph-data";
@@ -84,11 +85,11 @@ interface StageNodeActivate {
   onActivate: () => void;
 }
 
-function StageNode({ data, selected, onActivate }: NodeProps<StageFlowNode> & StageNodeActivate) {
+function StageNode({ data, selected, onActivate, label: labelTpl }: NodeProps<StageFlowNode> & StageNodeActivate & { label: string }) {
   // aria-label must include the visible stage name so axe
   // "label-content-name-mismatch" stays clean; the "Abrir" prefix alone
   // diverges from the inner `<span>{data.name}</span>` text.
-  const label = `${data.name} (ver detalhes)`;
+  const label = fmt(labelTpl, { name: data.name });
   return (
     <div
       role="button"
@@ -117,17 +118,19 @@ function StageNode({ data, selected, onActivate }: NodeProps<StageFlowNode> & St
 }
 
 interface ConceptNodeProps extends NodeProps<ConceptFlowNode> {
+  label: string;
+  studiedLabel: string;
   domainMeta: Record<TopicKind, { dot: string; label: string; text: string }>;
   onActivate: () => void;
 }
 
-function ConceptNode({ data, selected, domainMeta, onActivate }: ConceptNodeProps) {
+function ConceptNode({ data, selected, domainMeta, onActivate, label, studiedLabel }: ConceptNodeProps) {
   const meta = domainMeta[data.kind];
   return (
     <div
       role="button"
       tabIndex={0}
-      aria-label={`${data.title} (ver detalhes)`}
+      aria-label={fmt(label, { name: data.title })}
       aria-pressed={selected}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
@@ -147,7 +150,7 @@ function ConceptNode({ data, selected, domainMeta, onActivate }: ConceptNodeProp
         <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
           {meta.label}
         </span>
-        {data.seen ? <Check className="ml-auto size-3.5 text-primary" aria-label="estudado" /> : null}
+        {data.seen ? <Check className="ml-auto size-3.5 text-primary" aria-label={studiedLabel} /> : null}
       </div>
       <div className="mt-1.5 flex items-center gap-2">
         <TopicIcon slug={data.slug} className="size-4 shrink-0 text-primary" />
@@ -304,7 +307,7 @@ function useNarrow(): boolean {
 // commonly used for camera/viewport transitions.
 const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
 
-type View = "mapa" | "lista";
+type View = "map" | "list";
 
 function DomainGraphInner({ data }: DomainGraphProps) {
   const domainId: DomainId = data.domainId;
@@ -324,7 +327,8 @@ function DomainGraphInner({ data }: DomainGraphProps) {
   const [viewChoice, setViewChoice] = useState<View | null>(null);
   const activeId = hoverId ?? selectedId;
   // Narrow screens default to the list; an explicit choice always wins.
-  const view: View = viewChoice ?? (narrow ? "lista" : "mapa");
+  const view: View = viewChoice ?? (narrow ? "list" : "map");
+  const st = data.strings;
 
   const domain = data;
   const layout = data.layout;
@@ -419,11 +423,11 @@ function DomainGraphInner({ data }: DomainGraphProps) {
   const select = useCallback((id: string) => setSelectedId((cur) => (cur === id ? null : id)), []);
 
   // Zoom to a card and its neighbours, select it, and bring the map into
-  // view. Used by `?foco=<slug>` deep links and by the search palette.
+  // view. Used by `?focus=<slug>` deep links and by the search palette.
   const focusSlug = useCallback(
     (slug: string) => {
       if (!nodes.some((n) => n.id === slug)) return;
-      setViewChoice("mapa");
+      setViewChoice("map");
       setSelectedId(slug);
       const ids = new Set<string>([slug]);
       for (const e of edges) {
@@ -464,17 +468,19 @@ function DomainGraphInner({ data }: DomainGraphProps) {
   const renderNodeTypes = useMemo(
     () => ({
       stage: ((props: NodeProps<StageFlowNode>) => (
-        <StageNode {...props} onActivate={() => select(props.id)} />
+        <StageNode {...props} label={data.strings.nodeDetails} onActivate={() => select(props.id)} />
       )) as unknown as React.ComponentType<NodeProps>,
       topic: ((props: NodeProps<ConceptFlowNode>) => (
         <ConceptNode
           {...props}
+          label={data.strings.nodeDetails}
+          studiedLabel={data.strings.studied}
           domainMeta={domain.kindMeta as unknown as Record<TopicKind, { dot: string; label: string; text: string }>}
           onActivate={() => select(props.id)}
         />
       )) as unknown as React.ComponentType<NodeProps>,
     }),
-    [domain.kindMeta, select]
+    [domain.kindMeta, select, data.strings.nodeDetails, data.strings.studied]
   );
 
   const onNodeClick = useCallback((_: React.MouseEvent, node: { id: string }) => select(node.id), [select]);
@@ -541,13 +547,13 @@ function DomainGraphInner({ data }: DomainGraphProps) {
 
   // Trigger entrance once the graph is mounted + ready. React Flow fires
   // `onInit` after its viewport is initialised, which is when fitView has
-  // kicked in and every node is in the DOM. A `?foco=<slug>` query (set by
+  // kicked in and every node is in the DOM. A `?focus=<slug>` query (set by
   // shared links and the search palette) then zooms to that card.
   const handleInit = useCallback(() => {
     fitView({ ...fitOpts, duration: reduced ? 0 : 360, ease: easeOutCubic });
     playEntrance();
-    const foco = new URLSearchParams(window.location.search).get("foco");
-    if (foco) window.setTimeout(() => focusSlug(foco), reduced ? 0 : 450);
+    const focus = new URLSearchParams(window.location.search).get("focus");
+    if (focus) window.setTimeout(() => focusSlug(focus), reduced ? 0 : 450);
   }, [fitView, fitOpts, reduced, playEntrance, focusSlug]);
 
   const toggleKind = (k: TopicKind) =>
@@ -575,11 +581,11 @@ function DomainGraphInner({ data }: DomainGraphProps) {
   return (
     <div>
       <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-        <div role="group" aria-label="Modo de visualização" className="flex overflow-hidden rounded-md border border-border">
-          {segBtn("mapa", "mapa")}
-          {segBtn("lista", "lista")}
+        <div role="group" aria-label={st.viewMode} className="flex overflow-hidden rounded-md border border-border">
+          {segBtn("map", st.viewMap)}
+          {segBtn("list", st.viewList)}
         </div>
-        {view === "mapa" ? (
+        {view === "map" ? (
           <button
             type="button"
             onClick={() => setShowAll((v) => !v)}
@@ -589,12 +595,12 @@ function DomainGraphInner({ data }: DomainGraphProps) {
               showAll ? "border-primary/60 bg-primary/10 text-primary" : "border-border text-muted-foreground hover:text-foreground"
             )}
           >
-            todas as relações
+            {st.allRelations}
           </button>
         ) : null}
       </div>
 
-      {view === "lista" ? (
+      {view === "list" ? (
         <DomainList data={data} />
       ) : (
         <>
@@ -649,7 +655,7 @@ function DomainGraphInner({ data }: DomainGraphProps) {
                   type="button"
                   onClick={() => toggleKind(k)}
                   aria-pressed={!off}
-                  title={off ? "mostrar este tipo" : "esconder este tipo"}
+                  title={off ? st.kindShow : st.kindHide}
                   className="flex items-center gap-2 rounded px-1 py-0.5 transition-opacity focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                 >
                   <span className={cn("size-2 rounded-full", domain.kindMeta[k].dot, off && "opacity-30")} />
@@ -665,7 +671,7 @@ function DomainGraphInner({ data }: DomainGraphProps) {
               );
             })}
             <span className="ml-auto font-mono text-[10px] text-muted-foreground">
-              linhas animadas = fluxo da esteira · passe o mouse ou clique num card para ver as relações dele
+              {st.legend}
             </span>
           </div>
         </>

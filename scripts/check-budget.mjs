@@ -4,13 +4,14 @@
 // existing out/ directory).
 //
 // Caps (bytes):
-//   first-load assets   <= 6,400,000  (every file under out/ EXCEPT *.txt, raw)
-//   rsc prefetch        <= 7,050,000  (every *.txt under out/, raw)
-//   total               <= 13,450,000  (sanity cap: every file under out/)
+//   first-load assets   <= 6,820,000   (shared + heaviest locale)  (every file under out/ EXCEPT *.txt, raw)
+//   rsc prefetch        <= 7,400,000   (shared + heaviest locale)  (every *.txt under out/, raw)
+//   total               <= 14,230,000  (shared + heaviest locale)
+//   all locales         <= 40,000,000  (sanity: en + pt + es together)  (sanity cap: every file under out/)
 //   CSS raw             <=    74,000
 //   JS raw              <= 1,030,000
 //   JS gzip             <=   330,000  (gzipSync per .js file, summed)
-//   out/index.html raw  <=    73,500
+//   hub html (<locale>.html) <= 75,500
 //
 // T26 budget calibration (post-audit): measured numbers right after T22
 // were first-load 3,459,024 (cap 3,500,000, +1.17% headroom < 2% — too
@@ -126,6 +127,14 @@
 // / index 71,022. One new static route (~45KB of scaffolding and content)
 // plus the hub gaining a line. Caps re-floored to ~3% headroom.
 //
+// i18n (en/pt/es): the export now contains the whole site three times
+// (out/en, out/pt, out/es). A reader downloads ONE locale plus the shared
+// assets, so the page-weight caps are measured as shared + the heaviest locale
+// (first-load 6,621,021 / rsc 7,191,917 / total 13,812,938 / hub 73,311) and a
+// separate sanity cap covers all locales together (37,364,411 measured). Caps
+// re-floored to ~3% headroom over the per-locale numbers; css 71,874, js
+// 986,876 and js_gz 311,694 are global and were already within their caps.
+//
 // Exit 0 when every row is within its cap; exit 1 with a clear per-cap
 // message otherwise.
 
@@ -136,13 +145,14 @@ import { gzipSync } from "node:zlib";
 const OUT_DIR = resolve(process.cwd(), "out");
 
 const CAPS = [
-  { key: "first_load",  label: "first-load assets",     limit: 6_400_000, scope: "first_load" },
-  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 7_050_000, scope: "rsc_prefetch" },
-  { key: "total",       label: "total",                 limit: 13_450_000, scope: "total" },
+  { key: "first_load",  label: "first-load assets",     limit: 6_820_000, scope: "first_load" },
+  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 7_400_000, scope: "rsc_prefetch" },
+  { key: "total",       label: "total",                 limit: 14_230_000, scope: "total" },
+  { key: "all_locales", label: "all locales (sanity)", limit: 40_000_000, scope: "all_locales" },
   { key: "css",         label: "CSS raw",               limit:    74_000, scope: "css" },
   { key: "js",          label: "JS raw",                limit: 1_030_000, scope: "js" },
   { key: "js_gz",       label: "JS gzip",               limit:   330_000, scope: "js_gz" },
-  { key: "index",       label: "out/index.html raw",    limit:    73_500, scope: "index" },
+  { key: "index",       label: "out/index.html raw",    limit:    75_500, scope: "index" },
 ];
 
 function walk(dir) {
@@ -179,9 +189,18 @@ function main() {
     process.exit(1);
   }
 
+  // The site ships once per locale (out/en, out/pt, out/es). A reader only ever
+  // downloads ONE locale plus the shared assets (out/_next, icons...), so the
+  // page-weight caps are measured per locale: shared + the heaviest locale. A
+  // separate sanity cap covers all locales together.
+  const LOCALES = ["en", "pt", "es"];
+  const localeOf = (p) => {
+    const seg = relative(OUT_DIR, p).split(/[/\\]/)[0];
+    return LOCALES.includes(seg) ? seg : null;
+  };
+  const shared = { total: 0, first: 0, rsc: 0 };
+  const per = Object.fromEntries(LOCALES.map((l) => [l, { total: 0, first: 0, rsc: 0, index: 0 }]));
   let total = 0;
-  let firstLoadRaw = 0;   // every file EXCEPT *.txt (raw)
-  let rscPrefetchRaw = 0; // every *.txt file (raw)
   let cssRaw = 0;
   let jsRaw = 0;
   let jsGz = 0;
@@ -189,11 +208,13 @@ function main() {
   for (const f of allFiles) {
     total += f.size;
     const ext = extname(f.path).toLowerCase();
-    if (ext === ".txt") {
-      rscPrefetchRaw += f.size;
-    } else {
-      firstLoadRaw += f.size;
-    }
+    const bucket = localeOf(f.path) ? per[localeOf(f.path)] : shared;
+    bucket.total += f.size;
+    if (ext === ".txt") bucket.rsc += f.size;
+    else bucket.first += f.size;
+    // The hub of a locale is exported as out/<locale>.html (or out/<locale>/index.html).
+    const rel = relative(OUT_DIR, f.path).split("\\").join("/");
+    if (LOCALES.some((l) => rel === `${l}.html` || rel === `${l}/index.html`)) per[rel.split(/[./]/)[0]].index = f.size;
     if (ext === ".css") {
       cssRaw += f.size;
     } else if (ext === ".js") {
@@ -203,19 +224,14 @@ function main() {
     }
   }
 
-  // index.html: read at out/index.html (raw, single file)
-  let indexSize = 0;
-  const indexPath = join(OUT_DIR, "index.html");
-  try {
-    indexSize = statSync(indexPath).size;
-  } catch {
-    // ignore; index row will fail its cap
-  }
+  const worst = (k) => Math.max(...LOCALES.map((l) => shared[k] + per[l][k]));
+  const indexSize = Math.max(...LOCALES.map((l) => per[l].index));
 
   const measured = {
-    first_load:   firstLoadRaw,
-    rsc_prefetch: rscPrefetchRaw,
-    total:        total,
+    first_load:   worst("first"),
+    rsc_prefetch: worst("rsc"),
+    total:        worst("total"),
+    all_locales:  total,
     css:          cssRaw,
     js:           jsRaw,
     js_gz:        jsGz,

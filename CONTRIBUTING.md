@@ -38,6 +38,10 @@ Resumo do que o validador exige de cada tópico:
 - posição no mapa do domínio;
 - **quiz** com no mínimo 3 perguntas (4 opções distintas, `explain` preenchido).
 
+### Idiomas
+
+O inglês é a fonte da verdade. **Escreva conteúdo novo em inglês.** Se você alterar um texto em inglês, as traduções dele ficam desatualizadas e o build (regra R9) vai listar quais: você pode atualizá-las, removê-las com `npm run i18n -- prune` (o conteúdo cai para o inglês com um aviso e vira trabalho pendente) ou, se foi só um typo, confirmá-las com `npm run i18n -- keep`. Textos da interface (`src/i18n/ui-source.ts`) precisam estar nos 3 idiomas. Veja a seção "Idiomas" do README.
+
 ### Padrão de qualidade
 
 - **Precisão antes de volume.** Prefira dizer menos e estar certo. Se algo é

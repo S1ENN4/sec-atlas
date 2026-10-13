@@ -1,23 +1,29 @@
-// Server wrapper for the interactive map. It reduces a domain to the lean
-// `GraphData` the client renderer needs (titles, taglines, layout, relations)
-// so topic bodies and code samples stay out of the client bundle. The
-// renderer itself lives in `domain-graph-client.tsx` and contains no domain
-// literals; per-domain layout comes from `src/content/<domain>/graph-layout.ts`.
+// Server wrapper for the interactive map. It reduces a (localised) domain to the
+// lean `GraphData` the client renderer needs (titles, taglines, layout,
+// relations, UI strings) so topic bodies and code samples stay out of the
+// client bundle. The renderer lives in `domain-graph-client.tsx` and contains no
+// domain literals; per-domain layout comes from `src/content/<domain>/graph-layout.ts`.
 
 import { DomainGraphClient } from "@/components/domain-graph-client";
 import type { GraphData } from "@/components/graph-data";
-import { domains, domainMeta, type DomainId } from "@/content/registry";
+import { type DomainId } from "@/content/registry";
+import type { Locale } from "@/i18n/config";
+import { localizeDomain } from "@/i18n/content";
+import { kindMetaFor } from "@/i18n/labels";
+import type { Ui } from "@/i18n/ui";
 
-export function buildGraphData(domainId: DomainId): GraphData {
-  const domain = domains[domainId];
+export function buildGraphData(domainId: DomainId, locale: Locale, t: Ui): GraphData {
+  const { domain } = localizeDomain(domainId, locale);
   return {
     domainId,
-    route: domainMeta[domainId].route,
-    kindMeta: domain.kindMeta,
+    locale,
+    strings: t.graph,
+    route: domain.route,
+    kindMeta: kindMetaFor(domainId, t),
     pipeline: domain.pipeline,
     layout: domain.graphLayout,
     topics: Object.fromEntries(
-      domain.topics.map((t) => [t.slug, { title: t.title, short: t.short, tagline: t.tagline, kind: t.kind, stage: t.stage }]),
+      domain.topics.map((tp) => [tp.slug, { title: tp.title, short: tp.short, tagline: tp.tagline, kind: tp.kind, stage: tp.stage }]),
     ),
     relations: domain.relations
       .filter((r) => r.source.domain === domainId && r.target.domain === domainId)
@@ -25,6 +31,6 @@ export function buildGraphData(domainId: DomainId): GraphData {
   };
 }
 
-export function DomainGraph({ domainId }: { domainId: DomainId }) {
-  return <DomainGraphClient data={buildGraphData(domainId)} />;
+export function DomainGraph({ domainId, locale, t }: { domainId: DomainId; locale: Locale; t: Ui }) {
+  return <DomainGraphClient data={buildGraphData(domainId, locale, t)} />;
 }

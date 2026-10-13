@@ -8,6 +8,8 @@ import { TopicIcon } from "@/components/topic-icon";
 import { useProgress } from "@/lib/progress";
 import { cn } from "@/lib/utils";
 import type { GraphData } from "@/components/graph-data";
+import { localePath } from "@/i18n/config";
+import { fmt } from "@/i18n/format";
 
 interface GraphPanelProps {
   data: GraphData;
@@ -26,6 +28,8 @@ export function GraphPanel({ data, selectedId, onSelect, onClose }: GraphPanelPr
   const domain = data;
   const domainId = data.domainId;
   const route = data.route;
+  const st = data.strings;
+  const locale = data.locale;
   const { isSeen, toggleSeen } = useProgress();
   const [copied, setCopied] = useState(false);
 
@@ -36,7 +40,7 @@ export function GraphPanel({ data, selectedId, onSelect, onClose }: GraphPanelPr
     <button
       type="button"
       onClick={onClose}
-      aria-label="Fechar detalhes"
+      aria-label={st.closeDetails}
       className="absolute right-2 top-2 rounded-md p-1.5 text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
     >
       <X className="size-4" aria-hidden />
@@ -48,19 +52,19 @@ export function GraphPanel({ data, selectedId, onSelect, onClose }: GraphPanelPr
     if (!stage) return null;
     const seenSlugs = new Set<string>();
     return (
-      <aside className={shell} aria-label={`Etapa ${stage.name}`}>
+      <aside className={shell} aria-label={fmt(st.stageAria, { name: stage.name })}>
         {closeBtn}
-        <p className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">etapa {stage.index}</p>
+        <p className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">{fmt(st.stageEyebrow, { index: stage.index })}</p>
         <h3 className="mt-1 pr-6 font-mono text-lg font-semibold">{stage.name}</h3>
         <p className="mt-1 text-sm leading-snug text-muted-foreground">{stage.description}</p>
-        <p className="mt-3 font-mono text-[11px] text-amber-400/90">gate: {stage.gate}</p>
+        <p className="mt-3 font-mono text-[11px] text-amber-400/90">{fmt(st.gate, { gate: stage.gate })}</p>
         <div className="mt-4 flex flex-wrap gap-1.5">
           {stage.items.map((item) => {
             if (item.slug && domain.topics[item.slug]) {
               const dup = seenSlugs.has(item.slug);
               seenSlugs.add(item.slug);
               return (
-                <button key={item.label} type="button" onClick={() => onSelect(item.slug!)} className={chip} title={dup ? "também aparece em outra etapa" : undefined}>
+                <button key={item.label} type="button" onClick={() => onSelect(item.slug!)} className={chip} title={dup ? st.alsoInStage : undefined}>
                   {item.label}
                 </button>
               );
@@ -85,7 +89,7 @@ export function GraphPanel({ data, selectedId, onSelect, onClose }: GraphPanelPr
 
   const copy = async () => {
     try {
-      const url = `${window.location.origin}${route}?foco=${topic.slug}#mapa`;
+      const url = `${window.location.origin}${localePath(locale, route)}?focus=${topic.slug}#map`;
       await navigator.clipboard.writeText(url);
       setCopied(true);
       window.setTimeout(() => setCopied(false), 1600);
@@ -95,7 +99,7 @@ export function GraphPanel({ data, selectedId, onSelect, onClose }: GraphPanelPr
   };
 
   return (
-    <aside className={shell} aria-label={`Detalhes: ${topic.title}`}>
+    <aside className={shell} aria-label={fmt(st.detailsAria, { title: topic.title })}>
       {closeBtn}
       <div className="flex items-center gap-2">
         <span className={cn("size-2 rounded-full", meta.dot)} aria-hidden />
@@ -112,7 +116,7 @@ export function GraphPanel({ data, selectedId, onSelect, onClose }: GraphPanelPr
 
       {rels.length > 0 ? (
         <div className="mt-4">
-          <p className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">relações</p>
+          <p className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">{st.relations}</p>
           <ul className="mt-2 space-y-1.5">
             {rels.map((r) => {
               const outgoing = r.source === selectedId;
@@ -140,10 +144,10 @@ export function GraphPanel({ data, selectedId, onSelect, onClose }: GraphPanelPr
 
       <div className="mt-5 flex flex-wrap gap-2">
         <Link
-          href={`${route}/topico/${topic.slug}`}
+          href={localePath(locale, `${route}/topic/${topic.slug}`)}
           className="inline-flex items-center gap-1.5 rounded-md border border-primary/50 bg-primary/10 px-3 py-1.5 font-mono text-xs text-primary transition-colors hover:bg-primary/20 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
         >
-          abrir tópico <ArrowUpRight className="size-3.5" aria-hidden />
+          {st.openTopic} <ArrowUpRight className="size-3.5" aria-hidden />
         </Link>
         <button
           type="button"
@@ -151,11 +155,11 @@ export function GraphPanel({ data, selectedId, onSelect, onClose }: GraphPanelPr
           aria-pressed={seen}
           className={cn(chip, "inline-flex items-center gap-1.5 py-1.5 text-xs", seen && "border-primary/60 bg-primary/10 text-primary")}
         >
-          <Check className="size-3.5" aria-hidden /> {seen ? "estudado" : "marcar"}
+          <Check className="size-3.5" aria-hidden /> {seen ? st.studied : st.mark}
         </button>
         <button type="button" onClick={copy} className={cn(chip, "inline-flex items-center gap-1.5 py-1.5 text-xs")}>
           <Link2 className="size-3.5" aria-hidden />
-          <span aria-live="polite">{copied ? "copiado" : "link"}</span>
+          <span aria-live="polite">{copied ? st.copied : st.copyLink}</span>
         </button>
       </div>
     </aside>

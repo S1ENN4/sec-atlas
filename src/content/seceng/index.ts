@@ -21,7 +21,7 @@ const kindMeta: Record<TopicKind, { label: string; dot: string; text: string }> 
 
 export const seceng: Domain = {
   id: "seceng",
-  route: "/engenharia",
+  route: "/engineering",
   status: "live",
   contentLang: "pt", // legacy: migrate to "en" with `npm run i18n -- flip`
   accent: "rose",

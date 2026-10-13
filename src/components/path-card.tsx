@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Check } from "lucide-react";
 
+import { fmt } from "@/i18n/format";
 import { useProgress } from "@/lib/progress";
 import { cn } from "@/lib/utils";
 
@@ -22,9 +23,17 @@ export interface PathCardData {
   steps: PathCardStep[];
 }
 
+export interface PathCardStrings {
+  progressAria: string;
+  studiedSr: string;
+  start: string;
+  continue: string;
+  done: string;
+}
+
 // One study path: ordered steps with a studied checkmark each, a progress bar
 // and a "continue" link to the first step not studied yet.
-export function PathCard({ path }: { path: PathCardData }) {
+export function PathCard({ path, t }: { path: PathCardData; t: PathCardStrings }) {
   const { isSeen } = useProgress();
   const done = path.steps.filter((s) => isSeen(s.domain, s.slug)).length;
   const next = path.steps.find((s) => !isSeen(s.domain, s.slug));
@@ -44,7 +53,7 @@ export function PathCard({ path }: { path: PathCardData }) {
         <div
           className="h-1.5 flex-1 overflow-hidden rounded-full bg-muted"
           role="progressbar"
-          aria-label={`Progresso na trilha ${path.title}`}
+          aria-label={fmt(t.progressAria, { title: path.title })}
           aria-valuemin={0}
           aria-valuemax={100}
           aria-valuenow={pct}
@@ -69,7 +78,7 @@ export function PathCard({ path }: { path: PathCardData }) {
                 <span
                   className={cn(
                     "mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full border font-mono text-[10px]",
-                    seen ? "border-primary bg-primary text-primary-foreground" : "border-border text-muted-foreground"
+                    seen ? "border-primary bg-primary text-primary-foreground" : "border-border text-muted-foreground",
                   )}
                   aria-hidden
                 >
@@ -81,7 +90,7 @@ export function PathCard({ path }: { path: PathCardData }) {
                     <span className="rounded border border-border px-1.5 py-px font-mono text-[9px] uppercase tracking-wider text-muted-foreground">
                       {step.domain}
                     </span>
-                    {seen ? <span className="sr-only">(estudado)</span> : null}
+                    {seen ? <span className="sr-only">{t.studiedSr}</span> : null}
                   </span>
                   <span className="mt-0.5 block text-xs leading-snug text-muted-foreground">{step.why}</span>
                 </span>
@@ -96,10 +105,10 @@ export function PathCard({ path }: { path: PathCardData }) {
           href={next.href}
           className="mt-4 inline-flex items-center rounded-md border border-primary/50 bg-primary/10 px-3 py-1.5 font-mono text-xs text-primary transition-colors hover:bg-primary/20 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
         >
-          {done === 0 ? "começar trilha" : "continuar"}: {next.title}
+          {done === 0 ? t.start : t.continue}: {next.title}
         </Link>
       ) : (
-        <p className="mt-4 font-mono text-xs text-primary">trilha concluída</p>
+        <p className="mt-4 font-mono text-xs text-primary">{t.done}</p>
       )}
     </article>
   );

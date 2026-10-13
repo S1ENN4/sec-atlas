@@ -1,9 +1,29 @@
 # Host-level redirects (Netlify / Cloudflare Pages format).
-# Fragment (#) destinations are not supported by these hosts; the canonical
-# client-side anchors on /appsec#mapa etc. live in src/components/site-header.tsx.
 #
-# /topico/* used to be the canonical topic path before per-domain routing
-# landed. External links pointing at the old URL get a permanent redirect
-# to the new AppSec-scoped path.
+# 1) "/" has no language. The page itself picks one on the client (saved choice,
+#    then browser languages); these rules let the host do it server-side where it
+#    supports language conditions (Netlify). The unconditional rule is the fallback.
+/   /pt   302   Language=pt
+/   /es   302   Language=es
+/   /en   302
 
-/topico/*  /appsec/topico/:splat  301
+# 2) Legacy URLs (before multi-language routing, Portuguese only) -> /pt/...
+/appsec                  /pt/appsec                 301
+/cloudsec                /pt/cloudsec               301
+/agentes                 /pt/agents                 301
+/secops                  /pt/secops                 301
+/engenharia              /pt/engineering           301
+/appsec/topico/*         /pt/appsec/topic/:splat    301
+/cloudsec/topico/*       /pt/cloudsec/topic/:splat  301
+/agentes/topico/*        /pt/agents/topic/:splat    301
+/secops/topico/*         /pt/secops/topic/:splat    301
+/engenharia/topico/*     /pt/engineering/topic/:splat 301
+/topico/*                /pt/appsec/topic/:splat    301
+/trilhas                 /pt/paths                  301
+/cenarios                /pt/scenarios              301
+/glossario               /pt/glossary               301
+/seguranca               /pt/security               301
+/sobre                   /pt/about                  301
+/novidades               /pt/changelog              301
+/fontes                  /pt/sources                301
+/manifesto               /pt/manifesto              301

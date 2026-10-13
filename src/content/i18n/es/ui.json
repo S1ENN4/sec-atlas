@@ -1,8 +1,1540 @@
 {
   "entries": {
+    "a11y.external": {
+      "t": "se abre en una pestaña nueva",
+      "h": "a9202f5e"
+    },
+    "a11y.mainNav": {
+      "t": "Principal",
+      "h": "62bce942"
+    },
+    "a11y.skipToContent": {
+      "t": "saltar al contenido",
+      "h": "0a4470d6"
+    },
+    "about.behind.a11yBody": {
+      "t": "Navegación por teclado en el mapa, etiquetas para lectores de pantalla, foco visible y respeto por prefers-reduced-motion.",
+      "h": "68e08ddc"
+    },
+    "about.behind.a11yTitle": {
+      "t": "Accesibilidad y movimiento",
+      "h": "2d886a4f"
+    },
+    "about.behind.budgetBody": {
+      "t": "El build falla si el tamaño del bundle supera los límites. El JS del cliente se redujo al mantener el contenido de los temas en el servidor y cargar quiz y búsqueda bajo demanda.",
+      "h": "bd3fd5c2"
+    },
+    "about.behind.budgetTitle": {
+      "t": "Presupuesto de rendimiento",
+      "h": "0dcbec74"
+    },
+    "about.behind.i18nBody": {
+      "t": "El inglés es la fuente de verdad. Cada traducción guarda un hash del texto de origen, así que cuando el original cambia la traducción se marca y el build falla hasta que se actualice.",
+      "h": "3dbcdbbd"
+    },
+    "about.behind.i18nTitle": {
+      "t": "Traducciones sin drift",
+      "h": "996646ab"
+    },
+    "about.behind.minimalBody": {
+      "t": "Sitio 100% estático: sin backend, base de datos, formularios ni cookies. La CSP restrictiva y los demás encabezados están versionados en el repositorio.",
+      "h": "da96b271"
+    },
+    "about.behind.minimalTitle": {
+      "t": "Superficie mínima",
+      "h": "63827800"
+    },
+    "about.behind.privacyBody": {
+      "t": "Sin rastreo. El único dato guardado es el progreso de estudio, en el navegador de quien estudia, y se puede borrar cuando quieras.",
+      "h": "c4cc222b"
+    },
+    "about.behind.privacyTitle": {
+      "t": "Privacidad por defecto",
+      "h": "5fe7b412"
+    },
+    "about.behind.validatedBody": {
+      "t": "Un validador corre antes del build y falla si un tema pierde su lugar en el mapa, un quiz queda incompleto o una ruta apunta a un tema inexistente.",
+      "h": "44d00cca"
+    },
+    "about.behind.validatedTitle": {
+      "t": "Contenido validado en el build",
+      "h": "27c04344"
+    },
+    "about.behindTitle": {
+      "t": "bastidores técnicos",
+      "h": "781fd1d1"
+    },
+    "about.certifications": {
+      "t": "certificaciones",
+      "h": "4add097e"
+    },
+    "about.contentMore": {
+      "t": "Los cambios y las correcciones quedan registrados en",
+      "h": "ce9a5861"
+    },
+    "about.contentTitle": {
+      "t": "sobre el contenido",
+      "h": "99d5aed4"
+    },
+    "about.ctaBody": {
+      "t": "Si este mapa te fue útil, o si quieres hablar sobre seguridad de software, la mejor forma de encontrarme es LinkedIn.",
+      "h": "2d051833"
+    },
+    "about.ctaButton": {
+      "t": "abrir mi LinkedIn",
+      "h": "821eded5"
+    },
+    "about.ctaTitle": {
+      "t": "¿Hablamos?",
+      "h": "5bd302bd"
+    },
+    "about.description": {
+      "t": "{name}: {headline}. Quién hizo este mapa, por qué existe y cómo se construyó.",
+      "h": "46e5a490"
+    },
+    "about.education": {
+      "t": "formación",
+      "h": "24e7451d"
+    },
+    "about.experience": {
+      "t": "experiencia",
+      "h": "f96da029"
+    },
+    "about.eyebrow": {
+      "t": "acerca de",
+      "h": "5780daf6"
+    },
+    "about.pageTitle": {
+      "t": "acerca de",
+      "h": "5780daf6"
+    },
+    "about.securityLead": {
+      "t": "La lista completa, con la CSP real y las concesiones, está en",
+      "h": "1b378e6f"
+    },
+    "about.skillsAria": {
+      "t": "Competencias",
+      "h": "e09212c7"
+    },
+    "about.why1": {
+      "t": "Las herramientas de seguridad suelen presentarse por separado: SAST aquí, SCA allá, IAM en otro lado. Lo que falta es el mapa: dónde encaja cada control, qué cubre, qué deja pasar y cómo se complementan las piezas.",
+      "h": "59323480"
+    },
+    "about.why2": {
+      "t": "Por eso cada dominio es un grafo navegable, con rutas de estudio, escenarios de ataque que muestran las capas en acción y quizzes para fijar lo aprendido. Es una forma más visual de aprender y, al mismo tiempo, una muestra de cómo se pensó y construyó el proyecto.",
+      "h": "4f755742"
+    },
+    "about.whyTitle": {
+      "t": "por qué existe este proyecto",
+      "h": "c4b33c0a"
+    },
+    "bridges.title": {
+      "t": "en otros dominios",
+      "h": "eb6c0e88"
+    },
+    "changelog.description": {
+      "t": "Qué cambió en este mapa: contenido nuevo, funciones y correcciones.",
+      "h": "250b31c3"
+    },
+    "changelog.eyebrow": {
+      "t": "registro público",
+      "h": "8f1ee21c"
+    },
+    "changelog.heading": {
+      "t": "Novedades",
+      "h": "4d8dc5fe"
+    },
+    "changelog.intro": {
+      "t": "Qué cambió por aquí: contenido nuevo, funciones y correcciones. La seguridad cambia rápido, y un sitio vivo necesita mostrar que está vivo.",
+      "h": "caff066b"
+    },
+    "changelog.pageTitle": {
+      "t": "novedades",
+      "h": "05f39e0a"
+    },
+    "domainPage.hint": {
+      "t": "$ haz clic en una tarjeta para ver los detalles · ctrl+k para buscar",
+      "h": "e97f92e2"
+    },
+    "domainPage.mapTitle": {
+      "t": "mapa de conceptos",
+      "h": "9874fa92"
+    },
+    "domainPage.stageLabel": {
+      "t": "etapa: {stage}",
+      "h": "61970ed7"
+    },
+    "domainPage.topicsTitle": {
+      "t": "temas",
+      "h": "b729ffe0"
+    },
+    "domains.ai-agents.badge": {
+      "t": "base de conocimiento · agentes",
+      "h": "e96a3e92"
+    },
+    "domains.ai-agents.lead": {
+      "t": "Del chunking al guardrail: cómo se construye un agente moderno, con el pipeline de datos (RAG), el ciclo de acción (frameworks, tool calling, MCP) y la malla de evaluación que decide si puede salir a producción.",
+      "h": "9686d02d"
+    },
+    "domains.ai-agents.mapIntro": {
+      "t": "Cada concepto queda en la columna de la fase en que actúa. Las líneas animadas son el flujo del pipeline de IA; las punteadas son capas que informan varias fases (RAG, LLM, MCP, guardrails).",
+      "h": "5e820947"
+    },
+    "domains.ai-agents.name": {
+      "t": "Agentes",
+      "h": "64acf7e2"
+    },
+    "domains.ai-agents.pipelineIntro": {
+      "t": "Del documento en bruto a la métrica del guardrail: el camino del dato y de la calidad. Cada chip abre el tema correspondiente.",
+      "h": "9c81e20f"
+    },
+    "domains.ai-agents.pipelineTitle": {
+      "t": "pipeline de IA",
+      "h": "463a6c1b"
+    },
+    "domains.ai-agents.pitch": {
+      "t": "Seguridad para agentes y cargas de trabajo de IA: RAG, tool calling, MCP, guardrails. Un mapa completo.",
+      "h": "c1dbea05"
+    },
+    "domains.ai-agents.title": {
+      "t": "Agentes de IA,",
+      "h": "2dc485b5"
+    },
+    "domains.ai-agents.titleAccent": {
+      "t": "mapeados.",
+      "h": "effd347c"
+    },
+    "domains.appsec.badge": {
+      "t": "base de conocimiento · devsecops",
+      "h": "56a485d2"
+    },
+    "domains.appsec.lead": {
+      "t": "Un mapa interactivo de los conceptos que protegen un pipeline: SAST, DAST, SCA, secrets scanning, SBOM y CI/CD: qué hace cada uno, dónde entra y cómo se conectan.",
+      "h": "ac24ae6d"
+    },
+    "domains.appsec.loop": {
+      "t": "Un CVE nuevo en una dependencia ya usada → el SCA continuo abre un PR → el pipeline vuelve a empezar en 01",
+      "h": "f60c3e93"
+    },
+    "domains.appsec.mapIntro": {
+      "t": "Organizado por el pipeline: cada verificación queda en la columna de su etapa. Las líneas animadas son el flujo de CI/CD; las punteadas son relaciones entre conceptos.",
+      "h": "7c79ca48"
+    },
+    "domains.appsec.name": {
+      "t": "AppSec",
+      "h": "45e941a5"
+    },
+    "domains.appsec.pipelineIntro": {
+      "t": "El camino de un commit a producción, y la verificación que vive en cada paso. Cada chip abre el tema correspondiente.",
+      "h": "6a45377d"
+    },
+    "domains.appsec.pipelineTitle": {
+      "t": "pipeline de extremo a extremo",
+      "h": "2fa4c3e8"
+    },
+    "domains.appsec.pitch": {
+      "t": "SAST, DAST, SCA, secrets, SBOM y el pipeline: el mapa interactivo que muestra cada verificación y dónde entra en el flujo de entrega.",
+      "h": "cb153b9f"
+    },
+    "domains.appsec.title": {
+      "t": "Seguridad de software,",
+      "h": "09ad8d01"
+    },
+    "domains.appsec.titleAccent": {
+      "t": "mapeada.",
+      "h": "effd347c"
+    },
+    "domains.cloudsec.badge": {
+      "t": "base de conocimiento · cloudsec",
+      "h": "297f9a3d"
+    },
+    "domains.cloudsec.lead": {
+      "t": "Un mapa interactivo de la seguridad en la nube: identidad, red, workloads, postura, criptografía y detección: qué hace cada pieza, dónde vive y cómo se conecta.",
+      "h": "b86d2554"
+    },
+    "domains.cloudsec.mapIntro": {
+      "t": "Cada control queda en la columna de la fase en que actúa. Las líneas animadas son el flujo del ciclo de seguridad en la nube; las punteadas son relaciones entre conceptos.",
+      "h": "a754a92c"
+    },
+    "domains.cloudsec.name": {
+      "t": "CloudSec",
+      "h": "d01b7fbc"
+    },
+    "domains.cloudsec.pipelineIntro": {
+      "t": "Del inventario de activos a la respuesta a incidentes: el control vive en cada fase. Cada chip abre el tema correspondiente.",
+      "h": "8aeae951"
+    },
+    "domains.cloudsec.pipelineTitle": {
+      "t": "ciclo de seguridad en la nube",
+      "h": "522c4950"
+    },
+    "domains.cloudsec.pitch": {
+      "t": "Postura en la nube, IAM, segmentación y cadena de suministro: un grafo propio, con el mismo estilo que AppSec.",
+      "h": "09e6ecd1"
+    },
+    "domains.cloudsec.title": {
+      "t": "Seguridad en la nube,",
+      "h": "0c85843c"
+    },
+    "domains.cloudsec.titleAccent": {
+      "t": "mapeada.",
+      "h": "effd347c"
+    },
+    "domains.seceng.badge": {
+      "t": "base de conocimiento · ingeniería",
+      "h": "1f6526b7"
+    },
+    "domains.seceng.lead": {
+      "t": "Un mapa interactivo de la ingeniería detrás de la seguridad: IaC, políticas como código, pipelines endurecidos, confiabilidad a escala, automatización e IA, del código a la plataforma.",
+      "h": "7f71f747"
+    },
+    "domains.seceng.mapIntro": {
+      "t": "Cada control queda en la columna de la fase en que actúa. Las líneas animadas son el flujo del ciclo de ingeniería; las punteadas son relaciones entre conceptos.",
+      "h": "c65a1e8e"
+    },
+    "domains.seceng.name": {
+      "t": "Ingeniería",
+      "h": "4143d048"
+    },
+    "domains.seceng.pipelineIntro": {
+      "t": "De la definición como código a la automatización: el control vive en cada fase. Cada chip abre el tema correspondiente.",
+      "h": "e4a41670"
+    },
+    "domains.seceng.pipelineTitle": {
+      "t": "ciclo de ingeniería",
+      "h": "d619df08"
+    },
+    "domains.seceng.pitch": {
+      "t": "Construir la plataforma de seguridad: IaC y policy as code, CI/CD endurecido, confiabilidad a escala, automatización e IA con los pies en la tierra.",
+      "h": "09d7bdd0"
+    },
+    "domains.seceng.title": {
+      "t": "Ingeniería de seguridad,",
+      "h": "362ca8f9"
+    },
+    "domains.seceng.titleAccent": {
+      "t": "mapeada.",
+      "h": "effd347c"
+    },
+    "domains.secops.badge": {
+      "t": "base de conocimiento · secops",
+      "h": "db79e50c"
+    },
+    "domains.secops.lead": {
+      "t": "Un mapa interactivo de la operación de seguridad en el borde: telemetría, detección, WAF, rate limiting, bots y la métrica que prueba que funciona, del log al bloqueo.",
+      "h": "2f775315"
+    },
+    "domains.secops.mapIntro": {
+      "t": "Cada control queda en la columna de la fase en que actúa. Las líneas animadas son el flujo del ciclo de defensa; las punteadas son relaciones entre conceptos.",
+      "h": "e452fd3f"
+    },
+    "domains.secops.name": {
+      "t": "SecOps",
+      "h": "891cb5e9"
+    },
+    "domains.secops.pipelineIntro": {
+      "t": "Del dato en bruto a la métrica: el control vive en cada fase. Cada chip abre el tema correspondiente.",
+      "h": "85e7799f"
+    },
+    "domains.secops.pipelineTitle": {
+      "t": "ciclo de defensa",
+      "h": "90d84a31"
+    },
+    "domains.secops.pitch": {
+      "t": "Defensa de borde y L7 en la práctica: WAF, rate limiting, bots, detección y SLOs, del log al bloqueo, y la métrica que prueba que funciona.",
+      "h": "0346c299"
+    },
+    "domains.secops.title": {
+      "t": "Defensa L7 y SecOps,",
+      "h": "7cf6ceca"
+    },
+    "domains.secops.titleAccent": {
+      "t": "mapeadas.",
+      "h": "effd347c"
+    },
+    "footer.about": {
+      "t": "acerca de",
+      "h": "5780daf6"
+    },
+    "footer.changelog": {
+      "t": "novedades",
+      "h": "05f39e0a"
+    },
+    "footer.counts": {
+      "t": "{items}",
+      "h": "a17a2096"
+    },
+    "footer.linkedin": {
+      "t": "linkedin",
+      "h": "7728240c"
+    },
+    "footer.localOnly": {
+      "t": "tu progreso se queda solo en este navegador",
+      "h": "74b6276c"
+    },
+    "footer.manifesto": {
+      "t": "manifiesto",
+      "h": "6358b5cb"
+    },
+    "footer.privacy": {
+      "t": "100% estático · sin rastreo · sin cookies",
+      "h": "86389a9b"
+    },
+    "footer.sourceCode": {
+      "t": "código abierto (MIT / CC BY-SA)",
+      "h": "e6ffe58a"
+    },
+    "footer.sources": {
+      "t": "fuentes",
+      "h": "bce16dd0"
+    },
+    "footer.tagline": {
+      "t": "contenido educativo por {name}",
+      "h": "68248068"
+    },
+    "glossary.all": {
+      "t": "todos",
+      "h": "d87c4480"
+    },
+    "glossary.description": {
+      "t": "Toda la terminología en un solo lugar: OWASP Top 10, CVE, CWE, IAM, zero trust, CSPM, CWPP, WAF y el resto.",
+      "h": "453907ec"
+    },
+    "glossary.domainAria": {
+      "t": "filtrar por dominio",
+      "h": "7f5414e6"
+    },
+    "glossary.eyebrow": {
+      "t": "referencia",
+      "h": "02ab610f"
+    },
+    "glossary.filterAria": {
+      "t": "filtrar términos del glosario",
+      "h": "a48c89a7"
+    },
+    "glossary.heading": {
+      "t": "Glosario",
+      "h": "7427cf69"
+    },
+    "glossary.intro": {
+      "t": "Toda la sopa de letras en un solo lugar: siglas, identificadores, frameworks y conceptos: qué significa cada uno y cómo se conecta con el resto. Los términos de todos los dominios conviven aquí, con filtro por dominio cuando quieres enfocarte.",
+      "h": "766152b8"
+    },
+    "glossary.nothing": {
+      "t": "no se encontró nada para «{query}».",
+      "h": "23baeb51"
+    },
+    "glossary.nothingIn": {
+      "t": "no se encontró nada para «{query}» en {domain}.",
+      "h": "dd70a0cf"
+    },
+    "glossary.pageTitle": {
+      "t": "glosario",
+      "h": "407257a6"
+    },
+    "glossary.placeholder": {
+      "t": "filtrar términos… (ej.: cve, iam, cspm, sbom)",
+      "h": "331a282e"
+    },
+    "graph.allRelations": {
+      "t": "todas las relaciones",
+      "h": "9de6ae38"
+    },
+    "graph.also": {
+      "t": "también: {items}",
+      "h": "31d287d6"
+    },
+    "graph.alsoInStage": {
+      "t": "también aparece en otra etapa",
+      "h": "399ddb6c"
+    },
+    "graph.closeDetails": {
+      "t": "Cerrar detalles",
+      "h": "433da6d1"
+    },
+    "graph.copied": {
+      "t": "copiado",
+      "h": "3b348838"
+    },
+    "graph.copyLink": {
+      "t": "enlace",
+      "h": "4f0aa52d"
+    },
+    "graph.crossCutting": {
+      "t": "capas transversales",
+      "h": "a1713d96"
+    },
+    "graph.detailsAria": {
+      "t": "Detalles: {title}",
+      "h": "d298d3af"
+    },
+    "graph.gate": {
+      "t": "gate: {gate}",
+      "h": "5e1d5eda"
+    },
+    "graph.kindHide": {
+      "t": "ocultar este tipo",
+      "h": "59cd9b69"
+    },
+    "graph.kindShow": {
+      "t": "mostrar este tipo",
+      "h": "d8ce0b0e"
+    },
+    "graph.legend": {
+      "t": "líneas animadas = flujo del pipeline · pasa el mouse o haz clic en una tarjeta para ver sus relaciones",
+      "h": "a1067e9d"
+    },
+    "graph.mark": {
+      "t": "marcar",
+      "h": "f1b5a91d"
+    },
+    "graph.nodeDetails": {
+      "t": "{name} (ver detalles)",
+      "h": "4fb6e812"
+    },
+    "graph.openTopic": {
+      "t": "abrir tema",
+      "h": "2142144a"
+    },
+    "graph.relations": {
+      "t": "relaciones",
+      "h": "9649007e"
+    },
+    "graph.stageAria": {
+      "t": "Etapa {name}",
+      "h": "e4cfbd40"
+    },
+    "graph.stageEyebrow": {
+      "t": "etapa {index}",
+      "h": "509a96a1"
+    },
+    "graph.studied": {
+      "t": "estudiado",
+      "h": "0739a9e0"
+    },
+    "graph.viewList": {
+      "t": "lista",
+      "h": "38b62be4"
+    },
+    "graph.viewMap": {
+      "t": "mapa",
+      "h": "37745ed7"
+    },
+    "graph.viewMode": {
+      "t": "Modo de visualización",
+      "h": "1b360329"
+    },
+    "hub.badge": {
+      "t": "base de conocimiento · seguridad de software",
+      "h": "38d61907"
+    },
+    "hub.explore.careers.body": {
+      "t": "Hojas de ruta para AppSec, DevSecOps, DevOps y más: qué hace el rol y cómo llegar.",
+      "h": "a35d9d04"
+    },
+    "hub.explore.careers.title": {
+      "t": "Carreras",
+      "h": "68d70e59"
+    },
+    "hub.explore.journey.body": {
+      "t": "Un mapa que enseña de lo básico a lo avanzado, desbloqueándose a medida que aprendes.",
+      "h": "a95d435e"
+    },
+    "hub.explore.journey.title": {
+      "t": "Recorrido guiado",
+      "h": "5a550d11"
+    },
+    "hub.explore.paths.body": {
+      "t": "Un orden pensado para cada objetivo, con el progreso guardado en tu navegador.",
+      "h": "60918f07"
+    },
+    "hub.explore.paths.title": {
+      "t": "Rutas de estudio",
+      "h": "9a6d602b"
+    },
+    "hub.explore.scenarios.body": {
+      "t": "Acompaña un incidente paso a paso y descubre qué control detiene cada movimiento.",
+      "h": "83cb1f86"
+    },
+    "hub.explore.scenarios.title": {
+      "t": "Sigue el ataque",
+      "h": "02582262"
+    },
+    "hub.exploreTitle": {
+      "t": "formas de explorar",
+      "h": "e492b0d9"
+    },
+    "hub.lead": {
+      "t": "Cada dominio es un grafo independiente: conceptos, pipeline, conexiones y glosario. {n} mapas listos, todos con el mismo nivel de profundidad.",
+      "h": "16f5816f"
+    },
+    "hub.manifestoLink": {
+      "t": "leer el manifiesto: por qué existe este proyecto",
+      "h": "1ccd5c5b"
+    },
+    "hub.notify": {
+      "t": "avísame",
+      "h": "35e01eb9"
+    },
+    "hub.openMap": {
+      "t": "abrir mapa",
+      "h": "82d8e331"
+    },
+    "hub.statDomains": {
+      "t": "dominios",
+      "h": "e8a42c4c"
+    },
+    "hub.statDraft": {
+      "t": "draft",
+      "h": "0e7766b4"
+    },
+    "hub.statLive": {
+      "t": "live",
+      "h": "98aadb37"
+    },
+    "hub.title": {
+      "t": "Seguridad de software,",
+      "h": "09ad8d01"
+    },
+    "hub.titleAccent": {
+      "t": "mapeada por dominio.",
+      "h": "48f5bbee"
+    },
+    "kinds.agentsPratica": {
+      "t": "componente",
+      "h": "335c4c1e"
+    },
+    "kinds.appsecTecnica": {
+      "t": "técnica de prueba",
+      "h": "9b1b383c"
+    },
+    "kinds.conceito": {
+      "t": "concepto",
+      "h": "49376c9c"
+    },
+    "kinds.pratica": {
+      "t": "práctica",
+      "h": "e17674f7"
+    },
+    "kinds.tecnica": {
+      "t": "técnica",
+      "h": "b41c6aff"
+    },
+    "lang.label": {
+      "t": "Idioma",
+      "h": "89b86ab0"
+    },
+    "lang.switchTo": {
+      "t": "Cambiar de idioma",
+      "h": "8c5f1998"
+    },
+    "manifesto.aboutMe": {
+      "t": "acerca de mí",
+      "h": "ad70e50e"
+    },
+    "manifesto.advantage": {
+      "t": "ventaja",
+      "h": "5caa3c36"
+    },
+    "manifesto.agentsCanTitle": {
+      "t": "Lo que el agente puede hacer",
+      "h": "bcd94577"
+    },
+    "manifesto.agentsEyebrow": {
+      "t": "04 · hecho para personas y para agentes",
+      "h": "a6a9b28d"
+    },
+    "manifesto.agentsIntro": {
+      "t": "El repositorio incluye un servidor MCP (Model Context Protocol) local, sin dependencias. Un agente se conecta, aprende las reglas, lee lo que ya existe, crea el esqueleto de un tema y ejecuta el mismo validador que corre el CI, con los mismos límites de calidad que tendría una persona.",
+      "h": "92da605d"
+    },
+    "manifesto.agentsNote": {
+      "t": "Las contribuciones asistidas por IA son bienvenidas, siempre que el autor verifique cada afirmación y declare el uso en el pull request. El objetivo es acelerar la escritura sin renunciar a la precisión.",
+      "h": "337ab2d4"
+    },
+    "manifesto.agentsNoteStrong": {
+      "t": "Los agentes proponen, las personas revisan.",
+      "h": "4064f423"
+    },
+    "manifesto.agentsTitle": {
+      "t": "Un servidor MCP para que los agentes de código evolucionen el proyecto.",
+      "h": "ae9e1f54"
+    },
+    "manifesto.colCriterion": {
+      "t": "criterio",
+      "h": "ad3bcfda"
+    },
+    "manifesto.colKb": {
+      "t": "appsec/kb",
+      "h": "730d67df"
+    },
+    "manifesto.colNotes": {
+      "t": "espacio de notas (ej.: Notion)",
+      "h": "06d08ecf"
+    },
+    "manifesto.configCaption": {
+      "t": ".mcp.json (ya incluido en el repositorio)",
+      "h": "894fc228"
+    },
+    "manifesto.ctaCode": {
+      "t": "ver el código",
+      "h": "2ffdd604"
+    },
+    "manifesto.ctaContribute": {
+      "t": "cómo contribuir",
+      "h": "887dc8d7"
+    },
+    "manifesto.ctaPaths": {
+      "t": "rutas de estudio",
+      "h": "4edc82ca"
+    },
+    "manifesto.ctaScenarios": {
+      "t": "sigue un ataque",
+      "h": "5dd4a2fd"
+    },
+    "manifesto.ctaStudy": {
+      "t": "empezar a estudiar",
+      "h": "a7fdff6c"
+    },
+    "manifesto.description": {
+      "t": "Por qué existe este proyecto: conocimiento de seguridad abierto, visual, verificable y fácil de acceder, hecho para personas y para agentes.",
+      "h": "100878c0"
+    },
+    "manifesto.eyebrow": {
+      "t": "manifiesto",
+      "h": "6358b5cb"
+    },
+    "manifesto.finalBody": {
+      "t": "Si estudias seguridad, empieza por una ruta. Si trabajas en esto, la forma más valiosa de ayudar es encontrar lo que está mal y decirlo. Si construyes con agentes, conecta el servidor y propón un tema.",
+      "h": "b2eddedd"
+    },
+    "manifesto.finalTitle": {
+      "t": "Aprende, corrige, mejora.",
+      "h": "1de7ad01"
+    },
+    "manifesto.freshBody1": {
+      "t": "Las reglas del proyecto vienen del propio servidor (instrucciones y guía de contribución), así que una sesión nueva no depende de contexto viejo: se conecta, lee la guía y sabe qué hacer y qué exige el build.",
+      "h": "9adf9f20"
+    },
+    "manifesto.freshBody2": {
+      "t": "Los guardrails están del lado del proyecto: {code} solo crea un archivo nuevo, rechaza rutas sospechosas y nunca sobrescribe, y el build no pasa con contenido incompleto.",
+      "h": "e6127201"
+    },
+    "manifesto.freshTitle": {
+      "t": "Cada sesión nueva empieza desde el mismo punto",
+      "h": "b0f956fe"
+    },
+    "manifesto.lead": {
+      "t": "La forma dominante de enseñar seguridad está fallando a quienes aprenden. Este proyecto es una apuesta concreta por otro camino, y vale más mostrar que prometer: todo lo que hay en esta página ya existe y se puede comprobar en el código.",
+      "h": "f9ae87da"
+    },
+    "manifesto.limitation": {
+      "t": "limitación",
+      "h": "ae0b636f"
+    },
+    "manifesto.notionEyebrow": {
+      "t": "03 · por qué no solo un Notion",
+      "h": "40bb8adf"
+    },
+    "manifesto.notionIntroA": {
+      "t": "Notion es excelente en lo que fue hecho para hacer: anotar, organizar y colaborar. La comparación de abajo trata de otra tarea:",
+      "h": "8d9e324b"
+    },
+    "manifesto.notionIntroB": {
+      "t": ", donde la herramienta ayuda a mantener la calidad en lugar de depender solo de la disciplina de quien escribe.",
+      "h": "5ea0afb2"
+    },
+    "manifesto.notionIntroStrong": {
+      "t": "publicar conocimiento estructurado y verificable",
+      "h": "e8aa9e26"
+    },
+    "manifesto.notionTitle": {
+      "t": "Las notas son un comienzo. El conocimiento estructurado es otra categoría.",
+      "h": "7b0e4508"
+    },
+    "manifesto.ogDescription": {
+      "t": "Por qué la forma en que aprendemos seguridad necesita cambiar, y qué hace diferente este proyecto.",
+      "h": "bed42d03"
+    },
+    "manifesto.ogTitle": {
+      "t": "Manifiesto: el conocimiento de seguridad debería ser abierto y fácil de encontrar",
+      "h": "21f87797"
+    },
+    "manifesto.pageTitle": {
+      "t": "manifiesto",
+      "h": "6358b5cb"
+    },
+    "manifesto.principles.accessBody": {
+      "t": "Sitio estático, rápido, sin cookies ni rastreo, que funciona en el celular. Búsqueda con un atajo (Ctrl+K), lista por etapa y navegación por teclado.",
+      "h": "018928d3"
+    },
+    "manifesto.principles.accessTitle": {
+      "t": "Fácil de acceder",
+      "h": "c4e2996d"
+    },
+    "manifesto.principles.evolvingBody": {
+      "t": "Personas y agentes de código contribuyen por el mismo camino, con los mismos guardrails y revisión humana al final.",
+      "h": "4197610a"
+    },
+    "manifesto.principles.evolvingTitle": {
+      "t": "Hecho para evolucionar",
+      "h": "a407981c"
+    },
+    "manifesto.principles.openBody": {
+      "t": "Código bajo MIT, contenido bajo CC BY-SA 4.0. Cualquiera puede leer, copiar, adaptar, traducir y corregir. Sin login, sin suscripción.",
+      "h": "d3263e07"
+    },
+    "manifesto.principles.openTitle": {
+      "t": "Abierto",
+      "h": "cf9b7706"
+    },
+    "manifesto.principles.practicalBody": {
+      "t": "Escenarios de ataque paso a paso y quizzes que piden razonar. Descubres qué capa detiene cada movimiento del atacante.",
+      "h": "973316e2"
+    },
+    "manifesto.principles.practicalTitle": {
+      "t": "Práctico",
+      "h": "65f90e3b"
+    },
+    "manifesto.principles.verifiableBody": {
+      "t": "Fuentes primarias, fecha de actualización, registro público de correcciones y un validador que rompe el build cuando algo está incompleto o apunta a la nada.",
+      "h": "b86bb2c7"
+    },
+    "manifesto.principles.verifiableTitle": {
+      "t": "Verificable",
+      "h": "7a4d28ee"
+    },
+    "manifesto.principles.visualBody": {
+      "t": "Cada dominio es un mapa: qué existe, dónde entra en el pipeline y cómo se conecta. La estructura es parte de la explicación.",
+      "h": "47ce0a5b"
+    },
+    "manifesto.principles.visualTitle": {
+      "t": "Visual",
+      "h": "770d690e"
+    },
+    "manifesto.principlesEyebrow": {
+      "t": "02 · lo que defiendo",
+      "h": "7f8ed12a"
+    },
+    "manifesto.principlesIntro": {
+      "t": "La seguridad es un deporte de equipo: cuanta más gente entiende, más difícil es atacar. Por eso seis principios guían el proyecto:",
+      "h": "460a653c"
+    },
+    "manifesto.principlesTitle": {
+      "t": "El conocimiento es mejor cuando circula.",
+      "h": "fba4f7c4"
+    },
+    "manifesto.problemEyebrow": {
+      "t": "01 · el problema",
+      "h": "bb8124a4"
+    },
+    "manifesto.problemIntro": {
+      "t": "Esto es una opinión, formada por alguien que aprendió, trabaja y enseña en el área. Cinco fallas que se repiten:",
+      "h": "127d718a"
+    },
+    "manifesto.problems.p1Body": {
+      "t": "SAST, DAST, WAF, IAM, cada uno en su capítulo. Nadie muestra dónde entra un control, qué deja pasar y qué otro cubre ese hueco.",
+      "h": "23c3d0f5"
+    },
+    "manifesto.problems.p1Title": {
+      "t": "Memorizar listas en lugar de entender conexiones",
+      "h": "e85b934b"
+    },
+    "manifesto.problems.p2Body": {
+      "t": "Cursos caros, PDFs sueltos, videos de tres horas sin búsqueda. Quienes más necesitan aprender suelen ser quienes menos acceso tienen.",
+      "h": "23c786d6"
+    },
+    "manifesto.problems.p2Title": {
+      "t": "Conocimiento detrás de muros",
+      "h": "3ace5d87"
+    },
+    "manifesto.problems.p3Body": {
+      "t": "Sin fecha, sin fuente, sin canal para corregir. En seguridad, la información vieja y equivocada es un riesgo, no solo una molestia.",
+      "h": "520b6db6"
+    },
+    "manifesto.problems.p3Title": {
+      "t": "Material que envejece en silencio",
+      "h": "51a95e50"
+    },
+    "manifesto.problems.p4Body": {
+      "t": "Se aprende el nombre del control, no el momento en que falla. El atacante no sigue el capítulo del libro.",
+      "h": "2c3c9ee2"
+    },
+    "manifesto.problems.p4Title": {
+      "t": "Teoría sin escenario",
+      "h": "6d2a954b"
+    },
+    "manifesto.problems.p5Body": {
+      "t": "Memorizar la sigla es fácil y no demuestra nada. Lo que importa es razonar sobre un incidente que nunca viste.",
+      "h": "327fa574"
+    },
+    "manifesto.problems.p5Title": {
+      "t": "Evaluación que mide memoria",
+      "h": "0a63bd41"
+    },
+    "manifesto.problemTitle": {
+      "t": "La forma en que aprendemos seguridad está rota.",
+      "h": "3b2094bf"
+    },
+    "manifesto.rows.access": {
+      "t": "Acceso",
+      "h": "2f81a22d"
+    },
+    "manifesto.rows.accessKb": {
+      "t": "Público y estático: se abre en cualquier lugar, sin cuenta",
+      "h": "7977a83f"
+    },
+    "manifesto.rows.accessNotes": {
+      "t": "La lectura pública es posible; colaborar depende de un workspace y permisos",
+      "h": "206b35c4"
+    },
+    "manifesto.rows.connections": {
+      "t": "Conexiones",
+      "h": "8f3509b6"
+    },
+    "manifesto.rows.connectionsKb": {
+      "t": "Grafo con relaciones tipadas; el build falla si una conexión apunta al vacío",
+      "h": "f3cbe31d"
+    },
+    "manifesto.rows.connectionsNotes": {
+      "t": "Enlaces y relaciones flexibles, sin garantía de consistencia entre páginas",
+      "h": "160386a9"
+    },
+    "manifesto.rows.history": {
+      "t": "Historial y revisión",
+      "h": "82da0aaa"
+    },
+    "manifesto.rows.historyKb": {
+      "t": "Git: cada cambio es un commit revisable, con autoría y motivo",
+      "h": "081dc0b2"
+    },
+    "manifesto.rows.historyNotes": {
+      "t": "Historial por página; la revisión por pares depende de un proceso manual",
+      "h": "8bddaebd"
+    },
+    "manifesto.rows.learning": {
+      "t": "Aprender",
+      "h": "1016fcb2"
+    },
+    "manifesto.rows.learningKb": {
+      "t": "Rutas, escenarios, quizzes y progreso guardado solo en tu navegador",
+      "h": "37766a84"
+    },
+    "manifesto.rows.learningNotes": {
+      "t": "Enfocado en lectura y anotación; sin rutas, escenarios ni quiz nativos",
+      "h": "37d3c1ae"
+    },
+    "manifesto.rows.ownership": {
+      "t": "Propiedad",
+      "h": "3e90e4cb"
+    },
+    "manifesto.rows.ownershipKb": {
+      "t": "Archivos en tu repositorio, licencia abierta, fork en un clic",
+      "h": "1296d22e"
+    },
+    "manifesto.rows.ownershipNotes": {
+      "t": "Los datos viven en la plataforma (se pueden exportar, pero ella es la fuente de verdad)",
+      "h": "3487a5c2"
+    },
+    "manifesto.rows.quality": {
+      "t": "Calidad",
+      "h": "a60f2c73"
+    },
+    "manifesto.rows.qualityKb": {
+      "t": "Validador (9 reglas) y CI en cada PR, más presupuesto de tamaño",
+      "h": "eb667a23"
+    },
+    "manifesto.rows.qualityNotes": {
+      "t": "Sin verificación automática del contenido",
+      "h": "6ba7f174"
+    },
+    "manifesto.rows.realtime": {
+      "t": "Edición colaborativa en tiempo real",
+      "h": "d2ee4d04"
+    },
+    "manifesto.rows.realtimeKb": {
+      "t": "No es el objetivo: aquí la colaboración es por pull request",
+      "h": "a0fcb6b7"
+    },
+    "manifesto.rows.realtimeNotes": {
+      "t": "Excelente: es su punto fuerte",
+      "h": "83620a96"
+    },
+    "manifesto.rows.structure": {
+      "t": "Estructura",
+      "h": "9482c5d5"
+    },
+    "manifesto.rows.structureKb": {
+      "t": "Temas tipados: se exigen secciones, fuentes, quiz y posición en el mapa",
+      "h": "4366d0f9"
+    },
+    "manifesto.rows.structureNotes": {
+      "t": "Estructura por convención: las plantillas ayudan, pero nada obliga a seguirlas",
+      "h": "8104f52b"
+    },
+    "manifesto.signature": {
+      "t": "— {name}.",
+      "h": "32c4b377"
+    },
+    "manifesto.tableCaption": {
+      "t": "Comparación entre un espacio de notas genérico y este proyecto",
+      "h": "e66daa82"
+    },
+    "manifesto.titleA": {
+      "t": "El conocimiento de seguridad debería ser",
+      "h": "b7a51259"
+    },
+    "manifesto.titleB": {
+      "t": "abierto, visual y fácil de encontrar.",
+      "h": "a9ff8c25"
+    },
+    "manifesto.toolGuide": {
+      "t": "cargar las reglas del proyecto",
+      "h": "0c314407"
+    },
+    "manifesto.toolMap": {
+      "t": "mapear lo que ya existe",
+      "h": "dbe992a9"
+    },
+    "manifesto.toolRead": {
+      "t": "leer y encontrar contenido",
+      "h": "0a6f4d64"
+    },
+    "manifesto.toolScaffold": {
+      "t": "crear el esqueleto de un tema nuevo",
+      "h": "0f64e969"
+    },
+    "manifesto.toolValidate": {
+      "t": "ejecutar el validador",
+      "h": "c398c640"
+    },
+    "meta.description": {
+      "t": "Base de conocimiento interactiva de seguridad: AppSec, CloudSec, agentes de IA, SecOps e ingeniería de seguridad, con rutas de estudio, escenarios de ataque y quizzes. Contenido estático, sin rastreo.",
+      "h": "b45b9cb8"
+    },
+    "meta.ogTagline": {
+      "t": "AppSec · CloudSec · SecOps · Ingeniería · Agentes de IA",
+      "h": "91196295"
+    },
+    "meta.ogTitle": {
+      "t": "Seguridad de software, mapeada por dominio.",
+      "h": "40ab5cd3"
+    },
     "meta.siteName": {
       "t": "appsec/kb",
       "h": "730d67df"
+    },
+    "meta.title": {
+      "t": "appsec/kb — mapa interactivo de seguridad de software",
+      "h": "c065740d"
+    },
+    "nav.allDomains": {
+      "t": "Todos los dominios",
+      "h": "08cbf6a3"
+    },
+    "nav.careers": {
+      "t": "Carreras",
+      "h": "68d70e59"
+    },
+    "nav.closeMenu": {
+      "t": "Cerrar menú",
+      "h": "6c9fc990"
+    },
+    "nav.explore": {
+      "t": "Explorar",
+      "h": "b965ae66"
+    },
+    "nav.groups.ai": {
+      "t": "IA",
+      "h": "560040c5"
+    },
+    "nav.groups.build": {
+      "t": "Aplicaciones y entrega",
+      "h": "c6a9d411"
+    },
+    "nav.groups.cloud": {
+      "t": "Nube e infraestructura",
+      "h": "d3f8fd40"
+    },
+    "nav.groups.operate": {
+      "t": "Operaciones y detección",
+      "h": "e68d18ec"
+    },
+    "nav.learn": {
+      "t": "Aprender",
+      "h": "b048378e"
+    },
+    "nav.learnItems.glossary": {
+      "t": "Glosario",
+      "h": "7427cf69"
+    },
+    "nav.learnItems.glossaryDesc": {
+      "t": "Siglas, estándares y conceptos en un solo lugar.",
+      "h": "810e4a22"
+    },
+    "nav.learnItems.journey": {
+      "t": "Recorrido",
+      "h": "e40c0925"
+    },
+    "nav.learnItems.journeyDesc": {
+      "t": "Un mapa guiado de lo básico a lo avanzado, con tu progreso.",
+      "h": "100105ba"
+    },
+    "nav.learnItems.paths": {
+      "t": "Rutas de estudio",
+      "h": "9a6d602b"
+    },
+    "nav.learnItems.pathsDesc": {
+      "t": "Órdenes pensados para un objetivo, con el progreso guardado en tu navegador.",
+      "h": "644be9be"
+    },
+    "nav.learnItems.scenarios": {
+      "t": "Escenarios de ataque",
+      "h": "2f95a781"
+    },
+    "nav.learnItems.scenariosDesc": {
+      "t": "Sigue un incidente paso a paso y mira qué control detiene cada movimiento.",
+      "h": "cd619314"
+    },
+    "nav.menu": {
+      "t": "Menú",
+      "h": "57f5f5ef"
+    },
+    "nav.openMenu": {
+      "t": "Abrir menú",
+      "h": "197101e9"
+    },
+    "nav.project": {
+      "t": "Proyecto",
+      "h": "f6f4da8d"
+    },
+    "nav.projectItems.about": {
+      "t": "Acerca de",
+      "h": "6b21fb79"
+    },
+    "nav.projectItems.aboutDesc": {
+      "t": "Quién lo hace y cómo.",
+      "h": "922f0d37"
+    },
+    "nav.projectItems.changelog": {
+      "t": "Novedades",
+      "h": "4d8dc5fe"
+    },
+    "nav.projectItems.changelogDesc": {
+      "t": "Registro público de cambios y correcciones.",
+      "h": "8e5ced34"
+    },
+    "nav.projectItems.manifesto": {
+      "t": "Manifiesto",
+      "h": "dcd7c00c"
+    },
+    "nav.projectItems.manifestoDesc": {
+      "t": "Por qué existe este proyecto.",
+      "h": "3f1d9c5e"
+    },
+    "nav.projectItems.repo": {
+      "t": "Código fuente",
+      "h": "22a35fbe"
+    },
+    "nav.projectItems.repoDesc": {
+      "t": "Código abierto en GitHub.",
+      "h": "0e7ee020"
+    },
+    "nav.projectItems.security": {
+      "t": "Seguridad",
+      "h": "f25ce1b8"
+    },
+    "nav.projectItems.securityDesc": {
+      "t": "Cómo este sitio practica lo que enseña.",
+      "h": "3940546d"
+    },
+    "nav.projectItems.sources": {
+      "t": "Fuentes",
+      "h": "2eb56be3"
+    },
+    "nav.projectItems.sourcesDesc": {
+      "t": "Referencias primarias por dominio.",
+      "h": "4fe61594"
+    },
+    "nav.topicsCount_one": {
+      "t": "{n} tema",
+      "h": "7e0b92b3"
+    },
+    "nav.topicsCount_other": {
+      "t": "{n} temas",
+      "h": "e2f7b1b9"
+    },
+    "notice.languageEn": {
+      "t": "inglés",
+      "h": "649df08a"
+    },
+    "notice.languagePt": {
+      "t": "portugués",
+      "h": "23882c57"
+    },
+    "notice.partial": {
+      "t": "Partes de esta página aún no están traducidas y aparecen en {language}. El texto original es siempre la referencia.",
+      "h": "1c5cdabc"
+    },
+    "pathNav.next": {
+      "t": "siguiente",
+      "h": "edee9402"
+    },
+    "pathNav.previous": {
+      "t": "anterior",
+      "h": "355f28f2"
+    },
+    "pathNav.trail": {
+      "t": "ruta",
+      "h": "81a85c61"
+    },
+    "pathNav.trailAria": {
+      "t": "Ruta: {title}",
+      "h": "8b8c38af"
+    },
+    "paths.continue": {
+      "t": "continuar",
+      "h": "eee0bbba"
+    },
+    "paths.description": {
+      "t": "Órdenes sugeridos para estudiar AppSec, CloudSec, agentes de IA, SecOps e ingeniería, con el progreso guardado en tu navegador.",
+      "h": "c2dc4067"
+    },
+    "paths.done": {
+      "t": "ruta completada",
+      "h": "c7e53e4a"
+    },
+    "paths.eyebrow": {
+      "t": "estudio guiado",
+      "h": "24bb9403"
+    },
+    "paths.heading": {
+      "t": "Rutas de estudio",
+      "h": "9a6d602b"
+    },
+    "paths.intro": {
+      "t": "¿No sabes por dónde empezar? Cada ruta es un orden pensado: un tema prepara el siguiente. Marca lo que ya estudiaste (o acierta el quiz del tema) y el progreso aparece aquí y en los mapas.",
+      "h": "d43635f8"
+    },
+    "paths.levelBeginner": {
+      "t": "principiante",
+      "h": "9fbd11cb"
+    },
+    "paths.levelIntermediate": {
+      "t": "intermedio",
+      "h": "ce03a801"
+    },
+    "paths.pageTitle": {
+      "t": "rutas de estudio",
+      "h": "4edc82ca"
+    },
+    "paths.progressAria": {
+      "t": "Progreso en la ruta {title}",
+      "h": "d5216926"
+    },
+    "paths.start": {
+      "t": "empezar ruta",
+      "h": "6368b159"
+    },
+    "paths.studiedSr": {
+      "t": "(estudiado)",
+      "h": "23e5a04d"
+    },
+    "pipeline.gate": {
+      "t": "gate: {gate}",
+      "h": "5e1d5eda"
+    },
+    "profileStrip.about": {
+      "t": "acerca de",
+      "h": "5780daf6"
+    },
+    "profileStrip.aria": {
+      "t": "Acerca del autor",
+      "h": "d24f4b50"
+    },
+    "profileStrip.site": {
+      "t": "Sitio",
+      "h": "5b6825d3"
+    },
+    "progress.confirm": {
+      "t": "¿borrar todo?",
+      "h": "c261812c"
+    },
+    "progress.no": {
+      "t": "no",
+      "h": "fd128635"
+    },
+    "progress.perfectQuizzes": {
+      "t": "{perfect}/{n} quizzes perfectos",
+      "h": "83ad6642"
+    },
+    "progress.progressIn": {
+      "t": "Progreso en {name}",
+      "h": "1aee2094"
+    },
+    "progress.reset": {
+      "t": "reiniciar",
+      "h": "91ef0c16"
+    },
+    "progress.savedLocally": {
+      "t": "guardado solo en este navegador",
+      "h": "f97c59f5"
+    },
+    "progress.studiedOf": {
+      "t": "{done}/{total} temas estudiados",
+      "h": "fcb18cfa"
+    },
+    "progress.title": {
+      "t": "tu progreso",
+      "h": "49a683c3"
+    },
+    "progress.yes": {
+      "t": "sí",
+      "h": "fb360f9c"
+    },
+    "quiz.again": {
+      "t": "Vale la pena releer el tema e intentarlo de nuevo.",
+      "h": "d83910e5"
+    },
+    "quiz.best": {
+      "t": "mejor: {best}/{total}",
+      "h": "10da0fd5"
+    },
+    "quiz.failed": {
+      "t": "No se pudieron cargar las preguntas ahora.",
+      "h": "dcf76d2d"
+    },
+    "quiz.good": {
+      "t": "¡Bien! El tema se marcó como estudiado.",
+      "h": "3fd95277"
+    },
+    "quiz.loading": {
+      "t": "Cargando preguntas…",
+      "h": "445ff531"
+    },
+    "quiz.next": {
+      "t": "siguiente",
+      "h": "edee9402"
+    },
+    "quiz.none": {
+      "t": "Aún no hay preguntas para este tema.",
+      "h": "ad2ce5a9"
+    },
+    "quiz.perfect": {
+      "t": "Perfecto. Este tema ya lo dominas.",
+      "h": "4bd5bb5c"
+    },
+    "quiz.question": {
+      "t": "pregunta {n} de {total}",
+      "h": "e672246e"
+    },
+    "quiz.retry": {
+      "t": "reintentar",
+      "h": "708269ae"
+    },
+    "quiz.right": {
+      "t": "Correcto. ",
+      "h": "7bd01004"
+    },
+    "quiz.seeResult": {
+      "t": "ver resultado",
+      "h": "d0cde4dc"
+    },
+    "quiz.title": {
+      "t": "pon a prueba lo que entendiste",
+      "h": "d8d284d3"
+    },
+    "quiz.wrong": {
+      "t": "Casi. ",
+      "h": "75398d26"
+    },
+    "scenarios.description": {
+      "t": "Sigue un incidente paso a paso y descubre qué control detiene cada movimiento del atacante.",
+      "h": "ebc0b21f"
+    },
+    "scenarios.end": {
+      "t": "fin del escenario",
+      "h": "5dc7b5fc"
+    },
+    "scenarios.eyebrow": {
+      "t": "sigue el ataque",
+      "h": "aef94ade"
+    },
+    "scenarios.finish": {
+      "t": "terminar",
+      "h": "2cce4a92"
+    },
+    "scenarios.heading": {
+      "t": "Escenarios de ataque",
+      "h": "2f95a781"
+    },
+    "scenarios.intro": {
+      "t": "En lugar de ver cada control por separado, acompaña un incidente de principio a fin. En cada paso, intenta adivinar qué control entra en acción antes de revelar la respuesta.",
+      "h": "3a824b90"
+    },
+    "scenarios.layersIntro": {
+      "t": "Las capas que entraron en juego, en orden:",
+      "h": "9b3aeaea"
+    },
+    "scenarios.layersOutro": {
+      "t": "Ninguna capa resuelve sola: el valor está en que cada una cubra el punto ciego de la anterior.",
+      "h": "8e4d641c"
+    },
+    "scenarios.nextStep": {
+      "t": "siguiente paso",
+      "h": "f6b4702b"
+    },
+    "scenarios.pageTitle": {
+      "t": "escenarios de ataque",
+      "h": "85324442"
+    },
+    "scenarios.replay": {
+      "t": "repetir",
+      "h": "341d953e"
+    },
+    "scenarios.reveal": {
+      "t": "¿qué lo detiene?",
+      "h": "f0019052"
+    },
+    "scenarios.stagesAria": {
+      "t": "Etapas del pipeline",
+      "h": "eeade3ca"
+    },
+    "scenarios.step": {
+      "t": "paso {n} de {total}",
+      "h": "900704d7"
+    },
+    "scenarios.tablistAria": {
+      "t": "Escenarios",
+      "h": "2dd4a83d"
+    },
+    "search.button": {
+      "t": "Buscar",
+      "h": "bce06414"
+    },
+    "search.buttonAria": {
+      "t": "Buscar (Ctrl+K)",
+      "h": "c2d320d1"
+    },
+    "search.dialog": {
+      "t": "Buscar en la base",
+      "h": "7f36e715"
+    },
+    "search.empty": {
+      "t": "No se encontró nada para «{query}».",
+      "h": "63ac13c8"
+    },
+    "search.failed": {
+      "t": "No se pudo cargar el índice de búsqueda.",
+      "h": "c6e3e20d"
+    },
+    "search.kindPage": {
+      "t": "Página",
+      "h": "fb06270f"
+    },
+    "search.kindTerm": {
+      "t": "Término",
+      "h": "770bce19"
+    },
+    "search.kindTopic": {
+      "t": "Tema",
+      "h": "7e13bd17"
+    },
+    "search.loading": {
+      "t": "Cargando…",
+      "h": "33ce4174"
+    },
+    "search.navigate": {
+      "t": "↑↓ navegar",
+      "h": "aff88f78"
+    },
+    "search.onMapHint": {
+      "t": "shift+enter en el mapa",
+      "h": "06630d35"
+    },
+    "search.open": {
+      "t": "abrir",
+      "h": "5fc7e38b"
+    },
+    "search.placeholder": {
+      "t": "Buscar temas, términos y páginas…",
+      "h": "126afe94"
+    },
+    "search.results": {
+      "t": "Resultados",
+      "h": "612e12d2"
+    },
+    "search.viewOnMap": {
+      "t": "Ver {title} en el mapa",
+      "h": "9b681658"
+    },
+    "sourcesNote.aiNote": {
+      "t": "contenido con apoyo de IA, en revisión",
+      "h": "841ce068"
+    },
+    "sourcesNote.report": {
+      "t": "reportar un error",
+      "h": "77764282"
+    },
+    "sourcesNote.sources": {
+      "t": "fuentes para profundizar",
+      "h": "ad39705c"
+    },
+    "sourcesNote.updated": {
+      "t": "actualizado el {date}",
+      "h": "0b26641e"
+    },
+    "sourcesPage.description": {
+      "t": "Referencias primarias por dominio para profundizar en cada tema: OWASP, NIST, CIS y documentación oficial.",
+      "h": "a12851ec"
+    },
+    "sourcesPage.eyebrow": {
+      "t": "referencias",
+      "h": "f4c9a69f"
+    },
+    "sourcesPage.heading": {
+      "t": "Fuentes",
+      "h": "2eb56be3"
+    },
+    "sourcesPage.intro": {
+      "t": "El mapa resume y conecta ideas; las fuentes primarias de abajo son donde profundizar y donde comprobar cualquier afirmación.",
+      "h": "cd163328"
+    },
+    "sourcesPage.pageTitle": {
+      "t": "fuentes",
+      "h": "bce16dd0"
+    },
+    "toolbar.copyLink": {
+      "t": "copiar enlace",
+      "h": "31c15aab"
+    },
+    "toolbar.linkCopied": {
+      "t": "enlace copiado",
+      "h": "6d785d4f"
+    },
+    "toolbar.markStudied": {
+      "t": "marcar como estudiado",
+      "h": "65390525"
+    },
+    "toolbar.print": {
+      "t": "imprimir / PDF",
+      "h": "df534d5a"
+    },
+    "toolbar.studied": {
+      "t": "estudiado",
+      "h": "0739a9e0"
+    },
+    "topicPage.back": {
+      "t": "volver al mapa",
+      "h": "6955abc7"
+    },
+    "topicPage.connections": {
+      "t": "conexiones en el mapa",
+      "h": "9f7ba532"
+    },
+    "topicPage.stageBadge": {
+      "t": "etapa: {stage}",
+      "h": "61970ed7"
     }
   }
 }

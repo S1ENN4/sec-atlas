@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { RotateCcw, Trophy } from "lucide-react";
 
+import { fmt } from "@/i18n/format";
 import { useProgress } from "@/lib/progress";
 
 export interface DomainTotals {
@@ -11,9 +12,21 @@ export interface DomainTotals {
   slugs: string[];
 }
 
-// "Seu progresso": studied topics per domain and quiz results, all computed
+export interface ProgressStrings {
+  title: string;
+  studiedOf: string;
+  perfectQuizzes: string;
+  savedLocally: string;
+  reset: string;
+  confirm: string;
+  yes: string;
+  no: string;
+  progressIn: string;
+}
+
+// "Your progress": studied topics per domain and quiz results, all computed
 // from localStorage on the client. Offers a reset.
-export function ProgressSummary({ domains }: { domains: DomainTotals[] }) {
+export function ProgressSummary({ domains, t }: { domains: DomainTotals[]; t: ProgressStrings }) {
   const { state, reset } = useProgress();
   const [confirming, setConfirming] = useState(false);
 
@@ -21,20 +34,23 @@ export function ProgressSummary({ domains }: { domains: DomainTotals[] }) {
   const done = domains.reduce((n, d) => n + d.slugs.filter((s) => state.seen[`${d.id}/${s}`]).length, 0);
   const quizzes = Object.values(state.quiz);
   const perfect = quizzes.filter((q) => q.best === q.total).length;
+  // "{done}/{total} topics studied": keep the number emphasised wherever the translation puts it.
+  const [before, after] = fmt(t.studiedOf, { done: "\u0000", total }).split("\u0000");
 
   return (
     <section aria-labelledby="progress-title" className="rounded-xl border border-border bg-card p-5">
       <div className="flex flex-wrap items-baseline justify-between gap-3">
         <h2 id="progress-title" className="font-mono text-sm uppercase tracking-wider text-muted-foreground">
-          seu progresso
+          {t.title}
         </h2>
         <p className="font-mono text-xs text-muted-foreground">
-          <span className="text-base text-foreground">{done}</span>/{total} tópicos estudados
+          {before}
+          <span className="text-base text-foreground">{done}</span>
+          {after}
           {quizzes.length > 0 ? (
             <>
               {" "}
-              · <Trophy className="mb-0.5 inline size-3.5 text-primary" aria-hidden /> {perfect}/{quizzes.length} quizzes
-              perfeitos
+              · <Trophy className="mb-0.5 inline size-3.5 text-primary" aria-hidden /> {fmt(t.perfectQuizzes, { perfect, n: quizzes.length })}
             </>
           ) : null}
         </p>
@@ -55,7 +71,7 @@ export function ProgressSummary({ domains }: { domains: DomainTotals[] }) {
               <div
                 className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-muted"
                 role="progressbar"
-                aria-label={`Progresso em ${d.name}`}
+                aria-label={fmt(t.progressIn, { name: d.name })}
                 aria-valuemin={0}
                 aria-valuemax={100}
                 aria-valuenow={pct}
@@ -68,11 +84,11 @@ export function ProgressSummary({ domains }: { domains: DomainTotals[] }) {
       </div>
 
       <div className="mt-4 flex items-center gap-3 font-mono text-[11px] text-muted-foreground">
-        <span>salvo apenas neste navegador</span>
+        <span>{t.savedLocally}</span>
         {done > 0 || quizzes.length > 0 ? (
           confirming ? (
             <span className="flex items-center gap-2">
-              apagar tudo?
+              {t.confirm}
               <button
                 type="button"
                 onClick={() => {
@@ -81,19 +97,15 @@ export function ProgressSummary({ domains }: { domains: DomainTotals[] }) {
                 }}
                 className="rounded border border-red-500/60 px-2 py-0.5 text-red-400 hover:bg-red-500/10"
               >
-                sim
+                {t.yes}
               </button>
               <button type="button" onClick={() => setConfirming(false)} className="rounded border border-border px-2 py-0.5 hover:text-foreground">
-                não
+                {t.no}
               </button>
             </span>
           ) : (
-            <button
-              type="button"
-              onClick={() => setConfirming(true)}
-              className="inline-flex items-center gap-1 hover:text-foreground"
-            >
-              <RotateCcw className="size-3" aria-hidden /> zerar
+            <button type="button" onClick={() => setConfirming(true)} className="inline-flex items-center gap-1 hover:text-foreground">
+              <RotateCcw className="size-3" aria-hidden /> {t.reset}
             </button>
           )
         ) : null}

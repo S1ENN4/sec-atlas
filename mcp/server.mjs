@@ -190,7 +190,7 @@ const tools = [
   },
   {
     name: "validate_content",
-    description: "Run the content validator (rules R1-R8). Returns the report; isError is true if any rule fails. Run after every change.",
+    description: "Run the content validator (rules R1-R9). Returns the report; isError is true if any rule fails. Run after every change.",
     inputSchema: { type: "object", properties: {}, additionalProperties: false },
     run: () => {
       const r = spawnSync(process.execPath, ["--import", "./scripts/content-alias-loader.mjs", "scripts/validate-content.mjs"], {

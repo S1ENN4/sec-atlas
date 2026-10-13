@@ -56,6 +56,25 @@ export function extract(source: unknown): Record<string, string> {
   return out;
 }
 
+/**
+ * String leaves that `extract` skips because their field name is in
+ * NON_TRANSLATABLE_KEYS. In a unit made only of prose (the UI dictionary) any
+ * such leaf is a bug: it could never be translated.
+ */
+export function skippedStrings(source: unknown): string[] {
+  const kept = extract(source);
+  const out: string[] = [];
+  const walk = (node: unknown, path: string[]) => {
+    if (typeof node === "string") {
+      const key = path.join(".");
+      if (node.trim() && !(key in kept)) out.push(key);
+    } else if (Array.isArray(node)) node.forEach((v, i) => walk(v, [...path, String(i)]));
+    else if (node && typeof node === "object") for (const [k, v] of Object.entries(node)) walk(v, [...path, k]);
+  };
+  walk(source, []);
+  return out;
+}
+
 export type EntryStatus = "ok" | "stale" | "missing";
 
 export interface Report {

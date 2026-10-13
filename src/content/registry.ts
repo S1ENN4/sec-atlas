@@ -110,6 +110,14 @@ export function getGlossary(domainId: DomainId): GlossaryGroup[] {
   return domains[domainId]?.glossary ?? [];
 }
 
+/** Route segment ("secops", "agents"...) of every domain, for generateStaticParams. */
+export const domainRouteSegments: string[] = (Object.values(domains) as Domain[]).map((d) => d.route.replace(/^\//, ""));
+
+/** Resolve a route segment back to its domain id. */
+export function domainIdFromRoute(segment: string): DomainId | undefined {
+  return (Object.values(domains) as Domain[]).find((d) => d.route === "/" + segment)?.id;
+}
+
 export function getGraphLayout(domainId: DomainId): DomainGraphLayout | undefined {
   return domains[domainId]?.graphLayout;
 }

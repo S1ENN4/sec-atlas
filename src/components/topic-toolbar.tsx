@@ -10,9 +10,17 @@ import type { DomainId } from "@/content/types";
 const btn =
   "inline-flex items-center gap-1.5 rounded-md border border-border bg-muted/40 px-2.5 py-1.5 font-mono text-xs text-muted-foreground transition-colors duration-[120ms] hover:border-primary/60 hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 
+export interface ToolbarStrings {
+  markStudied: string;
+  studied: string;
+  copyLink: string;
+  linkCopied: string;
+  print: string;
+}
+
 // Per-topic actions: mark as studied, copy a link, print / save as PDF.
 // Hidden when printing so the printed page is only the content.
-export function TopicToolbar({ domain, slug }: { domain: DomainId; slug: string }) {
+export function TopicToolbar({ domain, slug, t }: { domain: DomainId; slug: string; t: ToolbarStrings }) {
   const { isSeen, toggleSeen } = useProgress();
   const [copied, setCopied] = useState(false);
   const seen = isSeen(domain, slug);
@@ -36,15 +44,15 @@ export function TopicToolbar({ domain, slug }: { domain: DomainId; slug: string 
         className={cn(btn, seen && "border-primary/60 bg-primary/10 text-primary")}
       >
         <Check className="size-3.5" aria-hidden />
-        {seen ? "estudado" : "marcar como estudado"}
+        {seen ? t.studied : t.markStudied}
       </button>
       <button type="button" onClick={copy} className={btn}>
         <Link2 className="size-3.5" aria-hidden />
-        <span aria-live="polite">{copied ? "link copiado" : "copiar link"}</span>
+        <span aria-live="polite">{copied ? t.linkCopied : t.copyLink}</span>
       </button>
       <button type="button" onClick={() => window.print()} className={btn}>
         <Printer className="size-3.5" aria-hidden />
-        imprimir / PDF
+        {t.print}
       </button>
     </div>
   );

@@ -97,8 +97,9 @@ src/components/              UI compartilhada (cards, badges, header, footer, mo
   quiz.tsx, path-card.tsx    quiz por tópico e trilhas, com progresso
 src/lib/progress.ts          progresso de estudo em localStorage (nenhum dado sai do navegador)
 scripts/
+  i18n.mjs, i18n-test.mjs   CLI e testes do sistema de traduções (npm run i18n / test:i18n)
   mcp-smoke.mjs              teste de fumaça do servidor MCP (npm run test:mcp)
-  validate-content.mjs       prebuild: regras R1 a R8
+  validate-content.mjs       prebuild: regras R1 a R9
   check-budget.mjs           pós-build: caps de tamanho
   content-alias-loader.mjs   loader de alias `@/*` para Node
   resolve-alias.mjs          helper
@@ -172,7 +173,7 @@ O caminho canônico, do começo ao fim:
 
 6. **Opcional, mas recomendado**: ligue o tópico a outros domínios em `src/content/bridges.ts`, inclua-o numa trilha em `src/content/paths.ts` ou num passo de cenário em `src/content/scenarios.ts` (R8 garante que nada aponte para tópico inexistente), e adicione um ícone em `src/components/topic-icon.tsx`.
 
-7. **Valide** rodando `npm run build`. O `prebuild` (`scripts/validate-content.mjs`) executa R1 a R8 e quebra o build antes do `next build` se algo falhar.
+7. **Valide** rodando `npm run build`. O `prebuild` (`scripts/validate-content.mjs`) executa R1 a R9 e quebra o build antes do `next build` se algo falhar.
 
 ### Regras do validador
 
@@ -199,6 +200,36 @@ NEXT_PUBLIC_SITE_URL=https://seu-dominio.com npm run build
 
 Sem a variável, o build usa `http://localhost:3000`. Depois de publicar, force o LinkedIn a reler o preview em https://www.linkedin.com/post-inspector/.
 
+## Idiomas (en / pt / es) e como evitamos o drift
+
+O site existe em **inglês, português e espanhol** (`/en`, `/pt`, `/es`). O **inglês é a fonte da verdade**: conteúdo novo nasce em inglês e as outras línguas são traduções que acompanham o original. `/` escolhe o idioma pelo navegador (ou pela última escolha) e redireciona.
+
+### Como funciona
+
+- Cada trecho traduzível tem um **endereço estável** (`sections.2.body.0`). Ids, slugs, enums e nomes de ferramentas nunca são traduzidos.
+- Cada tradução guarda o **hash do texto de origem** em `src/content/i18n/<idioma>/...json`.
+- Mudou o original → o hash não bate → a tradução vira **desatualizada**: ela nunca é exibida (aparece o original) e a **regra R9 quebra o build** até alguém resolver.
+- **Traduzir é opcional, desatualizar não é.** Faltar tradução é permitido (a página mostra o idioma-fonte com um aviso). Uma tradução *velha* não é.
+- **A interface é estrita:** todo texto de `src/i18n/ui-source.ts` precisa existir e estar atualizado nos 3 idiomas.
+- Verificações extras: placeholders e tags iguais, mesmo número de linhas em exemplos de código, "tradução" idêntica ao original é rejeitada, e chaves do dicionário não podem colidir com nomes reservados.
+
+### Fluxo (o que fazer quando o build reclama)
+
+```bash
+npm run i18n -- status                       # cobertura e drift por domínio/idioma
+npm run i18n -- pending es --group secops    # o que falta traduzir (JSON com o texto-fonte)
+npm run i18n -- apply lote.json              # grava traduções; os hashes são calculados aqui
+npm run i18n -- prune                        # remove traduções desatualizadas (aparece no diff)
+npm run i18n -- keep --unit ui --locale es   # confirma que o sentido não mudou (typo)
+npm run test:i18n                            # testes das garantias anti-drift
+```
+
+Formato do `apply`: `{ "locale": "es", "unit": "topic:secops/waf", "entries": { "title": "..." } }`.
+
+### Conteúdo legado (em português)
+
+Os domínios atuais ainda têm o texto-fonte em português (`contentLang: "pt"` no índice do domínio). Eles funcionam em todos os idiomas: em `/en` e `/es` aparece o português com um aviso, até a tradução entrar por lote. Domínios novos devem ser escritos **em inglês** (omita `contentLang`).
+
 ## Servidor MCP para agentes
 
 O repositório inclui um servidor [MCP](https://modelcontextprotocol.io/) local, **sem dependências**, para que agentes de código leiam, busquem, validem e estendam o conteúdo com os mesmos guardrails de uma pessoa. Ele fala MCP por stdio e roda a partir da raiz do repositório:
@@ -219,7 +250,7 @@ claude mcp add appsec-kb -- node --import ./scripts/content-alias-loader.mjs mcp
 | `get_topic`, `search` | ler um tópico em Markdown e buscar conteúdo |
 | `get_authoring_guide` | carregar o CONTRIBUTING e o passo a passo de autoria |
 | `scaffold_topic` | criar o esqueleto de um tópico novo (só um arquivo novo; nunca sobrescreve) |
-| `validate_content` | rodar o validador R1 a R8 |
+| `validate_content` | rodar o validador R1 a R9 |
 
 Segurança do servidor: é local (stdio), não abre portas, **só escreve** em `src/content/<domínio>/topics/<slug>.ts` e recusa domínios, etapas ou slugs inválidos e caminhos fora dessa pasta. O `scaffold_topic` cria só o esqueleto com marcadores `TODO`: registrar o tópico, posicionar no mapa, escrever o quiz e **verificar o conteúdo** continua sendo trabalho de quem contribui. O teste `npm run test:mcp` cobre o protocolo e essas recusas, e roda no CI.
 
@@ -228,7 +259,7 @@ Segurança do servidor: é local (stdio), não abre portas, **só escreve** em `
 ```bash
 npm install        # uma vez; o lockfile é versionado
 npm run dev        # desenvolvimento em http://localhost:3000
-npm run build      # prebuild (R1 a R8) + next build (gera out/) + check-budget
+npm run build      # prebuild (R1 a R9) + next build (gera out/) + check-budget
 ```
 
 `npm run build` é, na ordem: `prebuild` (validator) → `next build` (gera `out/`) → `check-budget.mjs` (confere os caps). Se o validator falhar, `next build` nem roda. Se o budget falhar, o build retorna código 1 com a linha que estourou.
@@ -245,13 +276,14 @@ Os limites ficam em `scripts/check-budget.mjs` (bytes):
 
 | métrica            | cap atual    |
 |--------------------|--------------|
-| first-load assets  | 6.400.000    |
-| rsc prefetch       | 7.050.000    |
-| total              | 13.450.000   |
+| first-load assets  | 6.820.000    |
+| rsc prefetch       | 7.400.000    |
+| total              | 14.230.000   |
+| all locales (sanity) | 40.000.000 |
 | CSS raw            | 74.000       |
 | JS raw             | 1.030.000    |
 | JS gzip            | 330.000      |
-| `out/index.html`   | 73.500       |
+| hub html (por idioma) | 75.500    |
 
 Cada bump nesses números tem commit de reconciliação e motivo no header do script. Se o conteúdo novo pedir mais, siga o mesmo padrão: bump mínimo + parágrafo explicando qual conteúdo forçou.
 

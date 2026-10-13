@@ -34,7 +34,7 @@ const kindMeta: Record<TopicKind, { label: string; dot: string; text: string }> 
 
 export const aiAgents: Domain = {
   id: "ai-agents",
-  route: "/agentes",
+  route: "/agents",
   // Domain is live: R19-T22 filled every one of the 15 topic bodies to the
   // verified R6 floor (≥4 sections + code-or-bullets + non-empty tagline +
   // ≥3 tools) and shipped the 3 ai-agents glossary groups, so the R6 live

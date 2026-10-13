@@ -35,6 +35,12 @@ export function localizeUnit<T>(unitId: string, source: T, sourceLang: SourceLan
 
 export const domainLang = (d: Domain): SourceLang => d.contentLang ?? "en";
 
+export function localizedTopic(id: DomainId, slug: string, locale: Locale): Topic | undefined {
+  const d = domains[id];
+  const t = d.topics.find((x) => x.slug === slug);
+  return t ? localizeUnit(`topic:${id}/${slug}`, t, domainLang(d), locale).value : undefined;
+}
+
 // --- unit sources -----------------------------------------------------------
 // Labels that live inside shared structures are lifted into their own unit so
 // they translate as a group: pipeline text, relation labels, graph labels.

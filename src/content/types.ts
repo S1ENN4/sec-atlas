@@ -189,7 +189,7 @@ export interface StudyPath {
   id: string;
   title: string;
   description: string;
-  level: "iniciante" | "intermediário";
+  level: "beginner" | "intermediate";
   steps: PathStep[];
 }
 

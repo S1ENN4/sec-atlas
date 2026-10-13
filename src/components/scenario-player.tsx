@@ -4,7 +4,21 @@ import { useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Check, Eye, RotateCcw, ShieldCheck, Swords } from "lucide-react";
 
+import { fmt } from "@/i18n/format";
 import { cn } from "@/lib/utils";
+
+export interface ScenarioStrings {
+  tablistAria: string;
+  stagesAria: string;
+  step: string;
+  reveal: string;
+  nextStep: string;
+  finish: string;
+  end: string;
+  layersIntro: string;
+  layersOutro: string;
+  replay: string;
+}
 
 export interface ScenarioStageData {
   id: string;
@@ -33,7 +47,7 @@ export interface ScenarioData {
 // Step-through of one incident. For each step the reader first sees what
 // happens (the attack / accident), then reveals which control answers it.
 // The stage track on top lights up the stage the current step lives in.
-export function ScenarioPlayer({ scenarios }: { scenarios: ScenarioData[] }) {
+export function ScenarioPlayer({ scenarios, t }: { scenarios: ScenarioData[]; t: ScenarioStrings }) {
   const [sid, setSid] = useState(scenarios[0].id);
   const [step, setStep] = useState(0);
   const [revealed, setRevealed] = useState(false);
@@ -57,7 +71,7 @@ export function ScenarioPlayer({ scenarios }: { scenarios: ScenarioData[] }) {
 
   return (
     <div data-domain={sc.domain}>
-      <div role="tablist" aria-label="Cenários" className="flex flex-wrap gap-2">
+      <div role="tablist" aria-label={t.tablistAria} className="flex flex-wrap gap-2">
         {scenarios.map((s) => (
           <button
             key={s.id}
@@ -78,7 +92,7 @@ export function ScenarioPlayer({ scenarios }: { scenarios: ScenarioData[] }) {
 
       <p className="mt-5 max-w-2xl text-sm text-muted-foreground">{sc.summary}</p>
 
-      <ol className="mt-6 flex flex-wrap gap-2" aria-label="Etapas do pipeline">
+      <ol className="mt-6 flex flex-wrap gap-2" aria-label={t.stagesAria}>
         {sc.stages.map((st) => {
           const active = !finished && cur.stageId === st.id;
           const passed = reachedStages.has(st.id) && !active;
@@ -103,9 +117,9 @@ export function ScenarioPlayer({ scenarios }: { scenarios: ScenarioData[] }) {
         {finished ? (
           <div className="animate-page-enter">
             <p className="flex items-center gap-2 font-mono text-sm text-primary">
-              <ShieldCheck className="size-4" aria-hidden /> fim do cenário
+              <ShieldCheck className="size-4" aria-hidden /> {t.end}
             </p>
-            <p className="mt-2 text-sm text-muted-foreground">As camadas que entraram em jogo, na ordem:</p>
+            <p className="mt-2 text-sm text-muted-foreground">{t.layersIntro}</p>
             <ol className="mt-3 space-y-1.5">
               {sc.steps.map((s, i) => (
                 <li key={i} className="flex items-center gap-2 text-sm">
@@ -117,20 +131,20 @@ export function ScenarioPlayer({ scenarios }: { scenarios: ScenarioData[] }) {
               ))}
             </ol>
             <p className="mt-3 text-xs text-muted-foreground">
-              Nenhuma camada sozinha resolve: o valor está em cada uma cobrir o ponto cego da anterior.
+              {t.layersOutro}
             </p>
             <button
               type="button"
               onClick={() => pick(sc.id)}
               className="mt-4 inline-flex items-center gap-1.5 rounded-md border border-border bg-muted/40 px-3 py-1.5 font-mono text-xs transition-colors hover:border-primary/60 hover:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
             >
-              <RotateCcw className="size-3.5" aria-hidden /> rever
+              <RotateCcw className="size-3.5" aria-hidden /> {t.replay}
             </button>
           </div>
         ) : (
           <div key={`${sc.id}-${step}`} className="animate-page-enter">
             <p className="font-mono text-[11px] text-muted-foreground">
-              passo {step + 1} de {sc.steps.length}
+              {fmt(t.step, { n: step + 1, total: sc.steps.length })}
             </p>
             <p className="mt-3 flex items-start gap-3 text-base leading-snug">
               <Swords className="mt-0.5 size-4 shrink-0 text-red-400" aria-hidden />
@@ -151,7 +165,7 @@ export function ScenarioPlayer({ scenarios }: { scenarios: ScenarioData[] }) {
                   onClick={advance}
                   className="mt-4 inline-flex items-center gap-1.5 rounded-md border border-primary/50 bg-primary/10 px-3 py-1.5 font-mono text-xs text-primary transition-colors hover:bg-primary/20 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                 >
-                  {step + 1 < sc.steps.length ? "próximo passo" : "concluir"} <ArrowRight className="size-3.5" aria-hidden />
+                  {step + 1 < sc.steps.length ? t.nextStep : t.finish} <ArrowRight className="size-3.5" aria-hidden />
                 </button>
               </div>
             ) : (
@@ -160,7 +174,7 @@ export function ScenarioPlayer({ scenarios }: { scenarios: ScenarioData[] }) {
                 onClick={() => setRevealed(true)}
                 className="mt-5 inline-flex items-center gap-1.5 rounded-md border border-border bg-muted/40 px-3 py-1.5 font-mono text-xs transition-colors hover:border-primary/60 hover:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
               >
-                <Eye className="size-3.5" aria-hidden /> o que barra isso?
+                <Eye className="size-3.5" aria-hidden /> {t.reveal}
               </button>
             )}
           </div>

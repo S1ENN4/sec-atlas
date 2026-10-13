@@ -13,7 +13,7 @@ export const paths: StudyPath[] = [
     id: "appsec-do-zero",
     title: "AppSec do zero à esteira",
     description: "A ordem natural para entender cada verificação e onde ela entra na pipeline.",
-    level: "iniciante",
+    level: "beginner",
     steps: [
       { ref: a("cicd"), why: "A esteira é o palco: entenda as etapas antes das ferramentas." },
       { ref: a("shift-left"), why: "A ideia que organiza tudo: achar cedo custa menos." },
@@ -30,7 +30,7 @@ export const paths: StudyPath[] = [
     id: "cloud-fundamentos",
     title: "Cloud security: da identidade à resposta",
     description: "Segue o ciclo cloud: proteger, detectar e responder, começando pela identidade.",
-    level: "iniciante",
+    level: "beginner",
     steps: [
       { ref: c("zero-trust"), why: "O modelo mental: nenhuma origem é confiável por padrão." },
       { ref: c("iam"), why: "Identidade é o novo perímetro." },
@@ -49,7 +49,7 @@ export const paths: StudyPath[] = [
     id: "agentes-seguros",
     title: "Agentes de IA, do RAG à avaliação",
     description: "Monte o pipeline de um agente e aprenda onde cada risco aparece.",
-    level: "intermediário",
+    level: "intermediate",
     steps: [
       { ref: g("llm"), why: "O núcleo: o que o modelo faz e onde ele falha." },
       { ref: g("chunking"), why: "Como o conhecimento é fatiado." },
@@ -69,7 +69,7 @@ export const paths: StudyPath[] = [
     id: "do-commit-a-nuvem",
     title: "Do commit à nuvem",
     description: "Um caminho cruzando domínios: o mesmo artefato, da esteira à produção.",
-    level: "intermediário",
+    level: "intermediate",
     steps: [
       { ref: a("threat-modeling"), why: "Comece pelo desenho: quais ameaças valem a pena tratar?" },
       { ref: a("secrets"), why: "Nada de segredo no repositório." },
@@ -86,7 +86,7 @@ export const paths: StudyPath[] = [
     id: "defesa-l7",
     title: "Defesa L7 e operação de SOC",
     description: "Do log ao bloqueio: observe, detecte, aja e meça, como um programa de defesa de borda de verdade.",
-    level: "intermediário",
+    level: "intermediate",
     steps: [
       { ref: s("telemetria-borda"), why: "Sem dado bom, não há detecção boa." },
       { ref: s("escala-telemetria"), why: "Como manter tudo rápido e barato quando o volume explode." },
@@ -104,7 +104,7 @@ export const paths: StudyPath[] = [
     id: "engenharia-de-seguranca",
     title: "Engenharia de segurança em escala",
     description: "Da infraestrutura como código à automação com freios: como construir a plataforma de segurança.",
-    level: "intermediário",
+    level: "intermediate",
     steps: [
       { ref: e("iac-seguro"), why: "Comece pelo que você provisiona: infraestrutura revisada e escaneada." },
       { ref: e("policy-as-code"), why: "Regras executáveis que valem para todo mundo." },

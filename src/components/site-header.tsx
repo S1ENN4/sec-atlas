@@ -1,60 +1,78 @@
 import Link from "next/link";
 import { ShieldCheck } from "lucide-react";
 
+import { LanguageSwitcher } from "@/components/language-switcher";
 import { SearchButton } from "@/components/search-button";
-import { domainMeta } from "@/content/registry";
+import { SiteNav, type NavData } from "@/components/site-nav";
+import { exploreGroups } from "@/content/nav";
+import { profile } from "@/content/profile";
+import { domains } from "@/content/registry";
+import { localePath, type Locale } from "@/i18n/config";
+import { plural } from "@/i18n/format";
+import type { Ui } from "@/i18n/ui";
 
-// Global nav. Lists every domain route (driven by `domainMeta`, so the row
-// stays in lock-step with the registry as new domains are added) plus the
-// two reference routes — `/glossario` and `/seguranca` — which are
-// domain-agnostic by design. AppSec-specific in-page anchors
-// (#mapa/#pipeline/#topicos) live on the AppSec home page itself; with
-// three live domains, surfacing them in the global nav would duplicate
-// the same anchors available on every domain page, so they are kept out
-// of the switcher for consistency.
+// Global header. Builds the (localised) navigation data on the server and hands
+// plain strings to the client components; nothing here knows a language.
+export function SiteHeader({ locale, t }: { locale: Locale; t: Ui }) {
+  const lp = (path: string) => localePath(locale, path);
+  const n = t.nav;
 
-const REFERENCE_LINKS = [
-  { href: "/manifesto", label: "manifesto" },
-  { href: "/trilhas", label: "trilhas" },
-  { href: "/cenarios", label: "cenários" },
-  { href: "/glossario", label: "glossário" },
-  { href: "/seguranca", label: "segurança" },
-  { href: "/sobre", label: "sobre" },
-];
+  const nav: NavData = {
+    labels: { menu: n.menu, openMenu: n.openMenu, closeMenu: n.closeMenu, mainNav: t.a11y.mainNav },
+    explore: {
+      label: n.explore,
+      allDomains: n.allDomains,
+      groups: exploreGroups.map((g) => ({
+        id: g.id,
+        label: n.groups[g.id],
+        domains: g.domains.map((id) => ({
+          id,
+          name: t.domains[id].name,
+          pitch: t.domains[id].pitch,
+          count: plural(n as unknown as Record<string, string>, "topicsCount", domains[id].topics.length),
+          total: domains[id].topics.length,
+          href: lp(domains[id].route),
+        })),
+      })),
+    },
+    careers: { href: lp("/careers"), label: n.careers },
+    learn: {
+      label: n.learn,
+      items: [
+        { href: lp("/journey"), label: n.learnItems.journey, desc: n.learnItems.journeyDesc },
+        { href: lp("/paths"), label: n.learnItems.paths, desc: n.learnItems.pathsDesc },
+        { href: lp("/scenarios"), label: n.learnItems.scenarios, desc: n.learnItems.scenariosDesc },
+        { href: lp("/glossary"), label: n.learnItems.glossary, desc: n.learnItems.glossaryDesc },
+      ],
+    },
+    project: {
+      label: n.project,
+      items: [
+        { href: lp("/manifesto"), label: n.projectItems.manifesto, desc: n.projectItems.manifestoDesc },
+        { href: lp("/about"), label: n.projectItems.about, desc: n.projectItems.aboutDesc },
+        { href: lp("/changelog"), label: n.projectItems.changelog, desc: n.projectItems.changelogDesc },
+        { href: lp("/sources"), label: n.projectItems.sources, desc: n.projectItems.sourcesDesc },
+        { href: lp("/security"), label: n.projectItems.security, desc: n.projectItems.securityDesc },
+        { href: profile.links.repo, label: n.projectItems.repo, desc: n.projectItems.repoDesc, external: true },
+      ],
+    },
+  };
 
-export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-40 border-b print:hidden border-border/60 bg-background/80 backdrop-blur">
-      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-3 px-4">
-        <Link href="/" className="flex shrink-0 items-center gap-2 font-mono text-sm font-semibold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm">
-          <ShieldCheck className="size-5 text-primary" />
+    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur print:hidden">
+      <div className="relative mx-auto flex h-14 max-w-7xl items-center gap-3 px-4">
+        <Link
+          href={lp("/")}
+          className="flex shrink-0 items-center gap-2 rounded-sm font-mono text-sm font-semibold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+        >
+          <ShieldCheck className="size-5 text-primary" aria-hidden />
           appsec<span className="text-primary">/</span>kb
         </Link>
-        <nav
-          aria-label="Principal"
-          className="flex min-w-0 items-center gap-0.5 overflow-x-auto text-[13px] text-muted-foreground sm:gap-1 sm:text-sm [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-        >
-          {Object.values(domainMeta).map((d) => (
-            <Link
-              key={d.id}
-              href={d.route}
-              className="shrink-0 rounded-md px-2 py-1.5 font-mono text-[11px] uppercase tracking-wider transition-colors duration-[120ms] hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:px-2 sm:text-[12px] xl:px-3 xl:text-[13px]"
-            >
-              {d.id}
-            </Link>
-          ))}
-          <span aria-hidden className="mx-1 h-5 w-px shrink-0 bg-border/70" />
-          {REFERENCE_LINKS.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className="shrink-0 rounded-md px-2 py-1.5 transition-colors duration-[120ms] hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:px-2 xl:px-3"
-            >
-              {l.label}
-            </Link>
-          ))}
-        </nav>
-        <SearchButton />
+        <SiteNav data={nav} />
+        <div className="ml-auto flex shrink-0 items-center gap-2 md:ml-0">
+          <SearchButton label={t.search.button} aria={t.search.buttonAria} />
+          <LanguageSwitcher label={t.lang.switchTo} />
+        </div>
       </div>
     </header>
   );

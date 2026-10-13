@@ -7,6 +7,8 @@ import { TopicIcon } from "@/components/topic-icon";
 import { useProgress } from "@/lib/progress";
 import { cn } from "@/lib/utils";
 import type { GraphData } from "@/components/graph-data";
+import { localePath } from "@/i18n/config";
+import { fmt } from "@/i18n/format";
 
 // Linear alternative to the canvas map: stages top to bottom, topics as
 // rows. Used by default on narrow screens, where a pan-and-zoom canvas is
@@ -15,6 +17,8 @@ export function DomainList({ data }: { data: GraphData }) {
   const domain = data;
   const domainId = data.domainId;
   const route = data.route;
+  const st = data.strings;
+  const locale = data.locale;
   const { isSeen } = useProgress();
 
   const inStage = new Set<string>();
@@ -37,14 +41,14 @@ export function DomainList({ data }: { data: GraphData }) {
     return (
       <li key={slug}>
         <Link
-          href={`${route}/topico/${slug}`}
+          href={localePath(locale, `${route}/topic/${slug}`)}
           className="flex items-start gap-3 rounded-lg border border-border bg-card px-3 py-2.5 transition-colors hover:border-primary/60 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
         >
           <TopicIcon slug={slug} className="mt-0.5 size-4 shrink-0 text-primary" />
           <span className="min-w-0 flex-1">
             <span className="flex items-center gap-2">
               <span className="text-sm font-semibold leading-tight">{t.title}</span>
-              {seen ? <Check className="size-3.5 shrink-0 text-primary" aria-label="estudado" /> : null}
+              {seen ? <Check className="size-3.5 shrink-0 text-primary" aria-label={st.studied} /> : null}
             </span>
             <span className="mt-0.5 block text-xs leading-snug text-muted-foreground">{t.short}</span>
           </span>
@@ -68,14 +72,14 @@ export function DomainList({ data }: { data: GraphData }) {
           </div>
           {slugs.length > 0 ? <ul className="mt-2 space-y-2">{slugs.map(row)}</ul> : null}
           {extras.length > 0 ? (
-            <p className="mt-2 font-mono text-[11px] text-muted-foreground">também: {extras.join(" · ")}</p>
+            <p className="mt-2 font-mono text-[11px] text-muted-foreground">{fmt(st.also, { items: extras.join(" · ") })}</p>
           ) : null}
-          <p className="mt-2 font-mono text-[10px] text-amber-400/80">gate: {stage.gate}</p>
+          <p className="mt-2 font-mono text-[10px] text-amber-400/80">{fmt(st.gate, { gate: stage.gate })}</p>
         </li>
       ))}
       {loose.length > 0 ? (
         <li>
-          <h3 className="font-mono text-sm font-semibold">camadas transversais</h3>
+          <h3 className="font-mono text-sm font-semibold">{st.crossCutting}</h3>
           <ul className="mt-2 space-y-2">{loose.map((slug) => row(slug))}</ul>
         </li>
       ) : null}

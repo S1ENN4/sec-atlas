@@ -1,11 +1,23 @@
 import Link from "next/link";
 import { MoveDown, MoveRight } from "lucide-react";
 
-import { domainMeta, getPipeline, type DomainId } from "@/content/registry";
+import type { PipelineStage } from "@/content/types";
+import { localePath, type Locale } from "@/i18n/config";
+import { fmt } from "@/i18n/format";
 
-export function PipelineRail({ domain = "appsec" }: { domain?: DomainId }) {
-  const route = domainMeta[domain].route;
-  const pipelineStages = getPipeline(domain);
+export interface PipelineRailProps {
+  /** Localised stages of the domain. */
+  stages: PipelineStage[];
+  /** Domain route, e.g. "/secops". */
+  route: string;
+  locale: Locale;
+  /** Template with {gate}. */
+  gateLabel: string;
+  /** Optional closing note (domain specific). */
+  loop?: string;
+}
+
+export function PipelineRail({ stages: pipelineStages, route, locale, gateLabel, loop }: PipelineRailProps) {
   return (
     <div>
       <div className="overflow-x-auto pb-2 lg:overflow-visible">
@@ -25,7 +37,7 @@ export function PipelineRail({ domain = "appsec" }: { domain?: DomainId }) {
                     item.slug ? (
                       <Link
                         key={item.label}
-                        href={`${route}/topico/${item.slug}`}
+                        href={localePath(locale, `${route}/topic/${item.slug}`)}
                         className="rounded-md border border-border bg-muted/40 px-2 py-1 font-mono text-[11px] text-foreground/80 transition-colors duration-[120ms] hover:border-primary/60 hover:bg-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                       >
                         {item.label}
@@ -41,7 +53,7 @@ export function PipelineRail({ domain = "appsec" }: { domain?: DomainId }) {
                   )}
                 </div>
                 <p className="mt-auto pt-3 font-mono text-[10px] text-amber-400/80">
-                  gate: {stage.gate}
+                  {fmt(gateLabel, { gate: stage.gate })}
                 </p>
               </div>
               {i < pipelineStages.length - 1 ? (
@@ -66,10 +78,11 @@ export function PipelineRail({ domain = "appsec" }: { domain?: DomainId }) {
           ))}
         </ol>
       </div>
-      <p className="mt-4 font-mono text-xs text-muted-foreground">
-        <span className="text-primary/90">loop:</span> CVE novo em dependência já usada → SCA
-        contínuo abre PR → a esteira recomeça em 01
-      </p>
+      {loop ? (
+        <p className="mt-4 font-mono text-xs text-muted-foreground">
+          <span className="text-primary/90">loop:</span> {loop}
+        </p>
+      ) : null}
     </div>
   );
 }
