@@ -9,7 +9,7 @@ export const kafkaEventos: Topic = {
     "Um log distribuído e durável entre a borda e a detecção deixa o pipeline absorver picos, reprocessar o passado e crescer por partições, sem que cada consumidor precise conhecer o produtor.",
   kind: "tecnica",
   stage: "escalar",
-  tools: ["Apache Kafka", "Schema Registry", "Redpanda", "kafka-go"],
+  tools: ["Apache Kafka", "Schema Registry", "Redpanda", "Kafka Connect"],
   sections: [
     {
       heading: "O que é e por que usar",
@@ -34,12 +34,13 @@ export const kafkaEventos: Topic = {
       heading: "Consumir com segurança: commit depois de processar",
       body: [
         "A semântica prática é at-least-once: se você só confirma o offset depois de processar, uma falha reentrega o evento, o que significa que o processamento precisa tolerar duplicatas (assunto do tópico de confiabilidade). Confirmar antes de processar troca duplicata por perda silenciosa, quase sempre a pior escolha em segurança.",
+        "O padrão independe do cliente: toda biblioteca (em Go, Java, Python) expõe a mesma ideia de buscar uma mensagem, processá-la e então confirmar. O trecho abaixo usa uma interface mínima, no lugar de um cliente específico, para mostrar só o contrato que importa.",
       ],
       code: [
         {
           language: "go",
-          filename: "consumer.go (segmentio/kafka-go)",
-          code: "r := kafka.NewReader(kafka.ReaderConfig{\n\tBrokers: []string{\"kafka:9092\"},\n\tGroupID: \"detect-login-failures\",\n\tTopic:   \"edge.events.v1\",\n})\ndefer r.Close()\n\nfor {\n\tm, err := r.FetchMessage(ctx) // não confirma ainda\n\tif err != nil {\n\t\tbreak // ctx cancelado ou erro fatal\n\t}\n\tif err := handle(ctx, m); err != nil {\n\t\t// política de retry / DLQ; não confirma enquanto não resolver\n\t\tcontinue\n\t}\n\tif err := r.CommitMessages(ctx, m); err != nil { // confirma depois de processar\n\t\tlog.Printf(\"commit: %v\", err)\n\t}\n}",
+          filename: "consumer.go - contrato mínimo, qualquer cliente Kafka",
+          code: "// Message e Consumer são o contrato; qualquer cliente Kafka se adapta a ele.\ntype Message struct {\n\tKey, Value []byte\n\tPartition  int\n\tOffset     int64\n}\n\ntype Consumer interface {\n\tFetch(ctx context.Context) (Message, error) // lê, mas NÃO confirma\n\tCommit(ctx context.Context, m Message) error // confirma o offset\n}\n\nfunc Run(ctx context.Context, c Consumer, handle func(context.Context, Message) error) error {\n\tfor {\n\t\tm, err := c.Fetch(ctx)\n\t\tif err != nil {\n\t\t\treturn err // ctx cancelado ou erro fatal\n\t\t}\n\t\tif err := handle(ctx, m); err != nil {\n\t\t\t// política de retry / DLQ; sem Commit, o evento volta a ser entregue\n\t\t\tcontinue\n\t\t}\n\t\tif err := c.Commit(ctx, m); err != nil { // só depois de processar\n\t\t\tlog.Printf(\"commit: %v\", err)\n\t\t}\n\t}\n}",
         },
       ],
     },
