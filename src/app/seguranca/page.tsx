@@ -307,13 +307,13 @@ upgrade-insecure-requests`}
           métricas contra caps duros. O status atual:
         </p>
         <pre className="mt-4 overflow-x-auto rounded-lg border border-border bg-muted/40 p-4 font-mono text-xs leading-relaxed text-muted-foreground">
-{`first-load assets            3.459.024 B    cap 3.500.000  OK
+{`first-load assets            3.458.978 B    cap 3.600.000  OK
 rsc prefetch payloads      2.980.616 B    cap 3.050.000  OK
-total                      6.439.640 B    cap 6.550.000  OK
-CSS raw                        57.893 B    cap    60.000  OK
-JS raw                     1.133.379 B    cap 1.135.000  OK
-JS gzip                      364.036 B    cap   400.000  OK
-out/index.html raw            28.307 B    cap    90.000  OK`}
+total                      6.439.594 B    cap 6.650.000  OK
+CSS raw                        57.843 B    cap    60.000  OK
+JS raw                     1.133.383 B    cap 1.200.000  OK
+JS gzip                      364.039 B    cap   400.000  OK
+out/index.html raw            28.307 B    cap    50.000  OK`}
         </pre>
         <p className="mt-4 leading-relaxed text-foreground/85">
           Em números aproximados: ~3,4 MB de first-load, ~6,4 MB totais (incluindo RSC

@@ -129,6 +129,17 @@ body {
   background: transparent;
   color: oklch(0.45 0.01 250);
 }
+/* Lighthouse "target-size" requires the React Flow attribution link to
+ * expose at least 24x24px of clickable area. The library ships with a
+ * compact 52x12 panel; bump the inner <a> hit area without enlarging
+ * the visible text so the panel still reads as a small footnote. */
+.react-flow__attribution a {
+  display: inline-flex;
+  align-items: center;
+  min-width: 24px;
+  min-height: 24px;
+  padding: 6px 8px;
+}
 
 .react-flow__controls {
   box-shadow: none;

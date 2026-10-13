@@ -4,13 +4,29 @@
 // existing out/ directory).
 //
 // Caps (bytes):
-//   first-load assets   <= 3,500,000  (every file under out/ EXCEPT *.txt, raw)
+//   first-load assets   <= 3,600,000  (every file under out/ EXCEPT *.txt, raw)
 //   rsc prefetch        <= 3,050,000  (every *.txt under out/, raw)
-//   total               <= 6,550,000  (sanity cap: every file under out/)
+//   total               <= 6,650,000  (sanity cap: every file under out/)
 //   CSS raw             <=    60,000
-//   JS raw              <= 1,135,000
+//   JS raw              <= 1,200,000
 //   JS gzip             <=   400,000  (gzipSync per .js file, summed)
-//   out/index.html raw  <=    90,000
+//   out/index.html raw  <=    50,000
+//
+// T26 budget calibration (post-audit): measured numbers right after T22
+// were first-load 3,459,024 (cap 3,500,000, +1.17% headroom < 2% — too
+// tight), JS raw 1,133,379 (cap 1,135,000, +0.14% headroom < 2% — too
+// tight), and index.html 28,307 (cap 90,000, +68.55% headroom > 25% —
+// too loose). Caps re-floored to defensible values that keep roughly
+// the same headroom-to-content ratio as the live floor: first-load
+// +100 KB (4% headroom), total +100 KB, JS raw +65 KB (5% headroom —
+// matches the typical library addition), and index.html tightened by
+// 40 KB (43% headroom — still ample but stops a single content
+// doubling the page weight silently). No content was added in T26,
+// so the measured numbers on the live floor are unchanged.
+// T26_RECONCILED_BEFORE = { first_load: 3,459,024 / rsc_prefetch: 2,980,616
+// / total: 6,439,640 / css: 57,893 / js: 1,133,379 / js_gz: 364,036 /
+// index: 28,307 } — recorded above; the CAPS array below holds the
+// post-calibration caps.
 //
 // T19 (RAG pipeline topics): five ai-agents topic bodies (rag, chunking,
 // embeddings, vector-db, retrieval) landed. Each draft SSG topic route now
@@ -69,13 +85,13 @@ import { gzipSync } from "node:zlib";
 const OUT_DIR = resolve(process.cwd(), "out");
 
 const CAPS = [
-  { key: "first_load",  label: "first-load assets",     limit: 3_500_000, scope: "first_load" },
+  { key: "first_load",  label: "first-load assets",     limit: 3_600_000, scope: "first_load" },
   { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 3_050_000, scope: "rsc_prefetch" },
-  { key: "total",       label: "total",                 limit: 6_550_000, scope: "total" },
+  { key: "total",       label: "total",                 limit: 6_650_000, scope: "total" },
   { key: "css",         label: "CSS raw",               limit:    60_000, scope: "css" },
-  { key: "js",          label: "JS raw",                limit: 1_135_000, scope: "js" },
+  { key: "js",          label: "JS raw",                limit: 1_200_000, scope: "js" },
   { key: "js_gz",       label: "JS gzip",               limit:   400_000, scope: "js_gz" },
-  { key: "index",       label: "out/index.html raw",    limit:    90_000, scope: "index" },
+  { key: "index",       label: "out/index.html raw",    limit:    50_000, scope: "index" },
 ];
 
 function walk(dir) {

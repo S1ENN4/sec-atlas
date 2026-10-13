@@ -52,7 +52,10 @@ interface StageNodeActivate {
 }
 
 function StageNode({ data, onActivate }: NodeProps<StageFlowNode> & StageNodeActivate) {
-  const label = `Abrir ${data.name}`;
+  // aria-label must include the visible stage name so axe
+  // "label-content-name-mismatch" stays clean; the "Abrir" prefix alone
+  // diverges from the inner `<span>{data.name}</span>` text.
+  const label = `${data.name} (abrir)`;
   return (
     <div
       role="button"
@@ -70,7 +73,7 @@ function StageNode({ data, onActivate }: NodeProps<StageFlowNode> & StageNodeAct
       <Handle id="t-b" type="target" position={Position.Bottom} className={hidden} />
       <Handle id="s-r" type="source" position={Position.Right} className={hidden} />
       <div className="flex items-baseline gap-2">
-        <span className="font-mono text-[11px] text-primary/60">{data.index}</span>
+        <span className="font-mono text-[11px] text-primary/90">{data.index}</span>
         <span className="font-mono text-sm font-semibold">{data.name}</span>
       </div>
       <p className="mt-0.5 text-[11px] leading-snug text-muted-foreground">{data.description}</p>
@@ -89,7 +92,7 @@ function ConceptNode({ data, domainMeta, onActivate }: ConceptNodeProps) {
     <div
       role="button"
       tabIndex={0}
-      aria-label={`Abrir tópico ${data.title}`}
+      aria-label={`${data.title} (abrir tópico)`}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();

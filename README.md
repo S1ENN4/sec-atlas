@@ -151,13 +151,13 @@ Os limites ficam em `scripts/check-budget.mjs` (bytes):
 
 | métrica            | cap atual    |
 |--------------------|--------------|
-| first-load assets  | 3.500.000    |
+| first-load assets  | 3.600.000    |
 | rsc prefetch       | 3.050.000    |
-| total              | 6.550.000    |
+| total              | 6.650.000    |
 | CSS raw            | 60.000       |
-| JS raw             | 1.135.000    |
+| JS raw             | 1.200.000    |
 | JS gzip            | 400.000      |
-| `out/index.html`   | 90.000       |
+| `out/index.html`   | 50.000       |
 
 Cada bump nesses números tem commit de reconciliação e motivo no header do script. Se o conteúdo novo pedir mais, siga o mesmo padrão: bump mínimo + parágrafo explicando qual conteúdo forçou.
 

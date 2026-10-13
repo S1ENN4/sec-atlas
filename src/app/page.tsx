@@ -69,7 +69,7 @@ export default function Home() {
             <dt className="text-muted-foreground">draft</dt>
             <dd className={cn(
               "text-base",
-              draftCount > 0 ? "text-amber-400/90" : "text-muted-foreground/50",
+              draftCount > 0 ? "text-amber-400/90" : "text-muted-foreground/80",
             )}>
               {draftCount.toString().padStart(2, "0")}
             </dd>
