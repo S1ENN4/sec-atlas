@@ -80,7 +80,7 @@ export default function Home() {
       <hr className="mt-10 border-border/60" />
 
       <section className="mt-10 grid gap-5 md:grid-cols-3">
-        {domainList.map((d) => {
+        {domainList.map((d, i) => {
           const meta = DOMAIN_LABELS[d.id];
           // Topic count is derived from the registry, not hardcoded. The hub
           // always renders the count (no "em breve" branch) — T23 flipped
@@ -95,10 +95,16 @@ export default function Home() {
               key={d.id}
               href={d.route}
               transitionTypes={["nav-forward"]}
-              className="group block focus:outline-none"
+              className="animate-hero-enter group block rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              style={{ animationDelay: `${120 + i * 80}ms` }}
             >
               <div data-domain={d.id} className="h-full">
-                <Card className="relative h-full overflow-hidden transition-colors group-hover:border-primary/60">
+                <Card className="relative h-full overflow-hidden transition-[transform,border-color,box-shadow] duration-200 ease-out group-hover:-translate-y-1 group-hover:border-primary/60 group-hover:shadow-[0_8px_30px_-12px_var(--primary)]">
+                  {/* Soft accent glow that fades in on hover. */}
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,color-mix(in_oklch,var(--primary)_14%,transparent),transparent_65%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  />
                   {/* Accent stripe — picks up each domain's --primary token via
                       the wrapping `data-domain` attribute, so the three cards
                       are visually distinct without any domain-specific CSS. */}

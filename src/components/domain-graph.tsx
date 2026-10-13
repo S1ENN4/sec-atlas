@@ -158,7 +158,7 @@ interface BuildResult {
 // Spine edges get a primary-tinted stroke (`oklch(0.78 0.19 155 / 0.6)`) so
 // the dashed flow reads as the domain accent rather than the neutral
 // `--xy-edge-stroke` gray that concept↔stage spokes use.
-const SPINE_STROKE = "oklch(0.78 0.19 155 / 0.6)";
+const SPINE_STROKE = "color-mix(in oklch, var(--primary) 60%, transparent)";
 
 function buildGraph(
   domainId: DomainId,
@@ -348,11 +348,33 @@ function DomainGraphInner({ domainId }: DomainGraphProps) {
           ...edgeStyles,
           label: active ? e.label : undefined,
           zIndex: active ? 10 : 0,
-          style: { ...e.style, opacity: activeId === null ? 0.35 : dimmed ? 0.08 : 1, transition: "opacity 150ms" },
+          animated: active && !reduced,
+          style: {
+            ...e.style,
+            ...(active ? { stroke: "var(--primary)", strokeWidth: 2 } : {}),
+            opacity: activeId === null ? 0.35 : dimmed ? 0.08 : 1,
+            transition: "opacity 150ms",
+          },
         };
       }),
-    [edges, edgeStyles, activeId]
+    [edges, edgeStyles, activeId, reduced]
   );
+
+  // Focus mode for cards: everything not directly related to the active card
+  // fades back so its neighbourhood stands out.
+  const styledNodes = useMemo<AnyFlowNode[]>(() => {
+    if (activeId === null) return nodes;
+    const related = new Set<string>([activeId]);
+    for (const e of edges) {
+      if (e.id.startsWith("spine-")) continue;
+      if (e.source === activeId) related.add(e.target);
+      if (e.target === activeId) related.add(e.source);
+    }
+    return nodes.map((n) => ({
+      ...n,
+      style: { ...n.style, opacity: related.has(n.id) ? 1 : 0.35, transition: "opacity 150ms" },
+    }));
+  }, [nodes, edges, activeId]);
 
   // Inject domain kind metadata + activate handler into each custom node
   // renderer through closure capture. StageNode only needs the activation
@@ -478,7 +500,7 @@ function DomainGraphInner({ domainId }: DomainGraphProps) {
       >
         {ready ? (
           <ReactFlow
-            nodes={nodes}
+            nodes={styledNodes}
             edges={styledEdges}
             nodeTypes={renderNodeTypes}
             fitView
