@@ -42,6 +42,8 @@ O vault é saída gerada e somente leitura: edite as fontes e exporte de novo. A
 - **Netlify / Cloudflare Pages**: `public/_headers` e `public/_redirects`.
 - **Local**: `npm run build` gera `out/`.
 
+**Deploy automático**: um webhook do GitHub (evento `push`) avisa o Coolify a cada merge na `main`; o Coolify refaz o build do `Dockerfile` e só troca o container se o build (validação de conteúdo, orçamento de tamanho) e o healthcheck passarem, então uma `main` quebrada não derruba o site no ar.
+
 O `nginx.conf` não envia `upgrade-insecure-requests` no CSP de propósito (quebraria um host só HTTP, como uma tailnet). Se servir apenas por HTTPS, acrescente a diretiva.
 
 ## Contribua
