@@ -107,6 +107,11 @@
 }
 
 :root {
+  color-scheme: light dark;
+}
+
+:root,
+:root[data-theme="dark"] {
   --radius: 0.75rem;
   --background: oklch(0.13 0.012 260);
   --foreground: oklch(0.93 0.01 250);
@@ -120,6 +125,27 @@
   --accent: oklch(0.22 0.014 260);
   --accent-foreground: oklch(0.93 0.01 250);
   --ring: oklch(0.78 0.19 155 / 0.55);
+}
+
+/* Light variant — mirror of the dark tokens above, tuned for AA contrast
+ * on a near-white surface. Background / muted / border / accent sit in the
+ * zinc-50..zinc-200 family; foreground / muted-foreground / primary sit in
+ * the zinc-700..zinc-900 family (slightly tinted cool). Pattern adapted
+ * from GitHub Primer light surfaces and Tailwind zinc/neutral palettes. */
+:root[data-theme="light"] {
+  --radius: 0.75rem;
+  --background: oklch(0.985 0.005 250);
+  --foreground: oklch(0.18 0.012 250);
+  --card: oklch(0.97 0.006 250);
+  --card-foreground: oklch(0.18 0.012 250);
+  --primary: oklch(0.55 0.16 155);
+  --primary-foreground: oklch(0.98 0.005 155);
+  --muted: oklch(0.95 0.005 250);
+  --muted-foreground: oklch(0.45 0.015 250);
+  --border: oklch(0.88 0.008 250);
+  --accent: oklch(0.94 0.006 250);
+  --accent-foreground: oklch(0.18 0.012 250);
+  --ring: oklch(0.55 0.16 155 / 0.5);
 }
 
 body {
@@ -297,6 +323,70 @@ body {
   --primary: oklch(0.74 0.18 295);
   --primary-foreground: oklch(0.16 0.04 295);
   --ring: oklch(0.74 0.18 295 / 0.55);
+}
+
+/* Light-theme counterparts of every data-domain accent above. Same hue,
+ * lower L so the accent holds ≥4.5:1 contrast on the near-white surface.
+ * Source order matters — they sit below the dark defaults so the dark
+ * variants keep winning when [data-theme] is dark or absent. */
+:root[data-theme="light"] [data-domain="cloudsec"] {
+  --primary: oklch(0.5 0.15 230);
+  --primary-foreground: oklch(0.98 0.005 230);
+  --ring: oklch(0.5 0.15 230 / 0.5);
+}
+
+:root[data-theme="light"] [data-domain="secops"] {
+  --primary: oklch(0.5 0.15 55);
+  --primary-foreground: oklch(0.98 0.005 55);
+  --ring: oklch(0.5 0.15 55 / 0.5);
+}
+
+:root[data-theme="light"] [data-domain="seceng"] {
+  --primary: oklch(0.5 0.17 10);
+  --primary-foreground: oklch(0.98 0.005 10);
+  --ring: oklch(0.5 0.17 10 / 0.5);
+}
+
+:root[data-theme="light"] [data-domain="owasp"] {
+  --primary: oklch(0.5 0.17 120);
+  --primary-foreground: oklch(0.98 0.005 120);
+  --ring: oklch(0.5 0.17 120 / 0.5);
+}
+
+:root[data-theme="light"] [data-domain="vibecoding"] {
+  --primary: oklch(0.5 0.18 330);
+  --primary-foreground: oklch(0.98 0.005 330);
+  --ring: oklch(0.5 0.18 330 / 0.5);
+}
+
+:root[data-theme="light"] [data-domain="devops"] {
+  --primary: oklch(0.5 0.16 85);
+  --primary-foreground: oklch(0.98 0.005 85);
+  --ring: oklch(0.5 0.16 85 / 0.5);
+}
+
+:root[data-theme="light"] [data-domain="response"] {
+  --primary: oklch(0.5 0.15 200);
+  --primary-foreground: oklch(0.98 0.005 200);
+  --ring: oklch(0.5 0.15 200 / 0.5);
+}
+
+:root[data-theme="light"] [data-domain="offsec"] {
+  --primary: oklch(0.5 0.18 25);
+  --primary-foreground: oklch(0.98 0.005 25);
+  --ring: oklch(0.5 0.18 25 / 0.5);
+}
+
+:root[data-theme="light"] [data-domain="grc"] {
+  --primary: oklch(0.5 0.17 262);
+  --primary-foreground: oklch(0.98 0.005 262);
+  --ring: oklch(0.5 0.17 262 / 0.5);
+}
+
+:root[data-theme="light"] [data-domain="ai-agents"] {
+  --primary: oklch(0.45 0.18 295);
+  --primary-foreground: oklch(0.98 0.005 295);
+  --ring: oklch(0.45 0.18 295 / 0.5);
 }
 
 /* Scroll-driven reveals. Bound to the section scroll view timeline so a
