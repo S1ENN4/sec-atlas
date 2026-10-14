@@ -5,17 +5,23 @@
 [![Código: MIT](https://img.shields.io/badge/código-MIT-blue.svg)](LICENSE)
 [![Conteúdo: CC BY-SA 4.0](https://img.shields.io/badge/conteúdo-CC%20BY--SA%204.0-lightgrey.svg)](LICENSE-CONTENT.md)
 
-**Mapa interativo de segurança de software**, em português: o que cada verificação faz, onde ela entra na esteira e como as peças se conectam. Cada domínio é um grafo independente, com conceitos, esteira, conexões, glossário, trilhas de estudo, cenários de ataque e quizzes.
+**Base de conhecimento de segurança de software e de carreira**, em três idiomas (en, pt, es): o que cada verificação faz, onde ela entra na esteira, como as peças se conectam e como chegar a cada cargo. Cada domínio é um grafo independente, com conceitos, esteira, conexões, glossário, quizzes e trilhas de estudo. Dois guias por cima deles: a **Jornada** (mapa guiado do básico ao avançado, com pré-requisitos e progresso salvo no navegador) e **Carreiras** (roadmaps por cargo, com o que estudar aqui, o que aprender fora e o que construir).
 
 | Domínio | Rota | Foco |
 |---|---|---|
 | AppSec | `/appsec` | SAST, DAST, SCA, secrets, SBOM, threat modeling e a esteira de CI/CD |
+| OWASP Top 10 | `/owasp` | os 10 riscos de 2025, com código vulnerável e corrigido em várias linguagens e o teste que prova a correção |
+| Engenharia | `/engineering` | IaC seguro, policy as code, hardening de CI/CD, confiabilidade, automação e IA |
+| DevOps | `/devops` | Linux, Git, containers, pipelines, releases, IaC, Kubernetes, observabilidade e SRE |
 | CloudSec | `/cloudsec` | IAM, rede, Kubernetes, containers, postura, runtime e resposta a incidentes |
-| Agentes de IA | `/agentes` | RAG, tool calling, MCP, guardrails e avaliação |
-| SecOps | `/secops` | Defesa de borda L7: WAF, rate limiting, bots, detecção e SLOs de SOC |
-| Engenharia | `/engenharia` | IaC seguro, policy as code, hardening de CI/CD, confiabilidade, automação e IA |
+| SecOps | `/secops` | defesa de borda L7: WAF, rate limiting, bots, detecção e SLOs de SOC |
+| Resposta a incidentes | `/response` | ciclo de vida, threat hunting e inteligência, ransomware, forense e malware |
+| Segurança ofensiva | `/offensive` | autorização e método, recon, testes web e de API, caminhos de ataque, red/purple team e relatórios |
+| GRC e liderança | `/grc` | risco, frameworks, terceiros, arquitetura, conformidade, métricas, estratégia e comunicação de crise |
+| Agentes de IA | `/agents` | RAG, tool calling, MCP, guardrails e avaliação |
+| Vibecoding | `/vibecoding` | ferramentas de código com IA: camadas, comparação, contexto, agentes em paralelo, verificação e segurança |
 
-Cinco mapas prontos (`appsec`, `cloudsec`, `ai-agents`, `secops`, `seceng`), todos com a mesma profundidade.
+Onze mapas prontos. Os domínios novos (owasp, devops, response, offsec, grc, vibecoding) são escritos em inglês (idioma-fonte) e traduzidos por camadas; os cinco primeiros ainda estão em português e são migrados em lotes (veja a seção de i18n).
 
 ## Contribua
 
@@ -36,7 +42,7 @@ Parte do texto foi produzida com apoio de IA (Claude) e está em **revisão téc
 
 ## Visão geral
 
-- **5 domínios, 53 tópicos** (9 appsec + 11 cloudsec + 15 ai-agents + 10 secops + 8 seceng)
+- **11 domínios, 106 tópicos**, 15 cargos em Carreiras, em en/pt/es
 - **Next.js 16** (App Router) com `output: "export"`, site 100% estático, sem servidor
 - **Tailwind CSS 4** + componentes no estilo shadcn/ui
 - **React Flow** (`@xyflow/react`) para o grafo de estudos
@@ -44,11 +50,21 @@ Parte do texto foi produzida com apoio de IA (Claude) e está em **revisão téc
 
 Domínios e rotas (a única fonte é `domainMeta` em `src/content/registry.ts`):
 
-| DomainId     | route       | status | accent   |
-|--------------|-------------|--------|----------|
-| `appsec`     | `/appsec`   | live   | emerald  |
-| `cloudsec`   | `/cloudsec` | live   | sky      |
-| `ai-agents`  | `/agentes`  | live   | violet   |
+| DomainId     | route         | status |
+|--------------|---------------|--------|
+| `appsec`     | `/appsec`     | live   |
+| `owasp`      | `/owasp`      | live   |
+| `seceng`     | `/engineering`| live   |
+| `devops`     | `/devops`     | live   |
+| `cloudsec`   | `/cloudsec`   | live   |
+| `secops`     | `/secops`     | live   |
+| `response`   | `/response`   | live   |
+| `offsec`     | `/offensive`  | live   |
+| `grc`        | `/grc`        | live   |
+| `ai-agents`  | `/agents`     | live   |
+| `vibecoding` | `/vibecoding` | live   |
+
+Para criar um domínio novo: escreva os arquivos do domínio (`src/content/<dir>/` e `src/content/quiz/<dir>.ts`) e rode `python scripts/wire-domain.py <spec.json>`, que registra o domínio no tipo, no registro, no quiz, no menu, nas cores, nos ícones, na busca, nas fontes, nos níveis da Jornada e no dicionário de UI. Depois traduza as strings de UI com `npm run i18n -- apply`.
 
 A postura dogfooding (CSP, headers, scripts) está documentada em [/seguranca](/seguranca).
 
@@ -137,7 +153,7 @@ O caminho canônico, do começo ao fim:
    import type { Topic } from "@/content/types";
 
    export const <slug>: Topic = {
-     domain: "<domain>",            // "appsec" | "cloudsec" | "ai-agents" | "secops" | "seceng"
+     domain: "<domain>",            // "appsec" | "cloudsec" | "ai-agents" | "secops" | "seceng" | "owasp" | "devops" | "response" | "offsec" | "grc" | "vibecoding"
      slug: "<slug>",                // único dentro do domínio
      title: "...",
      short: "...",
