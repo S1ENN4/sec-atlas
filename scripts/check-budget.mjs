@@ -214,6 +214,10 @@ import { gzipSync } from "node:zlib";
 // Phase 4: React Flow removed (own learning map). JS raw 917,862 -> 747,778,
 // JS gzip 288,186 -> 233,722. JS caps tightened to ~3% above that.
 
+// Glossary term popups: up to 8 linked terms per topic page, each with a small popover
+// (about 1.5 KB per page). Measured: first-load 14,218,709 / rsc 17,702,104 / total
+// 31,920,813 / all locales 91,027,183. Caps ~3% above that.
+
 const OUT_DIR = resolve(process.cwd(), "out");
 
 // Phase 3.A3 reconciliation (copy-code button on every <pre>): the new
@@ -227,10 +231,10 @@ const OUT_DIR = resolve(process.cwd(), "out");
 // headroom-to-content ratio as the live floor.
 
 const CAPS = [
-  { key: "first_load",  label: "first-load assets",     limit: 14_200_000, scope: "first_load" },
-  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 17_500_000, scope: "rsc_prefetch" },
-  { key: "total",       label: "total",                 limit: 31_500_000, scope: "total" },
-  { key: "all_locales", label: "all locales (sanity)", limit: 89_000_000, scope: "all_locales" },
+  { key: "first_load",  label: "first-load assets",     limit: 14_650_000, scope: "first_load" },
+  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 18_250_000, scope: "rsc_prefetch" },
+  { key: "total",       label: "total",                 limit: 32_900_000, scope: "total" },
+  { key: "all_locales", label: "all locales (sanity)", limit: 93_800_000, scope: "all_locales" },
   { key: "css",         label: "CSS raw",               limit:    98_000, scope: "css" },
   { key: "js",          label: "JS raw",                limit:   770_000, scope: "js" },
   { key: "js_gz",       label: "JS gzip",               limit:   241_000, scope: "js_gz" },

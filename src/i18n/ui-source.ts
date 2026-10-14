@@ -305,6 +305,7 @@ export const ui = {
     all: "all",
     nothing: "nothing found for “{query}”.",
     nothingIn: "nothing found for “{query}” in {domain}.",
+    seeInGlossary: "see in glossary",
   },
 
   scenarios: {

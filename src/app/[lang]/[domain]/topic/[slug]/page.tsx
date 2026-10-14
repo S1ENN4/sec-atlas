@@ -13,6 +13,7 @@ import { TopicPathNav } from "@/components/topic-path-nav";
 import { TopicSideSummary } from "@/components/topic-side-summary";
 import { TopicSources } from "@/components/topic-sources";
 import { TopicToolbar } from "@/components/topic-toolbar";
+import { createTermLinker } from "@/components/glossary-text";
 import { TopicVisitRecorder } from "@/components/topic-visit-recorder";
 import { Badge } from "@/components/ui/badge";
 import { levels } from "@/content/levels";
@@ -109,6 +110,8 @@ export default async function TopicPage({ params }: { params: Params }) {
   }
   const endOfPath = currentIdx >= 0 && !nextTopic;
 
+  const linker = createTermLinker(locale, t.glossary.seeInGlossary);
+
   return (
     <article data-domain={id} className="animate-page-enter mx-auto max-w-3xl px-4 pb-24 pt-10">
       <div className="reading-progress print:hidden" aria-hidden />
@@ -171,14 +174,14 @@ export default async function TopicPage({ params }: { params: Params }) {
             {section.body ? (
               <div className="t-body">
                 {section.body.map((p, i) => (
-                  <p key={i}>{p}</p>
+                  <p key={i}>{linker.text(p)}</p>
                 ))}
               </div>
             ) : null}
             {section.bullets ? (
               <ul className="t-list">
                 {section.bullets.map((b, i) => (
-                  <li key={i}>{b}</li>
+                  <li key={i}><span>{linker.text(b)}</span></li>
                 ))}
               </ul>
             ) : null}
@@ -203,6 +206,7 @@ export default async function TopicPage({ params }: { params: Params }) {
             ))}
           </section>
         ))}
+        {linker.popovers()}
       </div>
 
       {rels.length > 0 ? (

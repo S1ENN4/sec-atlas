@@ -6,6 +6,7 @@ import Link from "next/link";
 import { fmt } from "@/i18n/format";
 import { cn } from "@/lib/utils";
 import type { DomainGlossaryGroup } from "@/lib/glossary";
+import { termId } from "@/lib/term-id";
 
 const normalize = (s: string) =>
   s
@@ -38,6 +39,17 @@ export function GlossaryExplorer({
   const [domain, setDomain] = useState<DomainFilter>("all");
   const q = normalize(query.trim());
   const nameOf = (id: string) => domainNames[id] ?? id;
+
+  // Anchor ids for the in-text term popups. A term that exists in two domains
+  // gets the id on its first entry only (ids must be unique on the page).
+  const anchorOwner = useMemo(() => {
+    const owner = new Map<string, string>();
+    for (const g of groups) for (const e of g.entries) {
+      const id = termId(e.term);
+      if (!owner.has(id)) owner.set(id, `${g.domain}-${g.id}-${e.term}`);
+    }
+    return owner;
+  }, [groups]);
 
   // Domain chips are derived from the data itself, in first-seen order.
   const domainOptions = useMemo(() => {
@@ -115,7 +127,11 @@ export function GlossaryExplorer({
                   // allows it): surface a small chip so the destination is clear.
                   const isCrossDomain = topic !== undefined && topic.domain !== group.domain;
                   return (
-                    <div key={`${group.domain}-${group.id}-${entry.term}`} className="rounded-lg border border-border bg-card px-4 py-3">
+                    <div
+                      key={`${group.domain}-${group.id}-${entry.term}`}
+                      id={anchorOwner.get(termId(entry.term)) === `${group.domain}-${group.id}-${entry.term}` ? termId(entry.term) : undefined}
+                      className="scroll-mt-24 rounded-lg border border-border bg-card px-4 py-3 target:border-primary/70 target:bg-primary/5"
+                    >
                       <dt className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
                         <span className="font-mono text-sm font-semibold text-foreground">{entry.term}</span>
                         {entry.aka ? (

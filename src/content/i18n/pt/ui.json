@@ -704,6 +704,10 @@
       "t": "filtrar termos... (ex.: cve, iam, cspm, sbom)",
       "h": "331a282e"
     },
+    "glossary.seeInGlossary": {
+      "t": "ver no glossário",
+      "h": "03e796a3"
+    },
     "graph.allPrereqs": {
       "t": "todos os pré-requisitos",
       "h": "b62261ec"
