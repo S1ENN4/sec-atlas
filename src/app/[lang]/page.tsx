@@ -11,6 +11,7 @@ import { localePath } from "@/i18n/config";
 import { fmt, plural } from "@/i18n/format";
 import { alternatesFor, resolveLocale } from "@/i18n/server";
 import { cn } from "@/lib/utils";
+import { estimateReadingMinutes, topicBodyText } from "@/lib/reading-time";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { locale, t } = await resolveLocale(params);
@@ -85,6 +86,10 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         {domainList.map((d, i) => {
           const copy = t.domains[d.id];
           const isLive = d.status === "live";
+          const totalMinutes = d.topics.reduce(
+            (sum, tp) => sum + estimateReadingMinutes(topicBodyText(tp)),
+            0,
+          );
           return (
             <Link
               key={d.id}
@@ -107,7 +112,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
                     <div className="flex items-center justify-between">
                       <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">{d.id}</span>
                       <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
-                        {plural(nav, "topicsCount", d.topics.length)}
+                        {`${plural(nav, "topicsCount", d.topics.length)} · ${totalMinutes} ${t.topicPage.minRead}`}
                       </span>
                     </div>
                     <CardTitle className="pt-2 text-2xl">{copy.name}</CardTitle>

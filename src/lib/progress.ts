@@ -13,6 +13,19 @@ import type { DomainId } from "@/content/types";
 
 const KEY = "kb:progress:v1";
 
+// Last-topic pointer: a single key, set every time the reader opens a topic
+// page. Used to remember "where they left off" without touching the per-topic
+// progress above (which is what the toolbar reads). Kept separate so the
+// progress payload stays small and its hash never churns on every visit.
+export const LAST_TOPIC_KEY = "kb-last-topic";
+
+export interface LastTopic {
+  locale: string;
+  domain: string;
+  slug: string;
+  ts: number;
+}
+
 export interface ProgressState {
   seen: Record<string, 1>;
   quiz: Record<string, { best: number; total: number }>;
@@ -78,6 +91,46 @@ function subscribe(listener: () => void) {
 }
 
 export const topicKey = (domain: DomainId, slug: string) => `${domain}/${slug}`;
+
+/**
+ * Record that the reader just opened a topic. Server-safe: returns silently
+ * when `window` is undefined so a server component can call it without
+ * branching. Every read/write is wrapped in try/catch because localStorage
+ * can be blocked (private windows, strict settings).
+ */
+export function recordTopicVisit(locale: string, domain: string, slug: string): void {
+  if (typeof window === "undefined") return;
+  try {
+    const payload: LastTopic = { locale, domain, slug, ts: Date.now() };
+    window.localStorage.setItem(LAST_TOPIC_KEY, JSON.stringify(payload));
+  } catch {
+    /* storage unavailable: nothing more to do */
+  }
+}
+
+/**
+ * Read the last topic pointer back, or `null` when the storage is empty or
+ * the payload is malformed. Server-safe (returns null on the server).
+ */
+export function readLastTopic(): LastTopic | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = window.localStorage.getItem(LAST_TOPIC_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as Partial<LastTopic>;
+    if (
+      typeof parsed.locale !== "string" ||
+      typeof parsed.domain !== "string" ||
+      typeof parsed.slug !== "string" ||
+      typeof parsed.ts !== "number"
+    ) {
+      return null;
+    }
+    return { locale: parsed.locale, domain: parsed.domain, slug: parsed.slug, ts: parsed.ts };
+  } catch {
+    return null;
+  }
+}
 
 export function useProgress() {
   const state = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);

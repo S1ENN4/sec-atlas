@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Clock, MoveRight } from "lucide-react";
+import { ArrowLeft, MoveRight } from "lucide-react";
 
 import { ContentNotice } from "@/components/content-notice";
 import { CopyCodeButton } from "@/components/copy-code-button";
@@ -84,9 +84,8 @@ export default async function TopicPage({ params }: { params: Params }) {
               {fmt(t.topicPage.stageBadge, { stage: topic.stage })}
             </Badge>
           ) : null}
-          <Badge variant="outline" className="gap-1.5 font-mono text-xs font-normal" aria-label={`${minutes} ${t.topicPage.minRead}`}>
-            <Clock className="size-3" aria-hidden />
-            {minutes} {t.topicPage.minRead}
+          <Badge variant="outline" className="font-mono text-xs font-normal" aria-label={`${minutes} ${t.topicPage.minRead}`}>
+            {`${minutes} ${t.topicPage.minRead}`}
           </Badge>
         </div>
         <div className="mt-4 flex items-center gap-3">
