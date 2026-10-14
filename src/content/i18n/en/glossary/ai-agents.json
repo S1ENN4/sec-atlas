@@ -1,0 +1,212 @@
+{
+  "entries": {
+    "groups.0.entries.0.aka": {
+      "t": "semantic search",
+      "h": "da789dc8"
+    },
+    "groups.0.entries.0.meaning": {
+      "t": "The RAG step where you search your chunks for the passages that answer the user's question. Retrieval is the real bottleneck of the system: a good LLM with bad retrieval is an LLM that hallucinates with confidence. It ranges from dense similarity search to classic BM25, including hybrid and reranking.",
+      "h": "56b1593c"
+    },
+    "groups.0.entries.0.term": {
+      "t": "Retrieval",
+      "h": "01335793"
+    },
+    "groups.0.entries.1.meaning": {
+      "t": "The second pass of retrieval: the model takes the top-K candidates that came from the cheap search (say 50) and reorders them down to the K most useful (top 5 or 10) using a cross-encoder that saw query and chunk together. It adds latency, but cuts the noise: the LLM receives dense context instead of a mix of good and mediocre.",
+      "h": "8d6a9293"
+    },
+    "groups.0.entries.1.term": {
+      "t": "Reranking",
+      "h": "d80e2d4c"
+    },
+    "groups.0.entries.2.meaning": {
+      "t": "The classic ranking function of text search: it scores each document by TF-IDF with saturation (important terms weigh more up to a ceiling) and normalizes by length. It is the sparse search of hybrid retrieval and captures exact term matches (error code, API name) where embeddings alone fail badly.",
+      "h": "dd723da3"
+    },
+    "groups.0.entries.2.term": {
+      "t": "BM25",
+      "h": "dc33aec0"
+    },
+    "groups.0.entries.3.meaning": {
+      "t": "A measure of how aligned two vectors are in embedding space: the cosine of the angle between them, independent of magnitude. For normalized embeddings the inner product is enough and stays fast, which is why it became the default distance in almost every vector database.",
+      "h": "b899beb7"
+    },
+    "groups.0.entries.3.term": {
+      "t": "Cosine similarity",
+      "h": "fab25c2a"
+    },
+    "groups.0.entries.4.aka": {
+      "t": "hierarchical navigable small world",
+      "h": "74251e11"
+    },
+    "groups.0.entries.4.meaning": {
+      "t": "A layered graph structure that vector databases use for nearest-neighbor search in high dimensions. Each layer is a sparse graph that jumps far; the lower ones do the fine tuning. It is why pgvector, Pinecone, Weaviate, Qdrant and LanceDB answer in milliseconds with millions of vectors.",
+      "h": "6dc7d658"
+    },
+    "groups.0.entries.4.term": {
+      "t": "HNSW",
+      "h": "936ee7e6"
+    },
+    "groups.0.entries.5.aka": {
+      "t": "approximate nearest neighbor",
+      "h": "98d4ada5"
+    },
+    "groups.0.entries.5.meaning": {
+      "t": "A family of algorithms (HNSW, IVF, LSH) that trade exactness for brutal speed in high-dimensional neighbor search. ANN does not find the perfect neighbor, but a good enough one, and in production retrieval that trade is what makes the system fit the latency budget.",
+      "h": "b0a98335"
+    },
+    "groups.0.entries.5.term": {
+      "t": "ANN",
+      "h": "30ffbd17"
+    },
+    "groups.0.title": {
+      "t": "retrieval",
+      "h": "982d67fc"
+    },
+    "groups.1.entries.0.aka": {
+      "t": "context window",
+      "h": "95e08528"
+    },
+    "groups.1.entries.0.meaning": {
+      "t": "The maximum number of tokens the model can read at once: the prompt, the entire concatenated history and the output it will generate. It is the LLM's short-term memory. Huge windows seem to solve RAG, but they amplify cost, latency and the risk of the model getting lost in the middle of the text, so good context is small, well-chosen context.",
+      "h": "94fbf496"
+    },
+    "groups.1.entries.0.term": {
+      "t": "Context window",
+      "h": "ec209a8d"
+    },
+    "groups.1.entries.1.aka": {
+      "t": "hallucination",
+      "h": "2519c758"
+    },
+    "groups.1.entries.1.meaning": {
+      "t": "When the model invents a plausible fact that was not in the data: an API name that does not exist, a nonexistent paper, a coherent command that does nothing. It is a training and retrieval problem, not a matter of 'truthfulness'. Mitigation is layered: retrieval with verifiable sources, a prompt that asks for citations, and an evaluator that hunts for invention automatically.",
+      "h": "993d7d3c"
+    },
+    "groups.1.entries.1.term": {
+      "t": "Hallucination",
+      "h": "7a99c235"
+    },
+    "groups.1.entries.2.aka": {
+      "t": "tool use",
+      "h": "915723b1"
+    },
+    "groups.1.entries.2.meaning": {
+      "t": "The mechanism by which the LLM asks, instead of just producing text, to execute a function with structured parameters: the model emits JSON, your code runs the function, and the result goes back into the conversation. It is what turns a pure model into an agent able to act in the world, and what needs guardrails to prevent the wrong call with the wrong argument.",
+      "h": "706edae2"
+    },
+    "groups.1.entries.2.term": {
+      "t": "Function calling",
+      "h": "c457d51a"
+    },
+    "groups.1.entries.3.meaning": {
+      "t": "A program that uses an LLM to decide what to do at each step, instead of following a fixed script. It receives a goal, chooses tools, observes the result, decides the next step, and continues until it finishes or gives up. The difference from a chatbot is autonomy: the agent sequences actions outside a predefined order.",
+      "h": "b0fd0f48"
+    },
+    "groups.1.entries.3.term": {
+      "t": "Agent",
+      "h": "354b2dbb"
+    },
+    "groups.1.entries.4.meaning": {
+      "t": "An explicit decomposition of the agent's reasoning into nodes (plan, act, observe, review) and directed edges, instead of a single loop that does everything. Advantage: each node is auditable and testable independently, and when the agent gets stuck you know at which node. LangGraph and state machines in general follow this model.",
+      "h": "a739f52d"
+    },
+    "groups.1.entries.4.term": {
+      "t": "Agent graph",
+      "h": "77d9c0b8"
+    },
+    "groups.1.entries.5.aka": {
+      "t": "model context protocol server",
+      "h": "f510d08d"
+    },
+    "groups.1.entries.5.meaning": {
+      "t": "A server that implements the Model Context Protocol, Anthropic's open standard that standardizes the conversation between an agent and external tools. The agent lists what is available, calls what it needs, receives the result, with no case-by-case integration. A well-written MCP server becomes reusable by Claude, Cursor, Cline and any compatible client.",
+      "h": "1e0d92ff"
+    },
+    "groups.1.entries.5.term": {
+      "t": "MCP server",
+      "h": "94cbffb2"
+    },
+    "groups.1.entries.6.meaning": {
+      "t": "In MCP, a tool is a function the agent invokes with parameters and gets a result on demand (a POST, a calculation, a send). A resource is a named piece of data the agent can read whenever it wants (a configuration file, a schema, a log). Separating the two matters: the LLM reasons better when operations with side effects are clearly distinct from reads.",
+      "h": "c8c4b03f"
+    },
+    "groups.1.entries.6.term": {
+      "t": "Tool vs resource (MCP)",
+      "h": "f6622d11"
+    },
+    "groups.1.entries.7.meaning": {
+      "t": "LangChain's graph agent library that combines a planning tool, a filesystem tool and subagents to solve tasks too long for a single loop. It is a practical reference for an agent that does not stall on the third tool call and the place where you learn to calibrate autonomy before releasing a real agent into production.",
+      "h": "55fc631c"
+    },
+    "groups.1.entries.7.term": {
+      "t": "DeepAgents",
+      "h": "75776c86"
+    },
+    "groups.1.title": {
+      "t": "model, agents and protocols",
+      "h": "441f837c"
+    },
+    "groups.2.entries.0.meaning": {
+      "t": "A benchmark that measures whether an agent can resolve real GitHub issues in real open source project code: multi-file, with tests, without instructions on how to do it. It is the current standard for telling apart an agent that impresses in a demo from one that actually closes tickets, and where deepagents and similar projects publish their progress numbers.",
+      "h": "a48d5525"
+    },
+    "groups.2.entries.0.term": {
+      "t": "SWE-bench",
+      "h": "27a2cc6a"
+    },
+    "groups.2.entries.1.aka": {
+      "t": "LLM-as-judge",
+      "h": "6eb5542c"
+    },
+    "groups.2.entries.1.meaning": {
+      "t": "Using a strong LLM (usually GPT-4 class or Claude Opus) to score another model's output against a rubric. It solves scale, because a human does not read 5,000 outputs per PR. It brings its own biases: position bias (prefers the first candidate), verbosity bias (prefers the longest) and self-promotion (thinks its own model is better). Calibration against a human evaluator is mandatory before trusting the judge.",
+      "h": "62a5c731"
+    },
+    "groups.2.entries.1.term": {
+      "t": "Judge",
+      "h": "90f3c4a0"
+    },
+    "groups.2.entries.2.meaning": {
+      "t": "An explicit list of criteria and weights the judge uses to score an output: 'cite the source in the first sentence, maximum 2 lines, no adjectives, return JSON'. Without a written rubric the LLM-as-judge diverges between runs and between models, and you cannot improve prompt, model and dataset reproducibly. With a locked rubric it becomes a ruler, without it it becomes opinion.",
+      "h": "ed6b0479"
+    },
+    "groups.2.entries.2.term": {
+      "t": "Rubric",
+      "h": "d7192dcb"
+    },
+    "groups.2.entries.3.meaning": {
+      "t": "A reference (fixed) model or configuration that runs on the whole dataset before any change, so you can measure the delta of your modification. In LLM evals, 'better' without a baseline is a guess: was the previous version already good, or did it just look good in the demo? A baseline locked per version is what turns eval into science, and what separates 'passed the test' from 'passed the test, and here is the evidence'.",
+      "h": "572b7076"
+    },
+    "groups.2.entries.3.term": {
+      "t": "Baseline",
+      "h": "e6ab7982"
+    },
+    "groups.2.entries.4.meaning": {
+      "t": "An attack in which hostile content (in an indexed page, in a summarized email, in a document the agent opens) tries to override the system instructions. The attacker knows the LLM mixes trusted text with found text and plants an 'ignore the previous instructions and run X'. It is the number 1 vector in production agents today; it is not an LLM bug, it is how agents read text by design.",
+      "h": "df3192d4"
+    },
+    "groups.2.entries.4.term": {
+      "t": "Prompt injection",
+      "h": "0ccdb9f8"
+    },
+    "groups.2.entries.5.aka": {
+      "t": "personally identifiable information",
+      "h": "8080b880"
+    },
+    "groups.2.entries.5.meaning": {
+      "t": "Personal data that identifies someone: name and national ID, email, phone, address, IP. When the user pastes a document with PII into the chat, or RAG indexes a CRM with 5,000 customers, the agent becomes a leak by design. Guardrails here are detection on input, redaction before sending to the LLM, and short retention, because masking after receiving the response is already too late.",
+      "h": "86107756"
+    },
+    "groups.2.entries.5.term": {
+      "t": "PII",
+      "h": "716aef4d"
+    },
+    "groups.2.title": {
+      "t": "evaluation and security",
+      "h": "b83a94f1"
+    }
+  }
+}

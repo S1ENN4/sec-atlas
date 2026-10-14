@@ -1,0 +1,316 @@
+{
+  "entries": {
+    "items.0.label": {
+      "t": "cómo encontrar lo que el otro enseña a corregir",
+      "h": "29daa9e8"
+    },
+    "items.1.label": {
+      "t": "cómo probar lo que el otro enseña a corregir",
+      "h": "c372a3ab"
+    },
+    "items.2.label": {
+      "t": "un hallazgo bien escrito se vuelve regla y prueba en el pipeline",
+      "h": "f044f92f"
+    },
+    "items.3.label": {
+      "t": "lo que el atacante ve desde afuera, el CSPM lo ve desde adentro",
+      "h": "4f4369cf"
+    },
+    "items.4.label": {
+      "t": "los caminos de ataque nacen de permisos de más",
+      "h": "79c8f230"
+    },
+    "items.5.label": {
+      "t": "el ejercicio ofensivo valida lo que busca la cacería",
+      "h": "dd866dfe"
+    },
+    "items.6.label": {
+      "t": "la ingeniería social y el abuso automatizado atacan la identidad por el mismo lado",
+      "h": "49ed1e36"
+    },
+    "items.7.label": {
+      "t": "el modelo de amenazas alimenta el registro de riesgos",
+      "h": "581d7927"
+    },
+    "items.8.label": {
+      "t": "el riesgo de proveedores, visto como código de terceros",
+      "h": "27e978c8"
+    },
+    "items.9.label": {
+      "t": "el inventario que vuelve concreta la evaluación de proveedores",
+      "h": "8bf97f0c"
+    },
+    "items.10.label": {
+      "t": "el principio y la implementación en la nube",
+      "h": "67e59c3d"
+    },
+    "items.11.label": {
+      "t": "la evidencia automática nace de políticas ejecutables",
+      "h": "49d62fc0"
+    },
+    "items.12.label": {
+      "t": "la comunicación es una pista del mismo ciclo de respuesta",
+      "h": "55b73178"
+    },
+    "items.13.label": {
+      "t": "del SLO operativo al informe para la directiva",
+      "h": "af2dd98f"
+    },
+    "items.14.label": {
+      "t": "lo que encuentra la cacería se vuelve detección versionada",
+      "h": "0043c941"
+    },
+    "items.15.label": {
+      "t": "solo se puede reconstruir lo que se recolectó",
+      "h": "76b5a0cb"
+    },
+    "items.16.label": {
+      "t": "la misma contención, aplicada a cuentas y recursos de nube",
+      "h": "f82a99fd"
+    },
+    "items.17.label": {
+      "t": "los runbooks son el ciclo ensayado y escrito",
+      "h": "73379f6c"
+    },
+    "items.18.label": {
+      "t": "las técnicas observadas en el borde alimentan la inteligencia y viceversa",
+      "h": "196bd6b5"
+    },
+    "items.19.label": {
+      "t": "backups que restauran y recuperación en orden de prioridad",
+      "h": "2a5e39a8"
+    },
+    "items.20.label": {
+      "t": "la evidencia de la nube vive en los logs de auditoría",
+      "h": "b941b643"
+    },
+    "items.21.label": {
+      "t": "la base; el otro se encarga de escanearla y protegerla",
+      "h": "9692104d"
+    },
+    "items.22.label": {
+      "t": "un pipeline que funciona también debe ser un pipeline confiable",
+      "h": "b197b235"
+    },
+    "items.23.label": {
+      "t": "dónde encaja cada verificación de seguridad en el pipeline",
+      "h": "fc74f5f2"
+    },
+    "items.24.label": {
+      "t": "la buena imagen y el clúster seguro: dos mitades del mismo problema",
+      "h": "1e41aff4"
+    },
+    "items.25.label": {
+      "t": "el mismo clúster visto como plataforma y como superficie de ataque",
+      "h": "8c79bb53"
+    },
+    "items.26.label": {
+      "t": "la misma disciplina de telemetría, de plataforma y de seguridad",
+      "h": "f868c0f9"
+    },
+    "items.27.label": {
+      "t": "SLOs y presupuesto de error, aplicados a la detección",
+      "h": "6456133d"
+    },
+    "items.28.label": {
+      "t": "observación, shadow y enforcement: la misma escalera gradual",
+      "h": "9bd6de08"
+    },
+    "items.29.label": {
+      "t": "los mismos límites, aplicados al agente que escribe código",
+      "h": "dfd8b892"
+    },
+    "items.30.label": {
+      "t": "cada servidor MCP conectado amplía lo que el agente puede hacer",
+      "h": "56115859"
+    },
+    "items.31.label": {
+      "t": "secretos fuera del alcance del agente y fuera del prompt",
+      "h": "fa8995e1"
+    },
+    "items.32.label": {
+      "t": "una dependencia inventada por el agente debe pasar por la misma verificación",
+      "h": "36b86204"
+    },
+    "items.33.label": {
+      "t": "el gate que vale para cualquier autor, humano o agente",
+      "h": "f9dbc293"
+    },
+    "items.34.label": {
+      "t": "gates automáticos en el pipeline, sin excepción para código generado",
+      "h": "8cf4faa8"
+    },
+    "items.35.label": {
+      "t": "las herramientas y los permisos deciden lo que el agente puede hacer",
+      "h": "9c0ad51f"
+    },
+    "items.36.label": {
+      "t": "los agentes autónomos exigen la misma disciplina que los runners y las credenciales",
+      "h": "4d073e53"
+    },
+    "items.37.label": {
+      "t": "es el patrón que el análisis estático busca en el código",
+      "h": "f5949880"
+    },
+    "items.38.label": {
+      "t": "visto desde afuera: las firmas en el borde",
+      "h": "899643f8"
+    },
+    "items.39.label": {
+      "t": "es lo que verifica el análisis de composición",
+      "h": "6bebac80"
+    },
+    "items.40.label": {
+      "t": "el inventario que responde \"¿estamos afectados?\"",
+      "h": "ca2db992"
+    },
+    "items.41.label": {
+      "t": "el método que encuentra la falla antes que el código",
+      "h": "dfa60f29"
+    },
+    "items.42.label": {
+      "t": "la misma regla de mínimo privilegio, en la nube",
+      "h": "f8093ebd"
+    },
+    "items.43.label": {
+      "t": "claves y cifrado gestionados, sin código propio",
+      "h": "d76ff336"
+    },
+    "items.44.label": {
+      "t": "la verificación continua de la configuración",
+      "h": "789902de"
+    },
+    "items.45.label": {
+      "t": "la configuración segura nace en el código de infraestructura",
+      "h": "64b92421"
+    },
+    "items.46.label": {
+      "t": "el log se vuelve detección versionada",
+      "h": "ef49da66"
+    },
+    "items.47.label": {
+      "t": "el credential stuffing es, ante todo, tráfico automatizado",
+      "h": "2d97f893"
+    },
+    "items.48.label": {
+      "t": "el pipeline es parte de lo que debe mantenerse íntegro",
+      "h": "39864842"
+    },
+    "items.49.label": {
+      "t": "fallar cerrado y de forma idempotente",
+      "h": "02a9b955"
+    },
+    "items.50.label": {
+      "t": "es el mismo problema: secretos fuera del código",
+      "h": "968e7f2b"
+    },
+    "items.51.label": {
+      "t": "alimenta: la imagen hereda las dependencias",
+      "h": "056e68f1"
+    },
+    "items.52.label": {
+      "t": "inventaría lo que va dentro de la imagen",
+      "h": "54291ae7"
+    },
+    "items.53.label": {
+      "t": "se vuelve política continua en producción",
+      "h": "73294064"
+    },
+    "items.54.label": {
+      "t": "define las fronteras de confianza",
+      "h": "27312206"
+    },
+    "items.55.label": {
+      "t": "mapea lo que el agente no puede hacer",
+      "h": "46e5b0b0"
+    },
+    "items.56.label": {
+      "t": "atrapa inyección en el código; aquí el objetivo es el argumento de la herramienta",
+      "h": "6ad4177f"
+    },
+    "items.57.label": {
+      "t": "los tokens de servidores MCP se filtran de la misma manera",
+      "h": "fc50cb01"
+    },
+    "items.58.label": {
+      "t": "el mínimo privilegio vale también para el agente",
+      "h": "162198b4"
+    },
+    "items.59.label": {
+      "t": "observar en producción alimenta la evaluación",
+      "h": "d11d3e90"
+    },
+    "items.60.label": {
+      "t": "cada incidente se vuelve un caso de prueba",
+      "h": "f50abd93"
+    },
+    "items.61.label": {
+      "t": "encuentra la falla; el WAF mitiga mientras no se corrige (virtual patching)",
+      "h": "1cb8c067"
+    },
+    "items.62.label": {
+      "t": "el hardening posincidente se vuelve regla y corrección en el código",
+      "h": "0ef81c6b"
+    },
+    "items.63.label": {
+      "t": "segmentación y borde diseñados juntos",
+      "h": "ca76ab37"
+    },
+    "items.64.label": {
+      "t": "la misma idea de señal, aplicada al tráfico L7",
+      "h": "7c150bda"
+    },
+    "items.65.label": {
+      "t": "el runbook de L7 es un caso específico de la respuesta general",
+      "h": "6a606c72"
+    },
+    "items.66.label": {
+      "t": "distinguir automatización legítima de abuso vale también para los agentes",
+      "h": "69f638e9"
+    },
+    "items.67.label": {
+      "t": "la detección y la evaluación miden precisión y recall de la misma manera",
+      "h": "740aa928"
+    },
+    "items.68.label": {
+      "t": "el pipeline visto como objetivo: el mismo pipeline, ahora endurecido",
+      "h": "37bad1b9"
+    },
+    "items.69.label": {
+      "t": "gates y políticas, escritos como código ejecutable",
+      "h": "ee381b7f"
+    },
+    "items.70.label": {
+      "t": "el CSPM ve el entorno; el IaC seguro corrige en el origen y detecta el drift",
+      "h": "a2720864"
+    },
+    "items.71.label": {
+      "t": "OIDC en lugar de secretos estáticos en el pipeline",
+      "h": "2016a3d1"
+    },
+    "items.72.label": {
+      "t": "volumen y falla: escalar sin perder ni duplicar",
+      "h": "1fbbd067"
+    },
+    "items.73.label": {
+      "t": "el runbook que se vuelve playbook automatizado, con frenos",
+      "h": "dcd05d5f"
+    },
+    "items.74.label": {
+      "t": "SLOs del SOC y SLOs de la propia plataforma",
+      "h": "6b119f28"
+    },
+    "items.75.label": {
+      "t": "el mismo cuidado con la entrada y la salida del modelo",
+      "h": "c7111f98"
+    },
+    "items.76.label": {
+      "t": "una acción disparada por un modelo necesita los mismos frenos que un playbook",
+      "h": "8ed474ac"
+    },
+    "items.77.label": {
+      "t": "cifrar el índice con una clave gestionada",
+      "h": "aa6fcf3b"
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "La alta cardinalidad vuelve lentas y caras las agregaciones.",
+      "h": "7149423b"
+    },
+    "questions.0.options.0": {
+      "t": "El número de valores distintos de un campo, como IPs o user agents",
+      "h": "2c6673e8"
+    },
+    "questions.0.options.1": {
+      "t": "La velocidad de la red",
+      "h": "7e6a2b28"
+    },
+    "questions.0.options.2": {
+      "t": "El tamaño de la retención en días",
+      "h": "2745e7ae"
+    },
+    "questions.0.options.3": {
+      "t": "El número de reglas de WAF",
+      "h": "f99ad7b9"
+    },
+    "questions.0.q": {
+      "t": "¿Qué es la cardinalidad en telemetría?",
+      "h": "73ff5677"
+    },
+    "questions.1.explain": {
+      "t": "La consulta lee solo la ventana necesaria y la tabla pequeña, dejando el crudo para la investigación.",
+      "h": "18e202d8"
+    },
+    "questions.1.options.0": {
+      "t": "Particionar por tiempo y mantener agregados por minuto para que las detecciones los lean",
+      "h": "8703250d"
+    },
+    "questions.1.options.1": {
+      "t": "Consultar siempre todo el dato crudo",
+      "h": "6b706dc6"
+    },
+    "questions.1.options.2": {
+      "t": "Desactivar la retención",
+      "h": "9aec4860"
+    },
+    "questions.1.options.3": {
+      "t": "Guardar todo en un único archivo",
+      "h": "194c5d98"
+    },
+    "questions.1.q": {
+      "t": "¿Qué técnica reduce mucho el costo de las consultas de detección?",
+      "h": "19f8f22a"
+    },
+    "questions.2.explain": {
+      "t": "El muestreo sirve para el tráfico volumétrico uniforme; lo relevante para la seguridad se preserva.",
+      "h": "159ebf34"
+    },
+    "questions.2.options.0": {
+      "t": "Bloqueos, desafíos y anomalías de seguridad",
+      "h": "d772d2ec"
+    },
+    "questions.2.options.1": {
+      "t": "Todo el tráfico de imágenes estáticas",
+      "h": "09ccb8fb"
+    },
+    "questions.2.options.2": {
+      "t": "Solo las solicitudes con estado 200",
+      "h": "4e535535"
+    },
+    "questions.2.options.3": {
+      "t": "Ninguno, todo se puede muestrear",
+      "h": "8e836495"
+    },
+    "questions.2.q": {
+      "t": "¿Qué eventos deben guardarse siempre completos, incluso con muestreo?",
+      "h": "bea621ee"
+    }
+  }
+}

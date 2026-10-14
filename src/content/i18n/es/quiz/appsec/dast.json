@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "DAST es caja negra: envía solicitudes y observa las respuestas de la aplicación en ejecución.",
+      "h": "36fe4ae2"
+    },
+    "questions.0.options.0": {
+      "t": "Leyendo el código fuente",
+      "h": "19ed6042"
+    },
+    "questions.0.options.1": {
+      "t": "Atacando la aplicación en ejecución, desde afuera, como un usuario malicioso",
+      "h": "f6a0115d"
+    },
+    "questions.0.options.2": {
+      "t": "Comparando versiones de bibliotecas con una base de CVEs",
+      "h": "3a5b6fed"
+    },
+    "questions.0.options.3": {
+      "t": "Revisando el diagrama de arquitectura",
+      "h": "a3016cdf"
+    },
+    "questions.0.q": {
+      "t": "¿Cómo encuentra vulnerabilidades el DAST?",
+      "h": "b247e231"
+    },
+    "questions.1.explain": {
+      "t": "Los scans activos disparan payloads de ataque; en staging el impacto está contenido.",
+      "h": "00ace03e"
+    },
+    "questions.1.options.0": {
+      "t": "Porque solo funciona con bases de prueba vacías",
+      "h": "a89ee948"
+    },
+    "questions.1.options.1": {
+      "t": "Porque las pruebas pueden crear datos, causar lentitud o efectos secundarios",
+      "h": "f05e8050"
+    },
+    "questions.1.options.2": {
+      "t": "Porque producción no tiene HTTP",
+      "h": "cce6d332"
+    },
+    "questions.1.options.3": {
+      "t": "Porque el DAST no soporta HTTPS",
+      "h": "d6edb9ce"
+    },
+    "questions.1.q": {
+      "t": "¿Por qué el DAST suele correr en staging y no directamente en producción?",
+      "h": "f01c7cd6"
+    },
+    "questions.2.explain": {
+      "t": "Los dos se complementan: el SAST mira el código, el DAST mira el sistema vivo.",
+      "h": "bf50cbb8"
+    },
+    "questions.2.options.0": {
+      "t": "Variables no utilizadas",
+      "h": "e82a933b"
+    },
+    "questions.2.options.1": {
+      "t": "Problemas de configuración y comportamiento en runtime (headers, TLS, autenticación)",
+      "h": "277bcada"
+    },
+    "questions.2.options.2": {
+      "t": "Deuda técnica",
+      "h": "f79372c3"
+    },
+    "questions.2.options.3": {
+      "t": "Licencias de dependencias",
+      "h": "50b0eeaa"
+    },
+    "questions.2.q": {
+      "t": "¿Qué ve el DAST que el SAST normalmente no ve?",
+      "h": "5b016015"
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Cambiar una decisión de diseño en el papel cuesta una conversación; después del release cuesta retrabajo.",
+      "h": "6b653d60"
+    },
+    "questions.0.options.0": {
+      "t": "Después del pentest",
+      "h": "ba04968b"
+    },
+    "questions.0.options.1": {
+      "t": "En el diseño, antes o durante la implementación",
+      "h": "87166e56"
+    },
+    "questions.0.options.2": {
+      "t": "Solo después de un incidente",
+      "h": "96e9e0c2"
+    },
+    "questions.0.options.3": {
+      "t": "Solo en producción",
+      "h": "506eea5d"
+    },
+    "questions.0.q": {
+      "t": "¿Cuándo aporta más valor el threat modeling?",
+      "h": "e96af1e6"
+    },
+    "questions.1.explain": {
+      "t": "Spoofing viola la autenticidad: alguien se hace pasar por otro usuario o servicio.",
+      "h": "3c63c138"
+    },
+    "questions.1.options.0": {
+      "t": "Scanning",
+      "h": "e230f66c"
+    },
+    "questions.1.options.1": {
+      "t": "Spoofing (suplantación de identidad)",
+      "h": "51aa5bb7"
+    },
+    "questions.1.options.2": {
+      "t": "Secrets",
+      "h": "1e3732ae"
+    },
+    "questions.1.options.3": {
+      "t": "Sandboxing",
+      "h": "8f9ad8b0"
+    },
+    "questions.1.q": {
+      "t": "En STRIDE, ¿qué representa la letra S?",
+      "h": "b5fe9a82"
+    },
+    "questions.2.explain": {
+      "t": "Donde los datos cambian de nivel de confianza es donde falta validación, autenticación o autorización.",
+      "h": "50fc21f0"
+    },
+    "questions.2.options.0": {
+      "t": "En cualquier caja, por igual",
+      "h": "a5f0f899"
+    },
+    "questions.2.options.1": {
+      "t": "En los flujos que cruzan fronteras de confianza",
+      "h": "469e8187"
+    },
+    "questions.2.options.2": {
+      "t": "Solo en la base de datos",
+      "h": "8783eee5"
+    },
+    "questions.2.options.3": {
+      "t": "En las etiquetas del diagrama",
+      "h": "7fc57e08"
+    },
+    "questions.2.q": {
+      "t": "¿Dónde tienden a concentrarse las amenazas en un diagrama de flujo de datos?",
+      "h": "d303afb5"
+    }
+  }
+}

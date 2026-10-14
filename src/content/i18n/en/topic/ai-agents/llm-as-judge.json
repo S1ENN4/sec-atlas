@@ -1,0 +1,128 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "LLM as judge is a pattern where a second LLM reads the system's output (and optionally an answer key) and returns a grade or verdict. The motivation is simple: annotating a thousand cases with humans takes weeks, and the model judge costs cents per case. The question is whether that grade matches the human one with a correlation good enough to be useful.",
+      "h": "071c7e83"
+    },
+    "sections.0.body.1": {
+      "t": "Three formats dominate use. Continuous score (0 to 1, Likert 1 to 5). Pairwise (which of A or B is better, or a tie). Binary (pass or fail). Each has affinity with different metrics, and the rubric defines the rest.",
+      "h": "e6ebdfda"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "The LLM judge has its own biases: it prefers wordy answers, prefers the first item in comparisons, prefers a didactic tone. Without calibration these biases become the verdict, and the published number means nothing.",
+      "h": "e069a570"
+    },
+    "sections.1.body.1": {
+      "t": "Calibration is an offline experiment. You take 100 to 300 real cases annotated by humans, run the judge, compare the judge's grade with the human grade, and measure correlation (Pearson for continuous, accuracy/κ for binary). You accept the judge if the correlation passes a threshold (0.7 in Pearson, 0.6 in Cohen κ is a reasonable floor). If it fails, go back to the rubric.",
+      "h": "a8d4f2ff"
+    },
+    "sections.1.heading": {
+      "t": "Why calibrate against humans",
+      "h": "130dc69b"
+    },
+    "sections.2.body.0": {
+      "t": "The rubric is the heart of the judge. Four blocks usually suffice: context (user input, retrieved context, answer key if any), criterion (what is being evaluated, in one sentence), scale (how to convert to a grade), and response format (a number, a short JSON, no free prose).",
+      "h": "4e638044"
+    },
+    "sections.2.body.1": {
+      "t": "The shorter the rubric, the more the judge improvises. The opposite is also bad: an 800-word mega-rubric locks the judge in bureaucracy. The sweet spot fits in 6 to 10 lines and still cites a positive and a negative example from the scale.",
+      "h": "1cc72a71"
+    },
+    "sections.2.heading": {
+      "t": "Rubric: what goes in the prompt",
+      "h": "5a8501ad"
+    },
+    "sections.3.body.0": {
+      "t": "In pairwise the judge tends to prefer the item on the left, and the tendency reverses when the position is swapped. Solution: run each comparison in both orders (A,B and B,A), and consider it a tie when the two verdicts disagree. This is what the original MT-Bench did, and it became standard in any serious benchmark.",
+      "h": "44102fff"
+    },
+    "sections.3.body.1": {
+      "t": "In scoring, the bias is anchoring: the judge pulls toward the extremes of the spectrum. Solution: use a scale with explicit reference (Likert 1-5 with a descriptor at each level) instead of free continuous. Continuous works, but needs more calibration.",
+      "h": "20c5f28a"
+    },
+    "sections.3.heading": {
+      "t": "Position bias and how to mitigate it",
+      "h": "2c7e1e4c"
+    },
+    "sections.4.body.0": {
+      "t": "The snippet shows a binary judge (pass or fail) with a guard rail against circularity: the judge is a different model from the one in the agent. In production it is worth swapping the model for a specialized one (Prometheus, G-Eval) when the case is closed and demands depth.",
+      "h": "d5f971df"
+    },
+    "sections.4.code.0.code": {
+      "t": "import { openai } from \"../llm\"; // judge: different family from the agent\n\ntype Verdict = { passa: boolean; motivo: string };\n\nconst RUBRICA = `You are a binary judge.\nYou receive (1) the question, (2) the retrieved context, (3) the agent's output and (4) the answer key.\nReply ONLY with a JSON in the format {\"passa\": bool, \"motivo\": \"<1 sentence>\"}.\nConsider passa=true only if the output is faithful to the answer key AND does not invent information outside the context.`;\n\nexport async function judge(input: string, contexto: string, output: string, gabarito: string): Promise<Verdict> {\n  const user = `Question: ${input}\\nContext: ${contexto}\\nOutput: ${output}\\nAnswer key: ${gabarito}`;\n  const resp = await openai.chat.completions.create({\n    model: \"gpt-4o-mini\",\n    response_format: { type: \"json_object\" },\n    messages: [{ role: \"system\", content: RUBRICA }, { role: \"user\", content: user }],\n  });\n  return JSON.parse(resp.choices[0].message.content);\n}",
+      "h": "a87a5461"
+    },
+    "sections.4.code.0.filename": {
+      "t": "judges/binario.ts",
+      "h": "9b017ba0"
+    },
+    "sections.4.heading": {
+      "t": "Minimal implementation",
+      "h": "7bf71bc7"
+    },
+    "sections.5.body.0": {
+      "t": "When an exact metric is available. If the case is 'did the agent solve the equation?', the answer is string comparison or running the asserts. Putting an LLM judge on that adds cost and variance for no reason.",
+      "h": "fd4a30e3"
+    },
+    "sections.5.body.1": {
+      "t": "When the domain is closed and the rubric would need to describe too many nuances. In very specific tasks (financial calculation, regulatory policy validation), the generic judge errs and the cost of calibrating exceeds the cost of a human. Go back to human annotation by sampling.",
+      "h": "4bbff300"
+    },
+    "sections.5.body.2": {
+      "t": "When the budget is tight. An LLM judge charges per input and output token, and running 500 cases with a judge becomes a recurring expense that must fit in the monthly budget. Measure before scaling.",
+      "h": "7b14cbc5"
+    },
+    "sections.5.heading": {
+      "t": "When NOT to use LLM as judge",
+      "h": "b0553b7f"
+    },
+    "sections.6.bullets.0": {
+      "t": "scale: annotates a thousand cases in the time humans annotate a hundred, at a much lower cost per case",
+      "h": "1d63864a"
+    },
+    "sections.6.bullets.1": {
+      "t": "consistency: human judges diverge among themselves, an LLM judge keeps the same rubric on every case",
+      "h": "19f4ea62"
+    },
+    "sections.6.bullets.2": {
+      "t": "traceability: each grade has a prompt and a response, easy to audit and version",
+      "h": "4c9049ff"
+    },
+    "sections.6.heading": {
+      "t": "Strengths",
+      "h": "a2ebc02c"
+    },
+    "sections.7.bullets.0": {
+      "t": "calibration is not optional: an uncalibrated judge becomes a rubber stamp that accepts anything",
+      "h": "db844587"
+    },
+    "sections.7.bullets.1": {
+      "t": "poor for tasks with an exact answer key: string comparison or asserts are cheaper and more precise",
+      "h": "a3ef1b7b"
+    },
+    "sections.7.bullets.2": {
+      "t": "cost: an LLM judge per case on a large dataset becomes a recurring expense that must fit in the budget",
+      "h": "6c7ef34e"
+    },
+    "sections.7.heading": {
+      "t": "Limitations",
+      "h": "149d05f7"
+    },
+    "short": {
+      "t": "using an LLM to score another's output",
+      "h": "8066b00c"
+    },
+    "tagline": {
+      "t": "LLM as judge automates grading: a model applies a rubric (pairwise, Likert, score) to the system's output and returns a scalable verdict. It works when properly calibrated; it becomes circularity when the judge uses the same model it is judging.",
+      "h": "648c3623"
+    },
+    "title": {
+      "t": "LLM as judge - automated rubric",
+      "h": "21a3839e"
+    }
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "La Integración Continua (CI) es la práctica de validar automáticamente cada cambio de código: en cada push o pull request, el pipeline compila el proyecto y ejecuta las pruebas. El objetivo es descubrir en minutos, no en semanas, que un cambio rompió algo.",
+      "h": "a77e5aa4"
+    },
+    "sections.0.body.1": {
+      "t": "La Entrega/Despliegue Continuo (CD) extiende el pipeline hasta el final: el artefacto validado se empaqueta y se publica. En la entrega continua el deploy a producción todavía exige un clic humano; en el despliegue continuo, todo lo que pasa los gates sale a producción solo.",
+      "h": "4c956542"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "Los nombres varían entre herramientas, pero casi todo pipeline sigue la misma columna vertebral:",
+      "h": "9ad9211b"
+    },
+    "sections.1.bullets.0": {
+      "t": "source: un push o PR dispara el pipeline desde el repositorio",
+      "h": "bf9bbc9d"
+    },
+    "sections.1.bullets.1": {
+      "t": "build: compila, instala dependencias y resuelve lo que el código necesita",
+      "h": "43b6a320"
+    },
+    "sections.1.bullets.2": {
+      "t": "test: pruebas unitarias, de integración y verificaciones de seguridad",
+      "h": "d883c080"
+    },
+    "sections.1.bullets.3": {
+      "t": "package: genera el artefacto final: binario, paquete o imagen de contenedor",
+      "h": "b8039a7d"
+    },
+    "sections.1.bullets.4": {
+      "t": "deploy: publica en staging y, después, en producción",
+      "h": "f33b8b3e"
+    },
+    "sections.1.bullets.5": {
+      "t": "monitor: observabilidad, alertas y camino de rollback",
+      "h": "fba4eaab"
+    },
+    "sections.1.heading": {
+      "t": "Anatomía de un pipeline",
+      "h": "a9adab65"
+    },
+    "sections.2.body.0": {
+      "t": "La abstracción se vuelve claridad cuando ves el pipeline escrito: el workflow de abajo es un pipeline real de GitHub Actions, con el disparador (source), build, pruebas y una verificación de seguridad ejecutándose como un paso más.",
+      "h": "95b7472b"
+    },
+    "sections.2.code.0.code": {
+      "t": "name: ci\non: [push, pull_request]        # stage source: qué lo dispara\njobs:\n  ci:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - run: npm ci                # build: instala de forma reproducible\n      - run: npm test              # test: la suite de pruebas\n      - run: npx semgrep ci        # la seguridad entra como un paso más\n      - run: docker build -t app . # package: genera el artefacto",
+      "h": "64780187"
+    },
+    "sections.2.code.0.filename": {
+      "t": ".github/workflows/ci.yml",
+      "h": "899ce9c2"
+    },
+    "sections.2.heading": {
+      "t": "El pipeline en código",
+      "h": "8e54600c"
+    },
+    "sections.3.body.0": {
+      "t": "Cada stage es una compuerta donde puede entrar una verificación de seguridad: SAST y SCA en el build, DAST en staging, secrets scanning en el source. Eso es lo que explora DevSecOps.",
+      "h": "b97a6b23"
+    },
+    "sections.3.body.1": {
+      "t": "Lo inverso también vale: quien controla el pipeline controla lo que va a producción. El ataque a SolarWinds (2020) comprometió exactamente el sistema de build: el pipeline se convirtió en el vector de distribución del malware. El pipeline es infraestructura crítica.",
+      "h": "2143faad"
+    },
+    "sections.3.heading": {
+      "t": "Por qué es el punto central de la seguridad",
+      "h": "32b1ea47"
+    },
+    "short": {
+      "t": "El pipeline automatizado de build, pruebas y deploy",
+      "h": "88c45306"
+    },
+    "tagline": {
+      "t": "La columna vertebral del software moderno: cada commit se convierte en build, pruebas y deploy sin intervención manual.",
+      "h": "b2fec601"
+    },
+    "title": {
+      "t": "CI/CD",
+      "h": "25ef1b43"
+    }
+  }
+}

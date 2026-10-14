@@ -1,0 +1,72 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Un SBOM (Software Bill of Materials) es el equivalente a la etiqueta nutricional de un alimento: un documento estructurado que lista todos los componentes que forman un artefacto de software: dependencias directas y transitivas, versiones exactas, licencias y hashes criptográficos.",
+      "h": "caf401f0"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "Los dos estándares dominantes son CycloneDX y SPDX. Un fragmento real de un SBOM CycloneDX, reducido a un componente:",
+      "h": "77335324"
+    },
+    "sections.1.code.0.code": {
+      "t": "{\n  \"bomFormat\": \"CycloneDX\",\n  \"specVersion\": \"1.5\",\n  \"components\": [\n    {\n      \"type\": \"library\",\n      \"name\": \"lodash\",\n      \"version\": \"4.17.15\",\n      \"purl\": \"pkg:npm/lodash@4.17.15\",\n      \"hashes\": [{ \"alg\": \"SHA-256\", \"content\": \"3d0a2c...\" }]\n    }\n  ]\n}",
+      "h": "4e9205f3"
+    },
+    "sections.1.code.0.filename": {
+      "t": "bom.cdx.json (CycloneDX)",
+      "h": "8c4ee350"
+    },
+    "sections.1.heading": {
+      "t": "Un SBOM de verdad",
+      "h": "95f9e158"
+    },
+    "sections.2.body.0": {
+      "t": "El purl (package URL) es el identificador universal del componente: pkg:npm/lodash@4.17.15 indica el ecosistema, el nombre y la versión exacta, en un formato que cualquier sistema puede consultar. Los hashes prueban que el componente es exactamente lo que el SBOM dice que es, sin espacio para un cambio silencioso.",
+      "h": "929a4f95"
+    },
+    "sections.2.body.1": {
+      "t": "En la práctica, el SBOM se genera en el stage de package del pipeline, con herramientas de SCA o generadores dedicados como Syft, y se publica (idealmente firmado) junto con el artefacto.",
+      "h": "ca4d2cf2"
+    },
+    "sections.2.heading": {
+      "t": "Anatomía de una entrada",
+      "h": "a3172760"
+    },
+    "sections.3.body.0": {
+      "t": "Cuando estalla la próxima vulnerabilidad crítica en una biblioteca popular, la pregunta es siempre la misma: ¿estamos afectados? Con SBOM, la respuesta sale en minutos: una búsqueda del purl en el inventario de todos los servicios. Sin él, son días revisando proyecto por proyecto, o peor: enterándose en producción.",
+      "h": "d6b71693"
+    },
+    "sections.3.body.1": {
+      "t": "También se volvió una exigencia del mercado: organismos del gobierno de EE. UU. empezaron a exigir SBOM a los proveedores de software, y los clientes enterprise siguen el mismo camino.",
+      "h": "4a53e377"
+    },
+    "sections.3.heading": {
+      "t": "Por qué importa: la prueba del próximo Log4Shell",
+      "h": "39b516dc"
+    },
+    "sections.4.body.0": {
+      "t": "SCA y SBOM se alimentan mutuamente: el análisis de composición produce el inventario, y el inventario es lo que permite monitorear continuamente los componentes contra CVEs nuevos. Un SBOM generado una vez y olvidado envejece rápido: el valor está en el ciclo vivo: generar en cada build, monitorear siempre.",
+      "h": "e2af9b8a"
+    },
+    "sections.4.heading": {
+      "t": "Relación con el SCA",
+      "h": "47b9bf2c"
+    },
+    "short": {
+      "t": "La lista de ingredientes del software",
+      "h": "afd25b77"
+    },
+    "tagline": {
+      "t": "Un inventario formal de todo lo que compone el artefacto: dependencias, versiones, licencias y hashes.",
+      "h": "4f2775d8"
+    },
+    "title": {
+      "t": "SBOM",
+      "h": "bc385b71"
+    }
+  }
+}

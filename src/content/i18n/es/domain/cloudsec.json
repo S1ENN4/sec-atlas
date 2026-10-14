@@ -1,0 +1,216 @@
+{
+  "entries": {
+    "graph.0.label": {
+      "t": "dispara la respuesta",
+      "h": "fe184c0e"
+    },
+    "graph.1.label": {
+      "t": "guía el modelo",
+      "h": "705c0274"
+    },
+    "graph.2.label": {
+      "t": "segmenta por identidad",
+      "h": "fb0efb59"
+    },
+    "graph.3.label": {
+      "t": "audita la postura",
+      "h": "ce4ce4aa"
+    },
+    "graph.4.label": {
+      "t": "monitorea el runtime",
+      "h": "03946931"
+    },
+    "graph.5.label": {
+      "t": "detecta comportamiento",
+      "h": "2249c68d"
+    },
+    "graph.6.label": {
+      "t": "alimenta la postura",
+      "h": "e9a4f23d"
+    },
+    "graph.7.label": {
+      "t": "provee el rastro",
+      "h": "42ec8726"
+    },
+    "graph.8.label": {
+      "t": "autoriza el acceso a claves",
+      "h": "8897eacf"
+    },
+    "graph.9.label": {
+      "t": "cifra los secretos",
+      "h": "f28d3a50"
+    },
+    "graph.10.label": {
+      "t": "aísla la red",
+      "h": "3b871d99"
+    },
+    "pipeline.0.description": {
+      "t": "activos y responsables mapeados",
+      "h": "218a2d08"
+    },
+    "pipeline.0.gate": {
+      "t": "todo activo tiene dueño y clasificación",
+      "h": "fad5aa22"
+    },
+    "pipeline.0.items.0.label": {
+      "t": "mapeo de cuentas y servicios",
+      "h": "b8281808"
+    },
+    "pipeline.0.items.1.label": {
+      "t": "inventario de activos / owners",
+      "h": "3863e55d"
+    },
+    "pipeline.0.items.2.label": {
+      "t": "clasificación de datos",
+      "h": "c185385e"
+    },
+    "pipeline.0.name": {
+      "t": "inventario",
+      "h": "74a6a96f"
+    },
+    "pipeline.1.description": {
+      "t": "identidad, red y datos bajo control",
+      "h": "3f597bd1"
+    },
+    "pipeline.1.gate": {
+      "t": "ningún secreto estático · IAM con mínimo privilegio",
+      "h": "18fb700e"
+    },
+    "pipeline.1.items.0.label": {
+      "t": "privilegios mínimos",
+      "h": "48145998"
+    },
+    "pipeline.1.items.1.label": {
+      "t": "segmentación y microsegmentación",
+      "h": "6ca31c09"
+    },
+    "pipeline.1.items.2.label": {
+      "t": "claves y envelopes",
+      "h": "0fb0242b"
+    },
+    "pipeline.1.items.3.label": {
+      "t": "bóvedas y rotación",
+      "h": "95a98ff1"
+    },
+    "pipeline.1.items.4.label": {
+      "t": "RBAC y admission",
+      "h": "ce6feb5d"
+    },
+    "pipeline.1.items.5.label": {
+      "t": "imágenes firmadas e inmutables",
+      "h": "d342b416"
+    },
+    "pipeline.1.name": {
+      "t": "proteger",
+      "h": "75926053"
+    },
+    "pipeline.2.description": {
+      "t": "visibilidad y postura monitoreadas",
+      "h": "3db59e81"
+    },
+    "pipeline.2.gate": {
+      "t": "el drift y las anomalías se vuelven alertas en minutos",
+      "h": "759d5e91"
+    },
+    "pipeline.2.items.0.label": {
+      "t": "postura continua",
+      "h": "1ad4e3e6"
+    },
+    "pipeline.2.items.1.label": {
+      "t": "runtime y workload",
+      "h": "d502628e"
+    },
+    "pipeline.2.items.2.label": {
+      "t": "señales y alertas",
+      "h": "13f4d8a6"
+    },
+    "pipeline.2.name": {
+      "t": "detectar",
+      "h": "6d98ec7e"
+    },
+    "pipeline.3.description": {
+      "t": "de la alerta a la contención",
+      "h": "801b1c09"
+    },
+    "pipeline.3.gate": {
+      "t": "MTTR por debajo del límite · las lecciones vuelven al inventario",
+      "h": "9371177c"
+    },
+    "pipeline.3.items.0.label": {
+      "t": "runbooks y automatización",
+      "h": "51cead16"
+    },
+    "pipeline.3.items.1.label": {
+      "t": "aislamiento de credenciales",
+      "h": "773b53f7"
+    },
+    "pipeline.3.items.2.label": {
+      "t": "forense preservada",
+      "h": "cdcfd4e2"
+    },
+    "pipeline.3.name": {
+      "t": "responder",
+      "h": "82682275"
+    },
+    "relations.0.label": {
+      "t": "guía el modelo",
+      "h": "705c0274"
+    },
+    "relations.1.label": {
+      "t": "segmenta por identidad",
+      "h": "fb0efb59"
+    },
+    "relations.2.label": {
+      "t": "audita",
+      "h": "7f686db0"
+    },
+    "relations.3.label": {
+      "t": "audita la postura",
+      "h": "ce4ce4aa"
+    },
+    "relations.4.label": {
+      "t": "monitorea el runtime",
+      "h": "03946931"
+    },
+    "relations.5.label": {
+      "t": "detecta comportamiento",
+      "h": "2249c68d"
+    },
+    "relations.6.label": {
+      "t": "alimenta la postura",
+      "h": "e9a4f23d"
+    },
+    "relations.7.label": {
+      "t": "provee el rastro",
+      "h": "42ec8726"
+    },
+    "relations.8.label": {
+      "t": "documenta decisiones",
+      "h": "c66ef437"
+    },
+    "relations.9.label": {
+      "t": "autoriza el acceso a claves",
+      "h": "8897eacf"
+    },
+    "relations.10.label": {
+      "t": "cifra los secretos",
+      "h": "f28d3a50"
+    },
+    "relations.11.label": {
+      "t": "aísla la red",
+      "h": "3b871d99"
+    },
+    "relations.12.label": {
+      "t": "dispara la respuesta",
+      "h": "fe184c0e"
+    },
+    "relations.13.label": {
+      "t": "alerta de runtime",
+      "h": "ee80ea14"
+    },
+    "relations.14.label": {
+      "t": "revoca credenciales",
+      "h": "29819b53"
+    }
+  }
+}

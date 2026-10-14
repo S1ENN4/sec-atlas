@@ -1,0 +1,88 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "El rate limiting restringe cuántas solicitudes puede hacer una entidad en una ventana de tiempo. Protege contra fuerza bruta, credential stuffing, scraping y agotamiento de recursos, y es una de las pocas defensas que funcionan incluso cuando el atacante envía tráfico que, solicitud por solicitud, parece válido.",
+      "h": "125e375a"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "Limitar por IP es el punto de partida, pero detrás de un NAT corporativo o de un operador móvil miles de usuarios legítimos comparten la misma IP, mientras que un atacante con una botnet reparte el tráfico entre miles de IPs. La clave correcta depende de lo que se protege:",
+      "h": "b7f5a0ef"
+    },
+    "sections.1.bullets.0": {
+      "t": "IP: simple, buena contra el abuso grosero, mala con NAT y botnets.",
+      "h": "552f1d9a"
+    },
+    "sections.1.bullets.1": {
+      "t": "Cuenta o identificador en el cuerpo (por ejemplo, el usuario intentado en el login): atrapa el ataque a una cuenta que llega desde muchas IPs.",
+      "h": "41a19a15"
+    },
+    "sections.1.bullets.2": {
+      "t": "Token, cookie o cabecera de sesión: limita por cliente autenticado, no por red.",
+      "h": "e0086421"
+    },
+    "sections.1.bullets.3": {
+      "t": "ASN, país o fingerprint: útil como agregador para detectar oleadas coordinadas.",
+      "h": "36efae4a"
+    },
+    "sections.1.bullets.4": {
+      "t": "Combinaciones (IP + ruta, cuenta + ASN): reducen los falsos positivos.",
+      "h": "8d7b8669"
+    },
+    "sections.1.heading": {
+      "t": "La elección de la clave es la mitad del trabajo",
+      "h": "531808cf"
+    },
+    "sections.2.body.0": {
+      "t": "En lugar de solo bloquear, escale la respuesta. Un primer exceso recibe un desafío, el segundo un bloqueo corto y la reincidencia un bloqueo más largo, siempre con plazo (TTL) para que el error de un día no se convierta en un castigo permanente.",
+      "h": "f57636aa"
+    },
+    "sections.2.code.0.code": {
+      "t": "# login: 10 intentos por minuto por IP, y 5 por minuto por cuenta intentada\nmatch:   (http.request.method eq \"POST\" and http.request.uri.path eq \"/api/login\")\ncounting: per ip.src            -> 10 req / 60s\n          per login username    ->  5 req / 60s   (característica personalizada)\nresponse: 1er exceso  -> Managed Challenge\n          reincidencia -> Block, timeout 600s",
+      "h": "b7946486"
+    },
+    "sections.2.code.0.filename": {
+      "t": "rate limit rule - ilustrativo",
+      "h": "c0ec8fa0"
+    },
+    "sections.2.heading": {
+      "t": "Ventanas, límites y la escalera de respuestas",
+      "h": "fe4760de"
+    },
+    "sections.3.body.0": {
+      "t": "Los límites fijos envejecen: una campaña de marketing duplica el tráfico legítimo y dispara bloqueos, y un atacante paciente se queda justo debajo del límite. El camino adaptativo usa el baseline de cada endpoint y ventana (por hora y día de la semana) y alerta o actúa cuando la desviación pasa un umbral, con z-score o media móvil exponencial.",
+      "h": "2b007c54"
+    },
+    "sections.3.body.1": {
+      "t": "En la práctica, el límite estático sigue como techo de seguridad y el adaptativo se ocupa del comportamiento fino, siempre pasando por observación y shadow antes de bloquear.",
+      "h": "82e9ce18"
+    },
+    "sections.3.heading": {
+      "t": "Adaptativo: el límite acompaña lo normal",
+      "h": "a0832fa4"
+    },
+    "sections.4.body.0": {
+      "t": "Idealmente en el borde, antes de que el tráfico cueste procesamiento en el origen. Pero algunos límites solo tienen sentido cerca de la aplicación (por usuario autenticado, por tenant), donde la identidad ya es conocida. Cada capa tiene su papel, tema del tópico de defensa en capas.",
+      "h": "1ef652cd"
+    },
+    "sections.4.heading": {
+      "t": "Dónde debe vivir el límite",
+      "h": "ae8af377"
+    },
+    "short": {
+      "t": "limitar el abuso sin castigar a quien usa de verdad",
+      "h": "047a299b"
+    },
+    "tagline": {
+      "t": "Un límite fijo por IP es fácil de eludir e injusto con las redes compartidas. El rate limiting que funciona elige bien la clave, aprende el comportamiento normal y escala la respuesta.",
+      "h": "69da9bf0"
+    },
+    "title": {
+      "t": "Rate limiting adaptativo",
+      "h": "5d3a3d43"
+    }
+  }
+}

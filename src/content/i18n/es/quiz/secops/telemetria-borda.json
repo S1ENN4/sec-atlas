@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "El esquema es un contrato entre la ingesta y la detección.",
+      "h": "2096e590"
+    },
+    "questions.0.options.0": {
+      "t": "Para que una detección escrita una vez funcione para cualquier fuente",
+      "h": "de149375"
+    },
+    "questions.0.options.1": {
+      "t": "Para reducir el número de campos a cero",
+      "h": "8b65b5fe"
+    },
+    "questions.0.options.2": {
+      "t": "Para prescindir del enriquecimiento",
+      "h": "5da3807b"
+    },
+    "questions.0.options.3": {
+      "t": "Para cifrar los logs",
+      "h": "91504140"
+    },
+    "questions.0.q": {
+      "t": "¿Por qué normalizar los eventos en un esquema único?",
+      "h": "a44a9af0"
+    },
+    "questions.1.explain": {
+      "t": "Esos campos permiten agrupar y detectar comportamientos que la IP sola no muestra.",
+      "h": "7999c8b8"
+    },
+    "questions.1.options.0": {
+      "t": "Agregar ASN, país y score de bot al evento",
+      "h": "e60bbd74"
+    },
+    "questions.1.options.1": {
+      "t": "Borrar el user agent",
+      "h": "60dab416"
+    },
+    "questions.1.options.2": {
+      "t": "Convertir el timestamp a texto libre",
+      "h": "d0a86f90"
+    },
+    "questions.1.options.3": {
+      "t": "Quitar la ruta de la solicitud",
+      "h": "0217bd09"
+    },
+    "questions.1.q": {
+      "t": "¿Cuál es un ejemplo de enriquecimiento útil?",
+      "h": "a5e82080"
+    },
+    "questions.2.explain": {
+      "t": "Por eso conviene monitorear el propio pipeline: latencia, conteo por fuente y campos ausentes.",
+      "h": "7bb8d92e"
+    },
+    "questions.2.options.0": {
+      "t": "La detección pasa a operar sobre datos incompletos, con falsa confianza",
+      "h": "560d19aa"
+    },
+    "questions.2.options.1": {
+      "t": "Ninguno, el volumen perdido no importa",
+      "h": "4efaad54"
+    },
+    "questions.2.options.2": {
+      "t": "El WAF deja de funcionar de inmediato",
+      "h": "28740af2"
+    },
+    "questions.2.options.3": {
+      "t": "Los logs quedan más seguros",
+      "h": "c4f77c78"
+    },
+    "questions.2.q": {
+      "t": "¿Qué riesgo aparece cuando el pipeline descarta eventos bajo carga?",
+      "h": "dd75cd55"
+    }
+  }
+}

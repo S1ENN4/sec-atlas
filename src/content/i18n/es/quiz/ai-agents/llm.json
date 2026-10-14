@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Todo lo que parece razonamiento surge de predecir tokens con base en el contexto.",
+      "h": "3e69c4d6"
+    },
+    "questions.0.options.0": {
+      "t": "Predice el siguiente token a partir del contexto",
+      "h": "2b263d1d"
+    },
+    "questions.0.options.1": {
+      "t": "Ejecuta consultas SQL",
+      "h": "21df0f48"
+    },
+    "questions.0.options.2": {
+      "t": "Verifica hechos automáticamente",
+      "h": "fc02988c"
+    },
+    "questions.0.options.3": {
+      "t": "Mantiene memoria permanente entre sesiones",
+      "h": "7c319ceb"
+    },
+    "questions.0.q": {
+      "t": "¿Qué hace fundamentalmente un LLM?",
+      "h": "ffeea31e"
+    },
+    "questions.1.explain": {
+      "t": "Como las instrucciones y los datos viajan por el mismo canal de texto, el modelo puede obedecer el contenido equivocado.",
+      "h": "6e86a323"
+    },
+    "questions.1.options.0": {
+      "t": "Entrada que intenta sobrescribir las instrucciones originales del modelo",
+      "h": "4a82936f"
+    },
+    "questions.1.options.1": {
+      "t": "Un error de sintaxis",
+      "h": "5c2d3316"
+    },
+    "questions.1.options.2": {
+      "t": "Un tipo de compresión",
+      "h": "1f96a821"
+    },
+    "questions.1.options.3": {
+      "t": "Una técnica de entrenamiento",
+      "h": "b34fe9d0"
+    },
+    "questions.1.q": {
+      "t": "¿Qué es la prompt injection?",
+      "h": "98286418"
+    },
+    "questions.2.explain": {
+      "t": "La salida necesita validación, sobre todo antes de activar herramientas.",
+      "h": "e69a9ed7"
+    },
+    "questions.2.options.0": {
+      "t": "Porque puede alucinar y generar respuestas plausibles pero erróneas",
+      "h": "f3d432e4"
+    },
+    "questions.2.options.1": {
+      "t": "Porque siempre miente",
+      "h": "31fa320a"
+    },
+    "questions.2.options.2": {
+      "t": "Porque las respuestas están cifradas",
+      "h": "483e0837"
+    },
+    "questions.2.options.3": {
+      "t": "Porque no entiende portugués",
+      "h": "471b3168"
+    },
+    "questions.2.q": {
+      "t": "¿Por qué no se puede confiar ciegamente en la salida del modelo?",
+      "h": "0413e37a"
+    }
+  }
+}

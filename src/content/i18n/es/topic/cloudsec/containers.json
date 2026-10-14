@@ -1,0 +1,160 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Un contenedor es un proceso Linux aislado por namespaces y cgroups, que ejecuta un sistema de archivos apilado en capas (layers). Cada capa es una decisión: la base que descargas, el apt install que corres, el usuario que abre el shell, el binario que entra. Cada una pasa a ser parte de la superficie que encuentra el atacante.",
+      "h": "187d5708"
+    },
+    "sections.0.body.1": {
+      "t": "Dos principios resuelven el 80% de la defensa: imágenes mínimas (menos cosas, menos bugs) y runtime endurecido (menos privilegio, menos caminos). El resto es proceso: escaneo, signing, política.",
+      "h": "35d0dd7d"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "La imagen base es el cimiento de todo lo que venga después. ubuntu:latest o python:latest traen un shell, un gestor de paquetes y un conjunto de CVEs que crece cada semana. Para producción, elige una base que tenga solo lo que el binario necesita para correr.",
+      "h": "10bb8ed2"
+    },
+    "sections.1.bullets.0": {
+      "t": "distroless (gcr.io/distroless/*): sin shell, sin apt, sin gestor de paquetes. Para aplicaciones Go, Java, Node, Python estáticas",
+      "h": "fe4c5131"
+    },
+    "sections.1.bullets.1": {
+      "t": "alpine: busybox + musl, ~5MB, aún tiene shell pero es mucho más pequeña que Debian",
+      "h": "df0248fb"
+    },
+    "sections.1.bullets.2": {
+      "t": "scratch: nada, solo el binario. Válido para binarios Go/C/Rust compilados estáticamente",
+      "h": "2294dfde"
+    },
+    "sections.1.bullets.3": {
+      "t": "wolfi/chainguard: distroless con cadena de suministro auditada y rebuild diario de CVEs",
+      "h": "eb1c356a"
+    },
+    "sections.1.heading": {
+      "t": "Imagen base mínima",
+      "h": "d8d3294d"
+    },
+    "sections.2.body.0": {
+      "t": "Saber de dónde vino vale más que saber qué hay adentro. Los registries privados (ECR, GCR, Harbor) dan control sobre quién publica, con SSO y auditoría. El signing prueba la integridad: la imagen que está corriendo es exactamente la que construyó el CI.",
+      "h": "c94f175d"
+    },
+    "sections.2.body.1": {
+      "t": "Cosign (del proyecto Sigstore) firma y verifica imágenes OCI. El par de claves puede venir del propio equipo, de un KMS (la clave queda en un HSM), o de Fulcio, que emite un certificado efímero basado en un login OIDC (útil para CI sin secretos).",
+      "h": "9e3083fa"
+    },
+    "sections.2.code.0.code": {
+      "t": "# firma en el push\ncosign sign --key cosign.key ghcr.io/loja/checkout@sha256:abc123\n\n# verifica antes de subir (admission controller o job de pre-deploy)\ncosign verify \\\n  --key cosign.pub \\\n  --certificate-identity-regexp 'https://github.com/loja/checkout/.github/workflows/release.yml@refs/tags/.*' \\\n  ghcr.io/loja/checkout@sha256:abc123",
+      "h": "055404cb"
+    },
+    "sections.2.code.0.filename": {
+      "t": "verificar imagen en el deploy",
+      "h": "64e1c26a"
+    },
+    "sections.2.heading": {
+      "t": "Registry confiable y signing",
+      "h": "80011287"
+    },
+    "sections.3.body.0": {
+      "t": "Los scanners comparan la SBOM de la imagen (o cada layer) con bases de vulnerabilidades (NVD, GHSA, OSV). La salida es la lista de paquetes y CVEs, con severidad y versión corregida. Corre en tres momentos: en el build (bloquea el PR con un CVE crítico), en el registry (encuentra un CVE nuevo contra una imagen ya publicada) y en el admission (rechaza un pod con una imagen no escaneada).",
+      "h": "36990979"
+    },
+    "sections.3.bullets.0": {
+      "t": "Trivy: scanner único (FS, imagen, IaC, SBOM), corre offline, sin base central",
+      "h": "86df5c2e"
+    },
+    "sections.3.bullets.1": {
+      "t": "Grype (Anchore): foco en imagen y SBOM CycloneDX",
+      "h": "1784a256"
+    },
+    "sections.3.bullets.2": {
+      "t": "Docker Scout: integrado a Docker Hub, usa la SBOM que Docker construye de forma nativa",
+      "h": "00f278e0"
+    },
+    "sections.3.bullets.3": {
+      "t": "Snyk Container: comercial, bueno para equipos que ya usan Snyk para SCA",
+      "h": "aef87dc6"
+    },
+    "sections.3.heading": {
+      "t": "Image scanning: encontrar CVEs antes de subir",
+      "h": "7d2bd9ef"
+    },
+    "sections.4.body.0": {
+      "t": "Un contenedor corriendo como UID 0 dentro del host es un proceso root en el host. Si el atacante escapa del contenedor, ya tiene privilegios administrativos en el nodo. Lo mismo con los sistemas de archivos escribibles: marcan dónde intentará persistir el atacante. Endurecer el runtime es cortar caminos antes de que existan.",
+      "h": "91849800"
+    },
+    "sections.4.code.0.code": {
+      "t": "FROM python:latest\nRUN apt-get update && apt-get install -y curl netcat\nCOPY . /app\nWORKDIR /app\nEXPOSE 8080\nCMD [\"python\", \"app.py\"]    # corre como root (UID 0)",
+      "h": "9a80df19"
+    },
+    "sections.4.code.0.filename": {
+      "t": "Dockerfile inseguro",
+      "h": "68b0c303"
+    },
+    "sections.4.code.1.code": {
+      "t": "# base mínima, sin shell, multi-stage para no heredar dev deps\nFROM python:3.12-slim AS builder\nWORKDIR /build\nRUN pip install --no-cache-dir -r requirements.txt\n\nFROM gcr.io/distroless/python3-debian12\nWORKDIR /app\nCOPY --from=builder /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages\nCOPY . /app\nUSER 65532                       # UID no-root fijo\nEXPOSE 8080\nENTRYPOINT [\"python\", \"/app/app.py\"]",
+      "h": "0059e7f7"
+    },
+    "sections.4.code.1.filename": {
+      "t": "Dockerfile corregido",
+      "h": "f3af70ae"
+    },
+    "sections.4.heading": {
+      "t": "Correr como non-root y endurecer el runtime",
+      "h": "2686252a"
+    },
+    "sections.5.body.0": {
+      "t": "Los contenedores tocan build, deploy y runtime. En el build, el scan cierra el PR. En el registry, el signing autentica el origen. En el admission, el clúster rechaza una imagen sin firmar o con violación de policy. En el runtime, el CWPP vigila el comportamiento (próximo tema). Saltarse cualquiera de estos eslabones es abrir una ventana.",
+      "h": "aa33a4da"
+    },
+    "sections.5.heading": {
+      "t": "Dónde aparece",
+      "h": "006bc762"
+    },
+    "sections.6.bullets.0": {
+      "t": "inmutabilidad: la misma imagen que fue probada es la que sube, sin 'funciona en mi máquina'",
+      "h": "8e80af0f"
+    },
+    "sections.6.bullets.1": {
+      "t": "las imágenes mínimas reducen los CVEs en un orden de magnitud: Python distroless tiene ~20 paquetes, Debian tiene ~600",
+      "h": "ce06a8fa"
+    },
+    "sections.6.bullets.2": {
+      "t": "la firma y la SBOM dan trazabilidad real, pieza por pieza, hasta el paquete instalado",
+      "h": "eddba94a"
+    },
+    "sections.6.heading": {
+      "t": "Puntos fuertes",
+      "h": "a2ebc02c"
+    },
+    "sections.7.bullets.0": {
+      "t": "el scan encuentra CVEs conocidos: un zero-day en una dependencia pasa, y el signing no ayuda con eso",
+      "h": "412aeb47"
+    },
+    "sections.7.bullets.1": {
+      "t": "distroless y scratch dificultan el debug (sin shell). Es el trade-off entre seguridad y ergonomía, no un bug",
+      "h": "e2c41339"
+    },
+    "sections.7.bullets.2": {
+      "t": "las políticas de runtime (non-root, fs de solo lectura) deben ser aceptadas por la aplicación: no todo binario arranca sin root, y reescribir toma tiempo",
+      "h": "388e4862"
+    },
+    "sections.7.heading": {
+      "t": "Limitaciones",
+      "h": "149d05f7"
+    },
+    "short": {
+      "t": "build, signing y runtime inmutable",
+      "h": "8862eb24"
+    },
+    "tagline": {
+      "t": "Las imágenes basadas en capas heredan privilegios: el escaneo de CVE, el signing y el runtime rootless reducen la superficie que el contenedor entrega al host.",
+      "h": "8d4ad268"
+    },
+    "title": {
+      "t": "Containers - imágenes y cadena de suministro",
+      "h": "9bc31e3a"
+    }
+  }
+}

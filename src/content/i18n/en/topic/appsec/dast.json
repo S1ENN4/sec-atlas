@@ -1,0 +1,124 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "DAST (Dynamic Application Security Testing) tests the running application from the outside in, as a black box: the scanner sends malicious requests and observes the responses, as an attacker would, without access to the source code.",
+      "h": "d6f7bca1"
+    },
+    "sections.0.body.1": {
+      "t": "Because it operates on the real, assembled system, DAST validates what SAST does not see: server configuration, HTTP headers, authentication, session and the interaction between components.",
+      "h": "becfd624"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.bullets.0": {
+      "t": "crawling: a spider maps the application's endpoints, forms and parameters",
+      "h": "f2ba955a"
+    },
+    "sections.1.bullets.1": {
+      "t": "fuzzing: every discovered input receives attack payloads (SQLi, XSS, path traversal, SSRF)",
+      "h": "a2985313"
+    },
+    "sections.1.bullets.2": {
+      "t": "response analysis: the scanner checks whether the attack was reflected, executed or leaked information",
+      "h": "fdf0f95a"
+    },
+    "sections.1.bullets.3": {
+      "t": "passive checks: missing headers, cookies without flags, exposed versions",
+      "h": "0a1cccc4"
+    },
+    "sections.1.heading": {
+      "t": "How it works",
+      "h": "a3a7b250"
+    },
+    "sections.2.body.0": {
+      "t": "The scanner found an id parameter in the crawler. First step: the classic SQL injection test, closing the quote and inserting an always-true condition. What the scanner sends:",
+      "h": "7850ded6"
+    },
+    "sections.2.code.0.code": {
+      "t": "GET /users?id=1'%20OR%20'1'='1 HTTP/1.1\nHost: shop.example.com",
+      "h": "72d4fc8e"
+    },
+    "sections.2.code.0.filename": {
+      "t": "test request",
+      "h": "db325b79"
+    },
+    "sections.2.heading": {
+      "t": "An attack in practice",
+      "h": "f0bddf33"
+    },
+    "sections.3.body.0": {
+      "t": "The SQLi signature is in the response: instead of one user, all of them came back, because the injected condition became part of the query. The scanner compares this response with the baseline of the original parameter and concludes: injectable.",
+      "h": "d1c04d54"
+    },
+    "sections.3.code.0.code": {
+      "t": "200 OK\n[ {\"id\": 1, \"name\": \"Ana\"}, {\"id\": 2, \"name\": \"Beto\"},\n  {\"id\": 3, \"name\": \"Caio\"}, ... ]   <- all the users",
+      "h": "0530028e"
+    },
+    "sections.3.code.0.filename": {
+      "t": "response (200 OK)",
+      "h": "c4151167"
+    },
+    "sections.3.heading": {
+      "t": "What gives the flaw away",
+      "h": "2e541079"
+    },
+    "sections.4.body.0": {
+      "t": "The response does not always return the data, and modern engines hide the error. For these cases, the scanner uses blind injections and infers from behavior. A controlled delay is the evidence:",
+      "h": "f28b66cf"
+    },
+    "sections.4.code.0.code": {
+      "t": "GET /users?id=1'%20AND%20SLEEP(5)--  HTTP/1.1\n\nwith the payload:     response in 5.2 s\nwithout the payload:  response in 0.1 s\n                  => the database ran the SLEEP: blind injectable",
+      "h": "d78fe021"
+    },
+    "sections.4.code.0.filename": {
+      "t": "time-based blind injection",
+      "h": "5a55a33f"
+    },
+    "sections.4.heading": {
+      "t": "When there is no echo: blind injection",
+      "h": "40e67eb3"
+    },
+    "sections.5.body.0": {
+      "t": "After deploying to staging or preview: the pipeline brings up the environment and points the scanner at it, failing on critical findings. Scheduled scans against production cover what changes outside the release cycle.",
+      "h": "5d1ce64e"
+    },
+    "sections.5.heading": {
+      "t": "Where it fits in the pipeline",
+      "h": "9be60c28"
+    },
+    "sections.6.bullets.0": {
+      "t": "strength: reports what is actually exploitable, with a very low false positive rate, because it only asserts what it triggered",
+      "h": "98d48ee1"
+    },
+    "sections.6.bullets.1": {
+      "t": "strength: language-agnostic, since it tests HTTP, not code",
+      "h": "dfcf0e2c"
+    },
+    "sections.6.bullets.2": {
+      "t": "weakness: only sees the exposed surface; code without a reachable route is left out",
+      "h": "64e064a3"
+    },
+    "sections.6.bullets.3": {
+      "t": "weakness: slow and late, finding issues after deploy, when fixing is already costly",
+      "h": "de5dc610"
+    },
+    "sections.6.heading": {
+      "t": "Strengths and limitations",
+      "h": "82effb50"
+    },
+    "short": {
+      "t": "Dynamic testing of the running application",
+      "h": "96eeae8d"
+    },
+    "tagline": {
+      "t": "Attacks the running application the way a malicious user would, without seeing the code.",
+      "h": "43e1fcf5"
+    },
+    "title": {
+      "t": "DAST",
+      "h": "afedb85f"
+    }
+  }
+}

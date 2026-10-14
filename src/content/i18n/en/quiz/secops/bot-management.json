@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "The score is an input: the action (allow, challenge, block) depends on the endpoint and the risk.",
+      "h": "46491884"
+    },
+    "questions.0.options.0": {
+      "t": "A trust score per request, on which policy decides the action",
+      "h": "d582e0df"
+    },
+    "questions.0.options.1": {
+      "t": "An automatic block of all automated traffic",
+      "h": "7719bdc3"
+    },
+    "questions.0.options.2": {
+      "t": "A fixed list of robot IPs",
+      "h": "af297d0e"
+    },
+    "questions.0.options.3": {
+      "t": "A replacement for rate limiting",
+      "h": "90c0b348"
+    },
+    "questions.0.q": {
+      "t": "What does bot management deliver to the security policy?",
+      "h": "cd3b6d48"
+    },
+    "questions.1.explain": {
+      "t": "Blocking a legitimate crawler can wipe out your presence in search engines.",
+      "h": "e48e2e62"
+    },
+    "questions.1.options.0": {
+      "t": "Legitimate search engines and monitors should not be blocked along with abuse",
+      "h": "0092eb3b"
+    },
+    "questions.1.options.1": {
+      "t": "Because they never generate relevant traffic",
+      "h": "aac4741e"
+    },
+    "questions.1.options.2": {
+      "t": "Because they are harder to identify than humans",
+      "h": "f84bf0da"
+    },
+    "questions.1.options.3": {
+      "t": "Because they pay for access",
+      "h": "8b17dfcc"
+    },
+    "questions.1.q": {
+      "t": "Why handle verified bots separately?",
+      "h": "a2d80822"
+    },
+    "questions.2.explain": {
+      "t": "It reduces false positives and user friction, and still makes automation at scale more expensive.",
+      "h": "8158a3e0"
+    },
+    "questions.2.options.0": {
+      "t": "It tries to prove the client is real without friction, and only escalates to interaction when doubt persists",
+      "h": "fd3d0c58"
+    },
+    "questions.2.options.1": {
+      "t": "It is impossible to bypass",
+      "h": "6b5d7016"
+    },
+    "questions.2.options.2": {
+      "t": "It does not require JavaScript in the browser",
+      "h": "e0e9d0c0"
+    },
+    "questions.2.options.3": {
+      "t": "It creates no cost for the attacker",
+      "h": "afc9a5f8"
+    },
+    "questions.2.q": {
+      "t": "What is the advantage of a managed challenge over a classic CAPTCHA?",
+      "h": "3c9b52eb"
+    }
+  }
+}

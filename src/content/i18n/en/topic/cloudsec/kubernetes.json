@@ -1,0 +1,160 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Kubernetes is not just a container orchestrator, it is a distributed operating system with its own attack surface: API, etcd, pod network, secrets and volumes. Each layer brings controls: RBAC says who can ask what of the API, admission controllers say what can enter the cluster, NetworkPolicies say what each pod can talk to among the others, and the kubelet says what each container can do on the node.",
+      "h": "cb66b5dd"
+    },
+    "sections.0.body.1": {
+      "t": "Treating Kubernetes as 'just a deploy runner' is the mistake that leaks tokens in logs, opens ports to the internet and runs containers as root with writable filesystems. Defending the cluster requires all four controls combined, not just one.",
+      "h": "471fbfa2"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "RBAC (Role-Based Access Control) links a subject (ServiceAccount, User, Group) to a role, and the role to a set of verbs over resources. It works at two levels: Role + RoleBinding (namespace scope) and ClusterRole + ClusterRoleBinding (whole-cluster scope).",
+      "h": "2dbf75e0"
+    },
+    "sections.1.body.1": {
+      "t": "The classic mistake is granting cluster-admin to the CI pipeline or to an application service account. It works, the deploy passes, and any RCE in a pod becomes full control of the cluster, including reading all secrets in all namespaces.",
+      "h": "b2efaf38"
+    },
+    "sections.1.code.0.code": {
+      "t": "apiVersion: rbac.authorization.k8s.io/v1\nkind: ClusterRoleBinding\nmetadata:\n  name: ci-deployer-all\nsubjects:\n  - kind: ServiceAccount\n    name: ci-runner\n    namespace: ci\nroleRef:\n  kind: ClusterRole\n  name: cluster-admin          # total power, across the whole cluster\n  apiGroup: rbac.authorization.k8s.io",
+      "h": "e9e086e8"
+    },
+    "sections.1.code.0.filename": {
+      "t": "rbac-insecure.yaml",
+      "h": "62157a53"
+    },
+    "sections.1.code.1.code": {
+      "t": "apiVersion: v1\nkind: Namespace\nmetadata:\n  name: payments\n---\napiVersion: rbac.authorization.k8s.io/v1\nkind: Role\nmetadata:\n  name: deployer\n  namespace: payments\nrules:\n  - apiGroups: [\"apps\"]\n    resources: [\"deployments\", \"replicasets\"]\n    verbs: [\"get\", \"list\", \"watch\", \"update\", \"patch\"]\n  - apiGroups: [\"\"]\n    resources: [\"pods\", \"pods/log\"]\n    verbs: [\"get\", \"list\", \"watch\"]\n---\napiVersion: rbac.authorization.k8s.io/v1\nkind: RoleBinding\nmetadata:\n  name: ci-deployer\n  namespace: payments\nsubjects:\n  - kind: ServiceAccount\n    name: ci-runner\n    namespace: ci\nroleRef:\n  kind: Role\n    name: deployer\n  apiGroup: rbac.authorization.k8s.io",
+      "h": "842e054e"
+    },
+    "sections.1.code.1.filename": {
+      "t": "rbac-fixed.yaml",
+      "h": "f616143d"
+    },
+    "sections.1.heading": {
+      "t": "RBAC: the first fence",
+      "h": "117d2903"
+    },
+    "sections.2.body.0": {
+      "t": "By default, every pod talks to every pod in every namespace. NetworkPolicies fix this: they are pod selectors that say who can come in and go out, with allowlist semantics (what is not allowed is blocked).",
+      "h": "c1d62c12"
+    },
+    "sections.2.body.1": {
+      "t": "The first policy is always deny-by-default in the namespace. Without it, opening a new port on a pod is opening a new port across the whole cluster. The second comes with explicit allows for legitimate traffic (ingress from the ingress controller, egress to external APIs, pod-to-pod within the same app).",
+      "h": "24f89881"
+    },
+    "sections.2.code.0.code": {
+      "t": "apiVersion: networking.k8s.io/v1\nkind: NetworkPolicy\nmetadata:\n  name: default-deny-all\n  namespace: payments\nspec:\n  podSelector: {}              # applies to all pods in the namespace\n  policyTypes:\n    - Ingress\n    - Egress\n  ingress: []                  # nothing gets in\n  egress:\n    - to:\n        - namespaceSelector:\n            matchLabels:\n              kubernetes.io/metadata.name: kube-system\n      ports:\n        - protocol: UDP\n          port: 53             # DNS to resolve external services",
+      "h": "4f82b131"
+    },
+    "sections.2.code.0.filename": {
+      "t": "netpol-default-deny.yaml",
+      "h": "26924e58"
+    },
+    "sections.2.heading": {
+      "t": "NetworkPolicies: the pods' firewall",
+      "h": "2f3cb1ce"
+    },
+    "sections.3.body.0": {
+      "t": "Admission controllers sit between accepting the request and persisting it in etcd. They can validate (reject) or mutate (rewrite) the manifest. Kubernetes ships Pod Security Admission (PSA) built in since 1.23, with privileged, baseline and restricted profiles. For finer logic, policy engines come in:",
+      "h": "26f1b04e"
+    },
+    "sections.3.bullets.0": {
+      "t": "OPA Gatekeeper: uses Rego, policy-as-code syntax, ideal for teams with a policy engineering culture",
+      "h": "70710a72"
+    },
+    "sections.3.bullets.1": {
+      "t": "Kyverno: pure YAML, reads like a normal Kubernetes manifest, ideal for teams that want to write policies without learning another language",
+      "h": "a85c09ee"
+    },
+    "sections.3.bullets.2": {
+      "t": "Pod Security Admission: native, no extra dependency, baseline and restricted profiles cover 80% of cases",
+      "h": "6a16f88d"
+    },
+    "sections.3.bullets.3": {
+      "t": "ValidatingAdmissionPolicy (KEP-3485): declarative admission in CEL, stabilizing in recent versions",
+      "h": "da09be1b"
+    },
+    "sections.3.heading": {
+      "t": "Admission control: policy before the pod starts",
+      "h": "35d92930"
+    },
+    "sections.4.body.0": {
+      "t": "By default, secrets in etcd are stored in plain text (only base64 in the YAML). Anyone with read access to etcd, or to a backup of it, reads all tokens, passwords and keys. Encryption at rest solves this: each etcd key is encrypted with a key wrapped by a KMS.",
+      "h": "59009f8f"
+    },
+    "sections.4.body.1": {
+      "t": "The price is managing a key (rotation, revocation), and what you gain is defense in depth: even an etcd dump becomes inert data without the KMS.",
+      "h": "40580b1d"
+    },
+    "sections.4.code.0.code": {
+      "t": "apiVersion: apiserver.config.k8s.io/v1\nkind: EncryptionConfiguration\nresources:\n  - resources:\n      - secrets\n    providers:\n      - kms:\n          name: aws-kms\n          endpoint: unix:///var/run/kms-provider/socket\n          cachesize: 100\n          keyid: arn:aws:kms:us-east-1:111122223333:key/abcd-...\n      - identity: {}                  # fallback for reading old data",
+      "h": "e20940e9"
+    },
+    "sections.4.code.0.filename": {
+      "t": "kube-apiserver --encryption-config",
+      "h": "9d0573c5"
+    },
+    "sections.4.heading": {
+      "t": "Secrets in etcd: encryption at rest",
+      "h": "42ae5314"
+    },
+    "sections.5.body.0": {
+      "t": "Kubernetes is the border between what the pipeline produced and what will run in production. Every defense that failed earlier (unscanned image, manifest without policy) lands here: admission control rejects, NetworkPolicy isolates, RBAC limits the damage. On the other hand, it is the last chance to fix what slipped through: PSP/PSA catches a loose manifest, OPA catches wrong labels, secrets in KMS defeat an etcd dump.",
+      "h": "ae31f0a7"
+    },
+    "sections.5.heading": {
+      "t": "Where it fits",
+      "h": "006bc762"
+    },
+    "sections.6.bullets.0": {
+      "t": "native Kubernetes controls already cover RBAC, NetworkPolicy, PSA, encryption at rest: nothing to buy",
+      "h": "e7e6c4b8"
+    },
+    "sections.6.bullets.1": {
+      "t": "policy as code (Kyverno, Gatekeeper) becomes a PR matter, with review and testing, not an urgent ticket",
+      "h": "34ead114"
+    },
+    "sections.6.bullets.2": {
+      "t": "namespaces become cheap isolation units, giving a blast radius limit without needing separate clusters",
+      "h": "4f314236"
+    },
+    "sections.6.heading": {
+      "t": "Strengths",
+      "h": "a2ebc02c"
+    },
+    "sections.7.bullets.0": {
+      "t": "RBAC, NetworkPolicy and admission are default-deny controls: they must be configured before anything runs, and the migration path for an existing cluster is manual",
+      "h": "a5589045"
+    },
+    "sections.7.bullets.1": {
+      "t": "the whole cluster is only as secure as the node: an exposed kubelet or a privileged container breaks the guarantees of the layers above",
+      "h": "61f2d595"
+    },
+    "sections.7.bullets.2": {
+      "t": "operating policies at scale (X clusters, Y namespaces) becomes platform work, not app work, and without someone accountable it turns into a mess",
+      "h": "20c861cf"
+    },
+    "sections.7.heading": {
+      "t": "Limitations",
+      "h": "149d05f7"
+    },
+    "short": {
+      "t": "RBAC, admission and cluster security",
+      "h": "b75b2da2"
+    },
+    "tagline": {
+      "t": "A Kubernetes cluster is a distributed operating system: RBAC, admission controllers and policies govern what each pod can do, mount and expose.",
+      "h": "da251df0"
+    },
+    "title": {
+      "t": "Kubernetes - secure runtime",
+      "h": "37e210c8"
+    }
+  }
+}

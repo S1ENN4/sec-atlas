@@ -1,0 +1,96 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "A WAF (Web Application Firewall) inspects HTTP traffic at layer 7 and decides, request by request, whether it proceeds, is challenged, is limited or is blocked. It sees what a network firewall does not: path, method, headers, parameters and the request body.",
+      "h": "3cf30959"
+    },
+    "sections.0.body.1": {
+      "t": "It does not fix the application. Its role is to reduce the exposed surface and buy time: block known attack patterns, apply a \"virtual patch\" while the team fixes the real flaw, and contain abusive automation before it reaches the origin.",
+      "h": "65bfaed9"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "The negative model blocks what looks bad: SQL injection, XSS and path traversal signatures, as in managed rules (OWASP Core Rule Set and the rulesets maintained by the vendor). It is the ready-to-use baseline, but it generates false positives and can be bypassed by anyone who knows the pattern.",
+      "h": "c8c7a2d1"
+    },
+    "sections.1.body.1": {
+      "t": "The positive model defines what is valid and blocks the rest: for a critical endpoint, which methods, paths, content types and sizes are accepted. It gives much more precision, but requires knowing the application, so it is applied endpoint by endpoint, starting with the most critical (login, payment, administration).",
+      "h": "493a9576"
+    },
+    "sections.1.bullets.0": {
+      "t": "Negative: broad and fast coverage, more noise, updated by the vendor.",
+      "h": "c52f59c9"
+    },
+    "sections.1.bullets.1": {
+      "t": "Positive: high precision and minimal surface, higher maintenance cost, written by whoever knows the application.",
+      "h": "58cd27dd"
+    },
+    "sections.1.bullets.2": {
+      "t": "In practice they are combined: the managed set as a safety net and the positive model on the endpoints that matter most.",
+      "h": "684f9d8d"
+    },
+    "sections.1.heading": {
+      "t": "Negative model and positive model",
+      "h": "4ebba773"
+    },
+    "sections.2.body.0": {
+      "t": "The golden rule is to never switch a new rule straight to blocking. The safe path has three phases:",
+      "h": "aba06e84"
+    },
+    "sections.2.bullets.0": {
+      "t": "Observation: the rule only logs (log action). You measure how much traffic it would catch and from whom.",
+      "h": "5bbcc30d"
+    },
+    "sections.2.bullets.1": {
+      "t": "Shadow: the rule runs in parallel and the simulated decision is compared with reality (what would have been blocked and was legitimate?). This is where precision is tuned.",
+      "h": "3ac4c608"
+    },
+    "sections.2.bullets.2": {
+      "t": "Enforcement: the rule starts to act, beginning with a challenge instead of a hard block when in doubt, and gets an owner and a false positive metric.",
+      "h": "09bc05a0"
+    },
+    "sections.2.heading": {
+      "t": "Observation, shadow and enforcement",
+      "h": "dddec001"
+    },
+    "sections.3.body.0": {
+      "t": "Two illustrative rules. The first is positive: on an orders endpoint, only GET and POST are accepted. The second protects login: login requests coming from outside a trusted list get a challenge. The field names follow Cloudflare's rules language; adjust to your environment.",
+      "h": "18f47c02"
+    },
+    "sections.3.code.0.code": {
+      "t": "# 1) positive model: unexpected method on /api/orders\n(http.request.uri.path eq \"/api/orders\" and not http.request.method in {\"GET\" \"POST\"})\n  -> action: Block\n\n# 2) login outside the trusted list gets a challenge\n(http.request.method eq \"POST\" and http.request.uri.path eq \"/api/login\" and not ip.src in $trusted_ips)\n  -> action: Managed Challenge\n\n# observation phase: same expression, only logging\n  -> action: Log",
+      "h": "2b5c19ad"
+    },
+    "sections.3.code.0.filename": {
+      "t": "custom rules - illustrative",
+      "h": "7340b8da"
+    },
+    "sections.3.heading": {
+      "t": "Example: rules in Cloudflare's expression language",
+      "h": "ca4cb56e"
+    },
+    "sections.4.body.0": {
+      "t": "Blocking a legitimate customer costs revenue and trust, and it is what makes teams turn off the WAF. That is why each rule needs a precision metric, a documented exception (with an expiry) and a weekly review cycle. A WAF nobody tunes becomes, within a few months, either a wall that gets in the way or an ornament that blocks nothing.",
+      "h": "592e6fbd"
+    },
+    "sections.4.heading": {
+      "t": "False positives are the real cost",
+      "h": "38379e1d"
+    },
+    "short": {
+      "t": "filter L7 traffic without taking down what is legitimate",
+      "h": "8bd3edf1"
+    },
+    "tagline": {
+      "t": "A well-run WAF is not a box you switch on: it is a program that starts by observing, validates each rule in shadow and only then blocks, with an owner and a metric for every decision.",
+      "h": "8ad8eb97"
+    },
+    "title": {
+      "t": "WAF - observation, shadow and enforcement",
+      "h": "e505f720"
+    }
+  }
+}

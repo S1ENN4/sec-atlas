@@ -1,0 +1,152 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "En la nube, la red no es cableado: es configuración. VPCs, subnets, route tables, security groups y network ACLs son objetos que creas y versionas como cualquier otro recurso. La topología se vuelve código, y la superficie de ataque se vuelve un archivo que se puede leer en un PR.",
+      "h": "cb7dad8d"
+    },
+    "sections.0.body.1": {
+      "t": "Eso cambia el juego. En lugar de un firewall grande en la entrada, el control se reparte: cada subnet decide quién habla con ella, cada instancia define quién llega a ella, y el tráfico que sale del clúster pasa por un gateway que inspecciona y registra.",
+      "h": "74fea009"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "Dentro de una VPC, el diseño clásico tiene dos capas de subnets. La pública tiene ruta directa a un Internet Gateway y aloja lo que necesita una IP alcanzable (NAT gateway, bastion, load balancer público). La privada no tiene ruta de salida a internet, solo recibe tráfico interno y, cuando necesita salir, habla con el NAT.",
+      "h": "331ca987"
+    },
+    "sections.1.body.1": {
+      "t": "El error más común es poner la base de datos en la subnet pública por pereza de configurar rutas. El resultado es un Postgres con IP elástica respondiendo en el 5432 al mundo, esperando que pase el primer escáner.",
+      "h": "38f10082"
+    },
+    "sections.1.heading": {
+      "t": "VPC y subnets: pública versus privada",
+      "h": "6212915d"
+    },
+    "sections.2.body.0": {
+      "t": "El security group es la primera línea en la nube. Es stateful: la respuesta a un request autorizado vuelve sin necesitar una regla de entrada. Asociado a la interfaz de red (ENI), funciona como un firewall por instancia, y varias instancias pueden compartir el mismo grupo cuando cumplen el mismo rol.",
+      "h": "5f4dc324"
+    },
+    "sections.2.body.1": {
+      "t": "El antipatrón clásico es abrir 0.0.0.0/0 en los puertos de administración. Aparece en todos los postmortems:",
+      "h": "6ed9ba0e"
+    },
+    "sections.2.code.0.code": {
+      "t": "{\n  \"GroupName\": \"web-sg\",\n  \"Description\": \"Abierto a internet (NO usar en prod)\",\n  \"IpPermissions\": [\n    {\n      \"IpProtocol\": \"tcp\",\n      \"FromPort\": 22,\n      \"ToPort\": 22,\n      \"IpRanges\": [ { \"CidrIp\": \"0.0.0.0/0\", \"Description\": \"SSH abierto\" } ]\n    },\n    {\n      \"IpProtocol\": \"tcp\",\n      \"FromPort\": 3389,\n      \"ToPort\": 3389,\n      \"IpRanges\": [ { \"CidrIp\": \"0.0.0.0/0\", \"Description\": \"RDP abierto\" } ]\n    }\n  ]\n}",
+      "h": "6c66e767"
+    },
+    "sections.2.code.0.filename": {
+      "t": "security-group.json - permisivo (NO lo uses)",
+      "h": "75c5eb70"
+    },
+    "sections.2.heading": {
+      "t": "Security groups: stateful, a nivel de ENI",
+      "h": "febed027"
+    },
+    "sections.3.body.0": {
+      "t": "Cierra los puertos de administración a internet y fuerza la entrada vía bastion o Systems Manager Session Manager. Para lo que necesita acceso humano, restringe por IP corporativa o por VPN:",
+      "h": "b9d97548"
+    },
+    "sections.3.code.0.code": {
+      "t": "{\n  \"GroupName\": \"web-sg\",\n  \"Description\": \"Acceso administrativo vía bastion corporativo\",\n  \"IpPermissions\": [\n    {\n      \"IpProtocol\": \"tcp\",\n      \"FromPort\": 22,\n      \"ToPort\": 22,\n      \"IpRanges\": [ { \"CidrIp\": \"203.0.113.0/24\", \"Description\": \"rango corporativo VPN\" } ]\n    },\n    {\n      \"IpProtocol\": \"tcp\",\n      \"FromPort\": 443,\n      \"ToPort\": 443,\n      \"IpRanges\": [ { \"CidrIp\": \"0.0.0.0/0\", \"Description\": \"HTTPS público\" } ]\n    }\n  ]\n}",
+      "h": "8ca5618d"
+    },
+    "sections.3.code.0.filename": {
+      "t": "security-group.json - corregido",
+      "h": "aab4ff69"
+    },
+    "sections.3.heading": {
+      "t": "La regla que debería existir",
+      "h": "62ef2003"
+    },
+    "sections.4.body.0": {
+      "t": "La NACL es el complemento stateless de la subnet. Actúa antes del security group y sirve para reglas amplias (bloquear un rango entero conocido como malicioso, por ejemplo). Es stateless, así que la respuesta necesita una regla de entrada específica, y rara vez hace falta tocarla una vez que la topología está madura.",
+      "h": "037ba9ce"
+    },
+    "sections.4.body.1": {
+      "t": "VPC Flow Logs captura todo el tráfico aceptado o rechazado en las ENIs de la VPC y lo vuelca en CloudWatch o S3. Sin flow logs, investigas un incidente a ciegas. Con un camino mínimo: bloqueo por defecto + log activo + endpoints aprendidos, y el equipo de seguridad puede responder qué entró, por dónde y cuándo.",
+      "h": "ebaef65c"
+    },
+    "sections.4.heading": {
+      "t": "Network ACLs y VPC Flow Logs",
+      "h": "9544605d"
+    },
+    "sections.5.body.0": {
+      "t": "Los security groups resuelven el perímetro por carga. Cuando el entorno crece, la clave es empezar a hablar de identidad de workload en lugar de IP: una política que dice 'el servicio A habla con el servicio B en el puerto 8080 vía mTLS' es más duradera que liberar un /24 entre subnets porque alguien pidió acceso una vez.",
+      "h": "8eabd8c5"
+    },
+    "sections.5.body.1": {
+      "t": "Herramientas como Calico, Cilium o VPC lattice abstraen la IP y dejan que la política viaje junto con el workload. Aunque el pod cambie de nodo, la regla sigue vigente.",
+      "h": "0c7f563d"
+    },
+    "sections.5.heading": {
+      "t": "Microsegmentación y zero-trust",
+      "h": "7ac24943"
+    },
+    "sections.6.bullets.0": {
+      "t": "diseño inicial de la VPC: topología de subnets públicas y privadas, NAT, rutas y bastion definidos como código en Terraform/Pulumi",
+      "h": "6fcb4a6f"
+    },
+    "sections.6.bullets.1": {
+      "t": "deploy de aplicación: el manifiesto declara el security group, y el pipeline lo crea/reconcilia con la VPC existente",
+      "h": "f37f293b"
+    },
+    "sections.6.bullets.2": {
+      "t": "respuesta a incidentes: VPC flow logs + CloudTrail muestran el origen del ataque en minutos, no en horas",
+      "h": "8a1cad5e"
+    },
+    "sections.6.bullets.3": {
+      "t": "auditoría continua: un detector de SGs con 0.0.0.0/0 en puertos sensibles rompe el build antes del merge",
+      "h": "0d48ad8e"
+    },
+    "sections.6.heading": {
+      "t": "Dónde aparece en el día a día",
+      "h": "b27af5f7"
+    },
+    "sections.7.bullets.0": {
+      "t": "red convertida en código: revisar la topología en un PR atrapa errores de subnet antes que el tráfico",
+      "h": "5c9da1ce"
+    },
+    "sections.7.bullets.1": {
+      "t": "logs nativos: VPC Flow Logs registra origen, destino, puerto y decisión sin agente en el host",
+      "h": "c1326a38"
+    },
+    "sections.7.bullets.2": {
+      "t": "aislamiento por workload: cada servicio tiene el menor camino de red posible",
+      "h": "7faba3a4"
+    },
+    "sections.7.heading": {
+      "t": "Puntos fuertes",
+      "h": "a2ebc02c"
+    },
+    "sections.8.bullets.0": {
+      "t": "complejidad de la topología: 5 cuentas, 12 subnets y 200 SGs necesitan herramientas de visualización y lint",
+      "h": "d5cc61d3"
+    },
+    "sections.8.bullets.1": {
+      "t": "el SG no inspecciona el payload: el puerto puede ser el correcto y el contenido del request ser un ataque",
+      "h": "eec41801"
+    },
+    "sections.8.bullets.2": {
+      "t": "el zero-trust de verdad depende de la identidad del workload (mTLS, SPIFFE), que aún es temprana en muchos stacks",
+      "h": "f25061f1"
+    },
+    "sections.8.heading": {
+      "t": "Limitaciones",
+      "h": "149d05f7"
+    },
+    "short": {
+      "t": "segmentación, microsegmentación y network policies",
+      "h": "a334e582"
+    },
+    "tagline": {
+      "t": "La red en la nube es programable: VPCs, subnets, security groups y firewalls de aplicación escriben el perímetro aplicación por aplicación, en lugar de esperar al borde del data center.",
+      "h": "f648c8da"
+    },
+    "title": {
+      "t": "Network - segmentación y zero-trust",
+      "h": "eca72bb8"
+    }
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Incident response is the process that begins when a detection signal (a GuardDuty alert, a CloudTrail anomaly, a CWPP warning) is confirmed as a real event and ends when the environment is contained, restored and has learned something from what happened.",
+      "h": "bb3c8385"
+    },
+    "sections.0.body.1": {
+      "t": "In the cloud the game changes in two ways. First, everything is an API: you can isolate an instance, revoke a credential or swap a key in seconds and by script. Second, the environment is ephemeral: if you do not preserve the evidence before tearing down the resource, it disappears along with it.",
+      "h": "d45a2525"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "The NIST model (SP 800-61) remains the best backbone, even for the cloud:",
+      "h": "c71030a1"
+    },
+    "sections.1.bullets.0": {
+      "t": "Preparation: written runbooks, on-call contacts, response accounts with ready and tested access, centralized logs.",
+      "h": "4e87d586"
+    },
+    "sections.1.bullets.1": {
+      "t": "Detection and analysis: confirm the alert is real, estimate the scope (which identities, resources and data) and classify severity.",
+      "h": "5c88ec77"
+    },
+    "sections.1.bullets.2": {
+      "t": "Containment, eradication and recovery: stop the damage, remove the attacker's access and restore the service from a trusted state.",
+      "h": "d4275b2f"
+    },
+    "sections.1.bullets.3": {
+      "t": "Lessons learned: blameless review, adjustments to controls and inventory, and runbook updates.",
+      "h": "093055fa"
+    },
+    "sections.1.heading": {
+      "t": "The phases of the cycle",
+      "h": "d533f351"
+    },
+    "sections.2.body.0": {
+      "t": "The most common vector in the cloud is a leaked credential, so the first move is usually to neutralize the identity, not the machine. Deactivating the access key and attaching a deny-all policy cuts off the attacker without taking down the legitimate workload, and preserves the state for analysis.",
+      "h": "a3145c32"
+    },
+    "sections.2.code.0.code": {
+      "t": "USER=svc-deploy\nKEY=AKIAIOSFODNN7EXAMPLE\n\n# 1. deactivates the key (does not delete: preserves for forensics)\naws iam update-access-key --user-name \"$USER\" \\\n  --access-key-id \"$KEY\" --status Inactive\n\n# 2. denies everything for sessions already issued before now\naws iam put-user-policy --user-name \"$USER\" \\\n  --policy-name quarantine \\\n  --policy-document file://deny-all.json",
+      "h": "215f56f6"
+    },
+    "sections.2.code.0.filename": {
+      "t": "contain-key.sh - deactivate compromised key",
+      "h": "16210fe4"
+    },
+    "sections.2.heading": {
+      "t": "Identity containment first",
+      "h": "423cd6ff"
+    },
+    "sections.3.body.0": {
+      "t": "For a suspicious workload, the reflex of \"terminate the instance\" erases memory, processes and open connections. The correct path is to isolate first (swap the security group for one that allows no traffic), snapshot the volumes, capture whatever is volatile and only then decide whether to discard or investigate.",
+      "h": "71e5ac4e"
+    },
+    "sections.3.body.1": {
+      "t": "Separate forensic accounts, with snapshots copied to an immutable bucket (Object Lock) and a documented chain of custody, prevent the evidence from being altered by whoever compromised the original account.",
+      "h": "e5bc4da8"
+    },
+    "sections.3.heading": {
+      "t": "Preserve the evidence before destroying",
+      "h": "408a70b0"
+    },
+    "sections.4.body.0": {
+      "t": "A good part of containment is repetitive and urgent, the perfect environment for automation: a high-confidence alert triggers a function that isolates the resource, opens the ticket and notifies the on-call. Ambiguous decisions remain human.",
+      "h": "18bfb438"
+    },
+    "sections.4.body.1": {
+      "t": "The metric that matters is MTTR (mean time to respond). Runbooks tested in exercises (game days) and automations with approval for destructive actions bring MTTR down without creating the risk of the automation itself causing the incident.",
+      "h": "1f0a9564"
+    },
+    "sections.4.heading": {
+      "t": "Automate what is repeatable",
+      "h": "367e174b"
+    },
+    "short": {
+      "t": "from alert to containment, with evidence preserved",
+      "h": "346dcccd"
+    },
+    "tagline": {
+      "t": "Detecting is not enough: when the alert fires, it is the speed and quality of containment that decide whether it becomes a scare or a headline.",
+      "h": "b45a9ef4"
+    },
+    "title": {
+      "t": "Cloud incident response",
+      "h": "c0f89360"
+    }
+  }
+}

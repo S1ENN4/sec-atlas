@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "La traza de auditoría es la base para detectar abusos e investigar incidentes.",
+      "h": "c019c79b"
+    },
+    "questions.0.options.0": {
+      "t": "Registrar las llamadas de API: quién hizo qué, cuándo y desde dónde",
+      "h": "94ecc695"
+    },
+    "questions.0.options.1": {
+      "t": "Bloquear tráfico malicioso",
+      "h": "334c0ee5"
+    },
+    "questions.0.options.2": {
+      "t": "Cifrar datos en reposo",
+      "h": "03e8ed45"
+    },
+    "questions.0.options.3": {
+      "t": "Escalar la infraestructura",
+      "h": "ef50cb4b"
+    },
+    "questions.0.q": {
+      "t": "¿Cuál es el papel de CloudTrail (o similar)?",
+      "h": "71ea4f21"
+    },
+    "questions.1.explain": {
+      "t": "Lo primero que hacen muchos atacantes es intentar apagar o borrar los logs.",
+      "h": "5129cdff"
+    },
+    "questions.1.options.0": {
+      "t": "Para que un atacante con acceso a la cuenta de producción no borre los rastros",
+      "h": "585253c5"
+    },
+    "questions.1.options.1": {
+      "t": "Para ahorrar almacenamiento",
+      "h": "66816c05"
+    },
+    "questions.1.options.2": {
+      "t": "Para acelerar las consultas",
+      "h": "df870761"
+    },
+    "questions.1.options.3": {
+      "t": "Porque la ley exige dos cuentas",
+      "h": "a95842d0"
+    },
+    "questions.1.q": {
+      "t": "¿Por qué enviar los logs a una cuenta separada e inmutable?",
+      "h": "a88d282f"
+    },
+    "questions.2.explain": {
+      "t": "Demasiadas alertas generan fatiga; sin dueño o acción, nadie responde.",
+      "h": "375409e7"
+    },
+    "questions.2.options.0": {
+      "t": "Ser accionable: decir qué ocurrió, dónde y qué hacer, con bajo ruido",
+      "h": "0966ac9a"
+    },
+    "questions.2.options.1": {
+      "t": "Dispararse en cada evento",
+      "h": "4517c556"
+    },
+    "questions.2.options.2": {
+      "t": "Enviarse solo por correo semanal",
+      "h": "76ae1f29"
+    },
+    "questions.2.options.3": {
+      "t": "No tener dueño",
+      "h": "fce9e00d"
+    },
+    "questions.2.q": {
+      "t": "¿Qué hace buena a una alerta?",
+      "h": "b0359a62"
+    }
+  }
+}

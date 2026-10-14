@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "The right key (account, token, ASN, combinations) separates abuse from legitimate use better.",
+      "h": "dc062623"
+    },
+    "questions.0.options.0": {
+      "t": "NAT groups many legitimate users, and botnets spread traffic across many IPs",
+      "h": "cac648b0"
+    },
+    "questions.0.options.1": {
+      "t": "IPs do not appear in HTTP logs",
+      "h": "13b8339e"
+    },
+    "questions.0.options.2": {
+      "t": "A per-IP limit is illegal in some countries",
+      "h": "ea7642a9"
+    },
+    "questions.0.options.3": {
+      "t": "Because IPv6 cannot be limited",
+      "h": "9a3cc30e"
+    },
+    "questions.0.q": {
+      "t": "Why is limiting only by IP often insufficient?",
+      "h": "d953d79b"
+    },
+    "questions.1.explain": {
+      "t": "Challenge, short block and then longer: proportional and reversible.",
+      "h": "2490a83c"
+    },
+    "questions.1.options.0": {
+      "t": "So a misclassification does not become a permanent block and the response grows with repeat offenses",
+      "h": "00b95b75"
+    },
+    "questions.1.options.1": {
+      "t": "To save log storage",
+      "h": "2e0d5f7b"
+    },
+    "questions.1.options.2": {
+      "t": "To avoid using challenges",
+      "h": "807df607"
+    },
+    "questions.1.options.3": {
+      "t": "Because blocks without an expiry are technically impossible",
+      "h": "c9681314"
+    },
+    "questions.1.q": {
+      "t": "Why use a response ladder with an expiry (TTL)?",
+      "h": "62b1e784"
+    },
+    "questions.2.explain": {
+      "t": "Campaigns and seasonality change what is normal; the baseline follows. The static ceiling remains as a safeguard.",
+      "h": "6aff277e"
+    },
+    "questions.2.options.0": {
+      "t": "It follows the normal behavior of each endpoint and window, instead of a fixed number that goes stale",
+      "h": "37c4a65e"
+    },
+    "questions.2.options.1": {
+      "t": "It eliminates the need for any static limit",
+      "h": "fb25140c"
+    },
+    "questions.2.options.2": {
+      "t": "It removes the need for telemetry",
+      "h": "cffdad50"
+    },
+    "questions.2.options.3": {
+      "t": "It guarantees zero false positives",
+      "h": "df235d86"
+    },
+    "questions.2.q": {
+      "t": "What is the advantage of an adaptive limit?",
+      "h": "d0f12425"
+    }
+  }
+}

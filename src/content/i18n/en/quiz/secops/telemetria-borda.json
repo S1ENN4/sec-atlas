@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "The schema is a contract between ingestion and detection.",
+      "h": "2096e590"
+    },
+    "questions.0.options.0": {
+      "t": "So that a detection written once works for any source",
+      "h": "de149375"
+    },
+    "questions.0.options.1": {
+      "t": "To reduce the number of fields to zero",
+      "h": "8b65b5fe"
+    },
+    "questions.0.options.2": {
+      "t": "To skip enrichment",
+      "h": "5da3807b"
+    },
+    "questions.0.options.3": {
+      "t": "To encrypt the logs",
+      "h": "91504140"
+    },
+    "questions.0.q": {
+      "t": "Why normalize events into a single schema?",
+      "h": "a44a9af0"
+    },
+    "questions.1.explain": {
+      "t": "These fields let you group and detect behavior that the IP alone does not show.",
+      "h": "7999c8b8"
+    },
+    "questions.1.options.0": {
+      "t": "Adding ASN, country and bot score to the event",
+      "h": "e60bbd74"
+    },
+    "questions.1.options.1": {
+      "t": "Deleting the user agent",
+      "h": "60dab416"
+    },
+    "questions.1.options.2": {
+      "t": "Converting the timestamp to free text",
+      "h": "d0a86f90"
+    },
+    "questions.1.options.3": {
+      "t": "Removing the request path",
+      "h": "0217bd09"
+    },
+    "questions.1.q": {
+      "t": "Which is an example of useful enrichment?",
+      "h": "a5e82080"
+    },
+    "questions.2.explain": {
+      "t": "That is why it is worth monitoring the pipeline itself: latency, count per source and missing fields.",
+      "h": "7bb8d92e"
+    },
+    "questions.2.options.0": {
+      "t": "Detection operates on incomplete data, with false confidence",
+      "h": "560d19aa"
+    },
+    "questions.2.options.1": {
+      "t": "None, the lost volume does not matter",
+      "h": "4efaad54"
+    },
+    "questions.2.options.2": {
+      "t": "The WAF stops working immediately",
+      "h": "28740af2"
+    },
+    "questions.2.options.3": {
+      "t": "The logs become more secure",
+      "h": "c4f77c78"
+    },
+    "questions.2.q": {
+      "t": "What risk appears when the pipeline drops events under load?",
+      "h": "dd75cd55"
+    }
+  }
+}

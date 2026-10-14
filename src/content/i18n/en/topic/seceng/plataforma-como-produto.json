@@ -1,0 +1,72 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Instead of a security team that reviews everything at the end (and becomes a bottleneck), security engineering builds the platform that makes secure behavior the default: ready-made modules, templates, pipelines, libraries and checks, with documentation and support, offered as an internal product.",
+      "h": "fd4696eb"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "The paved path (golden path) is the recommended way to do something: create a new service, publish an image, provision a database. Whoever follows it gets encryption, logs, policies and pipeline configured for free. Whoever leaves it can, but takes on the cost and goes through review. This changes the incentive: security stops being a tax and becomes the shortcut.",
+      "h": "ed5f53d6"
+    },
+    "sections.1.heading": {
+      "t": "Paved path",
+      "h": "3fde5fbb"
+    },
+    "sections.2.bullets.0": {
+      "t": "Adoption: percentage of services using the approved template or module.",
+      "h": "3324e598"
+    },
+    "sections.2.bullets.1": {
+      "t": "Coverage: percentage of repositories with SAST, SCA and secret scanning enabled.",
+      "h": "c2b7f7a7"
+    },
+    "sections.2.bullets.2": {
+      "t": "Time to onboarding: how long it takes a new team to be within the standard.",
+      "h": "d83bda5f"
+    },
+    "sections.2.bullets.3": {
+      "t": "Friction: time added to the pipeline per control, and the false positive rate perceived by devs.",
+      "h": "bb684489"
+    },
+    "sections.2.bullets.4": {
+      "t": "Time to fix: from discovering a finding to fixing it, by severity.",
+      "h": "70fb4e13"
+    },
+    "sections.2.heading": {
+      "t": "Product metrics",
+      "h": "234e9bb6"
+    },
+    "sections.3.body.0": {
+      "t": "Every control that blocks without explaining, is slow or is wrong becomes a reason to bypass the platform. Clear messages (what failed, why and how to fix it), automatic remediation when possible and exceptions with an expiry reduce friction. If devs are turning a control off, the product problem is the control, not the devs.",
+      "h": "4814a78a"
+    },
+    "sections.3.heading": {
+      "t": "Friction is a real cost",
+      "h": "23a72970"
+    },
+    "sections.4.body.0": {
+      "t": "The platform has users and, therefore, targets: availability of the security pipeline, latency of the checks, response time to exception requests. Treating these numbers as a goal, rather than chance, is what gives security engineering credibility in front of the other teams.",
+      "h": "85ce962d"
+    },
+    "sections.4.heading": {
+      "t": "Platform SLOs",
+      "h": "d2aa4731"
+    },
+    "short": {
+      "t": "the secure path must be the easiest path",
+      "h": "cf5b3d54"
+    },
+    "tagline": {
+      "t": "Controls that get in the way are bypassed. A security platform that treats devs as customers, with a paved path, adoption metrics and low friction, is the one that actually protects.",
+      "h": "2feddf3b"
+    },
+    "title": {
+      "t": "Security as an internal product",
+      "h": "47c13f47"
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "A healthy library combines both.",
+      "h": "50d9221f"
+    },
+    "questions.0.options.0": {
+      "t": "Signatures recognize the known; heuristics measure behavior and catch new variations, with more noise",
+      "h": "0b1ca2d6"
+    },
+    "questions.0.options.1": {
+      "t": "Signatures are always statistical",
+      "h": "f96b53e3"
+    },
+    "questions.0.options.2": {
+      "t": "Heuristics only work with a fixed IP",
+      "h": "889c1afb"
+    },
+    "questions.0.options.3": {
+      "t": "There is no practical difference",
+      "h": "89bfcef1"
+    },
+    "questions.0.q": {
+      "t": "What is the difference between signatures and heuristics?",
+      "h": "0e073c6b"
+    },
+    "questions.1.explain": {
+      "t": "Values far above what is expected for the same key are alert candidates.",
+      "h": "b7d5f254"
+    },
+    "questions.1.options.0": {
+      "t": "It is far above the historical mean, in standard deviations",
+      "h": "73a87696"
+    },
+    "questions.1.options.1": {
+      "t": "It is equal to the mean",
+      "h": "46de7e96"
+    },
+    "questions.1.options.2": {
+      "t": "The data is encrypted",
+      "h": "5505443d"
+    },
+    "questions.1.options.3": {
+      "t": "The time window is too short to analyze",
+      "h": "9161c3a8"
+    },
+    "questions.1.q": {
+      "t": "What does a high z-score for the current count mean?",
+      "h": "a4bc8947"
+    },
+    "questions.2.explain": {
+      "t": "Detection is software: it needs review, testing against known events and retirement when it stops delivering value.",
+      "h": "d042e472"
+    },
+    "questions.2.options.0": {
+      "t": "Versioning, reviewing, testing and measuring each detection, with an owner",
+      "h": "911cc6a4"
+    },
+    "questions.2.options.1": {
+      "t": "Writing them all in a single script without comments",
+      "h": "18c13404"
+    },
+    "questions.2.options.2": {
+      "t": "Editing rules directly in the production console",
+      "h": "e0836f75"
+    },
+    "questions.2.options.3": {
+      "t": "Keeping them in spreadsheets",
+      "h": "4482ab1a"
+    },
+    "questions.2.q": {
+      "t": "What does treating detections as code mean?",
+      "h": "fa45f223"
+    }
+  }
+}

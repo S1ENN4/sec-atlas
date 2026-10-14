@@ -1,0 +1,104 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Un embedding es un vector denso de números reales (típicamente entre 300 y 3072) que representa un fragmento de texto. La propiedad útil es geométrica: dos textos con significado parecido quedan a poca distancia en el espacio, y dos textos sin relación quedan lejos. La 'distancia' se mide por coseno, producto interno o euclidiana.",
+      "h": "905beb0d"
+    },
+    "sections.0.body.1": {
+      "t": "El vector lo genera un modelo entrenado con pares de texto (original y traducción, pregunta y respuesta, o títulos parecidos). Después del entrenamiento, el modelo aprendió a colocar palabras y frases cerca de palabras similares y lejos de otras. No hay una regla simbólica. El arreglo es puramente estadístico.",
+      "h": "73d2eb5b"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "Tres familias dominan. Los modelos de uso general, como text-embedding-3-small de OpenAI o embed-multilingual-v3 de Cohere, devuelven vectores de 384 a 3072 y funcionan razonablemente bien en cualquier dominio. Los modelos ajustados por dominio (jurídico, biomédico, código) ganan precisión cuando el corpus es técnico, y la pierden cuando salen de él. Los modelos locales vía sentence-transformers corren sin llamada externa, cuestan más CPU y son útiles cuando el dato no puede salir de la infraestructura.",
+      "h": "574c3c78"
+    },
+    "sections.1.body.1": {
+      "t": "Más dimensiones cuestan más almacenamiento, más memoria y más tiempo de búsqueda. Para un corpus pequeño, 384 dimensiones son suficientes; para un millón de documentos, conviene medir si la ganancia de subir a 1024 cubre el costo.",
+      "h": "e6407ca3"
+    },
+    "sections.1.heading": {
+      "t": "Modelos y dimensiones",
+      "h": "1c860960"
+    },
+    "sections.2.body.0": {
+      "t": "La similitud de coseno mide el ángulo entre dos vectores e ignora la magnitud, así que dos textos largos y dos cortos pueden tener el mismo valor de similitud por contenido. La fórmula es la del producto interno dividido por la norma de cada vector.",
+      "h": "0de5d9bc"
+    },
+    "sections.2.code.0.code": {
+      "t": "type Vec = number[];\n\nexport function dot(a: Vec, b: Vec): number {\n  let s = 0;\n  for (let i = 0; i < a.length; i++) s += a[i] * b[i];\n  return s;\n}\n\nexport function norm(a: Vec): number {\n  return Math.sqrt(dot(a, a));\n}\n\nexport function cosine(a: Vec, b: Vec): number {\n  const denom = norm(a) * norm(b);\n  if (denom === 0) return 0;\n  return dot(a, b) / denom;\n}\n\n// uso\nconst doc: Vec = await embedder.embed(\"rag combina búsqueda y generación\");\nconst query: Vec = await embedder.embed(\"¿cómo funciona rag?\");\nconst score = cosine(doc, query);\nconsole.log(score.toFixed(3));",
+      "h": "c640646d"
+    },
+    "sections.2.code.0.filename": {
+      "t": "embeddings/cosine.ts",
+      "h": "8fce15e1"
+    },
+    "sections.2.heading": {
+      "t": "Similitud en la práctica",
+      "h": "bac48874"
+    },
+    "sections.3.body.0": {
+      "t": "Cuatro preguntas determinan la elección. Primera: ¿el dominio es general o técnico? Un modelo multilingüe ayuda en PT-BR; un modelo de código ayuda en bases de código. Segunda: ¿necesita correr offline o puede llamar a una API? Offline obliga a usar sentence-transformers o BGE local. Tercera: ¿cuál es el presupuesto de almacenamiento? Vectores de 3072 dimensiones para 10 millones de documentos son 120 GB solo de embeddings. Cuarta: ¿necesita consistencia semántica a lo largo del tiempo? Cambiar el modelo de embedding después de indexar obliga a reindexar todo.",
+      "h": "4ccc0cc5"
+    },
+    "sections.3.body.1": {
+      "t": "La regla que evita más arrepentimientos: define el modelo antes de indexar y congela esa decisión. La reindexación es cara, y alternar entre modelos a mitad del proyecto degrada la calidad del retrieval sin aviso.",
+      "h": "221f4f2b"
+    },
+    "sections.3.heading": {
+      "t": "Eligiendo el modelo",
+      "h": "50a4305f"
+    },
+    "sections.4.bullets.0": {
+      "t": "comprensión semántica aproximada sin reglas: frases distintas con el mismo sentido quedan cerca, sin necesidad de sinónimos hardcodeados",
+      "h": "a64be761"
+    },
+    "sections.4.bullets.1": {
+      "t": "modelos listos de calidad: open weights (BGE, E5, mE5) y APIs administradas cubren la mayoría de los casos sin entrenamiento",
+      "h": "5b86e462"
+    },
+    "sections.4.bullets.2": {
+      "t": "costo bajo por llamada: los embeddings son típicamente órdenes de magnitud más baratos que la generación del LLM",
+      "h": "6ded9fb9"
+    },
+    "sections.4.heading": {
+      "t": "Puntos fuertes",
+      "h": "a2ebc02c"
+    },
+    "sections.5.bullets.0": {
+      "t": "ceguera léxica: 'lechuga' y 'verdura' quedan cerca, pero 'lechuga' y 'Lechuga S.A.' (empresa) también, y el retrieval no sabe distinguirlas",
+      "h": "c3cfd06e"
+    },
+    "sections.5.bullets.1": {
+      "t": "modelo desactualizado: el modelo vio datos hasta la fecha del entrenamiento; los términos nuevos no tienen buena posición en el espacio",
+      "h": "0d4a706a"
+    },
+    "sections.5.bullets.2": {
+      "t": "sin garantía de alineación entre idiomas: los modelos multilingües aproximan, pero las traducciones literales salen adelante de las paráfrasis",
+      "h": "7866d76e"
+    },
+    "sections.5.bullets.3": {
+      "t": "costo de cambiar: cambiar el modelo de embedding es una reindexación completa, así que la decisión inicial pesa",
+      "h": "f71c41dd"
+    },
+    "sections.5.heading": {
+      "t": "Limitaciones",
+      "h": "149d05f7"
+    },
+    "short": {
+      "t": "convertir texto en vectores que aproximan el significado",
+      "h": "6c7ac449"
+    },
+    "tagline": {
+      "t": "Los embeddings mapean el texto a un espacio donde la distancia se vuelve semántica: 'perro' y 'mascota' quedan cerca, 'perro' y 'satélite' quedan lejos. Es el motor de la búsqueda por similitud del RAG.",
+      "h": "b96173c8"
+    },
+    "title": {
+      "t": "Embeddings",
+      "h": "f428bd5b"
+    }
+  }
+}

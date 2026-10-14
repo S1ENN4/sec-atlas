@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "The further left on the timeline a flaw is found, the cheaper the fix.",
+      "h": "7adba55e"
+    },
+    "questions.0.options.0": {
+      "t": "Moving the security team to another department",
+      "h": "2118f4c2"
+    },
+    "questions.0.options.1": {
+      "t": "Moving security checks to the start of the development lifecycle",
+      "h": "d0eb429e"
+    },
+    "questions.0.options.2": {
+      "t": "Running all tests only in production",
+      "h": "2dbe0a2e"
+    },
+    "questions.0.options.3": {
+      "t": "Removing QA from the process",
+      "h": "4844ee03"
+    },
+    "questions.0.q": {
+      "t": "What does shift-left mean?",
+      "h": "e45f04c5"
+    },
+    "questions.1.explain": {
+      "t": "Hooks and PR checks give feedback in minutes, still in the developer's context.",
+      "h": "4a9bb35f"
+    },
+    "questions.1.options.0": {
+      "t": "Annual pentest",
+      "h": "d4dccb56"
+    },
+    "questions.1.options.1": {
+      "t": "Pre-commit hooks and PR checks",
+      "h": "59e298b2"
+    },
+    "questions.1.options.2": {
+      "t": "Production monitoring",
+      "h": "a8dd1b36"
+    },
+    "questions.1.options.3": {
+      "t": "Incident response",
+      "h": "eaa01473"
+    },
+    "questions.1.q": {
+      "t": "Which practice is shift-left?",
+      "h": "2c237c9e"
+    },
+    "questions.2.explain": {
+      "t": "Early feedback only helps if it is accurate and actionable; noise makes the team ignore everything.",
+      "h": "77daa800"
+    },
+    "questions.2.options.0": {
+      "t": "Having no coverage in production",
+      "h": "861e113e"
+    },
+    "questions.2.options.1": {
+      "t": "Overloading devs with noisy alerts and losing trust in the tools",
+      "h": "f6ad01cf"
+    },
+    "questions.2.options.2": {
+      "t": "Increasing the repository size",
+      "h": "0ba739a6"
+    },
+    "questions.2.options.3": {
+      "t": "Preventing the use of CI",
+      "h": "f30db368"
+    },
+    "questions.2.q": {
+      "t": "What is the risk of applying shift-left carelessly?",
+      "h": "b40b52b4"
+    }
+  }
+}

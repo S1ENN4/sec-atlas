@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "They organize the observe, decide and act loop around the model.",
+      "h": "d0bab970"
+    },
+    "questions.0.options.0": {
+      "t": "Structure for the agent's reasoning cycle, tools and memory",
+      "h": "a14aa80b"
+    },
+    "questions.0.options.1": {
+      "t": "A new language model",
+      "h": "dd7f314c"
+    },
+    "questions.0.options.2": {
+      "t": "A database",
+      "h": "b49261d0"
+    },
+    "questions.0.options.3": {
+      "t": "A firewall",
+      "h": "966d5102"
+    },
+    "questions.0.q": {
+      "t": "What does an agent framework provide?",
+      "h": "4057f709"
+    },
+    "questions.1.explain": {
+      "t": "More autonomy means more need for minimal permissions and human approval on sensitive actions.",
+      "h": "48c6ef7a"
+    },
+    "questions.1.options.0": {
+      "t": "Improper actions with real impact, if there are no limits",
+      "h": "af3df741"
+    },
+    "questions.1.options.1": {
+      "t": "The prompt getting short",
+      "h": "d5c1815f"
+    },
+    "questions.1.options.2": {
+      "t": "Latency dropping",
+      "h": "f7ec1170"
+    },
+    "questions.1.options.3": {
+      "t": "The model forgetting the alphabet",
+      "h": "3e70a982"
+    },
+    "questions.1.q": {
+      "t": "Which risk grows when the agent has more autonomy?",
+      "h": "6eac8971"
+    },
+    "questions.2.explain": {
+      "t": "The same principle as least privilege, applied to tools.",
+      "h": "c3ba70bd"
+    },
+    "questions.2.options.0": {
+      "t": "Giving it only the tools and permissions necessary for the task",
+      "h": "e75e8a46"
+    },
+    "questions.2.options.1": {
+      "t": "Giving it admin access to avoid errors",
+      "h": "6cf5b767"
+    },
+    "questions.2.options.2": {
+      "t": "Running without logs",
+      "h": "c408b417"
+    },
+    "questions.2.options.3": {
+      "t": "Letting the agent approve its own actions",
+      "h": "dcc06b72"
+    },
+    "questions.2.q": {
+      "t": "Which good practice helps contain an agent?",
+      "h": "4fbbb12a"
+    }
+  }
+}

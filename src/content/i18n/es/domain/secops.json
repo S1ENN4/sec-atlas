@@ -1,0 +1,196 @@
+{
+  "entries": {
+    "graph.0.label": {
+      "t": "revela",
+      "h": "688c8b01"
+    },
+    "graph.1.label": {
+      "t": "mantiene viable",
+      "h": "82448bda"
+    },
+    "graph.2.label": {
+      "t": "se vuelve detección",
+      "h": "0c53cd29"
+    },
+    "graph.3.label": {
+      "t": "genera reglas",
+      "h": "be9c4131"
+    },
+    "graph.4.label": {
+      "t": "genera límites",
+      "h": "aa2c438e"
+    },
+    "graph.5.label": {
+      "t": "puntúa la automatización",
+      "h": "070fb214"
+    },
+    "graph.6.label": {
+      "t": "activa",
+      "h": "6d6a8bee"
+    },
+    "graph.7.label": {
+      "t": "mide la precisión",
+      "h": "792075b4"
+    },
+    "graph.8.label": {
+      "t": "define dónde vive",
+      "h": "650dd2ab"
+    },
+    "pipeline.0.description": {
+      "t": "ver todo el tráfico, a escala y con contexto",
+      "h": "a5dc94f6"
+    },
+    "pipeline.0.gate": {
+      "t": "toda solicitud relevante se convierte en un evento normalizado",
+      "h": "4854ffad"
+    },
+    "pipeline.0.items.0.label": {
+      "t": "telemetría de borde",
+      "h": "995397bd"
+    },
+    "pipeline.0.items.1.label": {
+      "t": "escala, cardinalidad y costo",
+      "h": "6e392dfa"
+    },
+    "pipeline.0.items.2.label": {
+      "t": "baseline de tráfico legítimo",
+      "h": "c528e1f6"
+    },
+    "pipeline.0.name": {
+      "t": "observar",
+      "h": "8ddf011e"
+    },
+    "pipeline.1.description": {
+      "t": "las señales se convierten en decisiones",
+      "h": "14b69a90"
+    },
+    "pipeline.1.gate": {
+      "t": "cada detección tiene responsable, severidad y acción prevista",
+      "h": "df603787"
+    },
+    "pipeline.1.items.0.label": {
+      "t": "taxonomía de ataques L7",
+      "h": "79635f13"
+    },
+    "pipeline.1.items.1.label": {
+      "t": "biblioteca de detecciones",
+      "h": "4a3b53dd"
+    },
+    "pipeline.1.items.2.label": {
+      "t": "baselines de comportamiento",
+      "h": "9678804e"
+    },
+    "pipeline.1.name": {
+      "t": "detectar",
+      "h": "6d98ec7e"
+    },
+    "pipeline.2.description": {
+      "t": "bloquear, desafiar o limitar, con cuidado",
+      "h": "e6104744"
+    },
+    "pipeline.2.gate": {
+      "t": "toda acción nueva pasa por shadow antes del enforcement",
+      "h": "f1f33614"
+    },
+    "pipeline.2.items.0.label": {
+      "t": "WAF: observación, shadow, enforcement",
+      "h": "a0fee15b"
+    },
+    "pipeline.2.items.1.label": {
+      "t": "rate limiting adaptativo",
+      "h": "1c14786f"
+    },
+    "pipeline.2.items.2.label": {
+      "t": "bot management",
+      "h": "bae4aaf9"
+    },
+    "pipeline.2.items.3.label": {
+      "t": "runbooks y hardening",
+      "h": "5b3120b6"
+    },
+    "pipeline.2.name": {
+      "t": "actuar",
+      "h": "93b536d8"
+    },
+    "pipeline.3.description": {
+      "t": "demostrar que funciona y ajustar",
+      "h": "28486ae4"
+    },
+    "pipeline.3.gate": {
+      "t": "precisión y recall monitoreados · el falso positivo baja en cada ciclo",
+      "h": "cc406f62"
+    },
+    "pipeline.3.items.0.label": {
+      "t": "SLOs de SOC",
+      "h": "b3b1568d"
+    },
+    "pipeline.3.items.1.label": {
+      "t": "tuning semanal",
+      "h": "b39f781d"
+    },
+    "pipeline.3.items.2.label": {
+      "t": "indicadores ejecutivos",
+      "h": "58e6f920"
+    },
+    "pipeline.3.name": {
+      "t": "medir",
+      "h": "33f9fe52"
+    },
+    "relations.0.label": {
+      "t": "revela",
+      "h": "688c8b01"
+    },
+    "relations.1.label": {
+      "t": "alimenta",
+      "h": "3abef3f7"
+    },
+    "relations.2.label": {
+      "t": "sustenta",
+      "h": "144e310a"
+    },
+    "relations.3.label": {
+      "t": "mantiene viable",
+      "h": "82448bda"
+    },
+    "relations.4.label": {
+      "t": "se vuelve detección",
+      "h": "0c53cd29"
+    },
+    "relations.5.label": {
+      "t": "genera reglas",
+      "h": "be9c4131"
+    },
+    "relations.6.label": {
+      "t": "genera límites",
+      "h": "aa2c438e"
+    },
+    "relations.7.label": {
+      "t": "puntúa la automatización",
+      "h": "070fb214"
+    },
+    "relations.8.label": {
+      "t": "activa",
+      "h": "6d6a8bee"
+    },
+    "relations.9.label": {
+      "t": "ejecuta",
+      "h": "fb05e5de"
+    },
+    "relations.10.label": {
+      "t": "mide la precisión",
+      "h": "792075b4"
+    },
+    "relations.11.label": {
+      "t": "guía el tuning",
+      "h": "d80531ca"
+    },
+    "relations.12.label": {
+      "t": "define dónde vive",
+      "h": "650dd2ab"
+    },
+    "relations.13.label": {
+      "t": "posiciona",
+      "h": "251a9b51"
+    }
+  }
+}

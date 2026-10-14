@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "La política se vuelve un gate que responde en segundos y se aplica igual para todos.",
+      "h": "eb5bb45f"
+    },
+    "questions.0.options.0": {
+      "t": "Reglas de seguridad expresadas en un lenguaje ejecutable, evaluadas automáticamente en cada cambio",
+      "h": "643c0239"
+    },
+    "questions.0.options.1": {
+      "t": "Un manual de políticas en PDF versionado",
+      "h": "6693968c"
+    },
+    "questions.0.options.2": {
+      "t": "Un comentario en el código sobre seguridad",
+      "h": "ed2d7114"
+    },
+    "questions.0.options.3": {
+      "t": "Un tipo de licencia",
+      "h": "8bd27f35"
+    },
+    "questions.0.q": {
+      "t": "¿Qué es policy as code?",
+      "h": "37b8336b"
+    },
+    "questions.1.explain": {
+      "t": "Los casos que deben pasar y los que deben negarse dan confianza en la regla.",
+      "h": "922dce87"
+    },
+    "questions.1.options.0": {
+      "t": "Sin pruebas una regla puede dejar de detectar cualquier cosa, o bloquear cambios legítimos",
+      "h": "fddad9e3"
+    },
+    "questions.1.options.1": {
+      "t": "Porque Rego no compila sin pruebas",
+      "h": "ea863788"
+    },
+    "questions.1.options.2": {
+      "t": "Para reducir el tamaño del archivo",
+      "h": "07d48657"
+    },
+    "questions.1.options.3": {
+      "t": "Porque OPA lo exige",
+      "h": "fc6a89f7"
+    },
+    "questions.1.q": {
+      "t": "¿Por qué probar las políticas escritas en Rego?",
+      "h": "0b596a56"
+    },
+    "questions.2.explain": {
+      "t": "Es la misma escalera del WAF: observación, shadow y enforcement.",
+      "h": "0e8a8b9d"
+    },
+    "questions.2.options.0": {
+      "t": "Empezar en modo de aviso, medir, corregir el legado y solo entonces bloquear",
+      "h": "933d71e5"
+    },
+    "questions.2.options.1": {
+      "t": "Bloquear de inmediato en producción",
+      "h": "8c8ce179"
+    },
+    "questions.2.options.2": {
+      "t": "Aplicarla solo en entornos de prueba para siempre",
+      "h": "b6437ba4"
+    },
+    "questions.2.options.3": {
+      "t": "Crear excepciones sin plazo",
+      "h": "bd7b57a0"
+    },
+    "questions.2.q": {
+      "t": "¿Cuál es la forma sana de adoptar una política nueva sin bloquear a todos?",
+      "h": "c6b54ea6"
+    }
+  }
+}

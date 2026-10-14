@@ -1,0 +1,152 @@
+{
+  "entries": {
+    "groups.0.entries.0.aka": {
+      "t": "web application firewall",
+      "h": "c523a677"
+    },
+    "groups.0.entries.0.meaning": {
+      "t": "Filtro de tráfico HTTP en la capa 7 que decide, por solicitud, si continúa, se desafía, se limita o se bloquea. Reduce la superficie expuesta y permite el parche virtual; no sustituye la corrección en la aplicación.",
+      "h": "724a1be2"
+    },
+    "groups.0.entries.0.term": {
+      "t": "WAF",
+      "h": "47f21a59"
+    },
+    "groups.0.entries.1.aka": {
+      "t": "allowlist",
+      "h": "22e784a2"
+    },
+    "groups.0.entries.1.meaning": {
+      "t": "Definir qué es válido para un endpoint (métodos, rutas, formatos, tamaños) y bloquear el resto. Más preciso que las firmas, pero exige conocer la aplicación.",
+      "h": "4b5a2be1"
+    },
+    "groups.0.entries.1.term": {
+      "t": "Modelo positivo",
+      "h": "0e85a1a5"
+    },
+    "groups.0.entries.2.meaning": {
+      "t": "Fase en que una regla corre en paralelo, sin actuar, y la decisión simulada se compara con la realidad para medir el falso positivo antes del enforcement.",
+      "h": "9bbdbcd0"
+    },
+    "groups.0.entries.2.term": {
+      "t": "Shadow mode",
+      "h": "993d615a"
+    },
+    "groups.0.entries.3.aka": {
+      "t": "virtual patching",
+      "h": "fdd457cd"
+    },
+    "groups.0.entries.3.meaning": {
+      "t": "Regla de WAF que bloquea la explotación de una vulnerabilidad conocida mientras la corrección real aún no llega a la aplicación. Gana tiempo, no elimina la falla.",
+      "h": "a10c4453"
+    },
+    "groups.0.entries.3.term": {
+      "t": "Parche virtual",
+      "h": "fe696151"
+    },
+    "groups.0.entries.4.meaning": {
+      "t": "Límite de solicitudes por entidad y ventana de tiempo. La elección de la clave (IP, cuenta, token, ASN) pesa tanto como el valor del límite.",
+      "h": "ed6e5308"
+    },
+    "groups.0.entries.4.term": {
+      "t": "Rate limiting",
+      "h": "e663f74e"
+    },
+    "groups.0.entries.5.aka": {
+      "t": "desafío",
+      "h": "37ab5038"
+    },
+    "groups.0.entries.5.meaning": {
+      "t": "Verificación que intenta probar que el cliente es un navegador real, sin pedirle nada al usuario en la mayoría de los casos. Es el escalón previo al bloqueo.",
+      "h": "c6a0d8ff"
+    },
+    "groups.0.entries.5.term": {
+      "t": "Challenge",
+      "h": "bb9d653f"
+    },
+    "groups.0.entries.6.meaning": {
+      "t": "Lo que hace el sistema cuando falla un control de seguridad: fail-open deja pasar (disponible, desprotegido), fail-closed bloquea (seguro, no disponible). La elección debe ser consciente, por endpoint.",
+      "h": "3f20fb38"
+    },
+    "groups.0.entries.6.term": {
+      "t": "Fail-open / fail-closed",
+      "h": "4ae56de4"
+    },
+    "groups.0.title": {
+      "t": "defensa de borde",
+      "h": "f3ffc3e3"
+    },
+    "groups.1.entries.0.meaning": {
+      "t": "Ataque que prueba en masa pares usuario/contraseña filtrados de otros servicios. Firma: muchos fallos de inicio de sesión distribuidos en muchas IPs, con pocos intentos por cuenta.",
+      "h": "7b4ecfa5"
+    },
+    "groups.1.entries.0.term": {
+      "t": "Credential stuffing",
+      "h": "4e7c0cba"
+    },
+    "groups.1.entries.1.meaning": {
+      "t": "Distancia de un valor a la media, medida en desviaciones estándar. En detección, valores muy por encima del historial reciente de la misma clave sugieren una anomalía.",
+      "h": "56ae78c2"
+    },
+    "groups.1.entries.1.term": {
+      "t": "Z-score",
+      "h": "cbedcf02"
+    },
+    "groups.1.entries.2.aka": {
+      "t": "media móvil exponencial",
+      "h": "85ca05ca"
+    },
+    "groups.1.entries.2.meaning": {
+      "t": "Media que da más peso a los datos recientes. Se usa como baseline adaptativo: acompaña el cambio del tráfico normal sin quedar atada al pasado.",
+      "h": "6e57ef0d"
+    },
+    "groups.1.entries.2.term": {
+      "t": "EWMA",
+      "h": "0b3570fd"
+    },
+    "groups.1.entries.3.meaning": {
+      "t": "Cantidad de valores distintos de un campo (IPs, user agents). La alta cardinalidad encarece las agregaciones y tumba los sistemas de métricas; agregue por el nivel más grueso que todavía separe el ataque de lo normal.",
+      "h": "13d42303"
+    },
+    "groups.1.entries.3.term": {
+      "t": "Cardinalidad",
+      "h": "fea0e8f3"
+    },
+    "groups.1.entries.4.aka": {
+      "t": "mean time to triage",
+      "h": "63cb993b"
+    },
+    "groups.1.entries.4.meaning": {
+      "t": "Tiempo medio entre la alerta y su clasificación como real o falsa.",
+      "h": "91a52137"
+    },
+    "groups.1.entries.4.term": {
+      "t": "MTTT",
+      "h": "2c4dac2f"
+    },
+    "groups.1.entries.5.aka": {
+      "t": "mean time to contain",
+      "h": "3899fa1e"
+    },
+    "groups.1.entries.5.meaning": {
+      "t": "Tiempo medio entre la confirmación de un ataque y su contención.",
+      "h": "91aff920"
+    },
+    "groups.1.entries.5.term": {
+      "t": "MTTC",
+      "h": "1bc4e60e"
+    },
+    "groups.1.entries.6.meaning": {
+      "t": "Precisión: de las alertas emitidas, cuántas eran ataques reales. Recall: de los ataques existentes, cuántos se detectaron. Subir uno tiende a bajar el otro.",
+      "h": "e33d7aee"
+    },
+    "groups.1.entries.6.term": {
+      "t": "Precisión y recall",
+      "h": "d7349f17"
+    },
+    "groups.1.title": {
+      "t": "detección y métricas",
+      "h": "5768e78b"
+    }
+  }
+}

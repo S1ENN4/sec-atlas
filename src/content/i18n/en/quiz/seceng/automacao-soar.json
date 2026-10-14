@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "The greater the impact of the action, the greater the need for a human check.",
+      "h": "113dd32c"
+    },
+    "questions.0.options.0": {
+      "t": "Human approval for destructive or wide-reaching actions",
+      "h": "cfab53ba"
+    },
+    "questions.0.options.1": {
+      "t": "Always running the broadest possible action",
+      "h": "22185fdd"
+    },
+    "questions.0.options.2": {
+      "t": "Removing the audit logs",
+      "h": "c5520e01"
+    },
+    "questions.0.options.3": {
+      "t": "Giving administrator permissions to the automation",
+      "h": "218a2aea"
+    },
+    "questions.0.q": {
+      "t": "Which of these is an essential brake for response automation?",
+      "h": "da4a995e"
+    },
+    "questions.1.explain": {
+      "t": "It lets you validate a new automation before giving it the power to act.",
+      "h": "97f5ac43"
+    },
+    "questions.1.options.0": {
+      "t": "Showing what the action would do, without executing it, for testing and shadow",
+      "h": "9f9f1b05"
+    },
+    "questions.1.options.1": {
+      "t": "Speeding up execution",
+      "h": "bf04fdf5"
+    },
+    "questions.1.options.2": {
+      "t": "Encrypting credentials",
+      "h": "060c5876"
+    },
+    "questions.1.options.3": {
+      "t": "Replacing auditing",
+      "h": "220131d0"
+    },
+    "questions.1.q": {
+      "t": "What is dry-run for in a playbook?",
+      "h": "607f7afe"
+    },
+    "questions.2.explain": {
+      "t": "Every automatic action should be reversible, preferably on its own over time.",
+      "h": "1a02fcd7"
+    },
+    "questions.2.options.0": {
+      "t": "So a classification mistake does not become a permanent block",
+      "h": "0cbb4b7a"
+    },
+    "questions.2.options.1": {
+      "t": "To save storage",
+      "h": "66816c05"
+    },
+    "questions.2.options.2": {
+      "t": "Because blocks without expiry are impossible",
+      "h": "1102f859"
+    },
+    "questions.2.options.3": {
+      "t": "To increase lag",
+      "h": "be617218"
+    },
+    "questions.2.q": {
+      "t": "Why give automatic blocks an expiry (TTL)?",
+      "h": "75af7f9d"
+    }
+  }
+}

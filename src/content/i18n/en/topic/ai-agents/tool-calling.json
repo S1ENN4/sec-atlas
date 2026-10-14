@@ -1,0 +1,148 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Tool calling (also called function calling) is the interface through which an LLM returns, instead of (or in addition to) text, a structured function call: tool name + arguments in JSON. The runtime receives it, validates the arguments against a schema, executes and returns the result to the context.",
+      "h": "2fee0ddc"
+    },
+    "sections.0.body.1": {
+      "t": "The model never executes anything on its own. It only proposes: 'I would call get_weather with { city: 'São Paulo' }'. Execution, authorization, retry and auditing stay with the runtime. Forgetting who executes is the most expensive mistake that shows up in production.",
+      "h": "c267a45e"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "Each tool is declared to the model by a JSON schema with name, description and typed parameters. The LLM uses this schema as a grammar: it knows the name, knows the format of the arguments and uses the description to decide when it makes sense to call.",
+      "h": "4810537a"
+    },
+    "sections.1.body.1": {
+      "t": "The description is the most neglected part. The LLM does not read code: it reads the string. 'Gets the weather of a city' is better than 'get_weather', because the model decides when to call based on prose. Schemas with bad descriptions produce right or wrong calls at random.",
+      "h": "d0c5dc12"
+    },
+    "sections.1.code.0.code": {
+      "t": "{\n  \"name\": \"get_weather\",\n  \"description\": \"Gets the current temperature and the forecast for the next 3 days in a city.\",\n  \"parameters\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"city\": {\n        \"type\": \"string\",\n        \"description\": \"City name, in Portuguese or English (e.g. 'São Paulo', 'Lisbon').\"\n      },\n      \"unit\": {\n        \"type\": \"string\",\n        \"enum\": [\"celsius\", \"fahrenheit\"],\n        \"default\": \"celsius\"\n      }\n    },\n    \"required\": [\"city\"]\n  }\n}",
+      "h": "c6f6a262"
+    },
+    "sections.1.code.0.filename": {
+      "t": "get_weather tool schema",
+      "h": "1ab41387"
+    },
+    "sections.1.heading": {
+      "t": "The JSON schema: the contract",
+      "h": "d348e6af"
+    },
+    "sections.2.body.0": {
+      "t": "When the model returns a function call, the runtime receives a JSON that may be wrong: wrong type, missing field, value outside the enum, string where a number should be. Validating before executing is non-negotiable: it is the boundary between the model, which proposes, and your code, which executes with real permissions.",
+      "h": "3b36df36"
+    },
+    "sections.2.body.1": {
+      "t": "In Python, Pydantic is the standard path: declare a model, call model_validate(model_dump), and Pydantic raises ValidationError with the exact list of fields and the reason. In TypeScript, the natural pair is Zod, with safeParse returning { success, data, error }.",
+      "h": "3d565597"
+    },
+    "sections.2.code.0.code": {
+      "t": "from pydantic import BaseModel, Field, ValidationError\n\n\nclass GetWeatherArgs(BaseModel):\n    city: str = Field(..., min_length=1)\n    unit: str = Field(\"celsius\", pattern=r\"^(celsius|fahrenheit)$\")\n\n\ndef call_tool(name: str, raw_args: dict):\n    if name != \"get_weather\":\n        raise ValueError(f\"unknown tool: {name}\")\n    try:\n        args = GetWeatherArgs.model_validate(raw_args)\n    except ValidationError as e:\n        return {\"error\": \"invalid_args\", \"details\": e.errors()}\n    return fetch_weather(args.city, args.unit)",
+      "h": "bdab0f2d"
+    },
+    "sections.2.code.0.filename": {
+      "t": "validacao.py",
+      "h": "e596005b"
+    },
+    "sections.2.heading": {
+      "t": "Argument validation: your responsibility",
+      "h": "2265f64e"
+    },
+    "sections.3.body.0": {
+      "t": "A tool call goes through five steps, each with a possible response and a distinct error path. Without seeing all five, it looks like magic, and the bugs are not where you expect.",
+      "h": "9725ea27"
+    },
+    "sections.3.body.1": {
+      "t": "1. declaration: the list of schemas is handed to the LLM along with the prompt.",
+      "h": "2692a35c"
+    },
+    "sections.3.body.2": {
+      "t": "2. proposal: the LLM returns tool_calls with name + JSON arguments.",
+      "h": "0e0ccd18"
+    },
+    "sections.3.body.3": {
+      "t": "3. validation: the runtime parses and validates against the schema; a failure here means 'the model hallucinated'; treat it as an error and return the reason to the LLM.",
+      "h": "a1779bca"
+    },
+    "sections.3.body.4": {
+      "t": "4. execution: the runtime calls the real function (HTTP, DB, command) with permissions and a timeout.",
+      "h": "cd8a1baa"
+    },
+    "sections.3.body.5": {
+      "t": "5. observation: the result becomes a tool message in the context; the LLM uses it for the next decision.",
+      "h": "9e12d84a"
+    },
+    "sections.3.code.0.code": {
+      "t": "import Anthropic from '@anthropic-ai/sdk';\nimport { z } from 'zod';\n\nconst GetWeather = z.object({\n  city: z.string().min(1),\n  unit: z.enum(['celsius', 'fahrenheit']).default('celsius'),\n});\n\nasync function run(anthropic: Anthropic, userMessage: string) {\n  const tools = [{\n    name: 'get_weather',\n    description: 'Gets the current weather of a city.',\n    input_schema: /* JSON shape of the schema */,\n  }];\n\n  let msg = await anthropic.messages.create({\n    model: 'claude-opus-4', max_tokens: 1024, tools,\n    messages: [{ role: 'user', content: userMessage }],\n  });\n\n  if (msg.stop_reason === 'tool_use') {\n    const call = msg.content.find((b) => b.type === 'tool_use');\n    const parsed = GetWeather.safeParse(call.input);\n    if (!parsed.success) return { error: 'invalid_args', issues: parsed.error.issues };\n    const result = await fetchWeather(parsed.data.city, parsed.data.unit);\n    msg = await anthropic.messages.create({\n      model: 'claude-opus-4', max_tokens: 1024, tools,\n      messages: [\n        { role: 'user',     content: userMessage },\n        { role: 'assistant',content: msg.content },\n        { role: 'user',     content: [{ type: 'tool_result', tool_use_id: call.id, content: JSON.stringify(result) }] },\n      ],\n    });\n  }\n  return msg;\n}",
+      "h": "437f5636"
+    },
+    "sections.3.code.0.filename": {
+      "t": "runtime.tsx",
+      "h": "1da15969"
+    },
+    "sections.3.heading": {
+      "t": "The complete flow, end to end",
+      "h": "d21642c0"
+    },
+    "sections.4.bullets.0": {
+      "t": "the model can invent fields: it has seen 1000 different schemas and does not guarantee consistency",
+      "h": "30a66c07"
+    },
+    "sections.4.bullets.1": {
+      "t": "types are guaranteed, values are not: it knows 'unit' is a string, but it may send 'celcius' (typo) from time to time",
+      "h": "d74ba362"
+    },
+    "sections.4.bullets.2": {
+      "t": "enums are the most common error boundary: the model rarely respects the enum without an explicit prompt",
+      "h": "8bb586ff"
+    },
+    "sections.4.bullets.3": {
+      "t": "validation is cheap: it costs microseconds; unvalidated execution can allow a critical execution order",
+      "h": "abe9749c"
+    },
+    "sections.4.heading": {
+      "t": "Why you cannot skip validation",
+      "h": "f3f92a23"
+    },
+    "sections.5.bullets.0": {
+      "t": "strength: the schema forces structure; the model does not need to 'try' to produce valid JSON; it is producing tokens within a grammar",
+      "h": "3c2d53fb"
+    },
+    "sections.5.bullets.1": {
+      "t": "strength: validation errors return a rich message to the model, which almost always corrects itself on the next turn",
+      "h": "0650dc21"
+    },
+    "sections.5.bullets.2": {
+      "t": "weakness: a bad description leads to right or wrong calls at random; writing a good schema is design work",
+      "h": "4fafa0c8"
+    },
+    "sections.5.bullets.3": {
+      "t": "weakness: the call is opaque to the user; if they do not read the trace, they do not know which tool ran",
+      "h": "da21a67e"
+    },
+    "sections.5.bullets.4": {
+      "t": "weakness: parallelism depends on the provider; some allow several tool_calls in one response, others only one",
+      "h": "a6472d88"
+    },
+    "sections.5.heading": {
+      "t": "Strengths and limitations",
+      "h": "82effb50"
+    },
+    "short": {
+      "t": "the model invokes typed external functions",
+      "h": "6f3339a7"
+    },
+    "tagline": {
+      "t": "Tool calling is the contract between the LLM and the world: the model returns structured JSON (name + arguments), the runtime validates it against a schema and executes. It is what turns text into action.",
+      "h": "29b598ee"
+    },
+    "title": {
+      "t": "Tool calling",
+      "h": "4867e6d2"
+    }
+  }
+}

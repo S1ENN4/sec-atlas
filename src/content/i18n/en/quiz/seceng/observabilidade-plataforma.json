@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Silence may be a failure; without an absence alert, nobody notices.",
+      "h": "f9113d0a"
+    },
+    "questions.0.options.0": {
+      "t": "Silent failure leaves attacks undetected, with no visible error",
+      "h": "cdf66f48"
+    },
+    "questions.0.options.1": {
+      "t": "Because silent sources are cheaper",
+      "h": "e450f065"
+    },
+    "questions.0.options.2": {
+      "t": "To reduce the number of logs",
+      "h": "2248a69e"
+    },
+    "questions.0.options.3": {
+      "t": "Because Prometheus requires it",
+      "h": "45bd7f9c"
+    },
+    "questions.0.q": {
+      "t": "Why alert on a source that stopped sending events?",
+      "h": "e6cf7a2b"
+    },
+    "questions.1.explain": {
+      "t": "The trace context travels with the event across services and queues.",
+      "h": "a1971c68"
+    },
+    "questions.1.options.0": {
+      "t": "Showing which stage the time was spent in when end-to-end latency rises",
+      "h": "294b1ab1"
+    },
+    "questions.1.options.1": {
+      "t": "Encrypting traffic between services",
+      "h": "1a453f1c"
+    },
+    "questions.1.options.2": {
+      "t": "Replacing metrics",
+      "h": "19b4683c"
+    },
+    "questions.1.options.3": {
+      "t": "Counting how many users exist",
+      "h": "a89a1e13"
+    },
+    "questions.1.q": {
+      "t": "What is the role of tracing in the platform?",
+      "h": "440943ba"
+    },
+    "questions.2.explain": {
+      "t": "Objective targets make it possible to prioritize reliability against new features.",
+      "h": "0427a8ca"
+    },
+    "questions.2.options.0": {
+      "t": "A measurable target, such as 99% of events becoming a decision in under 60 seconds",
+      "h": "a19cf0ac"
+    },
+    "questions.2.options.1": {
+      "t": "A generic statement about quality",
+      "h": "b61c6e63"
+    },
+    "questions.2.options.2": {
+      "t": "Zero alerts per month",
+      "h": "77bce347"
+    },
+    "questions.2.options.3": {
+      "t": "CPU usage below 5%",
+      "h": "05f8efca"
+    },
+    "questions.2.q": {
+      "t": "What makes a good security platform SLO?",
+      "h": "0fc04a0e"
+    }
+  }
+}

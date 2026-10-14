@@ -1,0 +1,136 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "A benchmark is a frozen dataset plus an execution protocol plus a published number. Someone assembles 500 tasks, fixes the metric, runs several models on the same hardware and publishes a table. You repeat the experiment, get a number and compare it with the table. It is the same model as classic SDLC: the test is stable, the subject varies, the verdict is comparable.",
+      "h": "874a50e3"
+    },
+    "sections.0.body.1": {
+      "t": "For agents the mechanics change a bit. Public benchmarks tend to be too static (single answer, no interaction) or synthetic (simulated customers that look human without having nuance). That is why a benchmark is a starting point, never a finish line.",
+      "h": "cc599fc4"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "SWE-bench (Verified) is the de facto standard for coding agents. About 500 real GitHub issues, each with the bug description and the test that validates the fix. The agent receives the repository, reads the code, proposes a patch and runs the tests. An agent that resolves patches resolves N% of the benchmark.",
+      "h": "ef6afbea"
+    },
+    "sections.1.body.1": {
+      "t": "GAIA measures general-purpose agents on multi-hop tasks (cross-referencing sources, reading PDFs, summing values). It mixes tools, reasoning and retrieval. It is the most used benchmark for comparing agents that browse the web.",
+      "h": "530e66b9"
+    },
+    "sections.1.body.2": {
+      "t": "τ-bench (tau-bench) focuses on dialogue between agent and simulated user, with tools and policies. It measures whether the agent completes the customer's task without blowing the tool call budget. It is a recent reference (2024) and has gained traction in customer support.",
+      "h": "5a9affd1"
+    },
+    "sections.1.body.3": {
+      "t": "HumanEval is the parent of them all: 164 code problems in Python, function generates function, asserts validate. It remains useful as a sanity check for a plain model, but any modern agent passes without breaking a sweat.",
+      "h": "04527fb4"
+    },
+    "sections.1.heading": {
+      "t": "The four that matter",
+      "h": "5c2bbe04"
+    },
+    "sections.2.body.0": {
+      "t": "Most benchmarks publish a Python harness that standardizes execution. The skeleton below shows the mechanics of iterating over the cases, exposing the agent as a pure function so the harness can compare output with the answer key:",
+      "h": "21a0d7c7"
+    },
+    "sections.2.code.0.code": {
+      "t": "import json\nfrom datasets import load_dataset\nfrom agent import solve  # your agent's function\n\nCASES = load_dataset(\"princeton-nlp/SWE-bench_Verified\", split=\"test\")\n\ndef run(limit: int | None = None):\n    passed = 0\n    total = 0\n    failures = []\n    for case in CASES:\n        if limit and total >= limit:\n            break\n        total += 1\n        try:\n            patch = solve(case[\"repo\"], case[\"problem_statement\"])\n            ok = apply_and_test(case[\"instance_id\"], patch, case[\"test_patch\"])\n            if ok:\n                passed += 1\n            else:\n                failures.append((case[\"instance_id\"], \"tests_failed\"))\n        except Exception as e:\n            failures.append((case[\"instance_id\"], f\"exception:{type(e).__name__}\"))\n    return {\"passed\": passed, \"total\": total, \"failures\": failures}\n\nif __name__ == \"__main__\":\n    print(json.dumps(run(limit=50), indent=2))",
+      "h": "cb287881"
+    },
+    "sections.2.code.0.filename": {
+      "t": "run_benchmark.py",
+      "h": "9d8ea8c2"
+    },
+    "sections.2.heading": {
+      "t": "Running a local benchmark",
+      "h": "75778138"
+    },
+    "sections.3.body.0": {
+      "t": "When the dataset is public and the result becomes a marketing metric, someone learns to hack the benchmark. The most didactic case is contamination: the model is trained on text that contains the benchmark's cases, and the 'answer' becomes memorization disguised as reasoning. Another trick is cherry-picking: running the agent 10 times, picking the best run and publishing it.",
+      "h": "b1fd747c"
+    },
+    "sections.3.body.1": {
+      "t": "Practical defense. The first is to run the benchmark blinded: never let the agent read the expected solution, and truncate the dataset if it would leak through the context. The second is to cross-check with a private dataset you keep confidential, of the same format, and require that the two move together. The third is to monitor the gap between benchmark and production, and investigate whenever it diverges.",
+      "h": "91875e53"
+    },
+    "sections.3.heading": {
+      "t": "The risk of overfitting",
+      "h": "b65d5edb"
+    },
+    "sections.4.body.0": {
+      "t": "A benchmark is static, finite and public. Production is infinite, noisy and full of long tail (frustrated user, prompt injection, ambiguous query). An agent can score 80% on GAIA and still be bad for the real user.",
+      "h": "48d65cfb"
+    },
+    "sections.4.body.1": {
+      "t": "The common-sense reading treats the benchmark as triage and the private dataset as the source of truth. Publishing the number in the README is honest marketing. Trusting it to close a release is foolish.",
+      "h": "8237cb09"
+    },
+    "sections.4.heading": {
+      "t": "Benchmark versus production",
+      "h": "3a0c9223"
+    },
+    "sections.5.body.0": {
+      "t": "Start with the workload. If your agent reads code, SWE-bench. If it talks to customers, τ-bench. If it does web research, GAIA. If the work is pure generation, HumanEval does the job.",
+      "h": "2b570f14"
+    },
+    "sections.5.body.1": {
+      "t": "Then look at the version. SWE-bench Verified is the human-validated subset of the original SWE-bench. Always prefer the verified version when it exists, because it reduces the noise of ambiguous cases.",
+      "h": "52382faf"
+    },
+    "sections.5.body.2": {
+      "t": "Finally, measure the cost. Each case has a budget of tokens and tool calls. Compare cost per solved case, not just the hit rate. An agent that solves 60% with half the tokens is usually better than one that solves 80% with double.",
+      "h": "d48c57c8"
+    },
+    "sections.5.heading": {
+      "t": "How to choose the right benchmark",
+      "h": "0af455a7"
+    },
+    "sections.6.bullets.0": {
+      "t": "direct comparison between models and between vendors, on the same yardstick",
+      "h": "dc511ae5"
+    },
+    "sections.6.bullets.1": {
+      "t": "obvious regressions (the vendor regressed the model between versions) jump out",
+      "h": "caa4f772"
+    },
+    "sections.6.bullets.2": {
+      "t": "predictable cost per case, useful for API budgeting",
+      "h": "96e04001"
+    },
+    "sections.6.heading": {
+      "t": "Strengths",
+      "h": "a2ebc02c"
+    },
+    "sections.7.bullets.0": {
+      "t": "contamination: the benchmark may leak into the training of the evaluated model",
+      "h": "a709578e"
+    },
+    "sections.7.bullets.1": {
+      "t": "the long tail of production does not show up: a rare case that takes down 1% of users is not in the 500",
+      "h": "2ddc59c3"
+    },
+    "sections.7.bullets.2": {
+      "t": "gaming: time spent hacking the benchmark rarely improves the real agent",
+      "h": "478d74f0"
+    },
+    "sections.7.heading": {
+      "t": "Limitations",
+      "h": "149d05f7"
+    },
+    "short": {
+      "t": "public sets for comparing agents and LLMs",
+      "h": "31f38af2"
+    },
+    "tagline": {
+      "t": "Benchmarks (SWE-bench, GAIA, τ-bench, HumanEval) give a shared reference: you run the agent on the same dataset others published and the number speaks the same language. Classic risk: optimizing for the benchmark and losing in the real world.",
+      "h": "3560c5e5"
+    },
+    "title": {
+      "t": "Benchmarks - public reference",
+      "h": "3e0c51c7"
+    }
+  }
+}

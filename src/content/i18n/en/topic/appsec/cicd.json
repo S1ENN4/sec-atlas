@@ -1,0 +1,88 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Continuous Integration (CI) is the practice of automatically validating every code change: on each push or pull request, the pipeline compiles the project and runs the tests. The goal is to find out in minutes, not weeks, that a change broke something.",
+      "h": "a77e5aa4"
+    },
+    "sections.0.body.1": {
+      "t": "Continuous Delivery/Deployment (CD) extends the pipeline all the way: the validated artifact is packaged and published. In continuous delivery, deploying to production still requires a human click; in continuous deployment, everything that passes the gates goes live on its own.",
+      "h": "4c956542"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "Names vary between tools, but almost every pipeline follows the same backbone:",
+      "h": "9ad9211b"
+    },
+    "sections.1.bullets.0": {
+      "t": "source: a push or PR triggers the pipeline from the repository",
+      "h": "bf9bbc9d"
+    },
+    "sections.1.bullets.1": {
+      "t": "build: compiles, installs dependencies and resolves what the code needs",
+      "h": "43b6a320"
+    },
+    "sections.1.bullets.2": {
+      "t": "test: unit tests, integration tests and security checks",
+      "h": "d883c080"
+    },
+    "sections.1.bullets.3": {
+      "t": "package: produces the final artifact: binary, package or container image",
+      "h": "b8039a7d"
+    },
+    "sections.1.bullets.4": {
+      "t": "deploy: publishes to staging and, afterwards, to production",
+      "h": "f33b8b3e"
+    },
+    "sections.1.bullets.5": {
+      "t": "monitor: observability, alerts and a rollback path",
+      "h": "fba4eaab"
+    },
+    "sections.1.heading": {
+      "t": "Anatomy of a pipeline",
+      "h": "a9adab65"
+    },
+    "sections.2.body.0": {
+      "t": "Abstraction turns into clarity when you see the pipeline written out: the workflow below is a real GitHub Actions pipeline, with the trigger (source), build, tests and a security check running as just another step.",
+      "h": "95b7472b"
+    },
+    "sections.2.code.0.code": {
+      "t": "name: ci\non: [push, pull_request]        # source stage: what triggers it\njobs:\n  ci:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - run: npm ci                # build: reproducible install\n      - run: npm test              # test: the test suite\n      - run: npx semgrep ci        # security enters as just another step\n      - run: docker build -t app . # package: produces the artifact",
+      "h": "64780187"
+    },
+    "sections.2.code.0.filename": {
+      "t": ".github/workflows/ci.yml",
+      "h": "899ce9c2"
+    },
+    "sections.2.heading": {
+      "t": "The pipeline as code",
+      "h": "8e54600c"
+    },
+    "sections.3.body.0": {
+      "t": "Each stage is a gate where a security check can come in: SAST and SCA at build, DAST in staging, secrets scanning at source. This is what DevSecOps exploits.",
+      "h": "b97a6b23"
+    },
+    "sections.3.body.1": {
+      "t": "The reverse also holds: whoever controls the pipeline controls what goes to production. The SolarWinds attack (2020) compromised exactly the build system: the pipeline became the malware's distribution vector. The pipeline is critical infrastructure.",
+      "h": "2143faad"
+    },
+    "sections.3.heading": {
+      "t": "Why it is the center of security",
+      "h": "32b1ea47"
+    },
+    "short": {
+      "t": "The automated build, test and deploy pipeline",
+      "h": "88c45306"
+    },
+    "tagline": {
+      "t": "The backbone of modern software: every commit becomes a build, a test run and a deploy with no manual intervention.",
+      "h": "b2fec601"
+    },
+    "title": {
+      "t": "CI/CD",
+      "h": "25ef1b43"
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "In a large application, the edge generates billions of events per day, and most of it is normal traffic. Scaling security telemetry means continuing to see attacks without paying to store and scan everything else in the same way.",
+      "h": "c6335e82"
+    },
+    "sections.0.body.1": {
+      "t": "Three variables rule: volume (how many events), cardinality (how many distinct values in a field, such as IPs or user agents) and retention (how long each piece of data needs to stay hot).",
+      "h": "adc6b442"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "Aggregating by IP produces millions of groups; by country, dozens. A detection that groups by a high-cardinality key becomes slow and expensive, and metrics with exploding cardinality take down monitoring systems. The rule is to aggregate at the coarsest level that still separates the attack from normal traffic (ASN, prefix, country, user agent family) and go down to the IP only when necessary.",
+      "h": "ba81e44e"
+    },
+    "sections.1.heading": {
+      "t": "Cardinality: the silent enemy",
+      "h": "b64f6793"
+    },
+    "sections.2.body.0": {
+      "t": "Two techniques solve most of the cost: partition tables by time (and cluster by filter columns), so a query reads only the window it needs, and keep per-minute aggregates in a small table for detections and dashboards, leaving raw data for investigation only.",
+      "h": "60c213e7"
+    },
+    "sections.2.code.0.code": {
+      "t": "-- raw table: partitioned by day, clustered by host and path\nCREATE TABLE sec.edge_events (\n  ts TIMESTAMP, client_ip STRING, asn INT64, host STRING,\n  path STRING, status INT64, user_agent STRING, bot_score INT64\n)\nPARTITION BY DATE(ts)\nCLUSTER BY host, path;\n\n-- aggregate: this is what detections read\nCREATE OR REPLACE TABLE sec.edge_1m AS\nSELECT TIMESTAMP_TRUNC(ts, MINUTE) AS minute, host, path, asn,\n       COUNT(*) AS reqs,\n       COUNTIF(status IN (401, 403)) AS denied\nFROM sec.edge_events\nGROUP BY minute, host, path, asn;",
+      "h": "f7428200"
+    },
+    "sections.2.code.0.filename": {
+      "t": "per-minute aggregate (BigQuery)",
+      "h": "316e9373"
+    },
+    "sections.2.heading": {
+      "t": "Partition and pre-aggregate",
+      "h": "c41d635b"
+    },
+    "sections.3.bullets.0": {
+      "t": "Sampling: for uniform, high-volume traffic, keeping a fraction is enough for statistics; relevant security events (blocks, challenges, anomalies) are always kept in full.",
+      "h": "daf2e2c6"
+    },
+    "sections.3.bullets.1": {
+      "t": "Tiered retention: raw for a few days or weeks, aggregates for months, executive indicators for years.",
+      "h": "ff0267f5"
+    },
+    "sections.3.bullets.2": {
+      "t": "Cost per detection: every new rule should estimate how much it reads and how often it runs.",
+      "h": "0ab92078"
+    },
+    "sections.3.bullets.3": {
+      "t": "Resilient pipeline: queues and buffers to absorb spikes without dropping events, and counters to know when something was lost.",
+      "h": "71eda61b"
+    },
+    "sections.3.heading": {
+      "t": "Sampling and tiered retention",
+      "h": "0f73d3f8"
+    },
+    "sections.4.body.0": {
+      "t": "Volume is not just machines: it is the number of rules, exceptions and alerts a team can maintain. Standardizing the schema, naming and versioning detections and automating what is repetitive is what lets the SOC grow with traffic without growing in the same proportion.",
+      "h": "d1e4e6dc"
+    },
+    "sections.4.heading": {
+      "t": "Scaling also means scaling the team",
+      "h": "207779ee"
+    },
+    "short": {
+      "t": "keeping detection fast and cheap when volume explodes",
+      "h": "4cc89df9"
+    },
+    "tagline": {
+      "t": "The same query that runs in seconds over a million events can cost a fortune over a trillion. Scaling security is a data design problem.",
+      "h": "bc9d69b1"
+    },
+    "title": {
+      "t": "Scale: telemetry, cardinality and cost",
+      "h": "f8d012a9"
+    }
+  }
+}

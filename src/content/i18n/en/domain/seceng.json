@@ -1,0 +1,160 @@
+{
+  "entries": {
+    "graph.0.label": {
+      "t": "is validated by",
+      "h": "ff6257b5"
+    },
+    "graph.1.label": {
+      "t": "goes through",
+      "h": "01da61f3"
+    },
+    "graph.2.label": {
+      "t": "becomes a gate",
+      "h": "078b920e"
+    },
+    "graph.3.label": {
+      "t": "is measured by",
+      "h": "bc93526a"
+    },
+    "graph.4.label": {
+      "t": "depends on",
+      "h": "6f80dc82"
+    },
+    "graph.5.label": {
+      "t": "can use",
+      "h": "e6580a19"
+    },
+    "graph.6.label": {
+      "t": "defines the SLO",
+      "h": "f5c55522"
+    },
+    "pipeline.0.description": {
+      "t": "controls described as code",
+      "h": "d6949dbf"
+    },
+    "pipeline.0.gate": {
+      "t": "no infra change without review and passing policy",
+      "h": "a6fae116"
+    },
+    "pipeline.0.items.0.label": {
+      "t": "secure infrastructure as code",
+      "h": "c848286c"
+    },
+    "pipeline.0.items.1.label": {
+      "t": "executable policies",
+      "h": "ea16dc57"
+    },
+    "pipeline.0.items.2.label": {
+      "t": "approved modules and standards",
+      "h": "51fcf9e9"
+    },
+    "pipeline.0.name": {
+      "t": "define",
+      "h": "43de66ba"
+    },
+    "pipeline.1.description": {
+      "t": "a trustworthy pipeline, no static secrets",
+      "h": "29957290"
+    },
+    "pipeline.1.gate": {
+      "t": "the pipeline itself is treated as a target",
+      "h": "56bd07d6"
+    },
+    "pipeline.1.items.0.label": {
+      "t": "ephemeral runners and OIDC",
+      "h": "6cc43ecd"
+    },
+    "pipeline.1.items.1.label": {
+      "t": "pinned actions and dependencies",
+      "h": "675761fe"
+    },
+    "pipeline.1.items.2.label": {
+      "t": "signed artifacts",
+      "h": "5e95bd2b"
+    },
+    "pipeline.1.name": {
+      "t": "deliver",
+      "h": "5e9dab9a"
+    },
+    "pipeline.2.description": {
+      "t": "pipelines that withstand volume and failure",
+      "h": "e661b80e"
+    },
+    "pipeline.2.gate": {
+      "t": "pipeline lag, latency and errors have an SLO and an alert",
+      "h": "799505b3"
+    },
+    "pipeline.2.items.0.label": {
+      "t": "retries, idempotency and backpressure",
+      "h": "d6ddac58"
+    },
+    "pipeline.2.items.1.label": {
+      "t": "observe the pipeline itself",
+      "h": "00f4bba6"
+    },
+    "pipeline.2.name": {
+      "t": "scale",
+      "h": "36a12c9d"
+    },
+    "pipeline.3.description": {
+      "t": "automated response, with brakes",
+      "h": "ee6aa6a0"
+    },
+    "pipeline.3.gate": {
+      "t": "every automation is idempotent, auditable and reversible",
+      "h": "315e4650"
+    },
+    "pipeline.3.items.0.label": {
+      "t": "playbooks as code",
+      "h": "1cbbde02"
+    },
+    "pipeline.3.items.1.label": {
+      "t": "AI in triage and mitigation",
+      "h": "7934a6d7"
+    },
+    "pipeline.3.items.2.label": {
+      "t": "human approval for destructive actions",
+      "h": "1466f625"
+    },
+    "pipeline.3.name": {
+      "t": "automate",
+      "h": "cc88c40e"
+    },
+    "relations.0.label": {
+      "t": "is validated by",
+      "h": "ff6257b5"
+    },
+    "relations.1.label": {
+      "t": "goes through",
+      "h": "01da61f3"
+    },
+    "relations.2.label": {
+      "t": "becomes a gate",
+      "h": "078b920e"
+    },
+    "relations.3.label": {
+      "t": "is measured by",
+      "h": "bc93526a"
+    },
+    "relations.4.label": {
+      "t": "can use",
+      "h": "e6580a19"
+    },
+    "relations.5.label": {
+      "t": "depends on",
+      "h": "6f80dc82"
+    },
+    "relations.6.label": {
+      "t": "defines the SLO",
+      "h": "f5c55522"
+    },
+    "relations.7.label": {
+      "t": "delivers as a paved path",
+      "h": "3d28abb9"
+    },
+    "relations.8.label": {
+      "t": "standardizes",
+      "h": "b1ff3311"
+    }
+  }
+}

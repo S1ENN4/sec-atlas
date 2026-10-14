@@ -1,0 +1,100 @@
+{
+  "entries": {
+    "certifications.0.detail": {
+      "t": "Microsoft · issued Nov 2024, expired Nov 2025",
+      "h": "d5309ff8"
+    },
+    "certifications.0.title": {
+      "t": "Microsoft Certified: Azure AI Engineer Associate",
+      "h": "e77021e9"
+    },
+    "certifications.1.detail": {
+      "t": "Acadi-TI · May 2023",
+      "h": "a1374978"
+    },
+    "certifications.1.title": {
+      "t": "CSAE · Certified Security Architecture Expert",
+      "h": "33571268"
+    },
+    "certifications.2.detail": {
+      "t": "Acadi-TI · 2022",
+      "h": "49ba6a4c"
+    },
+    "certifications.2.title": {
+      "t": "CNSE · Certified Network Security Expert",
+      "h": "ed989e21"
+    },
+    "contentNote": {
+      "t": "This text was produced with AI support (Claude) and is under continuous technical review. Found an error or an inaccuracy? Let me know on LinkedIn: I will fix it and log it in /novidades.",
+      "h": "59aa9ee2"
+    },
+    "education.0.title": {
+      "t": "Postgraduate degree in offensive cybersecurity · Acadi-TI",
+      "h": "9597dc0b"
+    },
+    "education.1.title": {
+      "t": "Systems Analysis and Development (CST) · UniCEUB",
+      "h": "19d38abb"
+    },
+    "experience.0.detail": {
+      "t": "SOC leadership, L7 defense, edge and application telemetry, incident response and post-mortem with hardening.",
+      "h": "45e95287"
+    },
+    "experience.0.title": {
+      "t": "CloudWalk · Security Operations Lead and Security Engineer",
+      "h": "a2b1e3ac"
+    },
+    "experience.1.detail": {
+      "t": "DevSecOps strategy, Azure DevOps pipelines with Defender, security training and workshops.",
+      "h": "de855c82"
+    },
+    "experience.1.title": {
+      "t": "BB Tecnologia e Serviços · Application Security Engineer (Senior)",
+      "h": "66cd8ec4"
+    },
+    "experience.2.detail": {
+      "t": "Code analysis, vulnerability management, secure development and security automation.",
+      "h": "6718373d"
+    },
+    "experience.2.title": {
+      "t": "NOVA8 · Application Security Engineer",
+      "h": "b50ec2b2"
+    },
+    "experience.3.detail": {
+      "t": "GRC and security automations and integrations in Python and NodeJS, serving large enterprise clients.",
+      "h": "d1e43dbc"
+    },
+    "experience.3.title": {
+      "t": "Every Cybersecurity and GRC Solutions · Technology Analyst",
+      "h": "1be9ed25"
+    },
+    "experience.4.detail": {
+      "t": "Linux and Windows servers, automation scripts (Python, Ansible, PowerShell).",
+      "h": "a5929060"
+    },
+    "experience.4.title": {
+      "t": "Vert Integradora de TI · Technical Support",
+      "h": "d217fc8f"
+    },
+    "headline": {
+      "t": "Security Operations Lead · DevSecOps, AppSec and Blue Team",
+      "h": "e326e77d"
+    },
+    "languages.0": {
+      "t": "Portuguese (native)",
+      "h": "c4fa74be"
+    },
+    "languages.1": {
+      "t": "English (fluent)",
+      "h": "8c97bdd2"
+    },
+    "location": {
+      "t": "Brasília, Brazil",
+      "h": "decb7698"
+    },
+    "summary": {
+      "t": "Security operations leader with a background in AppSec and DevSecOps: WAF and L7 defense, incident detection and response, SAST, DAST and SCA in CI/CD pipelines. This site is my public study notebook and portfolio: an interactive map that shows what each check does, where it fits in the pipeline and how the pieces connect.",
+      "h": "3ae5680c"
+    }
+  }
+}

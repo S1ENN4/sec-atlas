@@ -1,0 +1,232 @@
+{
+  "entries": {
+    "groups.0.entries.0.aka": {
+      "t": "identity and access management",
+      "h": "7e5f12b0"
+    },
+    "groups.0.entries.0.meaning": {
+      "t": "El conjunto de políticas, roles y credenciales que dice quién es cada humano, servicio o workload, y qué puede hacer cada uno. En la nube, IAM se convirtió en el nuevo perímetro: el borde de red se volvió poroso, así que la identidad carga la autorización.",
+      "h": "d6ff8cb7"
+    },
+    "groups.0.entries.0.term": {
+      "t": "IAM",
+      "h": "d4ade53b"
+    },
+    "groups.0.entries.1.aka": {
+      "t": "least privilege",
+      "h": "7148e767"
+    },
+    "groups.0.entries.1.meaning": {
+      "t": "Principio de darle a cada identidad solo los permisos estrictamente necesarios para su función, y nada más. Es lo opuesto a 'usuario admin por defecto': cada rol extra es un camino más que un atacante puede usar después de un compromiso.",
+      "h": "18c687bb"
+    },
+    "groups.0.entries.1.term": {
+      "t": "Mínimo privilegio",
+      "h": "057b8475"
+    },
+    "groups.0.entries.2.aka": {
+      "t": "shared responsibility model",
+      "h": "d8196f18"
+    },
+    "groups.0.entries.2.meaning": {
+      "t": "La división clásica entre lo que garantiza el proveedor de nube (seguridad DE la nube: datacenter, hardware, servicio físico) y lo que es responsabilidad del cliente (seguridad EN la nube: datos, IAM, configuración, red). Confundir los dos extremos es la fuente clásica de filtraciones.",
+      "h": "c326b757"
+    },
+    "groups.0.entries.2.term": {
+      "t": "Modelo de responsabilidad compartida",
+      "h": "40899111"
+    },
+    "groups.0.entries.3.aka": {
+      "t": "credential rotation",
+      "h": "047bf77a"
+    },
+    "groups.0.entries.3.meaning": {
+      "t": "Cambiar periódicamente (o ante la sospecha de una filtración) las claves de API, tokens y contraseñas almacenadas en una bóveda. Sin rotación, un secreto expuesto en un log o en un historial de git vale para siempre; con rotación, vale hasta el próximo cambio.",
+      "h": "646e3a4b"
+    },
+    "groups.0.entries.3.term": {
+      "t": "Rotación de secretos",
+      "h": "10012c0f"
+    },
+    "groups.0.entries.4.aka": {
+      "t": "blast radius",
+      "h": "9209a932"
+    },
+    "groups.0.entries.4.meaning": {
+      "t": "El tamaño del daño cuando algo se rompe: una cuenta, una región completa, un tenant. Un buen diseño de nube limita el radio mediante aislamiento (cuentas separadas, VPCs separadas, roles estrechos) para que una falla o un ataque no se convierta en un desastre total.",
+      "h": "4a47fcfb"
+    },
+    "groups.0.entries.4.term": {
+      "t": "Radio de impacto",
+      "h": "c82e3beb"
+    },
+    "groups.0.title": {
+      "t": "identidad y acceso",
+      "h": "f72bcf80"
+    },
+    "groups.1.entries.0.aka": {
+      "t": "security group",
+      "h": "717ffe14"
+    },
+    "groups.1.entries.0.meaning": {
+      "t": "Lista de reglas stateful asociada a una instancia o interfaz de red en la nube: quién puede entrar por qué puerto, desde qué origen. Funciona como firewall de host a nivel de nube, y falla por defecto: si olvidas cerrar un puerto, queda abierto a 0.0.0.0/0.",
+      "h": "ca762138"
+    },
+    "groups.1.entries.0.term": {
+      "t": "Grupo de seguridad",
+      "h": "0e6f423d"
+    },
+    "groups.1.entries.1.aka": {
+      "t": "virtual private cloud",
+      "h": "8c1f9a11"
+    },
+    "groups.1.entries.1.meaning": {
+      "t": "Red privada aislada lógicamente dentro de la nube pública: eliges el rango de IPs, lo divides en subredes públicas y privadas, y controlas el tráfico con route tables y NAT. La VPC es tu datacenter virtual; todo lo que corre dentro conversa como si estuviera en el mismo rack.",
+      "h": "bed01e72"
+    },
+    "groups.1.entries.1.term": {
+      "t": "VPC",
+      "h": "c28b69d3"
+    },
+    "groups.1.entries.2.meaning": {
+      "t": "Reglas de firewall declarativas a nivel de pod (Kubernetes) o de workload (service mesh), que indican qué servicio puede hablar con qué puerto. A diferencia del grupo de seguridad, opera en L7 dentro del clúster, con selectors por label, y es pieza central de la defensa en profundidad para el tráfico east-west.",
+      "h": "e3d93b2e"
+    },
+    "groups.1.entries.2.term": {
+      "t": "Network policy",
+      "h": "ea69d955"
+    },
+    "groups.1.entries.3.aka": {
+      "t": "key management service",
+      "h": "73686660"
+    },
+    "groups.1.entries.3.meaning": {
+      "t": "Servicio administrado que crea, almacena y controla el uso de claves criptográficas. La aplicación rara vez toca la clave maestra: le pide al KMS que cifre o descifre, y el proveedor registra cada uso en un log auditable. Sin KMS, la clave termina en disco y se vuelve un objetivo.",
+      "h": "da653a45"
+    },
+    "groups.1.entries.3.term": {
+      "t": "KMS",
+      "h": "25e1e91f"
+    },
+    "groups.1.entries.4.meaning": {
+      "t": "Patrón de dos capas: una clave de datos (DEK) cifra el payload, y una clave del KMS (KEK) cifra la DEK. La aplicación guarda la DEK cifrada junto a los datos, y solo llama al KMS para desenvolver la DEK cuando necesita usarla. Reduce las llamadas al KMS y limita la exposición de la clave maestra.",
+      "h": "cf44ca59"
+    },
+    "groups.1.entries.4.term": {
+      "t": "Envelope encryption",
+      "h": "0411d2df"
+    },
+    "groups.1.title": {
+      "t": "red y datos",
+      "h": "34295edd"
+    },
+    "groups.2.entries.0.meaning": {
+      "t": "Modelo que parte de la premisa de no confiar en nadie por su posición en la red: cada solicitud se autentica, se autoriza y se registra, incluso si viene de la red interna. Reemplaza el castillo con foso por verificación continua en cada puerta, humana o de servicio.",
+      "h": "e0e94076"
+    },
+    "groups.2.entries.0.term": {
+      "t": "Zero trust",
+      "h": "34fee458"
+    },
+    "groups.2.entries.1.aka": {
+      "t": "cloud security posture management",
+      "h": "8863ef04"
+    },
+    "groups.2.entries.1.meaning": {
+      "t": "Herramienta que escanea la configuración de tu nube contra buenas prácticas y benchmarks (CIS, NIST), señalando buckets S3 públicos, IAM demasiado amplio, puertos expuestos. Hace la pregunta que los humanos olvidan: '¿qué está mal configurado AHORA?'.",
+      "h": "815b29c4"
+    },
+    "groups.2.entries.1.term": {
+      "t": "CSPM",
+      "h": "a6c9b210"
+    },
+    "groups.2.entries.2.aka": {
+      "t": "cloud workload protection platform",
+      "h": "7fe1216f"
+    },
+    "groups.2.entries.2.meaning": {
+      "t": "Protección monitoreada para workloads en ejecución: VMs, contenedores, funciones serverless. Combina visibilidad de lo que corre (procesos, syscalls, red) con prevención (bloquear la ejecución, aislar anomalías). Es el endpoint security reformulado para la realidad efímera de la nube.",
+      "h": "ee277a34"
+    },
+    "groups.2.entries.2.term": {
+      "t": "CWPP",
+      "h": "7f8b3cea"
+    },
+    "groups.2.entries.3.aka": {
+      "t": "configuration drift",
+      "h": "bdad5f72"
+    },
+    "groups.2.entries.3.meaning": {
+      "t": "Cuando la infraestructura viva se aleja del estado declarado: alguien abrió un puerto en la consola, un bucket quedó público, un rol de IAM se volvió admin. El drift es configuración acumulada fuera del control de versiones, y la mejor cura es IaC con revisión: todo lo que cambia pasa por código.",
+      "h": "507b1df9"
+    },
+    "groups.2.entries.3.term": {
+      "t": "Drift",
+      "h": "4876f7b9"
+    },
+    "groups.2.entries.4.aka": {
+      "t": "endurecimiento",
+      "h": "b8063fc5"
+    },
+    "groups.2.entries.4.meaning": {
+      "t": "Reducir la superficie de una workload a lo esencial: deshabilitar servicios no usados, cerrar puertos, quitar paquetes superfluos, aplicar un baseline (CIS). Es el equivalente en la nube de quitar la contraseña por defecto y cerrar las ventanas: aburrido, repetitivo, y la diferencia entre un blanco fácil y uno costoso.",
+      "h": "8193eb24"
+    },
+    "groups.2.entries.4.term": {
+      "t": "Hardening",
+      "h": "1244d2e7"
+    },
+    "groups.2.entries.5.aka": {
+      "t": "cloudtrail",
+      "h": "103d4d54"
+    },
+    "groups.2.entries.5.meaning": {
+      "t": "Registro inmutable de cada llamada de API hecha en la cuenta de la nube: quién llamó a qué, desde dónde, con qué resultado. Es la caja negra de la cuenta: después de una filtración, responde '¿qué hizo el atacante y cuándo?'. Sin trazabilidad no hay investigación ni contención informada.",
+      "h": "e59f3d84"
+    },
+    "groups.2.entries.5.term": {
+      "t": "Trazabilidad de auditoría",
+      "h": "a489874f"
+    },
+    "groups.2.title": {
+      "t": "postura y detección",
+      "h": "f8c3a46d"
+    },
+    "groups.3.entries.0.aka": {
+      "t": "mean time to respond",
+      "h": "657cbd6d"
+    },
+    "groups.3.entries.0.meaning": {
+      "t": "Tiempo promedio entre la confirmación de un incidente y su contención. Es la métrica que muestra si los runbooks y la automatización funcionan de verdad, y la que más baja cuando la respuesta se practica en ejercicios.",
+      "h": "85a4c54e"
+    },
+    "groups.3.entries.0.term": {
+      "t": "MTTR",
+      "h": "b97d3367"
+    },
+    "groups.3.entries.1.meaning": {
+      "t": "Guion paso a paso para un tipo de incidente (clave filtrada, instancia comprometida). Escrito antes de la crisis, probado en game days y, cuando es posible, convertido en automatización.",
+      "h": "a69fb2cf"
+    },
+    "groups.3.entries.1.term": {
+      "t": "Runbook",
+      "h": "fda8fb7d"
+    },
+    "groups.3.entries.2.aka": {
+      "t": "chain of custody",
+      "h": "e97038b3"
+    },
+    "groups.3.entries.2.meaning": {
+      "t": "Registro de quién recolectó, guardó y manipuló cada evidencia digital, y cuándo. Sin ella, la prueba pierde valor para auditorías y para una eventual disputa legal.",
+      "h": "8b407a3c"
+    },
+    "groups.3.entries.2.term": {
+      "t": "Cadena de custodia",
+      "h": "b4e88a31"
+    },
+    "groups.3.title": {
+      "t": "respuesta a incidentes",
+      "h": "4d3e9f1c"
+    }
+  }
+}

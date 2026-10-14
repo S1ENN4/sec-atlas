@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Cada permiso extra es un camino más para el atacante tras un compromiso.",
+      "h": "55d7dc14"
+    },
+    "questions.0.options.0": {
+      "t": "Dar a cada identidad solo el acceso necesario para su función",
+      "h": "29e8b6e5"
+    },
+    "questions.0.options.1": {
+      "t": "Dar acceso total y revocarlo después",
+      "h": "0abd6243"
+    },
+    "questions.0.options.2": {
+      "t": "Usar una única cuenta compartida",
+      "h": "cbad66b8"
+    },
+    "questions.0.options.3": {
+      "t": "Bloquear todo acceso a la nube",
+      "h": "160a4bee"
+    },
+    "questions.0.q": {
+      "t": "¿Qué significa mínimo privilegio (least privilege)?",
+      "h": "142103d8"
+    },
+    "questions.1.explain": {
+      "t": "Las credenciales efímeras reducen la ventana de uso de cualquier filtración.",
+      "h": "a630fb42"
+    },
+    "questions.1.options.0": {
+      "t": "Los roles entregan credenciales temporales que expiran solas",
+      "h": "76e38b17"
+    },
+    "questions.1.options.1": {
+      "t": "Los roles no necesitan policies",
+      "h": "b921c852"
+    },
+    "questions.1.options.2": {
+      "t": "Los roles tienen permisos ilimitados",
+      "h": "abb9de7f"
+    },
+    "questions.1.options.3": {
+      "t": "Las claves estáticas son más rápidas",
+      "h": "10f6396f"
+    },
+    "questions.1.q": {
+      "t": "¿Por qué los roles son preferibles a los usuarios con clave estática para workloads?",
+      "h": "17fe0fed"
+    },
+    "questions.2.explain": {
+      "t": "Eso permite que cualquier identidad autenticada asuma el rol.",
+      "h": "1552f1f5"
+    },
+    "questions.2.options.0": {
+      "t": "Principal: \"*\" sin condiciones",
+      "h": "0977c0ec"
+    },
+    "questions.2.options.1": {
+      "t": "Una condición de MFA",
+      "h": "df4ad149"
+    },
+    "questions.2.options.2": {
+      "t": "Una cuenta específica listada",
+      "h": "e1413fe4"
+    },
+    "questions.2.options.3": {
+      "t": "Un servicio de AWS como principal",
+      "h": "1cb95c7c"
+    },
+    "questions.2.q": {
+      "t": "En una trust policy, ¿qué es una señal de alerta?",
+      "h": "c63915b5"
+    }
+  }
+}

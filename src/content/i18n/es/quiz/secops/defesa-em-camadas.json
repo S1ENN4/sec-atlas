@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Sin eso, cualquiera que descubra la dirección real ignora toda la protección del borde.",
+      "h": "f8a74ce0"
+    },
+    "questions.0.options.0": {
+      "t": "De lo contrario el atacante habla directo con el origen y elude el WAF, los bots y los límites",
+      "h": "f0782322"
+    },
+    "questions.0.options.1": {
+      "t": "Para reducir el costo de almacenamiento",
+      "h": "5e3c33da"
+    },
+    "questions.0.options.2": {
+      "t": "Para acelerar el DNS",
+      "h": "15de3272"
+    },
+    "questions.0.options.3": {
+      "t": "Porque el origen no soporta HTTPS",
+      "h": "00dee44f"
+    },
+    "questions.0.q": {
+      "t": "¿Por qué cerrar el origen para aceptar tráfico solo del borde?",
+      "h": "6aaa8195"
+    },
+    "questions.1.explain": {
+      "t": "Los pagos tienden a cerrar; las páginas públicas tienden a abrir. La decisión debe ser consciente y probada.",
+      "h": "c04ceea2"
+    },
+    "questions.1.options.0": {
+      "t": "Si el control falla, el tráfico se bloquea: seguro, pero no disponible",
+      "h": "62dbe66a"
+    },
+    "questions.1.options.1": {
+      "t": "Si el control falla, el tráfico pasa",
+      "h": "97fdda59"
+    },
+    "questions.1.options.2": {
+      "t": "El control nunca falla",
+      "h": "049dab4a"
+    },
+    "questions.1.options.3": {
+      "t": "El sistema se reinicia solo",
+      "h": "20c7f431"
+    },
+    "questions.1.q": {
+      "t": "¿Qué significa fail-closed?",
+      "h": "b0315d75"
+    },
+    "questions.2.explain": {
+      "t": "Cada capa cubre el punto ciego de la anterior: el borde se ocupa de lo que no depende del negocio.",
+      "h": "f1bf0031"
+    },
+    "questions.2.options.0": {
+      "t": "El borde no conoce el contexto de negocio, como quién puede ver ese pedido",
+      "h": "8f942f16"
+    },
+    "questions.2.options.1": {
+      "t": "El borde no lee cabeceras",
+      "h": "c3473b48"
+    },
+    "questions.2.options.2": {
+      "t": "Porque la aplicación es más rápida",
+      "h": "217350ea"
+    },
+    "questions.2.options.3": {
+      "t": "Porque el borde no soporta HTTPS",
+      "h": "dc0ec1eb"
+    },
+    "questions.2.q": {
+      "t": "¿Por qué la autorización por objeto no puede quedarse solo en el borde?",
+      "h": "70b1c0a1"
+    }
+  }
+}

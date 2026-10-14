@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Layer 7 attacks use the application's own protocol (HTTP) to exploit logic, credentials or capacity. Many look like legitimate traffic request by request, and only the whole reveals the pattern, so detection is largely statistical and behavioral.",
+      "h": "34801bf0"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.bullets.0": {
+      "t": "Credential stuffing: many login attempts with leaked username/password pairs, failures (401) in volume, many IPs and user agents, few attempts per account.",
+      "h": "a804a22b"
+    },
+    "sections.1.bullets.1": {
+      "t": "L7 DDoS: request spike to a few expensive paths (search, reports), many IPs, low rate per IP but very high in aggregate.",
+      "h": "b7979ea8"
+    },
+    "sections.1.bullets.2": {
+      "t": "Forced browsing: scanning of nonexistent or administrative paths (/admin, /.git, /backup), an explosion of 404 and 403 from one origin.",
+      "h": "220643b2"
+    },
+    "sections.1.bullets.3": {
+      "t": "Probing and IDOR: a sequence of identifiers in order (/orders/1001, 1002, 1003...) within the same session, seeking access to other users' objects.",
+      "h": "a7b196d5"
+    },
+    "sections.1.bullets.4": {
+      "t": "SSRF: URL parameters pointing to internal or metadata addresses (169.254.169.254, localhost), in fields the application fetches server-side.",
+      "h": "07f3e475"
+    },
+    "sections.1.bullets.5": {
+      "t": "Injections (SQL, command, template): syntax characters and keywords in parameters, headers or body, often as probing attempts before the real attack.",
+      "h": "0225883e"
+    },
+    "sections.1.heading": {
+      "t": "Six patterns and the signature of each",
+      "h": "b0a7aa17"
+    },
+    "sections.2.body.0": {
+      "t": "For each pattern, the question is \"which field, in what window and grouped by what reveals this?\". Credential stuffing, for example, is not visible by IP (the botnet distributes), but it is visible in the failure ratio by ASN or by fingerprint, and in the number of distinct accounts tried per origin.",
+      "h": "0abcbf6f"
+    },
+    "sections.2.code.0.code": {
+      "t": "credential stuffing -> login failures / minute per ASN, distinct accounts per fingerprint\nL7 DDoS             -> reqs / minute per expensive path, ratio vs hourly baseline\nforced browsing     -> 404+403 per origin, distinct paths per window\nIDOR                -> sequential IDs per session, denied access to others' objects\nSSRF                -> parameters with private IP/metadata in URL fields\ninjection           -> syntax tokens in parameters, repeated and varying",
+      "h": "362b65d2"
+    },
+    "sections.2.code.0.filename": {
+      "t": "hypotheses per pattern",
+      "h": "1aed08f7"
+    },
+    "sections.2.heading": {
+      "t": "From pattern to detection hypothesis",
+      "h": "0b8fa778"
+    },
+    "sections.3.body.0": {
+      "t": "When you block by IP, the attack changes IP; when you block by user agent, it rotates. The most durable detections anchor on characteristics that are hard to change: fingerprints, behavior, the target's own logic. And every change in pattern should become a new detection or an adjustment, recorded together with the incident that motivated it.",
+      "h": "9d9199da"
+    },
+    "sections.3.heading": {
+      "t": "Attackers adapt",
+      "h": "ca8d45fd"
+    },
+    "short": {
+      "t": "a taxonomy of application-layer abuse",
+      "h": "4c7a5140"
+    },
+    "tagline": {
+      "t": "Every L7 attack leaves a signature in the logs. Knowing each pattern is what turns an ocean of requests into hypotheses you can test.",
+      "h": "01665730"
+    },
+    "title": {
+      "t": "L7 attacks: what to look for",
+      "h": "44179bf9"
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Signature and digest pin the artifact's identity; mutable tags may point to something else tomorrow.",
+      "h": "b2eac31c"
+    },
+    "questions.0.options.0": {
+      "t": "To guarantee that what runs is exactly what was built and approved",
+      "h": "c5b85888"
+    },
+    "questions.0.options.1": {
+      "t": "To reduce the image size",
+      "h": "4a089e73"
+    },
+    "questions.0.options.2": {
+      "t": "To speed up the pull",
+      "h": "d4052922"
+    },
+    "questions.0.options.3": {
+      "t": "To do away with scanners",
+      "h": "51f037f5"
+    },
+    "questions.0.q": {
+      "t": "Why should images be immutable and signed?",
+      "h": "35e6f8d2"
+    },
+    "questions.1.explain": {
+      "t": "Fewer packages mean fewer CVEs and fewer tools available to an intruder.",
+      "h": "c90f71c5"
+    },
+    "questions.1.options.0": {
+      "t": "Using a minimal base (distroless/alpine) and removing unnecessary tools",
+      "h": "5b19e335"
+    },
+    "questions.1.options.1": {
+      "t": "Installing a full shell and debug utilities",
+      "h": "365f7ba2"
+    },
+    "questions.1.options.2": {
+      "t": "Running as root",
+      "h": "2f7d1810"
+    },
+    "questions.1.options.3": {
+      "t": "Using the latest tag",
+      "h": "891d84e8"
+    },
+    "questions.1.q": {
+      "t": "Which practice reduces an image's attack surface?",
+      "h": "f6cdcb40"
+    },
+    "questions.2.explain": {
+      "t": "You inherit everything the base image and layers bring, including what is compromised.",
+      "h": "95edd526"
+    },
+    "questions.2.options.0": {
+      "t": "A compromised base image or dependency getting into your image",
+      "h": "3b33503e"
+    },
+    "questions.2.options.1": {
+      "t": "The registry running out of space",
+      "h": "5f3bf61f"
+    },
+    "questions.2.options.2": {
+      "t": "The node's CPU running out",
+      "h": "3ec867b0"
+    },
+    "questions.2.options.3": {
+      "t": "Docker changing versions",
+      "h": "270c8575"
+    },
+    "questions.2.q": {
+      "t": "What is the container supply chain risk?",
+      "h": "9f194890"
+    }
+  }
+}

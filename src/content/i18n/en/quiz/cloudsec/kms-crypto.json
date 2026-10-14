@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "The master key never leaves the KMS, and the encrypted data key can travel with the data.",
+      "h": "be8069a9"
+    },
+    "questions.0.options.0": {
+      "t": "Encrypting the data with a data key, and encrypting that key with a KMS master key",
+      "h": "f3822e92"
+    },
+    "questions.0.options.1": {
+      "t": "Encrypting twice with the same key",
+      "h": "c482a80e"
+    },
+    "questions.0.options.2": {
+      "t": "Storing the key next to the data in plain text",
+      "h": "9f1114f4"
+    },
+    "questions.0.options.3": {
+      "t": "Using only public keys",
+      "h": "22ff8750"
+    },
+    "questions.0.q": {
+      "t": "What is envelope encryption?",
+      "h": "15d83334"
+    },
+    "questions.1.explain": {
+      "t": "Encrypting is pointless if the key's policy is too permissive.",
+      "h": "16d53971"
+    },
+    "questions.1.options.0": {
+      "t": "Whoever can use the key can decrypt everything it protects",
+      "h": "2574640c"
+    },
+    "questions.1.options.1": {
+      "t": "Because keys expire in hours",
+      "h": "42b2a257"
+    },
+    "questions.1.options.2": {
+      "t": "Because the KMS is slow",
+      "h": "7e2c24d1"
+    },
+    "questions.1.options.3": {
+      "t": "Because keys take up space",
+      "h": "2848f336"
+    },
+    "questions.1.q": {
+      "t": "Why is access to the key in the KMS so critical?",
+      "h": "dc32cff5"
+    },
+    "questions.2.explain": {
+      "t": "Separation of duties and rotation reduce the impact of any abuse.",
+      "h": "fcda5546"
+    },
+    "questions.2.options.0": {
+      "t": "Automatic rotation and separation between who administers and who uses the key",
+      "h": "e3bfedf4"
+    },
+    "questions.2.options.1": {
+      "t": "Sharing the key by email",
+      "h": "23b2618e"
+    },
+    "questions.2.options.2": {
+      "t": "Never rotating",
+      "h": "560d63ce"
+    },
+    "questions.2.options.3": {
+      "t": "Using the same key in all environments",
+      "h": "853f5d85"
+    },
+    "questions.2.q": {
+      "t": "Which practice is recommended for keys?",
+      "h": "8027dd0d"
+    }
+  }
+}

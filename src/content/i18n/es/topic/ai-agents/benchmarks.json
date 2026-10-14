@@ -1,0 +1,136 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Un benchmark es un dataset congelado más un protocolo de ejecución más un número publicado. Alguien arma 500 tareas, fija la métrica, ejecuta varios modelos en el mismo hardware y divulga una tabla. Tú repites el experimento, obtienes un número y lo comparas con la tabla. Es el mismo modelo del SDLC clásico: la prueba es estable, el sujeto varía, el veredicto es comparable.",
+      "h": "874a50e3"
+    },
+    "sections.0.body.1": {
+      "t": "Para el agente la mecánica cambia un poco. Los benchmarks públicos suelen ser demasiado estáticos (respuesta única, sin interacción) o sintéticos (clientes simulados que parecen humanos sin tener matices). Por eso el benchmark es un punto de partida, nunca un punto de llegada.",
+      "h": "cc599fc4"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "SWE-bench (Verified) es el estándar de facto para coding agents. Cerca de 500 issues reales de GitHub, cada una con la descripción del bug y el test que valida el fix. El agente recibe el repositorio, lee el código, propone un patch y corre los tests. Un agente que resuelve patches resuelve N% del benchmark.",
+      "h": "ef6afbea"
+    },
+    "sections.1.body.1": {
+      "t": "GAIA mide agentes de propósito general en tareas multi-hop (cruzar fuentes, leer PDF, sumar valores). Mezcla herramienta, razonamiento y recuperación. Es el benchmark más usado para comparar agentes que navegan la web.",
+      "h": "530e66b9"
+    },
+    "sections.1.body.2": {
+      "t": "τ-bench (tau-bench) se enfoca en el diálogo agente vs usuario simulado, con herramientas y políticas. Mide si el agente cumple la tarea del cliente sin reventar el presupuesto de tool calls. Es una referencia reciente (2024) y ganó tracción en atención al cliente.",
+      "h": "5a9affd1"
+    },
+    "sections.1.body.3": {
+      "t": "HumanEval es el padre de todos: 164 problemas de código en Python, función genera función, los asserts validan. Sigue siendo útil como sanity check de un modelo puro, pero cualquier agente moderno lo pasa sin sudar.",
+      "h": "04527fb4"
+    },
+    "sections.1.heading": {
+      "t": "Los cuatro que importan",
+      "h": "5c2bbe04"
+    },
+    "sections.2.body.0": {
+      "t": "La mayoría de los benchmarks publica un harness en Python que estandariza la ejecución. El esqueleto de abajo muestra la mecánica de iteración sobre los casos, exponiendo el agente como una función pura para que el harness pueda comparar la salida con el gabarito:",
+      "h": "21a0d7c7"
+    },
+    "sections.2.code.0.code": {
+      "t": "import json\nfrom datasets import load_dataset\nfrom agent import solve  # función de tu agente\n\nCASES = load_dataset(\"princeton-nlp/SWE-bench_Verified\", split=\"test\")\n\ndef run(limit: int | None = None):\n    passed = 0\n    total = 0\n    failures = []\n    for case in CASES:\n        if limit and total >= limit:\n            break\n        total += 1\n        try:\n            patch = solve(case[\"repo\"], case[\"problem_statement\"])\n            ok = apply_and_test(case[\"instance_id\"], patch, case[\"test_patch\"])\n            if ok:\n                passed += 1\n            else:\n                failures.append((case[\"instance_id\"], \"tests_failed\"))\n        except Exception as e:\n            failures.append((case[\"instance_id\"], f\"exception:{type(e).__name__}\"))\n    return {\"passed\": passed, \"total\": total, \"failures\": failures}\n\nif __name__ == \"__main__\":\n    print(json.dumps(run(limit=50), indent=2))",
+      "h": "cb287881"
+    },
+    "sections.2.code.0.filename": {
+      "t": "run_benchmark.py",
+      "h": "9d8ea8c2"
+    },
+    "sections.2.heading": {
+      "t": "Corriendo un benchmark local",
+      "h": "75778138"
+    },
+    "sections.3.body.0": {
+      "t": "Cuando el dataset es público y el resultado se vuelve métrica de marketing, alguien aprende a hackear el benchmark. El caso más didáctico es el de la contamination: el modelo se entrena con texto que contiene los casos del benchmark, y la 'respuesta' se vuelve memorización disfrazada de razonamiento. Otro truco es el cherry-picking: correr el agente 10 veces, escoger la mejor ejecución y publicarla.",
+      "h": "b1fd747c"
+    },
+    "sections.3.body.1": {
+      "t": "Defensa práctica. La primera es correr el benchmark a ciegas: nunca dejes que el agente lea la solución esperada, y trunca el dataset si se va a filtrar por el contexto. La segunda es cruzar con un dataset privado que mantienes en secreto, del mismo formato, y exigir que los dos avancen juntos. La tercera es monitorear la brecha entre benchmark y producción, e investigar siempre que diverja.",
+      "h": "91875e53"
+    },
+    "sections.3.heading": {
+      "t": "El riesgo del overfitting",
+      "h": "b65d5edb"
+    },
+    "sections.4.body.0": {
+      "t": "El benchmark es estático, finito y público. La producción es infinita, ruidosa y llena de cola larga (usuario frustrado, prompt injection, consulta ambigua). Un agente puede sacar 80% en GAIA y aun así ser malo para el usuario real.",
+      "h": "48d65cfb"
+    },
+    "sections.4.body.1": {
+      "t": "La lectura de sentido común trata el benchmark como triaje y el dataset privado como fuente de verdad. Publicar el número en el README es marketing honesto. Confiar en él para cerrar un release es una tontería.",
+      "h": "8237cb09"
+    },
+    "sections.4.heading": {
+      "t": "Benchmark versus producción",
+      "h": "3a0c9223"
+    },
+    "sections.5.body.0": {
+      "t": "Empieza por el workload. Si tu agente lee código, SWE-bench. Si conversa con clientes, τ-bench. Si hace investigación web, GAIA. Si el trabajo es generación pura, HumanEval resuelve.",
+      "h": "2b570f14"
+    },
+    "sections.5.body.1": {
+      "t": "Después mira la versión. SWE-bench Verified es el subconjunto validado por humanos del SWE-bench original. Siempre prefiere la versión verificada cuando exista, porque reduce el ruido de casos ambiguos.",
+      "h": "52382faf"
+    },
+    "sections.5.body.2": {
+      "t": "Por último, mide el costo. Cada caso tiene un presupuesto de tokens y tool calls. Compara el costo por caso resuelto, no solo la tasa de acierto. Un agente que resuelve 60% con la mitad de los tokens suele ser mejor que uno que resuelve 80% con el doble.",
+      "h": "d48c57c8"
+    },
+    "sections.5.heading": {
+      "t": "Cómo elegir el benchmark correcto",
+      "h": "0af455a7"
+    },
+    "sections.6.bullets.0": {
+      "t": "comparación directa entre modelos y entre proveedores, con la misma regla",
+      "h": "dc511ae5"
+    },
+    "sections.6.bullets.1": {
+      "t": "las regresiones obvias (el proveedor empeoró el modelo entre versiones) saltan a la vista",
+      "h": "caa4f772"
+    },
+    "sections.6.bullets.2": {
+      "t": "costo predecible por caso, útil para el presupuesto de API",
+      "h": "96e04001"
+    },
+    "sections.6.heading": {
+      "t": "Puntos fuertes",
+      "h": "a2ebc02c"
+    },
+    "sections.7.bullets.0": {
+      "t": "contamination: el benchmark puede filtrarse al entrenamiento del modelo evaluado",
+      "h": "a709578e"
+    },
+    "sections.7.bullets.1": {
+      "t": "la cola larga de la producción no aparece: un caso raro que tumba al 1% de los usuarios no está en los 500",
+      "h": "2ddc59c3"
+    },
+    "sections.7.bullets.2": {
+      "t": "gaming: el tiempo gastado en hackear el benchmark rara vez mejora al agente real",
+      "h": "478d74f0"
+    },
+    "sections.7.heading": {
+      "t": "Limitaciones",
+      "h": "149d05f7"
+    },
+    "short": {
+      "t": "conjuntos públicos para comparar agentes y LLMs",
+      "h": "31f38af2"
+    },
+    "tagline": {
+      "t": "Los benchmarks (SWE-bench, GAIA, τ-bench, HumanEval) dan una referencia compartida: corres el agente sobre el mismo dataset que otros publicaron y el número habla el mismo idioma. Riesgo clásico: optimizar para el benchmark y perder en el mundo real.",
+      "h": "3560c5e5"
+    },
+    "title": {
+      "t": "Benchmarks - referencia pública",
+      "h": "3e0c51c7"
+    }
+  }
+}

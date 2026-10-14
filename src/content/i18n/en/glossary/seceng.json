@@ -1,0 +1,104 @@
+{
+  "entries": {
+    "groups.0.entries.0.aka": {
+      "t": "infrastructure as code",
+      "h": "2c829da3"
+    },
+    "groups.0.entries.0.meaning": {
+      "t": "Describing infrastructure in versioned files (Terraform, Ansible). It brings review, history and testing to configuration, but replicates mistakes at scale if it is not scanned.",
+      "h": "df376e28"
+    },
+    "groups.0.entries.0.term": {
+      "t": "IaC",
+      "h": "aca5adb7"
+    },
+    "groups.0.entries.1.meaning": {
+      "t": "Divergence between the real state of the infrastructure and the state described in code, usually caused by a manual change. Detecting it keeps the code as the source of truth.",
+      "h": "de969caf"
+    },
+    "groups.0.entries.1.term": {
+      "t": "Drift",
+      "h": "4876f7b9"
+    },
+    "groups.0.entries.2.aka": {
+      "t": "OPA",
+      "h": "5acccc31"
+    },
+    "groups.0.entries.2.meaning": {
+      "t": "Declarative language of Open Policy Agent for writing policies evaluated against an input (a Terraform plan, a Kubernetes manifest, an API request).",
+      "h": "c84addac"
+    },
+    "groups.0.entries.2.term": {
+      "t": "Rego",
+      "h": "1b6b2dc4"
+    },
+    "groups.0.entries.3.meaning": {
+      "t": "The pipeline proves its identity to the cloud provider with a short-lived token and receives temporary credentials, eliminating static keys stored as secrets.",
+      "h": "50439549"
+    },
+    "groups.0.entries.3.term": {
+      "t": "Pipeline OIDC",
+      "h": "ed3ed092"
+    },
+    "groups.0.entries.4.meaning": {
+      "t": "Framework of assurance levels for the build chain: who built the artifact, from which source and in which environment, with verifiable provenance.",
+      "h": "765dab66"
+    },
+    "groups.0.entries.4.term": {
+      "t": "SLSA",
+      "h": "20e837d4"
+    },
+    "groups.0.title": {
+      "t": "infrastructure and policy as code",
+      "h": "1d67bea6"
+    },
+    "groups.1.entries.0.meaning": {
+      "t": "Distance between the end of the log and the consumer's position. It is the most direct sign that detection is running late.",
+      "h": "48aa37a8"
+    },
+    "groups.1.entries.0.term": {
+      "t": "Lag",
+      "h": "215953ae"
+    },
+    "groups.1.entries.1.meaning": {
+      "t": "Property of an operation that, when repeated, produces the same result as a single execution. The basis for tolerating duplicate deliveries without acting twice.",
+      "h": "af43b4d8"
+    },
+    "groups.1.entries.1.term": {
+      "t": "Idempotency",
+      "h": "daf256a5"
+    },
+    "groups.1.entries.2.aka": {
+      "t": "dead letter queue",
+      "h": "171b83b8"
+    },
+    "groups.1.entries.2.meaning": {
+      "t": "Queue for events that could not be processed after the retries. It avoids blocking the flow and preserves the event for analysis.",
+      "h": "f9a10e20"
+    },
+    "groups.1.entries.2.term": {
+      "t": "DLQ",
+      "h": "1871b697"
+    },
+    "groups.1.entries.3.meaning": {
+      "t": "Mechanism by which a slow consumer makes the producer slow down (or the excess is deliberately dropped), instead of memory growing without bound.",
+      "h": "a07ed6eb"
+    },
+    "groups.1.entries.3.term": {
+      "t": "Backpressure",
+      "h": "bfded4a2"
+    },
+    "groups.1.entries.4.meaning": {
+      "t": "Security orchestration, automation and response: running response steps automatically, described in playbooks, with brakes such as human approval and auditing.",
+      "h": "d8ffac83"
+    },
+    "groups.1.entries.4.term": {
+      "t": "SOAR",
+      "h": "4a59ea58"
+    },
+    "groups.1.title": {
+      "t": "scale and reliability",
+      "h": "b5348730"
+    }
+  }
+}

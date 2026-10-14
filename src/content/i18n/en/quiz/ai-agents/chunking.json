@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Well-defined pieces are the unit that will be indexed and retrieved.",
+      "h": "c550e3d1"
+    },
+    "questions.0.options.0": {
+      "t": "Splitting documents into pieces that fit in the context and preserve meaning",
+      "h": "f0fe1f7d"
+    },
+    "questions.0.options.1": {
+      "t": "Compressing the model",
+      "h": "ad80f426"
+    },
+    "questions.0.options.2": {
+      "t": "Removing stop words from the prompt",
+      "h": "fc39f592"
+    },
+    "questions.0.options.3": {
+      "t": "Encrypting the corpus",
+      "h": "50875204"
+    },
+    "questions.0.q": {
+      "t": "What is chunking?",
+      "h": "86a3b657"
+    },
+    "questions.1.explain": {
+      "t": "Loose sentences lose what explains them; the balance is size with coherence.",
+      "h": "b99525ca"
+    },
+    "questions.1.options.0": {
+      "t": "Lose context and produce retrievals without complete meaning",
+      "h": "d67e8190"
+    },
+    "questions.1.options.1": {
+      "t": "Always increase precision",
+      "h": "84dd283b"
+    },
+    "questions.1.options.2": {
+      "t": "Eliminate the need for embeddings",
+      "h": "63de573f"
+    },
+    "questions.1.options.3": {
+      "t": "Prevent prompt injection",
+      "h": "ef524e88"
+    },
+    "questions.1.q": {
+      "t": "Chunks that are too small tend to...",
+      "h": "0309d822"
+    },
+    "questions.2.explain": {
+      "t": "Overlap preserves continuity when the cut falls in the middle of an idea.",
+      "h": "90854ec8"
+    },
+    "questions.2.options.0": {
+      "t": "To prevent a piece of information from being cut exactly at the boundary between two pieces",
+      "h": "9ddac43f"
+    },
+    "questions.2.options.1": {
+      "t": "To double the cost",
+      "h": "05112a6b"
+    },
+    "questions.2.options.2": {
+      "t": "To speed up search",
+      "h": "64dbc20b"
+    },
+    "questions.2.options.3": {
+      "t": "To reduce the index size",
+      "h": "a3915b51"
+    },
+    "questions.2.q": {
+      "t": "What is overlap between chunks for?",
+      "h": "50e189aa"
+    }
+  }
+}

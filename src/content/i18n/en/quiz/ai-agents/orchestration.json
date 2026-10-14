@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "It decides who does what and in what sequence in a multi-agent flow.",
+      "h": "4b2afb13"
+    },
+    "questions.0.options.0": {
+      "t": "Several agents or steps, defining order, parallelism and context passing",
+      "h": "0bc2383e"
+    },
+    "questions.0.options.1": {
+      "t": "Only the model's training",
+      "h": "dd01821a"
+    },
+    "questions.0.options.2": {
+      "t": "Report printing",
+      "h": "cacb1487"
+    },
+    "questions.0.options.3": {
+      "t": "Image compression",
+      "h": "d39507b3"
+    },
+    "questions.0.q": {
+      "t": "What does orchestration coordinate?",
+      "h": "9964947d"
+    },
+    "questions.1.explain": {
+      "t": "One agent's output is the next one's input; trust should not be transitive.",
+      "h": "03e4aa69"
+    },
+    "questions.1.options.0": {
+      "t": "A compromised agent contaminating the others with instructions or data",
+      "h": "aae10c59"
+    },
+    "questions.1.options.1": {
+      "t": "Lack of tokens",
+      "h": "60c309d5"
+    },
+    "questions.1.options.2": {
+      "t": "The flow being too fast",
+      "h": "628f3844"
+    },
+    "questions.1.options.3": {
+      "t": "Having too many comments in the code",
+      "h": "7fde5e66"
+    },
+    "questions.1.q": {
+      "t": "What is a risk in multi-agent systems?",
+      "h": "0fff6f86"
+    },
+    "questions.2.explain": {
+      "t": "Limits on steps, time and cost are basic safety brakes.",
+      "h": "72cb3e5f"
+    },
+    "questions.2.options.0": {
+      "t": "To avoid infinite loops and runaway cost",
+      "h": "26e66abf"
+    },
+    "questions.2.options.1": {
+      "t": "To make the model more creative",
+      "h": "aea232eb"
+    },
+    "questions.2.options.2": {
+      "t": "To increase the context",
+      "h": "7b23ce51"
+    },
+    "questions.2.options.3": {
+      "t": "To turn off the logs",
+      "h": "f02b0bb8"
+    },
+    "questions.2.q": {
+      "t": "Why limit the number of iterations of an agent?",
+      "h": "cf2c79b6"
+    }
+  }
+}

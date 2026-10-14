@@ -1,0 +1,80 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "La ingeniería de detección es la disciplina de crear, mantener y medir las reglas que convierten la telemetría en alerta o acción. En lugar de consultas sueltas en una consola, cada detección es un artefacto: tiene nombre, descripción, fuente de datos, lógica, severidad, respuesta prevista y un responsable.",
+      "h": "7a2d134a"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "Las firmas reconocen algo conocido: un patrón de payload, una ruta, un fingerprint. Son precisas y baratas, pero solo atrapan lo que ya se vio. Las heurísticas miden comportamiento: una desviación de volumen, de razón o de composición, y atrapan variaciones nuevas a costa de más falsos positivos.",
+      "h": "450e40a7"
+    },
+    "sections.1.body.1": {
+      "t": "La biblioteca sana tiene ambas: firmas para lo conocido y heurísticas para el resto, con las heurísticas pasando por más observación antes de actuar.",
+      "h": "26c252cb"
+    },
+    "sections.1.heading": {
+      "t": "Firmas y heurísticas",
+      "h": "6859ad4d"
+    },
+    "sections.2.body.0": {
+      "t": "Una heurística simple y eficaz compara el conteo actual con el historial reciente de la misma clave. Si el conteo está muy por encima de la media, en desviaciones estándar, es candidato a alerta. La consulta de abajo calcula, por ASN, el z-score de los fallos de inicio de sesión por minuto contra la última hora.",
+      "h": "cff0edca"
+    },
+    "sections.2.code.0.code": {
+      "t": "WITH per_min AS (\n  SELECT TIMESTAMP_TRUNC(ts, MINUTE) AS minute, asn, COUNT(*) AS fails\n  FROM sec.edge_events\n  WHERE path = '/api/login' AND status = 401\n    AND ts >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 70 MINUTE)\n  GROUP BY minute, asn\n),\nstats AS (\n  SELECT asn, AVG(fails) AS mu, STDDEV_POP(fails) AS sigma\n  FROM per_min\n  WHERE minute < TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 10 MINUTE)\n  GROUP BY asn\n)\nSELECT p.minute, p.asn, p.fails,\n       SAFE_DIVIDE(p.fails - s.mu, s.sigma) AS z\nFROM per_min p JOIN stats s USING (asn)\nWHERE p.minute >= TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 10 MINUTE)\n  AND SAFE_DIVIDE(p.fails - s.mu, s.sigma) > 4\nORDER BY z DESC;",
+      "h": "1f6c816e"
+    },
+    "sections.2.code.0.filename": {
+      "t": "login_failures_zscore.sql (BigQuery)",
+      "h": "c97f9fb2"
+    },
+    "sections.2.heading": {
+      "t": "Anomalía con z-score",
+      "h": "a5c79b59"
+    },
+    "sections.3.body.0": {
+      "t": "La clave de agrupación define lo que la detección ve: prefijo de red, ASN, user agent, país. Las claves finas atrapan ataques concentrados y generan ruido; las gruesas atrapan oleadas distribuidas y esconden focos. Las buenas detecciones suelen existir en más de una granularidad, cada una con su umbral.",
+      "h": "50c31aef"
+    },
+    "sections.3.heading": {
+      "t": "¿Agrupar por qué?",
+      "h": "9827c300"
+    },
+    "sections.4.bullets.0": {
+      "t": "Versionadas en un repositorio, con revisión por pares antes de llegar a producción.",
+      "h": "e2f94af9"
+    },
+    "sections.4.bullets.1": {
+      "t": "Probadas contra eventos de ataque conocidos (positivos) y tráfico normal (negativos).",
+      "h": "8d43c149"
+    },
+    "sections.4.bullets.2": {
+      "t": "Pasando por las mismas fases que las reglas de bloqueo: observación, shadow y solo después acción.",
+      "h": "d3fb73fb"
+    },
+    "sections.4.bullets.3": {
+      "t": "Retiradas cuando dejan de aportar valor: una detección que nadie mira es deuda.",
+      "h": "9545522e"
+    },
+    "sections.4.heading": {
+      "t": "Detecciones como código",
+      "h": "f67e398e"
+    },
+    "short": {
+      "t": "tratar las detecciones como software: versionadas, probadas y medidas",
+      "h": "40fb78fb"
+    },
+    "tagline": {
+      "t": "Una biblioteca de detecciones combina firmas y heurísticas, cada una con responsable, prueba y métrica, y evoluciona como cualquier código: por revisión, versión y datos.",
+      "h": "07a4f957"
+    },
+    "title": {
+      "t": "Ingeniería de detección",
+      "h": "8a854c54"
+    }
+  }
+}

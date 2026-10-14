@@ -1,0 +1,104 @@
+{
+  "entries": {
+    "groups.0.entries.0.aka": {
+      "t": "infraestructura como código",
+      "h": "2c829da3"
+    },
+    "groups.0.entries.0.meaning": {
+      "t": "Describir la infraestructura en archivos versionados (Terraform, Ansible). Aporta revisión, historial y pruebas a la configuración, pero replica errores a escala si no se escanea.",
+      "h": "df376e28"
+    },
+    "groups.0.entries.0.term": {
+      "t": "IaC",
+      "h": "aca5adb7"
+    },
+    "groups.0.entries.1.meaning": {
+      "t": "Divergencia entre el estado real de la infraestructura y el descrito en el código, normalmente por un cambio manual. Detectarlo mantiene el código como fuente de verdad.",
+      "h": "de969caf"
+    },
+    "groups.0.entries.1.term": {
+      "t": "Drift",
+      "h": "4876f7b9"
+    },
+    "groups.0.entries.2.aka": {
+      "t": "OPA",
+      "h": "5acccc31"
+    },
+    "groups.0.entries.2.meaning": {
+      "t": "Lenguaje declarativo de Open Policy Agent para escribir políticas que se evalúan sobre una entrada (un plan de Terraform, un manifiesto de Kubernetes, una solicitud de API).",
+      "h": "c84addac"
+    },
+    "groups.0.entries.2.term": {
+      "t": "Rego",
+      "h": "1b6b2dc4"
+    },
+    "groups.0.entries.3.meaning": {
+      "t": "El pipeline demuestra su identidad al proveedor de nube con un token de corta duración y recibe credenciales temporales, eliminando las claves estáticas guardadas como secretos.",
+      "h": "50439549"
+    },
+    "groups.0.entries.3.term": {
+      "t": "OIDC en el pipeline",
+      "h": "ed3ed092"
+    },
+    "groups.0.entries.4.meaning": {
+      "t": "Framework de niveles de garantía para la cadena de build: quién construyó el artefacto, a partir de qué fuente y en qué entorno, con procedencia verificable.",
+      "h": "765dab66"
+    },
+    "groups.0.entries.4.term": {
+      "t": "SLSA",
+      "h": "20e837d4"
+    },
+    "groups.0.title": {
+      "t": "infraestructura y política como código",
+      "h": "1d67bea6"
+    },
+    "groups.1.entries.0.meaning": {
+      "t": "Distancia entre el final del log y la posición del consumidor. Es la señal más directa de que la detección va atrasada.",
+      "h": "48aa37a8"
+    },
+    "groups.1.entries.0.term": {
+      "t": "Lag",
+      "h": "215953ae"
+    },
+    "groups.1.entries.1.meaning": {
+      "t": "Propiedad de una operación que, al repetirse, produce el mismo resultado que una sola ejecución. Base para tolerar entregas duplicadas sin actuar dos veces.",
+      "h": "af43b4d8"
+    },
+    "groups.1.entries.1.term": {
+      "t": "Idempotencia",
+      "h": "daf256a5"
+    },
+    "groups.1.entries.2.aka": {
+      "t": "dead letter queue",
+      "h": "171b83b8"
+    },
+    "groups.1.entries.2.meaning": {
+      "t": "Cola para los eventos que no pudieron procesarse tras los reintentos. Evita bloquear el flujo y conserva el evento para su análisis.",
+      "h": "f9a10e20"
+    },
+    "groups.1.entries.2.term": {
+      "t": "DLQ",
+      "h": "1871b697"
+    },
+    "groups.1.entries.3.meaning": {
+      "t": "Mecanismo por el cual un consumidor lento hace que el productor desacelere (o que el exceso se descarte de forma deliberada), en lugar de que la memoria crezca sin límite.",
+      "h": "a07ed6eb"
+    },
+    "groups.1.entries.3.term": {
+      "t": "Backpressure",
+      "h": "bfded4a2"
+    },
+    "groups.1.entries.4.meaning": {
+      "t": "Orquestación, automatización y respuesta de seguridad: ejecutar pasos de respuesta de forma automática, descritos en playbooks, con frenos como la aprobación humana y la auditoría.",
+      "h": "d8ffac83"
+    },
+    "groups.1.entries.4.term": {
+      "t": "SOAR",
+      "h": "4a59ea58"
+    },
+    "groups.1.title": {
+      "t": "escala y confiabilidad",
+      "h": "b5348730"
+    }
+  }
+}

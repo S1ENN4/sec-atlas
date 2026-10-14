@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "The policy becomes a gate that answers in seconds and is applied equally to everyone.",
+      "h": "eb5bb45f"
+    },
+    "questions.0.options.0": {
+      "t": "Security rules expressed in an executable language, evaluated automatically on every change",
+      "h": "643c0239"
+    },
+    "questions.0.options.1": {
+      "t": "A versioned policy manual in PDF",
+      "h": "6693968c"
+    },
+    "questions.0.options.2": {
+      "t": "A comment in the code about security",
+      "h": "ed2d7114"
+    },
+    "questions.0.options.3": {
+      "t": "A type of license",
+      "h": "8bd27f35"
+    },
+    "questions.0.q": {
+      "t": "What is policy as code?",
+      "h": "37b8336b"
+    },
+    "questions.1.explain": {
+      "t": "Cases that must pass and cases that must be denied give confidence in the rule.",
+      "h": "922dce87"
+    },
+    "questions.1.options.0": {
+      "t": "Without tests a rule may stop catching anything, or block legitimate changes",
+      "h": "fddad9e3"
+    },
+    "questions.1.options.1": {
+      "t": "Because Rego does not compile without tests",
+      "h": "ea863788"
+    },
+    "questions.1.options.2": {
+      "t": "To reduce the file size",
+      "h": "07d48657"
+    },
+    "questions.1.options.3": {
+      "t": "Because OPA requires it",
+      "h": "fc6a89f7"
+    },
+    "questions.1.q": {
+      "t": "Why test policies written in Rego?",
+      "h": "0b596a56"
+    },
+    "questions.2.explain": {
+      "t": "It is the same ladder as with a WAF: observation, shadow and enforcement.",
+      "h": "0e8a8b9d"
+    },
+    "questions.2.options.0": {
+      "t": "Start in warning mode, measure, fix the legacy and only then block",
+      "h": "933d71e5"
+    },
+    "questions.2.options.1": {
+      "t": "Block immediately in production",
+      "h": "8c8ce179"
+    },
+    "questions.2.options.2": {
+      "t": "Apply it only in test environments forever",
+      "h": "b6437ba4"
+    },
+    "questions.2.options.3": {
+      "t": "Create exceptions with no expiry",
+      "h": "bd7b57a0"
+    },
+    "questions.2.q": {
+      "t": "What is the healthy way to adopt a new policy without blocking everyone?",
+      "h": "c6b54ea6"
+    }
+  }
+}

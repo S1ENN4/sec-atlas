@@ -1,0 +1,80 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "SOAR (security orchestration, automation and response) is the set of practices and tools that run response steps automatically: enriching an alert, checking reputation, opening a ticket, isolating a resource, blocking a source. A playbook is the script of those steps.",
+      "h": "43e67371"
+    },
+    "sections.0.body.1": {
+      "t": "Treating playbooks as code (in a repository, with review, tests and versions) avoids the chaos of flows clicked together in an interface that nobody can audit or reproduce.",
+      "h": "083bec00"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.bullets.0": {
+      "t": "Idempotency: running the playbook twice for the same alert must not duplicate the effect (see the reliability topic).",
+      "h": "92a6a3af"
+    },
+    "sections.1.bullets.1": {
+      "t": "Human approval for destructive or wide-reaching actions: blocking an entire ASN, disabling a production account, taking down a service.",
+      "h": "5f679574"
+    },
+    "sections.1.bullets.2": {
+      "t": "Dry-run: every action must be able to run in simulated mode, showing what it would do, for testing and for the shadow phase of a new automation.",
+      "h": "6be88f7c"
+    },
+    "sections.1.bullets.3": {
+      "t": "Auditing and rollback: each action records who (or what) ran it, for which alert, and has a defined undo, preferably with an expiry (TTL).",
+      "h": "cf81cca0"
+    },
+    "sections.1.heading": {
+      "t": "The four brakes",
+      "h": "5ead34d6"
+    },
+    "sections.2.body.0": {
+      "t": "The example shows the structure: enrich, decide by rule, apply a time-limited action and require approval when the reach is large. The integration functions (blocking client, approval, audit) are illustrative.",
+      "h": "2ff4edab"
+    },
+    "sections.2.code.0.code": {
+      "t": "from dataclasses import dataclass\n\nTTL_SECONDS = 1800          # every block expires\nAPPROVAL_ABOVE = 50         # wide reach requires a human\n\n@dataclass\nclass Alert:\n    id: str\n    source_ips: list[str]\n    confidence: float\n\ndef run(alert: Alert, *, dry_run: bool = True) -> str:\n    if audit.already_handled(alert.id):          # idempotency\n        return \"skip: already handled\"\n    if alert.confidence < 0.9:\n        return \"skip: low confidence, goes to human triage\"\n\n    if len(alert.source_ips) > APPROVAL_ABOVE and not approvals.granted(alert.id):\n        approvals.request(alert.id, reason=\"wide block\")\n        return \"pending: awaiting approval\"\n\n    for ip in alert.source_ips:\n        blocker.block(ip, ttl=TTL_SECONDS, dry_run=dry_run)\n    audit.record(alert.id, action=\"block\", ips=alert.source_ips, dry_run=dry_run)\n    return \"ok\"",
+      "h": "740a9aa5"
+    },
+    "sections.2.code.0.filename": {
+      "t": "playbook_block_source.py",
+      "h": "7ac06a49"
+    },
+    "sections.2.heading": {
+      "t": "A playbook in Python",
+      "h": "3a611944"
+    },
+    "sections.3.body.0": {
+      "t": "Real playbooks have waits (an approval that takes hours), retries and parts that fail. Durable workflow engines (such as Temporal) store the state of each execution, resume from the right point after a failure and give visibility into what is in progress, which tends to be more robust than chaining scripts.",
+      "h": "f6b3d64b"
+    },
+    "sections.3.heading": {
+      "t": "Durable orchestration",
+      "h": "b2ae1cfa"
+    },
+    "sections.4.body.0": {
+      "t": "Automation is a powerful identity: it blocks, revokes and deletes. Give it least-privilege permissions per action, keep its credentials in a vault with rotation, and treat the playbook repository and pipeline with the same rigor as any system with production access. A compromised automation is a ready-made attack tool.",
+      "h": "00ff15bd"
+    },
+    "sections.4.heading": {
+      "t": "Automation secrets and permissions",
+      "h": "a657270d"
+    },
+    "short": {
+      "t": "automated response with brakes: idempotent, auditable and reversible",
+      "h": "1333ecee"
+    },
+    "tagline": {
+      "t": "Automating response takes minutes off every incident, but a poorly designed automation is an incident waiting to happen. What separates the two are the brakes.",
+      "h": "2c6d03cb"
+    },
+    "title": {
+      "t": "Security automation and playbooks as code",
+      "h": "c611a9fd"
+    }
+  }
+}

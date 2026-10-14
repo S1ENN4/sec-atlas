@@ -1,0 +1,132 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Un LLM (Large Language Model) es un modelo generativo entrenado para predecir la siguiente unidad de texto (token) dado todo lo que vino antes. En vez de 'saber' hechos como una enciclopedia, aprendió patrones de lenguaje, código, razonamiento y conocimiento del mundo incrustados en los datos de entrenamiento.",
+      "h": "ba02738c"
+    },
+    "sections.0.body.1": {
+      "t": "Cuando envías una pregunta, el modelo no consulta nada: lee todo el contexto que le entregaste (system prompt, historial, retrieval, salidas de herramientas) y continúa el patrón. La calidad de la respuesta depende casi por completo de lo que hay en ese contexto, no de lo que el modelo 'sabe'.",
+      "h": "0f31cdfa"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "Los modelos no leen palabras, leen tokens: fragmentos de texto que pueden ser una palabra entera, parte de una palabra, un número o un símbolo. Un párrafo en portugués típicamente se convierte en 1,3x más tokens que palabras. Esto importa porque todo se cuenta en tokens: prompt de entrada, respuesta de salida, costo, latencia y el límite de la ventana de contexto.",
+      "h": "5dd784c6"
+    },
+    "sections.1.body.1": {
+      "t": "La ventana de contexto es el tamaño máximo que el modelo puede mirar de una vez, medido en miles (K) o millones (M). Si pasas el límite, el comienzo del diálogo deja de existir para el modelo. Por eso existen técnicas como el retrieval, el resumen y el recorte de historial.",
+      "h": "7083d46b"
+    },
+    "sections.1.code.0.code": {
+      "t": "  'Olá, mundo'                     -> 3 tokens  ('Ol', 'á', ', mundo')\n  'Grandes modelos de linguagem'    -> 7 tokens\n  'functionCalling'                 -> 6 tokens  (3 palabras + 3 subpalabras)\n\n  regla práctica PT-BR:  ~1 token por 0,75 palabra\n  regla práctica EN:    ~1 token por 0,75 palabra",
+      "h": "313d75ad"
+    },
+    "sections.1.code.0.filename": {
+      "t": "conteo aproximado de tokens",
+      "h": "806d497e"
+    },
+    "sections.1.heading": {
+      "t": "Tokens: la unidad real del modelo",
+      "h": "2753c935"
+    },
+    "sections.2.body.0": {
+      "t": "El system prompt es el mensaje de sistema que define el comportamiento del modelo: rol, restricciones, formato de salida, política de rechazo. Es la única parte del contexto que el usuario común no escribe, y por eso es la más valiosa.",
+      "h": "e3f9fce4"
+    },
+    "sections.2.body.1": {
+      "t": "Un buen system prompt describe tres bloques: identidad y propósito, reglas duras (lo que el modelo nunca debe hacer) y formato de salida (cómo responder). Cuanto más específico, menos inventa el modelo.",
+      "h": "1eeec18b"
+    },
+    "sections.2.code.0.code": {
+      "t": "Eres un agente de soporte técnico de la empresa X.\n\nReglas:\n  - responde en portugués de Brasil, tono profesional y directo\n  - si no sabes la respuesta, di 'no sé' y ofrece abrir un ticket\n  - nunca inventes precios, plazos ni números de protocolo\n\nFormato:\n  - respuestas en máximo 3 párrafos\n  - cita el artículo de la base de conocimiento cuando lo uses (formato KB-[IDX])",
+      "h": "fa987014"
+    },
+    "sections.2.code.0.filename": {
+      "t": "system prompt mínimo",
+      "h": "fa7d4a1e"
+    },
+    "sections.2.heading": {
+      "t": "System prompt: el contrato con el modelo",
+      "h": "8c9b19aa"
+    },
+    "sections.3.body.0": {
+      "t": "Cada llamada al modelo tiene dos componentes de costo: tokens de entrada (lo que envías) y tokens de salida (lo que genera). Los tokens de salida suelen costar de 3 a 5 veces más que los de entrada en las APIs comerciales, porque la generación es serial y más cara para el proveedor.",
+      "h": "07901f77"
+    },
+    "sections.3.body.1": {
+      "t": "La latencia sigue dos reglas simples: el tiempo hasta el primer carácter depende del tamaño del prompt, y el tiempo total depende de cuántos tokens genera el modelo. Por eso los prompts grandes tardan en empezar y las respuestas largas tardan en terminar, y por eso 'sé conciso' en el system prompt ahorra dinero real.",
+      "h": "48d1ca5d"
+    },
+    "sections.3.code.0.code": {
+      "t": "  prompt:      2.000 tokens de entrada\n  respuesta:   400 tokens de salida\n\n  precio (ejemplo genérico):\n    entrada  US$ 3 / 1M tokens  -> US$ 0,006\n    salida   US$ 15 / 1M tokens -> US$ 0,006\n    total                          US$ 0,012 por llamada\n\n  a 10.000 llamadas/mes con el mismo patrón: ~US$ 120/mes",
+      "h": "9742bb63"
+    },
+    "sections.3.code.0.filename": {
+      "t": "costo estimado por llamada",
+      "h": "91660453"
+    },
+    "sections.3.heading": {
+      "t": "Costo y latencia",
+      "h": "c4f8bc67"
+    },
+    "sections.4.bullets.0": {
+      "t": "consultar datos externos por su cuenta: sin retrieval ni herramienta, solo sabe lo que estaba en el entrenamiento",
+      "h": "9331b2c3"
+    },
+    "sections.4.bullets.1": {
+      "t": "recordar conversaciones pasadas: entre llamadas el modelo es stateless; cada turno empieza de cero",
+      "h": "c1dc9e7a"
+    },
+    "sections.4.bullets.2": {
+      "t": "ejecutar código: el modelo devuelve strings, incluso strings que parecen código; la ejecución queda a cargo del runtime",
+      "h": "9cd48342"
+    },
+    "sections.4.bullets.3": {
+      "t": "garantizar verdad factual: las alucinaciones son el estado por defecto cuando el modelo completa patrones sin anclaje en una fuente",
+      "h": "46f7f26f"
+    },
+    "sections.4.bullets.4": {
+      "t": "guardar secretos por sí solo: los secretos en el system prompt no se mantienen secretos para siempre; el prompt se filtra vía logs exfiltrados",
+      "h": "597b8f40"
+    },
+    "sections.4.heading": {
+      "t": "Lo que el modelo no hace",
+      "h": "c38e7545"
+    },
+    "sections.5.bullets.0": {
+      "t": "ventana de contexto finita: si pasas el límite, el historial desaparece; si pasas el límite, cambia el costo de la vista.",
+      "h": "6e19ee12"
+    },
+    "sections.5.bullets.1": {
+      "t": "el modelo no es determinístico: la misma pregunta puede generar respuestas distintas en cada llamada; la temperatura controla esto",
+      "h": "53cd1d0b"
+    },
+    "sections.5.bullets.2": {
+      "t": "conocimiento desactualizado: el entrenamiento tiene una fecha de corte; lo que cambió después no existe para el modelo",
+      "h": "b7c4db66"
+    },
+    "sections.5.bullets.3": {
+      "t": "el costo crece con el uso: los agentes que llaman al LLM varias veces por tarea multiplican el costo, por las veces de uso",
+      "h": "a0020c53"
+    },
+    "sections.5.heading": {
+      "t": "Limitaciones",
+      "h": "149d05f7"
+    },
+    "short": {
+      "t": "el modelo que genera texto a partir del contexto",
+      "h": "6303ecdc"
+    },
+    "tagline": {
+      "t": "El LLM es el motor generativo del agente: recibe contexto (system prompt, historial, retrieval, herramientas) y produce la siguiente respuesta. No consulta una base de hechos; usa el contexto para parecer que consulta.",
+      "h": "cd4d5c63"
+    },
+    "title": {
+      "t": "LLM - large language model",
+      "h": "705d297d"
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "It is one of the main indicators of the effectiveness of runbooks and automation.",
+      "h": "89b4350c"
+    },
+    "questions.0.options.0": {
+      "t": "The average time from attack confirmation to its containment",
+      "h": "ed349654"
+    },
+    "questions.0.options.1": {
+      "t": "The monthly cost of the tool",
+      "h": "9c092e28"
+    },
+    "questions.0.options.2": {
+      "t": "The average latency of the site",
+      "h": "2da35faa"
+    },
+    "questions.0.options.3": {
+      "t": "The number of active rules",
+      "h": "7a5a789c"
+    },
+    "questions.0.q": {
+      "t": "What does MTTC measure?",
+      "h": "ac449bac"
+    },
+    "questions.1.explain": {
+      "t": "There is a trade-off: the threshold is a business decision backed by data.",
+      "h": "f4d5811f"
+    },
+    "questions.1.options.0": {
+      "t": "Recall tends to rise and precision to fall, with more false positives",
+      "h": "3ef29c30"
+    },
+    "questions.1.options.1": {
+      "t": "Both always rise",
+      "h": "1c74ab85"
+    },
+    "questions.1.options.2": {
+      "t": "Nothing changes",
+      "h": "9eb7c031"
+    },
+    "questions.1.options.3": {
+      "t": "The detection stops working",
+      "h": "9064e568"
+    },
+    "questions.1.q": {
+      "t": "What happens to precision when a detection's sensitivity is greatly increased?",
+      "h": "e7d8f342"
+    },
+    "questions.2.explain": {
+      "t": "The proof is precision rising while recall holds.",
+      "h": "dc2ff703"
+    },
+    "questions.2.options.0": {
+      "t": "Reduce false positives without losing coverage",
+      "h": "e6ee8bfc"
+    },
+    "questions.2.options.1": {
+      "t": "Turn off noisy rules",
+      "h": "d80e3f92"
+    },
+    "questions.2.options.2": {
+      "t": "Increase the number of alerts",
+      "h": "83ac153e"
+    },
+    "questions.2.options.3": {
+      "t": "Eliminate recall",
+      "h": "4ae8112e"
+    },
+    "questions.2.q": {
+      "t": "What is the stated goal of weekly tuning?",
+      "h": "db3b47af"
+    }
+  }
+}

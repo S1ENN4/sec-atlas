@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "CSPM mira la postura (configuración), no el comportamiento del workload.",
+      "h": "32070a67"
+    },
+    "questions.0.options.0": {
+      "t": "Evalúa continuamente la configuración de la nube contra buenas prácticas y detecta desvíos",
+      "h": "7d0a1ebd"
+    },
+    "questions.0.options.1": {
+      "t": "Protege procesos en runtime dentro de contenedores",
+      "h": "092c0bc3"
+    },
+    "questions.0.options.2": {
+      "t": "Cifra volúmenes",
+      "h": "bd88fd6f"
+    },
+    "questions.0.options.3": {
+      "t": "Gestiona identidades humanas",
+      "h": "9a25b7ca"
+    },
+    "questions.0.q": {
+      "t": "¿Qué hace el CSPM?",
+      "h": "63d70a03"
+    },
+    "questions.1.explain": {
+      "t": "La configuración incorrecta de recursos es el territorio de CSPM.",
+      "h": "b738e24e"
+    },
+    "questions.1.options.0": {
+      "t": "Un bucket de almacenamiento público sin necesidad",
+      "h": "97c6893e"
+    },
+    "questions.1.options.1": {
+      "t": "Un proceso sospechoso en un contenedor",
+      "h": "a496126c"
+    },
+    "questions.1.options.2": {
+      "t": "Una inyección SQL",
+      "h": "d407d55a"
+    },
+    "questions.1.options.3": {
+      "t": "Un paquete con CVE en el código",
+      "h": "a5a19c47"
+    },
+    "questions.1.q": {
+      "t": "¿Qué hallazgo es típico de CSPM?",
+      "h": "19c7f3d9"
+    },
+    "questions.2.explain": {
+      "t": "Los cambios manuales fuera del código crean drift, y CSPM es lo que lo detecta.",
+      "h": "2d9ae964"
+    },
+    "questions.2.options.0": {
+      "t": "Que la configuración real diverja del estado deseado o aprobado",
+      "h": "fcf92e48"
+    },
+    "questions.2.options.1": {
+      "t": "Que aumente la latencia de la red",
+      "h": "f802cd3d"
+    },
+    "questions.2.options.2": {
+      "t": "Que baje el costo de la nube",
+      "h": "cc9294e3"
+    },
+    "questions.2.options.3": {
+      "t": "Un error de DNS",
+      "h": "32b87601"
+    },
+    "questions.2.q": {
+      "t": "¿Qué es el drift de configuración?",
+      "h": "4f4301b1"
+    }
+  }
+}

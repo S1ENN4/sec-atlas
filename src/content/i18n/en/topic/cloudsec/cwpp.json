@@ -1,0 +1,132 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "CWPP (Cloud Workload Protection Platform) is the sensor inside the workload: VM, container, serverless function, Kubernetes host. CSPM looks at configuration; CWPP looks at behavior. It sees syscalls, network connections, processes, file reads, binary modification, and correlates that against rules and models.",
+      "h": "e5495a7b"
+    },
+    "sections.0.body.1": {
+      "t": "When everything goes right, CWPP does not show up: a rule detection log, a discreet alert in the SIEM, and the workload keeps running. When it goes wrong, it is the difference between a crypto miner running for six months and being cut off in three minutes.",
+      "h": "ea55599f"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "The classic choice is agent-based (a process that starts inside the workload and intercepts events) versus eBPF-based (programs running inside the kernel, with no extra process). Each has trade-offs.",
+      "h": "c81d0fc6"
+    },
+    "sections.1.bullets.0": {
+      "t": "user-space agent (Falco, Aqua): broad visibility, easy to update, but it is one more attackable process",
+      "h": "15621c70"
+    },
+    "sections.1.bullets.1": {
+      "t": "eBPF (Tetragon, Cilium Tetragon, Datadog USM): instruments the kernel directly, no extra process, but rules are more limited to what the kernel exposes via hooks",
+      "h": "b30bcc32"
+    },
+    "sections.1.bullets.2": {
+      "t": "kernel module: maximum visibility, but compromises compatibility with managed kernels (GKE, optimized EKS)",
+      "h": "4e13e1f3"
+    },
+    "sections.1.bullets.3": {
+      "t": "per-pod sidecar: isolates the sensor from the workload, useful when the workload cannot be modified, but costs more resources",
+      "h": "f15459be"
+    },
+    "sections.1.heading": {
+      "t": "How it works: agents and eBPF",
+      "h": "c51be251"
+    },
+    "sections.2.body.0": {
+      "t": "The rule does not ask 'which process is running?', it asks 'is this process doing something it has never done before?'. The classic form is a signature over syscalls: process, container, syscall, condition. The modern form is a behavior model (baseline per workload) that triggers on anomalies, not signatures.",
+      "h": "dbd31480"
+    },
+    "sections.2.body.1": {
+      "t": "Falco is the open standard for signatures. The rule below catches the classic pattern of a shell being opened inside a container, something no legitimate application does in production:",
+      "h": "21cadc11"
+    },
+    "sections.2.code.0.code": {
+      "t": "- rule: Terminal shell in container\n  desc: >\n    Detect shell spawned inside a workload container.\n    Legitimate workloads never open an interactive shell at runtime;\n    this is a strong indicator of intrusion or hands-on-keyboard activity.\n  condition: >\n    container and\n    spawned_process and\n    proc.name in (shell_binaries)\n  output: >\n    shell=%proc.name parent=%proc.pname cmdline=%proc.cmdline\n    container=%container.name image=%container.image.repository\n    k8s=%k8s.ns.name/%k8s.pod.name\n  priority: WARNING\n  tags: [container, mitre_execution, mitre_T1059]",
+      "h": "4fe54549"
+    },
+    "sections.2.code.0.filename": {
+      "t": "falco-rule.yaml",
+      "h": "24e18499"
+    },
+    "sections.2.heading": {
+      "t": "Behavioral detection: rules about what happens",
+      "h": "cf9b1f26"
+    },
+    "sections.3.body.0": {
+      "t": "Detection without response is just noise. CWPP has three levers, in increasing order of aggressiveness:",
+      "h": "a2b07c5e"
+    },
+    "sections.3.bullets.0": {
+      "t": "alert: sends an event to the SIEM/SOAR, a human decides. No change to the workload",
+      "h": "48f8f46f"
+    },
+    "sections.3.bullets.1": {
+      "t": "network isolation: a NetworkPolicy or security group starts blocking the pod/VM's egress, cutting exfiltration while keeping the process alive for forensics",
+      "h": "591d12c8"
+    },
+    "sections.3.bullets.2": {
+      "t": "kill / quarantine: terminates the process, snapshots the filesystem for analysis, container removed. It is the right response when the rule is certainty (not anomaly)",
+      "h": "fda4a9cb"
+    },
+    "sections.3.heading": {
+      "t": "Response: from warning to cutoff",
+      "h": "0021edea"
+    },
+    "sections.4.body.0": {
+      "t": "CWPP lives after the deploy. It assumes CSPM did its part (configuration OK), containers were hardened (runtime OK), and now the question is: what is happening in here? It plugs into the SIEM alongside CloudTrail, VPC flow logs and endpoint EDR for correlation (shell in the container + STS AssumeRole token in the same 30s window = critical incident).",
+      "h": "4926ef92"
+    },
+    "sections.4.heading": {
+      "t": "Where it fits",
+      "h": "006bc762"
+    },
+    "sections.5.bullets.0": {
+      "t": "detects what no configuration catches: zero-day in a legitimate process, exfiltration over an allowed channel, persistence on a clean filesystem",
+      "h": "30e5a9f1"
+    },
+    "sections.5.bullets.1": {
+      "t": "behavior-based rules catch families of attacks, not a specific CVE: a reverse shell in any language triggers the same rule",
+      "h": "9330ed3a"
+    },
+    "sections.5.bullets.2": {
+      "t": "closing the loop: a filesystem snapshot after detection becomes evidence for the incident, not a prescription for the next attacker",
+      "h": "8b24b3b9"
+    },
+    "sections.5.heading": {
+      "t": "Strengths",
+      "h": "a2ebc02c"
+    },
+    "sections.6.bullets.0": {
+      "t": "an agent inside the workload is new surface: a bug in the sensor becomes RCE inside the node, and history has examples",
+      "h": "29c18a01"
+    },
+    "sections.6.bullets.1": {
+      "t": "telemetry cost at scale: instrumenting a thousand containers with eBPF seems free until the log goes to the SIEM, and the bill comes from the provider's switch",
+      "h": "ea4cd2aa"
+    },
+    "sections.6.bullets.2": {
+      "t": "behavioral false positives break trust: a rule that is too good is a rule everyone silences; tuning is permanent work, not a one-time setup",
+      "h": "471c4220"
+    },
+    "sections.6.heading": {
+      "t": "Limitations",
+      "h": "149d05f7"
+    },
+    "short": {
+      "t": "runtime and workload behavior",
+      "h": "729ff927"
+    },
+    "tagline": {
+      "t": "Cloud Workload Protection Platform watches what happens inside the VM, container and serverless function: syscalls, connections and processes, at execution time.",
+      "h": "01e4c427"
+    },
+    "title": {
+      "t": "CWPP - workload protection",
+      "h": "c00163b1"
+    }
+  }
+}

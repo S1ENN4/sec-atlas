@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "They are protection layers before and after the model.",
+      "h": "fa5beec1"
+    },
+    "questions.0.options.0": {
+      "t": "Filtering and restricting inputs and outputs to keep the system within safe limits",
+      "h": "3a7eb041"
+    },
+    "questions.0.options.1": {
+      "t": "Increasing the model's creativity",
+      "h": "e40fc21e"
+    },
+    "questions.0.options.2": {
+      "t": "Replacing the prompt",
+      "h": "8e166ee5"
+    },
+    "questions.0.options.3": {
+      "t": "Compressing the context",
+      "h": "7e818a9c"
+    },
+    "questions.0.q": {
+      "t": "What is the role of guardrails?",
+      "h": "93de4791"
+    },
+    "questions.1.explain": {
+      "t": "Defense in depth: the filter is one layer, not the only barrier.",
+      "h": "84399e9d"
+    },
+    "questions.1.options.0": {
+      "t": "They can be bypassed, so they must add to minimal permissions and isolation",
+      "h": "47da92e6"
+    },
+    "questions.1.options.1": {
+      "t": "Because they are always perfect",
+      "h": "1a8b34b1"
+    },
+    "questions.1.options.2": {
+      "t": "Because the model always ignores them",
+      "h": "fd38f7a0"
+    },
+    "questions.1.options.3": {
+      "t": "Because they slow everything down",
+      "h": "72bbcafa"
+    },
+    "questions.1.q": {
+      "t": "Why are guardrails alone not enough?",
+      "h": "a86453c8"
+    },
+    "questions.2.explain": {
+      "t": "The output check prevents leakage even when the model errs.",
+      "h": "ce878c61"
+    },
+    "questions.2.options.0": {
+      "t": "Detecting and masking personal data in the response before delivering it",
+      "h": "82314fed"
+    },
+    "questions.2.options.1": {
+      "t": "Increasing the context size",
+      "h": "03332f06"
+    },
+    "questions.2.options.2": {
+      "t": "Switching the model",
+      "h": "74294219"
+    },
+    "questions.2.options.3": {
+      "t": "Reindexing the documents",
+      "h": "16c0839e"
+    },
+    "questions.2.q": {
+      "t": "Which example is an output guardrail?",
+      "h": "96fa50e6"
+    }
+  }
+}

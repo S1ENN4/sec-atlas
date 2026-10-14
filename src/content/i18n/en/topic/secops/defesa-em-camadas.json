@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "A request crosses several layers before reaching the data: the edge (CDN and WAF), an API gateway, the application and the database. Defense in depth is designing the whole so that the failure or bypass of one layer does not bring down the rest, placing each control where it is cheapest and most precise.",
+      "h": "76904c4d"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "The edge is great for what does not depend on business context (volume, signatures, bots). But it does not know whether a user may see that order: that is authorization, and only the application knows it. Each layer covers the blind spot of the previous one.",
+      "h": "835ab753"
+    },
+    "sections.1.code.0.code": {
+      "t": "client\n  -> edge (CDN + WAF + bot + rate limit)   cheap, at scale: block the obvious and the volumetric\n  -> API gateway                             identity, schema, per-client quotas\n  -> application                             per-object authorization, business rules\n  -> data                                    least privilege, encryption, auditing",
+      "h": "54397f7b"
+    },
+    "sections.1.code.0.filename": {
+      "t": "layers, from edge to data",
+      "h": "85eb8bc5"
+    },
+    "sections.1.heading": {
+      "t": "The request path and the role of each layer",
+      "h": "b87a3309"
+    },
+    "sections.2.body.0": {
+      "t": "An excellent WAF is useless if the attacker talks directly to the origin. The origin should accept traffic only from the edge: provider IP list, mutual authentication between edge and origin, or private tunnels. Without this, anyone who discovers the real address bypasses all the protection.",
+      "h": "e22ab4a0"
+    },
+    "sections.2.heading": {
+      "t": "Locking down the origin",
+      "h": "e8bd1a6b"
+    },
+    "sections.3.body.0": {
+      "t": "Every security layer can fail (configuration error, outage, faulty rule). The design question is what happens: fail-closed blocks everything (safe, but it is an outage), fail-open lets traffic through (available, but unprotected). There is no universal answer: a payment endpoint tends to close, a public page tends to open, and the decision should be conscious, documented and tested.",
+      "h": "4ae4aef2"
+    },
+    "sections.3.heading": {
+      "t": "Fail-open or fail-closed",
+      "h": "35293e8b"
+    },
+    "sections.4.bullets.0": {
+      "t": "Latency budget: each layer adds milliseconds; deep body inspection fits only where it matters.",
+      "h": "ae7e41bd"
+    },
+    "sections.4.bullets.1": {
+      "t": "Blast radius: a new rule hits all traffic; that is why the rule first enters observation and on a subset.",
+      "h": "aaca0a16"
+    },
+    "sections.4.bullets.2": {
+      "t": "Change as code: rules in a repository (Terraform, for example), with review and rollback, instead of clicks in the dashboard.",
+      "h": "b58a5f78"
+    },
+    "sections.4.bullets.3": {
+      "t": "Observability in all layers, to know in which one a request was stopped.",
+      "h": "3b4d04f4"
+    },
+    "sections.4.heading": {
+      "t": "Latency and blast radius",
+      "h": "7ba4151f"
+    },
+    "short": {
+      "t": "where each control lives, and what happens when it fails",
+      "h": "e1da6b5b"
+    },
+    "tagline": {
+      "t": "Designing the defense means deciding, layer by layer, who inspects what, how much latency it costs and whether the system opens or closes when a control goes down.",
+      "h": "c131ebb4"
+    },
+    "title": {
+      "t": "Defense in depth: edge system design",
+      "h": "14560d34"
+    }
+  }
+}

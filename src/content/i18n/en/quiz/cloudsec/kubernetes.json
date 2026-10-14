@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "RBAC links identities to verbs and resources, applying least privilege to the cluster.",
+      "h": "32c58e2f"
+    },
+    "questions.0.options.0": {
+      "t": "Controlling who can do what on the cluster API",
+      "h": "de07dabb"
+    },
+    "questions.0.options.1": {
+      "t": "Balancing load across pods",
+      "h": "b384988e"
+    },
+    "questions.0.options.2": {
+      "t": "Encrypting images",
+      "h": "3e7b84de"
+    },
+    "questions.0.options.3": {
+      "t": "Automatically scaling nodes",
+      "h": "1f0f27c7"
+    },
+    "questions.0.q": {
+      "t": "What is RBAC used for in Kubernetes?",
+      "h": "e222e213"
+    },
+    "questions.1.explain": {
+      "t": "Policies like \"no privileged containers\" are enforced here, at the cluster's entrance.",
+      "h": "f124a0bd"
+    },
+    "questions.1.options.0": {
+      "t": "Intercept API requests and can validate or block objects before they are created",
+      "h": "9ac76d4a"
+    },
+    "questions.1.options.1": {
+      "t": "Restart failed pods",
+      "h": "a4ed078d"
+    },
+    "questions.1.options.2": {
+      "t": "Back up etcd",
+      "h": "564f5ec2"
+    },
+    "questions.1.options.3": {
+      "t": "Manage DNS",
+      "h": "52bf721f"
+    },
+    "questions.1.q": {
+      "t": "What do admission controllers do?",
+      "h": "01935057"
+    },
+    "questions.2.explain": {
+      "t": "A privileged container has almost the power of the node itself and defeats isolation.",
+      "h": "063aa8e9"
+    },
+    "questions.2.options.0": {
+      "t": "privileged: true",
+      "h": "1ca011fa"
+    },
+    "questions.2.options.1": {
+      "t": "readOnlyRootFilesystem: true",
+      "h": "3c0426a9"
+    },
+    "questions.2.options.2": {
+      "t": "runAsNonRoot: true",
+      "h": "143c40ad"
+    },
+    "questions.2.options.3": {
+      "t": "allowPrivilegeEscalation: false",
+      "h": "0ef51ef3"
+    },
+    "questions.2.q": {
+      "t": "Which pod configuration is dangerous?",
+      "h": "d282542d"
+    }
+  }
+}

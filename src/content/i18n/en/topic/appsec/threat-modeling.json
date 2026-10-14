@@ -1,0 +1,112 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Threat modeling is the exercise of looking at a system (or a feature) and systematically asking what can go wrong, who could cause it and what we do about it. It happens before or during design, when changing a decision costs a conversation and not an entire sprint.",
+      "h": "40dcbe54"
+    },
+    "sections.0.body.1": {
+      "t": "SAST, DAST and SCA find defects that already exist in the code or the environment. The threat model finds design defects: the service that trusts a header the client controls, the password reset flow that leaks whether the email exists, the bucket that mixes tenants' data. No scanner sees these because no line of code is \"wrong\".",
+      "h": "c3831454"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "The simplest method fits in four questions, repeated at every relevant architecture change:",
+      "h": "60ac1286"
+    },
+    "sections.1.bullets.0": {
+      "t": "What are we working on? A data flow diagram (DFD) with actors, processes, data stores and trust boundaries.",
+      "h": "a8f10116"
+    },
+    "sections.1.bullets.1": {
+      "t": "What can go wrong? Walk through each element and each flow that crosses a trust boundary looking for threats (STRIDE helps here).",
+      "h": "990b2899"
+    },
+    "sections.1.bullets.2": {
+      "t": "What are we going to do about it? For each threat: mitigate, eliminate, transfer or accept, with an owner and a recorded decision.",
+      "h": "5b8cbf8d"
+    },
+    "sections.1.bullets.3": {
+      "t": "Did we do a good job? Review the model after the release and after each incident, because the system changes and the model ages.",
+      "h": "dc6e5e9f"
+    },
+    "sections.1.heading": {
+      "t": "The four questions",
+      "h": "e9aa0385"
+    },
+    "sections.2.body.0": {
+      "t": "STRIDE is a Microsoft mnemonic that maps each letter to a violated security property. When looking at a flow in the diagram, you ask whether each of the six categories applies:",
+      "h": "ff9275b5"
+    },
+    "sections.2.bullets.0": {
+      "t": "Spoofing (identity forgery) violates authenticity: someone impersonates another user or service.",
+      "h": "702ff584"
+    },
+    "sections.2.bullets.1": {
+      "t": "Tampering violates integrity: data or code altered in transit or at rest.",
+      "h": "0845c2e2"
+    },
+    "sections.2.bullets.2": {
+      "t": "Repudiation violates non-repudiation: there is no log to prove who did what.",
+      "h": "baf9aa61"
+    },
+    "sections.2.bullets.3": {
+      "t": "Information disclosure violates confidentiality: data exposed to those who should not see it.",
+      "h": "bcb870f7"
+    },
+    "sections.2.bullets.4": {
+      "t": "Denial of service violates availability: the service is exhausted or taken down.",
+      "h": "92e07e28"
+    },
+    "sections.2.bullets.5": {
+      "t": "Elevation of privilege violates authorization: a regular user starts acting as an admin.",
+      "h": "220c9397"
+    },
+    "sections.2.heading": {
+      "t": "STRIDE: a threat checklist",
+      "h": "1d454a89"
+    },
+    "sections.3.body.0": {
+      "t": "The model does not need to live in a forgotten slide. Tools like pytm describe the system in code, generate the DFD and list the applicable threats. Versioned alongside the repository, the model goes through code review and changes in the same PR that changes the architecture.",
+      "h": "7478b0df"
+    },
+    "sections.3.code.0.code": {
+      "t": "from pytm import TM, Server, Datastore, Dataflow, Boundary, Actor\n\ntm = TM(\"Checkout API\")\ninternet = Boundary(\"Internet\")\nvpc = Boundary(\"Private VPC\")\n\nuser = Actor(\"Customer\", inBoundary=internet)\napi = Server(\"Checkout API\", inBoundary=vpc)\ndb = Datastore(\"Orders\", inBoundary=vpc, isEncrypted=True)\n\nDataflow(user, api, \"POST /checkout (HTTPS)\", isEncrypted=True)\nDataflow(api, db, \"INSERT order\")\n\ntm.process()  # generates the DFD and the STRIDE threat list",
+      "h": "1ee72cca"
+    },
+    "sections.3.code.0.filename": {
+      "t": "tm.py - example with pytm",
+      "h": "44c5bbcb"
+    },
+    "sections.3.heading": {
+      "t": "Threat model as code",
+      "h": "b25052e8"
+    },
+    "sections.4.body.0": {
+      "t": "The most practical trigger is the same as for code review: a new feature that touches authentication, sensitive data, an external service or a trust boundary calls for half an hour of threat modeling before the first commit. For everything else, a quick threat review in the PR template is enough.",
+      "h": "edc4d291"
+    },
+    "sections.4.body.1": {
+      "t": "Threats become traceable items: each mitigation points to a test, a SAST rule or a pipeline gate. That way the threat model stops being a document and starts generating checks that run on their own, and the map closes the loop: the design informs what SAST, DAST and the gates need to check.",
+      "h": "7e5b1a25"
+    },
+    "sections.4.heading": {
+      "t": "How to fit it into the pipeline",
+      "h": "da8db054"
+    },
+    "short": {
+      "t": "find the flaw in the design, before any code exists",
+      "h": "665ad079"
+    },
+    "tagline": {
+      "t": "Threat modeling is the structured conversation that discovers what can go wrong while it is still cheap to fix: in the design, not in the pentest.",
+      "h": "1aa34fd7"
+    },
+    "title": {
+      "t": "Threat modeling: think like the attacker before coding",
+      "h": "2cb2ac8d"
+    }
+  }
+}

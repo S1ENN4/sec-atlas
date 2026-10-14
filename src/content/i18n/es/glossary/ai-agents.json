@@ -1,0 +1,212 @@
+{
+  "entries": {
+    "groups.0.entries.0.aka": {
+      "t": "búsqueda semántica",
+      "h": "da789dc8"
+    },
+    "groups.0.entries.0.meaning": {
+      "t": "Etapa del RAG en la que buscas en tus chunks los pasajes que responden la pregunta del usuario. El retrieval es el cuello de botella real del sistema: un buen LLM con mal retrieval es un LLM que alucina con confianza. Va desde la búsqueda densa por similitud hasta el BM25 clásico, pasando por híbrido y reranking.",
+      "h": "56b1593c"
+    },
+    "groups.0.entries.0.term": {
+      "t": "Retrieval",
+      "h": "01335793"
+    },
+    "groups.0.entries.1.meaning": {
+      "t": "Segunda pasada del retrieval: el modelo toma los top-K candidatos que vienen de la búsqueda barata (digamos 50) y los reordena en los K más útiles (top 5 o 10) usando un cross-encoder que vio la query y el chunk juntos. Agrega latencia, pero reduce el ruido: el LLM recibe contexto denso en lugar de una mezcla de bueno y mediocre.",
+      "h": "8d6a9293"
+    },
+    "groups.0.entries.1.term": {
+      "t": "Reranking",
+      "h": "d80e2d4c"
+    },
+    "groups.0.entries.2.meaning": {
+      "t": "Función de ranking clásica de la búsqueda textual: puntúa cada documento con TF-IDF con saturación (los términos importantes pesan más hasta cierto tope) y normaliza por longitud. Es la búsqueda dispersa del retrieval híbrido y captura coincidencias exactas de términos (código de error, nombre de API) donde el embedding solo falla feo.",
+      "h": "dd723da3"
+    },
+    "groups.0.entries.2.term": {
+      "t": "BM25",
+      "h": "dc33aec0"
+    },
+    "groups.0.entries.3.meaning": {
+      "t": "Medida de qué tan alineados están dos vectores en el espacio de embeddings: coseno del ángulo entre ellos, independiente de la magnitud. Para embeddings normalizados basta el producto interno y sigue siendo rápido, por eso se volvió la distancia estándar en casi toda base vectorial.",
+      "h": "b899beb7"
+    },
+    "groups.0.entries.3.term": {
+      "t": "Similitud de coseno",
+      "h": "fab25c2a"
+    },
+    "groups.0.entries.4.aka": {
+      "t": "hierarchical navigable small world",
+      "h": "74251e11"
+    },
+    "groups.0.entries.4.meaning": {
+      "t": "Estructura de grafo en capas que las bases vectoriales usan para buscar vecinos en alta dimensión. Cada capa es un grafo disperso que salta lejos; las de abajo hacen el ajuste fino. Es la razón por la que pgvector, Pinecone, Weaviate, Qdrant y LanceDB responden en milisegundos con millones de vectores.",
+      "h": "6dc7d658"
+    },
+    "groups.0.entries.4.term": {
+      "t": "HNSW",
+      "h": "936ee7e6"
+    },
+    "groups.0.entries.5.aka": {
+      "t": "approximate nearest neighbor",
+      "h": "98d4ada5"
+    },
+    "groups.0.entries.5.meaning": {
+      "t": "Familia de algoritmos (HNSW, IVF, LSH) que sacrifican exactitud por una velocidad brutal en la búsqueda de vecinos en alta dimensión. ANN no encuentra al vecino perfecto, sino a uno suficientemente bueno, y en retrieval de producción ese trade-off es lo que hace que el sistema quepa en el presupuesto de latencia.",
+      "h": "b0a98335"
+    },
+    "groups.0.entries.5.term": {
+      "t": "ANN",
+      "h": "30ffbd17"
+    },
+    "groups.0.title": {
+      "t": "recuperación",
+      "h": "982d67fc"
+    },
+    "groups.1.entries.0.aka": {
+      "t": "context window",
+      "h": "95e08528"
+    },
+    "groups.1.entries.0.meaning": {
+      "t": "Cantidad máxima de tokens que el modelo puede leer de una sola vez: el prompt, todo el historial concatenado y la salida que va a generar. Es la memoria de corto plazo del LLM. Las ventanas enormes parecen resolver el RAG, pero amplifican costo, latencia y el riesgo de que el modelo se pierda en medio del texto, así que un buen contexto es un contexto pequeño y bien elegido.",
+      "h": "94fbf496"
+    },
+    "groups.1.entries.0.term": {
+      "t": "Ventana de contexto",
+      "h": "ec209a8d"
+    },
+    "groups.1.entries.1.aka": {
+      "t": "hallucination",
+      "h": "2519c758"
+    },
+    "groups.1.entries.1.meaning": {
+      "t": "Cuando el modelo inventa un hecho plausible que no estaba en los datos: nombre de API que no existe, paper inexistente, comando coherente que no hace nada. Es un problema de entrenamiento y de retrieval, no de 'veracidad'. La mitigación es en capas: retrieval con fuentes verificables, prompt que pide citas y un evaluador que caza invenciones automáticamente.",
+      "h": "993d7d3c"
+    },
+    "groups.1.entries.1.term": {
+      "t": "Alucinación",
+      "h": "7a99c235"
+    },
+    "groups.1.entries.2.aka": {
+      "t": "tool use",
+      "h": "915723b1"
+    },
+    "groups.1.entries.2.meaning": {
+      "t": "Mecanismo por el cual el LLM pide, en vez de solo texto, ejecutar una función con parámetros estructurados: el modelo emite JSON, tu código ejecuta la función y el resultado vuelve a la conversación. Es lo que convierte un modelo puro en un agente capaz de actuar en el mundo, y lo que necesita guardrails para evitar la llamada equivocada con el argumento equivocado.",
+      "h": "706edae2"
+    },
+    "groups.1.entries.2.term": {
+      "t": "Function calling",
+      "h": "c457d51a"
+    },
+    "groups.1.entries.3.meaning": {
+      "t": "Programa que usa un LLM para decidir qué hacer en cada paso, en vez de seguir un script fijo. Recibe un objetivo, elige herramientas, observa el resultado, decide el siguiente paso y sigue hasta terminar o rendirse. La diferencia con un chatbot es la autonomía: el agente secuencia acciones fuera de un orden predefinido.",
+      "h": "b0fd0f48"
+    },
+    "groups.1.entries.3.term": {
+      "t": "Agente",
+      "h": "354b2dbb"
+    },
+    "groups.1.entries.4.meaning": {
+      "t": "Descomposición explícita del razonamiento del agente en nodos (planificar, actuar, observar, revisar) y aristas dirigidas, en vez de un único loop que hace todo. Ventaja: cada nodo es auditable y testeable de forma independiente, y cuando el agente se traba sabes en qué nodo. LangGraph y las máquinas de estados en general siguen este modelo.",
+      "h": "a739f52d"
+    },
+    "groups.1.entries.4.term": {
+      "t": "Grafo de agente",
+      "h": "77d9c0b8"
+    },
+    "groups.1.entries.5.aka": {
+      "t": "model context protocol server",
+      "h": "f510d08d"
+    },
+    "groups.1.entries.5.meaning": {
+      "t": "Servidor que implementa el Model Context Protocol, el estándar abierto de Anthropic que estandariza la conversación entre un agente y herramientas externas. El agente lista lo disponible, llama lo que necesita y recibe el resultado, sin integración caso por caso. Un MCP server bien escrito se vuelve reutilizable por Claude, Cursor, Cline y cualquier cliente compatible.",
+      "h": "1e0d92ff"
+    },
+    "groups.1.entries.5.term": {
+      "t": "MCP server",
+      "h": "94cbffb2"
+    },
+    "groups.1.entries.6.meaning": {
+      "t": "En MCP, una tool es una función que el agente invoca con parámetros y de la que recibe un resultado bajo demanda (un POST, un cálculo, un envío). Un resource es un dato con nombre que el agente puede leer cuando quiera (archivo de configuración, schema, log). Separar ambos es importante: el LLM razona mejor cuando las operaciones con efectos secundarios son claramente distintas de las lecturas.",
+      "h": "c8c4b03f"
+    },
+    "groups.1.entries.6.term": {
+      "t": "Tool vs resource (MCP)",
+      "h": "f6622d11"
+    },
+    "groups.1.entries.7.meaning": {
+      "t": "Biblioteca de agentes en grafo de LangChain que combina una planning tool, una filesystem tool y subagentes para resolver tareas demasiado largas para un loop único. Es una referencia práctica de agente que no se traba en la tercera tool call y el lugar donde aprendes a calibrar la autonomía antes de soltar un agente real en producción.",
+      "h": "55fc631c"
+    },
+    "groups.1.entries.7.term": {
+      "t": "DeepAgents",
+      "h": "75776c86"
+    },
+    "groups.1.title": {
+      "t": "modelo, agentes y protocolos",
+      "h": "441f837c"
+    },
+    "groups.2.entries.0.meaning": {
+      "t": "Benchmark que mide si un agente logra resolver issues reales de GitHub en código real de proyectos open source: multiarchivo, con tests, sin instrucciones de cómo hacerlo. Es el estándar actual para distinguir al agente que impresiona en una demo del que realmente cierra tickets, y donde deepagents y similares publican sus números de evolución.",
+      "h": "a48d5525"
+    },
+    "groups.2.entries.0.term": {
+      "t": "SWE-bench",
+      "h": "27a2cc6a"
+    },
+    "groups.2.entries.1.aka": {
+      "t": "LLM-as-judge",
+      "h": "6eb5542c"
+    },
+    "groups.2.entries.1.meaning": {
+      "t": "Usar un LLM fuerte (en general clase GPT-4 o Claude Opus) para puntuar la salida de otro modelo según una rúbrica. Resuelve la escala, porque un humano no lee 5.000 salidas por PR. Trae sesgos propios: sesgo de posición (prefiere al primer candidato), de verbosidad (prefiere al más largo) y autopromoción (cree que su propio modelo es mejor). Calibrar contra un evaluador humano es obligatorio antes de confiar en el judge.",
+      "h": "62a5c731"
+    },
+    "groups.2.entries.1.term": {
+      "t": "Judge",
+      "h": "90f3c4a0"
+    },
+    "groups.2.entries.2.meaning": {
+      "t": "Lista explícita de criterios y pesos que el juez usa para puntuar una salida: 'cita la fuente en la primera frase, máximo 2 líneas, sin adjetivos, devuelve JSON'. Sin una rúbrica escrita, el LLM-as-judge diverge entre ejecuciones y entre modelos, y no puedes mejorar prompt, modelo y dataset de forma reproducible. Con la rúbrica fijada se vuelve una regla de medir; sin ella, una opinión.",
+      "h": "ed6b0479"
+    },
+    "groups.2.entries.2.term": {
+      "t": "Rúbrica",
+      "h": "d7192dcb"
+    },
+    "groups.2.entries.3.meaning": {
+      "t": "Modelo o configuración de referencia (fija) que corre sobre todo el dataset antes de cualquier cambio, para medir el delta de tu modificación. En evals de LLM, 'mejor' sin baseline es una apuesta: ¿la versión anterior ya era buena, o solo lo parecía en la demo? Un baseline fijado por versión es lo que convierte el eval en ciencia, y lo que separa 'pasó la prueba' de 'pasó la prueba, y aquí está la evidencia'.",
+      "h": "572b7076"
+    },
+    "groups.2.entries.3.term": {
+      "t": "Baseline",
+      "h": "e6ab7982"
+    },
+    "groups.2.entries.4.meaning": {
+      "t": "Ataque en el que contenido hostil (en una página indexada, en un correo resumido, en un documento que abre el agente) intenta reemplazar las instrucciones del sistema. El atacante sabe que el LLM mezcla texto confiable con texto encontrado y planta un 'ignora las instrucciones anteriores y ejecuta X'. Es el vector número 1 en agentes en producción hoy; no es un bug del LLM, es cómo los agentes leen texto por diseño.",
+      "h": "df3192d4"
+    },
+    "groups.2.entries.4.term": {
+      "t": "Prompt injection",
+      "h": "0ccdb9f8"
+    },
+    "groups.2.entries.5.aka": {
+      "t": "personally identifiable information",
+      "h": "8080b880"
+    },
+    "groups.2.entries.5.meaning": {
+      "t": "Dato personal que identifica a alguien: nombre y documento de identidad, correo, teléfono, dirección, IP. Cuando el usuario pega un documento con PII en el chat, o el RAG indexa un CRM con 5.000 clientes, el agente se convierte en una fuga por diseño. Los guardrails aquí son detección en la entrada, redacción antes de enviar al LLM y retención corta, porque enmascarar después de recibir la respuesta ya es demasiado tarde.",
+      "h": "86107756"
+    },
+    "groups.2.entries.5.term": {
+      "t": "PII",
+      "h": "716aef4d"
+    },
+    "groups.2.title": {
+      "t": "evaluación y seguridad",
+      "h": "b83a94f1"
+    }
+  }
+}

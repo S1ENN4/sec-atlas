@@ -1,0 +1,80 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Policy as code means expressing the organization's rules (\"no bucket is public\", \"containers do not run as root\", \"every resource has an owner\") in a language a tool can automatically evaluate against an input: a Terraform plan, a Kubernetes manifest, an API request.",
+      "h": "cf0ec509"
+    },
+    "sections.0.body.1": {
+      "t": "The gain is consistency and speed. The rule no longer depends on an attentive reviewer and becomes a gate that answers in seconds, with a clear message about why it blocked.",
+      "h": "aaa07512"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "OPA uses the Rego language. The policy below evaluates the Terraform plan and denies creating a bucket without public access blocking. With Conftest, the same file runs in CI against the plan exported as JSON.",
+      "h": "95235e15"
+    },
+    "sections.1.code.0.code": {
+      "t": "package terraform.s3\n\nimport rego.v1\n\ndeny contains msg if {\n\tr := input.resource_changes[_]\n\tr.type == \"aws_s3_bucket_public_access_block\"\n\tr.change.after.block_public_acls == false\n\tmsg := sprintf(\"%s allows public ACL\", [r.address])\n}\n\ndeny contains msg if {\n\tr := input.resource_changes[_]\n\tr.type == \"aws_s3_bucket\"\n\tnot r.change.after.tags.owner\n\tmsg := sprintf(\"%s has no 'owner' tag\", [r.address])\n}",
+      "h": "e94a9de6"
+    },
+    "sections.1.code.0.filename": {
+      "t": "policy/s3.rego",
+      "h": "1693b25b"
+    },
+    "sections.1.heading": {
+      "t": "Example in Rego (OPA)",
+      "h": "548cf28e"
+    },
+    "sections.2.bullets.0": {
+      "t": "In the PR or in CI: evaluate the IaC plan before merge (fast and cheap to fix).",
+      "h": "77b8c0f8"
+    },
+    "sections.2.bullets.1": {
+      "t": "At cluster admission: a controller (Kyverno or OPA Gatekeeper) rejects objects that violate the policy the moment they reach the API.",
+      "h": "7968f86a"
+    },
+    "sections.2.bullets.2": {
+      "t": "At runtime and in the cloud: managed rules and continuous checks catch what slipped through or changed afterward.",
+      "h": "d7109cc0"
+    },
+    "sections.2.bullets.3": {
+      "t": "The three layers complement each other: the CI gate gives early feedback; admission is the safety net nobody bypasses.",
+      "h": "0b6407c4"
+    },
+    "sections.2.heading": {
+      "t": "Where to apply it",
+      "h": "c97fc411"
+    },
+    "sections.3.body.0": {
+      "t": "A policy without tests is an assumption. OPA supports unit tests in Rego with cases that must pass and cases that must be denied. Without them, a rule can silently stop catching anything or, at the other extreme, block legitimate changes and lead the team to turn it off.",
+      "h": "f7882cce"
+    },
+    "sections.3.heading": {
+      "t": "Test the policy as code",
+      "h": "19b5b18c"
+    },
+    "sections.4.body.0": {
+      "t": "Exceptions exist, and what matters is that they are explicit, with an owner and an expiry, rather than informal loopholes. To adopt without blocking everyone, start in warning mode (the policy only reports), measure what would be blocked, fix the legacy, and only then start blocking: the same observe, shadow and enforce logic used with a WAF.",
+      "h": "78de2e69"
+    },
+    "sections.4.heading": {
+      "t": "Exceptions and gradual adoption",
+      "h": "8aa1cbcc"
+    },
+    "short": {
+      "t": "executable, versioned, testable security rules",
+      "h": "bca8da9a"
+    },
+    "tagline": {
+      "t": "A policy written in a document depends on someone remembering it. A policy written as code is enforced on every change, equally for everyone, and leaves a trail of what was decided.",
+      "h": "9b1b3b6a"
+    },
+    "title": {
+      "t": "Policy as code",
+      "h": "54e87c28"
+    }
+  }
+}

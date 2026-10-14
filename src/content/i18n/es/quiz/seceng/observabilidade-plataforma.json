@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "El silencio puede ser una falla; sin una alerta de ausencia, nadie lo nota.",
+      "h": "f9113d0a"
+    },
+    "questions.0.options.0": {
+      "t": "La falla silenciosa deja ataques sin detección, sin ningún error visible",
+      "h": "cdf66f48"
+    },
+    "questions.0.options.1": {
+      "t": "Porque las fuentes silenciosas son más baratas",
+      "h": "e450f065"
+    },
+    "questions.0.options.2": {
+      "t": "Para reducir el número de logs",
+      "h": "2248a69e"
+    },
+    "questions.0.options.3": {
+      "t": "Porque Prometheus lo exige",
+      "h": "45bd7f9c"
+    },
+    "questions.0.q": {
+      "t": "¿Por qué alertar sobre una fuente que dejó de enviar eventos?",
+      "h": "e6cf7a2b"
+    },
+    "questions.1.explain": {
+      "t": "El contexto del trace acompaña al evento entre servicios y colas.",
+      "h": "a1971c68"
+    },
+    "questions.1.options.0": {
+      "t": "Mostrar en qué etapa se gastó el tiempo cuando sube la latencia de extremo a extremo",
+      "h": "294b1ab1"
+    },
+    "questions.1.options.1": {
+      "t": "Cifrar el tráfico entre servicios",
+      "h": "1a453f1c"
+    },
+    "questions.1.options.2": {
+      "t": "Reemplazar las métricas",
+      "h": "19b4683c"
+    },
+    "questions.1.options.3": {
+      "t": "Contar cuántos usuarios existen",
+      "h": "a89a1e13"
+    },
+    "questions.1.q": {
+      "t": "¿Cuál es el papel del tracing en la plataforma?",
+      "h": "440943ba"
+    },
+    "questions.2.explain": {
+      "t": "Las metas objetivas permiten priorizar la confiabilidad frente a funcionalidades nuevas.",
+      "h": "0427a8ca"
+    },
+    "questions.2.options.0": {
+      "t": "Una meta medible, como que el 99% de los eventos se convierta en decisión en menos de 60 segundos",
+      "h": "a19cf0ac"
+    },
+    "questions.2.options.1": {
+      "t": "Una frase genérica sobre calidad",
+      "h": "b61c6e63"
+    },
+    "questions.2.options.2": {
+      "t": "Cero alertas por mes",
+      "h": "77bce347"
+    },
+    "questions.2.options.3": {
+      "t": "Uso de CPU por debajo del 5%",
+      "h": "05f8efca"
+    },
+    "questions.2.q": {
+      "t": "¿Qué es un buen SLO de plataforma de seguridad?",
+      "h": "0fc04a0e"
+    }
+  }
+}

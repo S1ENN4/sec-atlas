@@ -1,0 +1,64 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Draw the software lifecycle from left to right: code, build, test, staging, production. Shift-left means moving security checks as far to the left of that line as possible, from production toward the developer's keyboard.",
+      "h": "376fa949"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "The most tangible example is pre-commit: a local hook that runs the same tools as the pipeline, but on the dev's machine, before the code even leaves. The configuration below runs secrets scanning and SAST on every commit:",
+      "h": "e4458178"
+    },
+    "sections.1.code.0.code": {
+      "t": "repos:\n  - repo: https://github.com/gitleaks/gitleaks\n    hooks:\n      - id: gitleaks          # blocks the key before the commit\n  - repo: https://github.com/semgrep/semgrep\n    hooks:\n      - id: semgrep\n        args: [\"--config\", \"auto\"]   # the same rules as CI",
+      "h": "16c3239d"
+    },
+    "sections.1.code.0.filename": {
+      "t": ".pre-commit-config.yaml",
+      "h": "e7d14d42"
+    },
+    "sections.1.heading": {
+      "t": "In practice: the hook that blocks before the commit",
+      "h": "ad372278"
+    },
+    "sections.2.body.0": {
+      "t": "The local hook is fast and cheap, but it is not an authority: you can pass --no-verify and skip it. That is why the same check runs again on the PR and in the build, layers with different costs. Early (IDE, pre-commit) for fast feedback; later (CI) as the real gate that nobody skips.",
+      "h": "c88f1bac"
+    },
+    "sections.2.heading": {
+      "t": "Layered defense, not replacement",
+      "h": "c3f5c2c6"
+    },
+    "sections.3.body.0": {
+      "t": "The cost of a defect grows by orders of magnitude as it moves through the lifecycle: fixing a line in the editor takes seconds; the same problem in production can cost an incident, a leak and users' trust. Shift-left is not about liking security, it is about arithmetic.",
+      "h": "08f116c1"
+    },
+    "sections.3.heading": {
+      "t": "The economic effect",
+      "h": "a1259dea"
+    },
+    "sections.4.body.0": {
+      "t": "Moving checks earlier does not eliminate what comes later: some vulnerabilities only exist in the assembled system, with real configuration and data, which is the territory of DAST and production monitoring. Shift-left complements late checks, it does not replace them.",
+      "h": "c75987b3"
+    },
+    "sections.4.heading": {
+      "t": "The limit of shift-left",
+      "h": "cdbbdcd6"
+    },
+    "short": {
+      "t": "Security as early as possible",
+      "h": "b42ebcab"
+    },
+    "tagline": {
+      "t": "The further left in the lifecycle a flaw is found, the cheaper it is to fix.",
+      "h": "cfcac191"
+    },
+    "title": {
+      "t": "Shift-left",
+      "h": "df191acc"
+    }
+  }
+}

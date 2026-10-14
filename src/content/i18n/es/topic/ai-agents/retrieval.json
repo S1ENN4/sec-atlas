@@ -1,0 +1,104 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "El retrieval es el paso que decide qué pasajes de la base se convierten en contexto para el LLM. En RAG, es la etapa donde se gana o se pierde la mayor parte de la calidad: un buen contexto se vuelve una buena respuesta, un contexto equivocado se vuelve una respuesta equivocada, incluso con un prompt perfecto y un modelo excelente. Un mal retrieval no tiene arreglo después.",
+      "h": "bdbeff4b"
+    },
+    "sections.0.body.1": {
+      "t": "Un sistema de retrieval tiene tres decisiones: qué algoritmo usar (denso, disperso, híbrido), cómo hacer rerank del resultado bruto y cómo fusionar listas provenientes de algoritmos distintos. Las tres decisiones dependen del tipo de pregunta y del tipo de corpus.",
+      "h": "da30dd90"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "La búsqueda densa usa embeddings: la pregunta se vuelve vector, el corpus se vuelve vector, la similitud es geométrica. Es buena para paráfrasis, preguntas conceptuales y términos no técnicos. Es débil para siglas raras, identificadores y términos literales que existen en el documento pero no en el vocabulario del modelo.",
+      "h": "13040e0c"
+    },
+    "sections.1.body.1": {
+      "t": "La búsqueda dispersa usa frecuencia de términos (BM25 es el estándar de la práctica). Es buena para palabras exactas, nombres propios y siglas. Es débil para paráfrasis y consultas que mezclan términos. BM25 puntúa cada término por el TF (cuántas veces aparece en el documento) y por el IDF (qué tan raro es en el corpus), y normaliza por el tamaño del documento. El resultado es una lista ordenada por relevancia léxica.",
+      "h": "772759f4"
+    },
+    "sections.1.body.2": {
+      "t": "La búsqueda híbrida corre las dos en paralelo y fusiona las listas. El método de fusión más común es RRF (Reciprocal Rank Fusion): cada lista asigna 1/(k + rank) a cada candidato, y los candidatos se reordenan por la suma. El resultado hereda lo mejor de las dos búsquedas.",
+      "h": "0d3bc38e"
+    },
+    "sections.1.heading": {
+      "t": "Dense, sparse e híbrido",
+      "h": "5154b794"
+    },
+    "sections.2.body.0": {
+      "t": "Después del top fusionado, todavía queda ruido. El reranker entra para reordenar el top-N con un modelo que mira la pregunta y el candidato juntos. Cohere Rerank, BGE Reranker y ColBERT hacen esto con un modelo de lenguaje más pequeño que puntúa cada par (pregunta, documento) con mejor calidad que la similitud de coseno.",
+      "h": "883bdab3"
+    },
+    "sections.2.body.1": {
+      "t": "El costo es proporcional al número de candidatos reordenados, así que la lista de entrada suele ser de 50 a 200 ítems. El costo en latencia queda dentro del presupuesto porque el reranker es más pequeño y barato que el LLM final.",
+      "h": "47c80e55"
+    },
+    "sections.2.heading": {
+      "t": "Reranking",
+      "h": "d80e2d4c"
+    },
+    "sections.3.body.0": {
+      "t": "El ejemplo junta dense retrieval (Qdrant), BM25 (Pyserini) y un reranker Cross-Encoder en un único pipeline. La fusión es RRF, y el reranker recorta los 50 mejores a los 5 finales.",
+      "h": "5e3d930a"
+    },
+    "sections.3.code.0.code": {
+      "t": "from typing import Iterable\nfrom qdrant_client import QdrantClient\nfrom pyserini.search.lucene import LuceneSearcher\nfrom sentence_transformers import CrossEncoder\n\nqdrant = QdrantClient(url=\"http://localhost:6333\")\nsearcher = LuceneSearcher.from_prebuilt_index(\"manual_pt\")\nreranker = CrossEncoder(\"cross-encoder/mmarco-mMiniLMv2-L12-H384-v1\")\n\ndef rrf(ranks: Iterable[list[str]], k: int = 60) -> list[tuple[str, float]]:\n    scores: dict[str, float] = {}\n    for r in ranks:\n        for i, doc_id in enumerate(r):\n            scores[doc_id] = scores.get(doc_id, 0) + 1 / (k + i + 1)\n    return sorted(scores.items(), key=lambda x: x[1], reverse=True)\n\ndef retrieve(query: str, embedding: list[float], top_k: int = 5):\n    # 1. dense (Qdrant, top 50)\n    dense_hits = qdrant.search(\n        collection_name=\"chunks\",\n        query_vector=embedding,\n        limit=50,\n        with_payload=False,\n    )\n    dense_ids = [str(h.id) for h in dense_hits]\n\n    # 2. sparse (BM25, top 50)\n    bm25_hits = searcher.search(query, k=50)\n    bm25_ids = [h.docid for h in bm25_hits]\n\n    # 3. fusión RRF\n    fused = rrf([dense_ids, bm25_ids])\n\n    # 4. rerank de los 50 candidatos\n    candidates = [(doc_id, lookup_text(doc_id)) for doc_id, _ in fused[:50]]\n    pairs = [(query, text) for _, text in candidates]\n    scores = reranker.predict(pairs)\n    ranked = sorted(zip(candidates, scores), key=lambda x: x[1], reverse=True)\n\n    return [doc_id for (doc_id, _), _ in ranked[:top_k]]",
+      "h": "3f60d3d2"
+    },
+    "sections.3.code.0.filename": {
+      "t": "retrieval/pipeline.py",
+      "h": "e53245f2"
+    },
+    "sections.3.heading": {
+      "t": "En la práctica",
+      "h": "213dc06e"
+    },
+    "sections.4.bullets.0": {
+      "t": "cobertura doble: el híbrido cubre tanto la paráfrasis (densa) como el término exacto (BM25), así que los dos puntos ciegos se mitigan",
+      "h": "70614cd7"
+    },
+    "sections.4.bullets.1": {
+      "t": "el rerank del top-N entrega un impulso: el reranker pequeño filtra lo que pasó, así que el LLM solo ve lo que realmente importa",
+      "h": "3f42d4e9"
+    },
+    "sections.4.bullets.2": {
+      "t": "costo amortizado: hacer rerank del top-50 sale barato, y el resto de la lista bruta ni siquiera se procesa",
+      "h": "49b441cc"
+    },
+    "sections.4.heading": {
+      "t": "Puntos fuertes",
+      "h": "a2ebc02c"
+    },
+    "sections.5.bullets.0": {
+      "t": "complejidad operativa: tres subsistemas (vector, BM25, reranker) deben estar sanos a la vez; si uno falla, el clúster cae",
+      "h": "687188d9"
+    },
+    "sections.5.bullets.1": {
+      "t": "la fusión es heurística: RRF no aprende una fusión óptima, y el k=60 por defecto no es universal; el ajuste es trabajo de producción",
+      "h": "115c9aaa"
+    },
+    "sections.5.bullets.2": {
+      "t": "el reranker se vuelve un tema aparte: el reranker se actualiza por modelo, así que verificar si un modelo nuevo supera al anterior es una regresión obligatoria",
+      "h": "4b718620"
+    },
+    "sections.5.heading": {
+      "t": "Limitaciones",
+      "h": "149d05f7"
+    },
+    "short": {
+      "t": "elegir los pasajes correctos para la pregunta",
+      "h": "92ee1b4b"
+    },
+    "tagline": {
+      "t": "El retrieval es donde la búsqueda se vuelve respuesta: dense, sparse, híbrido y reranking deciden si el contexto que llega al LLM es útil o basura disfrazada de evidencia.",
+      "h": "89d3a553"
+    },
+    "title": {
+      "t": "Retrieval",
+      "h": "01335793"
+    }
+  }
+}

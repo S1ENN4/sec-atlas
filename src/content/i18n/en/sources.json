@@ -1,0 +1,276 @@
+{
+  "entries": {
+    "notes.ai-agents.0.note": {
+      "t": "risks of LLM applications",
+      "h": "46ec36b9"
+    },
+    "notes.ai-agents.1.note": {
+      "t": "AI risk management",
+      "h": "79056a8a"
+    },
+    "notes.ai-agents.2.note": {
+      "t": "MCP specification and documentation",
+      "h": "06cddac6"
+    },
+    "notes.ai-agents.3.note": {
+      "t": "tactics and techniques against AI systems",
+      "h": "8cf1e8ac"
+    },
+    "notes.appsec.0.note": {
+      "t": "web application risk categories",
+      "h": "2dec82b3"
+    },
+    "notes.appsec.1.note": {
+      "t": "practical guides by topic",
+      "h": "5828d0c4"
+    },
+    "notes.appsec.2.note": {
+      "t": "verifiable security checklist",
+      "h": "f55bb900"
+    },
+    "notes.appsec.3.note": {
+      "t": "secure development practices",
+      "h": "8592a14c"
+    },
+    "notes.appsec.4.note": {
+      "t": "introduction to threat modeling",
+      "h": "36fa5e31"
+    },
+    "notes.appsec.5.note": {
+      "t": "SBOM standard",
+      "h": "9cce90c5"
+    },
+    "notes.cloudsec.0.note": {
+      "t": "secure configuration baselines",
+      "h": "40ce63dc"
+    },
+    "notes.cloudsec.1.note": {
+      "t": "incident response guide",
+      "h": "51fa450e"
+    },
+    "notes.cloudsec.2.note": {
+      "t": "Zero Trust architecture",
+      "h": "b47a7997"
+    },
+    "notes.cloudsec.3.note": {
+      "t": "official security concepts",
+      "h": "476d4c65"
+    },
+    "notes.cloudsec.4.note": {
+      "t": "security pillar",
+      "h": "fa3ed409"
+    },
+    "notes.cloudsec.5.note": {
+      "t": "cloud native ecosystem and whitepapers",
+      "h": "cbb36ba5"
+    },
+    "notes.devops.0.note": {
+      "t": "software delivery metrics and capabilities",
+      "h": "a7412d76"
+    },
+    "notes.devops.1.note": {
+      "t": "SLOs, error budgets and incident management",
+      "h": "224fd959"
+    },
+    "notes.devops.2.note": {
+      "t": "concepts, objects and tasks",
+      "h": "79df2f47"
+    },
+    "notes.devops.3.note": {
+      "t": "IaC, remote state and modules",
+      "h": "280c0a57"
+    },
+    "notes.devops.4.note": {
+      "t": "small images, multi-stage and cache",
+      "h": "76dff4ff"
+    },
+    "notes.devops.5.note": {
+      "t": "standardized metrics, traces and logs",
+      "h": "25fef425"
+    },
+    "notes.devops.6.note": {
+      "t": "metrics, queries and alerts",
+      "h": "8b561f44"
+    },
+    "notes.grc.0.note": {
+      "t": "functions Govern, Identify, Protect, Detect, Respond and Recover",
+      "h": "2c4e461b"
+    },
+    "notes.grc.1.note": {
+      "t": "information security management system",
+      "h": "9435c666"
+    },
+    "notes.grc.2.note": {
+      "t": "prioritized safeguards",
+      "h": "8b8bd1c7"
+    },
+    "notes.grc.3.note": {
+      "t": "PCI DSS for cardholder data",
+      "h": "0f6fa976"
+    },
+    "notes.grc.4.note": {
+      "t": "zero trust architecture",
+      "h": "7065f772"
+    },
+    "notes.grc.5.note": {
+      "t": "risk management",
+      "h": "17754850"
+    },
+    "notes.grc.6.note": {
+      "t": "quantitative risk analysis",
+      "h": "d42572cc"
+    },
+    "notes.offsec.0.note": {
+      "t": "detailed web security testing guide",
+      "h": "b1d89685"
+    },
+    "notes.offsec.1.note": {
+      "t": "phases of a penetration test",
+      "h": "8868178c"
+    },
+    "notes.offsec.2.note": {
+      "t": "technical security testing guide",
+      "h": "8db54d05"
+    },
+    "notes.offsec.3.note": {
+      "t": "adversary tactics and techniques",
+      "h": "6ab4b6aa"
+    },
+    "notes.offsec.4.note": {
+      "t": "API-specific risks",
+      "h": "ec9ada5c"
+    },
+    "notes.offsec.5.note": {
+      "t": "technical severity scoring",
+      "h": "bb35d439"
+    },
+    "notes.offsec.6.note": {
+      "t": "small tests mapped to ATT&CK to validate detection",
+      "h": "bde0836c"
+    },
+    "notes.offsec.7.note": {
+      "t": "attack path mapping in Active Directory",
+      "h": "2d0839b0"
+    },
+    "notes.owasp.0.note": {
+      "t": "the official list of risk categories",
+      "h": "688de470"
+    },
+    "notes.owasp.1.note": {
+      "t": "practical fix guides by topic",
+      "h": "a95f1207"
+    },
+    "notes.owasp.2.note": {
+      "t": "verifiable security requirements",
+      "h": "6457c34b"
+    },
+    "notes.owasp.3.note": {
+      "t": "web security testing guide",
+      "h": "237eaf3e"
+    },
+    "notes.response.0.note": {
+      "t": "incident response cycle",
+      "h": "36a3f67a"
+    },
+    "notes.response.1.note": {
+      "t": "adversary tactics and techniques",
+      "h": "6ab4b6aa"
+    },
+    "notes.response.2.note": {
+      "t": "ransomware prevention and response guides",
+      "h": "2db4653f"
+    },
+    "notes.response.3.note": {
+      "t": "forensics and incident response materials",
+      "h": "a9938fed"
+    },
+    "notes.response.4.note": {
+      "t": "memory forensics",
+      "h": "812e026a"
+    },
+    "notes.response.5.note": {
+      "t": "open detection rule format",
+      "h": "61c37461"
+    },
+    "notes.response.6.note": {
+      "t": "rules for identifying file families",
+      "h": "34b42794"
+    },
+    "notes.response.7.note": {
+      "t": "intelligence exchange language and protocol",
+      "h": "09725305"
+    },
+    "notes.seceng.0.note": {
+      "t": "policy as code with Rego",
+      "h": "2ad5b287"
+    },
+    "notes.seceng.1.note": {
+      "t": "IaC, remote state and modules",
+      "h": "280c0a57"
+    },
+    "notes.seceng.2.note": {
+      "t": "build chain integrity levels",
+      "h": "59b7e4fe"
+    },
+    "notes.seceng.3.note": {
+      "t": "standardized metrics, traces and logs",
+      "h": "25fef425"
+    },
+    "notes.secops.0.note": {
+      "t": "managed rules, custom rules and actions",
+      "h": "a2ae965d"
+    },
+    "notes.secops.1.note": {
+      "t": "characteristics, periods and mitigation",
+      "h": "fd51712e"
+    },
+    "notes.secops.2.note": {
+      "t": "bot management, score and challenges",
+      "h": "82ab6b39"
+    },
+    "notes.secops.3.note": {
+      "t": "open WAF ruleset",
+      "h": "b6472d8b"
+    },
+    "notes.secops.4.note": {
+      "t": "taxonomy of automated threats",
+      "h": "53f246cd"
+    },
+    "notes.secops.5.note": {
+      "t": "adversary tactics and techniques",
+      "h": "6ab4b6aa"
+    },
+    "notes.vibecoding.0.note": {
+      "t": "Anthropic's terminal agent: permissions, hooks, skills and MCP",
+      "h": "d1c5cddc"
+    },
+    "notes.vibecoding.1.note": {
+      "t": "open-source, provider-independent agent",
+      "h": "cb11606d"
+    },
+    "notes.vibecoding.2.note": {
+      "t": "terminal agent derived from Pi, with structured editing, LSP and subagents",
+      "h": "5780e89d"
+    },
+    "notes.vibecoding.3.note": {
+      "t": "multi-agent orchestration plugin for OpenCode",
+      "h": "28a054c7"
+    },
+    "notes.vibecoding.4.note": {
+      "t": "terminal multiplexer for multiple coding agents",
+      "h": "c101ad77"
+    },
+    "notes.vibecoding.5.note": {
+      "t": "instruction convention for coding agents",
+      "h": "9f94222e"
+    },
+    "notes.vibecoding.6.note": {
+      "t": "open protocol for connecting agents to tools",
+      "h": "6d7f3fda"
+    },
+    "notes.vibecoding.7.note": {
+      "t": "multiple working directories for the same repository",
+      "h": "e9c61888"
+    }
+  }
+}

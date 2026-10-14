@@ -1,0 +1,96 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Un WAF (Web Application Firewall) inspecciona el tráfico HTTP en la capa 7 y decide, solicitud por solicitud, si continúa, se desafía, se limita o se bloquea. Ve lo que un firewall de red no ve: ruta, método, cabeceras, parámetros y el cuerpo de la solicitud.",
+      "h": "3cf30959"
+    },
+    "sections.0.body.1": {
+      "t": "No corrige la aplicación. Su papel es reducir la superficie expuesta y ganar tiempo: bloquear patrones de ataque conocidos, aplicar un \"parche virtual\" mientras el equipo corrige la falla de verdad y contener la automatización abusiva antes de que llegue al origen.",
+      "h": "65bfaed9"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "El modelo negativo bloquea lo que parece malo: firmas de inyección SQL, XSS, path traversal, como las reglas administradas (OWASP Core Rule Set y los rulesets que mantiene el proveedor). Es la base lista para usar, pero genera falsos positivos y puede ser eludido por quien conoce el patrón.",
+      "h": "c8c7a2d1"
+    },
+    "sections.1.body.1": {
+      "t": "El modelo positivo define qué es válido y bloquea el resto: para un endpoint crítico, qué métodos, rutas, tipos de contenido y tamaños se aceptan. Da mucha más precisión, pero exige conocer la aplicación, así que se aplica endpoint por endpoint, empezando por los más críticos (login, pago, administración).",
+      "h": "493a9576"
+    },
+    "sections.1.bullets.0": {
+      "t": "Negativo: cobertura amplia y rápida, más ruido, actualizado por el proveedor.",
+      "h": "c52f59c9"
+    },
+    "sections.1.bullets.1": {
+      "t": "Positivo: precisión alta y superficie mínima, mayor costo de mantenimiento, escrito por quien conoce la aplicación.",
+      "h": "58cd27dd"
+    },
+    "sections.1.bullets.2": {
+      "t": "En la práctica se combinan: el administrado como red de seguridad y el positivo en los endpoints que más importan.",
+      "h": "684f9d8d"
+    },
+    "sections.1.heading": {
+      "t": "Modelo negativo y modelo positivo",
+      "h": "4ebba773"
+    },
+    "sections.2.body.0": {
+      "t": "La regla de oro es no activar nunca una regla nueva directamente en bloqueo. El camino seguro tiene tres fases:",
+      "h": "aba06e84"
+    },
+    "sections.2.bullets.0": {
+      "t": "Observación: la regla solo registra (acción de log). Usted mide cuánto tráfico atraparía y de quién.",
+      "h": "5bbcc30d"
+    },
+    "sections.2.bullets.1": {
+      "t": "Shadow: la regla corre en paralelo y la decisión simulada se compara con la realidad (¿qué habría sido bloqueado y era legítimo?). Aquí se ajusta la precisión.",
+      "h": "3ac4c608"
+    },
+    "sections.2.bullets.2": {
+      "t": "Enforcement: la regla empieza a actuar, comenzando por un desafío (challenge) en lugar de un bloqueo seco cuando hay dudas, y recibe un responsable y una métrica de falsos positivos.",
+      "h": "09bc05a0"
+    },
+    "sections.2.heading": {
+      "t": "Observación, shadow y enforcement",
+      "h": "dddec001"
+    },
+    "sections.3.body.0": {
+      "t": "Dos reglas ilustrativas. La primera es positiva: en un endpoint de pedidos, solo se aceptan GET y POST. La segunda protege el login: las solicitudes de login que vienen de fuera de una lista de confianza reciben un desafío. Los nombres de los campos siguen el lenguaje de reglas de Cloudflare; ajústelos a su entorno.",
+      "h": "18f47c02"
+    },
+    "sections.3.code.0.code": {
+      "t": "# 1) modelo positivo: método inesperado en /api/orders\n(http.request.uri.path eq \"/api/orders\" and not http.request.method in {\"GET\" \"POST\"})\n  -> action: Block\n\n# 2) login fuera de la lista de confianza recibe desafío\n(http.request.method eq \"POST\" and http.request.uri.path eq \"/api/login\" and not ip.src in $trusted_ips)\n  -> action: Managed Challenge\n\n# fase de observación: misma expresión, solo registrando\n  -> action: Log",
+      "h": "2b5c19ad"
+    },
+    "sections.3.code.0.filename": {
+      "t": "custom rules - ilustrativo",
+      "h": "7340b8da"
+    },
+    "sections.3.heading": {
+      "t": "Ejemplo: reglas en el lenguaje de expresiones de Cloudflare",
+      "h": "ca4cb56e"
+    },
+    "sections.4.body.0": {
+      "t": "Bloquear a un cliente legítimo cuesta ingresos y confianza, y es lo que hace que los equipos apaguen el WAF. Por eso cada regla necesita una métrica de precisión, una excepción documentada (y con plazo) y un ciclo semanal de revisión. Un WAF que nadie ajusta se convierte, en pocos meses, en un muro que estorba o en un adorno que no bloquea nada.",
+      "h": "592e6fbd"
+    },
+    "sections.4.heading": {
+      "t": "El falso positivo es el costo real",
+      "h": "38379e1d"
+    },
+    "short": {
+      "t": "filtrar el tráfico L7 sin tumbar lo que es legítimo",
+      "h": "8bd3edf1"
+    },
+    "tagline": {
+      "t": "Un WAF bien operado no es una caja que se enciende: es un programa que empieza observando, valida cada regla en sombra y solo entonces bloquea, con un responsable y una métrica para cada decisión.",
+      "h": "8ad8eb97"
+    },
+    "title": {
+      "t": "WAF - observación, shadow y enforcement",
+      "h": "e505f720"
+    }
+  }
+}

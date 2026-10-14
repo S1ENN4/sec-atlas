@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "El hardening de CI/CD consiste en reducir lo que un atacante puede lograr si compromete el pipeline: un runner, una acción de terceros, un token filtrado o un pull request malicioso. Los incidentes reales de cadena de suministro muestran el patrón: el objetivo deja de ser la aplicación y pasa a ser el camino que lleva el código a producción.",
+      "h": "c9ded992"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "Las claves de nube guardadas como secretos del pipeline se filtran y viven para siempre. La alternativa es la federación por OIDC: el pipeline demuestra su identidad al proveedor de nube con un token de corta duración, y el proveedor entrega credenciales temporales, restringidas a ese repositorio y a esa rama.",
+      "h": "e42d3424"
+    },
+    "sections.1.code.0.code": {
+      "t": "permissions:\n  contents: read        # mínimo por defecto\n  id-token: write       # permite solicitar el token OIDC\n\njobs:\n  deploy:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@<sha-completo-do-commit>   # fijado por SHA\n      - uses: aws-actions/configure-aws-credentials@<sha-completo>\n        with:\n          role-to-assume: arn:aws:iam::123456789012:role/ci-deploy\n          aws-region: us-east-1\n      - run: ./scripts/deploy.sh",
+      "h": "4a381e07"
+    },
+    "sections.1.code.0.filename": {
+      "t": ".github/workflows/deploy.yml",
+      "h": "f130ad0d"
+    },
+    "sections.1.heading": {
+      "t": "Fuera los secretos estáticos: OIDC",
+      "h": "f9036d59"
+    },
+    "sections.2.bullets.0": {
+      "t": "Fijar acciones e imágenes por digest o SHA, no por una etiqueta mutable: una etiqueta puede reapuntarse a código malicioso.",
+      "h": "03851e89"
+    },
+    "sections.2.bullets.1": {
+      "t": "Permisos mínimos para el token del pipeline, definidos por job.",
+      "h": "6cac9420"
+    },
+    "sections.2.bullets.2": {
+      "t": "Cuidado con los disparadores que ejecutan código de forks con acceso a secretos (por ejemplo, pull_request_target en GitHub Actions): tratar la entrada de un PR como no confiable.",
+      "h": "e47d81be"
+    },
+    "sections.2.bullets.3": {
+      "t": "Inyección en scripts: nunca interpolar títulos de PR, nombres de rama o mensajes de commit directamente en comandos de shell.",
+      "h": "ef6916f9"
+    },
+    "sections.2.heading": {
+      "t": "Las dependencias del pipeline también son dependencias",
+      "h": "eb828cce"
+    },
+    "sections.3.body.0": {
+      "t": "Los runners efímeros (uno por job, descartado al final) evitan que un job contamine al siguiente y que las credenciales queden en disco. Los runners compartidos y de larga vida acumulan estado y se vuelven objetivos. Separa los runners que hacen deploy a producción de los que ejecutan pruebas de código externo, y restringe la red de salida a lo necesario.",
+      "h": "2f8f24b8"
+    },
+    "sections.3.heading": {
+      "t": "Runners y entornos",
+      "h": "23f9cf01"
+    },
+    "sections.4.body.0": {
+      "t": "Firmar los artefactos y registrar la procedencia (quién los construyó, a partir de qué commit, en qué entorno) permite que el destino verifique que lo que va a correr es exactamente lo que produjo el pipeline. Frameworks como SLSA describen niveles crecientes de estas garantías, y herramientas como cosign se encargan de la firma de imágenes.",
+      "h": "7d894ed4"
+    },
+    "sections.4.heading": {
+      "t": "Integridad de lo que sale del pipeline",
+      "h": "bd5b3eef"
+    },
+    "short": {
+      "t": "el pipeline también es un objetivo: protegerlo es proteger todo lo que entrega",
+      "h": "25ee5eed"
+    },
+    "tagline": {
+      "t": "El pipeline guarda credenciales, ejecuta código de terceros y publica lo que va a producción. Comprometerlo es la ruta más corta para comprometer todo.",
+      "h": "77e1aed2"
+    },
+    "title": {
+      "t": "Hardening de CI/CD",
+      "h": "0ff35363"
+    }
+  }
+}

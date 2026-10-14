@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Everything that looks like reasoning emerges from predicting tokens based on the context.",
+      "h": "3e69c4d6"
+    },
+    "questions.0.options.0": {
+      "t": "Predicts the next token from the context",
+      "h": "2b263d1d"
+    },
+    "questions.0.options.1": {
+      "t": "Executes SQL queries",
+      "h": "21df0f48"
+    },
+    "questions.0.options.2": {
+      "t": "Verifies facts automatically",
+      "h": "fc02988c"
+    },
+    "questions.0.options.3": {
+      "t": "Keeps permanent memory between sessions",
+      "h": "7c319ceb"
+    },
+    "questions.0.q": {
+      "t": "What does an LLM fundamentally do?",
+      "h": "ffeea31e"
+    },
+    "questions.1.explain": {
+      "t": "Because instructions and data travel in the same text channel, the model may obey the wrong content.",
+      "h": "6e86a323"
+    },
+    "questions.1.options.0": {
+      "t": "Input that tries to overwrite the model's original instructions",
+      "h": "4a82936f"
+    },
+    "questions.1.options.1": {
+      "t": "A syntax error",
+      "h": "5c2d3316"
+    },
+    "questions.1.options.2": {
+      "t": "A type of compression",
+      "h": "1f96a821"
+    },
+    "questions.1.options.3": {
+      "t": "A training technique",
+      "h": "b34fe9d0"
+    },
+    "questions.1.q": {
+      "t": "What is prompt injection?",
+      "h": "98286418"
+    },
+    "questions.2.explain": {
+      "t": "The output needs validation, especially before triggering tools.",
+      "h": "e69a9ed7"
+    },
+    "questions.2.options.0": {
+      "t": "Because it can hallucinate and generate plausible but wrong answers",
+      "h": "f3d432e4"
+    },
+    "questions.2.options.1": {
+      "t": "Because it always lies",
+      "h": "31fa320a"
+    },
+    "questions.2.options.2": {
+      "t": "Because the answers are encrypted",
+      "h": "483e0837"
+    },
+    "questions.2.options.3": {
+      "t": "Because it does not understand Portuguese",
+      "h": "471b3168"
+    },
+    "questions.2.q": {
+      "t": "Why can't you blindly trust the model's output?",
+      "h": "0413e37a"
+    }
+  }
+}

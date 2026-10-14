@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Observing and simulating first shows the false positive before it costs you a customer.",
+      "h": "ba907140"
+    },
+    "questions.0.options.0": {
+      "t": "Observation, then shadow, and only then enforcement",
+      "h": "c7b2084a"
+    },
+    "questions.0.options.1": {
+      "t": "Switch straight to blocking to see the effect",
+      "h": "bf1ab3ff"
+    },
+    "questions.0.options.2": {
+      "t": "Enable only in production, outside business hours",
+      "h": "f3f8b440"
+    },
+    "questions.0.options.3": {
+      "t": "Copy another company's rule without testing",
+      "h": "90c4d4dd"
+    },
+    "questions.0.q": {
+      "t": "What is the safe path to enable a new WAF rule?",
+      "h": "c0e3e061"
+    },
+    "questions.1.explain": {
+      "t": "It is the allowlist applied per endpoint: more precise, but requires knowing the application.",
+      "h": "e086ff9a"
+    },
+    "questions.1.options.0": {
+      "t": "Defining what is valid for the endpoint and blocking the rest",
+      "h": "d69ea296"
+    },
+    "questions.1.options.1": {
+      "t": "Blocking only known attack signatures",
+      "h": "da8bc3d3"
+    },
+    "questions.1.options.2": {
+      "t": "Allowing everything and logging",
+      "h": "197652fc"
+    },
+    "questions.1.options.3": {
+      "t": "Using only lists of malicious IPs",
+      "h": "f1022667"
+    },
+    "questions.1.q": {
+      "t": "What characterizes the positive WAF model?",
+      "h": "ec7d4765"
+    },
+    "questions.2.explain": {
+      "t": "It buys time but does not eliminate the flaw: the fix in the application is still necessary.",
+      "h": "43e1ea40"
+    },
+    "questions.2.options.0": {
+      "t": "Blocking exploitation of a known flaw while the real fix has not yet arrived",
+      "h": "e8c79ab8"
+    },
+    "questions.2.options.1": {
+      "t": "Replacing the definitive fix for the vulnerability",
+      "h": "f0fffcb9"
+    },
+    "questions.2.options.2": {
+      "t": "Updating the origin's operating system",
+      "h": "ee9bbe9b"
+    },
+    "questions.2.options.3": {
+      "t": "Encrypting traffic between the edge and the origin",
+      "h": "ac38d2d0"
+    },
+    "questions.2.q": {
+      "t": "What is a virtual patch for?",
+      "h": "075f23eb"
+    }
+  }
+}

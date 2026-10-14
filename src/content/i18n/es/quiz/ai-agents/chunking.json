@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Los fragmentos bien definidos son la unidad que se indexará y recuperará.",
+      "h": "c550e3d1"
+    },
+    "questions.0.options.0": {
+      "t": "Dividir documentos en fragmentos que caben en el contexto y conservan el sentido",
+      "h": "f0fe1f7d"
+    },
+    "questions.0.options.1": {
+      "t": "Comprimir el modelo",
+      "h": "ad80f426"
+    },
+    "questions.0.options.2": {
+      "t": "Quitar stop words del prompt",
+      "h": "fc39f592"
+    },
+    "questions.0.options.3": {
+      "t": "Cifrar el corpus",
+      "h": "50875204"
+    },
+    "questions.0.q": {
+      "t": "¿Qué es el chunking?",
+      "h": "86a3b657"
+    },
+    "questions.1.explain": {
+      "t": "Las frases sueltas pierden lo que las explica; el equilibrio es tamaño con coherencia.",
+      "h": "b99525ca"
+    },
+    "questions.1.options.0": {
+      "t": "Perder contexto y producir recuperaciones sin sentido completo",
+      "h": "d67e8190"
+    },
+    "questions.1.options.1": {
+      "t": "Aumentar siempre la precisión",
+      "h": "84dd283b"
+    },
+    "questions.1.options.2": {
+      "t": "Eliminar la necesidad de embeddings",
+      "h": "63de573f"
+    },
+    "questions.1.options.3": {
+      "t": "Evitar la prompt injection",
+      "h": "ef524e88"
+    },
+    "questions.1.q": {
+      "t": "Los chunks demasiado pequeños tienden a...",
+      "h": "0309d822"
+    },
+    "questions.2.explain": {
+      "t": "El solapamiento preserva la continuidad cuando el corte cae en medio de una idea.",
+      "h": "90854ec8"
+    },
+    "questions.2.options.0": {
+      "t": "Evitar que una información se corte justo en la frontera entre dos fragmentos",
+      "h": "9ddac43f"
+    },
+    "questions.2.options.1": {
+      "t": "Duplicar el costo",
+      "h": "05112a6b"
+    },
+    "questions.2.options.2": {
+      "t": "Acelerar la búsqueda",
+      "h": "64dbc20b"
+    },
+    "questions.2.options.3": {
+      "t": "Reducir el tamaño del índice",
+      "h": "a3915b51"
+    },
+    "questions.2.q": {
+      "t": "¿Para qué sirve el solapamiento (overlap) entre chunks?",
+      "h": "50e189aa"
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "La telemetría de borde es el conjunto de eventos que describen el tráfico que llega a su aplicación: cada solicitud en la CDN y en el WAF, con el resultado de la inspección, y los eventos de la propia aplicación (inicio de sesión, error, cambio de estado). Es la materia prima de toda detección y de toda métrica.",
+      "h": "bebb1c9d"
+    },
+    "sections.0.body.1": {
+      "t": "Sin ella, el SOC opera a ciegas o depende de paneles prefabricados que responden las preguntas de otros, no las suyas.",
+      "h": "5fefc943"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "Pensar en etapas ayuda a ubicar dónde nace un problema cuando la detección falla:",
+      "h": "5c41ee5c"
+    },
+    "sections.1.bullets.0": {
+      "t": "Ingesta: entrega de los logs por lotes o en streaming desde el borde (por ejemplo, un servicio de push de logs) y desde la aplicación.",
+      "h": "233c421c"
+    },
+    "sections.1.bullets.1": {
+      "t": "Normalización: esquema único de campos (timestamp, IP, ruta, método, estado, user agent, resultado del WAF), independiente del origen.",
+      "h": "00a64c64"
+    },
+    "sections.1.bullets.2": {
+      "t": "Enriquecimiento: ASN, país, reputación, score de bot, identificador de cuenta, versión de la aplicación.",
+      "h": "2a586889"
+    },
+    "sections.1.bullets.3": {
+      "t": "Almacenamiento: tablas particionadas por tiempo, pensadas para consultar por ventana.",
+      "h": "8ccfa46c"
+    },
+    "sections.1.bullets.4": {
+      "t": "Detección: consultas y reglas sobre los datos (tema del tópico de ingeniería de detección).",
+      "h": "093a9bc4"
+    },
+    "sections.1.bullets.5": {
+      "t": "Acción y métrica: el resultado se convierte en bloqueo, alerta o indicador, y vuelve al pipeline para cerrar el ciclo.",
+      "h": "c4a15789"
+    },
+    "sections.1.heading": {
+      "t": "El pipeline, de punta a punta",
+      "h": "f54db7ea"
+    },
+    "sections.2.body.0": {
+      "t": "El esquema es un contrato. Cuando todo evento tiene los mismos campos con los mismos nombres, una detección escrita una vez funciona para cualquier fuente. Un ejemplo sencillo:",
+      "h": "43ed6563"
+    },
+    "sections.2.code.0.code": {
+      "t": "{\n  \"ts\": \"2026-10-13T14:03:21.482Z\",\n  \"client_ip\": \"203.0.113.42\",\n  \"asn\": 64500,\n  \"country\": \"BR\",\n  \"method\": \"POST\",\n  \"host\": \"api.ejemplo.com\",\n  \"path\": \"/api/login\",\n  \"status\": 401,\n  \"user_agent\": \"python-requests/2.31\",\n  \"bot_score\": 8,\n  \"waf_action\": \"log\",\n  \"waf_rule\": \"login-ratelimit-v2\",\n  \"account_id\": \"u_18273\"\n}",
+      "h": "213029c3"
+    },
+    "sections.2.code.0.filename": {
+      "t": "edge_event.json",
+      "h": "db0fdb07"
+    },
+    "sections.2.heading": {
+      "t": "Un evento normalizado",
+      "h": "5d2bac0f"
+    },
+    "sections.3.body.0": {
+      "t": "Tres problemas aparecen siempre: campos ausentes (la detección deja de funcionar en silencio), relojes desalineados (ventanas erróneas) y volumen perdido (un pipeline que descarta eventos bajo carga). Conviene monitorear el propio pipeline: latencia de ingesta, conteo por fuente y tasa de eventos sin campos esenciales. Una detección sobre datos incompletos da falsa confianza.",
+      "h": "48d6b264"
+    },
+    "sections.3.heading": {
+      "t": "Calidad de los datos",
+      "h": "2901213d"
+    },
+    "short": {
+      "t": "del log crudo al evento listo para detectar",
+      "h": "d5ca041c"
+    },
+    "tagline": {
+      "t": "Una buena detección empieza con buenos datos: un pipeline que recibe el tráfico del borde y de la aplicación, lo normaliza, lo enriquece y lo guarda de forma que se pueda consultar en segundos.",
+      "h": "42fe1fe6"
+    },
+    "title": {
+      "t": "Telemetría de borde y de aplicación",
+      "h": "7231ab53"
+    }
+  }
+}

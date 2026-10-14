@@ -1,0 +1,88 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Rate limiting restricts how many requests an entity can make in a time window. It protects against brute force, credential stuffing, scraping and resource exhaustion, and is one of the few defenses that work even when the attacker sends traffic that looks valid request by request.",
+      "h": "125e375a"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "Limiting by IP is the starting point, but behind a corporate NAT or a mobile carrier thousands of legitimate users share the same IP, while an attacker with a botnet spreads traffic across thousands of IPs. The right key depends on what you are protecting:",
+      "h": "b7f5a0ef"
+    },
+    "sections.1.bullets.0": {
+      "t": "IP: simple, good against crude abuse, bad with NAT and botnets.",
+      "h": "552f1d9a"
+    },
+    "sections.1.bullets.1": {
+      "t": "Account or identifier in the body (for example, the user tried at login): catches an attack on one account coming from many IPs.",
+      "h": "41a19a15"
+    },
+    "sections.1.bullets.2": {
+      "t": "Token, cookie or session header: limits per authenticated client, not per network.",
+      "h": "e0086421"
+    },
+    "sections.1.bullets.3": {
+      "t": "ASN, country or fingerprint: useful as an aggregator to detect coordinated waves.",
+      "h": "36efae4a"
+    },
+    "sections.1.bullets.4": {
+      "t": "Combinations (IP + path, account + ASN): reduce false positives.",
+      "h": "8d7b8669"
+    },
+    "sections.1.heading": {
+      "t": "Choosing the key is half the work",
+      "h": "531808cf"
+    },
+    "sections.2.body.0": {
+      "t": "Instead of just blocking, escalate the response. A first excess gets a challenge, the second a short block and repeat offenders a longer block, always with an expiry (TTL) so one day's mistake does not become a permanent penalty.",
+      "h": "f57636aa"
+    },
+    "sections.2.code.0.code": {
+      "t": "# login: 10 attempts per minute per IP, and 5 per minute per account tried\nmatch:   (http.request.method eq \"POST\" and http.request.uri.path eq \"/api/login\")\ncounting: per ip.src            -> 10 req / 60s\n          per login username    ->  5 req / 60s   (custom characteristic)\nresponse: 1st excess  -> Managed Challenge\n          repeat      -> Block, timeout 600s",
+      "h": "b7946486"
+    },
+    "sections.2.code.0.filename": {
+      "t": "rate limit rule - illustrative",
+      "h": "c0ec8fa0"
+    },
+    "sections.2.heading": {
+      "t": "Windows, limits and the response ladder",
+      "h": "fe4760de"
+    },
+    "sections.3.body.0": {
+      "t": "Fixed limits go stale: a marketing campaign doubles legitimate traffic and triggers blocks, and a patient attacker stays just under the limit. The adaptive approach uses the baseline of each endpoint and window (by hour and day of week) and alerts or acts when the deviation passes a threshold, using z-score or exponentially weighted moving average.",
+      "h": "2b007c54"
+    },
+    "sections.3.body.1": {
+      "t": "In practice, the static limit remains as a safety ceiling and the adaptive one handles fine-grained behavior, always going through observation and shadow before blocking.",
+      "h": "82e9ce18"
+    },
+    "sections.3.heading": {
+      "t": "Adaptive: the limit follows normal",
+      "h": "a0832fa4"
+    },
+    "sections.4.body.0": {
+      "t": "Ideally at the edge, before traffic costs processing at the origin. But some limits only make sense close to the application (per authenticated user, per tenant), where identity is already known. Each layer has its role, the subject of the defense in depth topic.",
+      "h": "1ef652cd"
+    },
+    "sections.4.heading": {
+      "t": "Where the limit should live",
+      "h": "ae8af377"
+    },
+    "short": {
+      "t": "limit abuse without punishing real users",
+      "h": "047a299b"
+    },
+    "tagline": {
+      "t": "A fixed per-IP limit is easy to bypass and unfair to shared networks. Rate limiting that works chooses the key well, learns normal behavior and escalates the response.",
+      "h": "69da9bf0"
+    },
+    "title": {
+      "t": "Adaptive rate limiting",
+      "h": "5d3a3d43"
+    }
+  }
+}

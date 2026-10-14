@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Prompt injection through the data: the content being analyzed becomes instruction.",
+      "h": "e0936122"
+    },
+    "questions.0.options.0": {
+      "t": "They are attacker-controlled and may contain instructions the model obeys",
+      "h": "cd24a231"
+    },
+    "questions.0.options.1": {
+      "t": "Because they are too large",
+      "h": "59580dfa"
+    },
+    "questions.0.options.2": {
+      "t": "Because the model does not read text",
+      "h": "ac277ea8"
+    },
+    "questions.0.options.3": {
+      "t": "Because they are always encrypted",
+      "h": "21d2b2a9"
+    },
+    "questions.0.q": {
+      "t": "Why are logs and user agents a risk when feeding an LLM?",
+      "h": "768e37e0"
+    },
+    "questions.1.explain": {
+      "t": "It turns free text into verifiable data.",
+      "h": "78d161a2"
+    },
+    "questions.1.options.0": {
+      "t": "Whatever does not match is discarded or goes to a human, and the automation can check the data",
+      "h": "9a164d82"
+    },
+    "questions.1.options.1": {
+      "t": "The model never makes mistakes again",
+      "h": "ccb4fdcf"
+    },
+    "questions.1.options.2": {
+      "t": "It removes the need for evaluation",
+      "h": "a9b0b5e9"
+    },
+    "questions.1.options.3": {
+      "t": "It reduces latency to zero",
+      "h": "ace0bc83"
+    },
+    "questions.1.q": {
+      "t": "What is the advantage of requiring structured output validated by a schema?",
+      "h": "9452efc4"
+    },
+    "questions.2.explain": {
+      "t": "AI around the decision, not in place of it.",
+      "h": "5052d649"
+    },
+    "questions.2.options.0": {
+      "t": "AI summarizes and suggests; a deterministic rule or a human decides, and the action goes through the brakes",
+      "h": "ed747c55"
+    },
+    "questions.2.options.1": {
+      "t": "The model's output directly triggers the destructive action",
+      "h": "2953d78d"
+    },
+    "questions.2.options.2": {
+      "t": "AI approves its own actions",
+      "h": "c1d22adc"
+    },
+    "questions.2.options.3": {
+      "t": "Remove human review",
+      "h": "e75fa975"
+    },
+    "questions.2.q": {
+      "t": "What is the safe pattern for AI in a playbook?",
+      "h": "6c3a2046"
+    }
+  }
+}

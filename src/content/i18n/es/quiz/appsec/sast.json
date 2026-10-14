@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "SAST es análisis estático: lee el código y busca patrones inseguros sin ejecutar la aplicación.",
+      "h": "5edf9faa"
+    },
+    "questions.0.options.0": {
+      "t": "La aplicación en ejecución, mediante solicitudes HTTP",
+      "h": "36c87fff"
+    },
+    "questions.0.options.1": {
+      "t": "El código fuente (o bytecode) sin ejecutarlo",
+      "h": "d8c00b51"
+    },
+    "questions.0.options.2": {
+      "t": "Las dependencias de terceros y sus CVEs",
+      "h": "7b4da8d1"
+    },
+    "questions.0.options.3": {
+      "t": "El tráfico de red entre servicios",
+      "h": "09638459"
+    },
+    "questions.0.q": {
+      "t": "¿Qué analiza el SAST?",
+      "h": "6684841c"
+    },
+    "questions.1.explain": {
+      "t": "Sin ejecutar el código, el SAST puede señalar caminos inalcanzables y no ve el comportamiento del entorno real.",
+      "h": "4e2a65b0"
+    },
+    "questions.1.options.0": {
+      "t": "Solo funciona después del deploy",
+      "h": "07c0ec44"
+    },
+    "questions.1.options.1": {
+      "t": "Genera falsos positivos y no ve problemas de configuración en runtime",
+      "h": "f4449529"
+    },
+    "questions.1.options.2": {
+      "t": "No puede analizar código Python",
+      "h": "086a61f7"
+    },
+    "questions.1.options.3": {
+      "t": "Exige acceso a producción",
+      "h": "74a13eb3"
+    },
+    "questions.1.q": {
+      "t": "¿Cuál es una limitación típica del SAST?",
+      "h": "305f61a2"
+    },
+    "questions.2.explain": {
+      "t": "Calibrar reglas y gates por severidad mantiene la confianza de los devs sin esconder riesgo.",
+      "h": "ea8d5654"
+    },
+    "questions.2.options.0": {
+      "t": "Apagar las reglas que más alertan",
+      "h": "559c0df7"
+    },
+    "questions.2.options.1": {
+      "t": "Ajustar las reglas al proyecto, bloquear solo severidad alta y tratar el resto como backlog",
+      "h": "98d2adbf"
+    },
+    "questions.2.options.2": {
+      "t": "Ejecutarlo solo una vez por trimestre",
+      "h": "ee73356e"
+    },
+    "questions.2.options.3": {
+      "t": "Ignorar el resultado y confiar en el DAST",
+      "h": "07fabdaa"
+    },
+    "questions.2.q": {
+      "t": "¿Cuál es la mejor forma de reducir el ruido del SAST sin perder cobertura?",
+      "h": "60c5e809"
+    }
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "MCP (Model Context Protocol) es un protocolo abierto que estandariza la conversación entre un cliente LLM (el host, generalmente un IDE o una app de chat) y servidores externos que exponen capacidades. En vez de que cada proveedor de herramientas invente su propia API, todo servidor MCP habla el mismo JSON-RPC y todo cliente MCP descubre todo de la misma forma.",
+      "h": "85022be3"
+    },
+    "sections.0.body.1": {
+      "t": "Piensa en USB-C para agentes. La pieza física cambió una vez; el ecosistema ganó. La misma idea aquí: el protocolo cambia una vez, y un servidor escrito para Claude Desktop funciona en Cursor, en Continue y en cualquier host que reenvíe el mensaje.",
+      "h": "b99aca3d"
+    },
+    "sections.0.body.2": {
+      "t": "las observaciones de este tema están fijadas a la revisión 2025-06-18 de la especificación del Model Context Protocol. Releases posteriores pueden introducir capacidades nuevas (sampling, elicitation, roots) y cambiar contratos existentes; verifica la versión de la spec que declara el SDK antes de adoptar.",
+      "h": "9e8932c9"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "Tres roles coexisten en la especificación. Confundirlos es el error más común al leer la documentación.",
+      "h": "814e2914"
+    },
+    "sections.1.body.1": {
+      "t": "host: la aplicación donde está el usuario (IDE, chat, agente). Aloja a los clientes y coordina permisos. En general un host corre muchos clientes.",
+      "h": "4c453e00"
+    },
+    "sections.1.body.2": {
+      "t": "client: vive dentro del host, habla con un único servidor vía JSON-RPC. Es el objeto que serializa las llamadas y negocia las capabilities.",
+      "h": "7e58aa9d"
+    },
+    "sections.1.body.3": {
+      "t": "server: el proceso que expone tools, resources y prompts. Puede correr localmente vía stdin/stdout, o remotamente vía HTTP con SSE. Es donde vive la lógica de integración.",
+      "h": "82ff8d98"
+    },
+    "sections.1.body.4": {
+      "t": "El transporte local típico es stdio: el host lanza el server como subproceso y habla JSON-RPC línea a línea. En entornos distribuidos, el transporte es Streamable HTTP, con POST para mensajes y GET con text/event-stream para notificaciones.",
+      "h": "fffcf044"
+    },
+    "sections.1.code.0.code": {
+      "t": "  Host (Claude Desktop, Cursor, VS Code, app propia)\n  |\n  | 1:N\n  |\n  +-- Client MCP (stdio)   <--> Server MCP local  (ej: filesystem)\n  +-- Client MCP (stdio)   <--> Server MCP local  (ej: postgres)\n  +-- Client MCP (HTTP+SSE)<--> Server MCP remoto (ej: API SaaS)\n\n  El transporte siempre es JSON-RPC 2.0. El estado de sesión es por conexión.",
+      "h": "e32279a8"
+    },
+    "sections.1.code.0.filename": {
+      "t": "topología típica",
+      "h": "028a41ef"
+    },
+    "sections.1.heading": {
+      "t": "Host, client y server: la topología",
+      "h": "ef458162"
+    },
+    "sections.2.body.0": {
+      "t": "El server expone tres tipos de capacidad, cada uno con un rol claro en el ciclo del agente:",
+      "h": "21d50bd0"
+    },
+    "sections.2.body.1": {
+      "t": "tools: acciones que el modelo puede invocar. Análogas a las function calls: nombre, schema JSON, efectos secundarios. El LLM elige cuándo llamar según la descripción.",
+      "h": "81fd435b"
+    },
+    "sections.2.body.2": {
+      "t": "resources: datos que el host puede leer. Pasivos, identificados por nombre o URI (ej: file:///docs/spec.pdf, db://customers/42). El host decide cuándo incluirlos en el contexto; el modelo solo ve el contenido que el host eligió.",
+      "h": "bf2761dc"
+    },
+    "sections.2.body.3": {
+      "t": "prompts: plantillas de prompt que el usuario invoca explícitamente (ej: '/summarize este archivo'). El modelo no las descubre; quedan como slash commands en el host.",
+      "h": "c3c4f223"
+    },
+    "sections.2.code.0.code": {
+      "t": "{\n  \"name\": \"docs-server\",\n  \"version\": \"0.2.1\",\n  \"capabilities\": {\n    \"tools\":     { \"listChanged\": true },\n    \"resources\": { \"subscribe\":   true, \"listChanged\": true }\n  },\n  \"tools\": [\n    {\n      \"name\": \"search_docs\",\n      \"description\": \"Busca pasajes relevantes en la base de documentación.\",\n      \"inputSchema\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"query\":   { \"type\": \"string\" },\n          \"top_k\":   { \"type\": \"integer\", \"default\": 5 }\n        },\n        \"required\": [\"query\"]\n      }\n    }\n  ],\n  \"resources\": [\n    {\n      \"uri\":  \"file:///docs/architecture.md\",\n      \"name\": \"arquitectura\",\n      \"mimeType\": \"text/markdown\"\n    }\n  ]\n}",
+      "h": "79007f9d"
+    },
+    "sections.2.code.0.filename": {
+      "t": "manifest de un server MCP",
+      "h": "aae6d5e7"
+    },
+    "sections.2.heading": {
+      "t": "Tools, resources y prompts",
+      "h": "1a7f62a3"
+    },
+    "sections.3.body.0": {
+      "t": "Cuando el host levanta un client MCP, el primer mensaje es initialize, con la versión del protocolo y las capabilities del cliente. El server responde con sus propias capabilities. De ahí en adelante, el host llama a tools/list, resources/list y prompts/list para armar el catálogo disponible.",
+      "h": "b95d6676"
+    },
+    "sections.3.body.1": {
+      "t": "Cada capacidad puede declarar listChanged: true, indicando que el server emitirá notifications/resources/list_changed o notifications/tools/list_changed cuando algo cambie. El host vuelve a listar y actualiza el catálogo sin necesidad de reiniciar.",
+      "h": "ac3fc623"
+    },
+    "sections.3.code.0.code": {
+      "t": "import { Client } from '@modelcontextprotocol/sdk/client/index.js';\nimport { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js';\n\nconst transport = new StdioClientTransport({\n  command: 'npx', args: ['-y', '@modelcontextprotocol/server-filesystem', '/docs'],\n});\n\nconst client = new Client({ name: 'host', version: '1.0.0' }, { capabilities: {} });\nawait client.connect(transport);\n\nconst { tools }     = await client.listTools();     // -> catálogo para el LLM\nconst { resources } = await client.listResources(); // -> datos disponibles\n\nconst result = await client.callTool({\n  name: 'search_docs',\n  arguments: { query: 'cómo funciona el checkpoint', top_k: 3 },\n});",
+      "h": "09d016da"
+    },
+    "sections.3.code.0.filename": {
+      "t": "client.tsx",
+      "h": "9c21b145"
+    },
+    "sections.3.heading": {
+      "t": "Cómo el cliente descubre capacidades",
+      "h": "c32f4b36"
+    },
+    "sections.4.bullets.0": {
+      "t": "interoperabilidad: un server MCP sirve a varios hosts sin reescritura; cambiar de IDE no es reescribir la integración",
+      "h": "ca328764"
+    },
+    "sections.4.bullets.1": {
+      "t": "descubrimiento dinámico: tools y resources aparecen en tiempo de conexión, sin reiniciar el host",
+      "h": "abd1ea68"
+    },
+    "sections.4.bullets.2": {
+      "t": "separación clara de roles: tools son acciones, resources son datos, prompts son plantillas, sin ambigüedad",
+      "h": "55321a7a"
+    },
+    "sections.4.bullets.3": {
+      "t": "transporte flexible: stdio para local, HTTP+SSE para distribuido; el contrato sobre el cable es el mismo",
+      "h": "840aa893"
+    },
+    "sections.4.heading": {
+      "t": "Puntos fuertes",
+      "h": "a2ebc02c"
+    },
+    "sections.5.bullets.0": {
+      "t": "las tools siguen siendo acciones del modelo: el server puede llamar APIs peligrosas, y la autorización y el sandboxing quedan a cargo del host",
+      "h": "c351bbd4"
+    },
+    "sections.5.bullets.1": {
+      "t": "la spec evoluciona rápido: 2025-06-18 es la versión fijada de este tema; sampling/elicitation/roots son áreas en expansión",
+      "h": "c22587bf"
+    },
+    "sections.5.bullets.2": {
+      "t": "depurar en remoto es más difícil: HTTP+SSE esconde el ciclo de vida; los logs y los handlers son igual de importantes",
+      "h": "ff79783e"
+    },
+    "sections.5.bullets.3": {
+      "t": "trust on first connect: el host necesita confiar en el server; la firma de paquetes y las allowlists siguen siendo responsabilidad del deployment",
+      "h": "fa822b15"
+    },
+    "sections.5.heading": {
+      "t": "Limitaciones",
+      "h": "149d05f7"
+    },
+    "short": {
+      "t": "protocolo estandarizado entre modelo y herramientas",
+      "h": "f164e10d"
+    },
+    "tagline": {
+      "t": "MCP (Model Context Protocol) estandariza cómo un cliente LLM descubre, lista y llama capacidades expuestas por servidores: tools (acciones), resources (datos) y prompts (plantillas). Una interfaz única para integrarse con cualquier fuente.",
+      "h": "8771593e"
+    },
+    "title": {
+      "t": "MCP - model context protocol",
+      "h": "44d644a3"
+    }
+  }
+}

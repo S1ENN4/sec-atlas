@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Prompt injection a través de los datos: el contenido analizado se convierte en instrucción.",
+      "h": "e0936122"
+    },
+    "questions.0.options.0": {
+      "t": "Los controlan los atacantes y pueden contener instrucciones que el modelo obedece",
+      "h": "cd24a231"
+    },
+    "questions.0.options.1": {
+      "t": "Porque son demasiado grandes",
+      "h": "59580dfa"
+    },
+    "questions.0.options.2": {
+      "t": "Porque el modelo no lee texto",
+      "h": "ac277ea8"
+    },
+    "questions.0.options.3": {
+      "t": "Porque siempre están cifrados",
+      "h": "21d2b2a9"
+    },
+    "questions.0.q": {
+      "t": "¿Por qué los logs y los user agents son un riesgo al alimentar un LLM?",
+      "h": "768e37e0"
+    },
+    "questions.1.explain": {
+      "t": "Convierte el texto libre en datos verificables.",
+      "h": "78d161a2"
+    },
+    "questions.1.options.0": {
+      "t": "Lo que no coincide se descarta o va a un humano, y la automatización puede verificar los datos",
+      "h": "9a164d82"
+    },
+    "questions.1.options.1": {
+      "t": "El modelo deja de equivocarse",
+      "h": "ccb4fdcf"
+    },
+    "questions.1.options.2": {
+      "t": "Elimina la necesidad de evaluación",
+      "h": "a9b0b5e9"
+    },
+    "questions.1.options.3": {
+      "t": "Reduce la latencia a cero",
+      "h": "ace0bc83"
+    },
+    "questions.1.q": {
+      "t": "¿Cuál es la ventaja de exigir una salida estructurada validada por un esquema?",
+      "h": "9452efc4"
+    },
+    "questions.2.explain": {
+      "t": "La IA alrededor de la decisión, no en su lugar.",
+      "h": "5052d649"
+    },
+    "questions.2.options.0": {
+      "t": "La IA resume y sugiere; una regla determinista o un humano decide, y la acción pasa por los frenos",
+      "h": "ed747c55"
+    },
+    "questions.2.options.1": {
+      "t": "La salida del modelo activa directamente la acción destructiva",
+      "h": "2953d78d"
+    },
+    "questions.2.options.2": {
+      "t": "La IA aprueba sus propias acciones",
+      "h": "c1d22adc"
+    },
+    "questions.2.options.3": {
+      "t": "Eliminar la revisión humana",
+      "h": "e75fa975"
+    },
+    "questions.2.q": {
+      "t": "¿Cuál es el patrón seguro para la IA en un playbook?",
+      "h": "6c3a2046"
+    }
+  }
+}

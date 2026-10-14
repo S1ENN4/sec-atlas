@@ -1,0 +1,100 @@
+{
+  "entries": {
+    "certifications.0.detail": {
+      "t": "Microsoft · emitida en nov/2024, expirada en nov/2025",
+      "h": "d5309ff8"
+    },
+    "certifications.0.title": {
+      "t": "Microsoft Certified: Azure AI Engineer Associate",
+      "h": "e77021e9"
+    },
+    "certifications.1.detail": {
+      "t": "Acadi-TI · may/2023",
+      "h": "a1374978"
+    },
+    "certifications.1.title": {
+      "t": "CSAE · Certified Security Architecture Expert",
+      "h": "33571268"
+    },
+    "certifications.2.detail": {
+      "t": "Acadi-TI · 2022",
+      "h": "49ba6a4c"
+    },
+    "certifications.2.title": {
+      "t": "CNSE · Certified Network Security Expert",
+      "h": "ed989e21"
+    },
+    "contentNote": {
+      "t": "El texto fue producido con apoyo de IA (Claude) y está en revisión técnica continua. ¿Encontraste un error o una imprecisión? Avísame por LinkedIn: lo corrijo y lo registro en /novidades.",
+      "h": "59aa9ee2"
+    },
+    "education.0.title": {
+      "t": "Posgrado en ciberseguridad ofensiva · Acadi-TI",
+      "h": "9597dc0b"
+    },
+    "education.1.title": {
+      "t": "Análisis y Desarrollo de Sistemas (CST) · UniCEUB",
+      "h": "19d38abb"
+    },
+    "experience.0.detail": {
+      "t": "Liderazgo de SOC, defensa L7, telemetría de borde y de aplicación, respuesta a incidentes y post-mortem con hardening.",
+      "h": "45e95287"
+    },
+    "experience.0.title": {
+      "t": "CloudWalk · Security Operations Lead / Ingeniero de Seguridad",
+      "h": "a2b1e3ac"
+    },
+    "experience.1.detail": {
+      "t": "Estrategia DevSecOps, pipelines en Azure DevOps con Defender, capacitaciones y talleres de seguridad.",
+      "h": "de855c82"
+    },
+    "experience.1.title": {
+      "t": "BB Tecnologia e Serviços · Ingeniero Senior de Seguridad de Aplicaciones",
+      "h": "66cd8ec4"
+    },
+    "experience.2.detail": {
+      "t": "Análisis de código, gestión de vulnerabilidades, desarrollo seguro y automatización de seguridad.",
+      "h": "6718373d"
+    },
+    "experience.2.title": {
+      "t": "NOVA8 · Ingeniero de Seguridad de Aplicaciones",
+      "h": "b50ec2b2"
+    },
+    "experience.3.detail": {
+      "t": "Automatizaciones e integraciones de GRC y seguridad en Python y NodeJS, con atención a clientes de gran tamaño.",
+      "h": "d1e43dbc"
+    },
+    "experience.3.title": {
+      "t": "Every Cybersecurity and GRC Solutions · Analista de tecnología",
+      "h": "1be9ed25"
+    },
+    "experience.4.detail": {
+      "t": "Servidores Linux y Windows, scripts de automatización (Python, Ansible, PowerShell).",
+      "h": "a5929060"
+    },
+    "experience.4.title": {
+      "t": "Vert Integradora de TI · Soporte técnico",
+      "h": "d217fc8f"
+    },
+    "headline": {
+      "t": "Security Operations Lead · DevSecOps, AppSec y Blue Team",
+      "h": "e326e77d"
+    },
+    "languages.0": {
+      "t": "Portugués (nativo)",
+      "h": "c4fa74be"
+    },
+    "languages.1": {
+      "t": "Inglés (fluido)",
+      "h": "8c97bdd2"
+    },
+    "location": {
+      "t": "Brasilia, Brasil",
+      "h": "decb7698"
+    },
+    "summary": {
+      "t": "Líder de operaciones de seguridad con experiencia en AppSec y DevSecOps: WAF y defensa L7, detección y respuesta a incidentes, SAST, DAST y SCA en pipelines de CI/CD. Este sitio es mi cuaderno público de estudio y portafolio: un mapa interactivo que muestra qué hace cada verificación, dónde entra en el pipeline y cómo se conectan las piezas.",
+      "h": "3ae5680c"
+    }
+  }
+}

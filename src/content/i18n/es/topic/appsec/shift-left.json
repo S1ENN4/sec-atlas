@@ -1,0 +1,64 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Dibuja el ciclo de vida del software de izquierda a derecha: código, build, pruebas, staging, producción. Shift-left es mover las verificaciones de seguridad lo más posible hacia la izquierda de esa línea: de la producción hacia el teclado de quien desarrolla.",
+      "h": "376fa949"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "El ejemplo más tangible es el pre-commit: un hook local que ejecuta las mismas herramientas del pipeline, pero en la máquina del dev, antes de que el código siquiera salga. La configuración de abajo corre secrets scanning y SAST en cada commit:",
+      "h": "e4458178"
+    },
+    "sections.1.code.0.code": {
+      "t": "repos:\n  - repo: https://github.com/gitleaks/gitleaks\n    hooks:\n      - id: gitleaks          # bloquea la clave antes del commit\n  - repo: https://github.com/semgrep/semgrep\n    hooks:\n      - id: semgrep\n        args: [\"--config\", \"auto\"]   # las mismas reglas del CI",
+      "h": "16c3239d"
+    },
+    "sections.1.code.0.filename": {
+      "t": ".pre-commit-config.yaml",
+      "h": "e7d14d42"
+    },
+    "sections.1.heading": {
+      "t": "En la práctica: el hook que bloquea antes del commit",
+      "h": "ad372278"
+    },
+    "sections.2.body.0": {
+      "t": "El hook local es rápido y barato, pero no es una autoridad: se puede usar --no-verify y saltarlo. Por eso la misma verificación corre de nuevo en el PR y en el build, capas con costos distintos. Temprano (IDE, pre-commit) para feedback rápido; después (CI) como la compuerta de verdad, que nadie se salta.",
+      "h": "c88f1bac"
+    },
+    "sections.2.heading": {
+      "t": "Defensa en capas, no sustitución",
+      "h": "c3f5c2c6"
+    },
+    "sections.3.body.0": {
+      "t": "El costo de un defecto crece órdenes de magnitud a medida que avanza en el ciclo: corregir una línea en el editor cuesta segundos; el mismo problema en producción puede costar un incidente, una filtración y la confianza de los usuarios. Shift-left no se trata de que te guste la seguridad: se trata de aritmética.",
+      "h": "08f116c1"
+    },
+    "sections.3.heading": {
+      "t": "El efecto económico",
+      "h": "a1259dea"
+    },
+    "sections.4.body.0": {
+      "t": "Anticipar no elimina lo que viene después: algunas vulnerabilidades solo existen en el sistema ensamblado, con configuración y datos reales, territorio del DAST y del monitoreo en producción. Shift-left complementa las verificaciones tardías, no las sustituye.",
+      "h": "c75987b3"
+    },
+    "sections.4.heading": {
+      "t": "El límite del shift-left",
+      "h": "cdbbdcd6"
+    },
+    "short": {
+      "t": "Seguridad lo más temprano posible",
+      "h": "b42ebcab"
+    },
+    "tagline": {
+      "t": "Mientras más a la izquierda del ciclo se encuentra la falla, más barato es corregirla.",
+      "h": "cfcac191"
+    },
+    "title": {
+      "t": "Shift-left",
+      "h": "df191acc"
+    }
+  }
+}

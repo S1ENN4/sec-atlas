@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Cuanto mayor es el impacto de la acción, mayor es la necesidad de una verificación humana.",
+      "h": "113dd32c"
+    },
+    "questions.0.options.0": {
+      "t": "Aprobación humana para acciones destructivas o de gran alcance",
+      "h": "cfab53ba"
+    },
+    "questions.0.options.1": {
+      "t": "Ejecutar siempre la acción más amplia posible",
+      "h": "22185fdd"
+    },
+    "questions.0.options.2": {
+      "t": "Eliminar los logs de auditoría",
+      "h": "c5520e01"
+    },
+    "questions.0.options.3": {
+      "t": "Darle permisos de administrador a la automatización",
+      "h": "218a2aea"
+    },
+    "questions.0.q": {
+      "t": "¿Cuál de estos es un freno esencial de la automatización de respuesta?",
+      "h": "da4a995e"
+    },
+    "questions.1.explain": {
+      "t": "Permite validar una automatización nueva antes de darle poder para actuar.",
+      "h": "97f5ac43"
+    },
+    "questions.1.options.0": {
+      "t": "Mostrar lo que haría la acción, sin ejecutarla, para pruebas y shadow",
+      "h": "9f9f1b05"
+    },
+    "questions.1.options.1": {
+      "t": "Acelerar la ejecución",
+      "h": "bf04fdf5"
+    },
+    "questions.1.options.2": {
+      "t": "Cifrar las credenciales",
+      "h": "060c5876"
+    },
+    "questions.1.options.3": {
+      "t": "Reemplazar la auditoría",
+      "h": "220131d0"
+    },
+    "questions.1.q": {
+      "t": "¿Para qué sirve el dry-run en un playbook?",
+      "h": "607f7afe"
+    },
+    "questions.2.explain": {
+      "t": "Toda acción automática debe ser reversible, de preferencia por sí sola con el tiempo.",
+      "h": "1a02fcd7"
+    },
+    "questions.2.options.0": {
+      "t": "Para que un error de clasificación no se convierta en un bloqueo permanente",
+      "h": "0cbb4b7a"
+    },
+    "questions.2.options.1": {
+      "t": "Para ahorrar almacenamiento",
+      "h": "66816c05"
+    },
+    "questions.2.options.2": {
+      "t": "Porque los bloqueos sin plazo son imposibles",
+      "h": "1102f859"
+    },
+    "questions.2.options.3": {
+      "t": "Para aumentar el lag",
+      "h": "be617218"
+    },
+    "questions.2.q": {
+      "t": "¿Por qué ponerle plazo (TTL) a los bloqueos automáticos?",
+      "h": "75af7f9d"
+    }
+  }
+}

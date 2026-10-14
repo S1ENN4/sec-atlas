@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "CSPM looks at posture (configuration), not workload behavior.",
+      "h": "32070a67"
+    },
+    "questions.0.options.0": {
+      "t": "Continuously evaluates cloud configuration against best practices and detects deviations",
+      "h": "7d0a1ebd"
+    },
+    "questions.0.options.1": {
+      "t": "Protects runtime processes inside containers",
+      "h": "092c0bc3"
+    },
+    "questions.0.options.2": {
+      "t": "Encrypts volumes",
+      "h": "bd88fd6f"
+    },
+    "questions.0.options.3": {
+      "t": "Manages human identities",
+      "h": "9a25b7ca"
+    },
+    "questions.0.q": {
+      "t": "What does CSPM do?",
+      "h": "63d70a03"
+    },
+    "questions.1.explain": {
+      "t": "Wrong resource configuration is CSPM's territory.",
+      "h": "b738e24e"
+    },
+    "questions.1.options.0": {
+      "t": "A public storage bucket with no need",
+      "h": "97c6893e"
+    },
+    "questions.1.options.1": {
+      "t": "A suspicious process in a container",
+      "h": "a496126c"
+    },
+    "questions.1.options.2": {
+      "t": "A SQL injection",
+      "h": "d407d55a"
+    },
+    "questions.1.options.3": {
+      "t": "A package with a CVE in the code",
+      "h": "a5a19c47"
+    },
+    "questions.1.q": {
+      "t": "Which finding is typical of CSPM?",
+      "h": "19c7f3d9"
+    },
+    "questions.2.explain": {
+      "t": "Manual changes outside the code create drift, and CSPM is what detects it.",
+      "h": "2d9ae964"
+    },
+    "questions.2.options.0": {
+      "t": "The real configuration diverging from the desired or approved state",
+      "h": "fcf92e48"
+    },
+    "questions.2.options.1": {
+      "t": "Network latency increasing",
+      "h": "f802cd3d"
+    },
+    "questions.2.options.2": {
+      "t": "Cloud cost going down",
+      "h": "cc9294e3"
+    },
+    "questions.2.options.3": {
+      "t": "A DNS error",
+      "h": "32b87601"
+    },
+    "questions.2.q": {
+      "t": "What is configuration drift?",
+      "h": "4f4301b1"
+    }
+  }
+}

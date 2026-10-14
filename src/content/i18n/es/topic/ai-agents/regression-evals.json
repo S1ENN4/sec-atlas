@@ -1,0 +1,124 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Un regression eval es una suite de casos que no cambia junto con el código. Congelas el dataset (input, gabarito, métrica), y cada PR se evalúa contra ese dataset. Si una métrica cae por debajo del baseline, el PR falla y el merge se traba. El objetivo es simple: dejar de discutir si el cambio mejoró o empeoró.",
+      "h": "494be4c5"
+    },
+    "sections.0.body.1": {
+      "t": "La diferencia con el eval genérico es la inmutabilidad. El eval del PR puede crecer, editarse, incluir casos nuevos. El regression eval es un contrato: igual al de la última release, con el único cambio permitido siendo la versión del baseline.",
+      "h": "ee5597f2"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "El mantenimiento del dataset es donde la mayoría de los equipos se equivoca. Dos caminos. Inmutable puro: un dataset congelado en cada release, que solo crece cuando se detecta una regresión y se agrega como caso nuevo. Versátil: un dataset versionado (git LFS), donde un PR puede proponer casos, y el merge solo acepta si aumenta la cobertura.",
+      "h": "ac04a746"
+    },
+    "sections.1.body.1": {
+      "t": "La elección cambia lo que 'regresión' significa. El inmutable puro detecta solo drift; el versátil detecta drift y agrega nuevos huecos. Para equipos que todavía están aprendiendo qué medir, gana el versátil. Para equipos con un producto estable desde hace meses, gana el inmutable, porque la suite se vuelve un contrato de SLA.",
+      "h": "9d7b476d"
+    },
+    "sections.1.heading": {
+      "t": "Dataset inmutable versus dataset vivo",
+      "h": "0053fefc"
+    },
+    "sections.2.body.0": {
+      "t": "El esqueleto de abajo mezcla dos referencias conocidas (promptfoo y Braintrust) para mostrar la mecánica real: archivo de casos en YAML, runner que compara contra el baseline y veredicto booleano que consume el step de CI.",
+      "h": "94e6755f"
+    },
+    "sections.2.code.0.code": {
+      "t": "import fs from \"node:fs\";\nimport { runAgent } from \"../src/agent\";\nimport { assertFidelidade, assertRelevancia } from \"./asserts\";\nimport { loadBaseline, saveBaseline } from \"./baseline\";\n\ntype Case = { id: string; pergunta: string; gabarito: string; contexto: string };\n\ntype Metric = \"fidelidade\" | \"relevancia\";\n\nasync function runOne(c: Case) {\n  const out = await runAgent({ pergunta: c.pergunta, contexto: c.contexto });\n  return {\n    id: c.id,\n    fidelidade: await assertFidelidade(out, c.gabarito, c.contexto),\n    relevancia: await assertRelevancia(out, c.pergunta),\n  };\n}\n\nexport async function runRegressionSuite(path: string) {\n  const cases: Case[] = parseCases(fs.readFileSync(path, \"utf8\"));\n  const baseline = loadBaseline(\"regression.baseline.json\");\n  const results = await Promise.all(cases.map(runOne));\n  const report: Record<Metric, number> = { fidelidade: 0, relevancia: 0 };\n  for (const m of [\"fidelidade\", \"relevancia\"] as Metric[]) {\n    const avg = results.reduce((a, r) => a + r[m], 0) / results.length;\n    report[m] = avg;\n    const drop = baseline[m] - avg;\n    if (drop > 0.02) throw new Error(`regresión en ${m}: baseline ${baseline[m]} vs actual ${avg}`);\n  }\n  return report; // el CI lo consume y decide el gate",
+      "h": "1f557572"
+    },
+    "sections.2.code.0.filename": {
+      "t": "regression/run.ts (al estilo de promptfoo + Braintrust CI)",
+      "h": "9b2a6579"
+    },
+    "sections.2.heading": {
+      "t": "Gate en el PR: el esqueleto",
+      "h": "d7070ce4"
+    },
+    "sections.3.body.0": {
+      "t": "El baseline es la última release verde. Persistes (en un artefacto, en git, en un object store) la métrica por caso, y el runner compara caso a caso. El umbral define cuánto puede caer antes de fallar. Un umbral de 0.02 (2 puntos porcentuales) suele ser conservador; por debajo, los falsos positivos se comen el tiempo del equipo. Por encima, una regresión real se convierte en release.",
+      "h": "2dd1c950"
+    },
+    "sections.3.body.1": {
+      "t": "No todo PR necesita correr la suite completa. Para un PR pequeño, basta un muestreo aleatorio del 20% de los casos. Para un PR de release, la suite completa. El costo es el principal motivo por el que los equipos abandonan la suite fija: correr 500 casos en cada PR tarda cinco minutos y pronto se vuelve blanco de bypass.",
+      "h": "fa3c648d"
+    },
+    "sections.3.heading": {
+      "t": "Baseline, umbral y muestreo",
+      "h": "49b64a01"
+    },
+    "sections.4.body.0": {
+      "t": "Antes del merge, en un step dedicado de CI, con el baseline congelado por rama protegida (main/release). El gate no es opcional: un pipeline sin suite fija no cuenta como eval. Es como hacer un deploy sin smoke test.",
+      "h": "bfdaeabe"
+    },
+    "sections.4.body.1": {
+      "t": "Después del merge, una versión completa corre de noche para detectar el drift acumulado. El resultado alimenta el dataset: un caso nuevo que apareció en la corrida nocturna se vuelve caso de la suite fija en la próxima release.",
+      "h": "55228560"
+    },
+    "sections.4.heading": {
+      "t": "Dónde entra en el pipeline",
+      "h": "9be60c28"
+    },
+    "sections.5.body.0": {
+      "t": "Regla de oro: cuando una regresión aparece en producción pero pasa la suite, el caso se vuelve un caso nuevo de la suite en el mismo PR. Sin esta política la suite se vuelve una cobertura falsa y el equipo pierde la fe en ella.",
+      "h": "a677e71d"
+    },
+    "sections.5.body.1": {
+      "t": "La segunda regla es auditar la suite una vez por trimestre. Los casos desactualizados (gabarito equivocado, contexto eliminado) se vuelven ruido y contaminan el baseline. Limpiar es trabajo, pero limpiar es lo que mantiene útil la suite.",
+      "h": "5848ac16"
+    },
+    "sections.5.heading": {
+      "t": "Cómo mantener sana la suite",
+      "h": "13658300"
+    },
+    "sections.6.bullets.0": {
+      "t": "bloqueo automático: una regresión real se convierte en un fallo de CI, sin necesidad de alguien leyendo el PR",
+      "h": "b971b4c3"
+    },
+    "sections.6.bullets.1": {
+      "t": "historial rastreable: cada baseline es un commit, y cualquier caída apunta al PR que la causó",
+      "h": "4d7cd5d4"
+    },
+    "sections.6.bullets.2": {
+      "t": "cultura: el equipo deja de discutir opiniones y empieza a discutir números, y el número tiene dueño",
+      "h": "736cf9d5"
+    },
+    "sections.6.heading": {
+      "t": "Puntos fuertes",
+      "h": "a2ebc02c"
+    },
+    "sections.7.bullets.0": {
+      "t": "falso negativo: la suite solo detecta regresiones cubiertas, el resto se vuelve un incidente de producción",
+      "h": "d1398312"
+    },
+    "sections.7.bullets.1": {
+      "t": "mantenimiento constante: un dataset desactualizado miente, y el mantenimiento es trabajo que nadie pide",
+      "h": "ac7067df"
+    },
+    "sections.7.bullets.2": {
+      "t": "costo de runtime: correr 500 casos en cada PR necesita presupuesto de tiempo y de API",
+      "h": "41992f12"
+    },
+    "sections.7.heading": {
+      "t": "Limitaciones",
+      "h": "149d05f7"
+    },
+    "short": {
+      "t": "suite fija que bloquea regresiones en el PR",
+      "h": "b6e1874c"
+    },
+    "tagline": {
+      "t": "Los regression evals son la suite inmutable: dataset cerrado, gate en el merge, comparación contra un baseline. Es lo que convierte 'creo que quedó mejor' en 'la métrica X cayó 2 puntos, bloquear el PR'.",
+      "h": "5283a9a3"
+    },
+    "title": {
+      "t": "Regression evals - suite fija en el PR",
+      "h": "15c0a9e5"
+    }
+  }
+}

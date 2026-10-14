@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Si un workload cae, el atacante no alcanza automáticamente el resto de la red.",
+      "h": "e3db3738"
+    },
+    "questions.0.options.0": {
+      "t": "Aísla workloads con reglas específicas, limitando el movimiento lateral",
+      "h": "25768b67"
+    },
+    "questions.0.options.1": {
+      "t": "Divide el disco en particiones",
+      "h": "db10bb15"
+    },
+    "questions.0.options.2": {
+      "t": "Comprime el tráfico",
+      "h": "47b7100f"
+    },
+    "questions.0.options.3": {
+      "t": "Reemplaza al IAM",
+      "h": "9afb2a55"
+    },
+    "questions.0.q": {
+      "t": "¿Qué hace la microsegmentación?",
+      "h": "2d9b536e"
+    },
+    "questions.1.explain": {
+      "t": "El security group recuerda conexiones (stateful); la NACL evalúa paquete por paquete en ambas direcciones.",
+      "h": "5295b279"
+    },
+    "questions.1.options.0": {
+      "t": "El security group es stateful y por instancia; la NACL es stateless y por subred",
+      "h": "449bd2de"
+    },
+    "questions.1.options.1": {
+      "t": "Son idénticos",
+      "h": "63141248"
+    },
+    "questions.1.options.2": {
+      "t": "La NACL es stateful y el security group es stateless",
+      "h": "da2f78f1"
+    },
+    "questions.1.options.3": {
+      "t": "Los security groups solo valen para S3",
+      "h": "6b67ba6f"
+    },
+    "questions.1.q": {
+      "t": "¿Cuál es la diferencia típica entre un security group y una NACL en AWS?",
+      "h": "5f2f2d1b"
+    },
+    "questions.2.explain": {
+      "t": "Los puertos administrativos y las bases de datos nunca deben estar expuestos a toda internet.",
+      "h": "cb0aeaa8"
+    },
+    "questions.2.options.0": {
+      "t": "0.0.0.0/0 liberando SSH o una base de datos",
+      "h": "379003a8"
+    },
+    "questions.2.options.1": {
+      "t": "HTTPS abierto hacia un load balancer público",
+      "h": "687a822a"
+    },
+    "questions.2.options.2": {
+      "t": "Puerto 443 de un CDN",
+      "h": "dd5c6586"
+    },
+    "questions.2.options.3": {
+      "t": "Tráfico interno entre subredes privadas",
+      "h": "75027a15"
+    },
+    "questions.2.q": {
+      "t": "¿Qué regla de entrada es una señal de alerta clásica?",
+      "h": "e7062e87"
+    }
+  }
+}

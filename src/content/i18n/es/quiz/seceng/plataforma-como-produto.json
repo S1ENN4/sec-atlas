@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "La seguridad deja de ser un impuesto y se vuelve el atajo.",
+      "h": "272d9ae9"
+    },
+    "questions.0.options.0": {
+      "t": "La forma recomendada de hacer algo, ya con los controles de seguridad incorporados",
+      "h": "c051db50"
+    },
+    "questions.0.options.1": {
+      "t": "Un tipo de ataque",
+      "h": "fd460e08"
+    },
+    "questions.0.options.2": {
+      "t": "Una política que prohíbe cualquier excepción",
+      "h": "e6ee41de"
+    },
+    "questions.0.options.3": {
+      "t": "Un reporte mensual",
+      "h": "0423bc5a"
+    },
+    "questions.0.q": {
+      "t": "¿Qué es un camino pavimentado (golden path)?",
+      "h": "c9f704fd"
+    },
+    "questions.1.explain": {
+      "t": "Una buena plataforma es la que la gente usa, y eso se puede medir.",
+      "h": "4791bb1f"
+    },
+    "questions.1.options.0": {
+      "t": "Adopción y cobertura, como el porcentaje de servicios y repositorios dentro del estándar",
+      "h": "2c5bfb47"
+    },
+    "questions.1.options.1": {
+      "t": "El número de reuniones",
+      "h": "c7fd862b"
+    },
+    "questions.1.options.2": {
+      "t": "El tamaño del repositorio",
+      "h": "88384c89"
+    },
+    "questions.1.options.3": {
+      "t": "La cantidad de reglas escritas",
+      "h": "a05612b5"
+    },
+    "questions.1.q": {
+      "t": "¿Qué métrica muestra el alcance de la plataforma de seguridad?",
+      "h": "ba54e225"
+    },
+    "questions.2.explain": {
+      "t": "La fricción alta lleva a esquivar el control; los mensajes claros y la corrección automática la reducen.",
+      "h": "abbcf493"
+    },
+    "questions.2.options.0": {
+      "t": "El problema de producto es el control (fricción, ruido, falta de claridad)",
+      "h": "b3e6aa20"
+    },
+    "questions.2.options.1": {
+      "t": "Los devs son el problema",
+      "h": "776b2faf"
+    },
+    "questions.2.options.2": {
+      "t": "El control debe eliminarse sin análisis",
+      "h": "2a37d40b"
+    },
+    "questions.2.options.3": {
+      "t": "Hay que aumentar las sanciones",
+      "h": "9ae7b454"
+    },
+    "questions.2.q": {
+      "t": "Si los devs están desactivando un control, ¿cuál es la lectura correcta?",
+      "h": "ba78e584"
+    }
+  }
+}

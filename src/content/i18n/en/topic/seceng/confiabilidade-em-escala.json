@@ -1,0 +1,92 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Reliability here is the property of staying correct under failure: a network that drops, a slow dependency, a repeated message, a volume spike. In security the two costliest failures are losing an event (a detection that never fires) and acting twice (blocking, notifying or revoking in duplicate).",
+      "h": "964c1555"
+    },
+    "sections.0.body.1": {
+      "t": "The practical approach is to accept that delivery will be at-least-once and make processing idempotent, instead of chasing a magical end-to-end \"exactly-once\" delivery.",
+      "h": "2e929915"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "An operation is idempotent when running it several times gives the same result as running it once. For events, the common path is to give each one a stable identifier and record those already processed: if the ID reappears, the handler discards it or repeats only what is safe.",
+      "h": "eca771a4"
+    },
+    "sections.1.bullets.0": {
+      "t": "Deterministic event ID (hash of the relevant fields, or the source's ID) to detect repeats.",
+      "h": "e555020f"
+    },
+    "sections.1.bullets.1": {
+      "t": "Record of processed IDs with an expiry (Redis with expiration, or a table with a uniqueness constraint).",
+      "h": "783295a7"
+    },
+    "sections.1.bullets.2": {
+      "t": "Actions defined by desired state (\"IP X is blocked until T\") instead of incremental actions (\"block\"), since repeating the desired state changes nothing.",
+      "h": "57c1f933"
+    },
+    "sections.1.heading": {
+      "t": "Idempotency: reprocessing with no extra effect",
+      "h": "3ffb287d"
+    },
+    "sections.2.body.0": {
+      "t": "Retrying a failed call helps, but retrying everything at the same moment takes down the dependency that just recovered. The standard pattern is exponential backoff (wait longer on each attempt) with jitter (randomness to desynchronize clients) and an attempt cap, after which the event goes to the DLQ.",
+      "h": "38947a8a"
+    },
+    "sections.2.code.0.code": {
+      "t": "import random\nimport time\n\n\ndef retry(fn, max_attempts=5, base=0.2):\n    for i in range(max_attempts):\n        try:\n            return fn()\n        except Exception as err:\n            if i == max_attempts - 1:\n                raise RuntimeError(f\"exhausted {max_attempts} attempts\") from err\n            # exponential backoff with full jitter: wait in [0, base * 2**i)\n            time.sleep(random.uniform(0, base * 2 ** i))",
+      "h": "9dc09d58"
+    },
+    "sections.2.code.0.filename": {
+      "t": "retry.py",
+      "h": "bd5dcb4f"
+    },
+    "sections.2.heading": {
+      "t": "Retries with backoff and jitter",
+      "h": "bccac13c"
+    },
+    "sections.3.bullets.0": {
+      "t": "Backpressure: bounded queues and buffers. When the consumer cannot keep up, the producer slows down or the excess is deliberately dropped, instead of memory growing until the process dies.",
+      "h": "b2f1ec57"
+    },
+    "sections.3.bullets.1": {
+      "t": "Circuit breaker: after consecutive failures, stop calling the dependency for a while and answer with a defined fallback.",
+      "h": "7687c1ef"
+    },
+    "sections.3.bullets.2": {
+      "t": "Bulkheads: separate pools per dependency, so the slowness of one does not consume the resources of all.",
+      "h": "fea36820"
+    },
+    "sections.3.bullets.3": {
+      "t": "Timeouts on every external call, with a deadline shorter than the caller's.",
+      "h": "73052825"
+    },
+    "sections.3.heading": {
+      "t": "Backpressure and isolation",
+      "h": "3e2ff658"
+    },
+    "sections.4.body.0": {
+      "t": "Each component needs a defined answer for \"I could not decide\". An enrichment that failed should emit the event without the field (and a marker that it was missing), not drop it. An automatic action that could not confirm the context should ask for human approval, not act blindly.",
+      "h": "e01e97ca"
+    },
+    "sections.4.heading": {
+      "t": "Failing safely",
+      "h": "2be1e75e"
+    },
+    "short": {
+      "t": "the pipeline that withstands failure without losing or duplicating a decision",
+      "h": "45be15a4"
+    },
+    "tagline": {
+      "t": "In distributed systems everything fails at some point. What separates a reliable security platform is how it behaves when that happens: no lost events and no acting twice.",
+      "h": "fd45e16a"
+    },
+    "title": {
+      "t": "Reliability at scale: idempotency, retries and backpressure",
+      "h": "988b489b"
+    }
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "KMS (Key Management Service) is the component that creates, stores, uses and revokes cryptographic keys without exposing the secret to your code. The application asks the KMS to 'encrypt this' or 'decrypt this', and the key never leaves the key service. The rest of the system uses the ciphertext.",
+      "h": "2bc780c1"
+    },
+    "sections.0.body.1": {
+      "t": "This detail matters because most encryption failures happen on the wrong plane: keys in environment variables, keys committed to Git, keys in config files. Taking the key out of the application's path is what the KMS does.",
+      "h": "c48e3a64"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "Storage services already come with encryption at rest enabled by default (S3 SSE, EBS encryption, RDS storage encryption). This protects the disk against physical removal, but not against whoever has API access: someone with s3:GetObject reads the encrypted object and asks the KMS to decrypt it.",
+      "h": "24649567"
+    },
+    "sections.1.body.1": {
+      "t": "If the key policy allows overly broad use, any identity that already has read permission gets effective access to the plaintext. The right question is not 'is it encrypted?', but 'who can ask the KMS to decrypt this?'.",
+      "h": "66d68637"
+    },
+    "sections.1.heading": {
+      "t": "Why 'encrypted at rest' is only the beginning",
+      "h": "2bc4f7b3"
+    },
+    "sections.2.body.0": {
+      "t": "Sending an entire large file to the KMS on every encryption is expensive and slow. The standard solution is envelope encryption: the KMS generates a symmetric data key, the payload is encrypted locally with AES, and the data key is encrypted with the KMS master key. The result travels with the data.",
+      "h": "ddf10709"
+    },
+    "sections.2.body.1": {
+      "t": "In the flow below, the client receives the plaintext and ciphertext of the data key, encrypts the document with the local key, and discards the plaintext. Only the data key's ciphertext stays persisted next to the file.",
+      "h": "2381ef53"
+    },
+    "sections.2.code.0.code": {
+      "t": "import boto3\nfrom cryptography.hazmat.primitives.ciphers.aead import AESGCM\n\nkms = boto3.client(\"kms\")\nKEY_ID = \"arn:aws:kms:us-east-1:111122223333:key/abcd1234-...\"\n\ndef envelope_encrypt(plaintext: bytes, kms_key_id: str = KEY_ID):\n    # 1. KMS returns a plaintext data key + the same key encrypted\n    resp = kms.generate_data_key(KeyId=kms_key_id, KeySpec=\"AES_256\")\n    plaintext_key = resp[\"Plaintext\"]\n    encrypted_key = resp[\"CiphertextBlob\"]\n\n    # 2. encrypts the payload locally, never sending it to the KMS\n    nonce = b\"\\x00\" * 12\n    ciphertext_body = AESGCM(plaintext_key).encrypt(nonce, plaintext, None)\n\n    # 3. discards the data key plaintext, only ciphertext travels with the file\n    del plaintext_key\n    return {\"encrypted_key\": encrypted_key, \"ciphertext_body\": ciphertext_body, \"nonce\": nonce}",
+      "h": "23cee5fa"
+    },
+    "sections.2.code.0.filename": {
+      "t": "envelope.py - conceptual example",
+      "h": "bc953a83"
+    },
+    "sections.2.heading": {
+      "t": "Envelope encryption: key protects key",
+      "h": "a8f7f4ae"
+    },
+    "sections.3.body.0": {
+      "t": "The key policy is the document that governs a KMS key. It decides who can use the key, for which operations and under which conditions. The default for AWS-generated keys is liberal: the root account can do everything, but if nobody restricts it, any IAM principal with kms:* across the whole environment gets through.",
+      "h": "c8599536"
+    },
+    "sections.3.body.1": {
+      "t": "A good key policy separates administrative use (create, rotate, delete) from cryptographic use (encrypt, decrypt). The application team only gets the second, via grants limited to a bucket or table ARN pattern.",
+      "h": "e79f3961"
+    },
+    "sections.3.code.0.code": {
+      "t": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"AdminsManageKey\",\n      \"Effect\": \"Allow\",\n      \"Principal\": { \"AWS\": \"arn:aws:iam::111122223333:role/SecTeam\" },\n      \"Action\": [\n        \"kms:Create*\", \"kms:Describe*\", \"kms:Enable*\", \"kms:Disable*\",\n        \"kms:ScheduleKeyDeletion\", \"kms:RotateKeyOnDemand\"\n      ],\n      \"Resource\": \"*\"\n    },\n    {\n      \"Sid\": \"AppEncryptsOnly\",\n      \"Effect\": \"Allow\",\n      \"Principal\": { \"AWS\": \"arn:aws:iam::111122223333:role/app-frontend\" },\n      \"Action\": [\n        \"kms:Encrypt\", \"kms:Decrypt\", \"kms:GenerateDataKey\", \"kms:DescribeKey\"\n      ],\n      \"Resource\": \"*\",\n      \"Condition\": {\n        \"StringEquals\": {\n          \"kms:ViaService\": \"s3.us-east-1.amazonaws.com\"\n        }\n      }\n    }\n  ]\n}",
+      "h": "ffcbb764"
+    },
+    "sections.3.code.0.filename": {
+      "t": "key-policy.json - separated by role",
+      "h": "9121ad16"
+    },
+    "sections.3.heading": {
+      "t": "Key policy: who uses the key",
+      "h": "416b7e51"
+    },
+    "sections.4.body.0": {
+      "t": "Automatic annual rotation is enabled by default on KMS keys and costs almost nothing to use: the old key remains valid for decrypting old data, and the new one encrypts the next. When you need to, you force manual rotation after suspected misuse.",
+      "h": "e8a9b878"
+    },
+    "sections.4.body.1": {
+      "t": "Revocation is different: you either disable the key (blocks decryption) or schedule its deletion. Blocking the key breaks legitimate applications that try to read old data. Hence the practical rule: monitor usage, separate keys by sensitivity, and never mix a production key with a test key on the same resource.",
+      "h": "9f4dad11"
+    },
+    "sections.4.heading": {
+      "t": "Rotation and revocation",
+      "h": "073772d3"
+    },
+    "sections.5.bullets.0": {
+      "t": "standard storage: S3, EBS, RDS, DynamoDB and similar already encrypt with KMS, but the key policy must say who can call decryption",
+      "h": "a2b53d18"
+    },
+    "sections.5.bullets.1": {
+      "t": "envelope encryption: sensitive payloads in a queue or blob go through the local key + encrypted data key pattern",
+      "h": "6ae1ba56"
+    },
+    "sections.5.bullets.2": {
+      "t": "BYOK/HYOK: regulated companies import their own key (Bring Your Own Key) or keep the key in an external HSM (Hold Your Own Key)",
+      "h": "a2588288"
+    },
+    "sections.5.bullets.3": {
+      "t": "auditing: every GenerateDataKey, Encrypt or Decrypt call becomes a CloudTrail event with principal ARN and request ID",
+      "h": "74b170fc"
+    },
+    "sections.5.heading": {
+      "t": "Where it fits in day-to-day work",
+      "h": "b27af5f7"
+    },
+    "sections.6.bullets.0": {
+      "t": "the key never touches the application: even an attacker with RCE on the server cannot extract the key from the KMS",
+      "h": "4a9f5f9c"
+    },
+    "sections.6.bullets.1": {
+      "t": "centralized rotation: rotating in one place migrates the whole tree of data keys in use",
+      "h": "bbc44ad1"
+    },
+    "sections.6.bullets.2": {
+      "t": "native audit trail: every use is signed and logged with identity, resource and timestamp",
+      "h": "e4715854"
+    },
+    "sections.6.heading": {
+      "t": "Strengths",
+      "h": "a2ebc02c"
+    },
+    "sections.7.bullets.0": {
+      "t": "per-call cost: KMS charges per operation, and a badly designed envelope turns into a heavy bill per request",
+      "h": "2ce7a5da"
+    },
+    "sections.7.bullets.1": {
+      "t": "latency per hop: each Encrypt/Decrypt adds a trip to the KMS, and latency-sensitive paths need a locally cached key",
+      "h": "d0b37ed4"
+    },
+    "sections.7.bullets.2": {
+      "t": "BYOK/HYOK adds operational complexity: HSMs in two regions, manual rotation, and separate disaster recovery procedures",
+      "h": "6fb8cc7a"
+    },
+    "sections.7.heading": {
+      "t": "Limitations",
+      "h": "149d05f7"
+    },
+    "short": {
+      "t": "key management and encryption",
+      "h": "239b55f3"
+    },
+    "tagline": {
+      "t": "Cloud encryption starts at the KMS: whoever has access to the key decides what is 'encrypted'. Without governing keys, 'encrypted at rest' is just a checkbox in the console.",
+      "h": "809484dc"
+    },
+    "title": {
+      "t": "KMS & crypto - keys and envelopes",
+      "h": "05e13629"
+    }
+  }
+}

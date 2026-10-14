@@ -1,0 +1,144 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "SAST (Static Application Security Testing) analiza el código fuente, el bytecode o el binario sin ejecutar el programa. El scanner busca construcciones peligrosas (concatenación de SQL, deserialización insegura, criptografía débil, XSS) y señala archivo y línea, en el formato que el desarrollador ya consume.",
+      "h": "140a7cb2"
+    },
+    "sections.0.body.1": {
+      "t": "La sigla esconde tres técnicas muy distintas: pattern matching (reglas textuales), análisis de flujo de datos (el famoso taint tracking) y análisis semántico. Sin entender las tres, el output del scanner parece magia, y los falsos positivos parecen un bug.",
+      "h": "e8ed6692"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "Antes de cualquier análisis, el código pasa por un parser y se convierte en un AST (Abstract Syntax Tree): cada construcción del lenguaje se vuelve un nodo tipado, y el scanner navega ese árbol en lugar de leer texto suelto. Eso permite preguntar cosas como '¿existe un nodo de concatenación dentro de una llamada de query?'.",
+      "h": "28a23d07"
+    },
+    "sections.1.body.1": {
+      "t": "Una línea inocente de JavaScript se convierte en un árbol así:",
+      "h": "249ecd69"
+    },
+    "sections.1.code.0.code": {
+      "t": "const sql = \"SELECT * FROM users WHERE id = \" + req.query.id\n\nVariableDeclaration\n  id:   Identifier \"sql\"\n  init: BinaryExpression \"+\"\n          left:  StringLiteral \"SELECT * FROM users WHERE id = \"\n          right: MemberExpression\n                   req.query.id",
+      "h": "400ae545"
+    },
+    "sections.1.code.0.filename": {
+      "t": "sql.js → AST",
+      "h": "711a433b"
+    },
+    "sections.1.heading": {
+      "t": "Del texto al AST",
+      "h": "3909ac1f"
+    },
+    "sections.2.body.0": {
+      "t": "El AST solo dice que existe una concatenación, no si es peligrosa. La pregunta de seguridad es otra: ¿este dato tiene un origen confiable? ¿Dónde termina?",
+      "h": "0babf7db"
+    },
+    "sections.2.body.1": {
+      "t": "El taint analysis (análisis de contaminación) responde siguiendo el dato: las fuentes no confiables (input del usuario, headers, query strings) se marcan como 'tainted'. El engine propaga esa marca por asignaciones, concatenaciones y llamadas de función, y dispara la alerta cuando la marca llega a un sink: un punto donde el dato se convierte en comando, query, HTML o ruta de archivo.",
+      "h": "4c0d0fdc"
+    },
+    "sections.2.body.2": {
+      "t": "En el ejemplo de abajo, el flujo es completo: nace en req.query.id (source), atraviesa una concatenación (propagación) y termina dentro de db.query (sink):",
+      "h": "89349292"
+    },
+    "sections.2.code.0.code": {
+      "t": "app.get(\"/users\", (req, res) => {\n  const id = req.query.id;                                // SOURCE\n  const sql = \"SELECT * FROM users WHERE id = \" + id;     // propagación\n  db.query(sql, (err, rows) => res.json(rows));           // SINK\n});",
+      "h": "71633b9d"
+    },
+    "sections.2.code.0.filename": {
+      "t": "server.js — vulnerable",
+      "h": "32377e0e"
+    },
+    "sections.2.heading": {
+      "t": "Source → sink: el corazón del análisis",
+      "h": "c23a44d3"
+    },
+    "sections.3.body.0": {
+      "t": "El resultado no es 'existe una concatenación': es el camino completo, con el CWE y la corrección sugerida. Algo como:",
+      "h": "8878bcfb"
+    },
+    "sections.3.code.0.code": {
+      "t": "server.js:3\n  SQL Injection (CWE-89) · alta\n  taint:  req.query.id -> id -> sql -> db.query()\n  fix:    usa una query parametrizada (placeholder $1)",
+      "h": "40ed8fe9"
+    },
+    "sections.3.code.0.filename": {
+      "t": "salida del scanner",
+      "h": "de838e6a"
+    },
+    "sections.3.heading": {
+      "t": "Qué reporta el scanner",
+      "h": "d1f5d4e6"
+    },
+    "sections.4.body.0": {
+      "t": "Parametrizar la query interrumpe el taint: el valor del usuario deja de ser código y pasa a ser dato. En el lenguaje del taint analysis, el prepared statement es un sanitizador (o barrier): el engine sabe que ese camino específico está limpio y deja de alertar en él.",
+      "h": "96f07ffe"
+    },
+    "sections.4.code.0.code": {
+      "t": "app.get(\"/users\", (req, res) => {\n  const sql = \"SELECT * FROM users WHERE id = $1\";        // query fija\n  db.query(sql, [req.query.id], (err, rows) => res.json(rows));\n});",
+      "h": "4f9ebfc0"
+    },
+    "sections.4.code.0.filename": {
+      "t": "server.js — corregido",
+      "h": "dd3d4082"
+    },
+    "sections.4.heading": {
+      "t": "La corrección que el engine acepta",
+      "h": "45ae1089"
+    },
+    "sections.5.body.0": {
+      "t": "Lo más temprano posible: los plugins de IDE y el pre-commit dan feedback en segundos, y el análisis completo corre en el PR y en el stage de build. Las reglas críticas incumplidas hacen fallar el build (quality gate) y bloquean el merge.",
+      "h": "1ca05961"
+    },
+    "sections.5.heading": {
+      "t": "Dónde entra en el pipeline",
+      "h": "9be60c28"
+    },
+    "sections.6.bullets.0": {
+      "t": "cobertura del 100% del código, incluidos los caminos que rara vez se ejecutan",
+      "h": "7b40f74a"
+    },
+    "sections.6.bullets.1": {
+      "t": "encuentra la vulnerabilidad temprano, cuando corregir cuesta poco",
+      "h": "22995fa9"
+    },
+    "sections.6.bullets.2": {
+      "t": "no necesita un entorno en ejecución ni credenciales",
+      "h": "3db0593f"
+    },
+    "sections.6.heading": {
+      "t": "Puntos fuertes",
+      "h": "a2ebc02c"
+    },
+    "sections.7.bullets.0": {
+      "t": "falsos positivos: cuando el engine no puede probar que el camino es seguro (un sanitizador personalizado, por ejemplo), alerta por precaución, y el triaje es trabajo humano",
+      "h": "2d662724"
+    },
+    "sections.7.bullets.1": {
+      "t": "explosión de caminos: analizar todas las combinaciones de ejecución es caro; los engines usan heurísticas y pueden perder flujos raros",
+      "h": "7688e8fb"
+    },
+    "sections.7.bullets.2": {
+      "t": "es ciego a la configuración de runtime, la infraestructura y el comportamiento real: territorio del DAST",
+      "h": "a92f747b"
+    },
+    "sections.7.heading": {
+      "t": "Limitaciones",
+      "h": "149d05f7"
+    },
+    "short": {
+      "t": "Análisis estático del código fuente",
+      "h": "9fc3c35b"
+    },
+    "tagline": {
+      "t": "Rayos X del código sin ejecutar nada: encuentra patrones vulnerables antes del primer deploy.",
+      "h": "aa6a6b73"
+    },
+    "title": {
+      "t": "SAST",
+      "h": "dc7c9db0"
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Every extra permission is one more path for the attacker after a compromise.",
+      "h": "55d7dc14"
+    },
+    "questions.0.options.0": {
+      "t": "Giving each identity only the access needed for its function",
+      "h": "29e8b6e5"
+    },
+    "questions.0.options.1": {
+      "t": "Giving full access and revoking it later",
+      "h": "0abd6243"
+    },
+    "questions.0.options.2": {
+      "t": "Using a single shared account",
+      "h": "cbad66b8"
+    },
+    "questions.0.options.3": {
+      "t": "Blocking all access to the cloud",
+      "h": "160a4bee"
+    },
+    "questions.0.q": {
+      "t": "What does least privilege mean?",
+      "h": "142103d8"
+    },
+    "questions.1.explain": {
+      "t": "Ephemeral credentials shrink the window of use of any leak.",
+      "h": "a630fb42"
+    },
+    "questions.1.options.0": {
+      "t": "Roles deliver temporary credentials that expire on their own",
+      "h": "76e38b17"
+    },
+    "questions.1.options.1": {
+      "t": "Roles do not need policies",
+      "h": "b921c852"
+    },
+    "questions.1.options.2": {
+      "t": "Roles have unlimited permissions",
+      "h": "abb9de7f"
+    },
+    "questions.1.options.3": {
+      "t": "Static keys are faster",
+      "h": "10f6396f"
+    },
+    "questions.1.q": {
+      "t": "Why are roles preferable to users with static keys for workloads?",
+      "h": "17fe0fed"
+    },
+    "questions.2.explain": {
+      "t": "This lets any authenticated identity assume the role.",
+      "h": "1552f1f5"
+    },
+    "questions.2.options.0": {
+      "t": "Principal: \"*\" without conditions",
+      "h": "0977c0ec"
+    },
+    "questions.2.options.1": {
+      "t": "An MFA condition",
+      "h": "df4ad149"
+    },
+    "questions.2.options.2": {
+      "t": "A specific account listed",
+      "h": "e1413fe4"
+    },
+    "questions.2.options.3": {
+      "t": "An AWS service as principal",
+      "h": "1cb95c7c"
+    },
+    "questions.2.q": {
+      "t": "In a trust policy, what is a warning sign?",
+      "h": "c63915b5"
+    }
+  }
+}

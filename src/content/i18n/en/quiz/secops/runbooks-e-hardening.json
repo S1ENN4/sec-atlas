@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "The challenge is the step before blocking, following the same idea of a ladder with TTL.",
+      "h": "2edceed0"
+    },
+    "questions.0.options.0": {
+      "t": "It is cheap for the legitimate user and expensive for the robot, and reduces false positives",
+      "h": "dd64b711"
+    },
+    "questions.0.options.1": {
+      "t": "Because blocking is illegal",
+      "h": "40b5a4c0"
+    },
+    "questions.0.options.2": {
+      "t": "Because the challenge never fails",
+      "h": "a2137131"
+    },
+    "questions.0.options.3": {
+      "t": "Because blocks take down the edge",
+      "h": "e1abae0d"
+    },
+    "questions.0.q": {
+      "t": "Why start containment with a challenge instead of a block?",
+      "h": "20c128e8"
+    },
+    "questions.1.explain": {
+      "t": "The goal is to learn and generate actions that prevent a repeat.",
+      "h": "64deabd1"
+    },
+    "questions.1.options.0": {
+      "t": "Timeline, cause, what worked and what got in the way, with actions, owners and deadlines",
+      "h": "6de4e46a"
+    },
+    "questions.1.options.1": {
+      "t": "The name of whoever made the mistake",
+      "h": "5c8a5f30"
+    },
+    "questions.1.options.2": {
+      "t": "Only the number of alerts",
+      "h": "cdadbca2"
+    },
+    "questions.1.options.3": {
+      "t": "Only the positive lessons",
+      "h": "f8ce5275"
+    },
+    "questions.1.q": {
+      "t": "What does a blameless post-mortem record?",
+      "h": "8d9f828c"
+    },
+    "questions.2.explain": {
+      "t": "Every incident should become a control that does not depend only on the edge.",
+      "h": "a8497ab1"
+    },
+    "questions.2.options.0": {
+      "t": "CSP with nonce, strict CORS and schema validation at the gateway",
+      "h": "aa1a7653"
+    },
+    "questions.2.options.1": {
+      "t": "Turning off the WAF after the incident",
+      "h": "de8607c8"
+    },
+    "questions.2.options.2": {
+      "t": "Increasing the TTL of all blocks",
+      "h": "3f69ca2c"
+    },
+    "questions.2.options.3": {
+      "t": "Removing error logs",
+      "h": "656f3bdf"
+    },
+    "questions.2.q": {
+      "t": "Which of these is an example of hardening in the application?",
+      "h": "711ab3d7"
+    }
+  }
+}

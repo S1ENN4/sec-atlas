@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "El pipeline es el único camino obligatorio del código a producción: poner verificaciones ahí las vuelve automáticas y repetibles.",
+      "h": "6e74fc3b"
+    },
+    "questions.0.options.0": {
+      "t": "Porque el pipeline es lento y necesita más etapas",
+      "h": "8baa92ac"
+    },
+    "questions.0.options.1": {
+      "t": "Porque cada commit pasa por él, así que el control corre siempre y temprano",
+      "h": "08627e1d"
+    },
+    "questions.0.options.2": {
+      "t": "Porque los auditores exigen logs del pipeline",
+      "h": "b17885e3"
+    },
+    "questions.0.options.3": {
+      "t": "Porque las herramientas de seguridad solo funcionan en CI",
+      "h": "a046f23b"
+    },
+    "questions.0.q": {
+      "t": "¿Por qué la seguridad va dentro del pipeline de CI/CD y no solo al final?",
+      "h": "4adb9474"
+    },
+    "questions.1.explain": {
+      "t": "El gate convierte una política (sin críticos nuevos, sin secretos) en una decisión automática de pasa o falla.",
+      "h": "34b52587"
+    },
+    "questions.1.options.0": {
+      "t": "Un panel de métricas de cobertura",
+      "h": "7ca90ab6"
+    },
+    "questions.1.options.1": {
+      "t": "Una regla que bloquea el avance del pipeline si no se cumple un criterio",
+      "h": "7fafc0c5"
+    },
+    "questions.1.options.2": {
+      "t": "Un tipo de prueba de carga",
+      "h": "99e1666b"
+    },
+    "questions.1.options.3": {
+      "t": "Una revisión de código manual al final del sprint",
+      "h": "eefda541"
+    },
+    "questions.1.q": {
+      "t": "¿Qué es un quality gate?",
+      "h": "6449e18c"
+    },
+    "questions.2.explain": {
+      "t": "El pipeline guarda credenciales y publica artefactos; comprometerlo es comprometer todo lo que entrega.",
+      "h": "c9eb4cdb"
+    },
+    "questions.2.options.0": {
+      "t": "Que ejecute demasiadas pruebas",
+      "h": "d13301b4"
+    },
+    "questions.2.options.1": {
+      "t": "Que se comprometan runners y tokens con privilegios excesivos",
+      "h": "1921966f"
+    },
+    "questions.2.options.2": {
+      "t": "Que el build tarde más de un minuto",
+      "h": "d5583a62"
+    },
+    "questions.2.options.3": {
+      "t": "Usar YAML en lugar de JSON",
+      "h": "4d10687a"
+    },
+    "questions.2.q": {
+      "t": "¿Cuál es un riesgo clásico del propio pipeline de CI/CD?",
+      "h": "4fba605e"
+    }
+  }
+}

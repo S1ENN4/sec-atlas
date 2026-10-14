@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "El estado guarda lo que se creó, incluidos valores sensibles. Un backend remoto con cifrado y lock es el estándar.",
+      "h": "0cc5f6d4"
+    },
+    "questions.0.options.0": {
+      "t": "Puede contener secretos en texto plano y necesita un backend remoto cifrado, con acceso restringido y bloqueo",
+      "h": "f011a53a"
+    },
+    "questions.0.options.1": {
+      "t": "Porque el archivo es demasiado grande",
+      "h": "426e05ad"
+    },
+    "questions.0.options.2": {
+      "t": "Porque Git no acepta JSON",
+      "h": "e9e344f6"
+    },
+    "questions.0.options.3": {
+      "t": "Porque el estado se regenera en cada commit",
+      "h": "2ce18a05"
+    },
+    "questions.0.q": {
+      "t": "¿Por qué el estado de Terraform no debe ir al repositorio?",
+      "h": "f5765dba"
+    },
+    "questions.1.explain": {
+      "t": "Detectar el drift mantiene el código como fuente de verdad.",
+      "h": "c27b9b4e"
+    },
+    "questions.1.options.0": {
+      "t": "Que la realidad diverja de lo que describe el código, por ejemplo por un cambio manual en la consola",
+      "h": "57c6a33d"
+    },
+    "questions.1.options.1": {
+      "t": "Un error de sintaxis en Terraform",
+      "h": "cdfb89b3"
+    },
+    "questions.1.options.2": {
+      "t": "La latencia entre regiones",
+      "h": "e52e10a3"
+    },
+    "questions.1.options.3": {
+      "t": "Un tipo de respaldo",
+      "h": "f1e7969c"
+    },
+    "questions.1.q": {
+      "t": "¿Qué es el drift de infraestructura?",
+      "h": "a0054f97"
+    },
+    "questions.2.explain": {
+      "t": "Es el shift-left de la infraestructura: corregir en el código cuesta mucho menos que hacerlo en producción.",
+      "h": "a41a25c8"
+    },
+    "questions.2.options.0": {
+      "t": "Encontrar configuraciones inseguras (como 0.0.0.0/0 en SSH) antes de que exista cualquier recurso",
+      "h": "68bd2aea"
+    },
+    "questions.2.options.1": {
+      "t": "Reducir el costo del proveedor de nube",
+      "h": "4534f166"
+    },
+    "questions.2.options.2": {
+      "t": "Prescindir de la revisión por pares",
+      "h": "67c5b09d"
+    },
+    "questions.2.options.3": {
+      "t": "Evitar el uso de módulos",
+      "h": "2b1d9920"
+    },
+    "questions.2.q": {
+      "t": "¿Cuál es la ventaja de escanear el IaC antes del apply?",
+      "h": "23d7aa16"
+    }
+  }
+}

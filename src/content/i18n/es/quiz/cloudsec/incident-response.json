@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Cortar el acceso rápidamente, sin destruir evidencia, es el equilibrio de la contención.",
+      "h": "39081c80"
+    },
+    "questions.0.options.0": {
+      "t": "Desactivar la clave y restringir la identidad, preservando el estado para forense",
+      "h": "c079cefc"
+    },
+    "questions.0.options.1": {
+      "t": "Borrar el usuario y todos los logs",
+      "h": "dcf2d849"
+    },
+    "questions.0.options.2": {
+      "t": "Ignorarla hasta confirmar con el atacante",
+      "h": "2c0cd34b"
+    },
+    "questions.0.options.3": {
+      "t": "Reiniciar todas las instancias",
+      "h": "d0410dba"
+    },
+    "questions.0.q": {
+      "t": "Ante una alerta de clave de acceso filtrada, ¿cuál es un buen primer paso?",
+      "h": "f7b4b7ed"
+    },
+    "questions.1.explain": {
+      "t": "En entornos efímeros, la evidencia volátil desaparece junto con el recurso.",
+      "h": "3bc26d6f"
+    },
+    "questions.1.options.0": {
+      "t": "Porque terminarla borra memoria y conexiones que sirven de evidencia",
+      "h": "88e227d6"
+    },
+    "questions.1.options.1": {
+      "t": "Porque terminarla es más caro",
+      "h": "ea2b5176"
+    },
+    "questions.1.options.2": {
+      "t": "Porque las instancias no se pueden terminar",
+      "h": "8f7f7bb2"
+    },
+    "questions.1.options.3": {
+      "t": "Porque aislar acelera la red",
+      "h": "84c18c72"
+    },
+    "questions.1.q": {
+      "t": "¿Por qué aislar una instancia sospechosa antes de terminarla?",
+      "h": "12075ea2"
+    },
+    "questions.2.explain": {
+      "t": "Es la medida de la eficacia de los runbooks y de la automatización de respuesta.",
+      "h": "fa991b99"
+    },
+    "questions.2.options.0": {
+      "t": "El tiempo medio para responder y contener un incidente",
+      "h": "b72dc07b"
+    },
+    "questions.2.options.1": {
+      "t": "El costo mensual de la nube",
+      "h": "e9acd4ad"
+    },
+    "questions.2.options.2": {
+      "t": "El número de alertas por día",
+      "h": "028dfa0c"
+    },
+    "questions.2.options.3": {
+      "t": "La latencia de las APIs",
+      "h": "362c4efb"
+    },
+    "questions.2.q": {
+      "t": "¿Qué mide el MTTR?",
+      "h": "88e6a060"
+    }
+  }
+}

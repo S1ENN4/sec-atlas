@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "El token expira solo y el proveedor entrega únicamente lo que la identidad del pipeline puede recibir.",
+      "h": "db27e072"
+    },
+    "questions.0.options.0": {
+      "t": "Credenciales temporales, restringidas al repositorio y a la rama, sin secreto estático que filtrar",
+      "h": "ba953d29"
+    },
+    "questions.0.options.1": {
+      "t": "Es más rápido de configurar",
+      "h": "a1520c0c"
+    },
+    "questions.0.options.2": {
+      "t": "Prescinde de IAM",
+      "h": "81142616"
+    },
+    "questions.0.options.3": {
+      "t": "Funciona sin internet",
+      "h": "d5238b4d"
+    },
+    "questions.0.q": {
+      "t": "¿Cuál es la ventaja de OIDC frente a las claves de nube guardadas como secretos del pipeline?",
+      "h": "d671a4db"
+    },
+    "questions.1.explain": {
+      "t": "La dependencia del pipeline también es cadena de suministro.",
+      "h": "94d105bd"
+    },
+    "questions.1.options.0": {
+      "t": "Una etiqueta mutable puede reapuntarse a código malicioso",
+      "h": "aed2bf07"
+    },
+    "questions.1.options.1": {
+      "t": "Para reducir el tamaño de la imagen",
+      "h": "4a089e73"
+    },
+    "questions.1.options.2": {
+      "t": "Porque el SHA es más fácil de leer",
+      "h": "65cc15c4"
+    },
+    "questions.1.options.3": {
+      "t": "Porque las etiquetas están prohibidas",
+      "h": "64dbe120"
+    },
+    "questions.1.q": {
+      "t": "¿Por qué fijar acciones e imágenes por SHA o digest?",
+      "h": "6f6102ec"
+    },
+    "questions.2.explain": {
+      "t": "Las entradas de un PR (título, rama, contenido) las controla quien abre el PR.",
+      "h": "23077581"
+    },
+    "questions.2.options.0": {
+      "t": "Ejecutar código de un fork con acceso a secretos, tratando la entrada del PR como confiable",
+      "h": "c16c37a3"
+    },
+    "questions.2.options.1": {
+      "t": "No funcionan con Git",
+      "h": "6d9a627a"
+    },
+    "questions.2.options.2": {
+      "t": "Solo se ejecutan en producción",
+      "h": "63f792c7"
+    },
+    "questions.2.options.3": {
+      "t": "Cifran el repositorio",
+      "h": "1fdb6a4e"
+    },
+    "questions.2.q": {
+      "t": "¿Qué tienen de riesgoso los disparadores como pull_request_target?",
+      "h": "a953caef"
+    }
+  }
+}

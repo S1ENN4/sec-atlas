@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "RAG (retrieval-augmented generation) gives the model external context at query time.",
+      "h": "2f799b5f"
+    },
+    "questions.0.options.0": {
+      "t": "Retrieving relevant documents and injecting them into the prompt so the model answers based on them",
+      "h": "b7e63df0"
+    },
+    "questions.0.options.1": {
+      "t": "Training a model from scratch on your data",
+      "h": "36525bf0"
+    },
+    "questions.0.options.2": {
+      "t": "A type of relational database",
+      "h": "7be0c37f"
+    },
+    "questions.0.options.3": {
+      "t": "A network protocol",
+      "h": "33eef5e2"
+    },
+    "questions.0.q": {
+      "t": "What is RAG?",
+      "h": "86bee255"
+    },
+    "questions.1.explain": {
+      "t": "Retrieved content is untrusted input: it can carry instructions that the model obeys.",
+      "h": "bf681997"
+    },
+    "questions.1.options.0": {
+      "t": "Malicious instructions hidden in retrieved documents (indirect prompt injection)",
+      "h": "77d40b24"
+    },
+    "questions.1.options.1": {
+      "t": "The model running out of RAM",
+      "h": "a8f37ac3"
+    },
+    "questions.1.options.2": {
+      "t": "Excess CPU",
+      "h": "449de5de"
+    },
+    "questions.1.options.3": {
+      "t": "Lack of HTTPS in the tokenizer",
+      "h": "c25b6e83"
+    },
+    "questions.1.q": {
+      "t": "Which security risk is typical of RAG?",
+      "h": "55dfca53"
+    },
+    "questions.2.explain": {
+      "t": "With real passages in the context, the model depends less on parametric memory.",
+      "h": "c2df8713"
+    },
+    "questions.2.options.0": {
+      "t": "Because it anchors the answer in retrieved sources, which can be cited",
+      "h": "d2e888b6"
+    },
+    "questions.2.options.1": {
+      "t": "Because it makes the model bigger",
+      "h": "9355b206"
+    },
+    "questions.2.options.2": {
+      "t": "Because it turns off generation",
+      "h": "7a519e94"
+    },
+    "questions.2.options.3": {
+      "t": "Because it erases the training",
+      "h": "d7e0e265"
+    },
+    "questions.2.q": {
+      "t": "Why does RAG help reduce hallucination?",
+      "h": "3885a30f"
+    }
+  }
+}

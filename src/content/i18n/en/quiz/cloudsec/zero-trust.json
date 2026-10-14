@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Every request is authenticated, authorized and evaluated, whether inside or outside the network.",
+      "h": "22b85520"
+    },
+    "questions.0.options.0": {
+      "t": "Never trust, always verify: no network or origin is trusted by default",
+      "h": "48a4f142"
+    },
+    "questions.0.options.1": {
+      "t": "Trusting everything inside the VPN",
+      "h": "f0528e1d"
+    },
+    "questions.0.options.2": {
+      "t": "Blocking the entire internet",
+      "h": "b1b717b4"
+    },
+    "questions.0.options.3": {
+      "t": "Using only strong passwords",
+      "h": "2ededee7"
+    },
+    "questions.0.q": {
+      "t": "What is the core principle of Zero Trust?",
+      "h": "2d50486a"
+    },
+    "questions.1.explain": {
+      "t": "The perimeter no longer exists as a single barrier; identity and device posture decide.",
+      "h": "3d7f3085"
+    },
+    "questions.1.options.0": {
+      "t": "The access decision moves from the network to identity and context",
+      "h": "6105c8da"
+    },
+    "questions.1.options.1": {
+      "t": "Authentication is removed",
+      "h": "25a72444"
+    },
+    "questions.1.options.2": {
+      "t": "Everything becomes public",
+      "h": "073d247e"
+    },
+    "questions.1.options.3": {
+      "t": "Logging is eliminated",
+      "h": "6e5c796c"
+    },
+    "questions.1.q": {
+      "t": "What changes from the perimeter model to Zero Trust?",
+      "h": "9e8c8fea"
+    },
+    "questions.2.explain": {
+      "t": "Full access over the VPN is the opposite: one stolen credential opens everything.",
+      "h": "e14862af"
+    },
+    "questions.2.options.0": {
+      "t": "Per-request access with MFA and least privilege",
+      "h": "d7955257"
+    },
+    "questions.2.options.1": {
+      "t": "VPN with full access to the internal network",
+      "h": "83963351"
+    },
+    "questions.2.options.2": {
+      "t": "A shared password",
+      "h": "33966dec"
+    },
+    "questions.2.options.3": {
+      "t": "Opening all internal ports",
+      "h": "4354b74d"
+    },
+    "questions.2.q": {
+      "t": "Which practice represents Zero Trust?",
+      "h": "e720bd1c"
+    }
+  }
+}

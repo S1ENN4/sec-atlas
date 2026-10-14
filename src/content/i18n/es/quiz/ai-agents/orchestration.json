@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Decide quién hace qué y en qué secuencia en un flujo multiagente.",
+      "h": "4b2afb13"
+    },
+    "questions.0.options.0": {
+      "t": "Varios agentes o pasos, definiendo orden, paralelismo y traspaso de contexto",
+      "h": "0bc2383e"
+    },
+    "questions.0.options.1": {
+      "t": "Solo el entrenamiento del modelo",
+      "h": "dd01821a"
+    },
+    "questions.0.options.2": {
+      "t": "La impresión de informes",
+      "h": "cacb1487"
+    },
+    "questions.0.options.3": {
+      "t": "La compresión de imágenes",
+      "h": "d39507b3"
+    },
+    "questions.0.q": {
+      "t": "¿Qué coordina la orquestación?",
+      "h": "9964947d"
+    },
+    "questions.1.explain": {
+      "t": "La salida de un agente es la entrada del siguiente; la confianza no debe ser transitiva.",
+      "h": "03e4aa69"
+    },
+    "questions.1.options.0": {
+      "t": "Que un agente comprometido contamine a los demás con instrucciones o datos",
+      "h": "aae10c59"
+    },
+    "questions.1.options.1": {
+      "t": "Falta de tokens",
+      "h": "60c309d5"
+    },
+    "questions.1.options.2": {
+      "t": "Que el flujo sea demasiado rápido",
+      "h": "628f3844"
+    },
+    "questions.1.options.3": {
+      "t": "Tener muchos comentarios en el código",
+      "h": "7fde5e66"
+    },
+    "questions.1.q": {
+      "t": "¿Cuál es un riesgo en los sistemas multiagente?",
+      "h": "0fff6f86"
+    },
+    "questions.2.explain": {
+      "t": "Los límites de pasos, tiempo y costo son frenos básicos de seguridad.",
+      "h": "72cb3e5f"
+    },
+    "questions.2.options.0": {
+      "t": "Para evitar bucles infinitos y costos descontrolados",
+      "h": "26e66abf"
+    },
+    "questions.2.options.1": {
+      "t": "Para hacer al modelo más creativo",
+      "h": "aea232eb"
+    },
+    "questions.2.options.2": {
+      "t": "Para aumentar el contexto",
+      "h": "7b23ce51"
+    },
+    "questions.2.options.3": {
+      "t": "Para apagar los logs",
+      "h": "f02b0bb8"
+    },
+    "questions.2.q": {
+      "t": "¿Por qué limitar el número de iteraciones de un agente?",
+      "h": "cf2c79b6"
+    }
+  }
+}

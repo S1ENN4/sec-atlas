@@ -1,0 +1,116 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "SCA (Software Composition Analysis) inventaría las dependencias del proyecto, directas y transitivas, y cruza cada versión con bases públicas de vulnerabilidades (NVD, GitHub Advisory, OSV) y con bases de licencias.",
+      "h": "f34a6485"
+    },
+    "sections.0.body.1": {
+      "t": "La premisa: la mayor parte del código de una aplicación moderna (frecuentemente 70 a 90%) viene de terceros. Tu superficie de riesgo incluye todo eso, aunque nadie del equipo haya escrito una línea de esas bibliotecas.",
+      "h": "cc62f36a"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "El punto de partida es siempre un manifiesto o lockfile. Digamos que el proyecto depende de una versión antigua de lodash:",
+      "h": "40fb7892"
+    },
+    "sections.1.code.0.code": {
+      "t": "{ \"dependencies\": { \"lodash\": \"4.17.15\" } }",
+      "h": "3a0f3a31"
+    },
+    "sections.1.code.0.filename": {
+      "t": "package.json",
+      "h": "7030d0b2"
+    },
+    "sections.1.heading": {
+      "t": "Un CVE de verdad: del lockfile a la alerta",
+      "h": "1edcb8dc"
+    },
+    "sections.2.body.0": {
+      "t": "El SCA toma cada componente+versión del lockfile y consulta las bases de vulnerabilidades. Para lodash 4.17.15, existe un advisory real y conocido:",
+      "h": "1568189b"
+    },
+    "sections.2.code.0.code": {
+      "t": "{\n  \"id\": \"CVE-2020-8203\",\n  \"package\": \"lodash\",\n  \"title\": \"Prototype pollution en zipObjectDeep\",\n  \"affected\": \"< 4.17.19\",\n  \"patched\": \"4.17.19\",\n  \"severity\": \"HIGH\"\n}",
+      "h": "63ed44f8"
+    },
+    "sections.2.code.0.filename": {
+      "t": "advisory (OSV / GitHub Advisory)",
+      "h": "bee1ba81"
+    },
+    "sections.2.heading": {
+      "t": "El cruce con los advisories",
+      "h": "0c5226f8"
+    },
+    "sections.3.body.0": {
+      "t": "El caso se pone interesante cuando el paquete vulnerable ni siquiera está en tu package.json: entró como dependencia de una dependencia, tres niveles más abajo. Nunca elegiste ese lodash, pero está en tu artefacto corriendo en producción.",
+      "h": "53fcb8d4"
+    },
+    "sections.3.body.1": {
+      "t": "Aquí es donde el lockfile salva el día: registra el árbol completo, no solo lo que está en el manifiesto. Sin SCA y sin lockfile, la pregunta '¿usamos lodash 4.17.15?' no tiene una respuesta rápida ni en tu propio repositorio.",
+      "h": "3fc176bd"
+    },
+    "sections.3.heading": {
+      "t": "Por qué la versión transitiva es la pesadilla",
+      "h": "619602c7"
+    },
+    "sections.4.bullets.0": {
+      "t": "lee manifiestos y lockfiles (package.json, package-lock, pom.xml, go.mod, requirements.txt)",
+      "h": "5244f871"
+    },
+    "sections.4.bullets.1": {
+      "t": "arma el árbol completo de dependencias, incluidas las transitivas",
+      "h": "46022c67"
+    },
+    "sections.4.bullets.2": {
+      "t": "asocia cada componente+versión con advisories publicados y puntúa la severidad (CVSS, EPSS, exploit conocido)",
+      "h": "6ef06490"
+    },
+    "sections.4.bullets.3": {
+      "t": "abre PRs automáticos de actualización y genera el SBOM del artefacto",
+      "h": "c41b1b81"
+    },
+    "sections.4.heading": {
+      "t": "Cómo funciona, resumido",
+      "h": "1ec47369"
+    },
+    "sections.5.body.0": {
+      "t": "En el PR y en el build, bloqueando nuevas dependencias críticas. Y de forma continua después del deploy: cada día aparece un CVE nuevo contra una versión antigua; la herramienta monitorea el inventario y alerta (o abre un PR) cuando una dependencia ya usada se vuelve un riesgo.",
+      "h": "1ae3882e"
+    },
+    "sections.5.heading": {
+      "t": "Dónde entra en el pipeline",
+      "h": "9be60c28"
+    },
+    "sections.6.bullets.0": {
+      "t": "solo conoce vulnerabilidades ya publicadas; un zero-day en una dependencia pasa",
+      "h": "63f855ed"
+    },
+    "sections.6.bullets.1": {
+      "t": "no encuentra fallas en tu código: para eso existen SAST y DAST",
+      "h": "c188057f"
+    },
+    "sections.6.bullets.2": {
+      "t": "sin una política de severidad, se vuelve una fábrica de alertas ignoradas",
+      "h": "91dc4dac"
+    },
+    "sections.6.heading": {
+      "t": "Limitaciones",
+      "h": "149d05f7"
+    },
+    "short": {
+      "t": "Inventario y CVEs de las dependencias",
+      "h": "3bf2f404"
+    },
+    "tagline": {
+      "t": "Vigila el código que no escribiste: bibliotecas de terceros, versiones y vulnerabilidades conocidas.",
+      "h": "57f5f152"
+    },
+    "title": {
+      "t": "SCA",
+      "h": "5df5d896"
+    }
+  }
+}

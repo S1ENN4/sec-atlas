@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Without evals, every prompt or model change is a guess.",
+      "h": "676694de"
+    },
+    "questions.0.options.0": {
+      "t": "Measuring the quality of the AI system with repeatable test cases",
+      "h": "024662d5"
+    },
+    "questions.0.options.1": {
+      "t": "Training the model",
+      "h": "649db890"
+    },
+    "questions.0.options.2": {
+      "t": "Encrypting prompts",
+      "h": "6de25a11"
+    },
+    "questions.0.options.3": {
+      "t": "Reducing the context",
+      "h": "1bff36bb"
+    },
+    "questions.0.q": {
+      "t": "What are evals for?",
+      "h": "684f4761"
+    },
+    "questions.1.explain": {
+      "t": "Synthetic cases lose the real distribution; real ones show where the system truly fails.",
+      "h": "e746be2f"
+    },
+    "questions.1.options.0": {
+      "t": "Because they reflect how users actually use the system",
+      "h": "b9743fca"
+    },
+    "questions.1.options.1": {
+      "t": "Because they are cheaper",
+      "h": "66e8c762"
+    },
+    "questions.1.options.2": {
+      "t": "Because they need no review",
+      "h": "0dedf33d"
+    },
+    "questions.1.options.3": {
+      "t": "Because the model requires it",
+      "h": "59d63bf4"
+    },
+    "questions.1.q": {
+      "t": "Why use real production data in evals?",
+      "h": "1f9ceb4e"
+    },
+    "questions.2.explain": {
+      "t": "Evaluating each stage (retrieval, generation, tools) locates the cause.",
+      "h": "32568017"
+    },
+    "questions.2.options.0": {
+      "t": "You do not know whether the failure came from retrieval, the prompt or the model",
+      "h": "07c9c42f"
+    },
+    "questions.2.options.1": {
+      "t": "It gets too expensive",
+      "h": "f218b5ba"
+    },
+    "questions.2.options.2": {
+      "t": "The final answer does not exist",
+      "h": "d82b685a"
+    },
+    "questions.2.options.3": {
+      "t": "It is not possible to measure anything",
+      "h": "70fc41e9"
+    },
+    "questions.2.q": {
+      "t": "What is the problem with evaluating only the final answer?",
+      "h": "a09d827a"
+    }
+  }
+}

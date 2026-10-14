@@ -1,0 +1,152 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "IAM (Identity and Access Management) es el sistema que decide quién existe en tu entorno cloud, qué puede hacer cada uno y bajo qué condiciones. En lugar de un firewall en el borde, el control se distribuye en cada llamada de API: cada request lleva una identidad, y esa identidad se evalúa contra políticas antes de tocar cualquier recurso.",
+      "h": "c21fecff"
+    },
+    "sections.0.body.1": {
+      "t": "Tres piezas sostienen todo: el principal (humano, servicio, workload), la acción que quiere realizar (s3:GetObject, ec2:TerminateInstance) y el recurso objetivo (bucket, instancia, función). La respuesta es siempre sí o no, y el motor registra quién pidió qué, cuándo y cómo.",
+      "h": "8ba51de4"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "Los usuarios son identidades persistentes asociadas a alguien (o a un secreto estático). Los roles son identidades asumibles: en lugar de contraseña, alguien cambia de rol vía AssumeRole y obtiene credenciales temporales por minutos u horas. Para workloads casi siempre es así: nada de usuarios fijos, todo mediante roles.",
+      "h": "e6c3e8c6"
+    },
+    "sections.1.body.1": {
+      "t": "Las policies son documentos JSON que describen permisos. Hay tres tipos que encuentras todo el tiempo: identity policies (asociadas al principal), resource policies (asociadas al recurso, como una bucket policy) y session policies (límites adicionales durante AssumeRole). La evaluación las combina todas, y basta un solo deny explícito para bloquear la acción.",
+      "h": "91018afd"
+    },
+    "sections.1.body.2": {
+      "t": "Cuando todo es una policy, se puede revisar, versionar y probar el acceso como código. Cuando la mitad es un clic en la consola y la otra mitad es un JSON pegado en Slack, el caos aparece en el primer incidente.",
+      "h": "7c28e509"
+    },
+    "sections.1.heading": {
+      "t": "Usuarios, roles y policies",
+      "h": "e5417c51"
+    },
+    "sections.2.body.0": {
+      "t": "La política de abajo es el antipatrón clásico: admin con todo sobre cualquier recurso. Aparece cada semana en algún taller y en la mitad de los incidentes de buckets públicos de internet.",
+      "h": "f4e91169"
+    },
+    "sections.2.code.0.code": {
+      "t": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"FullAccessForDev\",\n      \"Effect\": \"Allow\",\n      \"Action\": \"*\",\n      \"Resource\": \"*\"\n    }\n  ]\n}",
+      "h": "04f380f7"
+    },
+    "sections.2.code.0.filename": {
+      "t": "policy.json - permisiva (NO la uses)",
+      "h": "a40bb107"
+    },
+    "sections.2.heading": {
+      "t": "Wildcard versus least privilege",
+      "h": "36fe6316"
+    },
+    "sections.3.body.0": {
+      "t": "Incluso un job simple rara vez necesita todo. Esta política concede solo la lectura del bucket correcto, en la región correcta, con un condition que limita el origen a un rol específico:",
+      "h": "9dd27c08"
+    },
+    "sections.3.code.0.code": {
+      "t": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"ReadSiteAssets\",\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"s3:GetObject\",\n        \"s3:ListBucket\"\n      ],\n      \"Resource\": [\n        \"arn:aws:s3:::appsec-kb-static\",\n        \"arn:aws:s3:::appsec-kb-static/*\"\n      ],\n      \"Condition\": {\n        \"StringEquals\": {\n          \"aws:PrincipalTag/Team\": \"frontend\"\n        }\n      }\n    }\n  ]\n}",
+      "h": "bd524aa7"
+    },
+    "sections.3.code.0.filename": {
+      "t": "policy.json - least privilege",
+      "h": "ddef0fbc"
+    },
+    "sections.3.heading": {
+      "t": "La política que debería existir",
+      "h": "f6620565"
+    },
+    "sections.4.body.0": {
+      "t": "Todo rol tiene dos extremos. El primero es la trust policy, que define quién puede llamar a sts:AssumeRole. El segundo es la permission policy, que define qué gana quien lo asume. Mezclar ambos es donde nacen los incidentes de escalamiento: el rol permite s3:* en cualquier lugar, y la trust acepta Principal: \"*\", así que cualquier cuenta autenticada entra.",
+      "h": "fd7605d4"
+    },
+    "sections.4.body.1": {
+      "t": "Una buena trust policy nombra cuentas, servicios e incluso condiciones externas (MFA, hora del día, proveedor federado). Cuando ves \"Principal\": \"*\" sin Condition explícita, vale la pena detenerse y preguntar por qué.",
+      "h": "ebe61ff4"
+    },
+    "sections.4.heading": {
+      "t": "Trust policy: quién puede asumir el rol",
+      "h": "4f8cb7d5"
+    },
+    "sections.5.body.0": {
+      "t": "Las permission boundaries funcionan como un techo: el permiso efectivo de un principal es la intersección entre lo que permite la boundary y lo que permite la identity policy. Es la herramienta estándar para dar autonomía a los equipos sin ceder el control central.",
+      "h": "b39e75d4"
+    },
+    "sections.5.body.1": {
+      "t": "En la práctica, defines una boundary por equipo o entorno (producción, staging) y dejas que el equipo escriba las identity policies dentro de ese envelope. El desarrollador puede abrir el abanico cuanto quiera, pero nunca pasa del techo.",
+      "h": "f469cec5"
+    },
+    "sections.5.heading": {
+      "t": "Permission boundaries: el cinturón de seguridad",
+      "h": "fc93abbe"
+    },
+    "sections.6.bullets.0": {
+      "t": "onboarding de una persona nueva: el identity provider (SAML/OIDC) emite tokens cortos, la nube nunca ve una contraseña",
+      "h": "ec726b41"
+    },
+    "sections.6.bullets.1": {
+      "t": "deploy de aplicación: el workload recibe un rol vía OIDC/IRSA e intercambia un token por credenciales, sin secretos en el repositorio",
+      "h": "1054791a"
+    },
+    "sections.6.bullets.2": {
+      "t": "revocación inmediata: quitas el rol, terminas la sesión STS y el acceso muere al minuto siguiente, sin rotar secretos",
+      "h": "68773e1b"
+    },
+    "sections.6.bullets.3": {
+      "t": "auditoría: cada llamada se vuelve un evento en CloudTrail/equivalente, con ARN del principal, IP de origen y user agent",
+      "h": "275e81e5"
+    },
+    "sections.6.heading": {
+      "t": "Dónde aparece en el día a día",
+      "h": "b27af5f7"
+    },
+    "sections.7.bullets.0": {
+      "t": "control granular por acción, recurso, tag y condición, sin necesidad de red privada",
+      "h": "203e8661"
+    },
+    "sections.7.bullets.1": {
+      "t": "revocación central: bajas el rol y todos pierden el acceso al mismo tiempo",
+      "h": "4ace34a8"
+    },
+    "sections.7.bullets.2": {
+      "t": "modelo auditable: cada decisión pasa por políticas versionadas que pueden revisarse en un PR",
+      "h": "911498f4"
+    },
+    "sections.7.heading": {
+      "t": "Puntos fuertes",
+      "h": "a2ebc02c"
+    },
+    "sections.8.bullets.0": {
+      "t": "las políticas se vuelven espagueti: sin herramientas de visualización y lint, es fácil mantener 4.000 statements contradictorios",
+      "h": "ad0a19d7"
+    },
+    "sections.8.bullets.1": {
+      "t": "el mínimo privilegio exige descubrimiento continuo: lo que el equipo necesita cambia cada sprint, y la política se queda atrás",
+      "h": "a9f522b3"
+    },
+    "sections.8.bullets.2": {
+      "t": "el modelo confunde humano y workload: tratar a un workload como si fuera humano (con usuario fijo + Access Key estática) es la puerta de entrada de casi toda filtración",
+      "h": "bb175083"
+    },
+    "sections.8.heading": {
+      "t": "Limitaciones",
+      "h": "149d05f7"
+    },
+    "short": {
+      "t": "quién es quién, y qué puede hacer cada uno",
+      "h": "43c806ea"
+    },
+    "tagline": {
+      "t": "La identidad es el nuevo perímetro: la seguridad en la nube empieza por saber quién es cada workload, cada humano y cada servicio, y limitar exactamente lo que cada uno puede tocar.",
+      "h": "8e6a2fd1"
+    },
+    "title": {
+      "t": "IAM - identidad y acceso",
+      "h": "b370a8f0"
+    }
+  }
+}

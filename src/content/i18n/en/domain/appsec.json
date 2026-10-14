@@ -1,0 +1,216 @@
+{
+  "entries": {
+    "graph.0.label": {
+      "t": "produces",
+      "h": "fdeca153"
+    },
+    "graph.1.label": {
+      "t": "complements",
+      "h": "c603f5f8"
+    },
+    "graph.2.label": {
+      "t": "anticipates",
+      "h": "811eebc0"
+    },
+    "graph.3.label": {
+      "t": "gates & policies",
+      "h": "cf47235f"
+    },
+    "pipeline.0.description": {
+      "t": "a push or PR triggers the pipeline",
+      "h": "db5f8475"
+    },
+    "pipeline.0.gate": {
+      "t": "no secrets in the diff",
+      "h": "cc99d912"
+    },
+    "pipeline.0.items.0.label": {
+      "t": "secrets scanning",
+      "h": "856fd9fc"
+    },
+    "pipeline.0.items.1.label": {
+      "t": "pre-commit hooks",
+      "h": "424b4ba3"
+    },
+    "pipeline.0.items.2.label": {
+      "t": "PR checks",
+      "h": "cac5c47f"
+    },
+    "pipeline.0.items.3.label": {
+      "t": "feature threat model",
+      "h": "d57fbd79"
+    },
+    "pipeline.0.name": {
+      "t": "source",
+      "h": "828d338a"
+    },
+    "pipeline.1.description": {
+      "t": "compiles and resolves dependencies",
+      "h": "1a4680f5"
+    },
+    "pipeline.1.gate": {
+      "t": "no new critical findings",
+      "h": "0568e808"
+    },
+    "pipeline.1.items.0.label": {
+      "t": "SAST",
+      "h": "dc7c9db0"
+    },
+    "pipeline.1.items.1.label": {
+      "t": "SCA",
+      "h": "5df5d896"
+    },
+    "pipeline.1.name": {
+      "t": "build",
+      "h": "80754af9"
+    },
+    "pipeline.2.description": {
+      "t": "unit, integration and security tests",
+      "h": "1bbea0f3"
+    },
+    "pipeline.2.gate": {
+      "t": "green suite + policies ok",
+      "h": "024aa140"
+    },
+    "pipeline.2.items.0.label": {
+      "t": "pipeline orchestration",
+      "h": "a81c2f46"
+    },
+    "pipeline.2.items.1.label": {
+      "t": "unit tests",
+      "h": "4e1be554"
+    },
+    "pipeline.2.items.2.label": {
+      "t": "integration tests",
+      "h": "a96e4661"
+    },
+    "pipeline.2.items.3.label": {
+      "t": "quality gate",
+      "h": "58d9929e"
+    },
+    "pipeline.2.name": {
+      "t": "test",
+      "h": "a94a8fe5"
+    },
+    "pipeline.3.description": {
+      "t": "final artifact: binary or image",
+      "h": "b659d880"
+    },
+    "pipeline.3.gate": {
+      "t": "signed, intact artifact",
+      "h": "25133482"
+    },
+    "pipeline.3.items.0.label": {
+      "t": "SBOM",
+      "h": "bc385b71"
+    },
+    "pipeline.3.items.1.label": {
+      "t": "image scan",
+      "h": "0524417f"
+    },
+    "pipeline.3.items.2.label": {
+      "t": "signing + provenance",
+      "h": "78bdc159"
+    },
+    "pipeline.3.name": {
+      "t": "package",
+      "h": "582681c2"
+    },
+    "pipeline.4.description": {
+      "t": "staging first, production later",
+      "h": "91fc10b1"
+    },
+    "pipeline.4.gate": {
+      "t": "DAST with no criticals + approval",
+      "h": "30d68fad"
+    },
+    "pipeline.4.items.0.label": {
+      "t": "DAST in staging",
+      "h": "34ad24b9"
+    },
+    "pipeline.4.items.1.label": {
+      "t": "smoke tests",
+      "h": "280dc118"
+    },
+    "pipeline.4.items.2.label": {
+      "t": "production gate",
+      "h": "a31f3f46"
+    },
+    "pipeline.4.name": {
+      "t": "deploy",
+      "h": "b0d51b9f"
+    },
+    "pipeline.5.description": {
+      "t": "production is observed, continuous feedback",
+      "h": "ffeecc6b"
+    },
+    "pipeline.5.gate": {
+      "t": "a new CVE becomes an automatic PR",
+      "h": "5311c33e"
+    },
+    "pipeline.5.items.0.label": {
+      "t": "observability and alerts",
+      "h": "aee240bc"
+    },
+    "pipeline.5.items.1.label": {
+      "t": "continuous SCA",
+      "h": "1c2218a6"
+    },
+    "pipeline.5.items.2.label": {
+      "t": "rollback",
+      "h": "ff3a6f3b"
+    },
+    "pipeline.5.name": {
+      "t": "monitor",
+      "h": "9796809f"
+    },
+    "relations.0.label": {
+      "t": "stage: source",
+      "h": "a48ac272"
+    },
+    "relations.1.label": {
+      "t": "stage: build/PR",
+      "h": "38e609a0"
+    },
+    "relations.2.label": {
+      "t": "stage: build",
+      "h": "49ff825e"
+    },
+    "relations.3.label": {
+      "t": "stage: staging",
+      "h": "08de8d40"
+    },
+    "relations.4.label": {
+      "t": "produces",
+      "h": "fdeca153"
+    },
+    "relations.5.label": {
+      "t": "anticipates",
+      "h": "811eebc0"
+    },
+    "relations.6.label": {
+      "t": "anticipates",
+      "h": "811eebc0"
+    },
+    "relations.7.label": {
+      "t": "gates & policies",
+      "h": "cf47235f"
+    },
+    "relations.8.label": {
+      "t": "complements",
+      "h": "c603f5f8"
+    },
+    "relations.9.label": {
+      "t": "starts at design",
+      "h": "23b996a2"
+    },
+    "relations.10.label": {
+      "t": "defines what to test",
+      "h": "43500d40"
+    },
+    "relations.11.label": {
+      "t": "becomes a gate",
+      "h": "078b920e"
+    }
+  }
+}

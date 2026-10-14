@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "El desafío es el escalón previo al bloqueo, con la misma idea de escalera con TTL.",
+      "h": "2edceed0"
+    },
+    "questions.0.options.0": {
+      "t": "Es barato para el legítimo y caro para el robot, y reduce el falso positivo",
+      "h": "dd64b711"
+    },
+    "questions.0.options.1": {
+      "t": "Porque el bloqueo es ilegal",
+      "h": "40b5a4c0"
+    },
+    "questions.0.options.2": {
+      "t": "Porque el desafío nunca falla",
+      "h": "a2137131"
+    },
+    "questions.0.options.3": {
+      "t": "Porque los bloqueos tumban el borde",
+      "h": "e1abae0d"
+    },
+    "questions.0.q": {
+      "t": "¿Por qué empezar la contención con un desafío en lugar de un bloqueo?",
+      "h": "20c128e8"
+    },
+    "questions.1.explain": {
+      "t": "El objetivo es aprender y generar acciones que eviten la repetición.",
+      "h": "64deabd1"
+    },
+    "questions.1.options.0": {
+      "t": "Línea de tiempo, causa, lo que funcionó y lo que estorbó, con acciones, responsables y plazos",
+      "h": "6de4e46a"
+    },
+    "questions.1.options.1": {
+      "t": "El nombre del responsable del error",
+      "h": "5c8a5f30"
+    },
+    "questions.1.options.2": {
+      "t": "Solo el número de alertas",
+      "h": "cdadbca2"
+    },
+    "questions.1.options.3": {
+      "t": "Solo las lecciones positivas",
+      "h": "f8ce5275"
+    },
+    "questions.1.q": {
+      "t": "¿Qué registra un postmortem sin culpa?",
+      "h": "8d9f828c"
+    },
+    "questions.2.explain": {
+      "t": "Cada incidente debe convertirse en un control que no dependa solo del borde.",
+      "h": "a8497ab1"
+    },
+    "questions.2.options.0": {
+      "t": "CSP con nonce, CORS estricto y validación de esquema en el gateway",
+      "h": "aa1a7653"
+    },
+    "questions.2.options.1": {
+      "t": "Apagar el WAF después del incidente",
+      "h": "de8607c8"
+    },
+    "questions.2.options.2": {
+      "t": "Aumentar el TTL de todos los bloqueos",
+      "h": "3f69ca2c"
+    },
+    "questions.2.options.3": {
+      "t": "Eliminar los logs de error",
+      "h": "656f3bdf"
+    },
+    "questions.2.q": {
+      "t": "¿Cuál de estos es un ejemplo de hardening en la aplicación?",
+      "h": "711ab3d7"
+    }
+  }
+}

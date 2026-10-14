@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Un servidor MCP expone herramientas y recursos que cualquier cliente compatible puede usar.",
+      "h": "a7d0628b"
+    },
+    "questions.0.options.0": {
+      "t": "Un protocolo abierto para conectar modelos a herramientas y fuentes de datos de forma estandarizada",
+      "h": "cbec25a8"
+    },
+    "questions.0.options.1": {
+      "t": "Un nuevo modelo de lenguaje",
+      "h": "dd7f314c"
+    },
+    "questions.0.options.2": {
+      "t": "Un formato de imagen",
+      "h": "d5e970ee"
+    },
+    "questions.0.options.3": {
+      "t": "Un tipo de GPU",
+      "h": "9f7a3713"
+    },
+    "questions.0.q": {
+      "t": "¿Qué es MCP (Model Context Protocol)?",
+      "h": "8aa729c4"
+    },
+    "questions.1.explain": {
+      "t": "Trata los servidores MCP como código de terceros: revisa, restringe y aísla.",
+      "h": "3bb4b506"
+    },
+    "questions.1.options.0": {
+      "t": "Puede exponer herramientas maliciosas o excesivamente poderosas al agente",
+      "h": "638600e6"
+    },
+    "questions.1.options.1": {
+      "t": "Ninguno, siempre son seguros",
+      "h": "2790ff7b"
+    },
+    "questions.1.options.2": {
+      "t": "Aumenta el tamaño del modelo",
+      "h": "feb8d411"
+    },
+    "questions.1.options.3": {
+      "t": "Impide el uso de HTTPS",
+      "h": "29d201fb"
+    },
+    "questions.1.q": {
+      "t": "¿Cuál es un riesgo al instalar un servidor MCP de terceros?",
+      "h": "408942db"
+    },
+    "questions.2.explain": {
+      "t": "El modelo lee las descripciones; un texto malicioso ahí es una forma de prompt injection.",
+      "h": "3812c6ec"
+    },
+    "questions.2.options.0": {
+      "t": "Pueden contener instrucciones ocultas que manipulan al modelo (tool poisoning)",
+      "h": "9bff0c58"
+    },
+    "questions.2.options.1": {
+      "t": "Siempre son inofensivas",
+      "h": "4d84dc51"
+    },
+    "questions.2.options.2": {
+      "t": "El modelo no las lee",
+      "h": "bd306d7b"
+    },
+    "questions.2.options.3": {
+      "t": "Están cifradas",
+      "h": "3a320a06"
+    },
+    "questions.2.q": {
+      "t": "¿Qué cuidado aplica a las descripciones de herramientas MCP?",
+      "h": "696a17cf"
+    }
+  }
+}

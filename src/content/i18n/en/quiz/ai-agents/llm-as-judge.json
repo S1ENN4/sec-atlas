@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "It automates grading where human review would be too expensive.",
+      "h": "1f0945fb"
+    },
+    "questions.0.options.0": {
+      "t": "Using one model to evaluate another's outputs following a rubric",
+      "h": "8aa93a32"
+    },
+    "questions.0.options.1": {
+      "t": "A court for models",
+      "h": "f90c5da1"
+    },
+    "questions.0.options.2": {
+      "t": "Training a model to be a human judge",
+      "h": "afb62abf"
+    },
+    "questions.0.options.3": {
+      "t": "A law benchmark",
+      "h": "a5ac91fb"
+    },
+    "questions.0.q": {
+      "t": "What is LLM-as-judge?",
+      "h": "16b17813"
+    },
+    "questions.1.explain": {
+      "t": "Verbosity bias and self-preference require calibration.",
+      "h": "7ed22251"
+    },
+    "questions.1.options.0": {
+      "t": "Preferring longer answers or ones in their own style",
+      "h": "f59f72e2"
+    },
+    "questions.1.options.1": {
+      "t": "Always preferring short answers",
+      "h": "657e7b65"
+    },
+    "questions.1.options.2": {
+      "t": "Always giving a zero score",
+      "h": "ba84d66b"
+    },
+    "questions.1.options.3": {
+      "t": "Ignoring the rubric entirely",
+      "h": "6328725b"
+    },
+    "questions.1.q": {
+      "t": "Which bias is common in LLM-based judges?",
+      "h": "fabce606"
+    },
+    "questions.2.explain": {
+      "t": "Agreement with humans is what validates the judge.",
+      "h": "78e800e2"
+    },
+    "questions.2.options.0": {
+      "t": "Calibrate against a sample evaluated by humans and use clear rubrics",
+      "h": "38c8bf08"
+    },
+    "questions.2.options.1": {
+      "t": "Use the same model to generate and evaluate without review",
+      "h": "34e53e01"
+    },
+    "questions.2.options.2": {
+      "t": "Disable the rubric",
+      "h": "34e9b572"
+    },
+    "questions.2.options.3": {
+      "t": "Increase the temperature",
+      "h": "aa90eea7"
+    },
+    "questions.2.q": {
+      "t": "How do you increase confidence in an automatic judge?",
+      "h": "3fddea00"
+    }
+  }
+}

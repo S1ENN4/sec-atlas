@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "An MCP server exposes tools and resources that any compatible client can use.",
+      "h": "a7d0628b"
+    },
+    "questions.0.options.0": {
+      "t": "An open protocol for connecting models to tools and data sources in a standardized way",
+      "h": "cbec25a8"
+    },
+    "questions.0.options.1": {
+      "t": "A new language model",
+      "h": "dd7f314c"
+    },
+    "questions.0.options.2": {
+      "t": "An image format",
+      "h": "d5e970ee"
+    },
+    "questions.0.options.3": {
+      "t": "A type of GPU",
+      "h": "9f7a3713"
+    },
+    "questions.0.q": {
+      "t": "What is MCP (Model Context Protocol)?",
+      "h": "8aa729c4"
+    },
+    "questions.1.explain": {
+      "t": "Treat MCP servers as third-party code: review, restrict and isolate.",
+      "h": "3bb4b506"
+    },
+    "questions.1.options.0": {
+      "t": "It may expose malicious or excessively powerful tools to the agent",
+      "h": "638600e6"
+    },
+    "questions.1.options.1": {
+      "t": "None, they are always safe",
+      "h": "2790ff7b"
+    },
+    "questions.1.options.2": {
+      "t": "It increases the model size",
+      "h": "feb8d411"
+    },
+    "questions.1.options.3": {
+      "t": "It prevents the use of HTTPS",
+      "h": "29d201fb"
+    },
+    "questions.1.q": {
+      "t": "What is a risk when installing a third-party MCP server?",
+      "h": "408942db"
+    },
+    "questions.2.explain": {
+      "t": "The model reads the descriptions; malicious text there is a form of prompt injection.",
+      "h": "3812c6ec"
+    },
+    "questions.2.options.0": {
+      "t": "They may contain hidden instructions that manipulate the model (tool poisoning)",
+      "h": "9bff0c58"
+    },
+    "questions.2.options.1": {
+      "t": "They are always harmless",
+      "h": "4d84dc51"
+    },
+    "questions.2.options.2": {
+      "t": "They are not read by the model",
+      "h": "bd306d7b"
+    },
+    "questions.2.options.3": {
+      "t": "They are encrypted",
+      "h": "3a320a06"
+    },
+    "questions.2.q": {
+      "t": "Which precaution applies to MCP tool descriptions?",
+      "h": "696a17cf"
+    }
+  }
+}

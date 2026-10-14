@@ -1,0 +1,128 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "LLM as judge es un patrón donde un segundo LLM lee la salida del sistema (y opcionalmente un gabarito) y devuelve una nota o un veredicto. La motivación es simple: anotar mil casos con humanos cuesta semanas, y el juez de modelo cuesta centavos por caso. La pregunta es si esa nota corresponde a la humana con una correlación suficientemente buena para ser útil.",
+      "h": "071c7e83"
+    },
+    "sections.0.body.1": {
+      "t": "Tres formatos dominan el uso. Score continuo (0 a 1, Likert 1 a 5). Pairwise (cuál de A o B es mejor, o empate). Binario (pasa o no pasa). Cada uno tiene afinidad con métricas distintas, y la rúbrica define el resto.",
+      "h": "e6ebdfda"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "El juez LLM tiene sesgos propios: prefiere la respuesta prolija, prefiere el primer ítem en las comparaciones, prefiere el tono didáctico. Sin calibración esos sesgos se vuelven veredicto, y el número publicado no significa nada.",
+      "h": "e069a570"
+    },
+    "sections.1.body.1": {
+      "t": "La calibración es un experimento offline. Tomas de 100 a 300 casos reales anotados por humanos, corres el juez, comparas la nota del juez con la nota humana y mides la correlación (Pearson para continuo, exactitud/κ para binario). Aceptas el juez si la correlación pasa un umbral (0.7 en Pearson, 0.6 en Cohen κ es un piso razonable). Si no pasa, vuelves a la rúbrica.",
+      "h": "a8d4f2ff"
+    },
+    "sections.1.heading": {
+      "t": "Por qué calibrar contra humanos",
+      "h": "130dc69b"
+    },
+    "sections.2.body.0": {
+      "t": "La rúbrica es el corazón del juez. Suelen bastar cuatro bloques: contexto (input del usuario, contexto recuperado, gabarito si lo hay), criterio (qué se está evaluando, en una frase), escala (cómo convertir en nota) y formato de la respuesta (un número, un JSON corto, nada de prosa libre).",
+      "h": "4e638044"
+    },
+    "sections.2.body.1": {
+      "t": "Cuanto más corta la rúbrica, más innova el juez. Lo opuesto también es malo: una rúbrica gigante de 800 palabras traba al juez en burocracia. El punto justo cabe en 6 a 10 líneas y aun así cita un ejemplo positivo y uno negativo de la escala.",
+      "h": "1cc72a71"
+    },
+    "sections.2.heading": {
+      "t": "Rúbrica: qué entra en el prompt",
+      "h": "5a8501ad"
+    },
+    "sections.3.body.0": {
+      "t": "En pairwise el juez tiende a preferir el ítem de la izquierda, y la tendencia se invierte cuando se cambia la posición. Solución: correr cada comparación en ambos órdenes (A,B y B,A), y considerar empate cuando los dos veredictos discrepan. Es lo que hizo el MT-Bench original, y se volvió estándar en cualquier benchmark serio.",
+      "h": "44102fff"
+    },
+    "sections.3.body.1": {
+      "t": "En score, el sesgo es de anclaje: el juez se inclina hacia los extremos del espectro. Solución: usar una escala con referencia explícita (Likert 1-5 con un descriptor en cada nivel) en vez de un continuo libre. El continuo funciona, pero necesita más calibración.",
+      "h": "20c5f28a"
+    },
+    "sections.3.heading": {
+      "t": "Sesgo de posición y cómo mitigarlo",
+      "h": "2c7e1e4c"
+    },
+    "sections.4.body.0": {
+      "t": "El snippet muestra un juez binario (pasa o no pasa) con un guard-rail contra la circularidad: el juez es un modelo distinto del que está en el agente. En producción conviene cambiar el modelo por uno especializado (Prometheus, G-Eval) cuando el caso es cerrado y exige profundidad.",
+      "h": "d5f971df"
+    },
+    "sections.4.code.0.code": {
+      "t": "import { openai } from \"../llm\"; // juez: familia distinta a la del agente\n\ntype Verdict = { passa: boolean; motivo: string };\n\nconst RUBRICA = `Eres un juez binario.\nRecibes (1) la pregunta, (2) el contexto recuperado, (3) la salida del agente y (4) el gabarito.\nResponde SOLO un JSON con el formato {\"passa\": bool, \"motivo\": \"<1 frase>\"}.\nConsidera passa=true solo si la salida es fiel al gabarito Y no inventa información fuera del contexto.`;\n\nexport async function judge(input: string, contexto: string, output: string, gabarito: string): Promise<Verdict> {\n  const user = `Pregunta: ${input}\\nContexto: ${contexto}\\nSalida: ${output}\\nGabarito: ${gabarito}`;\n  const resp = await openai.chat.completions.create({\n    model: \"gpt-4o-mini\",\n    response_format: { type: \"json_object\" },\n    messages: [{ role: \"system\", content: RUBRICA }, { role: \"user\", content: user }],\n  });\n  return JSON.parse(resp.choices[0].message.content);\n}",
+      "h": "a87a5461"
+    },
+    "sections.4.code.0.filename": {
+      "t": "judges/binario.ts",
+      "h": "9b017ba0"
+    },
+    "sections.4.heading": {
+      "t": "Implementación mínima",
+      "h": "7bf71bc7"
+    },
+    "sections.5.body.0": {
+      "t": "Cuando existe una métrica exacta disponible. Si el caso es '¿el agente resolvió la ecuación?', la respuesta es comparación de strings o ejecución de los asserts. Poner un juez LLM ahí es agregar costo y varianza sin motivo.",
+      "h": "fd4a30e3"
+    },
+    "sections.5.body.1": {
+      "t": "Cuando el dominio es cerrado y la rúbrica exigiría describir demasiados matices. En tareas muy específicas (cálculo financiero, validación de política regulatoria), el juez genérico se equivoca y el costo de calibrar supera el costo de un humano. Vuelve a la anotación humana por muestreo.",
+      "h": "4bbff300"
+    },
+    "sections.5.body.2": {
+      "t": "Cuando el presupuesto es corto. El juez LLM cobra por token de entrada y salida, y correr 500 casos con juez se vuelve un gasto recurrente que debe caber en el presupuesto mensual. Mide antes de escalar.",
+      "h": "7b14cbc5"
+    },
+    "sections.5.heading": {
+      "t": "Cuándo NO usar LLM as judge",
+      "h": "b0553b7f"
+    },
+    "sections.6.bullets.0": {
+      "t": "escala: anota mil casos en el tiempo que los humanos anotan cien, con un costo por caso mucho menor",
+      "h": "1d63864a"
+    },
+    "sections.6.bullets.1": {
+      "t": "consistencia: los jueces humanos divergen entre sí, el juez LLM mantiene la misma rúbrica en todo caso",
+      "h": "19f4ea62"
+    },
+    "sections.6.bullets.2": {
+      "t": "trazabilidad: cada nota tiene un prompt y una respuesta, fácil de auditar y versionar",
+      "h": "4c9049ff"
+    },
+    "sections.6.heading": {
+      "t": "Puntos fuertes",
+      "h": "a2ebc02c"
+    },
+    "sections.7.bullets.0": {
+      "t": "la calibración no es opcional: un juez sin calibrar se vuelve un sello que acepta cualquier cosa",
+      "h": "db844587"
+    },
+    "sections.7.bullets.1": {
+      "t": "malo para tareas con gabarito exacto: la comparación de strings o los asserts son más baratos y más precisos",
+      "h": "a3ef1b7b"
+    },
+    "sections.7.bullets.2": {
+      "t": "costo: un juez LLM por caso en un dataset grande se vuelve un gasto recurrente que debe caber en el presupuesto",
+      "h": "6c7ef34e"
+    },
+    "sections.7.heading": {
+      "t": "Limitaciones",
+      "h": "149d05f7"
+    },
+    "short": {
+      "t": "usar un LLM para puntuar la salida de otro",
+      "h": "8066b00c"
+    },
+    "tagline": {
+      "t": "LLM as judge automatiza la calificación: un modelo aplica una rúbrica (pairwise, Likert, score) sobre la salida del sistema y devuelve un veredicto escalable. Funciona cuando se calibra bien; se vuelve circularidad cuando el juez usa el mismo modelo que está juzgando.",
+      "h": "648c3623"
+    },
+    "title": {
+      "t": "LLM as judge - rúbrica automatizada",
+      "h": "21a3839e"
+    }
+  }
+}

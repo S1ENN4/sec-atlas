@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Es uno de los principales indicadores de eficacia de los runbooks y la automatización.",
+      "h": "89b4350c"
+    },
+    "questions.0.options.0": {
+      "t": "El tiempo medio desde la confirmación del ataque hasta su contención",
+      "h": "ed349654"
+    },
+    "questions.0.options.1": {
+      "t": "El costo mensual de la herramienta",
+      "h": "9c092e28"
+    },
+    "questions.0.options.2": {
+      "t": "La latencia media del sitio",
+      "h": "2da35faa"
+    },
+    "questions.0.options.3": {
+      "t": "El número de reglas activas",
+      "h": "7a5a789c"
+    },
+    "questions.0.q": {
+      "t": "¿Qué mide el MTTC?",
+      "h": "ac449bac"
+    },
+    "questions.1.explain": {
+      "t": "Hay un trade-off: el umbral es una decisión de negocio apoyada en datos.",
+      "h": "f4d5811f"
+    },
+    "questions.1.options.0": {
+      "t": "El recall tiende a subir y la precisión a bajar, con más falsos positivos",
+      "h": "3ef29c30"
+    },
+    "questions.1.options.1": {
+      "t": "Ambos suben siempre",
+      "h": "1c74ab85"
+    },
+    "questions.1.options.2": {
+      "t": "No cambia nada",
+      "h": "9eb7c031"
+    },
+    "questions.1.options.3": {
+      "t": "La detección deja de funcionar",
+      "h": "9064e568"
+    },
+    "questions.1.q": {
+      "t": "¿Qué pasa con la precisión cuando se aumenta mucho la sensibilidad de una detección?",
+      "h": "e7d8f342"
+    },
+    "questions.2.explain": {
+      "t": "La prueba es la precisión subiendo mientras el recall se mantiene.",
+      "h": "dc2ff703"
+    },
+    "questions.2.options.0": {
+      "t": "Reducir el falso positivo sin perder cobertura",
+      "h": "e6ee8bfc"
+    },
+    "questions.2.options.1": {
+      "t": "Apagar las reglas ruidosas",
+      "h": "d80e3f92"
+    },
+    "questions.2.options.2": {
+      "t": "Aumentar el número de alertas",
+      "h": "83ac153e"
+    },
+    "questions.2.options.3": {
+      "t": "Eliminar el recall",
+      "h": "4ae8112e"
+    },
+    "questions.2.q": {
+      "t": "¿Cuál es el objetivo declarado del tuning semanal?",
+      "h": "db3b47af"
+    }
+  }
+}

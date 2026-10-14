@@ -1,0 +1,92 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Los runbooks son guiones cortos y accionables para los incidentes más probables: quién decide, qué revisar, qué acción tomar y cómo deshacerla. Un buen runbook cabe en una pantalla y funciona a las tres de la mañana, para quien acaba de despertar.",
+      "h": "4c405fb3"
+    },
+    "sections.0.body.1": {
+      "t": "El hardening posincidente es el otro lado: el borde contiene, pero solo la corrección en la aplicación y en la configuración evita la repetición.",
+      "h": "3bad416b"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "En ataques volumétricos o de abuso, la respuesta escala en escalones, cada uno con TTL, para que un error de clasificación no bloquee a nadie para siempre. Empiece por un desafío (barato para el legítimo, caro para el robot) y solo después bloquee.",
+      "h": "c9d0a2b1"
+    },
+    "sections.1.code.0.code": {
+      "t": "trigger: alerta login_failures_zscore > 4 durante 3 minutos\nowner: soc-l7 (guardia)\nsteps:\n  - verificar: ASNs y fingerprints dominantes, cuentas intentadas (distintas vs repetidas)\n  - contener:\n      1: Managed Challenge en los ASNs ofensores     # TTL 30 min\n      2: Block en los fingerprints confirmados        # TTL 4 h\n      3: exigir MFA / reset forzado en cuentas con éxito sospechoso\n  - comunicar: canal #incidentes, actualización cada 30 min\n  - deshacer: quitar reglas si la tasa de fallos vuelve al baseline por 30 min\nafter: postmortem en hasta 5 días hábiles",
+      "h": "5779542a"
+    },
+    "sections.1.code.0.filename": {
+      "t": "runbook: credential stuffing en el login",
+      "h": "cf972403"
+    },
+    "sections.1.heading": {
+      "t": "Escalera de contención con plazo",
+      "h": "52977ade"
+    },
+    "sections.2.body.0": {
+      "t": "El objetivo es aprender, no buscar culpables. Un buen postmortem registra la línea de tiempo (cuándo empezó, cuándo detectamos, cuándo contuvimos), la causa, lo que funcionó, lo que estorbó y acciones con responsable y plazo. Las métricas de detección y contención salen de él y alimentan el tuning.",
+      "h": "a9360f29"
+    },
+    "sections.2.heading": {
+      "t": "Postmortem sin culpa",
+      "h": "3f18ee95"
+    },
+    "sections.3.body.0": {
+      "t": "Cada incidente señala controles que no deberían depender del borde. Tres ejemplos frecuentes:",
+      "h": "a9aa3bb2"
+    },
+    "sections.3.bullets.0": {
+      "t": "CSP con nonce: política de seguridad de contenido que solo ejecuta scripts con un nonce generado por solicitud, reduciendo el impacto de XSS.",
+      "h": "0bd6a0f0"
+    },
+    "sections.3.bullets.1": {
+      "t": "CORS estricto: orígenes permitidos explícitos, sin comodín en endpoints con credenciales.",
+      "h": "f5e8897f"
+    },
+    "sections.3.bullets.2": {
+      "t": "Validación de esquema en el gateway: rechazar cuerpos y parámetros que no coinciden con la especificación de la API, el modelo positivo aplicado cerca de la aplicación.",
+      "h": "dc982a23"
+    },
+    "sections.3.heading": {
+      "t": "Hardening en la aplicación",
+      "h": "ec12c3ab"
+    },
+    "sections.4.code.0.code": {
+      "t": "Content-Security-Policy:\n  default-src 'self';\n  script-src 'self' 'nonce-{random-por-solicitud}' 'strict-dynamic';\n  object-src 'none';\n  base-uri 'none';\n  frame-ancestors 'none'",
+      "h": "5858c989"
+    },
+    "sections.4.code.0.filename": {
+      "t": "response header",
+      "h": "6ada0a98"
+    },
+    "sections.4.heading": {
+      "t": "Ejemplo: CSP con nonce",
+      "h": "d1876455"
+    },
+    "sections.5.body.0": {
+      "t": "Un runbook sin probar es una suposición. Los ejercicios de mesa (tabletop) y las simulaciones con tráfico sintético revelan brechas de permisos, de contactos y de herramientas antes del incidente real, y mantienen entrenado al equipo.",
+      "h": "d52946f8"
+    },
+    "sections.5.heading": {
+      "t": "Ejercicios",
+      "h": "d02a4951"
+    },
+    "short": {
+      "t": "de la contención rápida a la corrección que cierra la puerta",
+      "h": "01c2a50d"
+    },
+    "tagline": {
+      "t": "El runbook hace que la contención ocurra en minutos, y el posincidente convierte lo que dolió en una defensa permanente, en la aplicación y no solo en el borde.",
+      "h": "d49c370f"
+    },
+    "title": {
+      "t": "Runbooks, respuesta y hardening posincidente",
+      "h": "0d343f68"
+    }
+  }
+}

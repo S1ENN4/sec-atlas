@@ -1,0 +1,216 @@
+{
+  "entries": {
+    "graph.0.label": {
+      "t": "genera vectores",
+      "h": "87fa1a84"
+    },
+    "graph.1.label": {
+      "t": "almacena",
+      "h": "c36713a6"
+    },
+    "graph.2.label": {
+      "t": "consulta",
+      "h": "b71deb9f"
+    },
+    "graph.3.label": {
+      "t": "alimenta el contexto",
+      "h": "b9a2d0aa"
+    },
+    "graph.4.label": {
+      "t": "inyecta contexto",
+      "h": "3e757511"
+    },
+    "graph.5.label": {
+      "t": "es el núcleo",
+      "h": "60450018"
+    },
+    "graph.6.label": {
+      "t": "habilita",
+      "h": "4c1aa745"
+    },
+    "graph.7.label": {
+      "t": "se coordina con",
+      "h": "158af862"
+    },
+    "graph.8.label": {
+      "t": "habla el protocolo",
+      "h": "1523bc67"
+    },
+    "graph.9.label": {
+      "t": "provee datos",
+      "h": "3fb8a6a0"
+    },
+    "graph.10.label": {
+      "t": "automatiza la calificación",
+      "h": "f5930a20"
+    },
+    "graph.11.label": {
+      "t": "protege el baseline",
+      "h": "c695bd47"
+    },
+    "graph.12.label": {
+      "t": "filtra entrada/salida",
+      "h": "e49b0cf3"
+    },
+    "pipeline.0.description": {
+      "t": "los documentos se convierten en fragmentos recuperables",
+      "h": "58ac3234"
+    },
+    "pipeline.0.gate": {
+      "t": "cada fragmento cabe en el contexto y conserva la idea local",
+      "h": "a5323054"
+    },
+    "pipeline.0.items.0.label": {
+      "t": "chunking",
+      "h": "cd6642e2"
+    },
+    "pipeline.0.name": {
+      "t": "ingesta",
+      "h": "7e11adc6"
+    },
+    "pipeline.1.description": {
+      "t": "los fragmentos se convierten en vectores y entran a la base",
+      "h": "6f0d1d66"
+    },
+    "pipeline.1.gate": {
+      "t": "vectores persistidos y consultables por similitud",
+      "h": "b1f37652"
+    },
+    "pipeline.1.items.0.label": {
+      "t": "embeddings",
+      "h": "8586c76a"
+    },
+    "pipeline.1.items.1.label": {
+      "t": "vector-db",
+      "h": "f6ce996c"
+    },
+    "pipeline.1.name": {
+      "t": "indexación",
+      "h": "e540cdd1"
+    },
+    "pipeline.2.description": {
+      "t": "el fragmento correcto para la pregunta correcta",
+      "h": "843933ca"
+    },
+    "pipeline.2.gate": {
+      "t": "ranking estable y cobertura de los pasajes relevantes",
+      "h": "a88bb9dc"
+    },
+    "pipeline.2.items.0.label": {
+      "t": "retrieval",
+      "h": "3a93bc3e"
+    },
+    "pipeline.2.name": {
+      "t": "recuperación",
+      "h": "413bc616"
+    },
+    "pipeline.3.description": {
+      "t": "el agente decide, llama herramientas, responde",
+      "h": "ba388b4a"
+    },
+    "pipeline.3.gate": {
+      "t": "acción tipada, auditada y dentro del alcance del agente",
+      "h": "8983e359"
+    },
+    "pipeline.3.items.0.label": {
+      "t": "agent frameworks",
+      "h": "03f6d727"
+    },
+    "pipeline.3.items.1.label": {
+      "t": "tool calling",
+      "h": "cd4bcb20"
+    },
+    "pipeline.3.items.2.label": {
+      "t": "orquestación",
+      "h": "3bed53b8"
+    },
+    "pipeline.3.name": {
+      "t": "acción",
+      "h": "76f3b5a7"
+    },
+    "pipeline.4.description": {
+      "t": "medir para poder confiar",
+      "h": "ebe09f75"
+    },
+    "pipeline.4.gate": {
+      "t": "calidad medida, baseline protegido, gate en el merge",
+      "h": "68ef404c"
+    },
+    "pipeline.4.items.0.label": {
+      "t": "evals",
+      "h": "64bacb15"
+    },
+    "pipeline.4.items.1.label": {
+      "t": "benchmarks",
+      "h": "ac00a9df"
+    },
+    "pipeline.4.items.2.label": {
+      "t": "LLM as judge",
+      "h": "136b099f"
+    },
+    "pipeline.4.items.3.label": {
+      "t": "regression evals",
+      "h": "9e2f5106"
+    },
+    "pipeline.4.name": {
+      "t": "evaluación",
+      "h": "3709214f"
+    },
+    "relations.0.label": {
+      "t": "genera vectores",
+      "h": "87fa1a84"
+    },
+    "relations.1.label": {
+      "t": "almacena",
+      "h": "c36713a6"
+    },
+    "relations.2.label": {
+      "t": "consulta",
+      "h": "b71deb9f"
+    },
+    "relations.3.label": {
+      "t": "alimenta el contexto",
+      "h": "b9a2d0aa"
+    },
+    "relations.4.label": {
+      "t": "inyecta contexto",
+      "h": "3e757511"
+    },
+    "relations.5.label": {
+      "t": "es el núcleo",
+      "h": "60450018"
+    },
+    "relations.6.label": {
+      "t": "habilita",
+      "h": "4c1aa745"
+    },
+    "relations.7.label": {
+      "t": "se coordina con",
+      "h": "158af862"
+    },
+    "relations.8.label": {
+      "t": "habla el protocolo",
+      "h": "1523bc67"
+    },
+    "relations.9.label": {
+      "t": "provee datos",
+      "h": "3fb8a6a0"
+    },
+    "relations.10.label": {
+      "t": "automatiza la calificación",
+      "h": "f5930a20"
+    },
+    "relations.11.label": {
+      "t": "protege el baseline",
+      "h": "c695bd47"
+    },
+    "relations.12.label": {
+      "t": "mide la recuperación",
+      "h": "ffd6fa78"
+    },
+    "relations.13.label": {
+      "t": "filtra entrada/salida",
+      "h": "e49b0cf3"
+    }
+  }
+}

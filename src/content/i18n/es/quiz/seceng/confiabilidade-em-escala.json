@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Los reintentos sincronizados crean una nueva ráfaga justo cuando la dependencia se estaba recuperando.",
+      "h": "071913d2"
+    },
+    "questions.0.options.0": {
+      "t": "Para desincronizar a los clientes y evitar que todos reintenten a la vez y tumben la dependencia",
+      "h": "d7a85195"
+    },
+    "questions.0.options.1": {
+      "t": "Para aumentar el número de intentos",
+      "h": "0c6d5426"
+    },
+    "questions.0.options.2": {
+      "t": "Para eliminar los timeouts",
+      "h": "5c81c7f1"
+    },
+    "questions.0.options.3": {
+      "t": "Para cifrar la llamada",
+      "h": "2f99697a"
+    },
+    "questions.0.q": {
+      "t": "¿Por qué usar jitter junto con el backoff exponencial?",
+      "h": "c2a1d3ca"
+    },
+    "questions.1.explain": {
+      "t": "IDs estables y registro de los procesados, o acciones por estado deseado, toleran duplicados.",
+      "h": "ee9bcdee"
+    },
+    "questions.1.options.0": {
+      "t": "Aceptar la entrega at-least-once y hacer idempotente el procesamiento",
+      "h": "b967dc1b"
+    },
+    "questions.1.options.1": {
+      "t": "Perseguir exactly-once en todas las capas",
+      "h": "42477c70"
+    },
+    "questions.1.options.2": {
+      "t": "Desactivar los reintentos",
+      "h": "128b0bc8"
+    },
+    "questions.1.options.3": {
+      "t": "Descartar los eventos repetidos sin registrarlos",
+      "h": "c35994d6"
+    },
+    "questions.1.q": {
+      "t": "¿Cuál es el enfoque práctico para evitar actuar dos veces sobre el mismo evento?",
+      "h": "6e53090c"
+    },
+    "questions.2.explain": {
+      "t": "Conserva el evento para su análisis y libera la partición.",
+      "h": "4dad5e07"
+    },
+    "questions.2.options.0": {
+      "t": "Guardar los eventos que no pudieron procesarse, sin bloquear el flujo",
+      "h": "523c1f35"
+    },
+    "questions.2.options.1": {
+      "t": "Aumentar la velocidad del consumidor",
+      "h": "3e3a6666"
+    },
+    "questions.2.options.2": {
+      "t": "Cifrar mensajes",
+      "h": "f3c22844"
+    },
+    "questions.2.options.3": {
+      "t": "Borrar eventos antiguos",
+      "h": "82e1af96"
+    },
+    "questions.2.q": {
+      "t": "¿Para qué sirve una DLQ?",
+      "h": "691449d0"
+    }
+  }
+}

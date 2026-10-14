@@ -1,0 +1,96 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Una parte grande del tráfico de cualquier aplicación pública es automatización: buscadores y monitoreo (útiles), pero también scrapers, credential stuffing, acaparamiento de inventario y creación de cuentas falsas. La defensa no es bloquear \"bots\", es distinguir la intención y actuar sobre el abuso.",
+      "h": "6fc6a8fb"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "Las soluciones de bot management combinan señales para producir una puntuación por solicitud. Ninguna señal es decisiva por sí sola, pero juntas separan bien el tráfico:",
+      "h": "a405120c"
+    },
+    "sections.1.bullets.0": {
+      "t": "Fingerprints de red y TLS: los clientes de automatización suelen tener firmas distintas de las de los navegadores reales.",
+      "h": "b324af9b"
+    },
+    "sections.1.bullets.1": {
+      "t": "Señales de navegador y comportamiento: ejecución de JavaScript, movimiento, cadencia de solicitudes.",
+      "h": "7b21d356"
+    },
+    "sections.1.bullets.2": {
+      "t": "Reputación y contexto: IP, ASN, historial del cliente, patrón por endpoint.",
+      "h": "1814ef50"
+    },
+    "sections.1.bullets.3": {
+      "t": "Bots verificados: crawlers conocidos (buscadores, monitores) identificados de forma confiable y tratados aparte.",
+      "h": "e9220b8a"
+    },
+    "sections.1.heading": {
+      "t": "Cómo funciona la clasificación",
+      "h": "365590b2"
+    },
+    "sections.2.body.0": {
+      "t": "La puntuación no bloquea nada por sí sola: la política define la acción por endpoint. Un catálogo público puede tolerar un score medio, mientras que el login y el checkout desafían o bloquean. Una expresión de ejemplo, al estilo de las reglas de Cloudflare:",
+      "h": "3e221f95"
+    },
+    "sections.2.code.0.code": {
+      "t": "# alto riesgo de automatización en endpoints sensibles, ignorando bots verificados\n(cf.bot_management.score lt 30\n and not cf.bot_management.verified_bot\n and http.request.uri.path in {\"/api/login\" \"/api/checkout\"})\n  -> action: Managed Challenge",
+      "h": "2a93c3d7"
+    },
+    "sections.2.code.0.filename": {
+      "t": "bot rule - ilustrativo",
+      "h": "c4d54003"
+    },
+    "sections.2.heading": {
+      "t": "La política decide la acción",
+      "h": "d828bfc0"
+    },
+    "sections.3.body.0": {
+      "t": "Los desafíos clásicos (CAPTCHA) castigan a los usuarios reales. Los desafíos modernos y administrados intentan probar que el cliente es un navegador real sin pedirle nada al usuario, y solo escalan a una interacción cuando la duda persiste. El desafío es el escalón previo al bloqueo: reduce el falso positivo y aun así resulta caro para quien automatiza a escala.",
+      "h": "24a404e6"
+    },
+    "sections.3.heading": {
+      "t": "Desafíos sin fricción",
+      "h": "bd8aed0b"
+    },
+    "sections.4.bullets.0": {
+      "t": "Credential stuffing en el login y en la recuperación de contraseña.",
+      "h": "8fb57e4c"
+    },
+    "sections.4.bullets.1": {
+      "t": "Scraping de precios, catálogo o contenido.",
+      "h": "99bd7457"
+    },
+    "sections.4.bullets.2": {
+      "t": "Creación masiva de cuentas y abuso de promociones.",
+      "h": "9145d651"
+    },
+    "sections.4.bullets.3": {
+      "t": "Acaparamiento de inventario y fraude en el checkout.",
+      "h": "276affe4"
+    },
+    "sections.4.bullets.4": {
+      "t": "APIs: los bots usan directamente las rutas, así que la política también debe cubrir el tráfico sin navegador.",
+      "h": "4fdb6c73"
+    },
+    "sections.4.heading": {
+      "t": "Casos de uso más comunes",
+      "h": "a1c69356"
+    },
+    "short": {
+      "t": "separar la automatización legítima del abuso automatizado",
+      "h": "cbe29a33"
+    },
+    "tagline": {
+      "t": "No todo bot es enemigo ni todo humano es legítimo. El bot management asigna una nota de confianza a cada solicitud y deja que la política decida qué hacer con ella.",
+      "h": "790b80c1"
+    },
+    "title": {
+      "t": "Bot management",
+      "h": "c22248a9"
+    }
+  }
+}

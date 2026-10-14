@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Sin evals, cada cambio de prompt o de modelo es una apuesta.",
+      "h": "676694de"
+    },
+    "questions.0.options.0": {
+      "t": "Medir la calidad del sistema de IA con casos de prueba repetibles",
+      "h": "024662d5"
+    },
+    "questions.0.options.1": {
+      "t": "Entrenar el modelo",
+      "h": "649db890"
+    },
+    "questions.0.options.2": {
+      "t": "Cifrar prompts",
+      "h": "6de25a11"
+    },
+    "questions.0.options.3": {
+      "t": "Reducir el contexto",
+      "h": "1bff36bb"
+    },
+    "questions.0.q": {
+      "t": "¿Para qué sirven los evals?",
+      "h": "684f4761"
+    },
+    "questions.1.explain": {
+      "t": "Los casos sintéticos pierden la distribución real; los reales muestran dónde el sistema realmente falla.",
+      "h": "e746be2f"
+    },
+    "questions.1.options.0": {
+      "t": "Porque reflejan cómo los usuarios realmente usan el sistema",
+      "h": "b9743fca"
+    },
+    "questions.1.options.1": {
+      "t": "Porque son más baratos",
+      "h": "66e8c762"
+    },
+    "questions.1.options.2": {
+      "t": "Porque no requieren revisión",
+      "h": "0dedf33d"
+    },
+    "questions.1.options.3": {
+      "t": "Porque el modelo lo exige",
+      "h": "59d63bf4"
+    },
+    "questions.1.q": {
+      "t": "¿Por qué usar datos reales de producción en los evals?",
+      "h": "1f9ceb4e"
+    },
+    "questions.2.explain": {
+      "t": "Evaluar cada etapa (retrieval, generación, herramientas) ubica la causa.",
+      "h": "32568017"
+    },
+    "questions.2.options.0": {
+      "t": "No sabes si la falla vino de la recuperación, del prompt o del modelo",
+      "h": "07c9c42f"
+    },
+    "questions.2.options.1": {
+      "t": "Resulta demasiado caro",
+      "h": "f218b5ba"
+    },
+    "questions.2.options.2": {
+      "t": "La respuesta final no existe",
+      "h": "d82b685a"
+    },
+    "questions.2.options.3": {
+      "t": "No es posible medir nada",
+      "h": "70fc41e9"
+    },
+    "questions.2.q": {
+      "t": "¿Cuál es el problema de evaluar solo la respuesta final?",
+      "h": "a09d827a"
+    }
+  }
+}

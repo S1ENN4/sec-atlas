@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Está optimizada para la búsqueda de vecinos más cercanos en muchas dimensiones.",
+      "h": "d8a35fe0"
+    },
+    "questions.0.options.0": {
+      "t": "Buscar rápidamente los vectores más cercanos a una consulta",
+      "h": "13ac39e2"
+    },
+    "questions.0.options.1": {
+      "t": "Ejecutar transacciones financieras",
+      "h": "477ea96a"
+    },
+    "questions.0.options.2": {
+      "t": "Cifrar mensajes",
+      "h": "f3c22844"
+    },
+    "questions.0.options.3": {
+      "t": "Servir páginas estáticas",
+      "h": "a5e2212d"
+    },
+    "questions.0.q": {
+      "t": "¿Para qué sirve una base de datos vectorial?",
+      "h": "b257f266"
+    },
+    "questions.1.explain": {
+      "t": "Índices como HNSW encuentran vecinos muy buenos sin comparar con todos los vectores.",
+      "h": "a284a54a"
+    },
+    "questions.1.options.0": {
+      "t": "Cambiar un poco de exactitud por una gran ganancia de velocidad en la búsqueda",
+      "h": "b300b0ca"
+    },
+    "questions.1.options.1": {
+      "t": "Buscar solo por palabras exactas",
+      "h": "cb5d84a5"
+    },
+    "questions.1.options.2": {
+      "t": "Un error de configuración",
+      "h": "e0e2a3de"
+    },
+    "questions.1.options.3": {
+      "t": "Una búsqueda sin índice",
+      "h": "a5de2027"
+    },
+    "questions.1.q": {
+      "t": "¿Qué es la búsqueda aproximada (ANN)?",
+      "h": "d16572a7"
+    },
+    "questions.2.explain": {
+      "t": "Si el índice mezcla documentos de varios dueños, la autorización debe aplicarse en la recuperación.",
+      "h": "ce6b76e6"
+    },
+    "questions.2.options.0": {
+      "t": "Control de acceso por documento: la búsqueda no debe devolver lo que el usuario no puede ver",
+      "h": "f8f9ea65"
+    },
+    "questions.2.options.1": {
+      "t": "Ninguno, los vectores no filtran datos",
+      "h": "d09877c7"
+    },
+    "questions.2.options.2": {
+      "t": "Dejar la API pública para facilitar",
+      "h": "81b30aeb"
+    },
+    "questions.2.options.3": {
+      "t": "Guardar la clave en el índice",
+      "h": "9311ca61"
+    },
+    "questions.2.q": {
+      "t": "¿Qué cuidado de seguridad aplica a la base de datos vectorial?",
+      "h": "ccd5c7dc"
+    }
+  }
+}

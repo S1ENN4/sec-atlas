@@ -1,0 +1,88 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Common uses of AI in security: summarizing an alert and its context in clear language, suggesting classification and severity, proposing a code mitigation from a SAST or DAST report, and answering analysts' questions about incidents. The gain is reading and writing time, not replacing judgment.",
+      "h": "486b677f"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.bullets.0": {
+      "t": "Prompt injection through the data: logs, user agents, PR titles and request bodies are attacker-controlled and may contain instructions the model obeys.",
+      "h": "c431f336"
+    },
+    "sections.1.bullets.1": {
+      "t": "Hallucination: a plausible but wrong mitigation, or a reference to a fix that does not exist.",
+      "h": "4c8cbcd7"
+    },
+    "sections.1.bullets.2": {
+      "t": "Leakage: sending secrets, personal data or proprietary code to an external service without control.",
+      "h": "976fc748"
+    },
+    "sections.1.bullets.3": {
+      "t": "Excess autonomy: wiring the model's output directly to a destructive action.",
+      "h": "bcef9b3f"
+    },
+    "sections.1.heading": {
+      "t": "Specific risks",
+      "h": "e55cc740"
+    },
+    "sections.2.body.0": {
+      "t": "Ask the model for output in a fixed format and validate it against a schema before using it. Whatever does not match is discarded or goes to a human. This turns free text into data the automation can check.",
+      "h": "ea611f8e"
+    },
+    "sections.2.code.0.code": {
+      "t": "{\n  \"type\": \"object\",\n  \"required\": [\"verdict\", \"severity\", \"reasons\"],\n  \"additionalProperties\": false,\n  \"properties\": {\n    \"verdict\":  { \"enum\": [\"attack\", \"benign\", \"needs_human\"] },\n    \"severity\": { \"enum\": [\"low\", \"medium\", \"high\", \"critical\"] },\n    \"reasons\":  { \"type\": \"array\", \"items\": { \"type\": \"string\" }, \"maxItems\": 5 }\n  }\n}",
+      "h": "6aadd9b0"
+    },
+    "sections.2.code.0.filename": {
+      "t": "triage_output.schema.json",
+      "h": "80ed4a99"
+    },
+    "sections.2.heading": {
+      "t": "Structured output and validation",
+      "h": "63f9a801"
+    },
+    "sections.3.body.0": {
+      "t": "The safe pattern is AI around the decision, not in place of it: it summarizes and suggests, a deterministic rule or a human decides, and the action goes through the playbook's brakes (idempotency, approval, dry-run, auditing). The greater the impact of the action, the further it sits from the model's direct output.",
+      "h": "2faac8bb"
+    },
+    "sections.3.heading": {
+      "t": "Where AI fits in the playbook",
+      "h": "8106dd1a"
+    },
+    "sections.4.bullets.0": {
+      "t": "An evaluation set of real alerts already labeled by analysts, run on every prompt or model change.",
+      "h": "cb778e9a"
+    },
+    "sections.4.bullets.1": {
+      "t": "Track accuracy, false positives and cases where the model refused or asked for a human.",
+      "h": "12f66120"
+    },
+    "sections.4.bullets.2": {
+      "t": "Continuous sampled review of the output in production.",
+      "h": "74d8764e"
+    },
+    "sections.4.bullets.3": {
+      "t": "Data control: what goes out to the provider, with secrets and personal data masked before sending.",
+      "h": "a63e6538"
+    },
+    "sections.4.heading": {
+      "t": "Measure before trusting",
+      "h": "79d6da79"
+    },
+    "short": {
+      "t": "LLMs as security assistants, with validation and no blind trust",
+      "h": "1ef5d7fd"
+    },
+    "tagline": {
+      "t": "Language models speed up alert triage and the writing of mitigations, but they read untrusted data and can be confidently wrong. The right design treats the output as a suggestion, not a decision.",
+      "h": "001b2dc9"
+    },
+    "title": {
+      "t": "AI in triage and mitigation",
+      "h": "7934a6d7"
+    }
+  }
+}

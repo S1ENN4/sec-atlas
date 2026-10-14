@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "The audit trail is the basis for detecting abuse and investigating incidents.",
+      "h": "c019c79b"
+    },
+    "questions.0.options.0": {
+      "t": "Recording API calls: who did what, when and from where",
+      "h": "94ecc695"
+    },
+    "questions.0.options.1": {
+      "t": "Blocking malicious traffic",
+      "h": "334c0ee5"
+    },
+    "questions.0.options.2": {
+      "t": "Encrypting data at rest",
+      "h": "03e8ed45"
+    },
+    "questions.0.options.3": {
+      "t": "Scaling the infrastructure",
+      "h": "ef50cb4b"
+    },
+    "questions.0.q": {
+      "t": "What is the role of CloudTrail (or similar)?",
+      "h": "71ea4f21"
+    },
+    "questions.1.explain": {
+      "t": "The first thing many attackers do is try to turn off or delete the logs.",
+      "h": "5129cdff"
+    },
+    "questions.1.options.0": {
+      "t": "So an attacker with access to the production account cannot erase their tracks",
+      "h": "585253c5"
+    },
+    "questions.1.options.1": {
+      "t": "To save storage",
+      "h": "66816c05"
+    },
+    "questions.1.options.2": {
+      "t": "To speed up queries",
+      "h": "df870761"
+    },
+    "questions.1.options.3": {
+      "t": "Because the law requires two accounts",
+      "h": "a95842d0"
+    },
+    "questions.1.q": {
+      "t": "Why send logs to a separate, immutable account?",
+      "h": "a88d282f"
+    },
+    "questions.2.explain": {
+      "t": "Too many alerts become fatigue; with no owner or action, nobody responds.",
+      "h": "375409e7"
+    },
+    "questions.2.options.0": {
+      "t": "Being actionable: saying what happened, where and what to do, with low noise",
+      "h": "0966ac9a"
+    },
+    "questions.2.options.1": {
+      "t": "Firing on every event",
+      "h": "4517c556"
+    },
+    "questions.2.options.2": {
+      "t": "Being sent only by weekly email",
+      "h": "76ae1f29"
+    },
+    "questions.2.options.3": {
+      "t": "Having no owner",
+      "h": "fce9e00d"
+    },
+    "questions.2.q": {
+      "t": "What makes an alert good?",
+      "h": "b0359a62"
+    }
+  }
+}

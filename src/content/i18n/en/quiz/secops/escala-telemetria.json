@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "High cardinality makes aggregations slow and expensive.",
+      "h": "7149423b"
+    },
+    "questions.0.options.0": {
+      "t": "The number of distinct values in a field, such as IPs or user agents",
+      "h": "2c6673e8"
+    },
+    "questions.0.options.1": {
+      "t": "The network speed",
+      "h": "7e6a2b28"
+    },
+    "questions.0.options.2": {
+      "t": "The retention size in days",
+      "h": "2745e7ae"
+    },
+    "questions.0.options.3": {
+      "t": "The number of WAF rules",
+      "h": "f99ad7b9"
+    },
+    "questions.0.q": {
+      "t": "What is cardinality in telemetry?",
+      "h": "73ff5677"
+    },
+    "questions.1.explain": {
+      "t": "The query reads only the window it needs and the small table, leaving raw data for investigation.",
+      "h": "18e202d8"
+    },
+    "questions.1.options.0": {
+      "t": "Partition by time and keep per-minute aggregates for detections to read",
+      "h": "8703250d"
+    },
+    "questions.1.options.1": {
+      "t": "Always query the entire raw data",
+      "h": "6b706dc6"
+    },
+    "questions.1.options.2": {
+      "t": "Disable retention",
+      "h": "9aec4860"
+    },
+    "questions.1.options.3": {
+      "t": "Store everything in a single file",
+      "h": "194c5d98"
+    },
+    "questions.1.q": {
+      "t": "Which technique greatly reduces the cost of detection queries?",
+      "h": "19f8f22a"
+    },
+    "questions.2.explain": {
+      "t": "Sampling suits uniform high-volume traffic; what is relevant for security is preserved.",
+      "h": "159ebf34"
+    },
+    "questions.2.options.0": {
+      "t": "Security blocks, challenges and anomalies",
+      "h": "d772d2ec"
+    },
+    "questions.2.options.1": {
+      "t": "All static image traffic",
+      "h": "09ccb8fb"
+    },
+    "questions.2.options.2": {
+      "t": "Only requests with status 200",
+      "h": "4e535535"
+    },
+    "questions.2.options.3": {
+      "t": "None, everything can be sampled",
+      "h": "8e836495"
+    },
+    "questions.2.q": {
+      "t": "Which events should always be kept in full, even with sampling?",
+      "h": "bea621ee"
+    }
+  }
+}

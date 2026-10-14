@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Observar y simular primero muestra el falso positivo antes de que cueste un cliente.",
+      "h": "ba907140"
+    },
+    "questions.0.options.0": {
+      "t": "Observación, luego shadow, y solo entonces enforcement",
+      "h": "c7b2084a"
+    },
+    "questions.0.options.1": {
+      "t": "Activarla directamente en bloqueo para ver el efecto",
+      "h": "bf1ab3ff"
+    },
+    "questions.0.options.2": {
+      "t": "Activarla solo en producción, fuera del horario laboral",
+      "h": "f3f8b440"
+    },
+    "questions.0.options.3": {
+      "t": "Copiar la regla de otra empresa sin probar",
+      "h": "90c4d4dd"
+    },
+    "questions.0.q": {
+      "t": "¿Cuál es el camino seguro para activar una regla nueva de WAF?",
+      "h": "c0e3e061"
+    },
+    "questions.1.explain": {
+      "t": "Es la allowlist aplicada por endpoint: más precisa, pero exige conocer la aplicación.",
+      "h": "e086ff9a"
+    },
+    "questions.1.options.0": {
+      "t": "Definir qué es válido para el endpoint y bloquear el resto",
+      "h": "d69ea296"
+    },
+    "questions.1.options.1": {
+      "t": "Bloquear solo firmas de ataque conocidas",
+      "h": "da8bc3d3"
+    },
+    "questions.1.options.2": {
+      "t": "Permitir todo y registrar en el log",
+      "h": "197652fc"
+    },
+    "questions.1.options.3": {
+      "t": "Usar solo listas de IPs maliciosas",
+      "h": "f1022667"
+    },
+    "questions.1.q": {
+      "t": "¿Qué caracteriza al modelo positivo de WAF?",
+      "h": "ec7d4765"
+    },
+    "questions.2.explain": {
+      "t": "Gana tiempo, pero no elimina la falla: la corrección en la aplicación sigue siendo necesaria.",
+      "h": "43e1ea40"
+    },
+    "questions.2.options.0": {
+      "t": "Bloquear la explotación de una falla conocida mientras la corrección real no llega",
+      "h": "e8c79ab8"
+    },
+    "questions.2.options.1": {
+      "t": "Sustituir la corrección definitiva de la vulnerabilidad",
+      "h": "f0fffcb9"
+    },
+    "questions.2.options.2": {
+      "t": "Actualizar el sistema operativo del origen",
+      "h": "ee9bbe9b"
+    },
+    "questions.2.options.3": {
+      "t": "Cifrar el tráfico entre el borde y el origen",
+      "h": "ac38d2d0"
+    },
+    "questions.2.q": {
+      "t": "¿Para qué sirve un parche virtual?",
+      "h": "075f23eb"
+    }
+  }
+}

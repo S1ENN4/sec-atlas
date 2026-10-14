@@ -1,0 +1,108 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Chunking is the process of splitting a document into smaller pieces that will be indexed and retrieved. The size of the piece is not a detail: it defines what fits in the model's window, what the unit of search is, and what the granularity of the citation that appears in the answer is.",
+      "h": "4c303344"
+    },
+    "sections.0.body.1": {
+      "t": "In almost every RAG architecture, chunking happens once at ingestion and never again. The standard pipeline reads the document, applies a splitter, generates one embedding per block, and moves on. If the cut was poorly thought out, the whole index carries the problem until someone redoes the indexing.",
+      "h": "82ad91b6"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "The most common question is 'what is the right size?'. The honest answer is 'it depends'. For short questions and factual answers, smaller blocks work better: each block carries a single idea, so retrieval brings back the exact passage. For questions that require reasoning across paragraphs, larger blocks preserve context, and blocks that are too small break the argument in the middle.",
+      "h": "90591cea"
+    },
+    "sections.1.body.1": {
+      "t": "Overlap is the second parameter. Without overlap, an idea that starts at the end of one block and continues at the start of the next is orphaned: neither block has the complete meaning. With an overlap of 10 to 20% of the block size, the start of the next block repeats the end of the previous one, so the boundary never cuts a sentence in half.",
+      "h": "910fc756"
+    },
+    "sections.1.code.0.code": {
+      "t": "  block size            200 to 1000 tokens\n  overlap               10% to 20% of the block\n  rule of thumb         block ~512 tokens, overlap ~50\n\n  small block  -> precise citation, short context\n  large block  -> long reasoning, noisy citation",
+      "h": "f1138f5a"
+    },
+    "sections.1.code.0.filename": {
+      "t": "Typical parameters",
+      "h": "292f42d2"
+    },
+    "sections.1.heading": {
+      "t": "Size and overlap",
+      "h": "0a7211e6"
+    },
+    "sections.2.body.0": {
+      "t": "Three families dominate practice. The first is cutting by characters or tokens, simple and predictable, and it works when the document is clean prose. The second is recursive cutting by separators, which tries to break first by paragraph, then by sentence, then by word, and by character only as a last resort. It preserves the structure of the text without needing a model. The third is semantic cutting, which groups sentences by similarity and only cuts when the next sentence has low relation to the previous one. It costs more and uses embeddings, but produces coherent blocks.",
+      "h": "d03e9a86"
+    },
+    "sections.2.body.1": {
+      "t": "There is also cutting by structure: headings, sections, table cells, code paragraphs. In documents with clear markup (Markdown, HTML, converted docx), splitting by structure and keeping the hierarchy in the metadata gives more useful chunks than any generic splitter.",
+      "h": "2a815577"
+    },
+    "sections.2.heading": {
+      "t": "Cutting strategies",
+      "h": "cd363306"
+    },
+    "sections.3.body.0": {
+      "t": "LangChain offers the recursive splitter ready to use. The example configures size and overlap and applies it to any text. For Portuguese text, it is worth splitting by paragraph, sentence and word, in that order.",
+      "h": "dbc3da4a"
+    },
+    "sections.3.code.0.code": {
+      "t": "from langchain_text_splitters import RecursiveCharacterTextSplitter\n\nsplitter = RecursiveCharacterTextSplitter(\n    chunk_size=512,\n    chunk_overlap=50,\n    separators=[\n        \"\\n\\n\",     # paragraph\n        \"\\n\",       # line\n        \"(?<=[.!?])\\\\s+\",  # end of sentence in PT-BR (lookbehind)\n        \" \",        # word\n        \"\",         # character (last resort)\n    ],\n    length_function=len,\n    is_separator_regex=True,\n)\n\nwith open(\"manual.txt\", encoding=\"utf-8\") as f:\n    texto = f.read()\n\nblocos = splitter.split_text(texto)\nfor i, bloco in enumerate(blocos):\n    print(f\"#{i:03d}  {len(bloco)} chars  {bloco[:60].replace(chr(10), ' ')}...\")",
+      "h": "96421de8"
+    },
+    "sections.3.code.0.filename": {
+      "t": "chunking/splitter.py",
+      "h": "5dd198fa"
+    },
+    "sections.3.heading": {
+      "t": "In practice",
+      "h": "213dc06e"
+    },
+    "sections.4.bullets.0": {
+      "t": "stability: deterministic chunking produces the same blocks for the same document, so the index stays reproducible",
+      "h": "c79da635"
+    },
+    "sections.4.bullets.1": {
+      "t": "granularity control: adjusting size and overlap is a direct lever on retrieval quality",
+      "h": "3f075734"
+    },
+    "sections.4.bullets.2": {
+      "t": "compatibility: almost every framework (LangChain, LlamaIndex, Haystack) ships a ready-made splitter, so the barrier to entry is low",
+      "h": "1616571d"
+    },
+    "sections.4.heading": {
+      "t": "Strengths",
+      "h": "a2ebc02c"
+    },
+    "sections.5.bullets.0": {
+      "t": "semantic blindness: a recursive splitter cuts by separator, not by meaning; an idea that crosses the boundary disappears",
+      "h": "4795ba05"
+    },
+    "sections.5.bullets.1": {
+      "t": "lost structure: splitting by character ignores headings, lists and tables; in mixed documents, a type-specific splitter is better",
+      "h": "5bc23eda"
+    },
+    "sections.5.bullets.2": {
+      "t": "reindexing cost: changing the chunking strategy forces reindexing everything; on large bases, that becomes a migration",
+      "h": "dd58737e"
+    },
+    "sections.5.heading": {
+      "t": "Limitations",
+      "h": "149d05f7"
+    },
+    "short": {
+      "t": "cutting the document into retrievable pieces",
+      "h": "2cb555f5"
+    },
+    "tagline": {
+      "t": "Chunking is the first technical decision of RAG: the size, the overlap and the cutting strategy determine what retrieval can find later. Bad pieces become answers without context.",
+      "h": "1462ce2f"
+    },
+    "title": {
+      "t": "Chunking",
+      "h": "e1385c29"
+    }
+  }
+}

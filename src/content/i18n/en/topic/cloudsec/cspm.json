@@ -1,0 +1,140 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "CSPM (Cloud Security Posture Management) is your cloud's continuous auditor. It connects to the accounts (via a read-only IAM role) and compares the real configuration against published baselines (CIS, PCI, NIST 800-53, your team's internal benchmark). The difference between the current state and the baseline is the finding: unencrypted storage, an SG with 0.0.0.0/0, an IAM user without MFA, a log group without retention.",
+      "h": "a28f9c87"
+    },
+    "sections.0.body.1": {
+      "t": "The idea is simple: most incidents do not start with a sophisticated attack, they start with a bucket that stayed open for three months. CSPM exists to close that window automatically.",
+      "h": "9b7ded6f"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "The rule engine is declarative. For each control, an expression evaluates the configuration: if the resource matches the dangerous pattern, a finding. Public frameworks become reusable rule packs.",
+      "h": "271d3f7a"
+    },
+    "sections.1.body.1": {
+      "t": "The more rules, the more noise. Most teams turn on the whole benchmark in the first month and spend the rest of the year turning off rules that do not apply (Kubernetes 1.22 on a legacy service, RDS without CMK in dev). The practical filter is to separate the global baseline (applies to every account) from the per-environment baseline (dev gets weaker controls, prod gets everything).",
+      "h": "e6887761"
+    },
+    "sections.1.bullets.0": {
+      "t": "CIS Foundations: general hygiene baseline (root MFA, CloudTrail on, S3 without public access)",
+      "h": "032e44d5"
+    },
+    "sections.1.bullets.1": {
+      "t": "PCI DSS: payment controls (encryption at rest, segmentation, audit log)",
+      "h": "b9aba0b7"
+    },
+    "sections.1.bullets.2": {
+      "t": "NIST 800-53 / 800-171: federal controls, requires programmatic compliance in US government orgs",
+      "h": "7f5713bf"
+    },
+    "sections.1.bullets.3": {
+      "t": "SOC 2 Trust Services Criteria: security, availability, confidentiality, privacy",
+      "h": "98c8e180"
+    },
+    "sections.1.heading": {
+      "t": "How it works: rules and benchmarks",
+      "h": "324985e4"
+    },
+    "sections.2.body.0": {
+      "t": "Drift is when infrastructure goes back to an insecure state without anyone asking for it. It happens through concurrent automation (Terraform apply and the console at the same time), through manual changes during an incident, or through another team touching what they should not. CSPM measures drift through configuration diffs between runs: the same account today and yesterday should be identical, barring approved changes.",
+      "h": "a6c19f97"
+    },
+    "sections.2.body.1": {
+      "t": "The value of drift is not the alert itself, it is the signal that an unapproved change exists. Finding the origin (cloud console, outdated IaC, another pipeline) is where the problem lives.",
+      "h": "9cc2be4b"
+    },
+    "sections.2.code.0.code": {
+      "t": "{\n  \"rule_id\": \"S3-PUBLIC-READ-DRIFT\",\n  \"framework\": \"CIS AWS Foundations 2.1.5\",\n  \"severity\": \"high\",\n  \"resource\": \"arn:aws:s3:::loja-customer-uploads\",\n  \"account\": \"111122223333\",\n  \"region\": \"us-east-1\",\n  \"title\": \"Bucket that blocked public read access was reverted to public\",\n  \"drift\": {\n    \"previous_state\": {\n      \"public_access_block\": \"all_true\",\n      \"evaluated_at\": \"2026-09-29T08:00:00Z\"\n    },\n    \"current_state\": {\n      \"public_access_block_configuration\": {\n        \"block_public_acls\": false,\n        \"ignore_public_acls\": false,\n        \"block_public_policy\": false,\n        \"restrict_public_buckets\": false\n      },\n      \"evaluated_at\": \"2026-10-09T14:22:11Z\"\n    }\n  },\n  \"remediation\": \"aws s3api put-public-access-block --bucket loja-customer-uploads --public-access-block-configuration BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=true,RestrictPublicBuckets=true\"\n}",
+      "h": "d56f243d"
+    },
+    "sections.2.code.0.filename": {
+      "t": "CSPM finding - drift detected",
+      "h": "143ef8a1"
+    },
+    "sections.2.heading": {
+      "t": "Drift: the finding that comes back every week",
+      "h": "fcfdd843"
+    },
+    "sections.3.body.0": {
+      "t": "Each provider has its own APIs, and each CSPM has to learn to talk to AWS, Azure, GCP, OCI, Alibaba. The best products do this natively; the worst look like a badly calibrated translator. Evaluating multi-cloud support is not checking the logo on the landing page, it is running the same CIS control on two identical accounts (one AWS, one Azure) and seeing whether the finding comes out the same.",
+      "h": "cbbdea8f"
+    },
+    "sections.3.body.1": {
+      "t": "The choice between agent-based and API-based matters. A purely API-based CSPM reads the configuration, not what runs inside it: it sees the security group, not the process listening on the port. For runtime workloads, CWPP (next topic) comes in.",
+      "h": "e746b1a2"
+    },
+    "sections.3.heading": {
+      "t": "Multi-cloud and the connector problem",
+      "h": "2f645c82"
+    },
+    "sections.4.body.0": {
+      "t": "Remediation has three levels. Manual: the finding becomes a Jira ticket, someone fixes it. Assisted: the CSPM generates the command (terraform plan, aws cli) and a human approves it in a PR. Automatic: the CSPM applies the fix by itself, with rollback if something breaks (an S3 Public Block that wipes an active policy is the classic case).",
+      "h": "f2789ed9"
+    },
+    "sections.4.body.1": {
+      "t": "The safe path is to start manual in all accounts, move to assisted in dev/staging environments, and turn on automatic for controls with a small blast radius (forcing logs, forcing encryption) and under monitored change. Auto-remediation on IAM with a production key is a recipe for an incident.",
+      "h": "6ee7a6e3"
+    },
+    "sections.4.heading": {
+      "t": "Remediation: from finding to fix",
+      "h": "69a35758"
+    },
+    "sections.5.body.0": {
+      "t": "CSPM is continuous detection, so there is no single 'where it fits': it runs 24/7 against the provider's API. In the change flow, it appears at two points: in the IaC PR (evaluates before the apply) and in post-apply monitoring (evaluates the real state). The first catches the rule before the break; the second catches what drifted without anyone asking.",
+      "h": "fe72c245"
+    },
+    "sections.5.heading": {
+      "t": "Where it fits",
+      "h": "006bc762"
+    },
+    "sections.6.bullets.0": {
+      "t": "immediate visibility: within an hour you have a list of open buckets, unused keys and security groups that turned into Swiss cheese",
+      "h": "8bb44255"
+    },
+    "sections.6.bullets.1": {
+      "t": "programmatic compliance: CIS/PCI/NIST stops being an annual audit and becomes a daily dashboard",
+      "h": "4ab2fa3a"
+    },
+    "sections.6.bullets.2": {
+      "t": "drift detection closes the gap between IaC (what is applied) and runtime (what runs)",
+      "h": "d84404ec"
+    },
+    "sections.6.heading": {
+      "t": "Strengths",
+      "h": "a2ebc02c"
+    },
+    "sections.7.bullets.0": {
+      "t": "CSPM sees configuration, not behavior: a container running a crypto miner with an apparently OK SG passes the benchmark",
+      "h": "f124ded2"
+    },
+    "sections.7.bullets.1": {
+      "t": "noise is the Achilles' heel: the whole benchmark becomes 500 findings in the first week, and without triage it becomes an ignored dashboard",
+      "h": "7a7551d5"
+    },
+    "sections.7.bullets.2": {
+      "t": "automatic remediation has a blast radius: fixing a bucket without understanding its use breaks an application in production, and a silent fix hides the bug that needed an architecture change",
+      "h": "4b6e5986"
+    },
+    "sections.7.heading": {
+      "t": "Limitations",
+      "h": "149d05f7"
+    },
+    "short": {
+      "t": "continuous posture in the cloud",
+      "h": "c4069465"
+    },
+    "tagline": {
+      "t": "Cloud Security Posture Management scans each account's configuration against baselines (CIS, PCI, NIST) and flags drift before it becomes an incident.",
+      "h": "7545df91"
+    },
+    "title": {
+      "t": "CSPM - cloud posture",
+      "h": "adb23579"
+    }
+  }
+}

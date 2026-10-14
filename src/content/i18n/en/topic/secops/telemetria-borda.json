@@ -1,0 +1,84 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Edge telemetry is the set of events that describe the traffic reaching your application: every request at the CDN and the WAF, with the inspection result, plus the application's own events (login, error, state change). It is the raw material for every detection and every metric.",
+      "h": "bebb1c9d"
+    },
+    "sections.0.body.1": {
+      "t": "Without it, the SOC operates blind or depends on ready-made dashboards that answer other people's questions, not yours.",
+      "h": "5fefc943"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "Thinking in stages helps locate where a problem starts when detection fails:",
+      "h": "5c41ee5c"
+    },
+    "sections.1.bullets.0": {
+      "t": "Ingestion: delivery of logs in batch or streaming from the edge (for example, a log push service) and from the application.",
+      "h": "233c421c"
+    },
+    "sections.1.bullets.1": {
+      "t": "Normalization: a single field schema (timestamp, IP, path, method, status, user agent, WAF result), regardless of source.",
+      "h": "00a64c64"
+    },
+    "sections.1.bullets.2": {
+      "t": "Enrichment: ASN, country, reputation, bot score, account identifier, application version.",
+      "h": "2a586889"
+    },
+    "sections.1.bullets.3": {
+      "t": "Storage: tables partitioned by time, designed for querying by window.",
+      "h": "8ccfa46c"
+    },
+    "sections.1.bullets.4": {
+      "t": "Detection: queries and rules over the data (the subject of the detection engineering topic).",
+      "h": "093a9bc4"
+    },
+    "sections.1.bullets.5": {
+      "t": "Action and metric: the result becomes a block, an alert or an indicator, and returns to the pipeline to close the loop.",
+      "h": "c4a15789"
+    },
+    "sections.1.heading": {
+      "t": "The pipeline, end to end",
+      "h": "f54db7ea"
+    },
+    "sections.2.body.0": {
+      "t": "The schema is a contract. When every event has the same fields with the same names, a detection written once works for any source. A lean example:",
+      "h": "43ed6563"
+    },
+    "sections.2.code.0.code": {
+      "t": "{\n  \"ts\": \"2026-10-13T14:03:21.482Z\",\n  \"client_ip\": \"203.0.113.42\",\n  \"asn\": 64500,\n  \"country\": \"BR\",\n  \"method\": \"POST\",\n  \"host\": \"api.example.com\",\n  \"path\": \"/api/login\",\n  \"status\": 401,\n  \"user_agent\": \"python-requests/2.31\",\n  \"bot_score\": 8,\n  \"waf_action\": \"log\",\n  \"waf_rule\": \"login-ratelimit-v2\",\n  \"account_id\": \"u_18273\"\n}",
+      "h": "213029c3"
+    },
+    "sections.2.code.0.filename": {
+      "t": "edge_event.json",
+      "h": "db0fdb07"
+    },
+    "sections.2.heading": {
+      "t": "A normalized event",
+      "h": "5d2bac0f"
+    },
+    "sections.3.body.0": {
+      "t": "Three problems always show up: missing fields (the detection silently stops working), misaligned clocks (wrong windows) and lost volume (a pipeline that drops events under load). It is worth monitoring the pipeline itself: ingestion latency, count per source and the rate of events missing essential fields. Detection over incomplete data gives false confidence.",
+      "h": "48d6b264"
+    },
+    "sections.3.heading": {
+      "t": "Data quality",
+      "h": "2901213d"
+    },
+    "short": {
+      "t": "from raw log to an event ready for detection",
+      "h": "d5ca041c"
+    },
+    "tagline": {
+      "t": "Good detection starts with good data: a pipeline that receives traffic from the edge and the application, normalizes, enriches and stores it in a way you can query in seconds.",
+      "h": "42fe1fe6"
+    },
+    "title": {
+      "t": "Edge and application telemetry",
+      "h": "7231ab53"
+    }
+  }
+}

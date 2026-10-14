@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "It enables comparisons between models using the same tests.",
+      "h": "c2953f76"
+    },
+    "questions.0.options.0": {
+      "t": "A standardized set of tasks for comparing models",
+      "h": "a81ebe3d"
+    },
+    "questions.0.options.1": {
+      "t": "A type of prompt",
+      "h": "892a096a"
+    },
+    "questions.0.options.2": {
+      "t": "A production log",
+      "h": "bba76ef8"
+    },
+    "questions.0.options.3": {
+      "t": "A license",
+      "h": "86aaaa6a"
+    },
+    "questions.0.q": {
+      "t": "What is a public benchmark?",
+      "h": "50711ae0"
+    },
+    "questions.1.explain": {
+      "t": "Contamination and distance from your domain reduce the value of the isolated number.",
+      "h": "19b9f6d1"
+    },
+    "questions.1.options.0": {
+      "t": "They may not reflect your use case, and the data may have leaked into training",
+      "h": "d945504f"
+    },
+    "questions.1.options.1": {
+      "t": "They are always fake",
+      "h": "a1a9a463"
+    },
+    "questions.1.options.2": {
+      "t": "They are paid",
+      "h": "35a1a13b"
+    },
+    "questions.1.options.3": {
+      "t": "They do not run on computers",
+      "h": "6d2a34d7"
+    },
+    "questions.1.q": {
+      "t": "What is the limitation of relying only on public benchmarks?",
+      "h": "d5817bd1"
+    },
+    "questions.2.explain": {
+      "t": "The benchmark narrows the list; your evals decide.",
+      "h": "6f3d515d"
+    },
+    "questions.2.options.0": {
+      "t": "As an initial screening of candidates, before evaluating on your own set",
+      "h": "740ac24e"
+    },
+    "questions.2.options.1": {
+      "t": "As final proof of quality in production",
+      "h": "29e237fb"
+    },
+    "questions.2.options.2": {
+      "t": "To replace evals",
+      "h": "3d0f9373"
+    },
+    "questions.2.options.3": {
+      "t": "To train the model",
+      "h": "7428408d"
+    },
+    "questions.2.q": {
+      "t": "What are benchmarks best used for?",
+      "h": "42b0f87c"
+    }
+  }
+}

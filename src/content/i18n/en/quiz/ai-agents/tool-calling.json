@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "The model proposes the call; whoever executes and decides is your code.",
+      "h": "7138e920"
+    },
+    "questions.0.options.0": {
+      "t": "The model asking for a function to be executed with structured arguments, which the system executes",
+      "h": "6962a7b7"
+    },
+    "questions.0.options.1": {
+      "t": "The model executing code on its own on the GPU",
+      "h": "611bff0c"
+    },
+    "questions.0.options.2": {
+      "t": "A type of embedding",
+      "h": "3a0ae017"
+    },
+    "questions.0.options.3": {
+      "t": "A phone call",
+      "h": "72bd27d7"
+    },
+    "questions.0.q": {
+      "t": "What is tool calling?",
+      "h": "b25260aa"
+    },
+    "questions.1.explain": {
+      "t": "Treating the model's output as untrusted input prevents dangerous commands or queries.",
+      "h": "f6e5372c"
+    },
+    "questions.1.options.0": {
+      "t": "Because they may be malformed or the result of injection",
+      "h": "06a883a6"
+    },
+    "questions.1.options.1": {
+      "t": "Because the model never makes mistakes",
+      "h": "ab93a3c2"
+    },
+    "questions.1.options.2": {
+      "t": "Because the tool charges per argument",
+      "h": "8178c729"
+    },
+    "questions.1.options.3": {
+      "t": "Because JSON is forbidden",
+      "h": "03fc0f8b"
+    },
+    "questions.1.q": {
+      "t": "Why validate the arguments the model generates for a tool?",
+      "h": "3221eb55"
+    },
+    "questions.2.explain": {
+      "t": "Irreversible actions or those with external effect deserve an approval step.",
+      "h": "be39d631"
+    },
+    "questions.2.options.0": {
+      "t": "Sending emails, deleting data or making payments",
+      "h": "33ad8e03"
+    },
+    "questions.2.options.1": {
+      "t": "Reading the current date",
+      "h": "0eee2de9"
+    },
+    "questions.2.options.2": {
+      "t": "Adding two numbers",
+      "h": "7a54f362"
+    },
+    "questions.2.options.3": {
+      "t": "Formatting a text",
+      "h": "997939f9"
+    },
+    "questions.2.q": {
+      "t": "Which action should require human confirmation?",
+      "h": "afcf6b6c"
+    }
+  }
+}

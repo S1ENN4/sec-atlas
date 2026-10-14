@@ -1,0 +1,140 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Orchestration coordinates multiple agents (or multiple steps of one agent) in a larger flow. While agent frameworks deal with an agent's inner loop, orchestration deals with the meta-loop: who comes in, who goes out, how long it lasts, where the state is persisted.",
+      "h": "021ce1a3"
+    },
+    "sections.0.body.1": {
+      "t": "The question orchestration answers is not 'what does this agent do', but 'how does this agent talk to the next one'. Without orchestration, each agent becomes an island and the only glue between them is copy and pasting text.",
+      "h": "9af8f755"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "Three patterns cover 90% of real cases. The choice among them depends on who decides the next step:",
+      "h": "9e91a2c8"
+    },
+    "sections.1.body.1": {
+      "t": "pipeline: fixed sequence. Each step receives the output of the previous one; the order is known at design time. Good for ETL with LLMs, preprocessing, or any case where the division of labor is clear.",
+      "h": "e0cf5ad0"
+    },
+    "sections.1.body.2": {
+      "t": "supervisor: one agent (the supervisor) looks at the state and decides which subagent to call now. The structure exists, but the path is decided at runtime. Good for flows with context-dependent branches.",
+      "h": "4d758af4"
+    },
+    "sections.1.body.3": {
+      "t": "swarm: N agents coordinate via messages, with no central owner. More flexible, harder to audit; reserved for exploration or ill-defined tasks.",
+      "h": "7829fdd5"
+    },
+    "sections.1.code.0.code": {
+      "t": "  pipeline    A -> B -> C -> D\n              fixed order, predictable cost, easy to audit\n\n  supervisor  A (decides) -> B or C -> A (decides again)\n              dynamic branch, variable cost, supervisor is a single point of failure\n\n  swarm       A <-> B <-> C <-> D\n              no owner, more expensive, harder to reproduce",
+      "h": "e5d7767d"
+    },
+    "sections.1.code.0.filename": {
+      "t": "comparison of the three patterns",
+      "h": "85035bc7"
+    },
+    "sections.1.heading": {
+      "t": "The three classic patterns",
+      "h": "45b176e4"
+    },
+    "sections.2.body.0": {
+      "t": "Agents are flaky by nature: external APIs go down, models return bad responses, timeouts happen in the middle of the flow. Without a checkpoint, a 5-minute failure means starting from scratch, with the prompt spent and money burned.",
+      "h": "3d652082"
+    },
+    "sections.2.body.1": {
+      "t": "A checkpoint is the act of persisting the flow's state to durable storage after each step, with a unique ID. When execution restarts (due to a crash, deploy or manual resume), the runtime reads the last checkpoint and continues from where it stopped, without repeating work already done.",
+      "h": "8179f7ef"
+    },
+    "sections.2.body.2": {
+      "t": "Temporal and Prefect model this as a durable workflow: every function can be async, and the runtime knows how to re-execute from the point of failure. LangGraph exposes the same concept as thread_id with persistence in Redis or Postgres.",
+      "h": "91f39c8d"
+    },
+    "sections.2.code.0.code": {
+      "t": "from temporalio import workflow, activity\nfrom datetime import timedelta\n\n\n@activity.defn\nasync def extract(pdf_url: str) -> dict:\n    return {'text': '...'}\n\n\n@activity.defn\nasync def summarize(text: str) -> str:\n    return 'summary'\n\n\n@workflow.defn\nclass ReportFlow:\n    @workflow.run\n    async def run(self, pdf_url: str) -> str:\n        # Each execute_activity becomes a step persisted by Temporal;\n        # if the worker goes down midway, the workflow resumes from the point of failure\n        # without repeating the activity already completed.\n        extracted = await workflow.execute_activity(\n            extract,\n            pdf_url,\n            start_to_close_timeout=timedelta(minutes=2),\n        )\n        return await workflow.execute_activity(\n            summarize,\n            extracted['text'],\n            start_to_close_timeout=timedelta(minutes=2),\n        )",
+      "h": "c1249fd6"
+    },
+    "sections.2.code.0.filename": {
+      "t": "orchestrator.py",
+      "h": "d7908bf6"
+    },
+    "sections.2.heading": {
+      "t": "State and checkpoint: how to survive failures",
+      "h": "ed934fed"
+    },
+    "sections.3.body.0": {
+      "t": "LangGraph lets you model supervisor and pipeline in the same graph: each node is a function (or a subagent), and each conditional edge carries the 'which node now' logic. The graph is deterministic enough for auditing and flexible enough to react to the state.",
+      "h": "aadcbe57"
+    },
+    "sections.3.body.1": {
+      "t": "In the example below, an orchestrator decides between calling 'researcher' or 'writer' depending on the state; each of them is a subagent with its own inner loop.",
+      "h": "36d66782"
+    },
+    "sections.3.code.0.code": {
+      "t": "import { StateGraph, END } from '@langchain/langgraph';\n\ntype S = { messages: any[]; stage: 'pending' | 'researched' | 'written' };\n\nasync function orchestrator(s: S) {\n  if (s.stage === 'pending')  return 'researcher';\n  if (s.stage === 'researched') return 'writer';\n  return END;\n}\n\nconst graph = new StateGraph<S>({ channels: { messages: [], stage: 'pending' } })\n  .addNode('orchestrator', orchestrator)\n  .addNode('researcher',  async (s) => ({ ...s, stage: 'researched' as const }))\n  .addNode('writer',      async (s) => ({ ...s, stage: 'written' as const }))\n  .addEdge('__start__', 'orchestrator')\n  .addConditionalEdges('orchestrator', (s) => s.stage,\n    { researcher: 'researcher', writer: 'writer', written: END, [END]: END })\n  .addEdge('researcher', 'orchestrator')\n  .addEdge('writer',     'orchestrator')\n  .compile({ checkpointer: redisCheckpointer });",
+      "h": "3e2e18bf"
+    },
+    "sections.3.code.0.filename": {
+      "t": "supervisor.tsx",
+      "h": "ece32b99"
+    },
+    "sections.3.heading": {
+      "t": "Pipeline with LangGraph: supervisor + subagents",
+      "h": "bf61d03b"
+    },
+    "sections.4.bullets.0": {
+      "t": "queues and workers: orchestration turns long calls into asynchronous jobs; each step becomes a worker",
+      "h": "142444a3"
+    },
+    "sections.4.bullets.1": {
+      "t": "idempotency by design: a checkpoint without idempotency means re-executing and duplicating side effects",
+      "h": "359dda5c"
+    },
+    "sections.4.bullets.2": {
+      "t": "observability: each step emits metrics, logs and spans; without that, debugging multi-agent systems is guesswork",
+      "h": "15a69358"
+    },
+    "sections.4.bullets.3": {
+      "t": "human-in-the-loop: in critical flows, the supervisor pauses and waits for approval before the next step",
+      "h": "04982d4c"
+    },
+    "sections.4.heading": {
+      "t": "Where orchestration meets the rest of the system",
+      "h": "56a1d536"
+    },
+    "sections.5.bullets.0": {
+      "t": "the orchestrator is a place for bad decisions to accumulate; a poorly calibrated supervisor becomes an infinite loop",
+      "h": "bed4c233"
+    },
+    "sections.5.bullets.1": {
+      "t": "checkpoints have a cost: each persistence adds latency and coupling to a database",
+      "h": "6dc37bd8"
+    },
+    "sections.5.bullets.2": {
+      "t": "swarm and flexible supervisor are hard to reproduce; the same prompt can produce different flows",
+      "h": "20d55ab3"
+    },
+    "sections.5.bullets.3": {
+      "t": "tooling is still young: Temporal is solid for deterministic code, but LLM support inside it is recent",
+      "h": "c37cf5d3"
+    },
+    "sections.5.heading": {
+      "t": "Limitations",
+      "h": "149d05f7"
+    },
+    "short": {
+      "t": "coordinating multiple agents and steps",
+      "h": "18422ea7"
+    },
+    "tagline": {
+      "t": "Orchestration is the pattern above the single agent: pipeline (fixed sequence), supervisor (one agent commands N) or swarm (N agents self-organize). It defines who talks to whom, when and in what order.",
+      "h": "c96d3a76"
+    },
+    "title": {
+      "t": "Orchestration",
+      "h": "6926cb0e"
+    }
+  }
+}

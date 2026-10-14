@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "La clave correcta (cuenta, token, ASN, combinaciones) separa mejor el abuso del uso legítimo.",
+      "h": "dc062623"
+    },
+    "questions.0.options.0": {
+      "t": "El NAT agrupa a muchos usuarios legítimos, y las botnets reparten el tráfico entre muchas IPs",
+      "h": "cac648b0"
+    },
+    "questions.0.options.1": {
+      "t": "Las IPs no aparecen en los logs de HTTP",
+      "h": "13b8339e"
+    },
+    "questions.0.options.2": {
+      "t": "El límite por IP es ilegal en algunos países",
+      "h": "ea7642a9"
+    },
+    "questions.0.options.3": {
+      "t": "Porque IPv6 no se puede limitar",
+      "h": "9a3cc30e"
+    },
+    "questions.0.q": {
+      "t": "¿Por qué limitar solo por IP suele ser insuficiente?",
+      "h": "d953d79b"
+    },
+    "questions.1.explain": {
+      "t": "Desafío, bloqueo corto y luego más largo: proporcional y reversible.",
+      "h": "2490a83c"
+    },
+    "questions.1.options.0": {
+      "t": "Para que un error de clasificación no se convierta en bloqueo permanente y la respuesta crezca con la reincidencia",
+      "h": "00b95b75"
+    },
+    "questions.1.options.1": {
+      "t": "Para ahorrar almacenamiento de logs",
+      "h": "2e0d5f7b"
+    },
+    "questions.1.options.2": {
+      "t": "Para evitar el uso de desafíos",
+      "h": "807df607"
+    },
+    "questions.1.options.3": {
+      "t": "Porque los bloqueos sin plazo son técnicamente imposibles",
+      "h": "c9681314"
+    },
+    "questions.1.q": {
+      "t": "¿Por qué usar una escalera de respuestas con plazo (TTL)?",
+      "h": "62b1e784"
+    },
+    "questions.2.explain": {
+      "t": "Las campañas y la estacionalidad cambian lo normal; el baseline las acompaña. El techo estático sigue como seguridad.",
+      "h": "6aff277e"
+    },
+    "questions.2.options.0": {
+      "t": "Acompaña el comportamiento normal de cada endpoint y ventana, en lugar de un número fijo que envejece",
+      "h": "37c4a65e"
+    },
+    "questions.2.options.1": {
+      "t": "Elimina la necesidad de cualquier límite estático",
+      "h": "fb25140c"
+    },
+    "questions.2.options.2": {
+      "t": "Prescinde de la telemetría",
+      "h": "cffdad50"
+    },
+    "questions.2.options.3": {
+      "t": "Garantiza cero falsos positivos",
+      "h": "df235d86"
+    },
+    "questions.2.q": {
+      "t": "¿Cuál es la ventaja de un límite adaptativo?",
+      "h": "d0f12425"
+    }
+  }
+}

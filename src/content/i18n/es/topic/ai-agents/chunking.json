@@ -1,0 +1,108 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "El chunking es el proceso de dividir un documento en fragmentos más pequeños que serán indexados y recuperados. El tamaño del fragmento no es un detalle: define qué cabe en la ventana del modelo, cuál es la unidad de búsqueda y cuál es la granularidad de la cita que aparece en la respuesta.",
+      "h": "4c303344"
+    },
+    "sections.0.body.1": {
+      "t": "En casi toda arquitectura RAG, el chunking ocurre una vez en la ingesta y nunca más. El pipeline estándar lee el documento, aplica un splitter, genera un embedding por bloque y sigue. Si el corte se pensó mal, todo el índice carga con el problema hasta que alguien rehaga la indexación.",
+      "h": "82ad91b6"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "La pregunta más común es '¿cuál es el tamaño correcto?'. La respuesta honesta es 'depende'. Para preguntas cortas y respuestas factuales, los bloques pequeños funcionan mejor: cada bloque lleva una sola idea, así que el retrieval trae el pasaje exacto. Para preguntas que exigen razonamiento entre párrafos, los bloques más grandes preservan el contexto, y los bloques demasiado pequeños rompen el argumento a la mitad.",
+      "h": "90591cea"
+    },
+    "sections.1.body.1": {
+      "t": "El solapamiento (overlap) es el segundo parámetro. Sin solapamiento, una idea que empieza al final de un bloque y continúa al comienzo del siguiente queda huérfana: ninguno de los dos bloques tiene el sentido completo. Con un solapamiento de 10 a 20% del tamaño del bloque, el inicio del siguiente repite el final del anterior, así que la frontera nunca corta una frase por la mitad.",
+      "h": "910fc756"
+    },
+    "sections.1.code.0.code": {
+      "t": "  tamaño del bloque     200 a 1000 tokens\n  overlap               10% a 20% del bloque\n  regla práctica        bloque ~512 tokens, overlap ~50\n\n  bloque pequeño -> cita precisa, contexto corto\n  bloque grande  -> razonamiento largo, cita ruidosa",
+      "h": "f1138f5a"
+    },
+    "sections.1.code.0.filename": {
+      "t": "Parámetros típicos",
+      "h": "292f42d2"
+    },
+    "sections.1.heading": {
+      "t": "Tamaño y overlap",
+      "h": "0a7211e6"
+    },
+    "sections.2.body.0": {
+      "t": "Tres familias dominan la práctica. La primera es el corte por caracteres o tokens, simple y predecible, que funciona cuando el documento es prosa limpia. La segunda es el corte recursivo por separadores, que intenta romper primero por párrafo, luego por frase, luego por palabra, y por carácter solo como último recurso. Preserva la estructura del texto sin necesitar un modelo. La tercera es el corte semántico, que agrupa frases por similitud y solo corta cuando la siguiente frase tiene poca relación con la anterior. Cuesta más y usa embeddings, pero produce bloques coherentes.",
+      "h": "d03e9a86"
+    },
+    "sections.2.body.1": {
+      "t": "También existe el corte por estructura: títulos, secciones, celdas de tabla, párrafos de código. En documentos con marcado claro (Markdown, HTML, docx convertido), separar por estructura y mantener la jerarquía en el metadata da chunks más útiles que cualquier splitter genérico.",
+      "h": "2a815577"
+    },
+    "sections.2.heading": {
+      "t": "Estrategias de corte",
+      "h": "cd363306"
+    },
+    "sections.3.body.0": {
+      "t": "LangChain ofrece el splitter recursivo listo. El ejemplo configura tamaño y overlap y lo aplica a un texto cualquiera. Para texto en portugués, conviene separar por párrafo, frase y palabra, en ese orden.",
+      "h": "dbc3da4a"
+    },
+    "sections.3.code.0.code": {
+      "t": "from langchain_text_splitters import RecursiveCharacterTextSplitter\n\nsplitter = RecursiveCharacterTextSplitter(\n    chunk_size=512,\n    chunk_overlap=50,\n    separators=[\n        \"\\n\\n\",     # párrafo\n        \"\\n\",       # línea\n        \"(?<=[.!?])\\\\s+\",  # fin de frase en PT-BR (lookbehind)\n        \" \",        # palabra\n        \"\",         # carácter (último recurso)\n    ],\n    length_function=len,\n    is_separator_regex=True,\n)\n\nwith open(\"manual.txt\", encoding=\"utf-8\") as f:\n    texto = f.read()\n\nblocos = splitter.split_text(texto)\nfor i, bloco in enumerate(blocos):\n    print(f\"#{i:03d}  {len(bloco)} chars  {bloco[:60].replace(chr(10), ' ')}...\")",
+      "h": "96421de8"
+    },
+    "sections.3.code.0.filename": {
+      "t": "chunking/splitter.py",
+      "h": "5dd198fa"
+    },
+    "sections.3.heading": {
+      "t": "En la práctica",
+      "h": "213dc06e"
+    },
+    "sections.4.bullets.0": {
+      "t": "estabilidad: un chunking determinístico produce los mismos bloques para el mismo documento, así que el índice se mantiene reproducible",
+      "h": "c79da635"
+    },
+    "sections.4.bullets.1": {
+      "t": "control de granularidad: ajustar tamaño y overlap es una palanca directa sobre la calidad del retrieval",
+      "h": "3f075734"
+    },
+    "sections.4.bullets.2": {
+      "t": "compatibilidad: casi todo framework (LangChain, LlamaIndex, Haystack) trae un splitter listo, así que la barrera de entrada es baja",
+      "h": "1616571d"
+    },
+    "sections.4.heading": {
+      "t": "Puntos fuertes",
+      "h": "a2ebc02c"
+    },
+    "sections.5.bullets.0": {
+      "t": "ceguera semántica: el splitter recursivo corta por separador, no por sentido; una idea que cruza la frontera desaparece",
+      "h": "4795ba05"
+    },
+    "sections.5.bullets.1": {
+      "t": "estructura perdida: separar por carácter ignora títulos, listas y tablas; en documentos mixtos, es mejor un splitter específico por tipo",
+      "h": "5bc23eda"
+    },
+    "sections.5.bullets.2": {
+      "t": "costo de reindexación: cambiar la estrategia de chunking obliga a reindexar todo; en bases grandes, eso se vuelve una migración",
+      "h": "dd58737e"
+    },
+    "sections.5.heading": {
+      "t": "Limitaciones",
+      "h": "149d05f7"
+    },
+    "short": {
+      "t": "cortar el documento en fragmentos recuperables",
+      "h": "2cb555f5"
+    },
+    "tagline": {
+      "t": "El chunking es la primera decisión técnica de RAG: el tamaño, el solapamiento y la estrategia de corte determinan lo que el retrieval logra encontrar después. Fragmentos malos se vuelven respuestas sin contexto.",
+      "h": "1462ce2f"
+    },
+    "title": {
+      "t": "Chunking",
+      "h": "e1385c29"
+    }
+  }
+}

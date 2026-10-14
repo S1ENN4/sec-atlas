@@ -1,0 +1,140 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "La orquestación coordina múltiples agentes (o múltiples etapas de un agente) en un flujo mayor. Mientras los agent frameworks tratan el loop interno de un agente, la orquestación trata el meta-loop: quién entra, quién sale, cuánto dura, dónde se persiste el estado.",
+      "h": "021ce1a3"
+    },
+    "sections.0.body.1": {
+      "t": "La pregunta que responde la orquestación no es 'qué hace este agente', sino 'cómo conversa este agente con el siguiente'. Sin orquestación, cada agente se vuelve una isla y el único pegamento entre ellos es copiar y pegar texto.",
+      "h": "9af8f755"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "Tres patrones cubren el 90% de los casos reales. La elección entre ellos depende de quién decide el siguiente paso:",
+      "h": "9e91a2c8"
+    },
+    "sections.1.body.1": {
+      "t": "pipeline: secuencia fija. Cada etapa recibe la salida de la anterior; el orden se conoce en tiempo de diseño. Buena para ETL con LLM, preprocesamiento, o cualquier caso donde la división del trabajo es clara.",
+      "h": "e0cf5ad0"
+    },
+    "sections.1.body.2": {
+      "t": "supervisor: un agente (el supervisor) mira el estado y decide a qué subagente llamar ahora. La estructura existe, pero el camino se decide en runtime. Bueno para flujos con ramas dependientes del contexto.",
+      "h": "4d758af4"
+    },
+    "sections.1.body.3": {
+      "t": "swarm: N agentes se coordinan por mensajes, sin dueño central. Más flexible, más difícil de auditar; reservado para exploración o tareas mal definidas.",
+      "h": "7829fdd5"
+    },
+    "sections.1.code.0.code": {
+      "t": "  pipeline    A -> B -> C -> D\n              orden fijo, costo predecible, fácil de auditar\n\n  supervisor  A (decide) -> B o C -> A (decide de nuevo)\n              rama dinámica, costo variable, el supervisor es punto único de falla\n\n  swarm       A <-> B <-> C <-> D\n              sin dueño, más caro, más difícil de reproducir",
+      "h": "e5d7767d"
+    },
+    "sections.1.code.0.filename": {
+      "t": "comparación de los tres patrones",
+      "h": "85035bc7"
+    },
+    "sections.1.heading": {
+      "t": "Los tres patrones clásicos",
+      "h": "45b176e4"
+    },
+    "sections.2.body.0": {
+      "t": "Los agentes son flaky por naturaleza: las APIs externas caen, los modelos devuelven malas respuestas, los timeouts ocurren a mitad del flujo. Sin checkpoint, una falla de 5 minutos significa empezar de cero, con el prompt gastado y el dinero quemado.",
+      "h": "3d652082"
+    },
+    "sections.2.body.1": {
+      "t": "El checkpoint es el acto de persistir el estado del flujo en un almacenamiento durable después de cada etapa, con un ID único. Cuando la ejecución se reinicia (por un crash, un deploy o una reanudación manual), el runtime lee el último checkpoint y continúa desde donde quedó, sin repetir trabajo ya hecho.",
+      "h": "8179f7ef"
+    },
+    "sections.2.body.2": {
+      "t": "Temporal y Prefect modelan esto como un workflow durable: cada función puede ser async, y el runtime sabe reejecutar desde el punto de falla. LangGraph expone el mismo concepto como thread_id con persistencia en Redis o Postgres.",
+      "h": "91f39c8d"
+    },
+    "sections.2.code.0.code": {
+      "t": "from temporalio import workflow, activity\nfrom datetime import timedelta\n\n\n@activity.defn\nasync def extract(pdf_url: str) -> dict:\n    return {'text': '...'}\n\n\n@activity.defn\nasync def summarize(text: str) -> str:\n    return 'resumen'\n\n\n@workflow.defn\nclass ReportFlow:\n    @workflow.run\n    async def run(self, pdf_url: str) -> str:\n        # Cada execute_activity se vuelve un paso persistido por Temporal;\n        # si el worker cae a mitad, el workflow se reanuda desde el punto de falla\n        # sin repetir la actividad ya concluida.\n        extracted = await workflow.execute_activity(\n            extract,\n            pdf_url,\n            start_to_close_timeout=timedelta(minutes=2),\n        )\n        return await workflow.execute_activity(\n            summarize,\n            extracted['text'],\n            start_to_close_timeout=timedelta(minutes=2),\n        )",
+      "h": "c1249fd6"
+    },
+    "sections.2.code.0.filename": {
+      "t": "orchestrator.py",
+      "h": "d7908bf6"
+    },
+    "sections.2.heading": {
+      "t": "Estado y checkpoint: cómo sobrevivir a las fallas",
+      "h": "ed934fed"
+    },
+    "sections.3.body.0": {
+      "t": "LangGraph permite modelar supervisor y pipeline en el mismo grafo: cada nodo es una función (o un subagente), y cada arista condicional lleva la lógica de 'qué nodo ahora'. El grafo es suficientemente determinístico para auditar y suficientemente flexible para reaccionar al estado.",
+      "h": "aadcbe57"
+    },
+    "sections.3.body.1": {
+      "t": "En el ejemplo de abajo, un orquestador decide entre llamar a 'researcher' o a 'writer' según el estado; cada uno de ellos es un subagente con su propio loop interno.",
+      "h": "36d66782"
+    },
+    "sections.3.code.0.code": {
+      "t": "import { StateGraph, END } from '@langchain/langgraph';\n\ntype S = { messages: any[]; stage: 'pending' | 'researched' | 'written' };\n\nasync function orchestrator(s: S) {\n  if (s.stage === 'pending')  return 'researcher';\n  if (s.stage === 'researched') return 'writer';\n  return END;\n}\n\nconst graph = new StateGraph<S>({ channels: { messages: [], stage: 'pending' } })\n  .addNode('orchestrator', orchestrator)\n  .addNode('researcher',  async (s) => ({ ...s, stage: 'researched' as const }))\n  .addNode('writer',      async (s) => ({ ...s, stage: 'written' as const }))\n  .addEdge('__start__', 'orchestrator')\n  .addConditionalEdges('orchestrator', (s) => s.stage,\n    { researcher: 'researcher', writer: 'writer', written: END, [END]: END })\n  .addEdge('researcher', 'orchestrator')\n  .addEdge('writer',     'orchestrator')\n  .compile({ checkpointer: redisCheckpointer });",
+      "h": "3e2e18bf"
+    },
+    "sections.3.code.0.filename": {
+      "t": "supervisor.tsx",
+      "h": "ece32b99"
+    },
+    "sections.3.heading": {
+      "t": "Pipeline con LangGraph: supervisor + subagentes",
+      "h": "bf61d03b"
+    },
+    "sections.4.bullets.0": {
+      "t": "colas y workers: la orquestación convierte llamadas largas en jobs asíncronos; cada etapa se vuelve un worker",
+      "h": "142444a3"
+    },
+    "sections.4.bullets.1": {
+      "t": "idempotencia por diseño: un checkpoint sin idempotencia significa reejecutar y duplicar efectos secundarios",
+      "h": "359dda5c"
+    },
+    "sections.4.bullets.2": {
+      "t": "observabilidad: cada etapa emite métricas, logs y spans; sin eso, depurar multiagente es adivinar",
+      "h": "15a69358"
+    },
+    "sections.4.bullets.3": {
+      "t": "human-in-the-loop: en flujos críticos, el supervisor pausa y espera aprobación antes de la siguiente etapa",
+      "h": "04982d4c"
+    },
+    "sections.4.heading": {
+      "t": "Dónde la orquestación se encuentra con el resto del sistema",
+      "h": "56a1d536"
+    },
+    "sections.5.bullets.0": {
+      "t": "el orquestador es un lugar donde se acumulan malas decisiones; un supervisor mal calibrado se vuelve un loop infinito",
+      "h": "bed4c233"
+    },
+    "sections.5.bullets.1": {
+      "t": "el checkpoint tiene costo: cada persistencia agrega latencia y acoplamiento a una base de datos",
+      "h": "6dc37bd8"
+    },
+    "sections.5.bullets.2": {
+      "t": "el swarm y el supervisor flexible son difíciles de reproducir; el mismo prompt puede dar flujos distintos",
+      "h": "20d55ab3"
+    },
+    "sections.5.bullets.3": {
+      "t": "el tooling todavía es joven: Temporal es sólido para código determinístico, pero el soporte para LLM dentro de él es reciente",
+      "h": "c37cf5d3"
+    },
+    "sections.5.heading": {
+      "t": "Limitaciones",
+      "h": "149d05f7"
+    },
+    "short": {
+      "t": "coordinar múltiples agentes y etapas",
+      "h": "18422ea7"
+    },
+    "tagline": {
+      "t": "La orquestación es el patrón por encima del agente único: pipeline (secuencia fija), supervisor (un agente comanda N) o swarm (N agentes se autoorganizan). Define quién habla con quién, cuándo y en qué orden.",
+      "h": "c96d3a76"
+    },
+    "title": {
+      "t": "Orchestration",
+      "h": "6926cb0e"
+    }
+  }
+}

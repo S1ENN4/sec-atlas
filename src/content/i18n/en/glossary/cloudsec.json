@@ -1,0 +1,232 @@
+{
+  "entries": {
+    "groups.0.entries.0.aka": {
+      "t": "identity and access management",
+      "h": "7e5f12b0"
+    },
+    "groups.0.entries.0.meaning": {
+      "t": "The set of policies, roles and credentials that says who every human, service or workload is, and what each one can do. In the cloud, IAM became the new perimeter: the network edge got porous, so identity carries the authorization.",
+      "h": "d6ff8cb7"
+    },
+    "groups.0.entries.0.term": {
+      "t": "IAM",
+      "h": "d4ade53b"
+    },
+    "groups.0.entries.1.aka": {
+      "t": "least privilege",
+      "h": "7148e767"
+    },
+    "groups.0.entries.1.meaning": {
+      "t": "The principle of giving each identity only the permissions strictly needed for its function, and nothing more. It is the opposite of 'admin user by default': every extra role is one more path an attacker can use after a compromise.",
+      "h": "18c687bb"
+    },
+    "groups.0.entries.1.term": {
+      "t": "Least privilege",
+      "h": "057b8475"
+    },
+    "groups.0.entries.2.aka": {
+      "t": "shared responsibility model",
+      "h": "d8196f18"
+    },
+    "groups.0.entries.2.meaning": {
+      "t": "The classic split between what the cloud provider guarantees (security OF the cloud: datacenter, hardware, physical service) and what is the customer's responsibility (security IN the cloud: data, IAM, configuration, network). Confusing the two ends is the classic source of leaks.",
+      "h": "c326b757"
+    },
+    "groups.0.entries.2.term": {
+      "t": "Shared responsibility model",
+      "h": "40899111"
+    },
+    "groups.0.entries.3.aka": {
+      "t": "credential rotation",
+      "h": "047bf77a"
+    },
+    "groups.0.entries.3.meaning": {
+      "t": "Periodically replacing (or doing so after a suspected leak) API keys, tokens and passwords stored in a vault. Without rotation, a secret exposed in a log or git history is valid forever; with rotation, it is valid until the next turnover.",
+      "h": "646e3a4b"
+    },
+    "groups.0.entries.3.term": {
+      "t": "Secret rotation",
+      "h": "10012c0f"
+    },
+    "groups.0.entries.4.aka": {
+      "t": "blast radius",
+      "h": "9209a932"
+    },
+    "groups.0.entries.4.meaning": {
+      "t": "The size of the damage when something breaks: one account, an entire region, a tenant. Good cloud design limits the radius through isolation (separate accounts, separate VPCs, narrow roles) so that a failure or an attack does not become a full-blown disaster.",
+      "h": "4a47fcfb"
+    },
+    "groups.0.entries.4.term": {
+      "t": "Blast radius",
+      "h": "c82e3beb"
+    },
+    "groups.0.title": {
+      "t": "identity and access",
+      "h": "f72bcf80"
+    },
+    "groups.1.entries.0.aka": {
+      "t": "security group",
+      "h": "717ffe14"
+    },
+    "groups.1.entries.0.meaning": {
+      "t": "A stateful list of rules attached to an instance or network interface in the cloud: who can come in on which port, from which source. It works as a host firewall at the cloud level, and it fails open by default: if you forget to close a port, it stays open to 0.0.0.0/0.",
+      "h": "ca762138"
+    },
+    "groups.1.entries.0.term": {
+      "t": "Security group",
+      "h": "0e6f423d"
+    },
+    "groups.1.entries.1.aka": {
+      "t": "virtual private cloud",
+      "h": "8c1f9a11"
+    },
+    "groups.1.entries.1.meaning": {
+      "t": "A logically isolated private network inside the public cloud: you choose the IP range, split it into public and private subnets, and control traffic with route tables and NAT. The VPC is your virtual datacenter; everything running inside it talks as if it were in the same rack.",
+      "h": "bed01e72"
+    },
+    "groups.1.entries.1.term": {
+      "t": "VPC",
+      "h": "c28b69d3"
+    },
+    "groups.1.entries.2.meaning": {
+      "t": "Declarative firewall rules at the pod level (Kubernetes) or workload level (service mesh), stating which service can talk to which port. Unlike a security group, it operates at L7 inside the cluster, with label selectors, and is a central piece of defense in depth for east-west traffic.",
+      "h": "e3d93b2e"
+    },
+    "groups.1.entries.2.term": {
+      "t": "Network policy",
+      "h": "ea69d955"
+    },
+    "groups.1.entries.3.aka": {
+      "t": "key management service",
+      "h": "73686660"
+    },
+    "groups.1.entries.3.meaning": {
+      "t": "A managed service that creates, stores and controls the use of cryptographic keys. The application rarely touches the master key: it asks the KMS to encrypt or decrypt, and the provider records every use in an auditable log. Without a KMS, the key ends up on disk and becomes a target.",
+      "h": "da653a45"
+    },
+    "groups.1.entries.3.term": {
+      "t": "KMS",
+      "h": "25e1e91f"
+    },
+    "groups.1.entries.4.meaning": {
+      "t": "A two-layer pattern: a data key (DEK) encrypts the payload, and a KMS key (KEK) encrypts the DEK. The application stores the encrypted DEK alongside the data and only calls the KMS to unwrap the DEK when it needs to use it. It reduces KMS calls and limits exposure of the master key.",
+      "h": "cf44ca59"
+    },
+    "groups.1.entries.4.term": {
+      "t": "Envelope encryption",
+      "h": "0411d2df"
+    },
+    "groups.1.title": {
+      "t": "network and data",
+      "h": "34295edd"
+    },
+    "groups.2.entries.0.meaning": {
+      "t": "A model that starts from the premise of trusting no one based on network position: every request is authenticated, authorized and logged, even when it comes from the internal network. It replaces the castle-and-moat with continuous verification at every door, human or service.",
+      "h": "e0e94076"
+    },
+    "groups.2.entries.0.term": {
+      "t": "Zero trust",
+      "h": "34fee458"
+    },
+    "groups.2.entries.1.aka": {
+      "t": "cloud security posture management",
+      "h": "8863ef04"
+    },
+    "groups.2.entries.1.meaning": {
+      "t": "A tool that scans your cloud configuration against best practices and benchmarks (CIS, NIST), flagging public S3 buckets, overly broad IAM, exposed ports. It asks the question humans forget: 'what is misconfigured RIGHT NOW?'.",
+      "h": "815b29c4"
+    },
+    "groups.2.entries.1.term": {
+      "t": "CSPM",
+      "h": "a6c9b210"
+    },
+    "groups.2.entries.2.aka": {
+      "t": "cloud workload protection platform",
+      "h": "7fe1216f"
+    },
+    "groups.2.entries.2.meaning": {
+      "t": "Monitored protection for running workloads: VMs, containers, serverless functions. It combines visibility into what runs (processes, syscalls, network) with prevention (blocking execution, isolating anomalies). It is endpoint security reworked for the ephemeral reality of the cloud.",
+      "h": "ee277a34"
+    },
+    "groups.2.entries.2.term": {
+      "t": "CWPP",
+      "h": "7f8b3cea"
+    },
+    "groups.2.entries.3.aka": {
+      "t": "configuration drift",
+      "h": "bdad5f72"
+    },
+    "groups.2.entries.3.meaning": {
+      "t": "When live infrastructure moves away from the declared state: someone opened a port in the console, a bucket became public, an IAM role became admin. Drift is configuration accumulated outside version control, and the best cure is IaC with review: everything that changes goes through code.",
+      "h": "507b1df9"
+    },
+    "groups.2.entries.3.term": {
+      "t": "Drift",
+      "h": "4876f7b9"
+    },
+    "groups.2.entries.4.aka": {
+      "t": "hardening",
+      "h": "b8063fc5"
+    },
+    "groups.2.entries.4.meaning": {
+      "t": "Reducing a workload's surface to the essentials: disabling unused services, closing ports, removing superfluous packages, applying a baseline (CIS). It is the cloud equivalent of removing the default password and closing the windows: boring, repetitive, and the difference between an easy target and an expensive one.",
+      "h": "8193eb24"
+    },
+    "groups.2.entries.4.term": {
+      "t": "Hardening",
+      "h": "1244d2e7"
+    },
+    "groups.2.entries.5.aka": {
+      "t": "cloudtrail",
+      "h": "103d4d54"
+    },
+    "groups.2.entries.5.meaning": {
+      "t": "An immutable record of every API call made in the cloud account: who called what, from where, with what result. It is the account's black box: after a leak, it answers 'what did the attacker do, and when?'. Without a trail, there is no investigation or informed containment.",
+      "h": "e59f3d84"
+    },
+    "groups.2.entries.5.term": {
+      "t": "Audit trail",
+      "h": "a489874f"
+    },
+    "groups.2.title": {
+      "t": "posture and detection",
+      "h": "f8c3a46d"
+    },
+    "groups.3.entries.0.aka": {
+      "t": "mean time to respond",
+      "h": "657cbd6d"
+    },
+    "groups.3.entries.0.meaning": {
+      "t": "The average time between confirming an incident and containing it. It is the metric that shows whether runbooks and automation really work, and the one that drops the most when response is practiced in exercises.",
+      "h": "85a4c54e"
+    },
+    "groups.3.entries.0.term": {
+      "t": "MTTR",
+      "h": "b97d3367"
+    },
+    "groups.3.entries.1.meaning": {
+      "t": "A step-by-step script for a type of incident (leaked key, compromised instance). Written before the crisis, tested in game days and, when possible, turned into automation.",
+      "h": "a69fb2cf"
+    },
+    "groups.3.entries.1.term": {
+      "t": "Runbook",
+      "h": "fda8fb7d"
+    },
+    "groups.3.entries.2.aka": {
+      "t": "chain of custody",
+      "h": "e97038b3"
+    },
+    "groups.3.entries.2.meaning": {
+      "t": "A record of who collected, stored and handled each piece of digital evidence, and when. Without it, the evidence loses value for audits and for any legal dispute.",
+      "h": "8b407a3c"
+    },
+    "groups.3.entries.2.term": {
+      "t": "Chain of custody",
+      "h": "b4e88a31"
+    },
+    "groups.3.title": {
+      "t": "incident response",
+      "h": "4d3e9f1c"
+    }
+  }
+}

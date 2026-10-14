@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "La botnet distribuye el ataque, así que la IP sola engaña; el ASN y el fingerprint muestran el patrón.",
+      "h": "867ea73b"
+    },
+    "questions.0.options.0": {
+      "t": "Muchos fallos de inicio de sesión distribuidos en muchas IPs, con pocos intentos por cuenta",
+      "h": "4adb201a"
+    },
+    "questions.0.options.1": {
+      "t": "Una única solicitud enorme",
+      "h": "7da7eb3f"
+    },
+    "questions.0.options.2": {
+      "t": "Aumento de solicitudes a imágenes estáticas",
+      "h": "90cd8ab3"
+    },
+    "questions.0.options.3": {
+      "t": "Caída repentina del tráfico",
+      "h": "6c4a801f"
+    },
+    "questions.0.q": {
+      "t": "¿Cuál es la firma típica del credential stuffing en los logs?",
+      "h": "8bdf2e45"
+    },
+    "questions.1.explain": {
+      "t": "El atacante barre rutas administrativas y de respaldo en busca de algo expuesto.",
+      "h": "fdc0cfea"
+    },
+    "questions.1.options.0": {
+      "t": "Explosión de 404 y 403 con muchas rutas distintas desde el mismo origen",
+      "h": "76a9f3aa"
+    },
+    "questions.1.options.1": {
+      "t": "Solo respuestas 200 en pocas rutas",
+      "h": "0907fca4"
+    },
+    "questions.1.options.2": {
+      "t": "Fallos de TLS",
+      "h": "3c51500c"
+    },
+    "questions.1.options.3": {
+      "t": "Aumento de la latencia del origen",
+      "h": "06c30646"
+    },
+    "questions.1.q": {
+      "t": "¿Qué sugiere forced browsing?",
+      "h": "63545499"
+    },
+    "questions.2.explain": {
+      "t": "La aplicación consulta la URL desde el servidor, así que una dirección interna puede exponer servicios dentro de la red.",
+      "h": "d5d478dd"
+    },
+    "questions.2.options.0": {
+      "t": "Parámetros de URL que apuntan a direcciones internas o de metadatos",
+      "h": "6e923dad"
+    },
+    "questions.2.options.1": {
+      "t": "Cabeceras de caché ausentes",
+      "h": "ab86ef87"
+    },
+    "questions.2.options.2": {
+      "t": "Muchos accesos a la página de inicio",
+      "h": "0ae93d3e"
+    },
+    "questions.2.options.3": {
+      "t": "Uso de HTTP/2",
+      "h": "85817b87"
+    },
+    "questions.2.q": {
+      "t": "¿Qué señal levanta sospecha de SSRF?",
+      "h": "7d758f8a"
+    }
+  }
+}

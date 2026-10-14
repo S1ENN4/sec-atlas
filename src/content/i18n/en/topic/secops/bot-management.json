@@ -1,0 +1,96 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "A large share of any public application's traffic is automation: search engines and monitoring (useful), but also scrapers, credential stuffing, inventory hoarding and fake account creation. The defense is not blocking \"bots\", it is distinguishing intent and acting on abuse.",
+      "h": "6fc6a8fb"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "Bot management solutions combine signals to produce a score per request. No signal is decisive alone, but together they separate traffic well:",
+      "h": "a405120c"
+    },
+    "sections.1.bullets.0": {
+      "t": "Network and TLS fingerprints: automation clients usually have signatures different from real browsers.",
+      "h": "b324af9b"
+    },
+    "sections.1.bullets.1": {
+      "t": "Browser and behavior signals: JavaScript execution, movement, request cadence.",
+      "h": "7b21d356"
+    },
+    "sections.1.bullets.2": {
+      "t": "Reputation and context: IP, ASN, client history, per-endpoint pattern.",
+      "h": "1814ef50"
+    },
+    "sections.1.bullets.3": {
+      "t": "Verified bots: known crawlers (search engines, monitors) reliably identified and handled separately.",
+      "h": "e9220b8a"
+    },
+    "sections.1.heading": {
+      "t": "How classification works",
+      "h": "365590b2"
+    },
+    "sections.2.body.0": {
+      "t": "The score blocks nothing by itself: policy defines the action per endpoint. A public catalog can tolerate a medium score, while login and checkout challenge or block. An example expression, in the style of Cloudflare rules:",
+      "h": "3e221f95"
+    },
+    "sections.2.code.0.code": {
+      "t": "# high automation risk on sensitive endpoints, ignoring verified bots\n(cf.bot_management.score lt 30\n and not cf.bot_management.verified_bot\n and http.request.uri.path in {\"/api/login\" \"/api/checkout\"})\n  -> action: Managed Challenge",
+      "h": "2a93c3d7"
+    },
+    "sections.2.code.0.filename": {
+      "t": "bot rule - illustrative",
+      "h": "c4d54003"
+    },
+    "sections.2.heading": {
+      "t": "Policy decides the action",
+      "h": "d828bfc0"
+    },
+    "sections.3.body.0": {
+      "t": "Classic challenges (CAPTCHA) punish real users. Modern managed challenges try to prove the client is a real browser without asking the user for anything, and only escalate to an interaction when doubt persists. The challenge is the step before blocking: it reduces false positives and still costs a lot for anyone automating at scale.",
+      "h": "24a404e6"
+    },
+    "sections.3.heading": {
+      "t": "Frictionless challenges",
+      "h": "bd8aed0b"
+    },
+    "sections.4.bullets.0": {
+      "t": "Credential stuffing on login and password recovery.",
+      "h": "8fb57e4c"
+    },
+    "sections.4.bullets.1": {
+      "t": "Scraping of prices, catalog or content.",
+      "h": "99bd7457"
+    },
+    "sections.4.bullets.2": {
+      "t": "Mass account creation and promotion abuse.",
+      "h": "9145d651"
+    },
+    "sections.4.bullets.3": {
+      "t": "Inventory hoarding and checkout fraud.",
+      "h": "276affe4"
+    },
+    "sections.4.bullets.4": {
+      "t": "APIs: bots use the routes directly, so policy must also cover non-browser traffic.",
+      "h": "4fdb6c73"
+    },
+    "sections.4.heading": {
+      "t": "Most common use cases",
+      "h": "a1c69356"
+    },
+    "short": {
+      "t": "separating legitimate automation from automated abuse",
+      "h": "cbe29a33"
+    },
+    "tagline": {
+      "t": "Not every bot is an enemy and not every human is legitimate. Bot management gives each request a trust score and lets policy decide what to do with it.",
+      "h": "790b80c1"
+    },
+    "title": {
+      "t": "Bot management",
+      "h": "c22248a9"
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "The pipeline is the only mandatory path from code to production: putting checks there makes them automatic and repeatable.",
+      "h": "6e74fc3b"
+    },
+    "questions.0.options.0": {
+      "t": "Because the pipeline is slow and needs more steps",
+      "h": "8baa92ac"
+    },
+    "questions.0.options.1": {
+      "t": "Because every commit goes through it, so the control always runs, and early",
+      "h": "08627e1d"
+    },
+    "questions.0.options.2": {
+      "t": "Because auditors require pipeline logs",
+      "h": "b17885e3"
+    },
+    "questions.0.options.3": {
+      "t": "Because security tools only work in CI",
+      "h": "a046f23b"
+    },
+    "questions.0.q": {
+      "t": "Why does security go inside the CI/CD pipeline, and not only at the end?",
+      "h": "4adb9474"
+    },
+    "questions.1.explain": {
+      "t": "The gate turns a policy (no new criticals, no secrets) into an automatic pass or fail decision.",
+      "h": "34b52587"
+    },
+    "questions.1.options.0": {
+      "t": "A coverage metrics dashboard",
+      "h": "7ca90ab6"
+    },
+    "questions.1.options.1": {
+      "t": "A rule that blocks the pipeline from advancing if a criterion is not met",
+      "h": "7fafc0c5"
+    },
+    "questions.1.options.2": {
+      "t": "A type of load test",
+      "h": "99e1666b"
+    },
+    "questions.1.options.3": {
+      "t": "A manual code review at the end of the sprint",
+      "h": "eefda541"
+    },
+    "questions.1.q": {
+      "t": "What is a quality gate?",
+      "h": "6449e18c"
+    },
+    "questions.2.explain": {
+      "t": "The pipeline holds credentials and publishes artifacts; compromising it means compromising everything it delivers.",
+      "h": "c9eb4cdb"
+    },
+    "questions.2.options.0": {
+      "t": "It running too many tests",
+      "h": "d13301b4"
+    },
+    "questions.2.options.1": {
+      "t": "Runners and tokens with excessive privilege being compromised",
+      "h": "1921966f"
+    },
+    "questions.2.options.2": {
+      "t": "The build taking more than a minute",
+      "h": "d5583a62"
+    },
+    "questions.2.options.3": {
+      "t": "Using YAML instead of JSON",
+      "h": "4d10687a"
+    },
+    "questions.2.q": {
+      "t": "What is a classic risk of the CI/CD pipeline itself?",
+      "h": "4fba605e"
+    }
+  }
+}

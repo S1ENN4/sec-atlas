@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Protegen el baseline: cambiar el prompt, el modelo o el índice no puede romper lo que ya funcionaba.",
+      "h": "e720bbc4"
+    },
+    "questions.0.options.0": {
+      "t": "Un conjunto fijo de casos que corre en cada cambio para detectar empeoramiento",
+      "h": "6ca2be90"
+    },
+    "questions.0.options.1": {
+      "t": "Evals que solo corren una vez",
+      "h": "3b0eaa09"
+    },
+    "questions.0.options.2": {
+      "t": "Un tipo de regresión lineal",
+      "h": "3919c74f"
+    },
+    "questions.0.options.3": {
+      "t": "Pruebas de interfaz",
+      "h": "3606c994"
+    },
+    "questions.0.q": {
+      "t": "¿Qué son los regression evals?",
+      "h": "0e4d74ab"
+    },
+    "questions.1.explain": {
+      "t": "Correr en el PR da feedback antes de que el cambio llegue a los usuarios.",
+      "h": "6784df71"
+    },
+    "questions.1.options.0": {
+      "t": "En el PR, como gate de CI, antes de que el cambio llegue a producción",
+      "h": "25f58440"
+    },
+    "questions.1.options.1": {
+      "t": "Solo después del incidente",
+      "h": "a7deac49"
+    },
+    "questions.1.options.2": {
+      "t": "En el entrenamiento del modelo",
+      "h": "766bbca1"
+    },
+    "questions.1.options.3": {
+      "t": "Fuera del repositorio",
+      "h": "ed3af232"
+    },
+    "questions.1.q": {
+      "t": "¿Dónde encajan los regression evals en el flujo?",
+      "h": "cfa3bb28"
+    },
+    "questions.2.explain": {
+      "t": "Cada incidente se vuelve una prueba, y el conjunto crece con la experiencia.",
+      "h": "96ed83c2"
+    },
+    "questions.2.options.0": {
+      "t": "Para garantizar que el mismo error no vuelva",
+      "h": "d296ec10"
+    },
+    "questions.2.options.1": {
+      "t": "Para aumentar el tiempo de ejecución",
+      "h": "4294b6f6"
+    },
+    "questions.2.options.2": {
+      "t": "Porque el modelo lo exige",
+      "h": "59d63bf4"
+    },
+    "questions.2.options.3": {
+      "t": "Para esconder el historial",
+      "h": "fd32f742"
+    },
+    "questions.2.q": {
+      "t": "¿Por qué incluir casos de fallas pasadas?",
+      "h": "7d79c418"
+    }
+  }
+}

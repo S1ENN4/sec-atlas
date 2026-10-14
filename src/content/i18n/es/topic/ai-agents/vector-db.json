@@ -1,0 +1,100 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Una vector DB es una base de datos especializada en almacenar vectores densos y responder consultas de vecindad. La consulta típica es 'top-k vecinos más cercanos de este vector', y corre con baja latencia incluso con millones o miles de millones de vectores indexados.",
+      "h": "688212fc"
+    },
+    "sections.0.body.1": {
+      "t": "A diferencia de una base relacional, el índice primario es la distancia geométrica, no la clave primaria. La comparación exacta (término, id) todavía existe, pero la búsqueda principal usa algoritmos aproximados de vecinos más cercanos (ANN), que renuncian al resultado exacto a cambio de velocidad.",
+      "h": "cd9b6605"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "Dos algoritmos dominan el estado de la práctica. HNSW (Hierarchical Navigable Small World) construye un grafo en capas: cada capa es un grafo navegable, y los vértices saltan de capa en capa siguiendo a los vecinos más cercanos. La búsqueda entra por la capa de arriba, desciende y converge. Latencia excelente, uso de memoria alto.",
+      "h": "e5ba3783"
+    },
+    "sections.1.body.1": {
+      "t": "IVF (Inverted File Index) particiona el espacio en celdas y guarda, por celda, los vectores que le pertenecen. En la búsqueda, comparamos el vector de consulta con los centroides, escogemos las celdas más cercanas y solo entonces comparamos con los vectores de esas celdas. Menos memoria que HNSW, latencia ligeramente mayor. La mayoría de las bases usa IVF combinado con cuantización (PQ, SQ) para reducir aún más el costo.",
+      "h": "f8c13880"
+    },
+    "sections.1.heading": {
+      "t": "ANN: HNSW e IVF",
+      "h": "0c896d52"
+    },
+    "sections.2.body.0": {
+      "t": "Un vector solo resuelve poco. En producción, cada embedding viene con metadata: documento de origen, fecha, autor, categoría, tags, idioma, nivel de acceso. La búsqueda combina 'vecinos más cercanos' con 'filtro de metadata'. Los filtros recortan el espacio de búsqueda antes de que corra el ANN, así que reducen la latencia y mejoran la precisión.",
+      "h": "69b38a4f"
+    },
+    "sections.2.body.1": {
+      "t": "Dos patrones se destacan. Pre-filtro: aplica el filtro de metadata y corre ANN sobre el subconjunto. Post-filtro: corre el ANN completo y descarta lo que no pasa el filtro. El pre-filtro es mejor cuando el filtro es restrictivo; el post-filtro es mejor cuando casi todo pasa.",
+      "h": "0f300563"
+    },
+    "sections.2.heading": {
+      "t": "Metadata y filtros",
+      "h": "119325cd"
+    },
+    "sections.3.body.0": {
+      "t": "pgvector es la extensión vectorial de PostgreSQL: corre junto con la base relacional y permite filtrar metadata en la cláusula WHERE antes de la búsqueda. El ejemplo crea la tabla con un vector de 1536 dimensiones (tamaño típico de text-embedding-3-small), inserta chunks y hace la búsqueda top-5 con filtro de categoría.",
+      "h": "f377d93a"
+    },
+    "sections.3.code.0.code": {
+      "t": "-- creación\nCREATE EXTENSION IF NOT EXISTS vector;\n\nCREATE TABLE chunks (\n  id          BIGSERIAL,\n  doc_id      TEXT NOT NULL,\n  category    TEXT NOT NULL,\n  content     TEXT NOT NULL,\n  embedding   vector(1536),\n  PRIMARY KEY (id)\n);\n\nCREATE INDEX chunks_embedding_hnsw\n  ON chunks USING hnsw (embedding vector_cosine_ops);\nCREATE INDEX chunks_category_idx ON chunks (category);\n\n-- inserción (chunks con embeddings ya calculados en otro paso)\nINSERT INTO chunks (doc_id, category, content, embedding)\nVALUES ($1, $2, $3, $4);\n\n-- búsqueda top-5 con filtro de metadata\nSELECT id, doc_id, content,\n       1 - (embedding <=> $1::vector) AS score\nFROM chunks\nWHERE category = 'manual'\nORDER BY embedding <=> $1::vector\nLIMIT 5;",
+      "h": "9f573c22"
+    },
+    "sections.3.code.0.filename": {
+      "t": "vector-db/query.sql",
+      "h": "70afcfe7"
+    },
+    "sections.3.heading": {
+      "t": "En la práctica",
+      "h": "213dc06e"
+    },
+    "sections.4.bullets.0": {
+      "t": "búsqueda por similitud a escala: el ANN entrega top-k en milisegundos con millones de vectores",
+      "h": "b2109716"
+    },
+    "sections.4.bullets.1": {
+      "t": "filtro híbrido: combina vecindad geométrica con WHERE de SQL o filtro nativo, así que buscar por espacio es alcanzable",
+      "h": "1f1afca5"
+    },
+    "sections.4.bullets.2": {
+      "t": "opciones para todo presupuesto: pgvector ahorra infraestructura adicional; Pinecone/Qdrant/Weaviate entregan throughput dedicado",
+      "h": "9c41b219"
+    },
+    "sections.4.heading": {
+      "t": "Puntos fuertes",
+      "h": "a2ebc02c"
+    },
+    "sections.5.bullets.0": {
+      "t": "el ANN es aproximado: el ranking puede cambiar vecinos verdaderos por vecinos cercanos; ajustar recall vs latencia es trabajo continuo",
+      "h": "546c1f71"
+    },
+    "sections.5.bullets.1": {
+      "t": "memoria alta: HNSW en alta dimensionalidad consume más RAM que el dato original",
+      "h": "f9f4494c"
+    },
+    "sections.5.bullets.2": {
+      "t": "consistencia entre sharding y reindexación: recrear el índice con tráfico real exige cuidado, y el downtime se vuelve un problema de producción",
+      "h": "0e4df963"
+    },
+    "sections.5.heading": {
+      "t": "Limitaciones",
+      "h": "149d05f7"
+    },
+    "short": {
+      "t": "base de datos que busca por distancia en vez de por término exacto",
+      "h": "31c881d6"
+    },
+    "tagline": {
+      "t": "La vector DB es el componente que guarda embeddings y responde '¿qué vectores están más cerca de este?' en milisegundos. Es donde el ANN (HNSW, IVF) paga el costo de la búsqueda semántica.",
+      "h": "9051c6c4"
+    },
+    "title": {
+      "t": "Vector DB",
+      "h": "b31798cf"
+    }
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Logging & detection is the piece of detection that lives on signal: audit trails, control plane logs, data plane logs, runtime events, DNS outputs and identity events. The job is to collect all of this in one place, retain it long enough and fire an alert when something out of the pattern appears.",
+      "h": "d029ce9b"
+    },
+    "sections.0.body.1": {
+      "t": "CSPM scans configuration; CWPP scans workload behavior. Here the question is broader: 'what happened in this account in the last 90 days, and did it happen again just now?'. The answer lives in correlation: an AssumeRole can be legitimate on its own, and criminal when combined with kms:Decrypt five minutes later and a GetObject on a bucket that nobody in that role should open.",
+      "h": "b908ba76"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "The classic pillar is the control plane log: every API call, signed, with principal ARN, source IP, user agent, request parameters and response elements. On AWS this is CloudTrail; on Azure it is the Activity Log; on GCP it is Cloud Audit Logs. This is the log that answers 'who called what, when, and what was the result'. Without it, the incident becomes guesswork.",
+      "h": "58f9bb02"
+    },
+    "sections.1.body.1": {
+      "t": "By default CloudTrail records management events (create IAM user, delete bucket) in the account trail, and keeps the last 90 days in the console. For real forensics, it is worth creating a multi-region trail that writes to S3 with object lock, and adding a Lake or a SIEM on top for querying and longer retention.",
+      "h": "ea96f930"
+    },
+    "sections.1.code.0.code": {
+      "t": "{\n  \"eventVersion\": \"1.09\",\n  \"userIdentity\": {\n    \"type\": \"IAMUser\",\n    \"principalId\": \"AIDAEXAMPLEPRINCIPAL\",\n    \"arn\": \"arn:aws:iam::111122223333:user/alice\",\n    \"accountId\": \"111122223333\",\n    \"accessKeyId\": \"AKIAEXAMPLEACCESSKEY\",\n    \"userName\": \"alice\"\n  },\n  \"eventTime\": \"2026-10-09T03:17:42Z\",\n  \"eventSource\": \"s3.amazonaws.com\",\n  \"eventName\": \"GetObject\",\n  \"awsRegion\": \"us-east-1\",\n  \"sourceIPAddress\": \"203.0.113.45\",\n  \"userAgent\": \"aws-cli/2.15.0\",\n  \"requestParameters\": {\n    \"bucketName\": \"loja-customer-uploads\",\n    \"key\": \"billing/exports/sept-2026.csv\"\n  },\n  \"responseElements\": null,\n  \"requestID\": \"6E3D4B2XAMPLE\",\n  \"eventID\": \"e9c1f0a6-2b1c-4f37-9a4d-3e2b9c0b8c11\",\n  \"readOnly\": true,\n  \"eventType\": \"AwsApiCall\",\n  \"recipientAccountId\": \"111122223333\"\n}",
+      "h": "f73a36d4"
+    },
+    "sections.1.code.0.filename": {
+      "t": "CloudTrail event (console.amazonaws.com)",
+      "h": "5d069495"
+    },
+    "sections.1.heading": {
+      "t": "What to capture: audit trails",
+      "h": "4f683300"
+    },
+    "sections.2.body.0": {
+      "t": "CloudTrail does not see everything. It records the API call, not what happened inside it nor the packet that crossed the network. To close the gap, three sources become mandatory.",
+      "h": "174b4d43"
+    },
+    "sections.2.bullets.0": {
+      "t": "VPC Flow Logs: every packet accepted or rejected on the VPC's ENIs. Source, destination, port, decision (ACCEPT/REJECT), bytes counted. When an exfiltration alert fires, this is the first place to confirm the destination.",
+      "h": "9fd598c2"
+    },
+    "sections.2.bullets.1": {
+      "t": "S3 data events: reads and writes on specific buckets (not on by default in the trail because they are expensive). For a bucket with PII or secrets, this is the log that tells who took what.",
+      "h": "b2d153bf"
+    },
+    "sections.2.bullets.2": {
+      "t": "EKS / Kubernetes audit: kube-apiserver writes every call to kube-apiserver-audit.log. ingress create, secret read, exec in a pod - everything goes in. Combined with CloudTrail, it shows the complete chain: kubelet makes a call, pod talks to the API, API returns a token, token becomes AssumeRole.",
+      "h": "02ce88f9"
+    },
+    "sections.2.bullets.3": {
+      "t": "DNS logs (Route 53 Resolver / Cloudflare): resolver queries are kept. Useful for detecting DGA (domain generation by malware), beaconing and C2 under the firewall's radar.",
+      "h": "46c919c2"
+    },
+    "sections.2.heading": {
+      "t": "Data plane and network logs",
+      "h": "9a08702f"
+    },
+    "sections.3.body.0": {
+      "t": "Collecting everything and leaving each account with its own bucket is a recipe for the log to vanish at the first incident. The right design is fan-out: each account writes its log to S3 (or equivalent) with KMS, and an aggregator lake or a corporate SIEM pulls everything for a single query.",
+      "h": "37c25827"
+    },
+    "sections.3.body.1": {
+      "t": "Retention is where most teams slip. Management logs need 90 days hot (fast query) and 365 days cold (S3 + Glacier). VPC flow logs, depending on volume, become 30 days hot and 180 days cold. Audit logs that will become legal evidence call for object lock (WORM) to prevent retroactive tampering - without it, an attacker with write access erases their own tracks.",
+      "h": "24e0768b"
+    },
+    "sections.3.heading": {
+      "t": "Centralization and retention",
+      "h": "b15625d3"
+    },
+    "sections.4.body.0": {
+      "t": "The detection layer comes in three flavors. Deterministic rules (signatures) fire on a known signature: ConsoleLogin without MFA, root API key in use, CloudTrail disable. ML / anomalies fire on baseline deviation (login from a never-seen region, massive bucket listing by a user who normally lists three). Hunting is the human looking for what nobody thought to write a rule for.",
+      "h": "7534ec32"
+    },
+    "sections.4.body.1": {
+      "t": "GuardDuty combines the three flavors in a single managed offering: it consumes CloudTrail, VPC Flow Logs and DNS, and sends findings to EventBridge or Security Hub. The typical integration is Detective coming in for investigation (entity graph + timeline), Security Hub aggregating with Prowler/Inspector, and the SOAR (Step Functions, Tines, Torq) firing a runbook. The trick is to keep rules out of the SIEM when the SIEM aggregates poorly, and use GuardDuty for the 80% of obvious findings.",
+      "h": "faabe4c6"
+    },
+    "sections.4.code.0.code": {
+      "t": "Description: \"Forwards critical GuardDuty findings to the SOAR queue\"\nState: ENABLED\nEventBusName: default\nEventPattern: |\n  {\n    \"source\": [\"aws.guardduty\"],\n    \"detail-type\": [\"GuardDuty Finding\"],\n    \"detail\": {\n      \"severity\": [{ \"numeric\": [\">=\", 7] }],\n      \"type\": [\n        \"Recon:EC2/PortProbeUnprotectedPort\",\n        \"Recon:EC2/PortProbeOpenPort\",\n        \"UnauthorizedAccess:IAMUser/InstanceCredentialExfiltration\",\n        \"CredentialAccess:IAMUser/AnomalousBehaviors\",\n        \"Policy:IAMUser/RootCredentialUsage\",\n        \"Persistence:IAMUser/NetworkPermissions\",\n        \"PrivilegeEscalation:IAMUser/AdministrativePermissions\",\n        \"Exfiltration:S3/MaliciousIPCaller\"\n      ]\n    }\n  }\nTargets:\n  - Id: SOARIngestTarget\n    Arn: arn:aws:sqs:us-east-1:111122223333:soar-ingest",
+      "h": "2cd51967"
+    },
+    "sections.4.code.0.filename": {
+      "t": "EventBridge rule (AWS::Events::Rule) - critical GuardDuty alert",
+      "h": "d94209a9"
+    },
+    "sections.4.heading": {
+      "t": "Detection: rules, anomalies and hunting",
+      "h": "4482ec07"
+    },
+    "sections.5.body.0": {
+      "t": "The SIEM (OpenSearch, Splunk, Elastic, Datadog Cloud SIEM) is where correlation happens. Each source (CloudTrail, GuardDuty, flow logs, k8s audit, EDR) becomes an indexed stream, with its own parser and canonical fields (time, actor, target, action, result). The SIEM rule crosses sources: new IAM AssumeRole + CloudTrail GetSecretValue + public bucket touched in <5 min = suspicious session.",
+      "h": "f8d94e77"
+    },
+    "sections.5.body.1": {
+      "t": "To reduce cost and noise, two habits pay off. First, storage tiers: hot in the SIEM (30 days), cold in S3 (Iceberg, Parquet) with Athena or OpenSearch Serverless querying on demand. Second, managed detection for what you have no team to maintain: GuardDuty covers 80% of obvious findings, CSPM covers configuration drift, CWPP covers runtime. The SIEM is left for what is house-specific.",
+      "h": "9fac886e"
+    },
+    "sections.5.heading": {
+      "t": "SIEM integration",
+      "h": "90bf3e2e"
+    },
+    "sections.6.bullets.0": {
+      "t": "account onboarding: multi-region trail on, Lake or Firehose configured, S3 with object lock on the log bucket, and KMS with a dedicated key for the logs",
+      "h": "0521211a"
+    },
+    "sections.6.bullets.1": {
+      "t": "application deploy: the app emits structured logs (JSON) to stdout or a sidecar; Fluent Bit / Datadog Agent / OpenTelemetry Collector normalizes and ships to the aggregator",
+      "h": "313a0709"
+    },
+    "sections.6.bullets.2": {
+      "t": "incident response: the first command is 'search for the principal ARN in the attack window' - without an indexed log this becomes grep on text files",
+      "h": "bef9cc2e"
+    },
+    "sections.6.bullets.3": {
+      "t": "compliance: CIS Foundations, PCI, SOC 2 require an active trail and minimum retention; without an architected log, the auditor fails you before even opening the checklist",
+      "h": "7047fa40"
+    },
+    "sections.6.heading": {
+      "t": "Where it fits in day-to-day work",
+      "h": "b27af5f7"
+    },
+    "sections.7.bullets.0": {
+      "t": "total visibility of what happened: an immutable trail answers 'who, when, from where, what' for any API call in the account",
+      "h": "84f3f749"
+    },
+    "sections.7.bullets.1": {
+      "t": "detection by correlation reduces false positives: a rule that crosses signals from three sources has high precision and low noise",
+      "h": "d1b28baf"
+    },
+    "sections.7.bullets.2": {
+      "t": "decent forensics: object lock + long retention guarantees that the log from the day of the incident still exists when you open the case six months later",
+      "h": "00db25d4"
+    },
+    "sections.7.heading": {
+      "t": "Strengths",
+      "h": "a2ebc02c"
+    },
+    "sections.8.bullets.0": {
+      "t": "log custody is continuous work: turning a trail off to cut costs or forgetting to validate object lock turns the log into theater",
+      "h": "03c7c688"
+    },
+    "sections.8.bullets.1": {
+      "t": "volume eats budget: VPC Flow Logs on a large account cost on the order of USD per day; without filtering and tiering, the bill wins the conversation",
+      "h": "0cd67c76"
+    },
+    "sections.8.bullets.2": {
+      "t": "signature-based detection only catches the known: a new attacker with unmapped TTPs gets past GuardDuty, and the defense falls to manual hunting and the senior analyst's SIEM rule",
+      "h": "b51c2e6f"
+    },
+    "sections.8.heading": {
+      "t": "Limitations",
+      "h": "149d05f7"
+    },
+    "short": {
+      "t": "CloudTrail, audit and signal correlation",
+      "h": "d9d95a50"
+    },
+    "tagline": {
+      "t": "Cloud detection starts with logs: CloudTrail, VPC flow logs, IAM audit and DNS become correlated signals that feed the SIEM, managed detection and response automation.",
+      "h": "37174f9b"
+    },
+    "title": {
+      "t": "Logging & detection - signals and alerts",
+      "h": "f96bc50c"
+    }
+  }
+}

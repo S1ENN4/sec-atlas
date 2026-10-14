@@ -1,0 +1,88 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "La infraestructura como código (IaC) describe redes, identidades, bases de datos y permisos en archivos versionados, en lugar de clics en una consola. Para la seguridad esto cambia las reglas: la configuración pasa a tener historial, revisión por pares, pruebas y el mismo pipeline que el software.",
+      "h": "95670c9d"
+    },
+    "sections.0.body.1": {
+      "t": "La otra cara es que un error en el código se replica a escala: un módulo con un bucket público crea cien buckets públicos. Por eso el IaC debe tratarse como código sensible, con controles propios.",
+      "h": "47fa06fb"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "Las herramientas de análisis estático de IaC leen los archivos (o el plan de Terraform) y señalan configuraciones inseguras antes de que exista cualquier recurso: grupos de seguridad abiertos al mundo, almacenamiento sin cifrado, políticas con comodines. Es el SAST de la infraestructura, y se aplica el mismo principio de shift-left.",
+      "h": "ea1ded32"
+    },
+    "sections.1.code.0.code": {
+      "t": "# problema: SSH abierto a internet\nresource \"aws_security_group_rule\" \"ssh_bad\" {\n  type              = \"ingress\"\n  from_port         = 22\n  to_port           = 22\n  protocol          = \"tcp\"\n  cidr_blocks       = [\"0.0.0.0/0\"]   # <- el escáner lo señala\n  security_group_id = aws_security_group.app.id\n}\n\n# corrección: solo la red de administración\nresource \"aws_security_group_rule\" \"ssh_ok\" {\n  type              = \"ingress\"\n  from_port         = 22\n  to_port           = 22\n  protocol          = \"tcp\"\n  cidr_blocks       = [var.admin_cidr]\n  security_group_id = aws_security_group.app.id\n}",
+      "h": "5a83b2c9"
+    },
+    "sections.1.code.0.filename": {
+      "t": "main.tf - problema y corrección",
+      "h": "2f1df8e1"
+    },
+    "sections.1.heading": {
+      "t": "Escanear antes del apply",
+      "h": "9c9dd896"
+    },
+    "sections.2.body.0": {
+      "t": "El archivo de estado guarda lo que Terraform creó, y eso puede incluir secretos en texto plano (contraseñas generadas, claves). No debe ir al repositorio. Usa un backend remoto cifrado, con control de acceso estricto y bloqueo de concurrencia, y dale al pipeline solo los permisos que el plan realmente necesita.",
+      "h": "223d7a5c"
+    },
+    "sections.2.code.0.code": {
+      "t": "terraform {\n  backend \"s3\" {\n    bucket         = \"minha-org-tfstate\"\n    key            = \"prod/network.tfstate\"\n    region         = \"us-east-1\"\n    encrypt        = true\n    dynamodb_table = \"tfstate-lock\"   # bloqueo contra apply simultáneo\n  }\n}",
+      "h": "b0128b30"
+    },
+    "sections.2.code.0.filename": {
+      "t": "backend.tf",
+      "h": "5f6a254a"
+    },
+    "sections.2.heading": {
+      "t": "El estado de Terraform es sensible",
+      "h": "8c6469d0"
+    },
+    "sections.3.body.0": {
+      "t": "Alguien modifica un recurso en la consola durante un incidente y olvida revertirlo. El estado real diverge del código (drift), y el código deja de ser la verdad. Ejecutar un plan periódico, o usar herramientas de detección de drift, convierte esa divergencia en una alerta, y la gestión de postura en la nube (CSPM) mira el mismo problema desde el lado del entorno.",
+      "h": "cb9638b0"
+    },
+    "sections.3.heading": {
+      "t": "Drift: lo que cambió por fuera",
+      "h": "4b5a9cbd"
+    },
+    "sections.4.bullets.0": {
+      "t": "Módulos internos con los estándares seguros incorporados (cifrado, logs, etiquetas de responsable): el camino seguro se vuelve el camino fácil.",
+      "h": "9e31f437"
+    },
+    "sections.4.bullets.1": {
+      "t": "Versiones fijadas de módulos y providers, con revisión para actualizarlas.",
+      "h": "1e2c7a8c"
+    },
+    "sections.4.bullets.2": {
+      "t": "Permisos mínimos para la identidad que ejecuta el apply, separados por entorno.",
+      "h": "7f3c9769"
+    },
+    "sections.4.bullets.3": {
+      "t": "Revisión obligatoria y el plan adjunto al PR para que quien revisa vea el efecto real.",
+      "h": "f1f6c8f7"
+    },
+    "sections.4.heading": {
+      "t": "Módulos aprobados",
+      "h": "ccafbe7f"
+    },
+    "short": {
+      "t": "Terraform y Ansible revisados, escaneados y sin drift",
+      "h": "a87a99cc"
+    },
+    "tagline": {
+      "t": "Cuando la infraestructura es código, su seguridad también puede serlo: revisada en un PR, escaneada antes del apply y comparada con la realidad para detectar lo que cambió por fuera.",
+      "h": "a810f014"
+    },
+    "title": {
+      "t": "Infraestructura segura como código",
+      "h": "f32475a2"
+    }
+  }
+}

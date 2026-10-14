@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Without it, anyone who discovers the real address ignores all edge protection.",
+      "h": "f8a74ce0"
+    },
+    "questions.0.options.0": {
+      "t": "Otherwise the attacker talks directly to the origin and bypasses WAF, bots and limits",
+      "h": "f0782322"
+    },
+    "questions.0.options.1": {
+      "t": "To reduce storage cost",
+      "h": "5e3c33da"
+    },
+    "questions.0.options.2": {
+      "t": "To speed up DNS",
+      "h": "15de3272"
+    },
+    "questions.0.options.3": {
+      "t": "Because the origin does not support HTTPS",
+      "h": "00dee44f"
+    },
+    "questions.0.q": {
+      "t": "Why lock down the origin to accept traffic only from the edge?",
+      "h": "6aaa8195"
+    },
+    "questions.1.explain": {
+      "t": "Payments tend to close; public pages tend to open. The decision should be conscious and tested.",
+      "h": "c04ceea2"
+    },
+    "questions.1.options.0": {
+      "t": "If the control fails, traffic is blocked: safe, but unavailable",
+      "h": "62dbe66a"
+    },
+    "questions.1.options.1": {
+      "t": "If the control fails, traffic passes",
+      "h": "97fdda59"
+    },
+    "questions.1.options.2": {
+      "t": "The control never fails",
+      "h": "049dab4a"
+    },
+    "questions.1.options.3": {
+      "t": "The system restarts itself",
+      "h": "20c7f431"
+    },
+    "questions.1.q": {
+      "t": "What does fail-closed mean?",
+      "h": "b0315d75"
+    },
+    "questions.2.explain": {
+      "t": "Each layer covers the blind spot of the previous one: the edge handles what does not depend on the business.",
+      "h": "f1bf0031"
+    },
+    "questions.2.options.0": {
+      "t": "The edge does not know the business context, such as who can see that order",
+      "h": "8f942f16"
+    },
+    "questions.2.options.1": {
+      "t": "The edge does not read headers",
+      "h": "c3473b48"
+    },
+    "questions.2.options.2": {
+      "t": "Because the application is faster",
+      "h": "217350ea"
+    },
+    "questions.2.options.3": {
+      "t": "Because the edge does not support HTTPS",
+      "h": "dc0ec1eb"
+    },
+    "questions.2.q": {
+      "t": "Why can per-object authorization not live only at the edge?",
+      "h": "70b1c0a1"
+    }
+  }
+}

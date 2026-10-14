@@ -1,0 +1,80 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "The security platform is a production system like any other and needs its own metrics, logs and traces. The difference is the cost of silent failure: if the pipeline falls an hour behind, nobody gets an error, but every attack in that window goes undetected.",
+      "h": "3f2551bc"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.bullets.0": {
+      "t": "Consumer lag: how far processing is behind the end of the log. It is the most direct indicator of delayed detection.",
+      "h": "7abaf2c3"
+    },
+    "sections.1.bullets.1": {
+      "t": "End-to-end latency: from the event at the edge to the decision, in percentiles (p50, p95, p99).",
+      "h": "7d25d845"
+    },
+    "sections.1.bullets.2": {
+      "t": "Error rate and rate of dropped events or events sent to the DLQ.",
+      "h": "9342fcf3"
+    },
+    "sections.1.bullets.3": {
+      "t": "Saturation: CPU and memory usage and the depth of internal queues.",
+      "h": "4513a223"
+    },
+    "sections.1.bullets.4": {
+      "t": "Freshness: time since the last event per source. A source that stopped sending is a failure, not calm.",
+      "h": "e61cff25"
+    },
+    "sections.1.heading": {
+      "t": "The signals that matter",
+      "h": "c6ba8bb0"
+    },
+    "sections.2.body.0": {
+      "t": "The most valuable alert is the one on absence: \"source X has sent nothing in the last 10 minutes\". In Prometheus, this is written with the received-events metric. The example shows one alert for high lag and another for a silent source.",
+      "h": "eb6e37fa"
+    },
+    "sections.2.code.0.code": {
+      "t": "groups:\n  - name: security-pipeline\n    rules:\n      - alert: DetectionLagHigh\n        expr: max(pipeline_consumer_lag{group=\"detect-login-failures\"}) > 50000\n        for: 5m\n        labels: { severity: page }\n        annotations:\n          summary: \"Detection delayed: lag above 50k events for 5 min\"\n\n      - alert: EdgeSourceSilent\n        expr: sum(rate(edge_events_received_total[5m])) by (source) == 0\n        for: 10m\n        labels: { severity: page }\n        annotations:\n          summary: \"Source {{ $labels.source }} with no events for 10 min\"",
+      "h": "084762b5"
+    },
+    "sections.2.code.0.filename": {
+      "t": "alerts.yml (Prometheus)",
+      "h": "b79c05c7"
+    },
+    "sections.2.heading": {
+      "t": "Alert on silence",
+      "h": "d11facdf"
+    },
+    "sections.3.body.0": {
+      "t": "When end-to-end latency rises, a trace shows which stage the time was spent in (consumption, enrichment, external call, write). With OpenTelemetry, the trace context travels with the event between services, even across queues, and the same pattern serves every team.",
+      "h": "dcb549e2"
+    },
+    "sections.3.heading": {
+      "t": "Traces to find the bottleneck",
+      "h": "a1149be3"
+    },
+    "sections.4.body.0": {
+      "t": "Treat the platform as a product with targets: for example, \"99% of events become a decision in under 60 seconds\" and \"no critical source silent for more than 10 minutes\". Targets give an objective criterion to prioritize reliability work against new features.",
+      "h": "28159454"
+    },
+    "sections.4.heading": {
+      "t": "Platform SLOs",
+      "h": "d2aa4731"
+    },
+    "short": {
+      "t": "knowing when the detection pipeline is blind or late",
+      "h": "936c60ce"
+    },
+    "tagline": {
+      "t": "A detection that stopped working makes no noise: it simply stops catching attacks. Observing the pipeline itself is what turns that silent failure into an alert.",
+      "h": "69e7ca96"
+    },
+    "title": {
+      "t": "Observability of the security platform itself",
+      "h": "02280e69"
+    }
+  }
+}

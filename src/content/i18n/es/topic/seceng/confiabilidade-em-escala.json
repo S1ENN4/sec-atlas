@@ -1,0 +1,92 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Aquí la confiabilidad es la propiedad de seguir siendo correcto bajo fallas: una red que se cae, una dependencia lenta, un mensaje repetido, un pico de volumen. En seguridad las dos fallas más costosas son perder un evento (una detección que nunca se dispara) y actuar dos veces (bloquear, notificar o revocar por duplicado).",
+      "h": "964c1555"
+    },
+    "sections.0.body.1": {
+      "t": "El enfoque práctico es aceptar que la entrega será at-least-once y hacer idempotente el procesamiento, en lugar de perseguir una entrega \"exactly-once\" mágica de punta a punta.",
+      "h": "2e929915"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "Una operación es idempotente cuando ejecutarla varias veces da el mismo resultado que ejecutarla una sola vez. Para los eventos, el camino habitual es darle a cada uno un identificador estable y registrar los ya procesados: si el ID reaparece, el handler lo descarta o repite solo lo que es seguro.",
+      "h": "eca771a4"
+    },
+    "sections.1.bullets.0": {
+      "t": "ID de evento determinista (hash de los campos relevantes, o el ID del origen) para detectar repeticiones.",
+      "h": "e555020f"
+    },
+    "sections.1.bullets.1": {
+      "t": "Registro de los IDs procesados con plazo (Redis con expiración, o una tabla con restricción de unicidad).",
+      "h": "783295a7"
+    },
+    "sections.1.bullets.2": {
+      "t": "Acciones definidas por estado deseado (\"la IP X está bloqueada hasta T\") en lugar de acciones incrementales (\"bloquea\"), ya que repetir el estado deseado no cambia nada.",
+      "h": "57c1f933"
+    },
+    "sections.1.heading": {
+      "t": "Idempotencia: reprocesar sin efecto adicional",
+      "h": "3ffb287d"
+    },
+    "sections.2.body.0": {
+      "t": "Reintentar una llamada que falló ayuda, pero reintentar todo al mismo tiempo tumba la dependencia que acaba de recuperarse. El patrón estándar es el backoff exponencial (esperar más en cada intento) con jitter (aleatoriedad para desincronizar a los clientes) y un tope de intentos, tras el cual el evento va a la DLQ.",
+      "h": "38947a8a"
+    },
+    "sections.2.code.0.code": {
+      "t": "import random\nimport time\n\n\ndef retry(fn, max_attempts=5, base=0.2):\n    for i in range(max_attempts):\n        try:\n            return fn()\n        except Exception as err:\n            if i == max_attempts - 1:\n                raise RuntimeError(f\"se agotaron los {max_attempts} intentos\") from err\n            # backoff exponencial con jitter total: espera en [0, base * 2**i)\n            time.sleep(random.uniform(0, base * 2 ** i))",
+      "h": "9dc09d58"
+    },
+    "sections.2.code.0.filename": {
+      "t": "retry.py",
+      "h": "bd5dcb4f"
+    },
+    "sections.2.heading": {
+      "t": "Reintentos con backoff y jitter",
+      "h": "bccac13c"
+    },
+    "sections.3.bullets.0": {
+      "t": "Backpressure: colas y buffers con límite. Cuando el consumidor no da abasto, el productor desacelera o el exceso se descarta de forma deliberada, en lugar de que la memoria crezca hasta que el proceso muere.",
+      "h": "b2f1ec57"
+    },
+    "sections.3.bullets.1": {
+      "t": "Circuit breaker: tras fallas consecutivas, dejar de llamar a la dependencia por un tiempo y responder con un fallback definido.",
+      "h": "7687c1ef"
+    },
+    "sections.3.bullets.2": {
+      "t": "Bulkheads: pools separados por dependencia, para que la lentitud de una no consuma los recursos de todas.",
+      "h": "fea36820"
+    },
+    "sections.3.bullets.3": {
+      "t": "Timeouts en toda llamada externa, con un plazo menor que el del llamador.",
+      "h": "73052825"
+    },
+    "sections.3.heading": {
+      "t": "Backpressure y aislamiento",
+      "h": "3e2ff658"
+    },
+    "sections.4.body.0": {
+      "t": "Cada componente necesita una respuesta definida para \"no pude decidir\". Un enriquecimiento que falló debe generar el evento sin el campo (y una marca de que faltó), no descartarlo. Una acción automática que no pudo confirmar el contexto debe pedir aprobación humana, no actuar a ciegas.",
+      "h": "e01e97ca"
+    },
+    "sections.4.heading": {
+      "t": "Fallar de forma segura",
+      "h": "2be1e75e"
+    },
+    "short": {
+      "t": "el pipeline que resiste fallas sin perder ni duplicar una decisión",
+      "h": "45be15a4"
+    },
+    "tagline": {
+      "t": "En los sistemas distribuidos todo falla en algún momento. Lo que distingue a una plataforma de seguridad confiable es cómo se comporta cuando eso ocurre: sin perder eventos y sin actuar dos veces.",
+      "h": "fd45e16a"
+    },
+    "title": {
+      "t": "Confiabilidad a escala: idempotencia, reintentos y backpressure",
+      "h": "988b489b"
+    }
+  }
+}

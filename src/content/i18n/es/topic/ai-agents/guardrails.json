@@ -1,0 +1,124 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Un guardrail es una capa de validación que queda entre el usuario y el agente, y entre el agente y la respuesta final. En cada turno, dos bordes: el borde de arriba analiza el mensaje del usuario (y el historial, y los documentos que entrarán como contexto) y decide si pasa, bloquea o reescribe. El borde de abajo hace lo mismo con la salida del agente antes de que llegue a quien la pidió.",
+      "h": "07279d7f"
+    },
+    "sections.0.body.1": {
+      "t": "La diferencia con el eval es la posición en el tiempo. El eval mide la calidad después de que se generó la respuesta, en batch o por muestreo. El guardrail actúa ahora, en cada request. Son complementarios. Quien reemplaza uno por el otro crea teatro de seguridad: un eval demasiado lento para bloquear y un guardrail solo sin visión de la calidad general.",
+      "h": "1697b5f5"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "La entrada es la parte más apuntada. El usuario puede intentar instruir al modelo para que ignore las instrucciones del sistema (jailbreak clásico), incrustar un comando dentro de un documento recuperado (indirect prompt injection), o pegar datos sensibles pidiéndole al agente que los procese (PII que termina en el log). El guardrail de entrada necesita las tres detecciones, y cada una tiene su propio mecanismo.",
+      "h": "e675a411"
+    },
+    "sections.1.body.1": {
+      "t": "La PII es lo más fácil: regex sobre correo, documento de identidad, teléfono, tarjeta. Los falsos positivos son trabajo de revisión, los falsos negativos se vuelven incidentes. El jailbreak es más sutil: clasificadores entrenados con prompts adversariales, o patrones conocidos (DAN, role-play). La indirect injection es lo más nuevo y lo más difícil: la instrucción hostil está en un documento que trajo el retrieval, no en el mensaje del usuario. La detección aquí pide un análisis semántico del contenido recuperado, no solo del texto crudo.",
+      "h": "f79e1b38"
+    },
+    "sections.1.heading": {
+      "t": "Entrada: prompt injection, jailbreak, PII",
+      "h": "b4fda173"
+    },
+    "sections.2.body.0": {
+      "t": "La salida también necesita tres capas. La validación de schema garantiza que la respuesta final tenga la forma esperada (JSON tipado, markdown válido, links con host confiable). La máscara de PII redacta correo, teléfono, dirección que el modelo haya inventado o copiado. La política rechaza contenido prohibido por el negocio (competidor citado, jurisdicción restringida, categoría sensible).",
+      "h": "dcf680e7"
+    },
+    "sections.2.body.1": {
+      "t": "La capa de schema merece atención especial. Sin un schema válido, el frontend no renderiza y el agente parece roto. Por eso el guardrail de salida arranca casi paranoico: es mejor bloquear una respuesta válida y devolver un fallback que entregar una respuesta que rompe al consumidor.",
+      "h": "6f580b06"
+    },
+    "sections.2.heading": {
+      "t": "Salida: schema, PII, política",
+      "h": "bc399081"
+    },
+    "sections.3.body.0": {
+      "t": "El snippet muestra un guardrail de salida mínimo: valida JSON contra un schema, redacta PII básica y bloquea cuando el contenido se aparta de la rúbrica. En producción conviene cambiar el regex por un detector (Guardrails AI, Lakera), pero la mecánica es esta:",
+      "h": "dd31b0c4"
+    },
+    "sections.3.code.0.code": {
+      "t": "import Ajv from \"ajv\";\n\nconst schema = {\n  type: \"object\",\n  required: [\"resposta\", \"fontes\"],\n  properties: {\n    resposta: { type: \"string\", minLength: 1, maxLength: 2000 },\n    fontes: { type: \"array\", items: { type: \"string\" } }\n  },\n  additionalProperties: false\n};\n\nconst ajv = new Ajv();\nconst validate = ajv.compile(schema);\n\nconst PII = /\\b([\\w._%+-]+@[\\w.-]+\\.[A-Za-z]{2,}|\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2})\\b/g;\nconst PROIBIDO = /(competidor-x|competidor-y)/i;\n\nexport type Veredito = { ok: true; saida: unknown } | { ok: false; motivo: string };\n\nexport function guardrailSaida(raw: string): Veredito {\n  let parsed: unknown;\n  try { parsed = JSON.parse(raw); } catch { return { ok: false, motivo: \"json_invalido\" }; }\n  if (!validate(parsed)) return { ok: false, motivo: \"schema_invalido\" };\n  if (PROIBIDO.test(JSON.stringify(parsed))) return { ok: false, motivo: \"politica_violada\" };\n  const redigido = JSON.stringify(parsed).replace(PII, \"[REDACTADO]\");\n  return { ok: true, saida: JSON.parse(redigido) };\n}",
+      "h": "ce0e682f"
+    },
+    "sections.3.code.0.filename": {
+      "t": "guardrails/saida.ts",
+      "h": "d9a05f99"
+    },
+    "sections.3.heading": {
+      "t": "Guardrail de salida en la práctica",
+      "h": "dee6a1ee"
+    },
+    "sections.4.body.0": {
+      "t": "Como capa transversal, antes del LLM y después del LLM. En producción el guardrail de entrada se vuelve un middleware del endpoint HTTP; el de salida se vuelve un wrapper del cliente LLM o un post-processor del stream. En frameworks como LangGraph, es un nodo dedicado entre el usuario y el agente, y entre el agente y la respuesta.",
+      "h": "e25d2f0e"
+    },
+    "sections.4.body.1": {
+      "t": "El rendimiento importa. Cada guardrail agrega latencia, y la latencia en un chat se nota de inmediato. Regla: el guardrail de entrada corre en <= 50ms para la mayoría de los casos, y el de salida queda dentro del presupuesto total del request (típicamente <= 200ms). Por encima de eso, usa un detector asíncrono y muestra un placeholder mientras procesa.",
+      "h": "02f6a65e"
+    },
+    "sections.4.heading": {
+      "t": "Dónde entra en la arquitectura",
+      "h": "9e1dcdb7"
+    },
+    "sections.5.body.0": {
+      "t": "El guardrail se ocupa de lo que puede pasar. Un agente puede pasar todos los guardrails y aun así dar una mala respuesta (fuera de tema, factualmente errónea, con un tono inadecuado). Eso es trabajo del eval, y el eval corre en batch donde el guardrail no puede.",
+      "h": "d6cbfe01"
+    },
+    "sections.5.body.1": {
+      "t": "La confusión aparece cuando alguien trata el guardrail como prueba de calidad. La puntuación media del guardrail es alta (la mayoría de los requests pasa), y eso lleva al equipo a pensar que 'todo está bien'. No lo está. El guardrail mide seguridad y conformidad; el eval mide calidad. Son dos ejes distintos, ambos necesarios.",
+      "h": "37539aa5"
+    },
+    "sections.5.heading": {
+      "t": "El guardrail no reemplaza al eval",
+      "h": "78c5537b"
+    },
+    "sections.6.bullets.0": {
+      "t": "bloquea ataques conocidos antes de que lleguen al modelo, p. ej. injection simple y PII obvia",
+      "h": "e465f74c"
+    },
+    "sections.6.bullets.1": {
+      "t": "conformidad rastreable: cada turno se vuelve un log de decisión, y la auditoría quiere una señal rápida cuando hay una violación",
+      "h": "05d7e9ac"
+    },
+    "sections.6.bullets.2": {
+      "t": "componible: se pueden combinar varios guardrails en un pipeline, cada uno encargándose de una clase de riesgo",
+      "h": "5b51bec8"
+    },
+    "sections.6.heading": {
+      "t": "Puntos fuertes",
+      "h": "a2ebc02c"
+    },
+    "sections.7.bullets.0": {
+      "t": "falso negativo ante ataques nuevos: la prompt injection evoluciona, y un detector entrenado en 2024 falla en 2026",
+      "h": "2706af06"
+    },
+    "sections.7.bullets.1": {
+      "t": "costo de latencia: cada capa síncrona adicional se ve en el SLA, y un pipeline de 5 guardrails empieza a parecer caro",
+      "h": "6805d8b8"
+    },
+    "sections.7.bullets.2": {
+      "t": "ceguera de calidad: bloquea lo peligroso, pero no mide si lo que pasó es bueno, y eso sigue siendo del eval",
+      "h": "b7629aae"
+    },
+    "sections.7.heading": {
+      "t": "Limitaciones",
+      "h": "149d05f7"
+    },
+    "short": {
+      "t": "filtros de entrada y salida para contener al agente",
+      "h": "bf809dab"
+    },
+    "tagline": {
+      "t": "Los guardrails validan la entrada (prompt injection, PII, jailbreak) y la salida (PII, schema, política) en cada turno. Complementan al eval: retienen lo que va al usuario, pero no miden si la respuesta es buena.",
+      "h": "327b62a7"
+    },
+    "title": {
+      "t": "Guardrails - filtros de entrada y salida",
+      "h": "9848a64f"
+    }
+  }
+}

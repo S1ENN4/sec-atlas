@@ -1,0 +1,216 @@
+{
+  "entries": {
+    "graph.0.label": {
+      "t": "triggers the response",
+      "h": "fe184c0e"
+    },
+    "graph.1.label": {
+      "t": "guides the model",
+      "h": "705c0274"
+    },
+    "graph.2.label": {
+      "t": "segments by identity",
+      "h": "fb0efb59"
+    },
+    "graph.3.label": {
+      "t": "audits posture",
+      "h": "ce4ce4aa"
+    },
+    "graph.4.label": {
+      "t": "monitors the runtime",
+      "h": "03946931"
+    },
+    "graph.5.label": {
+      "t": "detects behavior",
+      "h": "2249c68d"
+    },
+    "graph.6.label": {
+      "t": "feeds posture",
+      "h": "e9a4f23d"
+    },
+    "graph.7.label": {
+      "t": "provides the trail",
+      "h": "42ec8726"
+    },
+    "graph.8.label": {
+      "t": "authorizes key access",
+      "h": "8897eacf"
+    },
+    "graph.9.label": {
+      "t": "encrypts the secrets",
+      "h": "f28d3a50"
+    },
+    "graph.10.label": {
+      "t": "isolates the network",
+      "h": "3b871d99"
+    },
+    "pipeline.0.description": {
+      "t": "assets and owners mapped",
+      "h": "218a2d08"
+    },
+    "pipeline.0.gate": {
+      "t": "every asset has an owner and a classification",
+      "h": "fad5aa22"
+    },
+    "pipeline.0.items.0.label": {
+      "t": "account and service mapping",
+      "h": "b8281808"
+    },
+    "pipeline.0.items.1.label": {
+      "t": "asset / owner inventory",
+      "h": "3863e55d"
+    },
+    "pipeline.0.items.2.label": {
+      "t": "data classification",
+      "h": "c185385e"
+    },
+    "pipeline.0.name": {
+      "t": "inventory",
+      "h": "74a6a96f"
+    },
+    "pipeline.1.description": {
+      "t": "identity, network and data under control",
+      "h": "3f597bd1"
+    },
+    "pipeline.1.gate": {
+      "t": "no static secrets · least-privilege IAM",
+      "h": "18fb700e"
+    },
+    "pipeline.1.items.0.label": {
+      "t": "least privilege",
+      "h": "48145998"
+    },
+    "pipeline.1.items.1.label": {
+      "t": "segmentation and microsegmentation",
+      "h": "6ca31c09"
+    },
+    "pipeline.1.items.2.label": {
+      "t": "keys and envelopes",
+      "h": "0fb0242b"
+    },
+    "pipeline.1.items.3.label": {
+      "t": "vaults and rotation",
+      "h": "95a98ff1"
+    },
+    "pipeline.1.items.4.label": {
+      "t": "RBAC and admission",
+      "h": "ce6feb5d"
+    },
+    "pipeline.1.items.5.label": {
+      "t": "signed, immutable images",
+      "h": "d342b416"
+    },
+    "pipeline.1.name": {
+      "t": "protect",
+      "h": "75926053"
+    },
+    "pipeline.2.description": {
+      "t": "visibility and posture monitored",
+      "h": "3db59e81"
+    },
+    "pipeline.2.gate": {
+      "t": "drift and anomalies become alerts within minutes",
+      "h": "759d5e91"
+    },
+    "pipeline.2.items.0.label": {
+      "t": "continuous posture",
+      "h": "1ad4e3e6"
+    },
+    "pipeline.2.items.1.label": {
+      "t": "runtime and workload",
+      "h": "d502628e"
+    },
+    "pipeline.2.items.2.label": {
+      "t": "signals and alerts",
+      "h": "13f4d8a6"
+    },
+    "pipeline.2.name": {
+      "t": "detect",
+      "h": "6d98ec7e"
+    },
+    "pipeline.3.description": {
+      "t": "from alert to containment",
+      "h": "801b1c09"
+    },
+    "pipeline.3.gate": {
+      "t": "MTTR below the threshold · lessons flow back into the inventory",
+      "h": "9371177c"
+    },
+    "pipeline.3.items.0.label": {
+      "t": "runbooks and automation",
+      "h": "51cead16"
+    },
+    "pipeline.3.items.1.label": {
+      "t": "credential isolation",
+      "h": "773b53f7"
+    },
+    "pipeline.3.items.2.label": {
+      "t": "preserved forensics",
+      "h": "cdcfd4e2"
+    },
+    "pipeline.3.name": {
+      "t": "respond",
+      "h": "82682275"
+    },
+    "relations.0.label": {
+      "t": "guides the model",
+      "h": "705c0274"
+    },
+    "relations.1.label": {
+      "t": "segments by identity",
+      "h": "fb0efb59"
+    },
+    "relations.2.label": {
+      "t": "audits",
+      "h": "7f686db0"
+    },
+    "relations.3.label": {
+      "t": "audits posture",
+      "h": "ce4ce4aa"
+    },
+    "relations.4.label": {
+      "t": "monitors the runtime",
+      "h": "03946931"
+    },
+    "relations.5.label": {
+      "t": "detects behavior",
+      "h": "2249c68d"
+    },
+    "relations.6.label": {
+      "t": "feeds posture",
+      "h": "e9a4f23d"
+    },
+    "relations.7.label": {
+      "t": "provides the trail",
+      "h": "42ec8726"
+    },
+    "relations.8.label": {
+      "t": "documents decisions",
+      "h": "c66ef437"
+    },
+    "relations.9.label": {
+      "t": "authorizes key access",
+      "h": "8897eacf"
+    },
+    "relations.10.label": {
+      "t": "encrypts the secrets",
+      "h": "f28d3a50"
+    },
+    "relations.11.label": {
+      "t": "isolates the network",
+      "h": "3b871d99"
+    },
+    "relations.12.label": {
+      "t": "triggers the response",
+      "h": "fe184c0e"
+    },
+    "relations.13.label": {
+      "t": "runtime alert",
+      "h": "ee80ea14"
+    },
+    "relations.14.label": {
+      "t": "revokes credentials",
+      "h": "29819b53"
+    }
+  }
+}

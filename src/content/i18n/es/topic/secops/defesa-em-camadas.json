@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Una solicitud atraviesa varias capas antes de llegar a los datos: el borde (CDN y WAF), un gateway de API, la aplicación y la base de datos. La defensa en capas es diseñar el conjunto para que la falla o la evasión de una no tumbe al resto, poniendo cada control donde es más barato y más preciso.",
+      "h": "76904c4d"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "El borde es excelente para lo que no depende del contexto de negocio (volumen, firmas, bots). Pero no sabe si un usuario puede ver ese pedido: eso es autorización, y solo la aplicación la conoce. Cada capa cubre el punto ciego de la anterior.",
+      "h": "835ab753"
+    },
+    "sections.1.code.0.code": {
+      "t": "cliente\n  -> borde (CDN + WAF + bot + rate limit)   barato, a escala: bloquear lo obvio y lo volumétrico\n  -> gateway de API                          identidad, esquema, cuotas por cliente\n  -> aplicación                              autorización por objeto, reglas de negocio\n  -> datos                                   mínimo privilegio, cifrado, auditoría",
+      "h": "54397f7b"
+    },
+    "sections.1.code.0.filename": {
+      "t": "capas, del borde al dato",
+      "h": "85eb8bc5"
+    },
+    "sections.1.heading": {
+      "t": "El camino de la solicitud y el papel de cada capa",
+      "h": "b87a3309"
+    },
+    "sections.2.body.0": {
+      "t": "De nada sirve un WAF excelente si el atacante habla directo con el origen. El origen debe aceptar tráfico solo del borde: lista de IPs del proveedor, autenticación mutua entre el borde y el origen, o túneles privados. Sin eso, cualquiera que descubra la dirección real elude toda la protección.",
+      "h": "e22ab4a0"
+    },
+    "sections.2.heading": {
+      "t": "Cerrar el origen",
+      "h": "e8bd1a6b"
+    },
+    "sections.3.body.0": {
+      "t": "Toda capa de seguridad puede fallar (error de configuración, indisponibilidad, regla defectuosa). La pregunta de diseño es qué ocurre: fail-closed bloquea todo (seguro, pero es una indisponibilidad), fail-open deja pasar (disponible, pero desprotegido). No existe una respuesta universal: un endpoint de pago tiende a cerrar, una página pública tiende a abrir, y la decisión debe ser consciente, documentada y probada.",
+      "h": "4ae4aef2"
+    },
+    "sections.3.heading": {
+      "t": "Fail-open o fail-closed",
+      "h": "35293e8b"
+    },
+    "sections.4.bullets.0": {
+      "t": "Presupuesto de latencia: cada capa suma milisegundos; la inspección profunda del cuerpo cabe solo donde importa.",
+      "h": "ae7e41bd"
+    },
+    "sections.4.bullets.1": {
+      "t": "Radio de impacto: una regla nueva afecta a todo el tráfico; por eso la regla entra primero en observación y en un subconjunto.",
+      "h": "aaca0a16"
+    },
+    "sections.4.bullets.2": {
+      "t": "Cambio como código: reglas en repositorio (Terraform, por ejemplo), con revisión y rollback, en lugar de clics en el panel.",
+      "h": "b58a5f78"
+    },
+    "sections.4.bullets.3": {
+      "t": "Observabilidad en todas las capas, para saber en cuál se frenó una solicitud.",
+      "h": "3b4d04f4"
+    },
+    "sections.4.heading": {
+      "t": "Latencia y radio de impacto",
+      "h": "7ba4151f"
+    },
+    "short": {
+      "t": "dónde vive cada control, y qué pasa cuando falla",
+      "h": "e1da6b5b"
+    },
+    "tagline": {
+      "t": "Diseñar la defensa es decidir, capa por capa, quién inspecciona qué, cuánta latencia cuesta y si el sistema abre o cierra cuando cae un control.",
+      "h": "c131ebb4"
+    },
+    "title": {
+      "t": "Defensa en capas: diseño de sistemas de borde",
+      "h": "14560d34"
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "The token expires on its own and the provider only hands over what the pipeline's identity is allowed to receive.",
+      "h": "db27e072"
+    },
+    "questions.0.options.0": {
+      "t": "Temporary credentials, restricted to the repository and branch, with no static secret to leak",
+      "h": "ba953d29"
+    },
+    "questions.0.options.1": {
+      "t": "It is faster to set up",
+      "h": "a1520c0c"
+    },
+    "questions.0.options.2": {
+      "t": "It dispenses with IAM",
+      "h": "81142616"
+    },
+    "questions.0.options.3": {
+      "t": "It works without internet",
+      "h": "d5238b4d"
+    },
+    "questions.0.q": {
+      "t": "What is the advantage of OIDC over cloud keys stored as pipeline secrets?",
+      "h": "d671a4db"
+    },
+    "questions.1.explain": {
+      "t": "The pipeline's dependencies are supply chain too.",
+      "h": "94d105bd"
+    },
+    "questions.1.options.0": {
+      "t": "A mutable tag can be repointed to malicious code",
+      "h": "aed2bf07"
+    },
+    "questions.1.options.1": {
+      "t": "To reduce the image size",
+      "h": "4a089e73"
+    },
+    "questions.1.options.2": {
+      "t": "Because the SHA is easier to read",
+      "h": "65cc15c4"
+    },
+    "questions.1.options.3": {
+      "t": "Because tags are forbidden",
+      "h": "64dbe120"
+    },
+    "questions.1.q": {
+      "t": "Why pin actions and images by SHA or digest?",
+      "h": "6f6102ec"
+    },
+    "questions.2.explain": {
+      "t": "PR inputs (title, branch, content) are controlled by whoever opens the PR.",
+      "h": "23077581"
+    },
+    "questions.2.options.0": {
+      "t": "Running fork code with access to secrets, treating PR input as trusted",
+      "h": "c16c37a3"
+    },
+    "questions.2.options.1": {
+      "t": "They do not work with Git",
+      "h": "6d9a627a"
+    },
+    "questions.2.options.2": {
+      "t": "They only run in production",
+      "h": "63f792c7"
+    },
+    "questions.2.options.3": {
+      "t": "They encrypt the repository",
+      "h": "1fdb6a4e"
+    },
+    "questions.2.q": {
+      "t": "What is risky about triggers like pull_request_target?",
+      "h": "a953caef"
+    }
+  }
+}

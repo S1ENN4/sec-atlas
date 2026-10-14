@@ -1,0 +1,116 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "SCA (Software Composition Analysis) inventories the project's dependencies, direct and transitive, and cross-references each version with public vulnerability databases (NVD, GitHub Advisory, OSV) and license databases.",
+      "h": "f34a6485"
+    },
+    "sections.0.body.1": {
+      "t": "The premise: most of the code in a modern application (often 70 to 90%) comes from third parties. Your risk surface includes all of it, even if nobody on the team wrote a line of those libraries.",
+      "h": "cc62f36a"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "The starting point is always a manifest or lockfile. Say the project depends on an old version of lodash:",
+      "h": "40fb7892"
+    },
+    "sections.1.code.0.code": {
+      "t": "{ \"dependencies\": { \"lodash\": \"4.17.15\" } }",
+      "h": "3a0f3a31"
+    },
+    "sections.1.code.0.filename": {
+      "t": "package.json",
+      "h": "7030d0b2"
+    },
+    "sections.1.heading": {
+      "t": "A real CVE: from lockfile to alert",
+      "h": "1edcb8dc"
+    },
+    "sections.2.body.0": {
+      "t": "SCA takes each component+version from the lockfile and queries the vulnerability databases. For lodash 4.17.15, there is a real, well-known advisory:",
+      "h": "1568189b"
+    },
+    "sections.2.code.0.code": {
+      "t": "{\n  \"id\": \"CVE-2020-8203\",\n  \"package\": \"lodash\",\n  \"title\": \"Prototype pollution in zipObjectDeep\",\n  \"affected\": \"< 4.17.19\",\n  \"patched\": \"4.17.19\",\n  \"severity\": \"HIGH\"\n}",
+      "h": "63ed44f8"
+    },
+    "sections.2.code.0.filename": {
+      "t": "advisory (OSV / GitHub Advisory)",
+      "h": "bee1ba81"
+    },
+    "sections.2.heading": {
+      "t": "Cross-referencing with the advisories",
+      "h": "0c5226f8"
+    },
+    "sections.3.body.0": {
+      "t": "The case gets interesting when the vulnerable package is not even in your package.json: it came in as a dependency of a dependency, three levels down. You never chose that lodash, but it is in your artifact running in production.",
+      "h": "53fcb8d4"
+    },
+    "sections.3.body.1": {
+      "t": "This is where the lockfile saves the day: it records the full tree, not just what is in the manifest. Without SCA and without a lockfile, the question 'do we use lodash 4.17.15?' has no quick answer, even in your own repository.",
+      "h": "3fc176bd"
+    },
+    "sections.3.heading": {
+      "t": "Why the transitive version is the nightmare",
+      "h": "619602c7"
+    },
+    "sections.4.bullets.0": {
+      "t": "reads manifests and lockfiles (package.json, package-lock, pom.xml, go.mod, requirements.txt)",
+      "h": "5244f871"
+    },
+    "sections.4.bullets.1": {
+      "t": "builds the full dependency tree, including transitive ones",
+      "h": "46022c67"
+    },
+    "sections.4.bullets.2": {
+      "t": "matches each component+version with published advisories and scores severity (CVSS, EPSS, known exploit)",
+      "h": "6ef06490"
+    },
+    "sections.4.bullets.3": {
+      "t": "opens automatic update PRs and generates the artifact's SBOM",
+      "h": "c41b1b81"
+    },
+    "sections.4.heading": {
+      "t": "How it works, in short",
+      "h": "1ec47369"
+    },
+    "sections.5.body.0": {
+      "t": "On the PR and in the build, blocking new critical dependencies. And continuously after deploy: a new CVE against an old version appears every day. The tool monitors the inventory and alerts (or opens a PR) when an already-used dependency becomes a risk.",
+      "h": "1ae3882e"
+    },
+    "sections.5.heading": {
+      "t": "Where it fits in the pipeline",
+      "h": "9be60c28"
+    },
+    "sections.6.bullets.0": {
+      "t": "only knows about already published vulnerabilities; a zero-day in a dependency gets through",
+      "h": "63f855ed"
+    },
+    "sections.6.bullets.1": {
+      "t": "does not find flaws in your code: that is what SAST and DAST are for",
+      "h": "c188057f"
+    },
+    "sections.6.bullets.2": {
+      "t": "without a severity policy, it becomes a factory of ignored alerts",
+      "h": "91dc4dac"
+    },
+    "sections.6.heading": {
+      "t": "Limitations",
+      "h": "149d05f7"
+    },
+    "short": {
+      "t": "Inventory and CVEs of dependencies",
+      "h": "3bf2f404"
+    },
+    "tagline": {
+      "t": "Watches the code you did not write: third-party libraries, versions and known vulnerabilities.",
+      "h": "57f5f152"
+    },
+    "title": {
+      "t": "SCA",
+      "h": "5df5d896"
+    }
+  }
+}

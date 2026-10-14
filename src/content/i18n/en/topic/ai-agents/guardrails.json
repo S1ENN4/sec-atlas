@@ -1,0 +1,124 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "A guardrail is a validation layer that sits between the user and the agent, and between the agent and the final response. On each turn, two edges: the upper edge analyzes the user's message (and the history, and the documents that will enter as context) and decides whether to pass, block or rewrite. The lower edge does the same with the agent's output before it reaches whoever asked.",
+      "h": "07279d7f"
+    },
+    "sections.0.body.1": {
+      "t": "The difference from evals is the position in time. An eval measures quality after the response was generated, in batch or by sampling. A guardrail acts now, on every request. They are complementary. Whoever replaces one with the other creates security theater: an eval too slow to block and a guardrail alone with no view of overall quality.",
+      "h": "1697b5f5"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "Input is the most targeted part. The user may try to instruct the model to ignore the system instructions (classic jailbreak), embed a command inside a retrieved document (indirect prompt injection), or paste sensitive data asking the agent to process it (PII that ends up in the log). The input guardrail needs all three detections, and each has its own mechanism.",
+      "h": "e675a411"
+    },
+    "sections.1.body.1": {
+      "t": "PII is the easiest: regex over email, national ID, phone, card. False positives are review work, false negatives become incidents. Jailbreak is subtler: classifiers trained on adversarial prompts, or known patterns (DAN, role-play). Indirect injection is the newest and the hardest: the hostile instruction is in a document that retrieval brought in, not in the user's message. Detection here calls for semantic analysis of the retrieved content, not just the raw text.",
+      "h": "f79e1b38"
+    },
+    "sections.1.heading": {
+      "t": "Input: prompt injection, jailbreak, PII",
+      "h": "b4fda173"
+    },
+    "sections.2.body.0": {
+      "t": "Output needs three layers too. Schema validation ensures the final response has the expected shape (typed JSON, valid markdown, links with a trusted host). PII masking redacts email, phone, address that the model may have invented or copied. Policy rejects content forbidden by the business (competitor mentioned, restricted jurisdiction, sensitive category).",
+      "h": "dcf680e7"
+    },
+    "sections.2.body.1": {
+      "t": "The schema layer deserves special attention. Without a valid schema, the frontend does not render and the agent looks broken. That is why the output guardrail starts almost paranoid: better to block a valid response and return a fallback than to deliver a response that breaks the consumer.",
+      "h": "6f580b06"
+    },
+    "sections.2.heading": {
+      "t": "Output: schema, PII, policy",
+      "h": "bc399081"
+    },
+    "sections.3.body.0": {
+      "t": "The snippet shows a minimal output guardrail: it validates JSON against a schema, redacts basic PII, and blocks when the content strays from the rubric. In production it is worth swapping regex for a detector (Guardrails AI, Lakera), but the mechanics stay the same:",
+      "h": "dd31b0c4"
+    },
+    "sections.3.code.0.code": {
+      "t": "import Ajv from \"ajv\";\n\nconst schema = {\n  type: \"object\",\n  required: [\"resposta\", \"fontes\"],\n  properties: {\n    resposta: { type: \"string\", minLength: 1, maxLength: 2000 },\n    fontes: { type: \"array\", items: { type: \"string\" } }\n  },\n  additionalProperties: false\n};\n\nconst ajv = new Ajv();\nconst validate = ajv.compile(schema);\n\nconst PII = /\\b([\\w._%+-]+@[\\w.-]+\\.[A-Za-z]{2,}|\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2})\\b/g;\nconst PROIBIDO = /(competitor-x|competitor-y)/i;\n\nexport type Veredito = { ok: true; saida: unknown } | { ok: false; motivo: string };\n\nexport function guardrailSaida(raw: string): Veredito {\n  let parsed: unknown;\n  try { parsed = JSON.parse(raw); } catch { return { ok: false, motivo: \"invalid_json\" }; }\n  if (!validate(parsed)) return { ok: false, motivo: \"invalid_schema\" };\n  if (PROIBIDO.test(JSON.stringify(parsed))) return { ok: false, motivo: \"policy_violated\" };\n  const redigido = JSON.stringify(parsed).replace(PII, \"[REDACTED]\");\n  return { ok: true, saida: JSON.parse(redigido) };\n}",
+      "h": "ce0e682f"
+    },
+    "sections.3.code.0.filename": {
+      "t": "guardrails/saida.ts",
+      "h": "d9a05f99"
+    },
+    "sections.3.heading": {
+      "t": "Output guardrail in practice",
+      "h": "dee6a1ee"
+    },
+    "sections.4.body.0": {
+      "t": "As a cross-cutting layer, before the LLM and after the LLM. In production the input guardrail becomes a middleware of the HTTP endpoint; the output one becomes a wrapper of the LLM client or a post-processor of the stream. In frameworks like LangGraph, it is a dedicated node between the user and the agent, and between the agent and the response.",
+      "h": "e25d2f0e"
+    },
+    "sections.4.body.1": {
+      "t": "Performance matters. Each guardrail adds latency, and latency in a chat is visible right away. Rule: the input guardrail runs in <= 50ms for most cases, and the output one stays within the request's total budget (typically <= 200ms). Above that, use an asynchronous detector and show a placeholder while it processes.",
+      "h": "02f6a65e"
+    },
+    "sections.4.heading": {
+      "t": "Where it fits in the architecture",
+      "h": "9e1dcdb7"
+    },
+    "sections.5.body.0": {
+      "t": "A guardrail takes care of what can happen. An agent can pass all the guardrails and still give a bad response (off-topic, factually wrong, with an inappropriate tone). That is the eval's job, and the eval runs in batch where the guardrail cannot.",
+      "h": "d6cbfe01"
+    },
+    "sections.5.body.1": {
+      "t": "The confusion appears when someone treats a guardrail as proof of quality. The average guardrail score is high (most requests pass), and that leads the team to think 'everything is fine'. It is not. A guardrail measures safety and compliance; an eval measures quality. They are two different axes, both necessary.",
+      "h": "37539aa5"
+    },
+    "sections.5.heading": {
+      "t": "A guardrail does not replace evals",
+      "h": "78c5537b"
+    },
+    "sections.6.bullets.0": {
+      "t": "blocks known attacks before they reach the model, e.g. simple injection and obvious PII",
+      "h": "e465f74c"
+    },
+    "sections.6.bullets.1": {
+      "t": "traceable compliance: each turn becomes a decision log, and auditors want a fast signal when there is a violation",
+      "h": "05d7e9ac"
+    },
+    "sections.6.bullets.2": {
+      "t": "composable: you can combine several guardrails in a pipeline, each handling one class of risk",
+      "h": "5b51bec8"
+    },
+    "sections.6.heading": {
+      "t": "Strengths",
+      "h": "a2ebc02c"
+    },
+    "sections.7.bullets.0": {
+      "t": "false negatives on new attacks: prompt injection evolves, and a detector trained in 2024 errs in 2026",
+      "h": "2706af06"
+    },
+    "sections.7.bullets.1": {
+      "t": "latency cost: each additional synchronous layer shows up in the SLA, and a pipeline of 5 guardrails starts to look expensive",
+      "h": "6805d8b8"
+    },
+    "sections.7.bullets.2": {
+      "t": "quality blindness: it blocks the dangerous, but does not measure whether what passed is good, and that remains the eval's job",
+      "h": "b7629aae"
+    },
+    "sections.7.heading": {
+      "t": "Limitations",
+      "h": "149d05f7"
+    },
+    "short": {
+      "t": "input and output filters to contain the agent",
+      "h": "bf809dab"
+    },
+    "tagline": {
+      "t": "Guardrails validate input (prompt injection, PII, jailbreak) and output (PII, schema, policy) on every turn. They complement evals: they hold back what goes to the user, but do not measure whether the answer is good.",
+      "h": "327b62a7"
+    },
+    "title": {
+      "t": "Guardrails - input and output filters",
+      "h": "9848a64f"
+    }
+  }
+}

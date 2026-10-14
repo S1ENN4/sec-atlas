@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "It is optimized for nearest-neighbor search in many dimensions.",
+      "h": "d8a35fe0"
+    },
+    "questions.0.options.0": {
+      "t": "Quickly finding the vectors closest to a query",
+      "h": "13ac39e2"
+    },
+    "questions.0.options.1": {
+      "t": "Executing financial transactions",
+      "h": "477ea96a"
+    },
+    "questions.0.options.2": {
+      "t": "Encrypting messages",
+      "h": "f3c22844"
+    },
+    "questions.0.options.3": {
+      "t": "Serving static pages",
+      "h": "a5e2212d"
+    },
+    "questions.0.q": {
+      "t": "What is a vector database for?",
+      "h": "b257f266"
+    },
+    "questions.1.explain": {
+      "t": "Indexes such as HNSW find very good neighbors without comparing against all vectors.",
+      "h": "a284a54a"
+    },
+    "questions.1.options.0": {
+      "t": "Trading a little exactness for a large speed gain in search",
+      "h": "b300b0ca"
+    },
+    "questions.1.options.1": {
+      "t": "Searching only by exact words",
+      "h": "cb5d84a5"
+    },
+    "questions.1.options.2": {
+      "t": "A configuration error",
+      "h": "e0e2a3de"
+    },
+    "questions.1.options.3": {
+      "t": "A search without an index",
+      "h": "a5de2027"
+    },
+    "questions.1.q": {
+      "t": "What is approximate search (ANN)?",
+      "h": "d16572a7"
+    },
+    "questions.2.explain": {
+      "t": "If the index mixes documents from several owners, authorization must be applied at retrieval.",
+      "h": "ce6b76e6"
+    },
+    "questions.2.options.0": {
+      "t": "Per-document access control: the search must not return what the user cannot see",
+      "h": "f8f9ea65"
+    },
+    "questions.2.options.1": {
+      "t": "None, vectors do not leak data",
+      "h": "d09877c7"
+    },
+    "questions.2.options.2": {
+      "t": "Leaving the API public for convenience",
+      "h": "81b30aeb"
+    },
+    "questions.2.options.3": {
+      "t": "Storing the key in the index",
+      "h": "9311ca61"
+    },
+    "questions.2.q": {
+      "t": "Which security precaution applies to the vector database?",
+      "h": "ccd5c7dc"
+    }
+  }
+}

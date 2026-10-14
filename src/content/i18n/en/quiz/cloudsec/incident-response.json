@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Cutting off access quickly, without destroying evidence, is the balance of containment.",
+      "h": "39081c80"
+    },
+    "questions.0.options.0": {
+      "t": "Deactivate the key and restrict the identity, preserving state for forensics",
+      "h": "c079cefc"
+    },
+    "questions.0.options.1": {
+      "t": "Delete the user and all logs",
+      "h": "dcf2d849"
+    },
+    "questions.0.options.2": {
+      "t": "Ignore it until confirming with the attacker",
+      "h": "2c0cd34b"
+    },
+    "questions.0.options.3": {
+      "t": "Restart all instances",
+      "h": "d0410dba"
+    },
+    "questions.0.q": {
+      "t": "On a leaked access key alert, what is a good first step?",
+      "h": "f7b4b7ed"
+    },
+    "questions.1.explain": {
+      "t": "In ephemeral environments, volatile evidence disappears along with the resource.",
+      "h": "3bc26d6f"
+    },
+    "questions.1.options.0": {
+      "t": "Because terminating erases memory and connections that serve as evidence",
+      "h": "88e227d6"
+    },
+    "questions.1.options.1": {
+      "t": "Because terminating is more expensive",
+      "h": "ea2b5176"
+    },
+    "questions.1.options.2": {
+      "t": "Because instances cannot be terminated",
+      "h": "8f7f7bb2"
+    },
+    "questions.1.options.3": {
+      "t": "Because isolating speeds up the network",
+      "h": "84c18c72"
+    },
+    "questions.1.q": {
+      "t": "Why isolate a suspicious instance before terminating it?",
+      "h": "12075ea2"
+    },
+    "questions.2.explain": {
+      "t": "It measures the effectiveness of runbooks and response automation.",
+      "h": "fa991b99"
+    },
+    "questions.2.options.0": {
+      "t": "The average time to respond to and contain an incident",
+      "h": "b72dc07b"
+    },
+    "questions.2.options.1": {
+      "t": "The monthly cloud cost",
+      "h": "e9acd4ad"
+    },
+    "questions.2.options.2": {
+      "t": "The number of alerts per day",
+      "h": "028dfa0c"
+    },
+    "questions.2.options.3": {
+      "t": "API latency",
+      "h": "362c4efb"
+    },
+    "questions.2.q": {
+      "t": "What does MTTR measure?",
+      "h": "88e6a060"
+    }
+  }
+}

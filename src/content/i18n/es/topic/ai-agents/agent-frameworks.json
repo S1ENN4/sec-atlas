@@ -1,0 +1,148 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Todo agente, del más simple al más complejo, ejecuta el mismo loop cuatro veces, hasta agotar un presupuesto de pasos o llegar a una respuesta final:",
+      "h": "516ab361"
+    },
+    "sections.0.body.1": {
+      "t": "1. percibir: el agente mira el estado actual (system prompt, historial, resultado de la última acción) y lo que pidió el usuario.",
+      "h": "161a1dfa"
+    },
+    "sections.0.body.2": {
+      "t": "2. decidir: el LLM produce o una respuesta final al usuario, o una llamada a herramienta con argumentos estructurados.",
+      "h": "1a085695"
+    },
+    "sections.0.body.3": {
+      "t": "3. actuar: el runtime valida los argumentos contra el schema de la herramienta, la ejecuta y captura el resultado.",
+      "h": "bc19ad9f"
+    },
+    "sections.0.body.4": {
+      "t": "4. observar: el resultado vuelve al contexto y el loop se reinicia.",
+      "h": "1981bc75"
+    },
+    "sections.0.body.5": {
+      "t": "La parte del razonamiento solo vale algo si el loop termina, y por eso todo framework expone un límite máximo de pasos y un criterio de fin explícito.",
+      "h": "50b5d9c0"
+    },
+    "sections.0.code.0.code": {
+      "t": "type Step = { kind: 'final'; answer: string }\n       | { kind: 'tool';    tool: string; args: unknown };\n\nasync function agentLoop(state, llm, tools, maxSteps = 8) {\n  for (let i = 0; i < maxSteps; i++) {\n    const step: Step = await llm.decide(state);   // percibir + decidir\n    if (step.kind === 'final') return step.answer; // fin\n    const out = await tools[step.tool].run(step.args); // actuar\n    state = state.observe(step, out);              // observar\n  }\n  throw new Error('loop budget exhausted');\n}",
+      "h": "48add9d8"
+    },
+    "sections.0.code.0.filename": {
+      "t": "loop.tsx",
+      "h": "6e2a42a3"
+    },
+    "sections.0.heading": {
+      "t": "El loop: percibir, decidir, actuar, observar",
+      "h": "69e45e6c"
+    },
+    "sections.1.body.0": {
+      "t": "El loop de arriba es corto, pero lo que lo rodea no lo es: persistir el estado entre pasos, retomar la conversación tras un error, paralelizar herramientas independientes, validar argumentos, gestionar reintentos y exponer observabilidad. Sin framework, lo reimplementas en cada proyecto, y lo reimplementas mal.",
+      "h": "39c1b014"
+    },
+    "sections.1.body.1": {
+      "t": "Un framework de agentes entrega tres cosas por las que vale la pena pagar: un grafo de ejecución explícito (ves qué puede correr y cuándo), un estado tipado que sobrevive entre pasos y la integración lista con el modelo, el proveedor de herramientas y el almacenamiento de memoria.",
+      "h": "9cb7ffcd"
+    },
+    "sections.1.heading": {
+      "t": "Por qué usar un framework",
+      "h": "a458be09"
+    },
+    "sections.2.body.0": {
+      "t": "LangGraph modela el agente como una máquina de estados: cada nodo es una función (una llamada al LLM, una ejecución de herramienta, un filtro), cada arista es una decisión. El estado es un canal tipado que todos los nodos leen y escriben. Cuando el grafo es cíclico, el agente puede iterar; cuando es acíclico, es un pipeline.",
+      "h": "b74cf643"
+    },
+    "sections.2.body.1": {
+      "t": "El ejemplo de abajo define un agente de investigación con dos nodos (llamar al modelo y ejecutar herramienta) y una arista condicional: si el modelo pidió una herramienta, ve a tools y vuelve; si devolvió una respuesta final, termina.",
+      "h": "b4456e51"
+    },
+    "sections.2.code.0.code": {
+      "t": "import { StateGraph, END } from '@langchain/langgraph';\nimport { ChatAnthropic } from '@langchain/anthropic';\n\ntype S = { messages: Array<{ role: string; content: string }> };\n\nconst llm = new ChatAnthropic({ model: 'claude-opus-4' });\nconst tools = { search: { run: async (q: string) => `result for ${q}` } };\n\nconst graph = new StateGraph<S>({ channels: { messages: { value: [] } } })\n  .addNode('llm', async (s) => ({ messages: s.messages.concat([await llm.invoke(s.messages)]) }))\n  .addNode('tool', async (s) => ({ messages: s.messages.concat([{ role: 'tool', content: 'ok' }]) }))\n  .addEdge('__start__', 'llm')\n  .addConditionalEdges('llm',\n    (s) => s.messages.at(-1)?.content.startsWith('CALL ') ? 'tool' : END,\n    { tool: 'tool', [END]: END })\n  .addEdge('tool', 'llm')\n  .compile();\n\nconst out = await graph.invoke({ messages: [{ role: 'user', content: '¿cuál es la capital de Francia?' }] });",
+      "h": "60980232"
+    },
+    "sections.2.code.0.filename": {
+      "t": "research-agent.tsx",
+      "h": "aa44d4dc"
+    },
+    "sections.2.heading": {
+      "t": "LangGraph: el agente como grafo de nodos",
+      "h": "3ecbd26d"
+    },
+    "sections.3.body.0": {
+      "t": "DeepAgents, lanzados en 2025, generalizan el modelo de grafo a múltiples agentes cooperando: cada subagente es un nodo con su propio prompt, herramientas y presupuesto, y el grafo describe quién delega a quién. El orquestador descompone la tarea, asigna subtareas a los subagentes y consolida el resultado.",
+      "h": "cbc68f61"
+    },
+    "sections.3.body.1": {
+      "t": "La diferencia práctica con un framework clásico es que la unidad de composición dejó de ser una herramienta y pasó a ser un agente completo. Cuando la tarea es 'investigar, analizar y redactar', instancias tres subagentes y los conectas por grafo, en vez de intentar con un único agente con 40 herramientas y un prompt monstruoso.",
+      "h": "a1fa7ce6"
+    },
+    "sections.3.code.0.code": {
+      "t": "from deepagents import Agent, Graph, tool as tasks\n\n\n@tasks\ndef fetch_url(url: str) -> str:\n    \"\"\"Obtiene el contenido bruto de una URL.\"\"\"\n    return requests.get(url, timeout=10).text\n\nresearcher = Agent(name='researcher', system='investiga fuentes primarias', tools=[fetch_url])\nanalyst    = Agent(name='analyst',    system='sintetiza los hallazgos en puntos')\nwriter     = Agent(name='writer',     system='produce el informe final')\n\ngraph = Graph()\ngraph.add_edge('__start__', researcher)\ngraph.add_edge(researcher,   analyst)\ngraph.add_edge(analyst,      writer)\ngraph.add_edge(writer,       '__end__')\n\nreport = graph.run('informe sobre el mercado de LLMs en 2026')",
+      "h": "8360fa62"
+    },
+    "sections.3.code.0.filename": {
+      "t": "deepagents.py",
+      "h": "61be5693"
+    },
+    "sections.3.heading": {
+      "t": "DeepAgents (2025-2026): grafo de subagentes",
+      "h": "2b715b7e"
+    },
+    "sections.4.body.0": {
+      "t": "CrewAI se enfoca en equipos con roles fijos (investigador, redactor, revisor) y un proceso de delegación más opinado; es rápido para prototipos donde la división del trabajo es conocida. AutoGen, de Microsoft, generaliza a múltiples agentes conversando entre sí, útil para explorar pero con tendencia a loops largos y un costo difícil de controlar.",
+      "h": "b140d31d"
+    },
+    "sections.4.body.1": {
+      "t": "La elección entre frameworks rara vez es técnica: se trata del nivel de estructura que quieres en el grafo. Cuanto más fijo el rol de cada nodo, más fácil de auditar; cuanto más flexible, más poderoso para tareas mal definidas y más caro de operar.",
+      "h": "8b2f71f9"
+    },
+    "sections.4.heading": {
+      "t": "CrewAI y AutoGen: estilos vecinos",
+      "h": "0b06b727"
+    },
+    "sections.5.bullets.0": {
+      "t": "loop explícito: cada framework puede saber cuánto ya corrió y qué falta correr, lo que simplifica presupuesto y auditoría",
+      "h": "0e2a86e5"
+    },
+    "sections.5.bullets.1": {
+      "t": "estado tipado: el canal de estado pasa a ser un contrato, no un diccionario suelto; el IDE muestra errores antes de ejecutar",
+      "h": "2893e091"
+    },
+    "sections.5.bullets.2": {
+      "t": "grafo visual: el flujo del agente se vuelve un diagrama, y depurar se vuelve mirar el 'antes', ejecutar el nodo y leer la salida",
+      "h": "cfa2a7d5"
+    },
+    "sections.5.heading": {
+      "t": "Puntos fuertes",
+      "h": "a2ebc02c"
+    },
+    "sections.6.bullets.0": {
+      "t": "la abstracción se vuelve lock-in: migrar entre frameworks cuesta reescribir el grafo, no solo cambiar la llamada",
+      "h": "a25630e4"
+    },
+    "sections.6.bullets.1": {
+      "t": "el presupuesto del loop es heurístico: sin una buena protección, los agentes se traban en ciclos o se pasan del costo",
+      "h": "d8080271"
+    },
+    "sections.6.bullets.2": {
+      "t": "LangGraph y DeepAgents todavía son proyectos jóvenes (2024-2026); las APIs y los contratos cambian entre versiones",
+      "h": "cf20b297"
+    },
+    "sections.6.heading": {
+      "t": "Limitaciones",
+      "h": "149d05f7"
+    },
+    "short": {
+      "t": "esqueleto para orquestar razonamiento, memoria y herramientas",
+      "h": "e57a850c"
+    },
+    "tagline": {
+      "t": "Un agent framework es el esqueleto que sostiene el loop del agente: estado, plan, herramientas y lo que ocurre entre cada llamada al modelo. Sin framework, el agente se vuelve un script lleno de if/else que nadie puede auditar.",
+      "h": "3a964aec"
+    },
+    "title": {
+      "t": "Agent frameworks",
+      "h": "25aa3567"
+    }
+  }
+}

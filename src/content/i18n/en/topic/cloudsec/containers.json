@@ -1,0 +1,160 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "A container is a Linux process isolated by namespaces and cgroups, running a filesystem stacked in layers. Each layer is a decision: the base you pull, the apt install you run, the user that opens the shell, the binary that goes in. Each one becomes part of the surface the attacker finds.",
+      "h": "187d5708"
+    },
+    "sections.0.body.1": {
+      "t": "Two principles solve 80% of the defense: minimal images (less stuff, fewer bugs) and a hardened runtime (less privilege, fewer paths). The rest is process: scanning, signing, policy.",
+      "h": "35d0dd7d"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "The base image is the foundation of everything that follows. ubuntu:latest or python:latest bring a shell, a package manager and a set of CVEs that grows every week. For production, choose a base that has only what the binary needs to run.",
+      "h": "10bb8ed2"
+    },
+    "sections.1.bullets.0": {
+      "t": "distroless (gcr.io/distroless/*): no shell, no apt, no package manager. For static Go, Java, Node, Python applications",
+      "h": "fe4c5131"
+    },
+    "sections.1.bullets.1": {
+      "t": "alpine: busybox + musl, ~5MB, still has a shell but is much smaller than Debian",
+      "h": "df0248fb"
+    },
+    "sections.1.bullets.2": {
+      "t": "scratch: nothing, just the binary. Valid for statically compiled Go/C/Rust binaries",
+      "h": "2294dfde"
+    },
+    "sections.1.bullets.3": {
+      "t": "wolfi/chainguard: distroless with an audited supply chain and daily CVE rebuilds",
+      "h": "eb1c356a"
+    },
+    "sections.1.heading": {
+      "t": "Minimal base image",
+      "h": "d8d3294d"
+    },
+    "sections.2.body.0": {
+      "t": "Knowing where it came from is worth more than knowing what is inside. Private registries (ECR, GCR, Harbor) give control over who publishes, with SSO and audit. Signing proves integrity: the image that is running is exactly the one CI built.",
+      "h": "c94f175d"
+    },
+    "sections.2.body.1": {
+      "t": "Cosign (from the Sigstore project) signs and verifies OCI images. The key pair can come from the team itself, from a KMS (key stays in an HSM), or from Fulcio, which issues an ephemeral certificate based on an OIDC login (useful for CI without secrets).",
+      "h": "9e3083fa"
+    },
+    "sections.2.code.0.code": {
+      "t": "# sign on push\ncosign sign --key cosign.key ghcr.io/loja/checkout@sha256:abc123\n\n# verify before starting (admission controller or pre-deploy job)\ncosign verify \\\n  --key cosign.pub \\\n  --certificate-identity-regexp 'https://github.com/loja/checkout/.github/workflows/release.yml@refs/tags/.*' \\\n  ghcr.io/loja/checkout@sha256:abc123",
+      "h": "055404cb"
+    },
+    "sections.2.code.0.filename": {
+      "t": "verify image at deploy",
+      "h": "64e1c26a"
+    },
+    "sections.2.heading": {
+      "t": "Trusted registry and signing",
+      "h": "80011287"
+    },
+    "sections.3.body.0": {
+      "t": "Scanners compare the image's SBOM (or each layer) against vulnerability databases (NVD, GHSA, OSV). The output is the list of packages and CVEs, with severity and fixed version. It runs at three moments: at build (blocks a PR with a critical CVE), in the registry (finds a new CVE against an already published image) and at admission (rejects a pod with an unscanned image).",
+      "h": "36990979"
+    },
+    "sections.3.bullets.0": {
+      "t": "Trivy: a single scanner (FS, image, IaC, SBOM), runs offline, no central database",
+      "h": "86df5c2e"
+    },
+    "sections.3.bullets.1": {
+      "t": "Grype (Anchore): focus on images and CycloneDX SBOM",
+      "h": "1784a256"
+    },
+    "sections.3.bullets.2": {
+      "t": "Docker Scout: integrated with Docker Hub, uses the SBOM that Docker builds natively",
+      "h": "00f278e0"
+    },
+    "sections.3.bullets.3": {
+      "t": "Snyk Container: commercial, good for teams already using Snyk for SCA",
+      "h": "aef87dc6"
+    },
+    "sections.3.heading": {
+      "t": "Image scanning: finding CVEs before shipping",
+      "h": "7d2bd9ef"
+    },
+    "sections.4.body.0": {
+      "t": "A container running as UID 0 on the host is a root process on the host. If the attacker escapes the container, they already have administrative privileges on the node. Same with writable filesystems: it marks where the attacker will try to persist. Hardening the runtime is cutting paths before they exist.",
+      "h": "91849800"
+    },
+    "sections.4.code.0.code": {
+      "t": "FROM python:latest\nRUN apt-get update && apt-get install -y curl netcat\nCOPY . /app\nWORKDIR /app\nEXPOSE 8080\nCMD [\"python\", \"app.py\"]    # runs as root (UID 0)",
+      "h": "9a80df19"
+    },
+    "sections.4.code.0.filename": {
+      "t": "Insecure Dockerfile",
+      "h": "68b0c303"
+    },
+    "sections.4.code.1.code": {
+      "t": "# minimal base, no shell, multi-stage so dev deps are not inherited\nFROM python:3.12-slim AS builder\nWORKDIR /build\nRUN pip install --no-cache-dir -r requirements.txt\n\nFROM gcr.io/distroless/python3-debian12\nWORKDIR /app\nCOPY --from=builder /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages\nCOPY . /app\nUSER 65532                       # fixed non-root UID\nEXPOSE 8080\nENTRYPOINT [\"python\", \"/app/app.py\"]",
+      "h": "0059e7f7"
+    },
+    "sections.4.code.1.filename": {
+      "t": "Fixed Dockerfile",
+      "h": "f3af70ae"
+    },
+    "sections.4.heading": {
+      "t": "Run as non-root and harden the runtime",
+      "h": "2686252a"
+    },
+    "sections.5.body.0": {
+      "t": "Containers touch build, deploy and runtime. At build, the scan gates the PR. In the registry, signing authenticates the origin. At admission, the cluster rejects an unsigned image or one with a policy violation. At runtime, the CWPP watches behavior (next topic). Skipping any of these links opens a window.",
+      "h": "aa33a4da"
+    },
+    "sections.5.heading": {
+      "t": "Where it fits",
+      "h": "006bc762"
+    },
+    "sections.6.bullets.0": {
+      "t": "immutability: the same image that was tested is the one that ships, with no 'works on my machine'",
+      "h": "8e80af0f"
+    },
+    "sections.6.bullets.1": {
+      "t": "minimal images cut CVEs by an order of magnitude: distroless Python has ~20 packages, Debian has ~600",
+      "h": "ce06a8fa"
+    },
+    "sections.6.bullets.2": {
+      "t": "signatures and SBOM give real traceability, piece by piece, down to the installed package",
+      "h": "eddba94a"
+    },
+    "sections.6.heading": {
+      "t": "Strengths",
+      "h": "a2ebc02c"
+    },
+    "sections.7.bullets.0": {
+      "t": "scanning finds known CVEs: a zero-day in a dependency gets through, and signing does not help with that",
+      "h": "412aeb47"
+    },
+    "sections.7.bullets.1": {
+      "t": "distroless and scratch make debugging harder (no shell). It is the trade-off between security and ergonomics, not a bug",
+      "h": "e2c41339"
+    },
+    "sections.7.bullets.2": {
+      "t": "runtime policies (non-root, read-only fs) must be accepted by the application: not every binary starts without root, and rewriting takes time",
+      "h": "388e4862"
+    },
+    "sections.7.heading": {
+      "t": "Limitations",
+      "h": "149d05f7"
+    },
+    "short": {
+      "t": "build, signing and immutable runtime",
+      "h": "8862eb24"
+    },
+    "tagline": {
+      "t": "Layered images inherit privileges: CVE scanning, signing and a rootless runtime shrink the surface the container hands to the host.",
+      "h": "8d4ad268"
+    },
+    "title": {
+      "t": "Containers - images and supply chain",
+      "h": "9bc31e3a"
+    }
+  }
+}

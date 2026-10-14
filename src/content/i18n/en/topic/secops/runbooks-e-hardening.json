@@ -1,0 +1,92 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Runbooks are short, actionable scripts for the most likely incidents: who decides, what to check, which action to take and how to undo it. A good runbook fits on one screen and works at three in the morning, for someone who just woke up.",
+      "h": "4c405fb3"
+    },
+    "sections.0.body.1": {
+      "t": "Post-incident hardening is the other side: the edge contains, but only the fix in the application and the configuration prevents a repeat.",
+      "h": "3bad416b"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "In volumetric or abuse attacks, the response escalates in steps, each with a TTL, so a misclassification does not block anyone forever. Start with a challenge (cheap for the legitimate user, expensive for the robot) and only then block.",
+      "h": "c9d0a2b1"
+    },
+    "sections.1.code.0.code": {
+      "t": "trigger: alert login_failures_zscore > 4 for 3 minutes\nowner: soc-l7 (on-call)\nsteps:\n  - verify: dominant ASNs and fingerprints, accounts tried (distinct vs repeated)\n  - contain:\n      1: Managed Challenge on offending ASNs        # TTL 30 min\n      2: Block on confirmed fingerprints             # TTL 4 h\n      3: require MFA / forced reset on accounts with suspicious success\n  - communicate: channel #incidentes, update every 30 min\n  - undo: remove rules if the failure rate returns to baseline for 30 min\nafter: post-mortem within 5 business days",
+      "h": "5779542a"
+    },
+    "sections.1.code.0.filename": {
+      "t": "runbook: credential stuffing on login",
+      "h": "cf972403"
+    },
+    "sections.1.heading": {
+      "t": "Containment ladder with expiry",
+      "h": "52977ade"
+    },
+    "sections.2.body.0": {
+      "t": "The goal is to learn, not to find someone to blame. A good post-mortem records the timeline (when it started, when we detected, when we contained), the cause, what worked, what got in the way and actions with owners and deadlines. Detection and containment metrics come out of it and feed tuning.",
+      "h": "a9360f29"
+    },
+    "sections.2.heading": {
+      "t": "Blameless post-mortem",
+      "h": "3f18ee95"
+    },
+    "sections.3.body.0": {
+      "t": "Every incident points to controls that should not depend on the edge. Three frequent examples:",
+      "h": "a9aa3bb2"
+    },
+    "sections.3.bullets.0": {
+      "t": "CSP with nonce: a content security policy that only runs scripts with a per-request nonce, reducing the impact of XSS.",
+      "h": "0bd6a0f0"
+    },
+    "sections.3.bullets.1": {
+      "t": "Strict CORS: explicit allowed origins, no wildcard on endpoints with credentials.",
+      "h": "f5e8897f"
+    },
+    "sections.3.bullets.2": {
+      "t": "Schema validation at the gateway: reject bodies and parameters that do not match the API specification, the positive model applied close to the application.",
+      "h": "dc982a23"
+    },
+    "sections.3.heading": {
+      "t": "Hardening in the application",
+      "h": "ec12c3ab"
+    },
+    "sections.4.code.0.code": {
+      "t": "Content-Security-Policy:\n  default-src 'self';\n  script-src 'self' 'nonce-{random-per-request}' 'strict-dynamic';\n  object-src 'none';\n  base-uri 'none';\n  frame-ancestors 'none'",
+      "h": "5858c989"
+    },
+    "sections.4.code.0.filename": {
+      "t": "response header",
+      "h": "6ada0a98"
+    },
+    "sections.4.heading": {
+      "t": "Example: CSP with nonce",
+      "h": "d1876455"
+    },
+    "sections.5.body.0": {
+      "t": "An untested runbook is an assumption. Tabletop exercises and simulations with synthetic traffic reveal gaps in permissions, contacts and tooling before the real incident, and keep the team trained.",
+      "h": "d52946f8"
+    },
+    "sections.5.heading": {
+      "t": "Exercises",
+      "h": "d02a4951"
+    },
+    "short": {
+      "t": "from fast containment to the fix that closes the door",
+      "h": "01c2a50d"
+    },
+    "tagline": {
+      "t": "The runbook makes containment happen in minutes, and the post-incident turns what hurt into a permanent defense, in the application and not only at the edge.",
+      "h": "d49c370f"
+    },
+    "title": {
+      "t": "Runbooks, response and post-incident hardening",
+      "h": "0d343f68"
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "La biblioteca sana combina ambas.",
+      "h": "50d9221f"
+    },
+    "questions.0.options.0": {
+      "t": "Las firmas reconocen lo conocido; las heurísticas miden comportamiento y atrapan variaciones nuevas, con más ruido",
+      "h": "0b1ca2d6"
+    },
+    "questions.0.options.1": {
+      "t": "Las firmas son siempre estadísticas",
+      "h": "f96b53e3"
+    },
+    "questions.0.options.2": {
+      "t": "Las heurísticas solo funcionan con IP fija",
+      "h": "889c1afb"
+    },
+    "questions.0.options.3": {
+      "t": "No hay diferencia práctica",
+      "h": "89bfcef1"
+    },
+    "questions.0.q": {
+      "t": "¿Cuál es la diferencia entre firmas y heurísticas?",
+      "h": "0e073c6b"
+    },
+    "questions.1.explain": {
+      "t": "Los valores muy por encima de lo esperado para la misma clave son candidatos a alerta.",
+      "h": "b7d5f254"
+    },
+    "questions.1.options.0": {
+      "t": "Está muy por encima de la media histórica, en desviaciones estándar",
+      "h": "73a87696"
+    },
+    "questions.1.options.1": {
+      "t": "Es igual a la media",
+      "h": "46de7e96"
+    },
+    "questions.1.options.2": {
+      "t": "El dato está cifrado",
+      "h": "5505443d"
+    },
+    "questions.1.options.3": {
+      "t": "La ventana de tiempo es demasiado corta para analizar",
+      "h": "9161c3a8"
+    },
+    "questions.1.q": {
+      "t": "¿Qué significa un z-score alto para el conteo actual?",
+      "h": "a4bc8947"
+    },
+    "questions.2.explain": {
+      "t": "La detección es software: necesita revisión, pruebas contra eventos conocidos y retiro cuando no aporta valor.",
+      "h": "d042e472"
+    },
+    "questions.2.options.0": {
+      "t": "Versionar, revisar, probar y medir cada detección, con un responsable",
+      "h": "911cc6a4"
+    },
+    "questions.2.options.1": {
+      "t": "Escribirlas todas en un único script sin comentarios",
+      "h": "18c13404"
+    },
+    "questions.2.options.2": {
+      "t": "Editar reglas directamente en la consola de producción",
+      "h": "e0836f75"
+    },
+    "questions.2.options.3": {
+      "t": "Mantenerlas en hojas de cálculo",
+      "h": "4482ab1a"
+    },
+    "questions.2.q": {
+      "t": "¿Qué es tratar las detecciones como código?",
+      "h": "fa45f223"
+    }
+  }
+}

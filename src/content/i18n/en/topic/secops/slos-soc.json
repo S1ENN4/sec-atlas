@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "A security SLO (service level objective) is a numeric target for what the team promises to deliver: for example, triaging critical alerts within a few minutes or containing credential stuffing attacks before a given percentage of attempts get through. It turns a vague wish (\"respond fast\") into something measurable and debatable.",
+      "h": "a209ed6d"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.bullets.0": {
+      "t": "MTTT (mean time to triage): from the alert until someone classifies it as real or false.",
+      "h": "810467aa"
+    },
+    "sections.1.bullets.1": {
+      "t": "MTTC (mean time to contain): from confirmation until the attack is contained.",
+      "h": "2e477464"
+    },
+    "sections.1.bullets.2": {
+      "t": "Precision: of the alerts or blocks the detection issued, how many were really an attack.",
+      "h": "8cfe6dcc"
+    },
+    "sections.1.bullets.3": {
+      "t": "Recall: of the attacks that existed, how many the detection caught.",
+      "h": "d6dba748"
+    },
+    "sections.1.heading": {
+      "t": "The four metrics that support the rest",
+      "h": "af0d7593"
+    },
+    "sections.2.body.0": {
+      "t": "Raising sensitivity increases recall and lowers precision, with more false positives; tightening the rule does the opposite. The right point depends on cost: on a bank's login a wrong block costs an annoyed customer, but an attack that gets through costs far more; on a public catalog, the balance is different. That is why the threshold is a business decision backed by data, not a solitary technical tweak.",
+      "h": "b63e8b48"
+    },
+    "sections.2.code.0.code": {
+      "t": "-- 'confirmed' comes from the weekly review of events the rule acted on\nSELECT rule_id,\n       COUNTIF(confirmed_attack) AS true_pos,\n       COUNTIF(NOT confirmed_attack) AS false_pos,\n       SAFE_DIVIDE(COUNTIF(confirmed_attack), COUNT(*)) AS precision\nFROM sec.rule_actions_reviewed\nWHERE week = DATE_TRUNC(CURRENT_DATE(), WEEK)\nGROUP BY rule_id\nORDER BY precision;",
+      "h": "5a296391"
+    },
+    "sections.2.code.0.filename": {
+      "t": "precision per rule (BigQuery)",
+      "h": "5470b26a"
+    },
+    "sections.2.heading": {
+      "t": "Precision and recall pull in opposite directions",
+      "h": "267d4737"
+    },
+    "sections.3.body.0": {
+      "t": "A short, fixed ritual keeps quality up: review the rules with the worst precision, look at the reported false positives, check what got through (recall) in the week's incidents and decide adjustments. The stated goal is to reduce false positives without losing coverage, and the proof is the precision metric rising while recall holds.",
+      "h": "21935862"
+    },
+    "sections.3.heading": {
+      "t": "Weekly tuning",
+      "h": "8e9bdaaa"
+    },
+    "sections.4.body.0": {
+      "t": "What the board needs is not alerts but trends: attacks contained, response time, impact avoided, rules in shadow ready to become enforcement. A few stable numbers, presented in the same format every month, build trust in the program and sustain investment.",
+      "h": "2d240644"
+    },
+    "sections.4.heading": {
+      "t": "Indicators for leadership",
+      "h": "4c24f14a"
+    },
+    "short": {
+      "t": "measure time, precision and coverage, and adjust every week",
+      "h": "a2b330e3"
+    },
+    "tagline": {
+      "t": "Without numbers, the SOC only tells stories. With clear SLOs (triage time, containment time, precision and recall) every adjustment becomes a decision backed by evidence.",
+      "h": "47be069f"
+    },
+    "title": {
+      "t": "SOC SLOs and continuous tuning",
+      "h": "1959294e"
+    }
+  }
+}

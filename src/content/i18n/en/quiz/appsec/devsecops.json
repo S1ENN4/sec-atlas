@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Culture plus automation: security enters the same flows as the code, without becoming a bottleneck.",
+      "h": "c83faecd"
+    },
+    "questions.0.options.0": {
+      "t": "Having a separate team that approves everything at the end",
+      "h": "b8a1c845"
+    },
+    "questions.0.options.1": {
+      "t": "Security as a shared, automated responsibility throughout the lifecycle",
+      "h": "9777580e"
+    },
+    "questions.0.options.2": {
+      "t": "Replacing tests with scanners",
+      "h": "f9a0285f"
+    },
+    "questions.0.options.3": {
+      "t": "Giving admin access to everyone",
+      "h": "98fb67a2"
+    },
+    "questions.0.q": {
+      "t": "The central idea of DevSecOps is...",
+      "h": "668ff069"
+    },
+    "questions.1.explain": {
+      "t": "Versioned, testable rules (OPA, for example) become consistent, auditable gates.",
+      "h": "b1a3beb6"
+    },
+    "questions.1.options.0": {
+      "t": "Writing policies in a versioned PDF",
+      "h": "999566ad"
+    },
+    "questions.1.options.1": {
+      "t": "Expressing security rules in executable files that the pipeline applies on its own",
+      "h": "9ad5ea80"
+    },
+    "questions.1.options.2": {
+      "t": "A type of open source license",
+      "h": "cd6f4f48"
+    },
+    "questions.1.options.3": {
+      "t": "Code comments about security",
+      "h": "60f6fd37"
+    },
+    "questions.1.q": {
+      "t": "What is \"policy as code\"?",
+      "h": "5a5379d8"
+    },
+    "questions.2.explain": {
+      "t": "What matters is how early we find issues and how fast we fix them, not how many tools exist.",
+      "h": "19bf6b88"
+    },
+    "questions.2.options.0": {
+      "t": "Lines of code per day",
+      "h": "e55f34bc"
+    },
+    "questions.2.options.1": {
+      "t": "Time to fix vulnerabilities and the share of findings blocked before production",
+      "h": "7f1996f5"
+    },
+    "questions.2.options.2": {
+      "t": "Number of security meetings",
+      "h": "1cfcb7af"
+    },
+    "questions.2.options.3": {
+      "t": "Number of tools installed",
+      "h": "bc76f4d0"
+    },
+    "questions.2.q": {
+      "t": "Which metric helps measure whether DevSecOps is working?",
+      "h": "9334255e"
+    }
+  }
+}

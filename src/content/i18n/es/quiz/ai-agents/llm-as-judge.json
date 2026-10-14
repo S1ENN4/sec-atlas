@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Automatiza la calificación donde la revisión humana sería demasiado cara.",
+      "h": "1f0945fb"
+    },
+    "questions.0.options.0": {
+      "t": "Usar un modelo para evaluar las salidas de otro siguiendo una rúbrica",
+      "h": "8aa93a32"
+    },
+    "questions.0.options.1": {
+      "t": "Un tribunal para modelos",
+      "h": "f90c5da1"
+    },
+    "questions.0.options.2": {
+      "t": "Entrenar un modelo para ser juez humano",
+      "h": "afb62abf"
+    },
+    "questions.0.options.3": {
+      "t": "Un benchmark de derecho",
+      "h": "a5ac91fb"
+    },
+    "questions.0.q": {
+      "t": "¿Qué es LLM-as-judge?",
+      "h": "16b17813"
+    },
+    "questions.1.explain": {
+      "t": "El sesgo de verbosidad y de autopreferencia exigen calibración.",
+      "h": "7ed22251"
+    },
+    "questions.1.options.0": {
+      "t": "Preferir respuestas más largas o de su propio estilo",
+      "h": "f59f72e2"
+    },
+    "questions.1.options.1": {
+      "t": "Preferir siempre respuestas cortas",
+      "h": "657e7b65"
+    },
+    "questions.1.options.2": {
+      "t": "Dar siempre nota cero",
+      "h": "ba84d66b"
+    },
+    "questions.1.options.3": {
+      "t": "Ignorar la rúbrica por completo",
+      "h": "6328725b"
+    },
+    "questions.1.q": {
+      "t": "¿Qué sesgo es común en los jueces basados en LLM?",
+      "h": "fabce606"
+    },
+    "questions.2.explain": {
+      "t": "La concordancia con los humanos es lo que valida al juez.",
+      "h": "78e800e2"
+    },
+    "questions.2.options.0": {
+      "t": "Calibrar contra una muestra evaluada por humanos y usar rúbricas claras",
+      "h": "38c8bf08"
+    },
+    "questions.2.options.1": {
+      "t": "Usar el mismo modelo para generar y evaluar sin revisión",
+      "h": "34e53e01"
+    },
+    "questions.2.options.2": {
+      "t": "Desactivar la rúbrica",
+      "h": "34e9b572"
+    },
+    "questions.2.options.3": {
+      "t": "Aumentar la temperatura",
+      "h": "aa90eea7"
+    },
+    "questions.2.q": {
+      "t": "¿Cómo aumentar la confianza en un juez automático?",
+      "h": "3fddea00"
+    }
+  }
+}

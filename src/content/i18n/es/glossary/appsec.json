@@ -1,0 +1,548 @@
+{
+  "entries": {
+    "groups.0.entries.0.meaning": {
+      "t": "La lista de referencia más conocida de riesgos de seguridad en aplicaciones web (A01 control de acceso roto, A02 fallas criptográficas, A03 inyección...), revisada cada pocos años por la comunidad OWASP. Es un mapa educativo de categorías de riesgo, no un checklist de herramientas ni una certificación.",
+      "h": "bba4b4f4"
+    },
+    "groups.0.entries.0.term": {
+      "t": "OWASP Top 10",
+      "h": "2f85ef74"
+    },
+    "groups.0.entries.1.aka": {
+      "t": "estándar de verificación",
+      "h": "7a25c4ce"
+    },
+    "groups.0.entries.1.meaning": {
+      "t": "Application Security Verification Standard: checklist verificable, en tres niveles de rigor, para auditar una aplicación o contratar una auditoría. Donde el Top 10 enseña, el ASVS audita.",
+      "h": "460cc2ef"
+    },
+    "groups.0.entries.1.term": {
+      "t": "OWASP ASVS",
+      "h": "6af04ea5"
+    },
+    "groups.0.entries.2.meaning": {
+      "t": "Framework estadounidense de proceso seguro de desarrollo (prácticas para producir software seguro). Es proceso, no herramienta: cita SAST, SCA y SBOM como partes del ciclo.",
+      "h": "43f99292"
+    },
+    "groups.0.entries.2.term": {
+      "t": "NIST SSDF",
+      "h": "5165f4b9"
+    },
+    "groups.0.entries.3.meaning": {
+      "t": "Modelo de madurez de seguridad de software: evalúa a la organización en cinco funciones de negocio para decir en qué nivel está y qué priorizar después.",
+      "h": "5d745162"
+    },
+    "groups.0.entries.3.term": {
+      "t": "OWASP SAMM",
+      "h": "cac08c8a"
+    },
+    "groups.0.title": {
+      "t": "frameworks y listas",
+      "h": "a353dfd4"
+    },
+    "groups.1.entries.0.aka": {
+      "t": "common vulnerabilities and exposures",
+      "h": "283f1be7"
+    },
+    "groups.1.entries.0.meaning": {
+      "t": "El identificador único de UNA vulnerabilidad pública específica, con el formato CVE-AÑO-NÚMERO. Ej.: CVE-2021-44228 es Log4Shell. Es la instancia real, no la clase del problema.",
+      "h": "121fcb10"
+    },
+    "groups.1.entries.0.term": {
+      "t": "CVE",
+      "h": "b3940909"
+    },
+    "groups.1.entries.1.aka": {
+      "t": "common weakness enumeration",
+      "h": "a555e75f"
+    },
+    "groups.1.entries.1.meaning": {
+      "t": "El identificador del TIPO de debilidad, la clase del error en el código. CWE-89 es SQL injection, CWE-79 es XSS. La distinción que confunde a todos: CWE es la categoría, CVE es una ocurrencia concreta de ella. Un CVE de SQL injection en tu framework va a referenciar el CWE-89.",
+      "h": "0457b5c1"
+    },
+    "groups.1.entries.1.term": {
+      "t": "CWE",
+      "h": "25915235"
+    },
+    "groups.1.entries.2.aka": {
+      "t": "common vulnerability scoring system",
+      "h": "12b48d9d"
+    },
+    "groups.1.entries.2.meaning": {
+      "t": "Puntaje de 0 a 10 que mide la severidad técnica de una vulnerabilidad: cómo se explota (red o local, complejidad, privilegio necesario, interacción del usuario) y cuál es el impacto. 9.0+ es crítico, pero el número es teórico: no sabe si estás expuesto.",
+      "h": "73e212bb"
+    },
+    "groups.1.entries.2.term": {
+      "t": "CVSS",
+      "h": "57c970ca"
+    },
+    "groups.1.entries.3.aka": {
+      "t": "exploit prediction scoring system",
+      "h": "51f3e3a9"
+    },
+    "groups.1.entries.3.meaning": {
+      "t": "Probabilidad (0 a 100%) de que un CVE sea explotado de verdad en los próximos 30 días, basada en evidencia. Complementa al CVSS: un 9.8 con EPSS de 0,1% puede ser menos urgente que un 7.5 con EPSS de 60%.",
+      "h": "ee8a1e15"
+    },
+    "groups.1.entries.3.term": {
+      "t": "EPSS",
+      "h": "4b6fc044"
+    },
+    "groups.1.entries.4.aka": {
+      "t": "known exploited vulnerabilities",
+      "h": "56d9a2dd"
+    },
+    "groups.1.entries.4.meaning": {
+      "t": "Catálogo de las vulnerabilidades que están siendo explotadas activamente, ahora, en el mundo real. 'Está en el KEV' = prioridad máxima, independientemente del CVSS.",
+      "h": "a237dacc"
+    },
+    "groups.1.entries.4.term": {
+      "t": "CISA KEV",
+      "h": "1fc592ca"
+    },
+    "groups.1.entries.5.aka": {
+      "t": "national vulnerability database",
+      "h": "d25515e0"
+    },
+    "groups.1.entries.5.meaning": {
+      "t": "La base de datos del NIST que enriquece cada CVE con un puntaje CVSS y un CWE asociado. Es de donde beben la mayoría de las herramientas de SCA.",
+      "h": "faece59b"
+    },
+    "groups.1.entries.5.term": {
+      "t": "NVD",
+      "h": "bde19e78"
+    },
+    "groups.1.entries.6.aka": {
+      "t": "advisories",
+      "h": "b84595f2"
+    },
+    "groups.1.entries.6.meaning": {
+      "t": "Bases de vulnerabilidades enfocadas en ecosistemas de paquetes (npm, PyPI, Maven...). Más prácticas que el CVE genérico: dicen exactamente qué versión está afectada y cuál la corrige.",
+      "h": "72725367"
+    },
+    "groups.1.entries.6.term": {
+      "t": "OSV / GitHub Advisory",
+      "h": "1fc8454a"
+    },
+    "groups.1.title": {
+      "t": "identificadores, bases de datos y puntajes",
+      "h": "da381031"
+    },
+    "groups.2.entries.0.meaning": {
+      "t": "Análisis estático: examina el código sin ejecutarlo. Encuentra problemas por análisis de flujo, no por adivinación.",
+      "h": "2718530a"
+    },
+    "groups.2.entries.0.term": {
+      "t": "SAST",
+      "h": "dc7c9db0"
+    },
+    "groups.2.entries.1.meaning": {
+      "t": "Prueba dinámica: ataca la aplicación en ejecución, desde afuera, en caja negra.",
+      "h": "c695af5a"
+    },
+    "groups.2.entries.1.term": {
+      "t": "DAST",
+      "h": "afedb85f"
+    },
+    "groups.2.entries.2.meaning": {
+      "t": "Híbrido: un agente dentro de la aplicación observa la ejecución en tiempo real, combinando el contexto del código (SAST) con la evidencia del ataque (DAST).",
+      "h": "4f6ac401"
+    },
+    "groups.2.entries.2.term": {
+      "t": "IAST",
+      "h": "84170fc5"
+    },
+    "groups.2.entries.3.meaning": {
+      "t": "Runtime Application Self-Protection: protección integrada en el runtime de la aplicación que bloquea ataques en ejecución, incluso después del deploy.",
+      "h": "a9a1e739"
+    },
+    "groups.2.entries.3.term": {
+      "t": "RASP",
+      "h": "f1854a7f"
+    },
+    "groups.2.entries.4.meaning": {
+      "t": "Análisis de composición: inventaría las dependencias de terceros y las cruza con CVEs conocidos.",
+      "h": "fa74bbdb"
+    },
+    "groups.2.entries.4.term": {
+      "t": "SCA",
+      "h": "5df5d896"
+    },
+    "groups.2.entries.5.meaning": {
+      "t": "Escaneo de credenciales expuestas en código, commits e historial de git.",
+      "h": "3e2bb9b4"
+    },
+    "groups.2.entries.5.term": {
+      "t": "Secrets scanning",
+      "h": "8ee73cce"
+    },
+    "groups.2.entries.6.meaning": {
+      "t": "Bombardear la aplicación con entradas aleatorias o mutaciones de entradas válidas, buscando crashes y comportamientos inesperados. El ancestro del DAST moderno.",
+      "h": "334cbbcb"
+    },
+    "groups.2.entries.6.term": {
+      "t": "Fuzzing",
+      "h": "0a7a8ca8"
+    },
+    "groups.2.entries.7.meaning": {
+      "t": "Prueba adversarial manual, con alcance definido e informe: un humano (o equipo) intentando vulnerar la aplicación a propósito.",
+      "h": "439c4c0b"
+    },
+    "groups.2.entries.7.term": {
+      "t": "Pentest",
+      "h": "d27d7abc"
+    },
+    "groups.2.entries.8.aka": {
+      "t": "abstract syntax tree",
+      "h": "69e0f612"
+    },
+    "groups.2.entries.8.meaning": {
+      "t": "El árbol de sintaxis que produce el parser: cada construcción del código se vuelve un nodo tipado, y las herramientas analizan el árbol en lugar de texto suelto.",
+      "h": "b8535c54"
+    },
+    "groups.2.entries.8.term": {
+      "t": "AST",
+      "h": "438963a0"
+    },
+    "groups.2.entries.9.meaning": {
+      "t": "El origen de un dato no confiable: input de usuario, query string, header, archivo. Es donde nace el taint.",
+      "h": "cbd33d5b"
+    },
+    "groups.2.entries.9.term": {
+      "t": "Source",
+      "h": "6da13add"
+    },
+    "groups.2.entries.10.meaning": {
+      "t": "El destino peligroso donde un dato no confiable se vuelve comando, query o HTML: db.query, eval, innerHTML. Si el taint llega aquí, es una vulnerabilidad.",
+      "h": "bf96fbe0"
+    },
+    "groups.2.entries.10.term": {
+      "t": "Sink",
+      "h": "e53e8d53"
+    },
+    "groups.2.entries.11.aka": {
+      "t": "análisis de contaminación",
+      "h": "113a4af1"
+    },
+    "groups.2.entries.11.meaning": {
+      "t": "Seguir la marca de 'dato sucio' desde el source hasta el sink, propagándola por asignaciones y llamadas. Es el corazón del SAST moderno.",
+      "h": "a9025c74"
+    },
+    "groups.2.entries.11.term": {
+      "t": "Taint tracking",
+      "h": "a7ba3052"
+    },
+    "groups.2.entries.12.meaning": {
+      "t": "La función que limpia el dato o prueba que es seguro (query parametrizada, escape de HTML). Corta el flujo y el engine deja de alertar en ese camino.",
+      "h": "c59da73e"
+    },
+    "groups.2.entries.12.term": {
+      "t": "Sanitizador / barrier",
+      "h": "98008ca5"
+    },
+    "groups.2.entries.13.meaning": {
+      "t": "Falso positivo: alerta de una vulnerabilidad que no existe. Falso negativo: vulnerabilidad real que pasó desapercibida. Toda herramienta vive intercambiando uno por el otro.",
+      "h": "17d9821b"
+    },
+    "groups.2.entries.13.term": {
+      "t": "Falso positivo / falso negativo",
+      "h": "48cc2713"
+    },
+    "groups.2.title": {
+      "t": "pruebas y técnicas",
+      "h": "e0033d2f"
+    },
+    "groups.3.entries.0.meaning": {
+      "t": "La lista de ingredientes del software: dependencias, versiones, licencias y hashes, en un formato estándar.",
+      "h": "7a177dda"
+    },
+    "groups.3.entries.0.term": {
+      "t": "SBOM",
+      "h": "bc385b71"
+    },
+    "groups.3.entries.1.aka": {
+      "t": "package url",
+      "h": "0a8bd501"
+    },
+    "groups.3.entries.1.meaning": {
+      "t": "Identificador universal de un paquete: pkg:npm/lodash@4.17.15 indica ecosistema, nombre y versión sin ambigüedad. Es la columna vertebral de un SBOM.",
+      "h": "0d5cd484"
+    },
+    "groups.3.entries.1.term": {
+      "t": "purl",
+      "h": "c940eded"
+    },
+    "groups.3.entries.2.meaning": {
+      "t": "Los dos formatos estándar de SBOM. CycloneDX está más orientado a seguridad, SPDX a licencias; en la práctica, ambos listan los mismos componentes.",
+      "h": "e22cb727"
+    },
+    "groups.3.entries.2.term": {
+      "t": "CycloneDX / SPDX",
+      "h": "d5c6cb0d"
+    },
+    "groups.3.entries.3.meaning": {
+      "t": "Huella digital de un archivo: si cambia un byte, cambia el hash. Prueba que el componente es exactamente lo que dicen que es.",
+      "h": "4a2bd804"
+    },
+    "groups.3.entries.3.term": {
+      "t": "Hash (SHA-256)",
+      "h": "f70345c7"
+    },
+    "groups.3.entries.4.meaning": {
+      "t": "El registro exacto de qué versión de cada dependencia se resolvió (package-lock.json, go.sum...). Sin él, los builds no son reproducibles y el SCA no ve el árbol real.",
+      "h": "921b7a93"
+    },
+    "groups.3.entries.4.term": {
+      "t": "Lockfile",
+      "h": "e4ba4ca6"
+    },
+    "groups.3.entries.5.meaning": {
+      "t": "Paquete que no elegiste: entró como dependencia de otra dependencia, a veces tres niveles más abajo. Recibe CVEs igual, y es el punto ciego clásico.",
+      "h": "03e5f95a"
+    },
+    "groups.3.entries.5.term": {
+      "t": "Dependencia transitiva",
+      "h": "d1f6f66f"
+    },
+    "groups.3.entries.6.aka": {
+      "t": "procedencia",
+      "h": "15b8bcf0"
+    },
+    "groups.3.entries.6.meaning": {
+      "t": "El registro de cómo y dónde se construyó un artefacto: qué pipeline, qué commit, qué máquina. Permite preguntar '¿este binario realmente vino de nuestro código?'.",
+      "h": "6ee25d90"
+    },
+    "groups.3.entries.6.term": {
+      "t": "Provenance",
+      "h": "dd35a816"
+    },
+    "groups.3.entries.7.meaning": {
+      "t": "Supply-chain Levels for Software Artifacts: escala de 1 a 4 para la integridad del build, desde 'tiene documentación' hasta 'build a prueba de manipulación con procedencia verificable'.",
+      "h": "ce94df0e"
+    },
+    "groups.3.entries.7.term": {
+      "t": "SLSA",
+      "h": "20e837d4"
+    },
+    "groups.3.entries.8.meaning": {
+      "t": "Firma y verificación de artefactos sin gestionar claves a mano: claves efímeras vinculadas a la identidad del build, con un log público de transparencia.",
+      "h": "65f3ad75"
+    },
+    "groups.3.entries.8.term": {
+      "t": "Sigstore / Cosign",
+      "h": "7797bae9"
+    },
+    "groups.3.entries.9.meaning": {
+      "t": "Framework que firma, paso por paso, lo que hizo el pipeline: prueba que el proceso esperado se ejecutó, en el orden esperado, sin un paso cambiado.",
+      "h": "b0bbad3b"
+    },
+    "groups.3.entries.9.term": {
+      "t": "in-toto",
+      "h": "4dc14e8e"
+    },
+    "groups.3.entries.10.meaning": {
+      "t": "El SCA es el análisis vivo (monitorea CVEs); el SBOM es la foto del momento (el inventario). En la práctica, se alimentan mutuamente: el SCA genera el SBOM y lo monitorea.",
+      "h": "7ea2b734"
+    },
+    "groups.3.entries.10.term": {
+      "t": "SCA vs SBOM",
+      "h": "b9543311"
+    },
+    "groups.3.title": {
+      "t": "supply chain y artefactos",
+      "h": "704105c4"
+    },
+    "groups.4.entries.0.aka": {
+      "t": "entrega vs deploy",
+      "h": "c830e8df"
+    },
+    "groups.4.entries.0.meaning": {
+      "t": "CI: validar cada cambio automáticamente. CD de entrega: el deploy es un clic. CD de deploy: todo lo que pasa los gates sale a producción solo.",
+      "h": "e5fcf758"
+    },
+    "groups.4.entries.0.term": {
+      "t": "CI / CD",
+      "h": "64f163d2"
+    },
+    "groups.4.entries.1.meaning": {
+      "t": "Una etapa del pipeline: source, build, test, package, deploy, monitor. Cada stage es un lugar posible para un gate de seguridad.",
+      "h": "13b92d81"
+    },
+    "groups.4.entries.1.term": {
+      "t": "Stage",
+      "h": "ca6d0e3a"
+    },
+    "groups.4.entries.2.meaning": {
+      "t": "La compuerta explícita de un stage: 'falla el build si hay un hallazgo crítico nuevo'. Sin un criterio claro, el gate se vuelve una sugerencia.",
+      "h": "cd78d80c"
+    },
+    "groups.4.entries.2.term": {
+      "t": "Quality gate",
+      "h": "593d8eab"
+    },
+    "groups.4.entries.3.aka": {
+      "t": "OPA / Rego",
+      "h": "f494ed54"
+    },
+    "groups.4.entries.3.meaning": {
+      "t": "La política de seguridad escrita como un archivo versionado que el pipeline consulta (denegar imagen con vulnerabilidad crítica, exigir firma). Cambia el criterio = cambia el archivo, con revisión.",
+      "h": "ef691c74"
+    },
+    "groups.4.entries.3.term": {
+      "t": "Policy as code",
+      "h": "54e87c28"
+    },
+    "groups.4.entries.4.meaning": {
+      "t": "Verificación local que corre antes de que el commit salga de tu máquina: secrets scanning, linter, SAST rápido. La forma más barata de feedback.",
+      "h": "0e096215"
+    },
+    "groups.4.entries.4.term": {
+      "t": "Pre-commit hook",
+      "h": "5f4d74db"
+    },
+    "groups.4.entries.5.meaning": {
+      "t": "Shift-left: mover la verificación lo más temprano posible en el ciclo. Shift-right: probar y observar también en producción (canary, observabilidad). Los dos conviven.",
+      "h": "c8c02b35"
+    },
+    "groups.4.entries.5.term": {
+      "t": "Shift-left / shift-right",
+      "h": "d74f9ffd"
+    },
+    "groups.4.entries.6.meaning": {
+      "t": "Seguridad como código dentro del CI/CD, con gates automatizados y responsabilidad compartida.",
+      "h": "0448f390"
+    },
+    "groups.4.entries.6.term": {
+      "t": "DevSecOps",
+      "h": "d4236f4a"
+    },
+    "groups.4.entries.7.meaning": {
+      "t": "Bóveda que guarda credenciales y las inyecta en runtime (Vault, AWS Secrets Manager, Doppler). Saca el secreto del código y permite rotación sin deploy.",
+      "h": "3f4fa55b"
+    },
+    "groups.4.entries.7.term": {
+      "t": "Secret manager / vault",
+      "h": "eb664681"
+    },
+    "groups.4.entries.8.meaning": {
+      "t": "Cambiar la clave comprometida: el paso número uno tras una filtración. Un commit de eliminación no lo resuelve: el historial conserva lo que se commiteó.",
+      "h": "273582e6"
+    },
+    "groups.4.entries.8.term": {
+      "t": "Rotación de credenciales",
+      "h": "1cbd8d68"
+    },
+    "groups.4.entries.9.aka": {
+      "t": "web application firewall",
+      "h": "c523a677"
+    },
+    "groups.4.entries.9.meaning": {
+      "t": "Filtro en el borde que bloquea patrones de ataque conocidos en HTTP. Complementa al código: no reemplaza corregir la vulnerabilidad, solo compra tiempo.",
+      "h": "5f682f41"
+    },
+    "groups.4.entries.9.term": {
+      "t": "WAF",
+      "h": "47f21a59"
+    },
+    "groups.4.title": {
+      "t": "pipeline y prácticas",
+      "h": "effd4199"
+    },
+    "groups.5.entries.0.meaning": {
+      "t": "La debilidad en el sistema que puede ser explotada: una falla concreta de código, configuración o diseño.",
+      "h": "93b3728d"
+    },
+    "groups.5.entries.0.term": {
+      "t": "Vulnerabilidad",
+      "h": "f54a4db0"
+    },
+    "groups.5.entries.1.meaning": {
+      "t": "La técnica o el artefacto concreto que abusa de una vulnerabilidad. La vulnerabilidad es el agujero; el exploit es el pie que entra en él.",
+      "h": "45ea1df8"
+    },
+    "groups.5.entries.1.term": {
+      "t": "Exploit",
+      "h": "fc8fe2d7"
+    },
+    "groups.5.entries.2.meaning": {
+      "t": "Amenaza es quién o qué puede causar daño (el atacante). Riesgo es probabilidad × impacto en TU contexto. Las herramientas reportan vulnerabilidades; quien decide el riesgo eres tú.",
+      "h": "57c34aee"
+    },
+    "groups.5.entries.2.term": {
+      "t": "Amenaza vs riesgo",
+      "h": "2f2ed358"
+    },
+    "groups.5.entries.3.meaning": {
+      "t": "Todo lo que está expuesto a entrada no confiable: endpoints, formularios, dependencias, puertos, pipelines. Una superficie mínima es una estrategia de defensa.",
+      "h": "8655c35b"
+    },
+    "groups.5.entries.3.term": {
+      "t": "Superficie de ataque",
+      "h": "3c4b6c59"
+    },
+    "groups.5.entries.4.meaning": {
+      "t": "Capas independientes de protección, bajo la premisa de que cualquiera puede fallar: validación + parametrización + WAF + monitoreo.",
+      "h": "48aac360"
+    },
+    "groups.5.entries.4.term": {
+      "t": "Defensa en profundidad",
+      "h": "49d282d3"
+    },
+    "groups.5.entries.5.meaning": {
+      "t": "Vulnerabilidad explotada antes de que exista una corrección pública. Contra un zero-day, en el momento solo ayudan la defensa en profundidad y la detección.",
+      "h": "f0bc6844"
+    },
+    "groups.5.entries.5.term": {
+      "t": "Zero-day",
+      "h": "2e1d2664"
+    },
+    "groups.5.entries.6.meaning": {
+      "t": "Categorías de mercado que empaquetan SAST + DAST + SCA + infraestructura en una sola plataforma. Útil saber que existen: el concepto detrás es el mismo de los gates de esta KB.",
+      "h": "ba901cc0"
+    },
+    "groups.5.entries.6.term": {
+      "t": "CNAPP / ASPM",
+      "h": "23b797be"
+    },
+    "groups.5.title": {
+      "t": "conceptos fundamentales",
+      "h": "68bbdfc1"
+    },
+    "groups.6.entries.0.meaning": {
+      "t": "Mnemónico de seis categorías de amenaza (Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege) usado como checklist al recorrer un diagrama de flujo de datos.",
+      "h": "6a65f5f4"
+    },
+    "groups.6.entries.0.term": {
+      "t": "STRIDE",
+      "h": "ef3194c7"
+    },
+    "groups.6.entries.1.aka": {
+      "t": "diagrama de flujo de datos",
+      "h": "ec5c778f"
+    },
+    "groups.6.entries.1.meaning": {
+      "t": "Dibujo de los actores, procesos, almacenes y flujos de un sistema, con las fronteras de confianza marcadas. Es la entrada del threat modeling: las amenazas aparecen donde un flujo cruza una frontera.",
+      "h": "c890fd18"
+    },
+    "groups.6.entries.1.term": {
+      "t": "DFD",
+      "h": "84751423"
+    },
+    "groups.6.entries.2.aka": {
+      "t": "trust boundary",
+      "h": "475fd009"
+    },
+    "groups.6.entries.2.meaning": {
+      "t": "Línea donde cambia el nivel de confianza de los datos o de quien los envía (internet a VPC, servicio a base de datos, usuario a admin). Todo lo que la cruza debe ser autenticado, autorizado y validado.",
+      "h": "1beab81d"
+    },
+    "groups.6.entries.2.term": {
+      "t": "Frontera de confianza",
+      "h": "1eea1f52"
+    },
+    "groups.6.title": {
+      "t": "modelado de amenazas",
+      "h": "65a91439"
+    }
+  }
+}

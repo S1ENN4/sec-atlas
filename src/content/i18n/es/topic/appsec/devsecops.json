@@ -1,0 +1,88 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "DevSecOps es la combinación de cultura y automatización: la seguridad deja de ser una revisión al final del ciclo y se vuelve código dentro del CI/CD, con responsabilidad compartida entre desarrollo, operaciones y seguridad.",
+      "h": "2d11c716"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "Cada stage recibe una compuerta con un criterio explícito:",
+      "h": "d605caee"
+    },
+    "sections.1.bullets.0": {
+      "t": "PR bloqueado si SAST o SCA reportan un hallazgo crítico nuevo",
+      "h": "ef7cb347"
+    },
+    "sections.1.bullets.1": {
+      "t": "la imagen de contenedor solo se publica si pasa el escaneo de vulnerabilidades",
+      "h": "40897676"
+    },
+    "sections.1.bullets.2": {
+      "t": "deploy condicionado a un artefacto firmado y verificado",
+      "h": "362d72b9"
+    },
+    "sections.1.bullets.3": {
+      "t": "política como código (OPA/Rego) versionada junto con el pipeline",
+      "h": "efd182ac"
+    },
+    "sections.1.heading": {
+      "t": "Security gates",
+      "h": "1d04951b"
+    },
+    "sections.2.body.0": {
+      "t": "Un gate de verdad no es un acuerdo verbal: es un archivo versionado que el pipeline consulta. En OPA/Rego, la regla de abajo niega cualquier imagen con una vulnerabilidad crítica, y el texto del motivo sale en el mensaje de error del deploy:",
+      "h": "56672056"
+    },
+    "sections.2.code.0.code": {
+      "t": "package deploy\n\ndeny[msg] {\n  input.image.vulns.critical > 0\n  msg := sprintf(\"la imagen %s tiene %d vulnerabilidades críticas\",\n                 [input.image.name, input.image.vulns.critical])\n}",
+      "h": "fbff4186"
+    },
+    "sections.2.code.0.filename": {
+      "t": "policy/imagenes.rego",
+      "h": "8c6f2439"
+    },
+    "sections.2.heading": {
+      "t": "Política como código: el gate escrito, no acordado",
+      "h": "dcfe9a65"
+    },
+    "sections.3.body.0": {
+      "t": "El siguiente nivel es probar el origen y la integridad: frameworks como SLSA e in-toto registran la procedencia de cada artefacto, y herramientas como Cosign/Sigstore firman imágenes y commits. El deploy solo continúa si la firma coincide: el artefacto vino de tu pipeline, del commit esperado, sin manipulación:",
+      "h": "7215be0e"
+    },
+    "sections.3.code.0.code": {
+      "t": "cosign verify --key cosign.pub ghcr.io/org/app:1.4.2\ncosign verify-attestation --type slsaprovenance \\\n  --key cosign.pub ghcr.io/org/app:1.4.2",
+      "h": "46305c30"
+    },
+    "sections.3.code.0.filename": {
+      "t": "deploy.sh",
+      "h": "be94fd40"
+    },
+    "sections.3.heading": {
+      "t": "Probar la procedencia: el deploy que verifica la firma",
+      "h": "bfef1fb9"
+    },
+    "sections.4.body.0": {
+      "t": "Un gate demasiado rígido termina siendo esquivado: los devs hacen bypass de la herramienta que frena la entrega por falsos positivos. El camino sano es empezar en modo auditoría (alerta sin bloqueo), medir, ajustar las reglas y endurecer los gates poco a poco. Cada endurecimiento es una decisión basada en datos, no en fe.",
+      "h": "ee1fb6df"
+    },
+    "sections.4.heading": {
+      "t": "El equilibrio",
+      "h": "80c374d3"
+    },
+    "short": {
+      "t": "Seguridad integrada en cada stage",
+      "h": "29731bda"
+    },
+    "tagline": {
+      "t": "Convierte el pipeline en una serie de gates de seguridad automatizados, sin frenar al equipo.",
+      "h": "895589e8"
+    },
+    "title": {
+      "t": "DevSecOps",
+      "h": "d4236f4a"
+    }
+  }
+}

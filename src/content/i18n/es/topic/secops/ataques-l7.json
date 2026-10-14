@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Los ataques de capa 7 usan el propio protocolo de la aplicación (HTTP) para explotar lógica, credenciales o capacidad. Muchos parecen tráfico legítimo solicitud por solicitud, y solo el conjunto revela el patrón, por eso la detección es, en gran parte, estadística y de comportamiento.",
+      "h": "34801bf0"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.bullets.0": {
+      "t": "Credential stuffing: muchos intentos de inicio de sesión con pares usuario/contraseña filtrados, fallos (401) en volumen, muchas IPs y user agents, pocos intentos por cuenta.",
+      "h": "a804a22b"
+    },
+    "sections.1.bullets.1": {
+      "t": "DDoS L7: pico de solicitudes a pocas rutas costosas (búsqueda, reportes), muchas IPs, tasa por IP baja pero agregada altísima.",
+      "h": "b7979ea8"
+    },
+    "sections.1.bullets.2": {
+      "t": "Forced browsing: barrido de rutas inexistentes o administrativas (/admin, /.git, /backup), explosión de 404 y 403 desde un origen.",
+      "h": "220643b2"
+    },
+    "sections.1.bullets.3": {
+      "t": "Probing e IDOR: secuencia de identificadores en orden (/orders/1001, 1002, 1003...) con la misma sesión, buscando acceso a objetos de otros usuarios.",
+      "h": "a7b196d5"
+    },
+    "sections.1.bullets.4": {
+      "t": "SSRF: parámetros de URL que apuntan a direcciones internas o de metadatos (169.254.169.254, localhost), en campos que la aplicación consulta desde el servidor.",
+      "h": "07f3e475"
+    },
+    "sections.1.bullets.5": {
+      "t": "Inyecciones (SQL, comandos, plantillas): caracteres y palabras clave de sintaxis en parámetros, cabeceras o cuerpo, a menudo como intentos de sondeo antes del ataque real.",
+      "h": "0225883e"
+    },
+    "sections.1.heading": {
+      "t": "Seis patrones y la firma de cada uno",
+      "h": "b0a7aa17"
+    },
+    "sections.2.body.0": {
+      "t": "Para cada patrón, la pregunta es \"¿qué campo, en qué ventana y agrupado por qué lo delata?\". El credential stuffing, por ejemplo, no se ve en la IP (la botnet distribuye), pero sí en la razón de fallos por ASN o por fingerprint, y en el número de cuentas distintas intentadas por origen.",
+      "h": "0abcbf6f"
+    },
+    "sections.2.code.0.code": {
+      "t": "credential stuffing -> fallos de login / minuto por ASN, cuentas distintas por fingerprint\nDDoS L7             -> reqs / minuto por path costoso, razón vs baseline de la hora\nforced browsing     -> 404+403 por origen, paths distintos por ventana\nIDOR                -> IDs secuenciales por sesión, accesos denegados a objetos ajenos\nSSRF                -> parámetros con IP privada/metadata en campos de URL\ninyección           -> tokens de sintaxis en parámetros, repetidos y variando",
+      "h": "362b65d2"
+    },
+    "sections.2.code.0.filename": {
+      "t": "hipótesis por patrón",
+      "h": "1aed08f7"
+    },
+    "sections.2.heading": {
+      "t": "Del patrón a la hipótesis de detección",
+      "h": "0b8fa778"
+    },
+    "sections.3.body.0": {
+      "t": "Cuando bloquea por IP, el ataque cambia de IP; cuando bloquea por user agent, lo rota. Las detecciones más duraderas se anclan en características difíciles de cambiar: fingerprints, comportamiento, la propia lógica del objetivo. Y todo cambio de patrón debe convertirse en una nueva detección o en un ajuste, registrado junto con el incidente que lo motivó.",
+      "h": "9d9199da"
+    },
+    "sections.3.heading": {
+      "t": "Los atacantes se adaptan",
+      "h": "ca8d45fd"
+    },
+    "short": {
+      "t": "una taxonomía de los abusos de la capa de aplicación",
+      "h": "4c7a5140"
+    },
+    "tagline": {
+      "t": "Cada ataque L7 deja una firma en los logs. Conocer el patrón de cada uno es lo que convierte un océano de solicitudes en hipótesis que se pueden probar.",
+      "h": "01665730"
+    },
+    "title": {
+      "t": "Ataques L7: qué buscar",
+      "h": "44179bf9"
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "The SBOM inventories an artifact's components, in formats such as CycloneDX and SPDX.",
+      "h": "790d38cd"
+    },
+    "questions.0.options.0": {
+      "t": "A load testing report",
+      "h": "cc10345b"
+    },
+    "questions.0.options.1": {
+      "t": "An ingredient list: the components and versions that make up the software",
+      "h": "0d342c10"
+    },
+    "questions.0.options.2": {
+      "t": "A repository backup",
+      "h": "51edfe00"
+    },
+    "questions.0.options.3": {
+      "t": "A TLS certificate",
+      "h": "b0e4518a"
+    },
+    "questions.0.q": {
+      "t": "What is an SBOM?",
+      "h": "9643e07a"
+    },
+    "questions.1.explain": {
+      "t": "With queryable SBOMs, the question \"where do we use this?\" becomes a search, not an all-hands scramble.",
+      "h": "38cab057"
+    },
+    "questions.1.options.0": {
+      "t": "Quickly finding out which systems use the affected library",
+      "h": "a904874b"
+    },
+    "questions.1.options.1": {
+      "t": "Automatically rolling back the deploy",
+      "h": "f2e0d697"
+    },
+    "questions.1.options.2": {
+      "t": "Encrypting the source code",
+      "h": "b71b1521"
+    },
+    "questions.1.options.3": {
+      "t": "Replacing SCA",
+      "h": "6776f98e"
+    },
+    "questions.1.q": {
+      "t": "What is the main use of an SBOM in an incident like Log4Shell?",
+      "h": "32838728"
+    },
+    "questions.2.explain": {
+      "t": "SCA usually generates the SBOM, and the SBOM allows re-evaluating vulnerabilities later, without re-analyzing the code.",
+      "h": "c783818c"
+    },
+    "questions.2.options.0": {
+      "t": "They are the same thing",
+      "h": "2e2c4824"
+    },
+    "questions.2.options.1": {
+      "t": "SCA analyzes and generates the inventory; the SBOM is the inventory that can be shared and re-evaluated",
+      "h": "18c21f60"
+    },
+    "questions.2.options.2": {
+      "t": "The SBOM runs dynamic tests",
+      "h": "19f805a5"
+    },
+    "questions.2.options.3": {
+      "t": "SCA depends on the SBOM to exist",
+      "h": "0f5d0321"
+    },
+    "questions.2.q": {
+      "t": "What is the relationship between SCA and SBOM?",
+      "h": "fa854f17"
+    }
+  }
+}

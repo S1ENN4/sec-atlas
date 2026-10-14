@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "La nota es un insumo: la acción (permitir, desafiar, bloquear) depende del endpoint y del riesgo.",
+      "h": "46491884"
+    },
+    "questions.0.options.0": {
+      "t": "Una puntuación de confianza por solicitud, sobre la cual la política decide la acción",
+      "h": "d582e0df"
+    },
+    "questions.0.options.1": {
+      "t": "Un bloqueo automático de todo el tráfico automatizado",
+      "h": "7719bdc3"
+    },
+    "questions.0.options.2": {
+      "t": "Una lista fija de IPs de robots",
+      "h": "af297d0e"
+    },
+    "questions.0.options.3": {
+      "t": "Un sustituto del rate limiting",
+      "h": "90c0b348"
+    },
+    "questions.0.q": {
+      "t": "¿Qué entrega el bot management a la política de seguridad?",
+      "h": "cd3b6d48"
+    },
+    "questions.1.explain": {
+      "t": "Bloquear a un crawler legítimo puede hundir su presencia en los buscadores.",
+      "h": "e48e2e62"
+    },
+    "questions.1.options.0": {
+      "t": "Los buscadores y monitores legítimos no deben bloquearse junto con el abuso",
+      "h": "0092eb3b"
+    },
+    "questions.1.options.1": {
+      "t": "Porque nunca generan tráfico relevante",
+      "h": "aac4741e"
+    },
+    "questions.1.options.2": {
+      "t": "Porque son más difíciles de identificar que los humanos",
+      "h": "f84bf0da"
+    },
+    "questions.1.options.3": {
+      "t": "Porque pagan por el acceso",
+      "h": "8b17dfcc"
+    },
+    "questions.1.q": {
+      "t": "¿Por qué tratar aparte a los bots verificados?",
+      "h": "a2d80822"
+    },
+    "questions.2.explain": {
+      "t": "Reduce el falso positivo y la fricción para los usuarios, y aun así encarece la automatización a escala.",
+      "h": "8158a3e0"
+    },
+    "questions.2.options.0": {
+      "t": "Intenta probar que el cliente es real sin fricción, y solo escala a interacción cuando la duda persiste",
+      "h": "fd3d0c58"
+    },
+    "questions.2.options.1": {
+      "t": "Es imposible de eludir",
+      "h": "6b5d7016"
+    },
+    "questions.2.options.2": {
+      "t": "No requiere JavaScript en el navegador",
+      "h": "e0e9d0c0"
+    },
+    "questions.2.options.3": {
+      "t": "No genera ningún costo para el atacante",
+      "h": "afc9a5f8"
+    },
+    "questions.2.q": {
+      "t": "¿Cuál es la ventaja de un desafío administrado sobre un CAPTCHA clásico?",
+      "h": "3c9b52eb"
+    }
+  }
+}

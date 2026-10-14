@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "CI/CD hardening is reducing what an attacker can do if they compromise the pipeline: a runner, a third-party action, a leaked token or a malicious pull request. Real supply chain incidents show the pattern: the target is no longer the application but the path that carries code to production.",
+      "h": "c9ded992"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "Cloud keys stored as pipeline secrets leak and live forever. The alternative is OIDC federation: the pipeline proves its identity to the cloud provider with a short-lived token, and the provider hands over temporary credentials, restricted to that repository and that branch.",
+      "h": "e42d3424"
+    },
+    "sections.1.code.0.code": {
+      "t": "permissions:\n  contents: read        # minimum by default\n  id-token: write       # allows requesting the OIDC token\n\njobs:\n  deploy:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@<sha-completo-do-commit>   # pinned by SHA\n      - uses: aws-actions/configure-aws-credentials@<sha-completo>\n        with:\n          role-to-assume: arn:aws:iam::123456789012:role/ci-deploy\n          aws-region: us-east-1\n      - run: ./scripts/deploy.sh",
+      "h": "4a381e07"
+    },
+    "sections.1.code.0.filename": {
+      "t": ".github/workflows/deploy.yml",
+      "h": "f130ad0d"
+    },
+    "sections.1.heading": {
+      "t": "Away with static secrets: OIDC",
+      "h": "f9036d59"
+    },
+    "sections.2.bullets.0": {
+      "t": "Pin actions and images by digest or SHA, not by a mutable tag: a tag can be repointed to malicious code.",
+      "h": "03851e89"
+    },
+    "sections.2.bullets.1": {
+      "t": "Least-privilege permissions for the pipeline token, defined per job.",
+      "h": "6cac9420"
+    },
+    "sections.2.bullets.2": {
+      "t": "Beware of triggers that run fork code with access to secrets (for example, pull_request_target in GitHub Actions): treat PR input as untrusted.",
+      "h": "e47d81be"
+    },
+    "sections.2.bullets.3": {
+      "t": "Script injection: never interpolate PR titles, branch names or commit messages directly into shell commands.",
+      "h": "ef6916f9"
+    },
+    "sections.2.heading": {
+      "t": "Pipeline dependencies are dependencies too",
+      "h": "eb828cce"
+    },
+    "sections.3.body.0": {
+      "t": "Ephemeral runners (one per job, discarded at the end) prevent one job from contaminating the next and credentials from staying on disk. Shared, long-lived runners accumulate state and become targets. Separate the runners that deploy to production from those that run external code tests, and restrict outbound network access to what is necessary.",
+      "h": "2f8f24b8"
+    },
+    "sections.3.heading": {
+      "t": "Runners and environments",
+      "h": "23f9cf01"
+    },
+    "sections.4.body.0": {
+      "t": "Signing artifacts and recording provenance (who built it, from which commit, in which environment) lets the destination verify that what is about to run is exactly what the pipeline produced. Frameworks such as SLSA describe increasing levels of these guarantees, and tools such as cosign handle image signing.",
+      "h": "7d894ed4"
+    },
+    "sections.4.heading": {
+      "t": "Integrity of what leaves the pipeline",
+      "h": "bd5b3eef"
+    },
+    "short": {
+      "t": "the pipeline is a target too: protecting it protects everything it delivers",
+      "h": "25ee5eed"
+    },
+    "tagline": {
+      "t": "The pipeline holds credentials, runs third-party code and publishes what goes to production. Compromising it is the shortest route to compromising everything.",
+      "h": "77e1aed2"
+    },
+    "title": {
+      "t": "CI/CD hardening",
+      "h": "0ff35363"
+    }
+  }
+}

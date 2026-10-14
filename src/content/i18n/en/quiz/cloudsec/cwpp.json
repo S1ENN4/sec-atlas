@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "CWPP complements CSPM: one looks at the environment, the other looks at what runs inside it.",
+      "h": "82a85e77"
+    },
+    "questions.0.options.0": {
+      "t": "The running workload: VMs, containers and functions, seeing behavior at runtime",
+      "h": "3cf8a7a9"
+    },
+    "questions.0.options.1": {
+      "t": "Only the accounts' configuration",
+      "h": "8452dc4e"
+    },
+    "questions.0.options.2": {
+      "t": "The source code in the repository",
+      "h": "50d8f3a1"
+    },
+    "questions.0.options.3": {
+      "t": "Public DNS",
+      "h": "d6031a2a"
+    },
+    "questions.0.q": {
+      "t": "What does CWPP protect?",
+      "h": "caa24306"
+    },
+    "questions.1.explain": {
+      "t": "Anomalous behavior during execution is what CWPP and tools like Falco observe.",
+      "h": "c953f37d"
+    },
+    "questions.1.options.0": {
+      "t": "A container opening a reverse shell to an external IP",
+      "h": "630ff485"
+    },
+    "questions.1.options.1": {
+      "t": "A bucket with a restrictive policy",
+      "h": "86aca081"
+    },
+    "questions.1.options.2": {
+      "t": "A signed image",
+      "h": "5f3a4b01"
+    },
+    "questions.1.options.3": {
+      "t": "A role with MFA",
+      "h": "87b34ed5"
+    },
+    "questions.1.q": {
+      "t": "Which signal is typical of runtime detection?",
+      "h": "c24783c0"
+    },
+    "questions.2.explain": {
+      "t": "Knowing what is normal for a workload makes the abnormal visible.",
+      "h": "13c36181"
+    },
+    "questions.2.options.0": {
+      "t": "Because deviations from normal stand out and produce more precise alerts",
+      "h": "740cce06"
+    },
+    "questions.2.options.1": {
+      "t": "Because it removes the need for logs",
+      "h": "b8e89bb7"
+    },
+    "questions.2.options.2": {
+      "t": "Because it encrypts traffic",
+      "h": "3f383e79"
+    },
+    "questions.2.options.3": {
+      "t": "Because it replaces IAM",
+      "h": "0b0e19d2"
+    },
+    "questions.2.q": {
+      "t": "Why does a behavior baseline help?",
+      "h": "0ffc7411"
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Cultura más automatización: la seguridad entra en los mismos flujos que el código, sin volverse un cuello de botella.",
+      "h": "c83faecd"
+    },
+    "questions.0.options.0": {
+      "t": "Tener un equipo separado que aprueba todo al final",
+      "h": "b8a1c845"
+    },
+    "questions.0.options.1": {
+      "t": "Seguridad como responsabilidad compartida y automatizada a lo largo del ciclo",
+      "h": "9777580e"
+    },
+    "questions.0.options.2": {
+      "t": "Reemplazar las pruebas por scanners",
+      "h": "f9a0285f"
+    },
+    "questions.0.options.3": {
+      "t": "Dar acceso de admin a todos",
+      "h": "98fb67a2"
+    },
+    "questions.0.q": {
+      "t": "La idea central de DevSecOps es...",
+      "h": "668ff069"
+    },
+    "questions.1.explain": {
+      "t": "Las reglas versionadas y testeables (OPA, por ejemplo) se convierten en gates consistentes y auditables.",
+      "h": "b1a3beb6"
+    },
+    "questions.1.options.0": {
+      "t": "Escribir políticas en un PDF versionado",
+      "h": "999566ad"
+    },
+    "questions.1.options.1": {
+      "t": "Expresar reglas de seguridad en archivos ejecutables que el pipeline aplica por sí solo",
+      "h": "9ad5ea80"
+    },
+    "questions.1.options.2": {
+      "t": "Un tipo de licencia open source",
+      "h": "cd6f4f48"
+    },
+    "questions.1.options.3": {
+      "t": "Comentarios en el código sobre seguridad",
+      "h": "60f6fd37"
+    },
+    "questions.1.q": {
+      "t": "¿Qué es \"policy as code\"?",
+      "h": "5a5379d8"
+    },
+    "questions.2.explain": {
+      "t": "Importa qué tan temprano encontramos y qué tan rápido corregimos, no cuántas herramientas existen.",
+      "h": "19bf6b88"
+    },
+    "questions.2.options.0": {
+      "t": "Líneas de código por día",
+      "h": "e55f34bc"
+    },
+    "questions.2.options.1": {
+      "t": "Tiempo para corregir vulnerabilidades y proporción de hallazgos bloqueados antes de producción",
+      "h": "7f1996f5"
+    },
+    "questions.2.options.2": {
+      "t": "Número de reuniones de seguridad",
+      "h": "1cfcb7af"
+    },
+    "questions.2.options.3": {
+      "t": "Cantidad de herramientas instaladas",
+      "h": "bc76f4d0"
+    },
+    "questions.2.q": {
+      "t": "¿Qué métrica ayuda a medir si DevSecOps está funcionando?",
+      "h": "9334255e"
+    }
+  }
+}

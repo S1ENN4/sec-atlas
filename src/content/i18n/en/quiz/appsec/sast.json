@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "SAST is static analysis: it reads the code and looks for insecure patterns without running the application.",
+      "h": "5edf9faa"
+    },
+    "questions.0.options.0": {
+      "t": "The running application, via HTTP requests",
+      "h": "36c87fff"
+    },
+    "questions.0.options.1": {
+      "t": "The source code (or bytecode) without executing it",
+      "h": "d8c00b51"
+    },
+    "questions.0.options.2": {
+      "t": "Third-party dependencies and their CVEs",
+      "h": "7b4da8d1"
+    },
+    "questions.0.options.3": {
+      "t": "Network traffic between services",
+      "h": "09638459"
+    },
+    "questions.0.q": {
+      "t": "What does SAST analyze?",
+      "h": "6684841c"
+    },
+    "questions.1.explain": {
+      "t": "Without executing the code, SAST can flag unreachable paths and cannot see the behavior of the real environment.",
+      "h": "4e2a65b0"
+    },
+    "questions.1.options.0": {
+      "t": "It only works after deploy",
+      "h": "07c0ec44"
+    },
+    "questions.1.options.1": {
+      "t": "It produces false positives and does not see runtime configuration problems",
+      "h": "f4449529"
+    },
+    "questions.1.options.2": {
+      "t": "It cannot analyze Python code",
+      "h": "086a61f7"
+    },
+    "questions.1.options.3": {
+      "t": "It requires access to production",
+      "h": "74a13eb3"
+    },
+    "questions.1.q": {
+      "t": "What is a typical limitation of SAST?",
+      "h": "305f61a2"
+    },
+    "questions.2.explain": {
+      "t": "Calibrating rules and gates by severity keeps developers' trust without hiding risk.",
+      "h": "ea8d5654"
+    },
+    "questions.2.options.0": {
+      "t": "Turn off the rules that alert the most",
+      "h": "559c0df7"
+    },
+    "questions.2.options.1": {
+      "t": "Tune rules to the project, block only high severity and treat the rest as backlog",
+      "h": "98d2adbf"
+    },
+    "questions.2.options.2": {
+      "t": "Run it only once a quarter",
+      "h": "ee73356e"
+    },
+    "questions.2.options.3": {
+      "t": "Ignore the result and rely on DAST",
+      "h": "07fabdaa"
+    },
+    "questions.2.q": {
+      "t": "What is the best way to reduce SAST noise without losing coverage?",
+      "h": "60c5e809"
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "CWPP complementa a CSPM: uno mira el entorno, el otro mira lo que corre dentro de él.",
+      "h": "82a85e77"
+    },
+    "questions.0.options.0": {
+      "t": "El workload en ejecución: VMs, contenedores y funciones, viendo el comportamiento en runtime",
+      "h": "3cf8a7a9"
+    },
+    "questions.0.options.1": {
+      "t": "Solo la configuración de las cuentas",
+      "h": "8452dc4e"
+    },
+    "questions.0.options.2": {
+      "t": "El código fuente en el repositorio",
+      "h": "50d8f3a1"
+    },
+    "questions.0.options.3": {
+      "t": "El DNS público",
+      "h": "d6031a2a"
+    },
+    "questions.0.q": {
+      "t": "¿Qué protege el CWPP?",
+      "h": "caa24306"
+    },
+    "questions.1.explain": {
+      "t": "El comportamiento anómalo durante la ejecución es lo que observan CWPP y herramientas como Falco.",
+      "h": "c953f37d"
+    },
+    "questions.1.options.0": {
+      "t": "Un contenedor abriendo un reverse shell hacia una IP externa",
+      "h": "630ff485"
+    },
+    "questions.1.options.1": {
+      "t": "Un bucket con política restrictiva",
+      "h": "86aca081"
+    },
+    "questions.1.options.2": {
+      "t": "Una imagen firmada",
+      "h": "5f3a4b01"
+    },
+    "questions.1.options.3": {
+      "t": "Un rol con MFA",
+      "h": "87b34ed5"
+    },
+    "questions.1.q": {
+      "t": "¿Qué señal es típica de la detección en runtime?",
+      "h": "c24783c0"
+    },
+    "questions.2.explain": {
+      "t": "Saber qué es normal para un workload hace visible lo anormal.",
+      "h": "13c36181"
+    },
+    "questions.2.options.0": {
+      "t": "Porque las desviaciones de lo normal se destacan y generan alertas más precisas",
+      "h": "740cce06"
+    },
+    "questions.2.options.1": {
+      "t": "Porque elimina la necesidad de logs",
+      "h": "b8e89bb7"
+    },
+    "questions.2.options.2": {
+      "t": "Porque cifra el tráfico",
+      "h": "3f383e79"
+    },
+    "questions.2.options.3": {
+      "t": "Porque reemplaza al IAM",
+      "h": "0b0e19d2"
+    },
+    "questions.2.q": {
+      "t": "¿Por qué ayuda un baseline de comportamiento?",
+      "h": "0ffc7411"
+    }
+  }
+}

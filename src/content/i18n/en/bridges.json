@@ -1,0 +1,316 @@
+{
+  "entries": {
+    "items.0.label": {
+      "t": "how to find what the other teaches you to fix",
+      "h": "29daa9e8"
+    },
+    "items.1.label": {
+      "t": "how to test what the other teaches you to fix",
+      "h": "c372a3ab"
+    },
+    "items.2.label": {
+      "t": "a well-written finding becomes a rule and a test in the pipeline",
+      "h": "f044f92f"
+    },
+    "items.3.label": {
+      "t": "what the attacker sees from outside, CSPM sees from inside",
+      "h": "4f4369cf"
+    },
+    "items.4.label": {
+      "t": "attack paths come from excess permissions",
+      "h": "79c8f230"
+    },
+    "items.5.label": {
+      "t": "the offensive exercise validates what the hunt looks for",
+      "h": "dd866dfe"
+    },
+    "items.6.label": {
+      "t": "social engineering and automated abuse attack identity from the same side",
+      "h": "49ed1e36"
+    },
+    "items.7.label": {
+      "t": "the threat model feeds the risk register",
+      "h": "581d7927"
+    },
+    "items.8.label": {
+      "t": "vendor risk, seen as third-party code",
+      "h": "27e978c8"
+    },
+    "items.9.label": {
+      "t": "the inventory that makes vendor assessment concrete",
+      "h": "8bf97f0c"
+    },
+    "items.10.label": {
+      "t": "the principle and the cloud implementation",
+      "h": "67e59c3d"
+    },
+    "items.11.label": {
+      "t": "automatic evidence comes from executable policy",
+      "h": "49d62fc0"
+    },
+    "items.12.label": {
+      "t": "communication is a track of the same response cycle",
+      "h": "55b73178"
+    },
+    "items.13.label": {
+      "t": "from the operational SLO to the board report",
+      "h": "af2dd98f"
+    },
+    "items.14.label": {
+      "t": "what the hunt finds becomes versioned detection",
+      "h": "0043c941"
+    },
+    "items.15.label": {
+      "t": "you can only reconstruct what was collected",
+      "h": "76b5a0cb"
+    },
+    "items.16.label": {
+      "t": "the same containment, applied to accounts and cloud resources",
+      "h": "f82a99fd"
+    },
+    "items.17.label": {
+      "t": "runbooks are the rehearsed, written-down cycle",
+      "h": "73379f6c"
+    },
+    "items.18.label": {
+      "t": "techniques observed at the edge feed intelligence and vice versa",
+      "h": "196bd6b5"
+    },
+    "items.19.label": {
+      "t": "backups that restore, and recovery in priority order",
+      "h": "2a5e39a8"
+    },
+    "items.20.label": {
+      "t": "cloud evidence lives in the audit logs",
+      "h": "b941b643"
+    },
+    "items.21.label": {
+      "t": "the foundation; the other handles scanning and protecting it",
+      "h": "9692104d"
+    },
+    "items.22.label": {
+      "t": "a pipeline that works must also be a trustworthy pipeline",
+      "h": "b197b235"
+    },
+    "items.23.label": {
+      "t": "where each security check fits in the pipeline",
+      "h": "fc74f5f2"
+    },
+    "items.24.label": {
+      "t": "the good image and the secure cluster: two halves of the same problem",
+      "h": "1e41aff4"
+    },
+    "items.25.label": {
+      "t": "the same cluster seen as a platform and as an attack surface",
+      "h": "8c79bb53"
+    },
+    "items.26.label": {
+      "t": "the same telemetry discipline, for platform and for security",
+      "h": "f868c0f9"
+    },
+    "items.27.label": {
+      "t": "SLOs and error budgets, applied to detection",
+      "h": "6456133d"
+    },
+    "items.28.label": {
+      "t": "observation, shadow and enforcement: the same gradual ladder",
+      "h": "9bd6de08"
+    },
+    "items.29.label": {
+      "t": "the same limits, applied to the agent that writes code",
+      "h": "dfd8b892"
+    },
+    "items.30.label": {
+      "t": "every connected MCP server widens what the agent can do",
+      "h": "56115859"
+    },
+    "items.31.label": {
+      "t": "secrets out of the agent's reach and out of the prompt",
+      "h": "fa8995e1"
+    },
+    "items.32.label": {
+      "t": "a dependency invented by the agent must go through the same verification",
+      "h": "36b86204"
+    },
+    "items.33.label": {
+      "t": "the gate that applies to any author, human or agent",
+      "h": "f9dbc293"
+    },
+    "items.34.label": {
+      "t": "automatic gates in the pipeline, with no exception for generated code",
+      "h": "8cf4faa8"
+    },
+    "items.35.label": {
+      "t": "tools and permissions decide what the agent can do",
+      "h": "9c0ad51f"
+    },
+    "items.36.label": {
+      "t": "autonomous agents demand the same discipline as runners and credentials",
+      "h": "4d073e53"
+    },
+    "items.37.label": {
+      "t": "it is the pattern that static analysis looks for in code",
+      "h": "f5949880"
+    },
+    "items.38.label": {
+      "t": "seen from outside: the signatures at the edge",
+      "h": "899643f8"
+    },
+    "items.39.label": {
+      "t": "it is what composition analysis checks",
+      "h": "6bebac80"
+    },
+    "items.40.label": {
+      "t": "the inventory that answers \"are we affected?\"",
+      "h": "ca2db992"
+    },
+    "items.41.label": {
+      "t": "the method that finds the flaw before the code exists",
+      "h": "dfa60f29"
+    },
+    "items.42.label": {
+      "t": "the same least-privilege rule, in the cloud",
+      "h": "f8093ebd"
+    },
+    "items.43.label": {
+      "t": "managed keys and encryption, with no homegrown code",
+      "h": "d76ff336"
+    },
+    "items.44.label": {
+      "t": "continuous verification of configuration",
+      "h": "789902de"
+    },
+    "items.45.label": {
+      "t": "secure configuration starts in infrastructure code",
+      "h": "64b92421"
+    },
+    "items.46.label": {
+      "t": "the log becomes versioned detection",
+      "h": "ef49da66"
+    },
+    "items.47.label": {
+      "t": "credential stuffing is, first of all, automated traffic",
+      "h": "2d97f893"
+    },
+    "items.48.label": {
+      "t": "the pipeline is part of what must be kept intact",
+      "h": "39864842"
+    },
+    "items.49.label": {
+      "t": "fail closed and idempotently",
+      "h": "02a9b955"
+    },
+    "items.50.label": {
+      "t": "it is the same problem: secrets out of the code",
+      "h": "968e7f2b"
+    },
+    "items.51.label": {
+      "t": "feeds into: the image inherits the dependencies",
+      "h": "056e68f1"
+    },
+    "items.52.label": {
+      "t": "inventories what goes inside the image",
+      "h": "54291ae7"
+    },
+    "items.53.label": {
+      "t": "becomes continuous policy in production",
+      "h": "73294064"
+    },
+    "items.54.label": {
+      "t": "defines the trust boundaries",
+      "h": "27312206"
+    },
+    "items.55.label": {
+      "t": "maps what the agent must not be able to do",
+      "h": "46e5b0b0"
+    },
+    "items.56.label": {
+      "t": "catches injection in code; here the target is the tool argument",
+      "h": "6ad4177f"
+    },
+    "items.57.label": {
+      "t": "MCP server tokens leak the same way",
+      "h": "fc50cb01"
+    },
+    "items.58.label": {
+      "t": "least privilege applies to the agent too",
+      "h": "162198b4"
+    },
+    "items.59.label": {
+      "t": "observing in production feeds evaluation",
+      "h": "d11d3e90"
+    },
+    "items.60.label": {
+      "t": "every incident becomes a test case",
+      "h": "f50abd93"
+    },
+    "items.61.label": {
+      "t": "finds the flaw; the WAF mitigates it until it is fixed (virtual patching)",
+      "h": "1cb8c067"
+    },
+    "items.62.label": {
+      "t": "post-incident hardening becomes a rule and a fix in code",
+      "h": "0ef81c6b"
+    },
+    "items.63.label": {
+      "t": "segmentation and edge designed together",
+      "h": "ca76ab37"
+    },
+    "items.64.label": {
+      "t": "same idea of signal, applied to L7 traffic",
+      "h": "7c150bda"
+    },
+    "items.65.label": {
+      "t": "the L7 runbook is a specific case of the general response",
+      "h": "6a606c72"
+    },
+    "items.66.label": {
+      "t": "telling legitimate automation from abuse applies to agents too",
+      "h": "69f638e9"
+    },
+    "items.67.label": {
+      "t": "detection and evaluation measure precision and recall the same way",
+      "h": "740aa928"
+    },
+    "items.68.label": {
+      "t": "the pipeline seen as a target: the same pipeline, now hardened",
+      "h": "37bad1b9"
+    },
+    "items.69.label": {
+      "t": "gates and policies, written as executable code",
+      "h": "ee381b7f"
+    },
+    "items.70.label": {
+      "t": "CSPM sees the environment; secure IaC fixes at the source and catches drift",
+      "h": "a2720864"
+    },
+    "items.71.label": {
+      "t": "OIDC instead of static secrets in the pipeline",
+      "h": "2016a3d1"
+    },
+    "items.72.label": {
+      "t": "volume and failure: scale without losing or duplicating",
+      "h": "1fbbd067"
+    },
+    "items.73.label": {
+      "t": "the runbook that becomes an automated playbook, with brakes",
+      "h": "dcd05d5f"
+    },
+    "items.74.label": {
+      "t": "SOC SLOs and the platform's own SLOs",
+      "h": "6b119f28"
+    },
+    "items.75.label": {
+      "t": "the same care with model input and output",
+      "h": "c7111f98"
+    },
+    "items.76.label": {
+      "t": "a model-triggered action needs the same brakes as a playbook",
+      "h": "8ed474ac"
+    },
+    "items.77.label": {
+      "t": "encrypt the index with a managed key",
+      "h": "aa6fcf3b"
+    }
+  }
+}

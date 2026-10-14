@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Organizan el loop de observar, decidir y actuar alrededor del modelo.",
+      "h": "d0bab970"
+    },
+    "questions.0.options.0": {
+      "t": "Estructura para el ciclo de razonamiento, herramientas y memoria del agente",
+      "h": "a14aa80b"
+    },
+    "questions.0.options.1": {
+      "t": "Un nuevo modelo de lenguaje",
+      "h": "dd7f314c"
+    },
+    "questions.0.options.2": {
+      "t": "Una base de datos",
+      "h": "b49261d0"
+    },
+    "questions.0.options.3": {
+      "t": "Un firewall",
+      "h": "966d5102"
+    },
+    "questions.0.q": {
+      "t": "¿Qué ofrece un framework de agentes?",
+      "h": "4057f709"
+    },
+    "questions.1.explain": {
+      "t": "Más autonomía significa más necesidad de permisos mínimos y aprobación humana en acciones sensibles.",
+      "h": "48c6ef7a"
+    },
+    "questions.1.options.0": {
+      "t": "Acciones indebidas con impacto real, si no hay límites",
+      "h": "af3df741"
+    },
+    "questions.1.options.1": {
+      "t": "Que el prompt quede corto",
+      "h": "d5c1815f"
+    },
+    "questions.1.options.2": {
+      "t": "Que la latencia baje",
+      "h": "f7ec1170"
+    },
+    "questions.1.options.3": {
+      "t": "Que el modelo olvide el alfabeto",
+      "h": "3e70a982"
+    },
+    "questions.1.q": {
+      "t": "¿Qué riesgo crece cuando el agente tiene más autonomía?",
+      "h": "6eac8971"
+    },
+    "questions.2.explain": {
+      "t": "El mismo principio del mínimo privilegio, aplicado a las herramientas.",
+      "h": "c3ba70bd"
+    },
+    "questions.2.options.0": {
+      "t": "Darle solo las herramientas y permisos necesarios para la tarea",
+      "h": "e75e8a46"
+    },
+    "questions.2.options.1": {
+      "t": "Darle acceso de admin para evitar errores",
+      "h": "6cf5b767"
+    },
+    "questions.2.options.2": {
+      "t": "Ejecutar sin logs",
+      "h": "c408b417"
+    },
+    "questions.2.options.3": {
+      "t": "Dejar que el agente apruebe sus propias acciones",
+      "h": "dcc06b72"
+    },
+    "questions.2.q": {
+      "t": "¿Qué buena práctica ayuda a contener a un agente?",
+      "h": "4fbbb12a"
+    }
+  }
+}

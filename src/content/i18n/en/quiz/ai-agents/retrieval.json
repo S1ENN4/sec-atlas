@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Answer quality depends on the right context reaching the model.",
+      "h": "ea02b213"
+    },
+    "questions.0.options.0": {
+      "t": "Choosing the most relevant passages for the question",
+      "h": "224d04dd"
+    },
+    "questions.0.options.1": {
+      "t": "Generating the final answer",
+      "h": "6d7e110e"
+    },
+    "questions.0.options.2": {
+      "t": "Training the model",
+      "h": "649db890"
+    },
+    "questions.0.options.3": {
+      "t": "Encrypting the index",
+      "h": "167ea171"
+    },
+    "questions.0.q": {
+      "t": "What is the goal of the retrieval step?",
+      "h": "df450253"
+    },
+    "questions.1.explain": {
+      "t": "Lexical gets exact terms and acronyms right; vector gets paraphrases right.",
+      "h": "57c2a170"
+    },
+    "questions.1.options.0": {
+      "t": "Semantic vector search and lexical keyword search",
+      "h": "dcec9489"
+    },
+    "questions.1.options.1": {
+      "t": "Two language models",
+      "h": "eebf908f"
+    },
+    "questions.1.options.2": {
+      "t": "Two SQL databases",
+      "h": "6cf9f86a"
+    },
+    "questions.1.options.3": {
+      "t": "CPU and GPU",
+      "h": "e6eec36a"
+    },
+    "questions.1.q": {
+      "t": "What does hybrid search combine?",
+      "h": "59ede976"
+    },
+    "questions.2.explain": {
+      "t": "A second stage refines the initial top-k, which is fast but approximate.",
+      "h": "834cfb09"
+    },
+    "questions.2.options.0": {
+      "t": "Reordering the candidates with a more precise model before handing them to the LLM",
+      "h": "179fe3f2"
+    },
+    "questions.2.options.1": {
+      "t": "Deleting old results",
+      "h": "e189f019"
+    },
+    "questions.2.options.2": {
+      "t": "Increasing the number of chunks",
+      "h": "2c7a1806"
+    },
+    "questions.2.options.3": {
+      "t": "Translating the documents",
+      "h": "9603a8ad"
+    },
+    "questions.2.q": {
+      "t": "What is re-ranking for?",
+      "h": "01696878"
+    }
+  }
+}

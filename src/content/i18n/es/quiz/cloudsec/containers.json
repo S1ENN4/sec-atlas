@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "La firma y el digest fijan la identidad del artefacto; los tags mutables pueden apuntar a otra cosa mañana.",
+      "h": "b2eac31c"
+    },
+    "questions.0.options.0": {
+      "t": "Para garantizar que lo que corre es exactamente lo que se construyó y aprobó",
+      "h": "c5b85888"
+    },
+    "questions.0.options.1": {
+      "t": "Para reducir el tamaño de la imagen",
+      "h": "4a089e73"
+    },
+    "questions.0.options.2": {
+      "t": "Para acelerar el pull",
+      "h": "d4052922"
+    },
+    "questions.0.options.3": {
+      "t": "Para prescindir de los scanners",
+      "h": "51f037f5"
+    },
+    "questions.0.q": {
+      "t": "¿Por qué las imágenes deben ser inmutables y estar firmadas?",
+      "h": "35e6f8d2"
+    },
+    "questions.1.explain": {
+      "t": "Menos paquetes significa menos CVEs y menos herramientas a disposición de un intruso.",
+      "h": "c90f71c5"
+    },
+    "questions.1.options.0": {
+      "t": "Usar una base mínima (distroless/alpine) y quitar herramientas innecesarias",
+      "h": "5b19e335"
+    },
+    "questions.1.options.1": {
+      "t": "Instalar un shell completo y utilidades de debug",
+      "h": "365f7ba2"
+    },
+    "questions.1.options.2": {
+      "t": "Correr como root",
+      "h": "2f7d1810"
+    },
+    "questions.1.options.3": {
+      "t": "Usar el tag latest",
+      "h": "891d84e8"
+    },
+    "questions.1.q": {
+      "t": "¿Qué práctica reduce la superficie de ataque de una imagen?",
+      "h": "f6cdcb40"
+    },
+    "questions.2.explain": {
+      "t": "Heredas todo lo que traen la imagen base y las capas, incluido lo que está comprometido.",
+      "h": "95edd526"
+    },
+    "questions.2.options.0": {
+      "t": "Que una imagen base o dependencia comprometida entre en tu imagen",
+      "h": "3b33503e"
+    },
+    "questions.2.options.1": {
+      "t": "Que el registry se quede sin espacio",
+      "h": "5f3bf61f"
+    },
+    "questions.2.options.2": {
+      "t": "Que la CPU del nodo se agote",
+      "h": "3ec867b0"
+    },
+    "questions.2.options.3": {
+      "t": "Que Docker cambie de versión",
+      "h": "270c8575"
+    },
+    "questions.2.q": {
+      "t": "¿Cuál es el riesgo de la cadena de suministro de contenedores?",
+      "h": "9f194890"
+    }
+  }
+}

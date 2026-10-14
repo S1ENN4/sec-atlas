@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "RAG (retrieval-augmented generation) le da al modelo contexto externo en el momento de la consulta.",
+      "h": "2f799b5f"
+    },
+    "questions.0.options.0": {
+      "t": "Recuperar documentos relevantes e inyectarlos en el prompt para que el modelo responda con base en ellos",
+      "h": "b7e63df0"
+    },
+    "questions.0.options.1": {
+      "t": "Entrenar un modelo desde cero con tus datos",
+      "h": "36525bf0"
+    },
+    "questions.0.options.2": {
+      "t": "Un tipo de base de datos relacional",
+      "h": "7be0c37f"
+    },
+    "questions.0.options.3": {
+      "t": "Un protocolo de red",
+      "h": "33eef5e2"
+    },
+    "questions.0.q": {
+      "t": "¿Qué es RAG?",
+      "h": "86bee255"
+    },
+    "questions.1.explain": {
+      "t": "El contenido recuperado es una entrada no confiable: puede cargar instrucciones que el modelo obedece.",
+      "h": "bf681997"
+    },
+    "questions.1.options.0": {
+      "t": "Instrucciones maliciosas escondidas en documentos recuperados (prompt injection indirecta)",
+      "h": "77d40b24"
+    },
+    "questions.1.options.1": {
+      "t": "Que el modelo se quede sin memoria RAM",
+      "h": "a8f37ac3"
+    },
+    "questions.1.options.2": {
+      "t": "Exceso de CPU",
+      "h": "449de5de"
+    },
+    "questions.1.options.3": {
+      "t": "Falta de HTTPS en el tokenizer",
+      "h": "c25b6e83"
+    },
+    "questions.1.q": {
+      "t": "¿Qué riesgo de seguridad es típico de RAG?",
+      "h": "55dfca53"
+    },
+    "questions.2.explain": {
+      "t": "Con fragmentos reales en el contexto, el modelo depende menos de la memoria paramétrica.",
+      "h": "c2df8713"
+    },
+    "questions.2.options.0": {
+      "t": "Porque ancla la respuesta en fuentes recuperadas, que pueden citarse",
+      "h": "d2e888b6"
+    },
+    "questions.2.options.1": {
+      "t": "Porque hace al modelo más grande",
+      "h": "9355b206"
+    },
+    "questions.2.options.2": {
+      "t": "Porque apaga la generación",
+      "h": "7a519e94"
+    },
+    "questions.2.options.3": {
+      "t": "Porque borra el entrenamiento",
+      "h": "d7e0e265"
+    },
+    "questions.2.q": {
+      "t": "¿Por qué RAG ayuda a reducir la alucinación?",
+      "h": "3885a30f"
+    }
+  }
+}

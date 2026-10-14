@@ -1,0 +1,152 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "In the cloud, a network is not cabling: it is configuration. VPCs, subnets, route tables, security groups and network ACLs are objects you create and version like any other resource. The topology becomes code, and the attack surface becomes a file you can read in a PR.",
+      "h": "cb7dad8d"
+    },
+    "sections.0.body.1": {
+      "t": "This changes the game. Instead of one big firewall at the entrance, control spreads out: each subnet decides who talks to it, each instance defines who reaches it, and traffic leaving the cluster goes through a gateway that inspects and logs.",
+      "h": "74fea009"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "Inside a VPC, the classic design has two subnet layers. The public one has a direct route to an Internet Gateway and hosts things that need a reachable IP (NAT gateway, bastion, public load balancer). The private one has no outbound route to the internet, only receives internal traffic and, when it needs to go out, talks to the NAT.",
+      "h": "331ca987"
+    },
+    "sections.1.body.1": {
+      "t": "The most common mistake is putting the database in the public subnet out of laziness about configuring routes. The result is a Postgres with an elastic IP answering on 5432 to the world, waiting for the first scanner to pass by.",
+      "h": "38f10082"
+    },
+    "sections.1.heading": {
+      "t": "VPC and subnets: public versus private",
+      "h": "6212915d"
+    },
+    "sections.2.body.0": {
+      "t": "A security group is the first line in the cloud. It is stateful: the response to an authorized request comes back without needing an inbound rule. Attached to the network interface (ENI), it works as a per-instance firewall, and several instances can share the same group when they play the same role.",
+      "h": "5f4dc324"
+    },
+    "sections.2.body.1": {
+      "t": "The classic anti-pattern is opening 0.0.0.0/0 on administration ports. It appears in every postmortem:",
+      "h": "6ed9ba0e"
+    },
+    "sections.2.code.0.code": {
+      "t": "{\n  \"GroupName\": \"web-sg\",\n  \"Description\": \"Open to the internet (DO NOT use in prod)\",\n  \"IpPermissions\": [\n    {\n      \"IpProtocol\": \"tcp\",\n      \"FromPort\": 22,\n      \"ToPort\": 22,\n      \"IpRanges\": [ { \"CidrIp\": \"0.0.0.0/0\", \"Description\": \"SSH open\" } ]\n    },\n    {\n      \"IpProtocol\": \"tcp\",\n      \"FromPort\": 3389,\n      \"ToPort\": 3389,\n      \"IpRanges\": [ { \"CidrIp\": \"0.0.0.0/0\", \"Description\": \"RDP open\" } ]\n    }\n  ]\n}",
+      "h": "6c66e767"
+    },
+    "sections.2.code.0.filename": {
+      "t": "security-group.json - permissive (DO NOT use)",
+      "h": "75c5eb70"
+    },
+    "sections.2.heading": {
+      "t": "Security groups: stateful, at the ENI level",
+      "h": "febed027"
+    },
+    "sections.3.body.0": {
+      "t": "Close the administration ports to the internet and force entry through a bastion or Systems Manager Session Manager. For what needs human access, restrict by corporate IP or by VPN:",
+      "h": "b9d97548"
+    },
+    "sections.3.code.0.code": {
+      "t": "{\n  \"GroupName\": \"web-sg\",\n  \"Description\": \"Administrative access via corporate bastion\",\n  \"IpPermissions\": [\n    {\n      \"IpProtocol\": \"tcp\",\n      \"FromPort\": 22,\n      \"ToPort\": 22,\n      \"IpRanges\": [ { \"CidrIp\": \"203.0.113.0/24\", \"Description\": \"corporate VPN range\" } ]\n    },\n    {\n      \"IpProtocol\": \"tcp\",\n      \"FromPort\": 443,\n      \"ToPort\": 443,\n      \"IpRanges\": [ { \"CidrIp\": \"0.0.0.0/0\", \"Description\": \"public HTTPS\" } ]\n    }\n  ]\n}",
+      "h": "8ca5618d"
+    },
+    "sections.3.code.0.filename": {
+      "t": "security-group.json - fixed",
+      "h": "aab4ff69"
+    },
+    "sections.3.heading": {
+      "t": "The rule that should exist",
+      "h": "62ef2003"
+    },
+    "sections.4.body.0": {
+      "t": "A NACL is the stateless complement at the subnet level. It acts before the security group and serves for broad rules (blocking an entire range known to be malicious, for example). It is stateless, so the response needs a specific inbound rule, and it rarely needs to be touched once the topology is mature.",
+      "h": "037ba9ce"
+    },
+    "sections.4.body.1": {
+      "t": "VPC Flow Logs captures all accepted or rejected traffic on the VPC's ENIs and dumps it into CloudWatch or S3. Without flow logs, you are investigating an incident in the dark. With a minimal path: default block + active logging + learned endpoints, and the security team can answer what came in, through where and when.",
+      "h": "ebaef65c"
+    },
+    "sections.4.heading": {
+      "t": "Network ACLs and VPC Flow Logs",
+      "h": "9544605d"
+    },
+    "sections.5.body.0": {
+      "t": "Security groups solve the perimeter per workload. As the environment grows, the key is to start talking about workload identity instead of IP: a policy that says 'service A talks to service B on port 8080 via mTLS' is more durable than opening a /24 between subnets because someone once asked for access.",
+      "h": "8eabd8c5"
+    },
+    "sections.5.body.1": {
+      "t": "Tools like Calico, Cilium or VPC lattice abstract the IP and let the policy travel with the workload. Even if the pod moves to another node, the rule still applies.",
+      "h": "0c7f563d"
+    },
+    "sections.5.heading": {
+      "t": "Microsegmentation and zero-trust",
+      "h": "7ac24943"
+    },
+    "sections.6.bullets.0": {
+      "t": "initial VPC design: topology of public and private subnets, NAT, routes and bastion defined as code in Terraform/Pulumi",
+      "h": "6fcb4a6f"
+    },
+    "sections.6.bullets.1": {
+      "t": "application deploy: the manifest declares the security group, and the pipeline creates/reconciles it with the existing VPC",
+      "h": "f37f293b"
+    },
+    "sections.6.bullets.2": {
+      "t": "incident response: VPC flow logs + CloudTrail show the origin of the attack in minutes, not hours",
+      "h": "8a1cad5e"
+    },
+    "sections.6.bullets.3": {
+      "t": "continuous auditing: a detector for SGs with 0.0.0.0/0 on sensitive ports breaks the build before the merge",
+      "h": "0d48ad8e"
+    },
+    "sections.6.heading": {
+      "t": "Where it fits in day-to-day work",
+      "h": "b27af5f7"
+    },
+    "sections.7.bullets.0": {
+      "t": "network as code: reviewing topology in a PR catches subnet errors before traffic does",
+      "h": "5c9da1ce"
+    },
+    "sections.7.bullets.1": {
+      "t": "native logs: VPC Flow Logs records source, destination, port and decision with no agent on the host",
+      "h": "c1326a38"
+    },
+    "sections.7.bullets.2": {
+      "t": "per-workload isolation: each service has the smallest possible network path",
+      "h": "7faba3a4"
+    },
+    "sections.7.heading": {
+      "t": "Strengths",
+      "h": "a2ebc02c"
+    },
+    "sections.8.bullets.0": {
+      "t": "topology complexity: 5 accounts, 12 subnets and 200 SGs need visualization and lint tooling",
+      "h": "d5cc61d3"
+    },
+    "sections.8.bullets.1": {
+      "t": "SGs do not inspect payload: the port may be right and the request content may still be an attack",
+      "h": "eec41801"
+    },
+    "sections.8.bullets.2": {
+      "t": "real zero-trust depends on workload identity (mTLS, SPIFFE), which is still early in many stacks",
+      "h": "f25061f1"
+    },
+    "sections.8.heading": {
+      "t": "Limitations",
+      "h": "149d05f7"
+    },
+    "short": {
+      "t": "segmentation, microsegmentation and network policies",
+      "h": "a334e582"
+    },
+    "tagline": {
+      "t": "The cloud network is programmable: VPCs, subnets, security groups and application firewalls draw the perimeter application by application, instead of waiting for the datacenter edge.",
+      "h": "f648c8da"
+    },
+    "title": {
+      "t": "Network - segmentation and zero-trust",
+      "h": "eca72bb8"
+    }
+  }
+}

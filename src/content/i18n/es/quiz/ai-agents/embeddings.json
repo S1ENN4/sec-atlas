@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Los textos con sentido parecido quedan cercanos en el espacio vectorial.",
+      "h": "21103784"
+    },
+    "questions.0.options.0": {
+      "t": "Un vector numérico que representa el significado de un texto",
+      "h": "4dc09cba"
+    },
+    "questions.0.options.1": {
+      "t": "Un tipo de prompt",
+      "h": "892a096a"
+    },
+    "questions.0.options.2": {
+      "t": "Un log de conversación",
+      "h": "d9903040"
+    },
+    "questions.0.options.3": {
+      "t": "Una clave de API",
+      "h": "3e896eba"
+    },
+    "questions.0.q": {
+      "t": "¿Qué es un embedding?",
+      "h": "d3f6f485"
+    },
+    "questions.1.explain": {
+      "t": "La similitud de coseno compara la dirección de los vectores.",
+      "h": "92f31a94"
+    },
+    "questions.1.options.0": {
+      "t": "Con distancia o similitud vectorial, como el coseno",
+      "h": "99799a48"
+    },
+    "questions.1.options.1": {
+      "t": "Contando letras iguales",
+      "h": "6b3d9503"
+    },
+    "questions.1.options.2": {
+      "t": "Comparando el tamaño de los textos",
+      "h": "00292976"
+    },
+    "questions.1.options.3": {
+      "t": "Con un hash SHA-256",
+      "h": "780f1b36"
+    },
+    "questions.1.q": {
+      "t": "¿Cómo se mide la semejanza entre dos embeddings?",
+      "h": "6e738d73"
+    },
+    "questions.2.explain": {
+      "t": "La consulta y los documentos deben vectorizarse con el mismo modelo.",
+      "h": "b353bbf4"
+    },
+    "questions.2.options.0": {
+      "t": "Los vectores viven en espacios distintos y no son comparables",
+      "h": "75dce405"
+    },
+    "questions.2.options.1": {
+      "t": "Se vuelve más lento por defecto",
+      "h": "af52b7ae"
+    },
+    "questions.2.options.2": {
+      "t": "Aumenta el costo de red",
+      "h": "c6faf279"
+    },
+    "questions.2.options.3": {
+      "t": "Impide el uso de chunks",
+      "h": "92b6c6e6"
+    },
+    "questions.2.q": {
+      "t": "¿Por qué es un problema mezclar modelos de embedding distintos en el mismo índice?",
+      "h": "b2105b13"
+    }
+  }
+}

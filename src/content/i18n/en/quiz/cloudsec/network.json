@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "If one workload falls, the attacker does not automatically reach the rest of the network.",
+      "h": "e3db3738"
+    },
+    "questions.0.options.0": {
+      "t": "Isolates workloads with specific rules, limiting lateral movement",
+      "h": "25768b67"
+    },
+    "questions.0.options.1": {
+      "t": "Splits the disk into partitions",
+      "h": "db10bb15"
+    },
+    "questions.0.options.2": {
+      "t": "Compresses traffic",
+      "h": "47b7100f"
+    },
+    "questions.0.options.3": {
+      "t": "Replaces IAM",
+      "h": "9afb2a55"
+    },
+    "questions.0.q": {
+      "t": "What does microsegmentation do?",
+      "h": "2d9b536e"
+    },
+    "questions.1.explain": {
+      "t": "The security group remembers connections (stateful); the NACL evaluates packet by packet in both directions.",
+      "h": "5295b279"
+    },
+    "questions.1.options.0": {
+      "t": "A security group is stateful and per instance; a NACL is stateless and per subnet",
+      "h": "449bd2de"
+    },
+    "questions.1.options.1": {
+      "t": "They are identical",
+      "h": "63141248"
+    },
+    "questions.1.options.2": {
+      "t": "A NACL is stateful and a security group is stateless",
+      "h": "da2f78f1"
+    },
+    "questions.1.options.3": {
+      "t": "Security groups only apply to S3",
+      "h": "6b67ba6f"
+    },
+    "questions.1.q": {
+      "t": "What is the typical difference between a security group and a NACL on AWS?",
+      "h": "5f2f2d1b"
+    },
+    "questions.2.explain": {
+      "t": "Administrative ports and databases must never be exposed to the entire internet.",
+      "h": "cb0aeaa8"
+    },
+    "questions.2.options.0": {
+      "t": "0.0.0.0/0 allowing SSH or a database",
+      "h": "379003a8"
+    },
+    "questions.2.options.1": {
+      "t": "HTTPS open to a public load balancer",
+      "h": "687a822a"
+    },
+    "questions.2.options.2": {
+      "t": "Port 443 from a CDN",
+      "h": "dd5c6586"
+    },
+    "questions.2.options.3": {
+      "t": "Internal traffic between private subnets",
+      "h": "75027a15"
+    },
+    "questions.2.q": {
+      "t": "Which inbound rule is a classic red flag?",
+      "h": "e7062e87"
+    }
+  }
+}

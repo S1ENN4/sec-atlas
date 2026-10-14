@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "El modelo propone la llamada; quien ejecuta y decide es tu código.",
+      "h": "7138e920"
+    },
+    "questions.0.options.0": {
+      "t": "Que el modelo pida la ejecución de una función con argumentos estructurados, que el sistema ejecuta",
+      "h": "6962a7b7"
+    },
+    "questions.0.options.1": {
+      "t": "Que el modelo ejecute código por sí solo en la GPU",
+      "h": "611bff0c"
+    },
+    "questions.0.options.2": {
+      "t": "Un tipo de embedding",
+      "h": "3a0ae017"
+    },
+    "questions.0.options.3": {
+      "t": "Una llamada telefónica",
+      "h": "72bd27d7"
+    },
+    "questions.0.q": {
+      "t": "¿Qué es el tool calling?",
+      "h": "b25260aa"
+    },
+    "questions.1.explain": {
+      "t": "Tratar la salida del modelo como entrada no confiable evita comandos o consultas peligrosas.",
+      "h": "f6e5372c"
+    },
+    "questions.1.options.0": {
+      "t": "Porque pueden estar malformados o ser resultado de una inyección",
+      "h": "06a883a6"
+    },
+    "questions.1.options.1": {
+      "t": "Porque el modelo nunca se equivoca",
+      "h": "ab93a3c2"
+    },
+    "questions.1.options.2": {
+      "t": "Porque la herramienta cobra por argumento",
+      "h": "8178c729"
+    },
+    "questions.1.options.3": {
+      "t": "Porque JSON está prohibido",
+      "h": "03fc0f8b"
+    },
+    "questions.1.q": {
+      "t": "¿Por qué validar los argumentos que el modelo genera para una herramienta?",
+      "h": "3221eb55"
+    },
+    "questions.2.explain": {
+      "t": "Las acciones irreversibles o con efecto externo merecen un paso de aprobación.",
+      "h": "be39d631"
+    },
+    "questions.2.options.0": {
+      "t": "Enviar correos, borrar datos o hacer pagos",
+      "h": "33ad8e03"
+    },
+    "questions.2.options.1": {
+      "t": "Leer la fecha actual",
+      "h": "0eee2de9"
+    },
+    "questions.2.options.2": {
+      "t": "Sumar dos números",
+      "h": "7a54f362"
+    },
+    "questions.2.options.3": {
+      "t": "Dar formato a un texto",
+      "h": "997939f9"
+    },
+    "questions.2.q": {
+      "t": "¿Qué acción debería exigir confirmación humana?",
+      "h": "afcf6b6c"
+    }
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "KMS (Key Management Service) es el componente que crea, almacena, usa y revoca claves criptográficas sin exponer el secreto a tu código. La aplicación le pide al KMS 'cifra esto' o 'descifra esto', y la clave nunca sale del servicio de claves. El resto del sistema usa el ciphertext.",
+      "h": "2bc780c1"
+    },
+    "sections.0.body.1": {
+      "t": "Este detalle importa porque la mayor parte de las fallas de cifrado ocurre en el plano equivocado: claves en variables de entorno, claves commiteadas en Git, claves en archivos de config. Sacar la clave del camino de la aplicación es lo que hace el KMS.",
+      "h": "c48e3a64"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "Los storage services ya vienen con cifrado en reposo habilitado por defecto (S3 SSE, EBS encryption, RDS storage encryption). Eso protege el disco contra la remoción física, pero no protege contra quien tiene acceso a la API: alguien con s3:GetObject lee el objeto cifrado y le pide al KMS que lo descifre.",
+      "h": "24649567"
+    },
+    "sections.1.body.1": {
+      "t": "Si la key policy permite un uso demasiado amplio, cualquier identidad que ya tenga permiso de lectura pasa a tener acceso efectivo al plaintext. La pregunta correcta no es '¿está cifrado?', sino '¿quién puede pedirle al KMS que descifre esto?'.",
+      "h": "66d68637"
+    },
+    "sections.1.heading": {
+      "t": "Por qué 'encrypted at rest' es solo el comienzo",
+      "h": "2bc4f7b3"
+    },
+    "sections.2.body.0": {
+      "t": "Enviar un archivo grande completo al KMS en cada cifrado es caro y lento. La solución estándar es la envelope encryption: el KMS genera una data key simétrica, el payload se cifra localmente con AES, y la data key se cifra con la master key del KMS. El resultado viaja junto con el dato.",
+      "h": "ddf10709"
+    },
+    "sections.2.body.1": {
+      "t": "En el flujo de abajo, el cliente recibe el plaintext y el ciphertext de la data key, cifra el documento con la clave local, y descarta el plaintext. Solo el ciphertext de la data key queda persistido junto al archivo.",
+      "h": "2381ef53"
+    },
+    "sections.2.code.0.code": {
+      "t": "import boto3\nfrom cryptography.hazmat.primitives.ciphers.aead import AESGCM\n\nkms = boto3.client(\"kms\")\nKEY_ID = \"arn:aws:kms:us-east-1:111122223333:key/abcd1234-...\"\n\ndef envelope_encrypt(plaintext: bytes, kms_key_id: str = KEY_ID):\n    # 1. KMS devuelve una data key en plaintext + la misma clave cifrada\n    resp = kms.generate_data_key(KeyId=kms_key_id, KeySpec=\"AES_256\")\n    plaintext_key = resp[\"Plaintext\"]\n    encrypted_key = resp[\"CiphertextBlob\"]\n\n    # 2. cifra el payload localmente, sin enviarlo nunca al KMS\n    nonce = b\"\\x00\" * 12\n    ciphertext_body = AESGCM(plaintext_key).encrypt(nonce, plaintext, None)\n\n    # 3. descarta el plaintext de la data key, solo el ciphertext sigue con el archivo\n    del plaintext_key\n    return {\"encrypted_key\": encrypted_key, \"ciphertext_body\": ciphertext_body, \"nonce\": nonce}",
+      "h": "23cee5fa"
+    },
+    "sections.2.code.0.filename": {
+      "t": "envelope.py - ejemplo conceptual",
+      "h": "bc953a83"
+    },
+    "sections.2.heading": {
+      "t": "Envelope encryption: una clave protege a otra clave",
+      "h": "a8f7f4ae"
+    },
+    "sections.3.body.0": {
+      "t": "La key policy es el documento que rige una clave KMS. Decide quién puede usar la clave, en qué operaciones y bajo qué condiciones. El default para claves generadas por AWS es liberal: la cuenta root puede todo, pero si nadie lo restringe, cualquier IAM principal con kms:* en todo el entorno pasa.",
+      "h": "c8599536"
+    },
+    "sections.3.body.1": {
+      "t": "Una buena key policy separa el uso administrativo (crear, rotar, eliminar) del uso criptográfico (cifrar, descifrar). El equipo de aplicación solo recibe el segundo mediante grants limitados a un patrón de ARN de bucket o tabla.",
+      "h": "e79f3961"
+    },
+    "sections.3.code.0.code": {
+      "t": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"AdminsManageKey\",\n      \"Effect\": \"Allow\",\n      \"Principal\": { \"AWS\": \"arn:aws:iam::111122223333:role/SecTeam\" },\n      \"Action\": [\n        \"kms:Create*\", \"kms:Describe*\", \"kms:Enable*\", \"kms:Disable*\",\n        \"kms:ScheduleKeyDeletion\", \"kms:RotateKeyOnDemand\"\n      ],\n      \"Resource\": \"*\"\n    },\n    {\n      \"Sid\": \"AppEncryptsOnly\",\n      \"Effect\": \"Allow\",\n      \"Principal\": { \"AWS\": \"arn:aws:iam::111122223333:role/app-frontend\" },\n      \"Action\": [\n        \"kms:Encrypt\", \"kms:Decrypt\", \"kms:GenerateDataKey\", \"kms:DescribeKey\"\n      ],\n      \"Resource\": \"*\",\n      \"Condition\": {\n        \"StringEquals\": {\n          \"kms:ViaService\": \"s3.us-east-1.amazonaws.com\"\n        }\n      }\n    }\n  ]\n}",
+      "h": "ffcbb764"
+    },
+    "sections.3.code.0.filename": {
+      "t": "key-policy.json - separada por rol",
+      "h": "9121ad16"
+    },
+    "sections.3.heading": {
+      "t": "Key policy: quién usa la clave",
+      "h": "416b7e51"
+    },
+    "sections.4.body.0": {
+      "t": "La rotación automática anual viene habilitada por defecto en las claves KMS y casi no cuesta usarla: la clave antigua sigue siendo válida para descifrar datos antiguos, y la nueva cifra los siguientes. Cuando lo necesitas, fuerzas una rotación manual tras sospecha de uso indebido.",
+      "h": "e8a9b878"
+    },
+    "sections.4.body.1": {
+      "t": "La revocación es distinta: o deshabilitas la clave (bloquea el descifrado) o programas su eliminación. Bloquear la clave rompe aplicaciones legítimas que intentan leer datos antiguos. De ahí la regla práctica: monitorear el uso, separar claves por sensibilidad, y nunca mezclar una clave de producción con una de prueba en el mismo recurso.",
+      "h": "9f4dad11"
+    },
+    "sections.4.heading": {
+      "t": "Rotación y revocación",
+      "h": "073772d3"
+    },
+    "sections.5.bullets.0": {
+      "t": "storage estándar: S3, EBS, RDS, DynamoDB y similares ya cifran con KMS, pero la key policy debe decir quién puede invocar el descifrado",
+      "h": "a2b53d18"
+    },
+    "sections.5.bullets.1": {
+      "t": "envelope encryption: los payloads sensibles en una cola o blob pasan por el patrón de clave local + data key cifrada",
+      "h": "6ae1ba56"
+    },
+    "sections.5.bullets.2": {
+      "t": "BYOK/HYOK: las empresas reguladas importan su propia clave (Bring Your Own Key) o mantienen la clave en un HSM externo (Hold Your Own Key)",
+      "h": "a2588288"
+    },
+    "sections.5.bullets.3": {
+      "t": "auditoría: cada llamada a GenerateDataKey, Encrypt o Decrypt se vuelve un evento en CloudTrail con ARN del principal y request ID",
+      "h": "74b170fc"
+    },
+    "sections.5.heading": {
+      "t": "Dónde aparece en el día a día",
+      "h": "b27af5f7"
+    },
+    "sections.6.bullets.0": {
+      "t": "la clave nunca toca la aplicación: incluso un atacante con RCE en el servidor no puede extraer la clave del KMS",
+      "h": "4a9f5f9c"
+    },
+    "sections.6.bullets.1": {
+      "t": "rotación centralizada: rotar en un lugar migra todo el árbol de data keys en uso",
+      "h": "bbc44ad1"
+    },
+    "sections.6.bullets.2": {
+      "t": "audit trail nativo: cada uso se firma y se registra con identidad, recurso y timestamp",
+      "h": "e4715854"
+    },
+    "sections.6.heading": {
+      "t": "Puntos fuertes",
+      "h": "a2ebc02c"
+    },
+    "sections.7.bullets.0": {
+      "t": "costo por llamada: KMS cobra por operación, y un envelope mal diseñado se vuelve una factura pesada por request",
+      "h": "2ce7a5da"
+    },
+    "sections.7.bullets.1": {
+      "t": "latencia por hop: cada Encrypt/Decrypt añade un viaje al KMS, y los caminos sensibles a la latencia necesitan una clave en caché local",
+      "h": "d0b37ed4"
+    },
+    "sections.7.bullets.2": {
+      "t": "BYOK/HYOK añade complejidad operativa: HSM en dos regiones, rotación manual, y procedimientos de disaster recovery separados",
+      "h": "6fb8cc7a"
+    },
+    "sections.7.heading": {
+      "t": "Limitaciones",
+      "h": "149d05f7"
+    },
+    "short": {
+      "t": "gestión de claves y cifrado",
+      "h": "239b55f3"
+    },
+    "tagline": {
+      "t": "El cifrado en la nube empieza en el KMS: quien tiene acceso a la clave decide qué está 'cifrado'. Sin gobernar las claves, 'encrypted at rest' es solo un checkbox en la consola.",
+      "h": "809484dc"
+    },
+    "title": {
+      "t": "KMS & crypto - claves y envelopes",
+      "h": "05e13629"
+    }
+  }
+}

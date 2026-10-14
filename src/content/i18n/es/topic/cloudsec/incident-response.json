@@ -1,0 +1,92 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "La respuesta a incidentes es el proceso que empieza cuando una señal de detección (una alerta de GuardDuty, una anomalía en CloudTrail, un aviso del CWPP) se confirma como evento real y termina cuando el entorno está contenido, restaurado y aprendió algo de lo ocurrido.",
+      "h": "bb3c8385"
+    },
+    "sections.0.body.1": {
+      "t": "En la nube el juego cambia en dos puntos. Primero, todo es API: se puede aislar una instancia, revocar una credencial o cambiar una clave en segundos y por script. Segundo, el entorno es efímero: si no preservas la evidencia antes de derribar el recurso, desaparece junto con él.",
+      "h": "d45a2525"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "El modelo de NIST (SP 800-61) sigue siendo la mejor columna vertebral, incluso para la nube:",
+      "h": "c71030a1"
+    },
+    "sections.1.bullets.0": {
+      "t": "Preparación: runbooks escritos, contactos de guardia, cuentas de respuesta con acceso listo y probado, logs centralizados.",
+      "h": "4e87d586"
+    },
+    "sections.1.bullets.1": {
+      "t": "Detección y análisis: confirmar que la alerta es real, estimar el alcance (qué identidades, recursos y datos) y clasificar la gravedad.",
+      "h": "5c88ec77"
+    },
+    "sections.1.bullets.2": {
+      "t": "Contención, erradicación y recuperación: detener el daño, quitar el acceso del atacante y restaurar el servicio desde un estado confiable.",
+      "h": "d4275b2f"
+    },
+    "sections.1.bullets.3": {
+      "t": "Lecciones aprendidas: revisión sin culpas, ajustes en los controles y en el inventario, y actualización de los runbooks.",
+      "h": "093055fa"
+    },
+    "sections.1.heading": {
+      "t": "Las fases del ciclo",
+      "h": "d533f351"
+    },
+    "sections.2.body.0": {
+      "t": "El vector más común en la nube es una credencial filtrada, así que el primer movimiento suele ser neutralizar la identidad, no la máquina. Desactivar la clave de acceso y adjuntar una policy de denegación total corta al atacante sin derribar el workload legítimo, y preserva el estado para el análisis.",
+      "h": "a3145c32"
+    },
+    "sections.2.code.0.code": {
+      "t": "USER=svc-deploy\nKEY=AKIAIOSFODNN7EXAMPLE\n\n# 1. desactiva la clave (no la borra: se preserva para forense)\naws iam update-access-key --user-name \"$USER\" \\\n  --access-key-id \"$KEY\" --status Inactive\n\n# 2. deniega todo a las sesiones ya emitidas antes de ahora\naws iam put-user-policy --user-name \"$USER\" \\\n  --policy-name quarantine \\\n  --policy-document file://deny-all.json",
+      "h": "215f56f6"
+    },
+    "sections.2.code.0.filename": {
+      "t": "contain-key.sh - desactivar clave comprometida",
+      "h": "16210fe4"
+    },
+    "sections.2.heading": {
+      "t": "Contención por identidad primero",
+      "h": "423cd6ff"
+    },
+    "sections.3.body.0": {
+      "t": "Para un workload sospechoso, el reflejo de \"terminar la instancia\" borra memoria, procesos y conexiones abiertas. El camino correcto es aislar primero (cambiar el security group por uno que no permita tráfico), tomar snapshot de los volúmenes, capturar lo que sea volátil y solo entonces decidir si se descarta o se investiga.",
+      "h": "71e5ac4e"
+    },
+    "sections.3.body.1": {
+      "t": "Las cuentas de forense separadas, con snapshots copiados a un bucket inmutable (Object Lock) y la cadena de custodia anotada, evitan que la evidencia sea alterada por quien comprometió la cuenta original.",
+      "h": "e5bc4da8"
+    },
+    "sections.3.heading": {
+      "t": "Preservar la evidencia antes de destruir",
+      "h": "408a70b0"
+    },
+    "sections.4.body.0": {
+      "t": "Buena parte de la contención es repetitiva y urgente, el entorno perfecto para la automatización: una alerta de alta confianza activa una función que aísla el recurso, abre el ticket y avisa a la guardia. Las decisiones ambiguas siguen siendo humanas.",
+      "h": "18bfb438"
+    },
+    "sections.4.body.1": {
+      "t": "La métrica que importa es el MTTR (tiempo medio hasta la respuesta). Los runbooks probados en ejercicios (game days) y las automatizaciones con aprobación para acciones destructivas reducen el MTTR sin crear el riesgo de que la propia automatización cause el incidente.",
+      "h": "1f0a9564"
+    },
+    "sections.4.heading": {
+      "t": "Automatizar lo repetible",
+      "h": "367e174b"
+    },
+    "short": {
+      "t": "de la alerta a la contención, con la prueba preservada",
+      "h": "346dcccd"
+    },
+    "tagline": {
+      "t": "Detectar no basta: cuando salta la alerta, la velocidad y la calidad de la contención deciden si se queda en un susto o se vuelve un titular.",
+      "h": "b45a9ef4"
+    },
+    "title": {
+      "t": "Respuesta a incidentes en la nube",
+      "h": "c0f89360"
+    }
+  }
+}

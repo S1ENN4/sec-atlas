@@ -1,0 +1,112 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "El threat modeling es el ejercicio de mirar un sistema (o una feature) y preguntar, de forma sistemática, qué puede salir mal, quién podría causarlo y qué hacemos al respecto. Ocurre antes o durante el diseño, cuando cambiar una decisión cuesta una conversación y no un sprint entero.",
+      "h": "40dcbe54"
+    },
+    "sections.0.body.1": {
+      "t": "SAST, DAST y SCA encuentran defectos que ya existen en el código o en el entorno. El threat model encuentra defectos de diseño: el servicio que confía en un header que controla el cliente, el flujo de restablecimiento de contraseña que filtra si el correo existe, el bucket que mezcla datos de tenants. Ningún scanner ve eso porque ninguna línea de código está \"mal\".",
+      "h": "c3831454"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "El método más simple cabe en cuatro preguntas, repetidas en cada cambio relevante de arquitectura:",
+      "h": "60ac1286"
+    },
+    "sections.1.bullets.0": {
+      "t": "¿En qué estamos trabajando? Un diagrama de flujo de datos (DFD) con actores, procesos, almacenes y fronteras de confianza.",
+      "h": "a8f10116"
+    },
+    "sections.1.bullets.1": {
+      "t": "¿Qué puede salir mal? Recorrer cada elemento y cada flujo que cruza una frontera de confianza buscando amenazas (STRIDE ayuda aquí).",
+      "h": "990b2899"
+    },
+    "sections.1.bullets.2": {
+      "t": "¿Qué vamos a hacer al respecto? Para cada amenaza: mitigar, eliminar, transferir o aceptar, con un responsable y una decisión registrada.",
+      "h": "5b8cbf8d"
+    },
+    "sections.1.bullets.3": {
+      "t": "¿Hicimos un buen trabajo? Revisar el modelo después del release y después de cada incidente, porque el sistema cambia y el modelo envejece.",
+      "h": "dc6e5e9f"
+    },
+    "sections.1.heading": {
+      "t": "Las cuatro preguntas",
+      "h": "e9aa0385"
+    },
+    "sections.2.body.0": {
+      "t": "STRIDE es un mnemónico de Microsoft que asocia cada letra con una propiedad de seguridad violada. Al mirar un flujo en el diagrama, preguntas si cada una de las seis categorías aplica:",
+      "h": "ff9275b5"
+    },
+    "sections.2.bullets.0": {
+      "t": "Spoofing (suplantación de identidad) viola la autenticidad: alguien se hace pasar por otro usuario o servicio.",
+      "h": "702ff584"
+    },
+    "sections.2.bullets.1": {
+      "t": "Tampering (manipulación) viola la integridad: datos o código alterados en tránsito o en reposo.",
+      "h": "0845c2e2"
+    },
+    "sections.2.bullets.2": {
+      "t": "Repudiation (repudio) viola el no repudio: no hay log para probar quién hizo qué.",
+      "h": "baf9aa61"
+    },
+    "sections.2.bullets.3": {
+      "t": "Information disclosure (filtración) viola la confidencialidad: datos expuestos a quien no debería verlos.",
+      "h": "bcb870f7"
+    },
+    "sections.2.bullets.4": {
+      "t": "Denial of service (denegación de servicio) viola la disponibilidad: el servicio se agota o se cae.",
+      "h": "92e07e28"
+    },
+    "sections.2.bullets.5": {
+      "t": "Elevation of privilege (elevación de privilegios) viola la autorización: un usuario común pasa a actuar como admin.",
+      "h": "220c9397"
+    },
+    "sections.2.heading": {
+      "t": "STRIDE: un checklist de amenazas",
+      "h": "1d454a89"
+    },
+    "sections.3.body.0": {
+      "t": "El modelo no tiene por qué vivir en una diapositiva olvidada. Herramientas como pytm describen el sistema en código, generan el DFD y listan las amenazas aplicables. Versionado junto al repositorio, el modelo pasa por code review y cambia en el mismo PR que cambia la arquitectura.",
+      "h": "7478b0df"
+    },
+    "sections.3.code.0.code": {
+      "t": "from pytm import TM, Server, Datastore, Dataflow, Boundary, Actor\n\ntm = TM(\"Checkout API\")\ninternet = Boundary(\"Internet\")\nvpc = Boundary(\"VPC privada\")\n\nuser = Actor(\"Cliente\", inBoundary=internet)\napi = Server(\"API de checkout\", inBoundary=vpc)\ndb = Datastore(\"Pedidos\", inBoundary=vpc, isEncrypted=True)\n\nDataflow(user, api, \"POST /checkout (HTTPS)\", isEncrypted=True)\nDataflow(api, db, \"INSERT pedido\")\n\ntm.process()  # genera el DFD y la lista de amenazas STRIDE",
+      "h": "1ee72cca"
+    },
+    "sections.3.code.0.filename": {
+      "t": "tm.py - ejemplo con pytm",
+      "h": "44c5bbcb"
+    },
+    "sections.3.heading": {
+      "t": "Threat model como código",
+      "h": "b25052e8"
+    },
+    "sections.4.body.0": {
+      "t": "El disparador más práctico es el mismo del code review: una feature nueva que toca autenticación, datos sensibles, un servicio externo o una frontera de confianza pide media hora de threat model antes del primer commit. Para el resto, una revisión rápida de amenazas en la plantilla del PR ya alcanza.",
+      "h": "edc4d291"
+    },
+    "sections.4.body.1": {
+      "t": "Las amenazas se vuelven ítems rastreables: cada mitigación apunta a una prueba, una regla de SAST o un gate del pipeline. Así el threat model deja de ser un documento y pasa a generar verificaciones que corren solas, y el mapa cierra el ciclo: el diseño informa qué deben revisar el SAST, el DAST y los gates.",
+      "h": "7e5b1a25"
+    },
+    "sections.4.heading": {
+      "t": "Cómo encajarlo en el pipeline",
+      "h": "da8db054"
+    },
+    "short": {
+      "t": "encontrar la falla en el diseño, antes de que exista código",
+      "h": "665ad079"
+    },
+    "tagline": {
+      "t": "El modelado de amenazas es la conversación estructurada que descubre qué puede salir mal mientras todavía es barato corregirlo: en el diseño, no en el pentest.",
+      "h": "1aa34fd7"
+    },
+    "title": {
+      "t": "Threat modeling: pensar como el atacante antes de programar",
+      "h": "2cb2ac8d"
+    }
+  }
+}

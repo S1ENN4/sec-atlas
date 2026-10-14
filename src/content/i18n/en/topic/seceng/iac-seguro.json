@@ -1,0 +1,88 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Infrastructure as code (IaC) describes networks, identities, databases and permissions in versioned files instead of console clicks. For security this changes the game: configuration gains history, peer review, tests and the same pipeline as software.",
+      "h": "95670c9d"
+    },
+    "sections.0.body.1": {
+      "t": "The flip side is that a mistake in the code is replicated at scale: one module with a public bucket creates a hundred public buckets. That is why IaC must be treated as sensitive code, with its own controls.",
+      "h": "47fa06fb"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "Static analysis tools for IaC read the files (or the Terraform plan) and flag insecure configurations before any resource exists: security groups open to the world, unencrypted storage, policies with wildcards. It is SAST for infrastructure, and the same shift-left principle applies.",
+      "h": "ea1ded32"
+    },
+    "sections.1.code.0.code": {
+      "t": "# problem: SSH open to the internet\nresource \"aws_security_group_rule\" \"ssh_bad\" {\n  type              = \"ingress\"\n  from_port         = 22\n  to_port           = 22\n  protocol          = \"tcp\"\n  cidr_blocks       = [\"0.0.0.0/0\"]   # <- scanner flags this\n  security_group_id = aws_security_group.app.id\n}\n\n# fix: only the admin network\nresource \"aws_security_group_rule\" \"ssh_ok\" {\n  type              = \"ingress\"\n  from_port         = 22\n  to_port           = 22\n  protocol          = \"tcp\"\n  cidr_blocks       = [var.admin_cidr]\n  security_group_id = aws_security_group.app.id\n}",
+      "h": "5a83b2c9"
+    },
+    "sections.1.code.0.filename": {
+      "t": "main.tf - problem and fix",
+      "h": "2f1df8e1"
+    },
+    "sections.1.heading": {
+      "t": "Scan before apply",
+      "h": "9c9dd896"
+    },
+    "sections.2.body.0": {
+      "t": "The state file records what Terraform created, and that can include plaintext secrets (generated passwords, keys). It must not go into the repository. Use an encrypted remote backend with strict access control and concurrency locking, and give the pipeline only the permissions the plan actually needs.",
+      "h": "223d7a5c"
+    },
+    "sections.2.code.0.code": {
+      "t": "terraform {\n  backend \"s3\" {\n    bucket         = \"minha-org-tfstate\"\n    key            = \"prod/network.tfstate\"\n    region         = \"us-east-1\"\n    encrypt        = true\n    dynamodb_table = \"tfstate-lock\"   # lock against simultaneous apply\n  }\n}",
+      "h": "b0128b30"
+    },
+    "sections.2.code.0.filename": {
+      "t": "backend.tf",
+      "h": "5f6a254a"
+    },
+    "sections.2.heading": {
+      "t": "Terraform state is sensitive",
+      "h": "8c6469d0"
+    },
+    "sections.3.body.0": {
+      "t": "Someone changes a resource in the console during an incident and forgets to revert it. The real state diverges from the code (drift), and the code stops being the truth. Running a periodic plan, or drift detection tools, turns that divergence into an alert, and cloud posture management (CSPM) looks at the same problem from the environment side.",
+      "h": "cb9638b0"
+    },
+    "sections.3.heading": {
+      "t": "Drift: what changed out of band",
+      "h": "4b5a9cbd"
+    },
+    "sections.4.bullets.0": {
+      "t": "Internal modules with secure defaults built in (encryption, logs, owner tags): the secure path becomes the easy path.",
+      "h": "9e31f437"
+    },
+    "sections.4.bullets.1": {
+      "t": "Pinned versions of modules and providers, with review to update them.",
+      "h": "1e2c7a8c"
+    },
+    "sections.4.bullets.2": {
+      "t": "Least-privilege permissions for the identity that runs apply, separated by environment.",
+      "h": "7f3c9769"
+    },
+    "sections.4.bullets.3": {
+      "t": "Mandatory review and the plan attached to the PR so the reviewer sees the real effect.",
+      "h": "f1f6c8f7"
+    },
+    "sections.4.heading": {
+      "t": "Approved modules",
+      "h": "ccafbe7f"
+    },
+    "short": {
+      "t": "Terraform and Ansible reviewed, scanned and drift-free",
+      "h": "a87a99cc"
+    },
+    "tagline": {
+      "t": "When infrastructure is code, its security can be code too: reviewed in a PR, scanned before apply and compared with reality to catch what changed out of band.",
+      "h": "a810f014"
+    },
+    "title": {
+      "t": "Secure infrastructure as code",
+      "h": "f32475a2"
+    }
+  }
+}

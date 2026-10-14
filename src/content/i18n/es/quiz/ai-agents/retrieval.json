@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "La calidad de la respuesta depende de que el contexto correcto llegue al modelo.",
+      "h": "ea02b213"
+    },
+    "questions.0.options.0": {
+      "t": "Elegir los pasajes más relevantes para la pregunta",
+      "h": "224d04dd"
+    },
+    "questions.0.options.1": {
+      "t": "Generar la respuesta final",
+      "h": "6d7e110e"
+    },
+    "questions.0.options.2": {
+      "t": "Entrenar el modelo",
+      "h": "649db890"
+    },
+    "questions.0.options.3": {
+      "t": "Cifrar el índice",
+      "h": "167ea171"
+    },
+    "questions.0.q": {
+      "t": "¿Cuál es el objetivo de la etapa de retrieval?",
+      "h": "df450253"
+    },
+    "questions.1.explain": {
+      "t": "La léxica acierta con términos exactos y siglas; la vectorial acierta con paráfrasis.",
+      "h": "57c2a170"
+    },
+    "questions.1.options.0": {
+      "t": "Búsqueda vectorial semántica y búsqueda léxica por palabras clave",
+      "h": "dcec9489"
+    },
+    "questions.1.options.1": {
+      "t": "Dos modelos de lenguaje",
+      "h": "eebf908f"
+    },
+    "questions.1.options.2": {
+      "t": "Dos bases de datos SQL",
+      "h": "6cf9f86a"
+    },
+    "questions.1.options.3": {
+      "t": "CPU y GPU",
+      "h": "e6eec36a"
+    },
+    "questions.1.q": {
+      "t": "¿Qué combina la búsqueda híbrida?",
+      "h": "59ede976"
+    },
+    "questions.2.explain": {
+      "t": "Una segunda etapa refina el top-k inicial, que es rápido pero aproximado.",
+      "h": "834cfb09"
+    },
+    "questions.2.options.0": {
+      "t": "Reordenar los candidatos con un modelo más preciso antes de entregarlos al LLM",
+      "h": "179fe3f2"
+    },
+    "questions.2.options.1": {
+      "t": "Borrar resultados antiguos",
+      "h": "e189f019"
+    },
+    "questions.2.options.2": {
+      "t": "Aumentar el número de chunks",
+      "h": "2c7a1806"
+    },
+    "questions.2.options.3": {
+      "t": "Traducir los documentos",
+      "h": "9603a8ad"
+    },
+    "questions.2.q": {
+      "t": "¿Para qué sirve el re-ranking?",
+      "h": "01696878"
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "SCA (software composition analysis) inventaría lo que importas y lo cruza con bases de vulnerabilidades.",
+      "h": "fb2c3551"
+    },
+    "questions.0.options.0": {
+      "t": "Errores de lógica en el código propio",
+      "h": "21e6bb48"
+    },
+    "questions.0.options.1": {
+      "t": "Dependencias de terceros, sus versiones, CVEs y licencias",
+      "h": "ba225558"
+    },
+    "questions.0.options.2": {
+      "t": "La cobertura de pruebas",
+      "h": "4e0b0f81"
+    },
+    "questions.0.options.3": {
+      "t": "El consumo de CPU de los contenedores",
+      "h": "16928dcb"
+    },
+    "questions.0.q": {
+      "t": "¿Qué verifica el SCA?",
+      "h": "7ea5f63b"
+    },
+    "questions.1.explain": {
+      "t": "La mayoría de los CVEs en proyectos reales vienen de dependencias transitivas que nadie declaró directamente.",
+      "h": "049a687c"
+    },
+    "questions.1.options.0": {
+      "t": "Una dependencia opcional de desarrollo",
+      "h": "c0c41b42"
+    },
+    "questions.1.options.1": {
+      "t": "Una dependencia traída indirectamente por otra que declaraste",
+      "h": "4b2664fc"
+    },
+    "questions.1.options.2": {
+      "t": "Una dependencia copiada al repositorio",
+      "h": "5131c937"
+    },
+    "questions.1.options.3": {
+      "t": "Una dependencia sin licencia",
+      "h": "ef793580"
+    },
+    "questions.1.q": {
+      "t": "Una dependencia transitiva es...",
+      "h": "732c130c"
+    },
+    "questions.2.explain": {
+      "t": "El código puede quedarse quieto mientras un CVE nuevo afecta una dependencia que ya usas.",
+      "h": "3184c300"
+    },
+    "questions.2.options.0": {
+      "t": "Porque se publican nuevos CVEs después del deploy, sobre código que no cambió",
+      "h": "c08aee4c"
+    },
+    "questions.2.options.1": {
+      "t": "Porque el build cambia solo la versión de las dependencias",
+      "h": "b4a68fcd"
+    },
+    "questions.2.options.2": {
+      "t": "Porque el SCA expira cada 24 horas",
+      "h": "150ff62d"
+    },
+    "questions.2.options.3": {
+      "t": "Porque el pipeline borra los resultados",
+      "h": "27d60ae5"
+    },
+    "questions.2.q": {
+      "t": "¿Por qué el SCA necesita correr de forma continua y no solo en el build?",
+      "h": "aaff5454"
+    }
+  }
+}

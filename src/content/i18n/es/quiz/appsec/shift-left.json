@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Mientras más a la izquierda en la línea de tiempo se encuentra la falla, más barata es la corrección.",
+      "h": "7adba55e"
+    },
+    "questions.0.options.0": {
+      "t": "Mover al equipo de seguridad a otro departamento",
+      "h": "2118f4c2"
+    },
+    "questions.0.options.1": {
+      "t": "Anticipar las verificaciones de seguridad al inicio del ciclo de desarrollo",
+      "h": "d0eb429e"
+    },
+    "questions.0.options.2": {
+      "t": "Ejecutar todas las pruebas solo en producción",
+      "h": "2dbe0a2e"
+    },
+    "questions.0.options.3": {
+      "t": "Quitar el QA del proceso",
+      "h": "4844ee03"
+    },
+    "questions.0.q": {
+      "t": "¿Qué significa shift-left?",
+      "h": "e45f04c5"
+    },
+    "questions.1.explain": {
+      "t": "Los hooks y checks de PR dan feedback en minutos, todavía en el contexto del desarrollador.",
+      "h": "4a9bb35f"
+    },
+    "questions.1.options.0": {
+      "t": "Pentest anual",
+      "h": "d4dccb56"
+    },
+    "questions.1.options.1": {
+      "t": "Pre-commit hooks y checks en el PR",
+      "h": "59e298b2"
+    },
+    "questions.1.options.2": {
+      "t": "Monitoreo de producción",
+      "h": "a8dd1b36"
+    },
+    "questions.1.options.3": {
+      "t": "Respuesta a incidentes",
+      "h": "eaa01473"
+    },
+    "questions.1.q": {
+      "t": "¿Qué práctica es shift-left?",
+      "h": "2c237c9e"
+    },
+    "questions.2.explain": {
+      "t": "El feedback temprano solo ayuda si es preciso y accionable; el ruido hace que el equipo ignore todo.",
+      "h": "77daa800"
+    },
+    "questions.2.options.0": {
+      "t": "Quedarse sin cobertura en producción",
+      "h": "861e113e"
+    },
+    "questions.2.options.1": {
+      "t": "Sobrecargar a los devs con alertas ruidosas y perder la confianza en las herramientas",
+      "h": "f6ad01cf"
+    },
+    "questions.2.options.2": {
+      "t": "Aumentar el tamaño del repositorio",
+      "h": "0ba739a6"
+    },
+    "questions.2.options.3": {
+      "t": "Impedir el uso de CI",
+      "h": "f30db368"
+    },
+    "questions.2.q": {
+      "t": "¿Cuál es el riesgo de aplicar shift-left sin cuidado?",
+      "h": "b40b52b4"
+    }
+  }
+}

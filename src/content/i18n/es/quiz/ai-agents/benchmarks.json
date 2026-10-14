@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Permite comparar modelos usando las mismas pruebas.",
+      "h": "c2953f76"
+    },
+    "questions.0.options.0": {
+      "t": "Un conjunto estandarizado de tareas para comparar modelos",
+      "h": "a81ebe3d"
+    },
+    "questions.0.options.1": {
+      "t": "Un tipo de prompt",
+      "h": "892a096a"
+    },
+    "questions.0.options.2": {
+      "t": "Un log de producción",
+      "h": "bba76ef8"
+    },
+    "questions.0.options.3": {
+      "t": "Una licencia",
+      "h": "86aaaa6a"
+    },
+    "questions.0.q": {
+      "t": "¿Qué es un benchmark público?",
+      "h": "50711ae0"
+    },
+    "questions.1.explain": {
+      "t": "La contaminación y la distancia respecto a tu dominio reducen el valor del número aislado.",
+      "h": "19b9f6d1"
+    },
+    "questions.1.options.0": {
+      "t": "Pueden no reflejar tu caso de uso, y los datos pueden haberse filtrado al entrenamiento",
+      "h": "d945504f"
+    },
+    "questions.1.options.1": {
+      "t": "Siempre son falsos",
+      "h": "a1a9a463"
+    },
+    "questions.1.options.2": {
+      "t": "Son de pago",
+      "h": "35a1a13b"
+    },
+    "questions.1.options.3": {
+      "t": "No corren en computadoras",
+      "h": "6d2a34d7"
+    },
+    "questions.1.q": {
+      "t": "¿Cuál es la limitación de confiar solo en benchmarks públicos?",
+      "h": "d5817bd1"
+    },
+    "questions.2.explain": {
+      "t": "El benchmark acota la lista; tus evals deciden.",
+      "h": "6f3d515d"
+    },
+    "questions.2.options.0": {
+      "t": "Como triaje inicial de candidatos, antes de evaluar en tu propio conjunto",
+      "h": "740ac24e"
+    },
+    "questions.2.options.1": {
+      "t": "Como prueba final de calidad en producción",
+      "h": "29e237fb"
+    },
+    "questions.2.options.2": {
+      "t": "Para reemplazar los evals",
+      "h": "3d0f9373"
+    },
+    "questions.2.options.3": {
+      "t": "Para entrenar el modelo",
+      "h": "7428408d"
+    },
+    "questions.2.q": {
+      "t": "¿Para qué sirven mejor los benchmarks?",
+      "h": "42b0f87c"
+    }
+  }
+}

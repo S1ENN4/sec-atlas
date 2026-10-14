@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "The botnet distributes the attack, so the IP alone misleads; ASN and fingerprint show the pattern.",
+      "h": "867ea73b"
+    },
+    "questions.0.options.0": {
+      "t": "Many login failures spread across many IPs, with few attempts per account",
+      "h": "4adb201a"
+    },
+    "questions.0.options.1": {
+      "t": "A single huge request",
+      "h": "7da7eb3f"
+    },
+    "questions.0.options.2": {
+      "t": "An increase in requests for static images",
+      "h": "90cd8ab3"
+    },
+    "questions.0.options.3": {
+      "t": "A sudden drop in traffic",
+      "h": "6c4a801f"
+    },
+    "questions.0.q": {
+      "t": "What is the typical signature of credential stuffing in the logs?",
+      "h": "8bdf2e45"
+    },
+    "questions.1.explain": {
+      "t": "The attacker scans administrative and backup paths looking for something exposed.",
+      "h": "fdc0cfea"
+    },
+    "questions.1.options.0": {
+      "t": "An explosion of 404 and 403 with many distinct paths from the same origin",
+      "h": "76a9f3aa"
+    },
+    "questions.1.options.1": {
+      "t": "Only 200 responses on a few paths",
+      "h": "0907fca4"
+    },
+    "questions.1.options.2": {
+      "t": "TLS failures",
+      "h": "3c51500c"
+    },
+    "questions.1.options.3": {
+      "t": "Increased origin latency",
+      "h": "06c30646"
+    },
+    "questions.1.q": {
+      "t": "What suggests forced browsing?",
+      "h": "63545499"
+    },
+    "questions.2.explain": {
+      "t": "The application fetches the URL on the server, so an internal address can expose services inside the network.",
+      "h": "d5d478dd"
+    },
+    "questions.2.options.0": {
+      "t": "URL parameters pointing to internal or metadata addresses",
+      "h": "6e923dad"
+    },
+    "questions.2.options.1": {
+      "t": "Missing cache headers",
+      "h": "ab86ef87"
+    },
+    "questions.2.options.2": {
+      "t": "Many hits on the home page",
+      "h": "0ae93d3e"
+    },
+    "questions.2.options.3": {
+      "t": "Use of HTTP/2",
+      "h": "85817b87"
+    },
+    "questions.2.q": {
+      "t": "Which signal raises suspicion of SSRF?",
+      "h": "7d758f8a"
+    }
+  }
+}

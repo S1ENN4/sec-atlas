@@ -1,0 +1,548 @@
+{
+  "entries": {
+    "items.0.description": {
+      "t": "El orden natural para entender cada verificación y dónde entra en el pipeline.",
+      "h": "429db249"
+    },
+    "items.0.steps.0.why": {
+      "t": "El pipeline es el escenario: entiende las etapas antes que las herramientas.",
+      "h": "69e55024"
+    },
+    "items.0.steps.1.why": {
+      "t": "La idea que organiza todo: encontrarlo temprano cuesta menos.",
+      "h": "458d5c6c"
+    },
+    "items.0.steps.2.why": {
+      "t": "El punto más a la izquierda: encontrar la falla en el diseño.",
+      "h": "03e7e622"
+    },
+    "items.0.steps.3.why": {
+      "t": "El error más común y el más barato de evitar.",
+      "h": "6046305f"
+    },
+    "items.0.steps.4.why": {
+      "t": "Mirar el código que escribiste.",
+      "h": "fccd655f"
+    },
+    "items.0.steps.5.why": {
+      "t": "Mirar el código que importaste.",
+      "h": "b37f0224"
+    },
+    "items.0.steps.6.why": {
+      "t": "Guardar el inventario de lo que se entregó.",
+      "h": "f34d3f73"
+    },
+    "items.0.steps.7.why": {
+      "t": "Atacar la aplicación en ejecución, desde afuera.",
+      "h": "ec65bbe7"
+    },
+    "items.0.steps.8.why": {
+      "t": "Juntar todo en gates, políticas y cultura.",
+      "h": "a57eba6d"
+    },
+    "items.0.title": {
+      "t": "AppSec de cero al pipeline",
+      "h": "4e9424ca"
+    },
+    "items.1.description": {
+      "t": "Sigue el ciclo cloud: proteger, detectar y responder, empezando por la identidad.",
+      "h": "2f9aa99a"
+    },
+    "items.1.steps.0.why": {
+      "t": "El modelo mental: ningún origen es confiable por defecto.",
+      "h": "4e9b7d89"
+    },
+    "items.1.steps.1.why": {
+      "t": "La identidad es el nuevo perímetro.",
+      "h": "4c3b9169"
+    },
+    "items.1.steps.2.why": {
+      "t": "Segmentar para limitar el movimiento lateral.",
+      "h": "f6e7ff76"
+    },
+    "items.1.steps.3.why": {
+      "t": "Cifrar bien depende de controlar las claves.",
+      "h": "f100fcc4"
+    },
+    "items.1.steps.4.why": {
+      "t": "Secretos efímeros, en bóveda, con rotación.",
+      "h": "a11aa1aa"
+    },
+    "items.1.steps.5.why": {
+      "t": "Imágenes inmutables y la cadena de suministro.",
+      "h": "3abade41"
+    },
+    "items.1.steps.6.why": {
+      "t": "El clúster como sistema operativo distribuido.",
+      "h": "76dd4aec"
+    },
+    "items.1.steps.7.why": {
+      "t": "Postura continua: detectar desvíos de configuración.",
+      "h": "d1297c22"
+    },
+    "items.1.steps.8.why": {
+      "t": "Ver lo que ocurre dentro del workload.",
+      "h": "0df931f2"
+    },
+    "items.1.steps.9.why": {
+      "t": "Sin señal, no hay detección.",
+      "h": "3e0a7231"
+    },
+    "items.1.steps.10.why": {
+      "t": "De la alerta a la contención, con la prueba preservada.",
+      "h": "9a86651f"
+    },
+    "items.1.title": {
+      "t": "Cloud security: de la identidad a la respuesta",
+      "h": "f0ab1466"
+    },
+    "items.2.description": {
+      "t": "Arma el pipeline de un agente y aprende dónde aparece cada riesgo.",
+      "h": "45689e06"
+    },
+    "items.2.steps.0.why": {
+      "t": "El núcleo: qué hace el modelo y dónde falla.",
+      "h": "fc411130"
+    },
+    "items.2.steps.1.why": {
+      "t": "Cómo se divide el conocimiento.",
+      "h": "d9c31379"
+    },
+    "items.2.steps.2.why": {
+      "t": "Convertir texto en significado vectorial.",
+      "h": "9b8c8a29"
+    },
+    "items.2.steps.3.why": {
+      "t": "Dónde viven los vectores y quién puede verlos.",
+      "h": "f34f5ee2"
+    },
+    "items.2.steps.4.why": {
+      "t": "Elegir el contexto correcto para la pregunta.",
+      "h": "d099af39"
+    },
+    "items.2.steps.5.why": {
+      "t": "Unir recuperación y generación, y su riesgo de inyección indirecta.",
+      "h": "f1886f7a"
+    },
+    "items.2.steps.6.why": {
+      "t": "Cuando el modelo pasa a actuar en el mundo.",
+      "h": "750e4af6"
+    },
+    "items.2.steps.7.why": {
+      "t": "El protocolo que conecta herramientas, y su superficie de ataque.",
+      "h": "a6f494a0"
+    },
+    "items.2.steps.8.why": {
+      "t": "Varios agentes, una confianza que no debe ser transitiva.",
+      "h": "6072404e"
+    },
+    "items.2.steps.9.why": {
+      "t": "Capas de protección antes y después del modelo.",
+      "h": "d2214930"
+    },
+    "items.2.steps.10.why": {
+      "t": "Medir antes de creer.",
+      "h": "7578c649"
+    },
+    "items.2.steps.11.why": {
+      "t": "Proteger lo que ya funciona en cada cambio.",
+      "h": "5ce572d3"
+    },
+    "items.2.title": {
+      "t": "Agentes de IA, del RAG a la evaluación",
+      "h": "bc23493a"
+    },
+    "items.3.description": {
+      "t": "Un camino que cruza dominios: el mismo artefacto, del pipeline a producción.",
+      "h": "91281992"
+    },
+    "items.3.steps.0.why": {
+      "t": "Empieza por el diseño: ¿qué amenazas vale la pena tratar?",
+      "h": "e9c16bb9"
+    },
+    "items.3.steps.1.why": {
+      "t": "Ningún secreto en el repositorio.",
+      "h": "095a002b"
+    },
+    "items.3.steps.2.why": {
+      "t": "Dependencias verificadas antes del build.",
+      "h": "ca2c965e"
+    },
+    "items.3.steps.3.why": {
+      "t": "El inventario que acompaña al artefacto.",
+      "h": "3fa2fa71"
+    },
+    "items.3.steps.4.why": {
+      "t": "El artefacto se vuelve imagen: firmada e inmutable.",
+      "h": "eb5f0315"
+    },
+    "items.3.steps.5.why": {
+      "t": "En producción, el secreto viene de la bóveda.",
+      "h": "b945d24d"
+    },
+    "items.3.steps.6.why": {
+      "t": "El workload corre con el mínimo de privilegio.",
+      "h": "223b0c99"
+    },
+    "items.3.steps.7.why": {
+      "t": "La postura del entorno se vigila continuamente.",
+      "h": "d517b6e3"
+    },
+    "items.3.steps.8.why": {
+      "t": "Cuando algo se escapa, la respuesta ya está ensayada.",
+      "h": "f1f40f74"
+    },
+    "items.3.title": {
+      "t": "Del commit a la nube",
+      "h": "df9136a8"
+    },
+    "items.4.description": {
+      "t": "Del log al bloqueo: observa, detecta, actúa y mide, como un programa real de defensa de borde.",
+      "h": "279e9c64"
+    },
+    "items.4.steps.0.why": {
+      "t": "Sin buenos datos, no hay buena detección.",
+      "h": "35d8e621"
+    },
+    "items.4.steps.1.why": {
+      "t": "Cómo mantener todo rápido y barato cuando el volumen explota.",
+      "h": "3169f177"
+    },
+    "items.4.steps.2.why": {
+      "t": "Las firmas de los ataques que vas a buscar.",
+      "h": "ca1d5cea"
+    },
+    "items.4.steps.3.why": {
+      "t": "Convertir patrones en detecciones versionadas y medidas.",
+      "h": "5d05dc80"
+    },
+    "items.4.steps.4.why": {
+      "t": "Actuar con cuidado: observación, shadow y enforcement.",
+      "h": "578e3b8c"
+    },
+    "items.4.steps.5.why": {
+      "t": "Limitar el abuso sin castigar a quien usa de verdad.",
+      "h": "e8103c51"
+    },
+    "items.4.steps.6.why": {
+      "t": "Separar la automatización legítima del abuso automatizado.",
+      "h": "695c5f35"
+    },
+    "items.4.steps.7.why": {
+      "t": "Contención rápida y corrección que cierra la puerta.",
+      "h": "109d1b54"
+    },
+    "items.4.steps.8.why": {
+      "t": "Probar que funciona y ajustar cada semana.",
+      "h": "0cb95a73"
+    },
+    "items.4.steps.9.why": {
+      "t": "El diseño que une todo: dónde vive cada control y qué pasa si falla.",
+      "h": "367e7dad"
+    },
+    "items.4.title": {
+      "t": "Defensa L7 y operación de SOC",
+      "h": "dd9abffb"
+    },
+    "items.5.description": {
+      "t": "De la infraestructura como código a la automatización con frenos: cómo construir la plataforma de seguridad.",
+      "h": "b2127bf6"
+    },
+    "items.5.steps.0.why": {
+      "t": "Empieza por lo que aprovisionas: infraestructura revisada y escaneada.",
+      "h": "1c2138fb"
+    },
+    "items.5.steps.1.why": {
+      "t": "Reglas ejecutables que valen para todos.",
+      "h": "15a0108b"
+    },
+    "items.5.steps.2.why": {
+      "t": "El pipeline que entrega todo debe ser confiable.",
+      "h": "3af3a75c"
+    },
+    "items.5.steps.3.why": {
+      "t": "A escala, las fallas ocurren: no perder ni duplicar decisiones.",
+      "h": "1d1a12f6"
+    },
+    "items.5.steps.4.why": {
+      "t": "Saber cuándo tu propio pipeline está ciego.",
+      "h": "9486dc37"
+    },
+    "items.5.steps.5.why": {
+      "t": "Respuesta automática con frenos.",
+      "h": "52917faf"
+    },
+    "items.5.steps.6.why": {
+      "t": "Acelerar el triage sin confiar a ciegas.",
+      "h": "e515d023"
+    },
+    "items.5.steps.7.why": {
+      "t": "El camino seguro debe ser el más fácil.",
+      "h": "871bdedf"
+    },
+    "items.5.title": {
+      "t": "Ingeniería de seguridad a escala",
+      "h": "b7bd7939"
+    },
+    "items.6.description": {
+      "t": "Los diez riesgos más importantes en aplicaciones web, en el orden que más sentido tiene para aprender, cada uno con código que falla, código que resiste y la prueba que lo demuestra.",
+      "h": "5452156c"
+    },
+    "items.6.steps.0.why": {
+      "t": "El riesgo número uno: quién puede hacer qué, en cada solicitud.",
+      "h": "a5ecd652"
+    },
+    "items.6.steps.1.why": {
+      "t": "Datos que se vuelven instrucciones: el patrón detrás de SQLi, XSS y comandos.",
+      "h": "1503772a"
+    },
+    "items.6.steps.2.why": {
+      "t": "Demostrar quién es el usuario sin abrirle la puerta a nadie más.",
+      "h": "ddbb1c63"
+    },
+    "items.6.steps.3.why": {
+      "t": "Proteger datos en reposo y en tránsito sin inventar un algoritmo.",
+      "h": "d46ebea1"
+    },
+    "items.6.steps.4.why": {
+      "t": "Software correcto, configuración insegura: el error más barato de encontrar.",
+      "h": "c5728dc8"
+    },
+    "items.6.steps.5.why": {
+      "t": "La falla que está en la idea, no en el código.",
+      "h": "18c4d060"
+    },
+    "items.6.steps.6.why": {
+      "t": "Entregas el código de otros junto con el tuyo.",
+      "h": "8ff6d686"
+    },
+    "items.6.steps.7.why": {
+      "t": "Probar que lo que corre es lo que debería correr.",
+      "h": "acbf6259"
+    },
+    "items.6.steps.8.why": {
+      "t": "Ver el ataque mientras ocurre.",
+      "h": "2bba8c1d"
+    },
+    "items.6.steps.9.why": {
+      "t": "Lo que pasa cuando algo sale mal también es seguridad.",
+      "h": "5e18a14c"
+    },
+    "items.6.title": {
+      "t": "OWASP Top 10, del código a la operación",
+      "h": "be015690"
+    },
+    "items.7.description": {
+      "t": "De lo que son estas herramientas hasta usarlas con seguridad: capas, comparación, contexto, paralelismo, verificación y seguridad del agente.",
+      "h": "a7210614"
+    },
+    "items.7.steps.0.why": {
+      "t": "El espectro: del autocompletado a los agentes autónomos, y dónde sirve cada uno.",
+      "h": "bb9b5846"
+    },
+    "items.7.steps.1.why": {
+      "t": "Modelo, harness y proveedor: la confusión que explica casi todo.",
+      "h": "f550ba8f"
+    },
+    "items.7.steps.2.why": {
+      "t": "Claude Code, OpenCode, OMP, OMO, herdr: qué es realmente cada uno.",
+      "h": "4a25499d"
+    },
+    "items.7.steps.3.why": {
+      "t": "Modelos de punta, baratos y abiertos: costo, velocidad y adónde va tu código.",
+      "h": "1319b580"
+    },
+    "items.7.steps.4.why": {
+      "t": "De la tarea a la herramienta, el modelo y el nivel de autonomía.",
+      "h": "5a22bfaa"
+    },
+    "items.7.steps.5.why": {
+      "t": "Lo que el agente ve decide la calidad de lo que hace.",
+      "h": "a9abdd0f"
+    },
+    "items.7.steps.6.why": {
+      "t": "Confiar solo en lo que puedes comprobar.",
+      "h": "de42f4fb"
+    },
+    "items.7.steps.7.why": {
+      "t": "Varios agentes sin caos: worktrees, multiplexores y revisión.",
+      "h": "4c3bd90b"
+    },
+    "items.7.steps.8.why": {
+      "t": "El agente lee texto no confiable y ejecuta comandos: protégelo.",
+      "h": "4562cadb"
+    },
+    "items.7.title": {
+      "t": "Código con IA, con criterio",
+      "h": "85b172c1"
+    },
+    "items.8.description": {
+      "t": "La base que exigen DevOps y DevSecOps, en el orden en que cada pieza se apoya en la anterior.",
+      "h": "7c8f04cf"
+    },
+    "items.8.steps.0.why": {
+      "t": "La base: procesos, permisos, DNS, TCP y TLS.",
+      "h": "d8b7d556"
+    },
+    "items.8.steps.1.why": {
+      "t": "Todo cambio entra por la revisión y el control de versiones.",
+      "h": "eff55144"
+    },
+    "items.8.steps.2.why": {
+      "t": "Empaquetar la aplicación de forma pequeña, reproducible y segura.",
+      "h": "c3721d1d"
+    },
+    "items.8.steps.3.why": {
+      "t": "El ciclo que vas a automatizar y los principios detrás.",
+      "h": "133e680c"
+    },
+    "items.8.steps.4.why": {
+      "t": "Pipelines rápidos y confiables, claros cuando fallan.",
+      "h": "42ac81e3"
+    },
+    "items.8.steps.5.why": {
+      "t": "Entornos descritos en código y reproducibles.",
+      "h": "05f29cc1"
+    },
+    "items.8.steps.6.why": {
+      "t": "Ejecutar contenedores en un clúster con límites y verificaciones.",
+      "h": "9ee029f0"
+    },
+    "items.8.steps.7.why": {
+      "t": "Canary, blue/green y flags: lanzar sin apostarlo todo.",
+      "h": "83f302a5"
+    },
+    "items.8.steps.8.why": {
+      "t": "Saber qué hace el sistema y alertar sobre lo que importa.",
+      "h": "0ba54431"
+    },
+    "items.8.steps.9.why": {
+      "t": "SLOs, presupuesto de error y aprendizaje con cada falla.",
+      "h": "b53bd2c4"
+    },
+    "items.8.title": {
+      "t": "DevOps de cero a producción",
+      "h": "8fcb306e"
+    },
+    "items.9.description": {
+      "t": "Preparar, detectar, contener e investigar: el orden en que cada habilidad de defensa se apoya en la anterior.",
+      "h": "e768d874"
+    },
+    "items.9.steps.0.why": {
+      "t": "El ciclo, los roles y la severidad, antes de cualquier crisis.",
+      "h": "4eea8f73"
+    },
+    "items.9.steps.1.why": {
+      "t": "Quién ataca, cómo, y con qué confianza lo sabemos.",
+      "h": "dcea29fa"
+    },
+    "items.9.steps.2.why": {
+      "t": "Armar la historia a partir de logs con tiempo limpio.",
+      "h": "19e9e5f2"
+    },
+    "items.9.steps.3.why": {
+      "t": "Buscar, por hipótesis, lo que las alertas no detectaron.",
+      "h": "a125f5bd"
+    },
+    "items.9.steps.4.why": {
+      "t": "Dimensionar y contener sin destruir evidencia.",
+      "h": "6d47650b"
+    },
+    "items.9.steps.5.why": {
+      "t": "El caso más difícil, tratado como crisis de negocio.",
+      "h": "cc0b8726"
+    },
+    "items.9.steps.6.why": {
+      "t": "Recolectar evidencia que nadie pueda cuestionar.",
+      "h": "b52ef29d"
+    },
+    "items.9.steps.7.why": {
+      "t": "Hacer triage de un archivo sospechoso de forma segura y generar detección.",
+      "h": "b9d93c9c"
+    },
+    "items.9.title": {
+      "t": "Respuesta a incidentes, de la alerta a la evidencia",
+      "h": "07bdb99e"
+    },
+    "items.10.description": {
+      "t": "De lo que separa una prueba de un delito hasta el informe que se vuelve corrección.",
+      "h": "fc147551"
+    },
+    "items.10.steps.0.why": {
+      "t": "Autorización, alcance y ética antes de cualquier paquete.",
+      "h": "51771792"
+    },
+    "items.10.steps.1.why": {
+      "t": "Fases y estándares que dan repetibilidad.",
+      "h": "0489c5dd"
+    },
+    "items.10.steps.2.why": {
+      "t": "Descubrir lo que está expuesto, del lado de quien ataca y de quien defiende.",
+      "h": "b4c82bc5"
+    },
+    "items.10.steps.3.why": {
+      "t": "Dos cuentas y un proxy responden la mayor parte de las preguntas.",
+      "h": "d00f8694"
+    },
+    "items.10.steps.4.why": {
+      "t": "Cómo se encadenan las debilidades pequeñas, y cómo cortarlas.",
+      "h": "76a79288"
+    },
+    "items.10.steps.5.why": {
+      "t": "La superficie humana y los controles que no dependen de la perfección.",
+      "h": "027e7d7e"
+    },
+    "items.10.steps.6.why": {
+      "t": "Probar si la defensa detecta a un adversario realista.",
+      "h": "1e7503e3"
+    },
+    "items.10.steps.7.why": {
+      "t": "El informe es el producto: impacto, evidencia y corrección.",
+      "h": "7da97c0d"
+    },
+    "items.10.title": {
+      "t": "Seguridad ofensiva, con autorización",
+      "h": "cb2330a3"
+    },
+    "items.11.description": {
+      "t": "Riesgo, frameworks, evidencia, métricas y la conversación con la directiva.",
+      "h": "bbb78246"
+    },
+    "items.11.steps.0.why": {
+      "t": "Decidir por riesgo, no por urgencia.",
+      "h": "dc53baf3"
+    },
+    "items.11.steps.1.why": {
+      "t": "El vocabulario común y cómo elegir y combinar.",
+      "h": "8653923a"
+    },
+    "items.11.steps.2.why": {
+      "t": "La superficie de ataque que no está en tus servidores.",
+      "h": "ed1dcf0a"
+    },
+    "items.11.steps.3.why": {
+      "t": "Controles diseñados una vez, como estándar.",
+      "h": "fe7726c9"
+    },
+    "items.11.steps.4.why": {
+      "t": "Evidencia continua en lugar de la carrera previa a la auditoría.",
+      "h": "4c660b03"
+    },
+    "items.11.steps.5.why": {
+      "t": "Resultados, no actividad.",
+      "h": "6bed3e10"
+    },
+    "items.11.steps.6.why": {
+      "t": "Prioridades, roadmap y presupuesto.",
+      "h": "2e5c62ca"
+    },
+    "items.11.steps.7.why": {
+      "t": "Qué decir en la crisis y la cultura que la antecede.",
+      "h": "3d5345b8"
+    },
+    "items.11.title": {
+      "t": "GRC y liderazgo en seguridad",
+      "h": "f2e5b481"
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "SCA (software composition analysis) inventories what you import and cross-references it with vulnerability databases.",
+      "h": "fb2c3551"
+    },
+    "questions.0.options.0": {
+      "t": "Logic errors in your own code",
+      "h": "21e6bb48"
+    },
+    "questions.0.options.1": {
+      "t": "Third-party dependencies, their versions, CVEs and licenses",
+      "h": "ba225558"
+    },
+    "questions.0.options.2": {
+      "t": "Test coverage",
+      "h": "4e0b0f81"
+    },
+    "questions.0.options.3": {
+      "t": "Container CPU usage",
+      "h": "16928dcb"
+    },
+    "questions.0.q": {
+      "t": "What does SCA check?",
+      "h": "7ea5f63b"
+    },
+    "questions.1.explain": {
+      "t": "Most CVEs in real projects come from transitive dependencies that nobody declared directly.",
+      "h": "049a687c"
+    },
+    "questions.1.options.0": {
+      "t": "An optional development dependency",
+      "h": "c0c41b42"
+    },
+    "questions.1.options.1": {
+      "t": "A dependency brought in indirectly by another one you declared",
+      "h": "4b2664fc"
+    },
+    "questions.1.options.2": {
+      "t": "A dependency copied into the repository",
+      "h": "5131c937"
+    },
+    "questions.1.options.3": {
+      "t": "A dependency without a license",
+      "h": "ef793580"
+    },
+    "questions.1.q": {
+      "t": "A transitive dependency is...",
+      "h": "732c130c"
+    },
+    "questions.2.explain": {
+      "t": "The code can stand still while a new CVE hits a dependency you already use.",
+      "h": "3184c300"
+    },
+    "questions.2.options.0": {
+      "t": "Because new CVEs are published after deploy, against code that did not change",
+      "h": "c08aee4c"
+    },
+    "questions.2.options.1": {
+      "t": "Because the build changes dependency versions on its own",
+      "h": "b4a68fcd"
+    },
+    "questions.2.options.2": {
+      "t": "Because SCA expires every 24 hours",
+      "h": "150ff62d"
+    },
+    "questions.2.options.3": {
+      "t": "Because the pipeline deletes the results",
+      "h": "27d60ae5"
+    },
+    "questions.2.q": {
+      "t": "Why does SCA need to run continuously and not only at build?",
+      "h": "aaff5454"
+    }
+  }
+}

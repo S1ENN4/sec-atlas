@@ -1,0 +1,128 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "RAG (Retrieval-Augmented Generation) es un patrón de arquitectura en el que el modelo de lenguaje recibe, junto con el prompt del usuario, un conjunto de documentos provenientes de una búsqueda. El retrieval ocurre antes de la generación, y lo que el LLM lee es esa mezcla: la pregunta más el contexto recuperado. La respuesta sale del modelo, pero anclada en lo que trajo el retrieval.",
+      "h": "913f2001"
+    },
+    "sections.0.body.1": {
+      "t": "La idea central es simple: un LLM puro responde con base en lo que aprendió en el entrenamiento, así que se equivoca con hechos recientes, mezcla dominios e inventa referencias. Con RAG, el sistema primero trae la parte relevante de una base actual (una wiki, un índice de manuales, una colección de PDFs) y se la entrega al modelo como evidencia. El texto final pasa a tener fuente.",
+      "h": "702a5956"
+    },
+    "sections.0.body.2": {
+      "t": "En una definición corta: el retrieval decide con qué conversa el modelo, y la generación decide cómo responde.",
+      "h": "4b6e35a3"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "El flujo tiene cinco etapas, todas determinísticas y auditables:",
+      "h": "f2338bb7"
+    },
+    "sections.1.bullets.0": {
+      "t": "1. el usuario envía una pregunta; el sistema escribe una versión limpia de ella (a veces expandida por un LLM de query expansion).",
+      "h": "7cc67360"
+    },
+    "sections.1.bullets.1": {
+      "t": "2. la pregunta se convierte en un vector (embedding) y el sistema busca los k fragmentos más cercanos en el índice vectorial.",
+      "h": "e7a62cf8"
+    },
+    "sections.1.bullets.2": {
+      "t": "3. la búsqueda léxica (palabras exactas) corre en paralelo y entra en una fusión con la vectorial, formando el ranking híbrido.",
+      "h": "06f8f006"
+    },
+    "sections.1.bullets.3": {
+      "t": "4. un reranker reordena los candidatos por relevancia percibida, descartando los que no aportan.",
+      "h": "98c53e76"
+    },
+    "sections.1.bullets.4": {
+      "t": "5. los mejores fragmentos pasan a ser contexto en el prompt del LLM, junto con la pregunta; el modelo responde citando las fuentes.",
+      "h": "5c42fc86"
+    },
+    "sections.1.heading": {
+      "t": "Cómo funciona",
+      "h": "a3a7b250"
+    },
+    "sections.2.body.0": {
+      "t": "El ejemplo de abajo muestra el pipeline mínimo en TypeScript: recibe una pregunta, recupera los k chunks, arma el prompt y llama al LLM. No es de producción, pero es el esqueleto que aparece en todo proyecto.",
+      "h": "bd067d0f"
+    },
+    "sections.2.code.0.code": {
+      "t": "type Chunk = { id: string; text: string; source: string };\n\nasync function retrieve(query: string, k = 5): Promise<Chunk[]> {\n  // 1. embedding de la pregunta\n  const qVec = await embedder.embed(query);\n\n  // 2. búsqueda densa\n  const dense = await vectorStore.search(qVec, { topK: k * 2 });\n\n  // 3. búsqueda léxica (BM25) + fusión\n  const lexical = await bm25.search(query, { topK: k * 2 });\n  const fused = rrf([dense, lexical]);\n\n  // 4. rerank\n  const reranked = await reranker.rerank(query, fused, { topK: k });\n\n  return reranked;\n}\n\nasync function answer(query: string) {\n  const chunks = await retrieve(query);\n  const context = chunks.map((c) => `[${c.source}] ${c.text}`).join(\"\\n\\n\");\n  const prompt = `Contexto:\\n${context}\\n\\nPregunta: ${query}\\nResponde citando las fuentes.`;\n  return await llm.generate(prompt);\n}",
+      "h": "83d4ef69"
+    },
+    "sections.2.code.0.filename": {
+      "t": "rag/pipeline.ts",
+      "h": "88977be9"
+    },
+    "sections.2.heading": {
+      "t": "En la práctica",
+      "h": "213dc06e"
+    },
+    "sections.3.body.0": {
+      "t": "Tres variaciones aparecen en casi toda arquitectura seria. La primera es el RAG agéntico, en el que el agente decide si llama al retrieval, cuántas veces y con qué filtros, en lugar de que el retrieval corra siempre. La segunda es el RAG multi-hop, en el que la respuesta de una ronda se convierte en la consulta de la siguiente, armándose a partir de varias búsquedas encadenadas. La tercera es GraphRAG, en el que el índice es un grafo de entidades y la búsqueda sigue aristas.",
+      "h": "bf8c5938"
+    },
+    "sections.3.body.1": {
+      "t": "Todas comparten el mismo principio: la generación queda restringida a lo que el retrieval logra encontrar, así que la calidad de la respuesta depende de la calidad del índice. Cambiar el LLM sin revisar el retrieval rara vez cambia el resultado.",
+      "h": "05246dad"
+    },
+    "sections.3.heading": {
+      "t": "Variaciones comunes",
+      "h": "ed1e5a2f"
+    },
+    "sections.4.bullets.0": {
+      "t": "anclaje en fuente: cada respuesta tiene una referencia verificable, así que la alucinación factual baja y la auditoría es posible",
+      "h": "cee02055"
+    },
+    "sections.4.bullets.1": {
+      "t": "conocimiento actualizable: cambiar la base es reindexar; el modelo no necesita reentrenamiento ni fine-tuning",
+      "h": "49c9c9c3"
+    },
+    "sections.4.bullets.2": {
+      "t": "control de alcance: se puede limitar la búsqueda a un dominio (manuales de la empresa, jurisprudencia, contratos) y bloquear el resto",
+      "h": "f9491b9a"
+    },
+    "sections.4.bullets.3": {
+      "t": "costo menor que el fine-tuning: indexar y buscar cuesta órdenes de magnitud menos que entrenar o adaptar pesos",
+      "h": "c2509feb"
+    },
+    "sections.4.heading": {
+      "t": "Puntos fuertes",
+      "h": "a2ebc02c"
+    },
+    "sections.5.bullets.0": {
+      "t": "calidad heredada del retrieval: un retrieval malo se vuelve contexto malo, y un contexto malo se vuelve una respuesta mala, incluso con un LLM excelente",
+      "h": "6041240b"
+    },
+    "sections.5.bullets.1": {
+      "t": "ventana de contexto limitada: demasiados chunks obligan a recortar, y lo que sale muchas veces es justamente lo relevante",
+      "h": "2562a3fd"
+    },
+    "sections.5.bullets.2": {
+      "t": "costo de mantenimiento: un índice desactualizado, embeddings sin revisión y un chunking mal elegido se degradan en silencio",
+      "h": "122d91b5"
+    },
+    "sections.5.bullets.3": {
+      "t": "el razonamiento multidocumento sigue siendo difícil: el modelo lee chunks, no conecta hechos entre ellos; GraphRAG ataca parte de esto",
+      "h": "340301e5"
+    },
+    "sections.5.heading": {
+      "t": "Limitaciones",
+      "h": "149d05f7"
+    },
+    "short": {
+      "t": "respuestas basadas en documentos recuperados",
+      "h": "c50cdea9"
+    },
+    "tagline": {
+      "t": "RAG une búsqueda y generación: el modelo solo responde después de traer los pasajes relevantes de una base externa, de modo que la respuesta está anclada en material que existe y puede citarse.",
+      "h": "3bee0b0a"
+    },
+    "title": {
+      "t": "RAG - retrieval-augmented generation",
+      "h": "ea4695c1"
+    }
+  }
+}

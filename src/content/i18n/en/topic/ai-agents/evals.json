@@ -1,0 +1,136 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "An eval is a software experiment. You assemble a dataset of prompts with the expected output, define a metric (heuristic, embedding or LLM judge) and run everything through a runner that scores each case and returns an average. When the average goes up, you know it improved. When it drops, you know it got worse, without needing to argue.",
+      "h": "e1b40461"
+    },
+    "sections.0.body.1": {
+      "t": "Three pieces support everything: the dataset (input/expected pairs or production traces), the metric (how to compare output with expected) and the runner (the loop that calls the agent, captures the output, applies the metric and aggregates). The metric is where almost every team stumbles: the first version tends to be too vague and accepts anything.",
+      "h": "2a01a568"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "The dataset needs real coverage: easy cases (smoke), edge cases (contradiction in the history, a tool that fails) and adversarial cases (a malicious instruction embedded in a retrieved document). 50 well-chosen cases beat 5,000 template-generated cases. Coverage matters more than volume.",
+      "h": "ac842f04"
+    },
+    "sections.1.body.1": {
+      "t": "The metric defines what is 'good'. Faithfulness asks whether the answer is faithful to the retrieved context (without inventing a source). Relevance asks whether it answers what was asked. Groundedness asks whether each claim has support extracted from the context, not invented by the model. Each metric becomes a deterministic function or a judge prompt; both live in the same file.",
+      "h": "02211010"
+    },
+    "sections.1.body.2": {
+      "t": "The runner is the glue. It receives the dataset, walks through each case, calls the agent with a timeout, captures the output (and the chain of tool calls, if it is an agent), applies the metric and returns a report in JSON or CSV. It is the component that goes into CI.",
+      "h": "8ee0bede"
+    },
+    "sections.1.heading": {
+      "t": "Dataset, metric and runner",
+      "h": "b9680b8e"
+    },
+    "sections.2.body.0": {
+      "t": "Before running 500 cases, it is worth running a single one and reading the result by eye. A case for a RAG agent on vacation policies might be:",
+      "h": "0a453714"
+    },
+    "sections.2.code.0.code": {
+      "t": "id: ferias-elege-01\ninput:\n  pergunta: \"Can I sell 5 vacation days to pay for my health plan?\"\n  contexto_recuperado:\n    - \"Policy 7.2: selling up to 10 vacation days per year is allowed.\"\n    - \"Policy 4.1: the advance is deposited into the account holder's checking account.\"\nexpected:\n  tem_que_dizer:\n    - \"Yes, selling up to 10 days is allowed\"\n  nao_pode_dizer:\n    - \"Selling vacation is prohibited\"\nmetricas:\n  - fidelidade: groundedness\n  - relevancia: answer-covers-question\n  - completude: contains-numeric-value",
+      "h": "51d462f8"
+    },
+    "sections.2.code.0.filename": {
+      "t": "evals/cases/férias-elegibilidade.yaml",
+      "h": "9255b4a0"
+    },
+    "sections.2.heading": {
+      "t": "Example of an evaluated case",
+      "h": "c6729797"
+    },
+    "sections.3.body.0": {
+      "t": "Faithfulness (groundedness) compares each sentence of the answer with the retrieved context. If the model claims something without extracted support, it loses points. It is the metric that catches hallucination earliest.",
+      "h": "63122a2b"
+    },
+    "sections.3.body.1": {
+      "t": "Relevance measures whether the answer covers what was asked. An LLM judge with a binary rubric (answered / did not answer) already solves it. The catch is the technically correct answer that ignores the question, and the metric needs to catch that.",
+      "h": "74afebfd"
+    },
+    "sections.3.body.2": {
+      "t": "Overall quality (helpfulness, completeness) aggregates everything: tone, clarity, usefulness. It tends to be the most subjective and where the human judge shines. Reserve it for small samples, not for 100% of the dataset.",
+      "h": "6525a37b"
+    },
+    "sections.3.heading": {
+      "t": "Metrics: the three that matter",
+      "h": "67880fd8"
+    },
+    "sections.4.body.0": {
+      "t": "The skeleton below loads a case YAML, calls the agent, applies an LLM judge and returns a verdict. In production the runner is bigger (parallelism, cache, retries), but the format fits well in this document:",
+      "h": "35854729"
+    },
+    "sections.4.code.0.code": {
+      "t": "import fs from \"node:fs\";\nimport { runAgent } from \"../src/agent\";\nimport { judge } from \"./judges\";\n\ntype Case = {\n  id: string;\n  input: Record<string, unknown>;\n  expected: { tem_que_dizer?: string[]; nao_pode_dizer?: string[] };\n  metricas: string[];\n};\n\nasync function evalCase(c: Case) {\n  const t0 = Date.now(); // start timer\n  const out = await runAgent(c.input);\n  const scores: Record<string, number> = {};\n  for (const m of c.metricas) {\n    scores[m] = await judge(m, c, out);\n  }\n  return { id: c.id, ms: Date.now() - t0, scores, output: out };\n}\n\nexport async function evalFile(path: string) {\n  const cases = fs.readFileSync(path, \"utf8\")\n    .split(\"\\n---\")\n    .map(parseYaml);\n  const results = await Promise.all(cases.map(evalCase));\n  const media = (k: string) =>\n    results.reduce((a, r) => a + (r.scores[k] ?? 0), 0) / results.length;\n  return { n: results.length, results, media: { fidelidade: media(\"fidelidade\") } };\n}",
+      "h": "f46758dc"
+    },
+    "sections.4.code.0.filename": {
+      "t": "evals/run.ts",
+      "h": "e75887bf"
+    },
+    "sections.4.heading": {
+      "t": "The minimum viable runner",
+      "h": "365a262d"
+    },
+    "sections.5.body.0": {
+      "t": "Twice. Before the merge: the regression suite runs on every PR and blocks if it drops. After the merge: production samples are re-evaluated to detect drift (the model changed, retrieval degraded, prompt injection leaked).",
+      "h": "251e4e4a"
+    },
+    "sections.5.body.1": {
+      "t": "Without the second stage you end up in self-deception. Metrics that only look at the PR's history do not catch runtime regressions, and the defect shows up only when the user complains.",
+      "h": "22688cc0"
+    },
+    "sections.5.heading": {
+      "t": "Where it fits in the pipeline",
+      "h": "9be60c28"
+    },
+    "sections.6.bullets.0": {
+      "t": "replaces discussion with a number: 'faithfulness dropped 4 points' is an argument that closes a thread",
+      "h": "f502fa08"
+    },
+    "sections.6.bullets.1": {
+      "t": "covers regressions invisible to the naked eye, especially in long tool calling chains",
+      "h": "a1243f9f"
+    },
+    "sections.6.bullets.2": {
+      "t": "generates a correctable dataset that the suite itself uses, becoming a virtuous improvement loop",
+      "h": "1ed8d31b"
+    },
+    "sections.6.heading": {
+      "t": "Strengths",
+      "h": "a2ebc02c"
+    },
+    "sections.7.bullets.0": {
+      "t": "bad metrics start to deceive: an uncalibrated LLM judge becomes a rubber stamp that accepts anything",
+      "h": "37018c09"
+    },
+    "sections.7.bullets.1": {
+      "t": "a stalled dataset ages: the agent evolves, the suite does not, and the metric stops reflecting reality",
+      "h": "0d5073b5"
+    },
+    "sections.7.bullets.2": {
+      "t": "cost: running 500 cases with an LLM judge costs money, takes time and demands rate limiting on the judge's API",
+      "h": "7716f507"
+    },
+    "sections.7.heading": {
+      "t": "Limitations",
+      "h": "149d05f7"
+    },
+    "short": {
+      "t": "dataset, metric and runner to measure quality",
+      "h": "7938fcf4"
+    },
+    "tagline": {
+      "t": "Evals are the harness that measures whether the answer is good: a dataset of examples, a metric (faithfulness, relevance, groundedness) and a runner that executes end to end. Without evals, improving an agent is guesswork and every tweak becomes routine.",
+      "h": "bc886766"
+    },
+    "title": {
+      "t": "Evals - quality measured in production",
+      "h": "4e8303bc"
+    }
+  }
+}

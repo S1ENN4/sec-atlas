@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Un SLO (service level objective) de seguridad es una meta numérica de lo que el equipo promete entregar: por ejemplo, hacer el triaje de alertas críticas en pocos minutos o contener ataques de credential stuffing antes de que pase cierto porcentaje de los intentos. Convierte un deseo vago (\"responder rápido\") en algo medible y discutible.",
+      "h": "a209ed6d"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.bullets.0": {
+      "t": "MTTT (tiempo medio de triaje): desde la alerta hasta que alguien la clasifica como real o falsa.",
+      "h": "810467aa"
+    },
+    "sections.1.bullets.1": {
+      "t": "MTTC (tiempo medio de contención): desde la confirmación hasta que el ataque queda contenido.",
+      "h": "2e477464"
+    },
+    "sections.1.bullets.2": {
+      "t": "Precisión: de las alertas o bloqueos que emitió la detección, cuántos eran realmente un ataque.",
+      "h": "8cfe6dcc"
+    },
+    "sections.1.bullets.3": {
+      "t": "Recall: de los ataques que existían, cuántos atrapó la detección.",
+      "h": "d6dba748"
+    },
+    "sections.1.heading": {
+      "t": "Las cuatro métricas que sostienen el resto",
+      "h": "af0d7593"
+    },
+    "sections.2.body.0": {
+      "t": "Subir la sensibilidad aumenta el recall y baja la precisión, con más falsos positivos; apretar la regla hace lo contrario. El punto correcto depende del costo: en el login de un banco un bloqueo equivocado cuesta un cliente molesto, pero un ataque que pasa cuesta mucho más; en un catálogo público, el equilibrio es otro. Por eso el umbral es una decisión de negocio apoyada en datos, no un ajuste técnico solitario.",
+      "h": "b63e8b48"
+    },
+    "sections.2.code.0.code": {
+      "t": "-- 'confirmed' viene de la revisión semanal de los eventos en que actuó la regla\nSELECT rule_id,\n       COUNTIF(confirmed_attack) AS true_pos,\n       COUNTIF(NOT confirmed_attack) AS false_pos,\n       SAFE_DIVIDE(COUNTIF(confirmed_attack), COUNT(*)) AS precision\nFROM sec.rule_actions_reviewed\nWHERE week = DATE_TRUNC(CURRENT_DATE(), WEEK)\nGROUP BY rule_id\nORDER BY precision;",
+      "h": "5a296391"
+    },
+    "sections.2.code.0.filename": {
+      "t": "precisión por regla (BigQuery)",
+      "h": "5470b26a"
+    },
+    "sections.2.heading": {
+      "t": "Precisión y recall tiran en direcciones opuestas",
+      "h": "267d4737"
+    },
+    "sections.3.body.0": {
+      "t": "Un ritual corto y fijo mantiene la calidad: revisar las reglas con peor precisión, mirar los falsos positivos reclamados, verificar qué pasó (recall) en los incidentes de la semana y decidir ajustes. El objetivo declarado es reducir el falso positivo sin perder cobertura, y la prueba es la métrica de precisión subiendo mientras el recall se mantiene.",
+      "h": "21935862"
+    },
+    "sections.3.heading": {
+      "t": "Tuning semanal",
+      "h": "8e9bdaaa"
+    },
+    "sections.4.body.0": {
+      "t": "Lo que necesita la dirección no son alertas, sino tendencias: ataques contenidos, tiempo de respuesta, impacto evitado, reglas en shadow listas para pasar a enforcement. Pocos números estables, presentados con el mismo formato cada mes, construyen confianza en el programa y sostienen la inversión.",
+      "h": "2d240644"
+    },
+    "sections.4.heading": {
+      "t": "Indicadores para el liderazgo",
+      "h": "4c24f14a"
+    },
+    "short": {
+      "t": "medir tiempo, precisión y cobertura, y ajustar cada semana",
+      "h": "a2b330e3"
+    },
+    "tagline": {
+      "t": "Sin números, el SOC solo cuenta historias. Con SLOs claros (tiempo de triaje, de contención, precisión y recall) cada ajuste se vuelve una decisión con evidencia.",
+      "h": "47be069f"
+    },
+    "title": {
+      "t": "SLOs de SOC y tuning continuo",
+      "h": "1959294e"
+    }
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "entries": {
+    "items.0.items.0": {
+      "t": "Página de manifiesto: por qué la forma de enseñar seguridad necesita cambiar y qué hace diferente este proyecto.",
+      "h": "d8c84efe"
+    },
+    "items.0.items.1": {
+      "t": "Servidor MCP local (7 herramientas, sin dependencias) para que los agentes de código lean, busquen, validen y creen el esqueleto de nuevos temas.",
+      "h": "419fda2a"
+    },
+    "items.0.items.2": {
+      "t": "Smoke test del servidor MCP en el CI, con verificación de los rechazos de seguridad.",
+      "h": "cae16cdd"
+    },
+    "items.0.title": {
+      "t": "Manifiesto y servidor MCP",
+      "h": "fa2a56b5"
+    },
+    "items.1.items.0": {
+      "t": "Código bajo MIT y contenido bajo CC BY-SA 4.0, con guía de contribución, código de conducta y política de seguridad.",
+      "h": "4dc1e907"
+    },
+    "items.1.items.1": {
+      "t": "CI con validación de contenido y presupuesto de tamaño, análisis estático (CodeQL) y actualización automática de dependencias.",
+      "h": "40fe769d"
+    },
+    "items.1.items.2": {
+      "t": "Plantillas de issue para errores de contenido y propuestas de temas: las correcciones son el tipo de contribución más bienvenido.",
+      "h": "ef657193"
+    },
+    "items.1.title": {
+      "t": "Proyecto abierto",
+      "h": "7419b28a"
+    },
+    "items.2.items.0": {
+      "t": "Mapa con 8 temas: IaC seguro, policy as code, hardening de CI/CD, confiabilidad a escala, observabilidad de la plataforma, automatización (SOAR), IA en la seguridad y seguridad como producto.",
+      "h": "7592ef90"
+    },
+    "items.2.items.1": {
+      "t": "Ruta de estudio, escenario de ataque (pipeline comprometido) y quiz en todos los temas.",
+      "h": "a46bf652"
+    },
+    "items.2.items.2": {
+      "t": "Puentes con AppSec, CloudSec, SecOps y agentes de IA.",
+      "h": "2d717ba1"
+    },
+    "items.2.title": {
+      "t": "Nuevo dominio: Ingeniería de seguridad",
+      "h": "54936769"
+    },
+    "items.3.items.0": {
+      "t": "Mapa con 10 temas: telemetría de borde, escala, ataques L7, ingeniería de detección, WAF, rate limiting, bot management, runbooks, SLOs de SOC y defensa en capas.",
+      "h": "f7f02086"
+    },
+    "items.3.items.1": {
+      "t": "Ruta de estudio y escenario de ataque (credential stuffing) del nuevo dominio, con quiz en todos los temas.",
+      "h": "09afe039"
+    },
+    "items.3.items.2": {
+      "t": "Puentes con AppSec, CloudSec y agentes de IA.",
+      "h": "0d900aca"
+    },
+    "items.3.title": {
+      "t": "Nuevo dominio: SecOps y defensa L7",
+      "h": "4721c923"
+    },
+    "items.4.items.0": {
+      "t": "Presentación en la parte superior del hub, página Sobre mí (experiencia, formación, certificaciones), resumen en inglés y enlaces de contacto.",
+      "h": "4b0cc717"
+    },
+    "items.4.items.1": {
+      "t": "Vista previa de enlaces (Open Graph), sitemap y robots para compartir.",
+      "h": "2dc2b8b2"
+    },
+    "items.4.items.2": {
+      "t": "Página de fuentes por dominio, y en cada tema la fecha de actualización y un enlace para reportar errores.",
+      "h": "ebb432c2"
+    },
+    "items.4.items.3": {
+      "t": "Página de novedades (esta) para registrar cambios y correcciones.",
+      "h": "9d435cde"
+    },
+    "items.4.title": {
+      "t": "Landing personal, páginas de apoyo y fuentes",
+      "h": "4007353c"
+    },
+    "items.5.items.0": {
+      "t": "Rutas de estudio con el progreso guardado solo en el navegador.",
+      "h": "399382bd"
+    },
+    "items.5.items.1": {
+      "t": "Escenarios de ataque paso a paso y quiz en todos los temas (105 preguntas).",
+      "h": "006b5290"
+    },
+    "items.5.items.2": {
+      "t": "Búsqueda global (Ctrl+K), panel de detalles en el mapa, filtros y vista en lista en el celular.",
+      "h": "e06856c8"
+    },
+    "items.5.items.3": {
+      "t": "Puentes entre dominios: el mismo problema visto en AppSec, CloudSec y agentes de IA.",
+      "h": "033cb99d"
+    },
+    "items.5.title": {
+      "t": "Estudio guiado",
+      "h": "b1e01b90"
+    },
+    "items.6.items.0": {
+      "t": "Nuevos temas: threat modeling (AppSec) y respuesta a incidentes (CloudSec).",
+      "h": "36044310"
+    },
+    "items.6.items.1": {
+      "t": "El CI/CD pasó a aparecer en el mapa de AppSec.",
+      "h": "cd52fbfa"
+    },
+    "items.6.items.2": {
+      "t": "Mapas reorganizados: tarjetas alineadas por etapa, relaciones solo en el foco y líneas rectas.",
+      "h": "031be02a"
+    },
+    "items.6.title": {
+      "t": "Contenido nuevo y mapas más legibles",
+      "h": "78a139b6"
+    }
+  }
+}

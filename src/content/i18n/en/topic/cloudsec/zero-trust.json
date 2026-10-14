@@ -1,0 +1,100 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Zero-trust is a security model, not a product. The premise is simple: nothing is trustworthy by network position. It does not matter whether the request comes from inside the data center, from the CTO's laptop or from a pod in another account: every call is authenticated, authorized and logged before touching any resource.",
+      "h": "60b72fbb"
+    },
+    "sections.0.body.1": {
+      "t": "The model stems from the realization that the classic perimeter no longer works. A VPN puts the user on the internal network, and the internal network no longer has a wall - VPCs connect, workloads run on ephemeral Kubernetes, partners have federation, and an attacker who gets in once strolls all the way to the payments bucket. Zero-trust responds by changing the unit of trust from the network to identity, and requires explicit verification at every boundary.",
+      "h": "1e79246c"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "NIST SP 800-207 defines seven principles that appear in every serious zero-trust implementation. They are not exclusive, in practice they are combined, but they serve as a yardstick to tell whether the architecture under study is zero-trust or merely 'VPN with MFA'.",
+      "h": "7d409ebc"
+    },
+    "sections.1.bullets.0": {
+      "t": "all data and every service counts as a resource: hosts, containers, SaaS and internal APIs stop escaping scrutiny for being 'inside'",
+      "h": "f703bfba"
+    },
+    "sections.1.bullets.1": {
+      "t": "all communication is encrypted and authenticated, whether it comes from the internal network or the internet",
+      "h": "4b224bd2"
+    },
+    "sections.1.bullets.2": {
+      "t": "access is per session, not per persistent connection: each session is evaluated from scratch",
+      "h": "223fbe87"
+    },
+    "sections.1.bullets.3": {
+      "t": "policy is dynamic, combining client identity, device posture, service, location and risk signal",
+      "h": "d8a2d3b1"
+    },
+    "sections.1.bullets.4": {
+      "t": "the posture and integrity of every asset, owned or third-party, is monitored at all times",
+      "h": "8a7b996a"
+    },
+    "sections.1.bullets.5": {
+      "t": "authentication and authorization are enforced before access, with no exception for network position",
+      "h": "27f8f50e"
+    },
+    "sections.1.bullets.6": {
+      "t": "the company collects as much telemetry as possible about assets, network and communications and uses it to adjust its own posture",
+      "h": "35a90885"
+    },
+    "sections.1.heading": {
+      "t": "The principles",
+      "h": "1e36c935"
+    },
+    "sections.2.body.0": {
+      "t": "Zero-trust materializes on four technical fronts, almost always combined. The path usually starts on one front (user access, for example) and expands over time until it covers the entire service mesh.",
+      "h": "d8f94b7f"
+    },
+    "sections.2.bullets.0": {
+      "t": "workload identity: each service carries a short-lived identity (SPIFFE/SPIRE, automatic mTLS via service mesh) and the authorization policy speaks to the identity, not to an IP or subnet",
+      "h": "c1990849"
+    },
+    "sections.2.bullets.1": {
+      "t": "user access: replaces VPN with an identity proxy (BeyondCorp, Cloudflare Access, Tailscale, Zscaler ZIA), and each app publishes a declarative policy",
+      "h": "c4545fa9"
+    },
+    "sections.2.bullets.2": {
+      "t": "workload segmentation: network policy in the cluster (Calico, Cilium), VPC lattice on AWS, or a service mesh ensures east-west traffic has the right policy",
+      "h": "37c4c5d9"
+    },
+    "sections.2.bullets.3": {
+      "t": "central policy engine: Open Policy Agent, Cedar (AWS Verified Access) or similar decides each permission; policy-as-code goes from PR to production with review and testing",
+      "h": "0fb6a34d"
+    },
+    "sections.2.heading": {
+      "t": "In practice",
+      "h": "99392984"
+    },
+    "sections.3.body.0": {
+      "t": "The most common limit is confusing zero-trust with 'putting MFA on the VPN'. MFA is a layer; zero-trust is an architecture that presupposes MFA on every call, identity on every workload and policy per service. A team that calls anything 'zero-trust' because it turned on MFA ends up with a marketing project, not a security one.",
+      "h": "d3c449e1"
+    },
+    "sections.3.body.1": {
+      "t": "The second limit is operational. Replacing VPN with BeyondCorp for a thousand employees is a months-long project with vendor lock-in and difficult rollback. The pragmatic version starts small (one sensitive application, or one cluster) and expands in waves, with versioned policy and testing before promotion.",
+      "h": "a31f4507"
+    },
+    "sections.3.heading": {
+      "t": "Limits",
+      "h": "0ff9bf9d"
+    },
+    "short": {
+      "t": "never trust, always verify",
+      "h": "6dbf5188"
+    },
+    "tagline": {
+      "t": "Zero-trust replaces the perimeter with policy: every request is authenticated, authorized and logged, regardless of whether the origin is internal or external.",
+      "h": "f6200fdd"
+    },
+    "title": {
+      "t": "Zero-trust - trust model",
+      "h": "d0473467"
+    }
+  }
+}

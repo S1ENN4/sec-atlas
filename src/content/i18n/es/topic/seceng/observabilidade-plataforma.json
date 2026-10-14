@@ -1,0 +1,80 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "La plataforma de seguridad es un sistema en producción como cualquier otro y necesita sus propias métricas, logs y traces. La diferencia es el costo de la falla silenciosa: si el pipeline se atrasa una hora, nadie recibe un error, pero todo ataque de ese período queda sin detección.",
+      "h": "3f2551bc"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.bullets.0": {
+      "t": "Lag del consumidor: cuánto va el procesamiento por detrás del final del log. Es el indicador más directo de detección atrasada.",
+      "h": "7abaf2c3"
+    },
+    "sections.1.bullets.1": {
+      "t": "Latencia de extremo a extremo: desde el evento en el borde hasta la decisión, en percentiles (p50, p95, p99).",
+      "h": "7d25d845"
+    },
+    "sections.1.bullets.2": {
+      "t": "Tasa de errores y de eventos descartados o enviados a la DLQ.",
+      "h": "9342fcf3"
+    },
+    "sections.1.bullets.3": {
+      "t": "Saturación: uso de CPU y memoria y profundidad de las colas internas.",
+      "h": "4513a223"
+    },
+    "sections.1.bullets.4": {
+      "t": "Frescura: tiempo desde el último evento por fuente. Una fuente que dejó de enviar es una falla, no calma.",
+      "h": "e61cff25"
+    },
+    "sections.1.heading": {
+      "t": "Las señales que importan",
+      "h": "c6ba8bb0"
+    },
+    "sections.2.body.0": {
+      "t": "La alerta más valiosa es la de ausencia: \"la fuente X no envió nada en los últimos 10 minutos\". En Prometheus, esto se escribe con la métrica de eventos recibidos. El ejemplo muestra una alerta por lag alto y otra por fuente silenciosa.",
+      "h": "eb6e37fa"
+    },
+    "sections.2.code.0.code": {
+      "t": "groups:\n  - name: security-pipeline\n    rules:\n      - alert: DetectionLagHigh\n        expr: max(pipeline_consumer_lag{group=\"detect-login-failures\"}) > 50000\n        for: 5m\n        labels: { severity: page }\n        annotations:\n          summary: \"Detección atrasada: lag por encima de 50k eventos desde hace 5 min\"\n\n      - alert: EdgeSourceSilent\n        expr: sum(rate(edge_events_received_total[5m])) by (source) == 0\n        for: 10m\n        labels: { severity: page }\n        annotations:\n          summary: \"Fuente {{ $labels.source }} sin eventos desde hace 10 min\"",
+      "h": "084762b5"
+    },
+    "sections.2.code.0.filename": {
+      "t": "alerts.yml (Prometheus)",
+      "h": "b79c05c7"
+    },
+    "sections.2.heading": {
+      "t": "Alertar sobre el silencio",
+      "h": "d11facdf"
+    },
+    "sections.3.body.0": {
+      "t": "Cuando la latencia de extremo a extremo sube, un trace muestra en qué etapa se gastó el tiempo (consumo, enriquecimiento, llamada externa, escritura). Con OpenTelemetry, el contexto del trace acompaña al evento entre los servicios, incluso a través de colas, y el mismo patrón sirve a todos los equipos.",
+      "h": "dcb549e2"
+    },
+    "sections.3.heading": {
+      "t": "Traces para encontrar el cuello de botella",
+      "h": "a1149be3"
+    },
+    "sections.4.body.0": {
+      "t": "Trata la plataforma como un producto con metas: por ejemplo, \"el 99% de los eventos se convierte en decisión en menos de 60 segundos\" y \"ninguna fuente crítica silenciosa por más de 10 minutos\". Las metas dan un criterio objetivo para priorizar el trabajo de confiabilidad frente a funcionalidades nuevas.",
+      "h": "28159454"
+    },
+    "sections.4.heading": {
+      "t": "SLOs de la plataforma",
+      "h": "d2aa4731"
+    },
+    "short": {
+      "t": "saber cuándo el pipeline de detección está ciego o atrasado",
+      "h": "936c60ce"
+    },
+    "tagline": {
+      "t": "Una detección que dejó de funcionar no hace ruido: simplemente deja de detectar ataques. Observar el propio pipeline es lo que convierte esa falla silenciosa en una alerta.",
+      "h": "69e7ca96"
+    },
+    "title": {
+      "t": "Observabilidad de la propia plataforma de seguridad",
+      "h": "02280e69"
+    }
+  }
+}

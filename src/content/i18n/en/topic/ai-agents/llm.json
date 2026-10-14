@@ -1,0 +1,132 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "An LLM (Large Language Model) is a generative model trained to predict the next unit of text (token) given everything that came before. Instead of 'knowing' facts like an encyclopedia, it learned patterns of language, code, reasoning and world knowledge embedded in the training data.",
+      "h": "ba02738c"
+    },
+    "sections.0.body.1": {
+      "t": "When you send a question, the model does not look anything up: it reads the entire context you handed it (system prompt, history, retrieval, tool outputs) and continues the pattern. The quality of the answer depends almost entirely on what is in that context, not on what the model 'knows'.",
+      "h": "0f31cdfa"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "Models do not read words, they read tokens: pieces of text that can be a whole word, part of a word, a number or a symbol. A paragraph in Portuguese typically becomes 1.3x more tokens than words. This matters because everything is counted in tokens: input prompt, output response, cost, latency and the context window limit.",
+      "h": "5dd784c6"
+    },
+    "sections.1.body.1": {
+      "t": "The context window is the maximum size the model can look at at once, measured in thousands (K) or millions (M). Go past the limit and the start of the dialogue ceases to exist for the model. That is why retrieval, summarization and history trimming exist as techniques.",
+      "h": "7083d46b"
+    },
+    "sections.1.code.0.code": {
+      "t": "  'Olá, mundo'                     -> 3 tokens  ('Ol', 'á', ', mundo')\n  'Grandes modelos de linguagem'    -> 7 tokens\n  'functionCalling'                 -> 6 tokens  (3 words + 3 subwords)\n\n  rule of thumb PT-BR:  ~1 token per 0.75 word\n  rule of thumb EN:    ~1 token per 0.75 word",
+      "h": "313d75ad"
+    },
+    "sections.1.code.0.filename": {
+      "t": "approximate token count",
+      "h": "806d497e"
+    },
+    "sections.1.heading": {
+      "t": "Tokens: the model's real unit",
+      "h": "2753c935"
+    },
+    "sections.2.body.0": {
+      "t": "The system prompt is the system message that defines the model's behavior: role, constraints, output format, refusal policy. It is the only part of the context that the ordinary user does not write, and that is why it is the most valuable.",
+      "h": "e3f9fce4"
+    },
+    "sections.2.body.1": {
+      "t": "A good system prompt describes three blocks: identity and purpose, hard rules (what the model must never do) and output format (how to respond). The more specific it is, the less the model invents.",
+      "h": "1eeec18b"
+    },
+    "sections.2.code.0.code": {
+      "t": "You are a technical support agent for company X.\n\nRules:\n  - answer in Brazilian Portuguese, professional and direct tone\n  - if you do not know the answer, say 'I don't know' and offer to open a ticket\n  - never invent prices, deadlines or ticket numbers\n\nFormat:\n  - answers in at most 3 paragraphs\n  - cite the knowledge base article when used (format KB-[IDX])",
+      "h": "fa987014"
+    },
+    "sections.2.code.0.filename": {
+      "t": "minimal system prompt",
+      "h": "fa7d4a1e"
+    },
+    "sections.2.heading": {
+      "t": "System prompt: the contract with the model",
+      "h": "8c9b19aa"
+    },
+    "sections.3.body.0": {
+      "t": "Each call to the model has two cost components: input tokens (what you send) and output tokens (what it generates). Output tokens usually cost 3 to 5 times more than input tokens in commercial APIs, because generation is serial and more expensive for the provider.",
+      "h": "07901f77"
+    },
+    "sections.3.body.1": {
+      "t": "Latency follows two simple rules: the time to the first character depends on the size of the prompt, and the total time depends on how many tokens the model generates. That is why large prompts take long to start and long answers take long to finish, and why 'be concise' in the system prompt saves real money.",
+      "h": "48d1ca5d"
+    },
+    "sections.3.code.0.code": {
+      "t": "  prompt:      2,000 input tokens\n  response:    400 output tokens\n\n  price (generic example):\n    input   $3 / 1M tokens  -> $0.006\n    output  $15 / 1M tokens -> $0.006\n    total                      $0.012 per call\n\n  at 10,000 calls/month on the same pattern: ~$120/month",
+      "h": "9742bb63"
+    },
+    "sections.3.code.0.filename": {
+      "t": "estimated cost per call",
+      "h": "91660453"
+    },
+    "sections.3.heading": {
+      "t": "Cost and latency",
+      "h": "c4f8bc67"
+    },
+    "sections.4.bullets.0": {
+      "t": "query external data on its own: without retrieval or a tool, it only knows what was in training",
+      "h": "9331b2c3"
+    },
+    "sections.4.bullets.1": {
+      "t": "remember past conversations: between calls the model is stateless; each turn starts from scratch",
+      "h": "c1dc9e7a"
+    },
+    "sections.4.bullets.2": {
+      "t": "execute code: the model returns strings, including strings that look like code; execution stays with the runtime",
+      "h": "9cd48342"
+    },
+    "sections.4.bullets.3": {
+      "t": "guarantee factual truth: hallucinations are the default state when the model completes patterns without anchoring in a source",
+      "h": "46f7f26f"
+    },
+    "sections.4.bullets.4": {
+      "t": "keep secrets by itself: secrets in the system prompt do not stay secret forever; the prompt leaks via exfiltrated logs",
+      "h": "597b8f40"
+    },
+    "sections.4.heading": {
+      "t": "What the model does not do",
+      "h": "c38e7545"
+    },
+    "sections.5.bullets.0": {
+      "t": "finite context window: go past the limit and the history disappears; go past the limit and the cost of the view changes.",
+      "h": "6e19ee12"
+    },
+    "sections.5.bullets.1": {
+      "t": "the model is not deterministic: the same question can generate different answers on each call; temperature controls this",
+      "h": "53cd1d0b"
+    },
+    "sections.5.bullets.2": {
+      "t": "outdated knowledge: training has a cutoff date; what changed afterwards does not exist for the model",
+      "h": "b7c4db66"
+    },
+    "sections.5.bullets.3": {
+      "t": "cost grows with use: agents that call the LLM several times per task multiply the cost, times the usage",
+      "h": "a0020c53"
+    },
+    "sections.5.heading": {
+      "t": "Limitations",
+      "h": "149d05f7"
+    },
+    "short": {
+      "t": "the model that generates text from context",
+      "h": "6303ecdc"
+    },
+    "tagline": {
+      "t": "The LLM is the agent's generative engine: it receives context (system prompt, history, retrieval, tools) and produces the next response. It does not query a fact base; it uses the context to look like it does.",
+      "h": "cd4d5c63"
+    },
+    "title": {
+      "t": "LLM - large language model",
+      "h": "705d297d"
+    }
+  }
+}

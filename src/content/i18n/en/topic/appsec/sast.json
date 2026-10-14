@@ -1,0 +1,144 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "SAST (Static Application Security Testing) analyzes source code, bytecode or binaries without running the program. The scanner looks for dangerous constructs (SQL concatenation, insecure deserialization, weak cryptography, XSS) and points to the file and line, in the format developers already consume.",
+      "h": "140a7cb2"
+    },
+    "sections.0.body.1": {
+      "t": "The acronym hides three very different techniques: pattern matching (textual rules), data flow analysis (the famous taint tracking) and semantic analysis. Without understanding all three, the scanner output looks like magic, and false positives look like bugs.",
+      "h": "e8ed6692"
+    },
+    "sections.0.heading": {
+      "t": "What it is",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "Before any analysis, the code goes through a parser and becomes an AST (Abstract Syntax Tree): each language construct becomes a typed node, and the scanner navigates this tree instead of reading loose text. That is what lets it ask things like 'is there a concatenation node inside a query call?'.",
+      "h": "28a23d07"
+    },
+    "sections.1.body.1": {
+      "t": "An innocent line of JavaScript becomes a tree like this:",
+      "h": "249ecd69"
+    },
+    "sections.1.code.0.code": {
+      "t": "const sql = \"SELECT * FROM users WHERE id = \" + req.query.id\n\nVariableDeclaration\n  id:   Identifier \"sql\"\n  init: BinaryExpression \"+\"\n          left:  StringLiteral \"SELECT * FROM users WHERE id = \"\n          right: MemberExpression\n                   req.query.id",
+      "h": "400ae545"
+    },
+    "sections.1.code.0.filename": {
+      "t": "sql.js → AST",
+      "h": "711a433b"
+    },
+    "sections.1.heading": {
+      "t": "From text to AST",
+      "h": "3909ac1f"
+    },
+    "sections.2.body.0": {
+      "t": "The AST alone says a concatenation exists, not whether it is dangerous. The security question is a different one: does this data come from a trusted origin? Where does it end up?",
+      "h": "0babf7db"
+    },
+    "sections.2.body.1": {
+      "t": "Taint analysis answers by following the data: untrusted sources (user input, headers, query strings) are marked as 'tainted'. The engine propagates this mark through assignments, concatenations and function calls, and raises the alert when the mark reaches a sink: a point where the data becomes a command, query, HTML or file path.",
+      "h": "4c0d0fdc"
+    },
+    "sections.2.body.2": {
+      "t": "In the example below, the flow is complete: it is born at req.query.id (source), crosses a concatenation (propagation) and ends inside db.query (sink):",
+      "h": "89349292"
+    },
+    "sections.2.code.0.code": {
+      "t": "app.get(\"/users\", (req, res) => {\n  const id = req.query.id;                                // SOURCE\n  const sql = \"SELECT * FROM users WHERE id = \" + id;     // propagation\n  db.query(sql, (err, rows) => res.json(rows));           // SINK\n});",
+      "h": "71633b9d"
+    },
+    "sections.2.code.0.filename": {
+      "t": "server.js — vulnerable",
+      "h": "32377e0e"
+    },
+    "sections.2.heading": {
+      "t": "Source → sink: the heart of the analysis",
+      "h": "c23a44d3"
+    },
+    "sections.3.body.0": {
+      "t": "The result is not 'a concatenation exists', it is the whole path, with the CWE and a suggested fix. Something like:",
+      "h": "8878bcfb"
+    },
+    "sections.3.code.0.code": {
+      "t": "server.js:3\n  SQL Injection (CWE-89) · high\n  taint:  req.query.id -> id -> sql -> db.query()\n  fix:    use a parameterized query (placeholder $1)",
+      "h": "40ed8fe9"
+    },
+    "sections.3.code.0.filename": {
+      "t": "scanner output",
+      "h": "de838e6a"
+    },
+    "sections.3.heading": {
+      "t": "What the scanner reports",
+      "h": "d1f5d4e6"
+    },
+    "sections.4.body.0": {
+      "t": "Parameterizing the query breaks the taint: the user's value stops being code and becomes data. In taint analysis terms, the prepared statement is a sanitizer (or barrier): the engine knows that specific path is clean and stops alerting on it.",
+      "h": "96f07ffe"
+    },
+    "sections.4.code.0.code": {
+      "t": "app.get(\"/users\", (req, res) => {\n  const sql = \"SELECT * FROM users WHERE id = $1\";        // fixed query\n  db.query(sql, [req.query.id], (err, rows) => res.json(rows));\n});",
+      "h": "4f9ebfc0"
+    },
+    "sections.4.code.0.filename": {
+      "t": "server.js — fixed",
+      "h": "dd3d4082"
+    },
+    "sections.4.heading": {
+      "t": "The fix the engine accepts",
+      "h": "45ae1089"
+    },
+    "sections.5.body.0": {
+      "t": "As early as possible: IDE plugins and pre-commit give feedback in seconds, and the full analysis runs on the PR and in the build stage. Broken critical rules fail the build (quality gate) and block the merge.",
+      "h": "1ca05961"
+    },
+    "sections.5.heading": {
+      "t": "Where it fits in the pipeline",
+      "h": "9be60c28"
+    },
+    "sections.6.bullets.0": {
+      "t": "100% code coverage, including rarely executed paths",
+      "h": "7b40f74a"
+    },
+    "sections.6.bullets.1": {
+      "t": "finds the vulnerability early, when fixing it is cheap",
+      "h": "22995fa9"
+    },
+    "sections.6.bullets.2": {
+      "t": "needs no running environment or credentials",
+      "h": "3db0593f"
+    },
+    "sections.6.heading": {
+      "t": "Strengths",
+      "h": "a2ebc02c"
+    },
+    "sections.7.bullets.0": {
+      "t": "false positives: when the engine cannot prove the path is safe (a custom sanitizer, for example), it alerts as a precaution, and triage is human work",
+      "h": "2d662724"
+    },
+    "sections.7.bullets.1": {
+      "t": "path explosion: analyzing every execution combination is expensive; engines use heuristics and can miss rare flows",
+      "h": "7688e8fb"
+    },
+    "sections.7.bullets.2": {
+      "t": "it is blind to runtime configuration, infrastructure and real behavior, which is DAST territory",
+      "h": "a92f747b"
+    },
+    "sections.7.heading": {
+      "t": "Limitations",
+      "h": "149d05f7"
+    },
+    "short": {
+      "t": "Static analysis of source code",
+      "h": "9fc3c35b"
+    },
+    "tagline": {
+      "t": "An X-ray of the code without running anything: it finds vulnerable patterns before the first deploy.",
+      "h": "aa6a6b73"
+    },
+    "title": {
+      "t": "SAST",
+      "h": "dc7c9db0"
+    }
+  }
+}

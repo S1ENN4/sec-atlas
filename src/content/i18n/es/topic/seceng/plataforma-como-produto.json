@@ -1,0 +1,72 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "En lugar de un equipo de seguridad que revisa todo al final (y se vuelve un cuello de botella), la ingeniería de seguridad construye la plataforma que hace del comportamiento seguro el valor por defecto: módulos, plantillas, pipelines, bibliotecas y verificaciones listas, con documentación y soporte, ofrecidos como un producto interno.",
+      "h": "fd4696eb"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "ba449822"
+    },
+    "sections.1.body.0": {
+      "t": "El camino pavimentado (golden path) es la forma recomendada de hacer algo: crear un servicio nuevo, publicar una imagen, aprovisionar una base de datos. Quien lo sigue obtiene gratis el cifrado, los logs, las políticas y el pipeline configurados. Quien se sale puede hacerlo, pero asume el costo y pasa por revisión. Esto cambia el incentivo: la seguridad deja de ser un impuesto y se vuelve el atajo.",
+      "h": "ed5f53d6"
+    },
+    "sections.1.heading": {
+      "t": "Camino pavimentado",
+      "h": "3fde5fbb"
+    },
+    "sections.2.bullets.0": {
+      "t": "Adopción: porcentaje de servicios que usan la plantilla o el módulo aprobado.",
+      "h": "3324e598"
+    },
+    "sections.2.bullets.1": {
+      "t": "Cobertura: porcentaje de repositorios con SAST, SCA y escaneo de secretos activos.",
+      "h": "c2b7f7a7"
+    },
+    "sections.2.bullets.2": {
+      "t": "Tiempo de onboarding: cuánto tarda un equipo nuevo en estar dentro del estándar.",
+      "h": "d83bda5f"
+    },
+    "sections.2.bullets.3": {
+      "t": "Fricción: tiempo que cada control agrega al pipeline, y tasa de falsos positivos percibida por los devs.",
+      "h": "bb684489"
+    },
+    "sections.2.bullets.4": {
+      "t": "Tiempo de corrección: desde el hallazgo hasta su corrección, por severidad.",
+      "h": "70fb4e13"
+    },
+    "sections.2.heading": {
+      "t": "Métricas de producto",
+      "h": "234e9bb6"
+    },
+    "sections.3.body.0": {
+      "t": "Cada control que bloquea sin explicar, tarda o se equivoca se convierte en un motivo para esquivar la plataforma. Los mensajes claros (qué falló, por qué y cómo corregirlo), la corrección automática cuando es posible y las excepciones con plazo reducen la fricción. Si los devs están desactivando un control, el problema de producto es el control, no los devs.",
+      "h": "4814a78a"
+    },
+    "sections.3.heading": {
+      "t": "La fricción es un costo real",
+      "h": "23a72970"
+    },
+    "sections.4.body.0": {
+      "t": "La plataforma tiene usuarios y, por lo tanto, metas: disponibilidad del pipeline de seguridad, latencia de las verificaciones, tiempo de respuesta a las solicitudes de excepción. Tratar esos números como un objetivo, y no como casualidad, es lo que le da a la seguridad credibilidad de ingeniería frente a los demás equipos.",
+      "h": "85ce962d"
+    },
+    "sections.4.heading": {
+      "t": "SLOs de la plataforma",
+      "h": "d2aa4731"
+    },
+    "short": {
+      "t": "el camino seguro tiene que ser el camino más fácil",
+      "h": "cf5b3d54"
+    },
+    "tagline": {
+      "t": "Los controles que estorban se esquivan. Una plataforma de seguridad que trata a los devs como clientes, con camino pavimentado, métricas de adopción y poca fricción, es la que realmente protege.",
+      "h": "2feddf3b"
+    },
+    "title": {
+      "t": "La seguridad como producto interno",
+      "h": "47c13f47"
+    }
+  }
+}

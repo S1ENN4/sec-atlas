@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "El SBOM inventaría los componentes de un artefacto, en formatos como CycloneDX y SPDX.",
+      "h": "790d38cd"
+    },
+    "questions.0.options.0": {
+      "t": "Un informe de pruebas de carga",
+      "h": "cc10345b"
+    },
+    "questions.0.options.1": {
+      "t": "Una lista de ingredientes: los componentes y versiones que componen el software",
+      "h": "0d342c10"
+    },
+    "questions.0.options.2": {
+      "t": "Un respaldo del repositorio",
+      "h": "51edfe00"
+    },
+    "questions.0.options.3": {
+      "t": "Un certificado TLS",
+      "h": "b0e4518a"
+    },
+    "questions.0.q": {
+      "t": "¿Qué es un SBOM?",
+      "h": "9643e07a"
+    },
+    "questions.1.explain": {
+      "t": "Con SBOMs consultables, la pregunta \"¿dónde usamos esto?\" se vuelve una búsqueda, no un esfuerzo colectivo de emergencia.",
+      "h": "38cab057"
+    },
+    "questions.1.options.0": {
+      "t": "Descubrir rápido qué sistemas usan la biblioteca afectada",
+      "h": "a904874b"
+    },
+    "questions.1.options.1": {
+      "t": "Revertir automáticamente el deploy",
+      "h": "f2e0d697"
+    },
+    "questions.1.options.2": {
+      "t": "Cifrar el código fuente",
+      "h": "b71b1521"
+    },
+    "questions.1.options.3": {
+      "t": "Reemplazar al SCA",
+      "h": "6776f98e"
+    },
+    "questions.1.q": {
+      "t": "¿Cuál es el principal uso del SBOM en un incidente como el de Log4Shell?",
+      "h": "32838728"
+    },
+    "questions.2.explain": {
+      "t": "El SCA suele generar el SBOM, y el SBOM permite reevaluar vulnerabilidades después, sin reanalizar el código.",
+      "h": "c783818c"
+    },
+    "questions.2.options.0": {
+      "t": "Son lo mismo",
+      "h": "2e2c4824"
+    },
+    "questions.2.options.1": {
+      "t": "El SCA analiza y genera el inventario; el SBOM es el inventario que se puede compartir y reevaluar",
+      "h": "18c21f60"
+    },
+    "questions.2.options.2": {
+      "t": "El SBOM ejecuta pruebas dinámicas",
+      "h": "19f805a5"
+    },
+    "questions.2.options.3": {
+      "t": "El SCA depende del SBOM para existir",
+      "h": "0f5d0321"
+    },
+    "questions.2.q": {
+      "t": "¿Cuál es la relación entre SCA y SBOM?",
+      "h": "fa854f17"
+    }
+  }
+}

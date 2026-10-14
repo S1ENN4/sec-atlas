@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "La clave maestra nunca sale del KMS, y la clave de datos cifrada puede viajar con el dato.",
+      "h": "be8069a9"
+    },
+    "questions.0.options.0": {
+      "t": "Cifrar los datos con una clave de datos, y cifrar esa clave con una clave maestra del KMS",
+      "h": "f3822e92"
+    },
+    "questions.0.options.1": {
+      "t": "Cifrar dos veces con la misma clave",
+      "h": "c482a80e"
+    },
+    "questions.0.options.2": {
+      "t": "Guardar la clave junto al dato en texto plano",
+      "h": "9f1114f4"
+    },
+    "questions.0.options.3": {
+      "t": "Usar solo claves públicas",
+      "h": "22ff8750"
+    },
+    "questions.0.q": {
+      "t": "¿Qué es el cifrado de envelope?",
+      "h": "15d83334"
+    },
+    "questions.1.explain": {
+      "t": "Cifrar no sirve si la policy de la clave es demasiado permisiva.",
+      "h": "16d53971"
+    },
+    "questions.1.options.0": {
+      "t": "Quien puede usar la clave puede descifrar todo lo que ella protege",
+      "h": "2574640c"
+    },
+    "questions.1.options.1": {
+      "t": "Porque las claves expiran en horas",
+      "h": "42b2a257"
+    },
+    "questions.1.options.2": {
+      "t": "Porque el KMS es lento",
+      "h": "7e2c24d1"
+    },
+    "questions.1.options.3": {
+      "t": "Porque las claves ocupan espacio",
+      "h": "2848f336"
+    },
+    "questions.1.q": {
+      "t": "¿Por qué el acceso a la clave en el KMS es tan crítico?",
+      "h": "dc32cff5"
+    },
+    "questions.2.explain": {
+      "t": "La separación de funciones y la rotación reducen el impacto de cualquier abuso.",
+      "h": "fcda5546"
+    },
+    "questions.2.options.0": {
+      "t": "Rotación automática y separación entre quien administra y quien usa la clave",
+      "h": "e3bfedf4"
+    },
+    "questions.2.options.1": {
+      "t": "Compartir la clave por correo",
+      "h": "23b2618e"
+    },
+    "questions.2.options.2": {
+      "t": "Nunca rotar",
+      "h": "560d63ce"
+    },
+    "questions.2.options.3": {
+      "t": "Usar la misma clave en todos los entornos",
+      "h": "853f5d85"
+    },
+    "questions.2.q": {
+      "t": "¿Qué práctica se recomienda para las claves?",
+      "h": "8027dd0d"
+    }
+  }
+}
