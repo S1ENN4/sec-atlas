@@ -226,9 +226,9 @@ export function SiteNav({ data }: { data: NavData }) {
 
       {open === "explore" ? (
         <div id="nav-panel-explore" className={panel}>
-          <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-6 px-4 py-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mx-auto max-h-[calc(100svh-3.5rem)] max-w-7xl overflow-y-auto px-4 py-6 sm:columns-2 sm:gap-x-8 lg:columns-4">
             {data.explore.groups.map((g) => (
-              <div key={g.id}>
+              <div key={g.id} className="mb-6 break-inside-avoid">
                 <p className="px-3 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">{g.label}</p>
                 <div className="mt-2 space-y-1">
                   {g.domains.map((d) => (
