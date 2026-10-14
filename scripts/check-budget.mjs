@@ -223,6 +223,10 @@ import { gzipSync } from "node:zlib";
 // JS gzip 241,649 / first-load 14,425,147 / rsc 17,958,906 / total 32,384,053. JS caps
 // ~3% above that; the other caps already had room.
 
+// Three more explorable maps (cloud, SOC, web request; 3 locales) and the "see it on the
+// map" back-links on topic pages. Measured: first-load 14,874,902 / rsc 18,471,239 /
+// total 33,346,141 / all locales 95,059,616. Caps ~3% above that.
+
 const OUT_DIR = resolve(process.cwd(), "out");
 
 // Phase 3.A3 reconciliation (copy-code button on every <pre>): the new
@@ -236,10 +240,10 @@ const OUT_DIR = resolve(process.cwd(), "out");
 // headroom-to-content ratio as the live floor.
 
 const CAPS = [
-  { key: "first_load",  label: "first-load assets",     limit: 14_650_000, scope: "first_load" },
-  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 18_250_000, scope: "rsc_prefetch" },
-  { key: "total",       label: "total",                 limit: 32_900_000, scope: "total" },
-  { key: "all_locales", label: "all locales (sanity)", limit: 93_800_000, scope: "all_locales" },
+  { key: "first_load",  label: "first-load assets",     limit: 15_320_000, scope: "first_load" },
+  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 19_030_000, scope: "rsc_prefetch" },
+  { key: "total",       label: "total",                 limit: 34_350_000, scope: "total" },
+  { key: "all_locales", label: "all locales (sanity)", limit: 97_900_000, scope: "all_locales" },
   { key: "css",         label: "CSS raw",               limit:    98_000, scope: "css" },
   { key: "js",          label: "JS raw",                limit:   800_000, scope: "js" },
   { key: "js_gz",       label: "JS gzip",               limit:   249_000, scope: "js_gz" },

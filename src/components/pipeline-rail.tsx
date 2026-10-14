@@ -1,15 +1,21 @@
+"use client";
+
 import Link from "next/link";
-import { MoveDown, MoveLeft, MoveRight } from "lucide-react";
+import { Check, MoveDown, MoveLeft, MoveRight } from "lucide-react";
 
 import type { PipelineStage } from "@/content/types";
 import { localePath, type Locale } from "@/i18n/config";
 import { fmt } from "@/i18n/format";
+import type { DomainId } from "@/content/types";
+import { useProgress } from "@/lib/progress";
 
 export interface PipelineRailProps {
   /** Localised stages of the domain. */
   stages: PipelineStage[];
   /** Domain route, e.g. "/secops". */
   route: string;
+  /** Domain id, to tick the topics already studied. */
+  domain: DomainId;
   locale: Locale;
   /** Template with {gate}. */
   gateLabel: string;
@@ -19,7 +25,8 @@ export interface PipelineRailProps {
 
 const COLS = 3;
 
-export function PipelineRail({ stages: pipelineStages, route, locale, gateLabel, loop }: PipelineRailProps) {
+export function PipelineRail({ stages: pipelineStages, route, domain, locale, gateLabel, loop }: PipelineRailProps) {
+  const { isSeen } = useProgress();
   return (
     <div>
       <div className="overflow-x-auto pb-2 lg:overflow-visible">
@@ -49,8 +56,9 @@ export function PipelineRail({ stages: pipelineStages, route, locale, gateLabel,
                       <Link
                         key={item.label}
                         href={localePath(locale, `${route}/topic/${item.slug}`)}
-                        className="rounded-md border border-border bg-muted/40 px-2 py-1 font-mono text-[11px] text-foreground/80 transition-colors duration-[120ms] hover:border-primary/60 hover:bg-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                        className="inline-flex items-center gap-1 rounded-md border border-border bg-muted/40 px-2 py-1 font-mono text-[11px] text-foreground/80 transition-colors duration-[120ms] hover:border-primary/60 hover:bg-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                       >
+                        {isSeen(domain, item.slug) ? <Check className="size-3 text-emerald-400" aria-label="✓" /> : null}
                         {item.label}
                       </Link>
                     ) : (

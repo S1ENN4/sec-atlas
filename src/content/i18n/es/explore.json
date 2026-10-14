@@ -1,5 +1,53 @@
 {
   "entries": {
+    "challenges.c-buckets.hint": {
+      "t": "Cuatro líneas, todas con el mismo valor.",
+      "h": "62c07fcf"
+    },
+    "challenges.c-buckets.prompt": {
+      "t": "Este bucket guarda informes de clientes. ¿Qué líneas le quitan la red de seguridad?",
+      "h": "b4f35bc5"
+    },
+    "challenges.c-buckets.why": {
+      "t": "Los cuatro ajustes de bloqueo de acceso público (líneas 7 a 10) están en false, así que una ACL o política equivocada puede exponer todos los informes a internet. Pon los cuatro en true. El cifrado (líneas 13 a 20) es bueno, pero no impide lecturas públicas.",
+      "h": "74450f45"
+    },
+    "challenges.c-iam-policies.hint": {
+      "t": "Dos líneas: un comodín de acción y un comodín de recurso.",
+      "h": "f7548043"
+    },
+    "challenges.c-iam-policies.prompt": {
+      "t": "Esta política está asociada al rol de una app web. ¿Qué líneas conceden mucho más de lo que la app necesita?",
+      "h": "388f194f"
+    },
+    "challenges.c-iam-policies.why": {
+      "t": "La acción s3:* (línea 6) permite cualquier acción de S3, incluido borrar buckets y cambiar sus políticas, y Resource * (línea 7) lo aplica a todos los buckets de la cuenta. Nombra las pocas acciones necesarias, como s3:GetObject, y el ARN exacto del bucket.",
+      "h": "1b105f5b"
+    },
+    "challenges.c-pod.hint": {
+      "t": "Tres líneas: red, privilegio y usuario.",
+      "h": "1cf27361"
+    },
+    "challenges.c-pod.prompt": {
+      "t": "¿Qué líneas debería rechazar una política de admisión en este pod?",
+      "h": "976efa95"
+    },
+    "challenges.c-pod.why": {
+      "t": "hostNetwork: true (línea 6) comparte la red del nodo con el contenedor, privileged: true (línea 11) le da casi acceso total al host, y runAsUser: 0 (línea 12) lo ejecuta como root. Juntas hacen trivial escapar del contenedor.",
+      "h": "dd11e292"
+    },
+    "challenges.c-sg.hint": {
+      "t": "Una línea, y no es el puerto web.",
+      "h": "aebc4044"
+    },
+    "challenges.c-sg.prompt": {
+      "t": "Este grupo está asociado a un servidor web expuesto a internet. ¿Qué línea abre algo que no debería ser público?",
+      "h": "4632bf88"
+    },
+    "challenges.c-sg.why": {
+      "t": "La línea 9 deja que todo internet intente llegar al SSH en el puerto 22, lo que invita a la fuerza bruta y a la explotación. Usa un servicio gestionado de sesiones, o permite solo una VPN o un rango de bastión. El puerto 443 abierto a todos (línea 16) es normal en un servidor web público.",
+      "h": "bb9e0b53"
+    },
     "challenges.ci-injection.hint": {
       "t": "Busca una expresión dentro de run.",
       "h": "3e65aa79"
@@ -60,6 +108,70 @@
       "t": "latest es una base móvil y sin versión fijada (línea 1). ADD desde una URL descarga código sin verificar durante el build (línea 4). Una contraseña en ENV queda guardada en las capas de la imagen, legible para quien pueda descargarla (línea 6). Tampoco hay instrucción USER, así que el proceso corre como root.",
       "h": "675e029c"
     },
+    "challenges.s-runbooks.hint": {
+      "t": "Tres pasos: uno pierde la memoria, uno borra evidencia, uno mantiene el host en uso.",
+      "h": "7c447e69"
+    },
+    "challenges.s-runbooks.prompt": {
+      "t": "Este runbook de ransomware tiene pasos que destruyen evidencias o mantienen trabajando al atacante. ¿Qué líneas están mal?",
+      "h": "19e0cdcb"
+    },
+    "challenges.s-runbooks.why": {
+      "t": "Reiniciar (línea 3) borra la memoria, donde aún pueden estar la clave de cifrado y las herramientas del atacante. Borrar el binario (línea 4) destruye evidencia antes de capturarla. Dejar que el usuario siga trabajando en una máquina infectada (línea 5) extiende el daño. El paso de preservar debería ir antes de cualquier limpieza.",
+      "h": "4c6e9b5b"
+    },
+    "challenges.w-idor.hint": {
+      "t": "La ruta exige iniciar sesión. ¿Qué no pregunta la consulta?",
+      "h": "309a78e2"
+    },
+    "challenges.w-idor.prompt": {
+      "t": "Un usuario con sesión pide una factura por su id. ¿A qué línea le falta la comprobación de seguridad?",
+      "h": "9267e47b"
+    },
+    "challenges.w-idor.why": {
+      "t": "La línea 2 carga cualquier factura por su id. requireLogin solo demuestra quién es el usuario, no que la factura sea suya, así que cualquiera puede leer facturas ajenas cambiando el número. Cárgala con el propietario en el filtro, por ejemplo findOne con el id y el usuario actual.",
+      "h": "4f3d6749"
+    },
+    "challenges.w-sqli.hint": {
+      "t": "Busca la concatenación de cadenas.",
+      "h": "a9357f54"
+    },
+    "challenges.w-sqli.prompt": {
+      "t": "¿Qué línea permite a un visitante cambiar el sentido de esta consulta?",
+      "h": "90a5df96"
+    },
+    "challenges.w-sqli.why": {
+      "t": "La línea 4 pega el nombre en el texto SQL, así que una entrada con comillas seguida de una condición siempre verdadera cambia la consulta. Usa un marcador de parámetro y pasa el valor por separado, para que la base de datos nunca lo lea como SQL.",
+      "h": "768fbed0"
+    },
+    "challenges.w-xss.hint": {
+      "t": "Compara las dos últimas líneas.",
+      "h": "bc30f189"
+    },
+    "challenges.w-xss.prompt": {
+      "t": "Una página saluda al visitante con un nombre tomado de la URL. ¿Qué línea permite inyectar scripts?",
+      "h": "c8143f81"
+    },
+    "challenges.w-xss.why": {
+      "t": "innerHTML (línea 3) interpreta la cadena como HTML, así que un nombre como una etiqueta de imagen con un manejador onerror ejecutaría script en el navegador del visitante. textContent (línea 4) lo trata como texto plano.",
+      "h": "d2e8a37c"
+    },
+    "missions.break-the-app.intro": {
+      "t": "Encuentra la línea que deja entrar a un atacante: script, consulta y control de acceso.",
+      "h": "ebfcf410"
+    },
+    "missions.break-the-app.title": {
+      "t": "Rompe la app",
+      "h": "4f1c5d1d"
+    },
+    "missions.build-a-detection.intro": {
+      "t": "De los datos que recoges a una regla probada y ajustada.",
+      "h": "da2cfa85"
+    },
+    "missions.build-a-detection.title": {
+      "t": "Construye una detección",
+      "h": "031cdc52"
+    },
     "missions.follow-commit.intro": {
       "t": "Recorre toda la ruta desde el portátil hasta producción, una parada a la vez.",
       "h": "13d82167"
@@ -76,6 +188,30 @@
       "t": "Refuerza el pipeline",
       "h": "ebbb3583"
     },
+    "missions.lock-front-door.intro": {
+      "t": "Arregla los errores clásicos de la nube: identidad, red y almacenamiento.",
+      "h": "bbe2cad3"
+    },
+    "missions.lock-front-door.title": {
+      "t": "Cierra la puerta principal",
+      "h": "c058a32e"
+    },
+    "missions.owasp-walk.intro": {
+      "t": "Sigue una petición por todos los saltos y conoce el OWASP Top 10.",
+      "h": "0d5efb58"
+    },
+    "missions.owasp-walk.title": {
+      "t": "Recorre la petición",
+      "h": "0e33de99"
+    },
+    "missions.see-everything.intro": {
+      "t": "Activa el registro de auditoría, revisa la postura, alerta sobre llamadas arriesgadas y limita lo que pueden hacer las cuentas.",
+      "h": "ccdeaff2"
+    },
+    "missions.see-everything.title": {
+      "t": "Míralo todo",
+      "h": "7bbd5faf"
+    },
     "missions.stop-leaks.intro": {
       "t": "Encuentra todos los lugares donde se puede atrapar una clave filtrada, del portátil a la app en vivo.",
       "h": "5e4695b7"
@@ -83,6 +219,14 @@
     "missions.stop-leaks.title": {
       "t": "Detén una filtración de secretos",
       "h": "4a336b45"
+    },
+    "missions.triage-an-alert.intro": {
+      "t": "De la severidad y el contexto al runbook y a un paso seguro de contención.",
+      "h": "26ed5429"
+    },
+    "missions.triage-an-alert.title": {
+      "t": "Clasifica una alerta",
+      "h": "645f5968"
     },
     "missions.trust-dependencies.intro": {
       "t": "Del bot de actualizaciones a la puerta del clúster: cómo se detiene un paquete arriesgado.",
@@ -159,6 +303,466 @@
     "nodes.build.title": {
       "t": "Build y artefacto",
       "h": "6d08977e"
+    },
+    "nodes.c-alerts.points.0": {
+      "t": "Empieza con una lista corta de eventos de alta señal.",
+      "h": "3eec7582"
+    },
+    "nodes.c-alerts.points.1": {
+      "t": "Da a cada alerta un responsable y un runbook.",
+      "h": "4f086a38"
+    },
+    "nodes.c-alerts.points.2": {
+      "t": "Prueba la alerta provocando el evento en una cuenta segura.",
+      "h": "647b3c7a"
+    },
+    "nodes.c-alerts.summary": {
+      "t": "Algunas llamadas a la API merecen una mirada humana inmediata: desactivar logs, crear claves, abrir un bucket.",
+      "h": "e2c8af06"
+    },
+    "nodes.c-alerts.title": {
+      "t": "Alertas de llamadas arriesgadas",
+      "h": "8c42bad6"
+    },
+    "nodes.c-backups.points.0": {
+      "t": "Guarda copias en una cuenta separada, con almacenamiento de escritura única o versionado.",
+      "h": "dff4d73f"
+    },
+    "nodes.c-backups.points.1": {
+      "t": "Prueba las restauraciones, no solo las copias.",
+      "h": "7c79bcd1"
+    },
+    "nodes.c-backups.points.2": {
+      "t": "Protege el borrado de copias con el mismo cuidado que producción.",
+      "h": "65a7cc68"
+    },
+    "nodes.c-backups.summary": {
+      "t": "La mejor respuesta al ransomware o a una cuenta borrada es una copia que el atacante no pueda tocar.",
+      "h": "3054cb5c"
+    },
+    "nodes.c-backups.title": {
+      "t": "Copias de seguridad y recuperación",
+      "h": "2e781c70"
+    },
+    "nodes.c-buckets.points.0": {
+      "t": "Activa todos los bloqueos de acceso público, idealmente para toda la cuenta.",
+      "h": "165996e2"
+    },
+    "nodes.c-buckets.points.1": {
+      "t": "Usa políticas y enlaces prefirmados en lugar de buckets públicos.",
+      "h": "65a81f98"
+    },
+    "nodes.c-buckets.points.2": {
+      "t": "Registra el acceso a los buckets con datos sensibles.",
+      "h": "ddc7e124"
+    },
+    "nodes.c-buckets.summary": {
+      "t": "Los buckets son fáciles de crear y fáciles de exponer. Los bloqueos de acceso público son la red de seguridad.",
+      "h": "b7a233e4"
+    },
+    "nodes.c-buckets.title": {
+      "t": "Almacenamiento de objetos",
+      "h": "4f611774"
+    },
+    "nodes.c-cloudtrail.points.0": {
+      "t": "Actívalo para todas las regiones y cuentas, de forma central.",
+      "h": "7d27b2e3"
+    },
+    "nodes.c-cloudtrail.points.1": {
+      "t": "Activa la validación de archivos de log para que la manipulación sea detectable.",
+      "h": "ddd5d3c7"
+    },
+    "nodes.c-cloudtrail.points.2": {
+      "t": "Envía los logs a una cuenta separada y bien blindada.",
+      "h": "12783e50"
+    },
+    "nodes.c-cloudtrail.summary": {
+      "t": "Un registro de cada llamada a la API: quién, desde dónde y qué cambió.",
+      "h": "9ba2bf0e"
+    },
+    "nodes.c-cloudtrail.title": {
+      "t": "Registro de auditoría",
+      "h": "33de865a"
+    },
+    "nodes.c-cspm.points.0": {
+      "t": "Detecta buckets públicos, puertos abiertos y falta de cifrado rápidamente.",
+      "h": "8c03bbc0"
+    },
+    "nodes.c-cspm.points.1": {
+      "t": "Prioriza los hallazgos por exposición y sensibilidad de los datos.",
+      "h": "875a5ec2"
+    },
+    "nodes.c-cspm.points.2": {
+      "t": "Corrige en el origen (el código de infraestructura), no a mano.",
+      "h": "8abb6174"
+    },
+    "nodes.c-cspm.summary": {
+      "t": "Un escáner que compara tu configuración real con un benchmark y señala las desviaciones.",
+      "h": "5172005c"
+    },
+    "nodes.c-cspm.title": {
+      "t": "Gestión de postura",
+      "h": "410d120a"
+    },
+    "nodes.c-data.points.0": {
+      "t": "Sabe dónde están los datos sensibles.",
+      "h": "8574c9bb"
+    },
+    "nodes.c-data.points.1": {
+      "t": "Bloquea el acceso público por defecto, a nivel de cuenta.",
+      "h": "e86fc68e"
+    },
+    "nodes.c-data.points.2": {
+      "t": "Cifra, pero recuerda que el cifrado no arregla unas reglas de acceso malas.",
+      "h": "1b17c5fc"
+    },
+    "nodes.c-data.summary": {
+      "t": "Lo que de verdad proteges. Los errores de almacenamiento son el titular clásico de la nube.",
+      "h": "69c0a403"
+    },
+    "nodes.c-data.title": {
+      "t": "Datos",
+      "h": "e5e429bc"
+    },
+    "nodes.c-encryption.points.0": {
+      "t": "Usa un servicio gestionado de claves y separa a quien administra de quien usa las claves.",
+      "h": "18056e39"
+    },
+    "nodes.c-encryption.points.1": {
+      "t": "Rota las claves y registra cada uso.",
+      "h": "79cb2217"
+    },
+    "nodes.c-encryption.points.2": {
+      "t": "El cifrado protege frente a discos perdidos y algunos internos, no frente a una identidad robada.",
+      "h": "e9a2983f"
+    },
+    "nodes.c-encryption.summary": {
+      "t": "Datos cifrados en reposo y en tránsito, con claves que controlas y puedes auditar.",
+      "h": "68aeebcb"
+    },
+    "nodes.c-encryption.title": {
+      "t": "Cifrado y claves",
+      "h": "c371c664"
+    },
+    "nodes.c-endpoints.points.0": {
+      "t": "El tráfico hacia almacenamiento y bases de datos se queda dentro de tu red.",
+      "h": "0b029954"
+    },
+    "nodes.c-endpoints.points.1": {
+      "t": "Las políticas de endpoint pueden restringir qué recursos son alcanzables.",
+      "h": "64894a9c"
+    },
+    "nodes.c-endpoints.points.2": {
+      "t": "Reduce la exposición, pero sigue necesitando controles de identidad.",
+      "h": "c1dc4971"
+    },
+    "nodes.c-endpoints.summary": {
+      "t": "Accede a los servicios de la nube por la red privada en lugar de por internet.",
+      "h": "8f48c262"
+    },
+    "nodes.c-endpoints.title": {
+      "t": "Endpoints privados",
+      "h": "7d59a48d"
+    },
+    "nodes.c-guardrails.points.0": {
+      "t": "Los guardrails previenen; las herramientas de postura detectan.",
+      "h": "b436183b"
+    },
+    "nodes.c-guardrails.points.1": {
+      "t": "Mantenlos pocos, claros y bien probados.",
+      "h": "86448ea7"
+    },
+    "nodes.c-guardrails.points.2": {
+      "t": "Ofrece un camino seguro (paved road) para que los guardrails resulten útiles.",
+      "h": "1706e5fb"
+    },
+    "nodes.c-guardrails.summary": {
+      "t": "Reglas definidas a nivel de organización que ningún equipo por sí solo puede desactivar.",
+      "h": "0776af11"
+    },
+    "nodes.c-guardrails.title": {
+      "t": "Guardrails",
+      "h": "2dd5f894"
+    },
+    "nodes.c-iac-policy.points.0": {
+      "t": "La misma regla puede ejecutarse en un pull request y en el clúster.",
+      "h": "66709403"
+    },
+    "nodes.c-iac-policy.points.1": {
+      "t": "Da mensajes de fallo claros para que quien desarrolla lo arregle solo.",
+      "h": "529fa24e"
+    },
+    "nodes.c-iac-policy.points.2": {
+      "t": "Versiona y prueba las reglas como cualquier otro código.",
+      "h": "fe361331"
+    },
+    "nodes.c-iac-policy.summary": {
+      "t": "Reglas escritas como código y comprobadas en el pipeline antes de crear la infraestructura.",
+      "h": "fef3670f"
+    },
+    "nodes.c-iac-policy.title": {
+      "t": "Política como código",
+      "h": "54e87c28"
+    },
+    "nodes.c-iam-policies.points.0": {
+      "t": "Nombra las acciones exactas y los recursos exactos.",
+      "h": "b4e52ca9"
+    },
+    "nodes.c-iam-policies.points.1": {
+      "t": "Las reglas de denegación y las condiciones pueden acotar un permiso amplio.",
+      "h": "55ed6cc2"
+    },
+    "nodes.c-iam-policies.points.2": {
+      "t": "Una política que funciona no es necesariamente una política segura.",
+      "h": "b66c920d"
+    },
+    "nodes.c-iam-policies.summary": {
+      "t": "Un documento JSON que dice qué acciones se permiten sobre qué recursos. Los comodines son cómodos y peligrosos.",
+      "h": "02646009"
+    },
+    "nodes.c-iam-policies.title": {
+      "t": "Políticas IAM",
+      "h": "6b9d0433"
+    },
+    "nodes.c-identity.points.0": {
+      "t": "Cada persona y cada carga de trabajo debe tener su propia identidad.",
+      "h": "d203464c"
+    },
+    "nodes.c-identity.points.1": {
+      "t": "Los permisos también son código: revísalos como código.",
+      "h": "7a7dc498"
+    },
+    "nodes.c-identity.points.2": {
+      "t": "Las credenciales de corta duración valen más que las claves de larga duración.",
+      "h": "9a99a9f9"
+    },
+    "nodes.c-identity.summary": {
+      "t": "Quién o qué puede llamar a cada API. Es donde empiezan la mayoría de los incidentes en la nube y donde están las correcciones más baratas.",
+      "h": "adfe7cd6"
+    },
+    "nodes.c-identity.title": {
+      "t": "Identidad y acceso",
+      "h": "359c39eb"
+    },
+    "nodes.c-image-trust.points.0": {
+      "t": "Descarga de tu propio registry y fija por digest.",
+      "h": "f93391c1"
+    },
+    "nodes.c-image-trust.points.1": {
+      "t": "Verifica las firmas cuando se admite la carga.",
+      "h": "1410b846"
+    },
+    "nodes.c-image-trust.points.2": {
+      "t": "Reconstruye con regularidad para recoger correcciones de la imagen base.",
+      "h": "d718bfd0"
+    },
+    "nodes.c-image-trust.summary": {
+      "t": "Ejecuta solo imágenes que hayas construido, escaneado y firmado.",
+      "h": "0910c36b"
+    },
+    "nodes.c-image-trust.title": {
+      "t": "Confianza en las imágenes",
+      "h": "0d48d3e3"
+    },
+    "nodes.c-least-priv.points.0": {
+      "t": "Usa el análisis de acceso para ver qué permisos nunca se usan.",
+      "h": "cbafef18"
+    },
+    "nodes.c-least-priv.points.1": {
+      "t": "Elimina roles y claves sin uso de forma periódica.",
+      "h": "b7247850"
+    },
+    "nodes.c-least-priv.points.2": {
+      "t": "Separa funciones: quien despliega no es quien aprueba.",
+      "h": "23a637fa"
+    },
+    "nodes.c-least-priv.summary": {
+      "t": "Empieza estrecho y amplía con evidencia, en lugar de empezar amplio y esperar ajustar después.",
+      "h": "08e0f557"
+    },
+    "nodes.c-least-priv.title": {
+      "t": "Mínimo privilegio en la práctica",
+      "h": "34abf193"
+    },
+    "nodes.c-mfa.points.0": {
+      "t": "Guarda bajo llave la cuenta root: MFA fuerte, sin claves de acceso, usada solo en tareas raras.",
+      "h": "3e697019"
+    },
+    "nodes.c-mfa.points.1": {
+      "t": "Exige MFA a las personas, con métodos resistentes al phishing cuando sea posible.",
+      "h": "93c04c80"
+    },
+    "nodes.c-mfa.points.2": {
+      "t": "Alerta ante cualquier uso de la cuenta root.",
+      "h": "948c072f"
+    },
+    "nodes.c-mfa.summary": {
+      "t": "La identidad más poderosa de una cuenta necesita la protección más fuerte.",
+      "h": "49f3ce5c"
+    },
+    "nodes.c-mfa.title": {
+      "t": "MFA y la cuenta root",
+      "h": "e731afdc"
+    },
+    "nodes.c-network.points.0": {
+      "t": "Deniega por defecto y abre solo lo que el servicio necesita.",
+      "h": "e8870a70"
+    },
+    "nodes.c-network.points.1": {
+      "t": "Mantén los sistemas sensibles fuera de internet.",
+      "h": "4d488e44"
+    },
+    "nodes.c-network.points.2": {
+      "t": "Las reglas de red complementan las de identidad; no las sustituyen.",
+      "h": "06c72c8f"
+    },
+    "nodes.c-network.summary": {
+      "t": "Por dónde puede fluir el tráfico. Un buen diseño de red limita hasta dónde llega un atacante una vez dentro.",
+      "h": "4f79b242"
+    },
+    "nodes.c-network.title": {
+      "t": "Red",
+      "h": "53ebc572"
+    },
+    "nodes.c-pod.points.0": {
+      "t": "Los contenedores privilegiados y la red del host eliminan el aislamiento en el que confías.",
+      "h": "c6fbfedd"
+    },
+    "nodes.c-pod.points.1": {
+      "t": "Ejecuta como usuario no root y elimina capacidades.",
+      "h": "60fad0f9"
+    },
+    "nodes.c-pod.points.2": {
+      "t": "Impón estas reglas con una política de admisión, no con buenas intenciones.",
+      "h": "1a5ec3e7"
+    },
+    "nodes.c-pod.summary": {
+      "t": "Los ajustes de un pod de Kubernetes deciden cuánto del nodo puede tocar un contenedor.",
+      "h": "f7dad20c"
+    },
+    "nodes.c-pod.title": {
+      "t": "Seguridad de pods",
+      "h": "b77bed6f"
+    },
+    "nodes.c-roles.points.0": {
+      "t": "Prefiere roles a usuarios IAM con claves de acceso.",
+      "h": "daa38cec"
+    },
+    "nodes.c-roles.points.1": {
+      "t": "Federa a las personas con inicio de sesión único en lugar de usuarios locales.",
+      "h": "5a612e3d"
+    },
+    "nodes.c-roles.points.2": {
+      "t": "Limita quién puede asumir un rol con políticas de confianza y condiciones.",
+      "h": "aba3d196"
+    },
+    "nodes.c-roles.summary": {
+      "t": "Las cargas de trabajo asumen un rol y reciben credenciales temporales, así que no hay clave estática que filtrar.",
+      "h": "2adfffcb"
+    },
+    "nodes.c-roles.title": {
+      "t": "Roles y credenciales de corta duración",
+      "h": "ba6f0e31"
+    },
+    "nodes.c-scp.points.0": {
+      "t": "Bloquea las regiones que no usas y bloquea desactivar los logs.",
+      "h": "088a457b"
+    },
+    "nodes.c-scp.points.1": {
+      "t": "Una SCP nunca concede acceso; solo pone un techo.",
+      "h": "8548ccbb"
+    },
+    "nodes.c-scp.points.2": {
+      "t": "Despliega primero en un grupo de pruebas: una denegación equivocada puede tumbar producción.",
+      "h": "dcb5e1f2"
+    },
+    "nodes.c-scp.summary": {
+      "t": "Límites en toda la organización sobre lo que pueden hacer las cuentas, digan lo que digan sus propias políticas.",
+      "h": "4070f1a8"
+    },
+    "nodes.c-scp.title": {
+      "t": "Service control policies",
+      "h": "56491592"
+    },
+    "nodes.c-sg.points.0": {
+      "t": "Abre los puertos de administración (SSH, RDP) a nadie, o a un rango pequeño y de confianza.",
+      "h": "28c4f046"
+    },
+    "nodes.c-sg.points.1": {
+      "t": "Prefiere un servicio gestionado de sesiones a un bastión público.",
+      "h": "54471a8d"
+    },
+    "nodes.c-sg.points.2": {
+      "t": "Revisa las reglas que permiten 0.0.0.0/0 en cualquier cosa que no sean puertos web.",
+      "h": "3d6f4f32"
+    },
+    "nodes.c-sg.summary": {
+      "t": "Reglas de firewall con estado asociadas a las cargas de trabajo. Una sola regla abierta a todo internet es una puerta de entrada común.",
+      "h": "9b73b987"
+    },
+    "nodes.c-sg.title": {
+      "t": "Security groups",
+      "h": "2a196f03"
+    },
+    "nodes.c-visibility.points.0": {
+      "t": "Activa la auditoría en todas partes y guárdala donde los atacantes no puedan editarla.",
+      "h": "4e2d3029"
+    },
+    "nodes.c-visibility.points.1": {
+      "t": "Detecta llamadas a la API arriesgadas, no solo tráfico de red.",
+      "h": "e99b472e"
+    },
+    "nodes.c-visibility.points.2": {
+      "t": "Revisa la postura de forma continua, no una vez al año.",
+      "h": "535c6b64"
+    },
+    "nodes.c-visibility.summary": {
+      "t": "No puedes responder a lo que no ves. Los logs de auditoría de la nube registran quién hizo qué.",
+      "h": "c3e5684f"
+    },
+    "nodes.c-visibility.title": {
+      "t": "Logs y detección",
+      "h": "24952ac2"
+    },
+    "nodes.c-vpc.points.0": {
+      "t": "Separa las subredes públicas, de aplicación y de datos.",
+      "h": "2f959e71"
+    },
+    "nodes.c-vpc.points.1": {
+      "t": "Usa cuentas o proyectos distintos para producción y desarrollo.",
+      "h": "785e5e41"
+    },
+    "nodes.c-vpc.points.2": {
+      "t": "Controla el tráfico entre zonas, no solo el de entrada y salida.",
+      "h": "89aec456"
+    },
+    "nodes.c-vpc.summary": {
+      "t": "Divide la red en zonas separadas para que un compromiso en una no llegue a todo.",
+      "h": "63b17557"
+    },
+    "nodes.c-vpc.title": {
+      "t": "Segmentación",
+      "h": "28748fe3"
+    },
+    "nodes.c-workloads.points.0": {
+      "t": "Ejecuta con la menor identidad y la red más estrecha posibles.",
+      "h": "1ae6540c"
+    },
+    "nodes.c-workloads.points.1": {
+      "t": "Trata las imágenes como cadena de suministro: sabe de dónde vienen.",
+      "h": "5aec2652"
+    },
+    "nodes.c-workloads.points.2": {
+      "t": "Actualiza o sustituye; no edites a mano servidores en producción.",
+      "h": "f081fcc9"
+    },
+    "nodes.c-workloads.summary": {
+      "t": "El código que se ejecuta: máquinas virtuales, contenedores y funciones. Heredan la identidad y la red que les des.",
+      "h": "199d3353"
+    },
+    "nodes.c-workloads.title": {
+      "t": "Cargas de trabajo",
+      "h": "9016f125"
     },
     "nodes.ci-injection.points.0": {
       "t": "Los títulos de pull request, nombres de rama, cuerpos de issue y mensajes de commit los controla el atacante.",
@@ -259,6 +863,26 @@
     "nodes.ci.title": {
       "t": "Workflow de CI",
       "h": "d1653b9a"
+    },
+    "nodes.cloud.points.0": {
+      "t": "La identidad es el nuevo perímetro: una clave robada vale más que cualquier firewall.",
+      "h": "7353c8d3"
+    },
+    "nodes.cloud.points.1": {
+      "t": "La mayoría de las brechas en la nube son errores de configuración, no exploits exóticos.",
+      "h": "9d0f9a5f"
+    },
+    "nodes.cloud.points.2": {
+      "t": "Los guardrails y los logs atrapan lo que los equipos por separado dejan pasar.",
+      "h": "cc65afea"
+    },
+    "nodes.cloud.summary": {
+      "t": "En la nube casi todo es una llamada a una API. Este mapa sigue quién puede hacer qué, dónde puede ejecutarse y cómo te enterarías.",
+      "h": "c8f37f89"
+    },
+    "nodes.cloud.title": {
+      "t": "Seguridad en la nube",
+      "h": "9d5a9bc3"
     },
     "nodes.codeowners.points.0": {
       "t": "Pon los pipelines, el código de autenticación y la infraestructura bajo el equipo de seguridad.",
@@ -600,6 +1224,466 @@
       "t": "Runtime",
       "h": "c4740e4c"
     },
+    "nodes.s-contain.points.0": {
+      "t": "Contén primero, erradica después.",
+      "h": "3ddedfc5"
+    },
+    "nodes.s-contain.points.1": {
+      "t": "Elige la acción menos disruptiva que funcione.",
+      "h": "3380b685"
+    },
+    "nodes.s-contain.points.2": {
+      "t": "Coordina con el negocio antes de sacar sistemas de servicio.",
+      "h": "ab2afb28"
+    },
+    "nodes.s-contain.summary": {
+      "t": "Impedir que el daño se extienda, sin destruir las evidencias que necesitas.",
+      "h": "f0f1b5d2"
+    },
+    "nodes.s-contain.title": {
+      "t": "Contención",
+      "h": "4378934e"
+    },
+    "nodes.s-context.points.0": {
+      "t": "Trae el contexto automáticamente a la alerta.",
+      "h": "e4351419"
+    },
+    "nodes.s-context.points.1": {
+      "t": "La inteligencia de amenazas es una pista, no un veredicto.",
+      "h": "ffdfa74b"
+    },
+    "nodes.s-context.points.2": {
+      "t": "Pregunta al responsable del activo cuando los logs no respondan.",
+      "h": "c1e8f7c0"
+    },
+    "nodes.s-context.summary": {
+      "t": "¿Quién es el responsable de este activo? ¿Es nuevo? ¿Ha hecho esto antes este usuario? ¿Se conoce el indicador?",
+      "h": "b1b124e2"
+    },
+    "nodes.s-context.title": {
+      "t": "Contexto y enriquecimiento",
+      "h": "3be6c047"
+    },
+    "nodes.s-coverage.points.0": {
+      "t": "Cobertura no es calidad: una regla débil por técnica es poco.",
+      "h": "785464df"
+    },
+    "nodes.s-coverage.points.1": {
+      "t": "Prioriza las técnicas que la inteligencia de amenazas dice que se usan contra ti.",
+      "h": "b72b5379"
+    },
+    "nodes.s-coverage.points.2": {
+      "t": "Prueba con emulación para confirmar que las reglas se disparan.",
+      "h": "b4c2f3b8"
+    },
+    "nodes.s-coverage.summary": {
+      "t": "Asigna tus detecciones a técnicas de atacantes para ver qué se te escaparía.",
+      "h": "dde008c1"
+    },
+    "nodes.s-coverage.title": {
+      "t": "Cobertura y ATT&CK",
+      "h": "617b5bfc"
+    },
+    "nodes.s-creds.points.0": {
+      "t": "Revoca sesiones y tokens y luego restablece contraseñas y claves.",
+      "h": "6331aa4f"
+    },
+    "nodes.s-creds.points.1": {
+      "t": "Rota cualquier secreto que el host pudiera leer.",
+      "h": "89cd90aa"
+    },
+    "nodes.s-creds.points.2": {
+      "t": "Revisa lo que hizo la cuenta antes de ser cortada.",
+      "h": "5798b655"
+    },
+    "nodes.s-creds.summary": {
+      "t": "Si una cuenta puede estar comprometida, asume que sus secretos también.",
+      "h": "7f54e3ba"
+    },
+    "nodes.s-creds.title": {
+      "t": "Credenciales y sesiones",
+      "h": "c6d98b97"
+    },
+    "nodes.s-detect.points.0": {
+      "t": "Trata las detecciones como código: versiona, revisa, prueba.",
+      "h": "32da0c9e"
+    },
+    "nodes.s-detect.points.1": {
+      "t": "Toda regla necesita un motivo, un responsable y una respuesta.",
+      "h": "e44e4c23"
+    },
+    "nodes.s-detect.points.2": {
+      "t": "Mide lo que detecta una regla y cuánto ruido cuesta.",
+      "h": "0bc3959f"
+    },
+    "nodes.s-detect.summary": {
+      "t": "Escribir, probar y mantener las reglas que convierten la telemetría en alertas.",
+      "h": "e998bdae"
+    },
+    "nodes.s-detect.title": {
+      "t": "Ingeniería de detección",
+      "h": "2977320d"
+    },
+    "nodes.s-edge.points.0": {
+      "t": "Buenos para detectar escaneos, bots e inundaciones en la capa de aplicación.",
+      "h": "cdd12311"
+    },
+    "nodes.s-edge.points.1": {
+      "t": "Combínalos con los logs de la aplicación para ver qué se coló.",
+      "h": "ea905438"
+    },
+    "nodes.s-edge.points.2": {
+      "t": "Muestrea con cuidado: los eventos raros son los interesantes.",
+      "h": "65fe3db0"
+    },
+    "nodes.s-edge.summary": {
+      "t": "Los logs de CDN, WAF y balanceador muestran ataques antes de que lleguen a la aplicación.",
+      "h": "4f4f9bf3"
+    },
+    "nodes.s-edge.title": {
+      "t": "Telemetría de borde",
+      "h": "619019aa"
+    },
+    "nodes.s-forensics.points.0": {
+      "t": "Captura los datos volátiles (memoria, conexiones) antes de apagar.",
+      "h": "eee0989a"
+    },
+    "nodes.s-forensics.points.1": {
+      "t": "Trabaja sobre copias y registra quién tocó qué y cuándo.",
+      "h": "9699d06f"
+    },
+    "nodes.s-forensics.points.2": {
+      "t": "Calcula el hash de las evidencias para detectar cambios.",
+      "h": "71da97e5"
+    },
+    "nodes.s-forensics.summary": {
+      "t": "Recoger y manejar evidencias para que se pueda confiar en ellas más tarde.",
+      "h": "6d257a61"
+    },
+    "nodes.s-forensics.title": {
+      "t": "Fundamentos de forense",
+      "h": "790c9be4"
+    },
+    "nodes.s-hunt.points.0": {
+      "t": "Parte de cómo se comportaría un atacante, no de una herramienta.",
+      "h": "d44fb22c"
+    },
+    "nodes.s-hunt.points.1": {
+      "t": "Toda búsqueda debe acabar en un hallazgo o en una nueva detección.",
+      "h": "46597a2d"
+    },
+    "nodes.s-hunt.points.2": {
+      "t": "Documenta lo que miraste, incluso cuando no encontraste nada.",
+      "h": "883e4b29"
+    },
+    "nodes.s-hunt.summary": {
+      "t": "Buscar de forma proactiva actividad que las detecciones no vieron, guiado por una hipótesis.",
+      "h": "aafb29cc"
+    },
+    "nodes.s-hunt.title": {
+      "t": "Threat hunting",
+      "h": "d6f65409"
+    },
+    "nodes.s-investigate.points.0": {
+      "t": "Construye una línea de tiempo a partir de varias fuentes.",
+      "h": "0ab24ba0"
+    },
+    "nodes.s-investigate.points.1": {
+      "t": "Guarda notas y evidencias sobre la marcha.",
+      "h": "220e9dad"
+    },
+    "nodes.s-investigate.points.2": {
+      "t": "Separa los hechos de las suposiciones.",
+      "h": "338c4d40"
+    },
+    "nodes.s-investigate.summary": {
+      "t": "Averiguar qué pasó, hasta dónde llegó y cómo entró.",
+      "h": "073bd2d4"
+    },
+    "nodes.s-investigate.title": {
+      "t": "Investigación",
+      "h": "7ee02ad1"
+    },
+    "nodes.s-isolate.points.0": {
+      "t": "Las herramientas de endpoint pueden poner un host en cuarentena en segundos.",
+      "h": "07216e51"
+    },
+    "nodes.s-isolate.points.1": {
+      "t": "Deja el host encendido para mantener la memoria intacta.",
+      "h": "341c6f1c"
+    },
+    "nodes.s-isolate.points.2": {
+      "t": "Avisa al usuario y ofrécele un reemplazo.",
+      "h": "e4e32330"
+    },
+    "nodes.s-isolate.summary": {
+      "t": "Corta la máquina de la red manteniéndola encendida y disponible para quien investiga.",
+      "h": "62884015"
+    },
+    "nodes.s-isolate.title": {
+      "t": "Aislar un host",
+      "h": "867de8a7"
+    },
+    "nodes.s-learn.points.0": {
+      "t": "Haz una revisión sin culpables poco después del incidente.",
+      "h": "b2c4e774"
+    },
+    "nodes.s-learn.points.1": {
+      "t": "Convierte las lecciones en detecciones, runbooks y correcciones.",
+      "h": "36beaaf4"
+    },
+    "nodes.s-learn.points.2": {
+      "t": "Sigue pocas métricas que reflejen velocidad y calidad.",
+      "h": "11f13baf"
+    },
+    "nodes.s-learn.summary": {
+      "t": "Cerrar el ciclo para que el próximo incidente sea menor.",
+      "h": "811c7072"
+    },
+    "nodes.s-learn.title": {
+      "t": "Lecciones y métricas",
+      "h": "d6ead9c8"
+    },
+    "nodes.s-logs.points.0": {
+      "t": "Parte de las preguntas que hace quien investiga y retrocede hasta los logs.",
+      "h": "2c474785"
+    },
+    "nodes.s-logs.points.1": {
+      "t": "Guarda historial suficiente para cubrir ataques lentos.",
+      "h": "da38d504"
+    },
+    "nodes.s-logs.points.2": {
+      "t": "Protege los logs de quienes están siendo registrados.",
+      "h": "10e93736"
+    },
+    "nodes.s-logs.summary": {
+      "t": "Autenticación, ejecución de procesos, flujos de red, logs de auditoría de la nube y errores de aplicación cubren la mayoría de las investigaciones.",
+      "h": "fa3e2094"
+    },
+    "nodes.s-logs.title": {
+      "t": "Qué recoger",
+      "h": "89c53b37"
+    },
+    "nodes.s-metrics.points.0": {
+      "t": "Mide la mediana y los peores casos, no solo el promedio.",
+      "h": "4c5ce22c"
+    },
+    "nodes.s-metrics.points.1": {
+      "t": "Combina velocidad con calidad, como cuántas alertas eran reales.",
+      "h": "8e124821"
+    },
+    "nodes.s-metrics.points.2": {
+      "t": "Usa objetivos para guiar la mejora, nunca para castigar.",
+      "h": "1891aea0"
+    },
+    "nodes.s-metrics.summary": {
+      "t": "El tiempo de detección y el de respuesta muestran lo bien que funciona la máquina.",
+      "h": "32ec2b3b"
+    },
+    "nodes.s-metrics.title": {
+      "t": "Métricas que importan",
+      "h": "01b2f71d"
+    },
+    "nodes.s-normalize.points.0": {
+      "t": "Un esquema común permite que una regla funcione en muchas fuentes.",
+      "h": "f5eb8fd4"
+    },
+    "nodes.s-normalize.points.1": {
+      "t": "El enriquecimiento convierte una dirección IP en quién y qué es.",
+      "h": "6c3ecb62"
+    },
+    "nodes.s-normalize.points.2": {
+      "t": "Conserva el evento original para no perder nada.",
+      "h": "0a5a15e4"
+    },
+    "nodes.s-normalize.summary": {
+      "t": "Asigna las distintas fuentes a nombres de campo comunes y añade contexto, como el responsable del activo y el rol del usuario.",
+      "h": "3ac9ff20"
+    },
+    "nodes.s-normalize.title": {
+      "t": "Normalizar y enriquecer",
+      "h": "2cb1e21e"
+    },
+    "nodes.s-postmortem.points.0": {
+      "t": "Describe la línea de tiempo, el impacto y lo que ayudó o perjudicó.",
+      "h": "0edfed65"
+    },
+    "nodes.s-postmortem.points.1": {
+      "t": "Termina con acciones con responsable y fecha.",
+      "h": "7b141aea"
+    },
+    "nodes.s-postmortem.points.2": {
+      "t": "Compártela ampliamente, para que otros equipos también aprendan.",
+      "h": "0ebeb03d"
+    },
+    "nodes.s-postmortem.summary": {
+      "t": "Una mirada estructurada a qué pasó y por qué, centrada en los sistemas y no en las personas.",
+      "h": "3d63f77a"
+    },
+    "nodes.s-postmortem.title": {
+      "t": "Revisión sin culpables",
+      "h": "aba08db1"
+    },
+    "nodes.s-ransom.points.0": {
+      "t": "Aísla rápido y protege primero las copias y los sistemas de identidad.",
+      "h": "e85a846c"
+    },
+    "nodes.s-ransom.points.1": {
+      "t": "No limpies los sistemas antes de capturar las evidencias.",
+      "h": "2d862608"
+    },
+    "nodes.s-ransom.points.2": {
+      "t": "Involucra pronto a quienes deciden y al área legal.",
+      "h": "c22c0263"
+    },
+    "nodes.s-ransom.summary": {
+      "t": "Un caso especial en el que la velocidad, las copias y la comunicación deciden el resultado.",
+      "h": "4909e6dd"
+    },
+    "nodes.s-ransom.title": {
+      "t": "Ransomware",
+      "h": "4b67173b"
+    },
+    "nodes.s-runbooks.points.0": {
+      "t": "Pon el orden de los pasos en el documento, porque el orden importa.",
+      "h": "09d13026"
+    },
+    "nodes.s-runbooks.points.1": {
+      "t": "Preserva las evidencias antes de cambiar nada.",
+      "h": "e88e6431"
+    },
+    "nodes.s-runbooks.points.2": {
+      "t": "Revisa los runbooks después de cada incidente real.",
+      "h": "3776089b"
+    },
+    "nodes.s-runbooks.summary": {
+      "t": "Pasos escritos para situaciones comunes, para que la respuesta sea tranquila, coherente y rápida.",
+      "h": "909b286a"
+    },
+    "nodes.s-runbooks.title": {
+      "t": "Runbooks",
+      "h": "f25a69fa"
+    },
+    "nodes.s-severity.points.0": {
+      "t": "Combina el valor del activo, la confianza y el avance del atacante.",
+      "h": "a6fae4d7"
+    },
+    "nodes.s-severity.points.1": {
+      "t": "Acuerda la escala de antemano para que nadie discuta durante el incidente.",
+      "h": "8a74c8bb"
+    },
+    "nodes.s-severity.points.2": {
+      "t": "Revisa la severidad a medida que aparecen nuevos hechos.",
+      "h": "891215e6"
+    },
+    "nodes.s-severity.summary": {
+      "t": "La severidad dice cuán grave podría ser; la prioridad dice qué hacer primero, dado todo lo demás en la cola.",
+      "h": "a804208c"
+    },
+    "nodes.s-severity.title": {
+      "t": "Severidad y prioridad",
+      "h": "d03216df"
+    },
+    "nodes.s-sigma.points.0": {
+      "t": "Una regla tiene una fuente de log, una selección y una condición.",
+      "h": "ae67d6b4"
+    },
+    "nodes.s-sigma.points.1": {
+      "t": "Documenta los falsos positivos conocidos en la propia regla.",
+      "h": "71482c93"
+    },
+    "nodes.s-sigma.points.2": {
+      "t": "El nivel debe reflejar la confianza y la gravedad de una coincidencia.",
+      "h": "29ce6843"
+    },
+    "nodes.s-sigma.summary": {
+      "t": "Sigma es un formato neutral respecto a proveedores para describir qué buscar en los logs, que puede traducirse a muchas plataformas.",
+      "h": "73e079a4"
+    },
+    "nodes.s-sigma.title": {
+      "t": "Una regla de detección",
+      "h": "2e62c094"
+    },
+    "nodes.s-telemetry.points.0": {
+      "t": "Recoge lo que necesitarías para responder a una pregunta después.",
+      "h": "5ce483dd"
+    },
+    "nodes.s-telemetry.points.1": {
+      "t": "La calidad y las marcas de tiempo coherentes importan más que el volumen.",
+      "h": "b1fc8839"
+    },
+    "nodes.s-telemetry.points.2": {
+      "t": "Conoce tus puntos ciegos.",
+      "h": "fe1cece8"
+    },
+    "nodes.s-telemetry.summary": {
+      "t": "Las señales en bruto: logs, datos de red y eventos de endpoint. La detección es tan buena como los datos que tiene detrás.",
+      "h": "86e4b6db"
+    },
+    "nodes.s-telemetry.title": {
+      "t": "Telemetría",
+      "h": "6dd4fe80"
+    },
+    "nodes.s-timeline.points.0": {
+      "t": "Normaliza primero las zonas horarias y la deriva de los relojes.",
+      "h": "ab992711"
+    },
+    "nodes.s-timeline.points.1": {
+      "t": "Busca el evento más antiguo, no solo el más ruidoso.",
+      "h": "553e6843"
+    },
+    "nodes.s-timeline.points.2": {
+      "t": "Escribe la línea de tiempo para el informe.",
+      "h": "f8c2c28d"
+    },
+    "nodes.s-timeline.summary": {
+      "t": "Ordenar eventos de muchos sistemas en una sola secuencia revela la historia.",
+      "h": "f53c9f07"
+    },
+    "nodes.s-timeline.title": {
+      "t": "Análisis de línea de tiempo",
+      "h": "ac2e0c4f"
+    },
+    "nodes.s-triage.points.0": {
+      "t": "Rápido y coherente gana a perfecto.",
+      "h": "2a1f2e2b"
+    },
+    "nodes.s-triage.points.1": {
+      "t": "Un buen contexto reduce mucho el tiempo de clasificación.",
+      "h": "1e2dce3a"
+    },
+    "nodes.s-triage.points.2": {
+      "t": "Escala pronto cuando el impacto no esté claro.",
+      "h": "8fda9fdc"
+    },
+    "nodes.s-triage.summary": {
+      "t": "Decidir rápido si una alerta es real, cuán grave es y quién debe atenderla.",
+      "h": "509acead"
+    },
+    "nodes.s-triage.title": {
+      "t": "Clasificación",
+      "h": "013ec284"
+    },
+    "nodes.s-tuning.points.0": {
+      "t": "Excluye casos estrechos y bien entendidos en lugar de aflojar toda la regla.",
+      "h": "22e56783"
+    },
+    "nodes.s-tuning.points.1": {
+      "t": "Sigue el volumen de alertas y la parte que resulta importar.",
+      "h": "a9cc506e"
+    },
+    "nodes.s-tuning.points.2": {
+      "t": "Retira las reglas que nunca ayudan.",
+      "h": "21a36825"
+    },
+    "nodes.s-tuning.summary": {
+      "t": "Reducir los falsos positivos sin quedarse ciego.",
+      "h": "ef02a03e"
+    },
+    "nodes.s-tuning.title": {
+      "t": "Ajuste fino",
+      "h": "221b7518"
+    },
     "nodes.sast-gate.points.0": {
       "t": "Bloquea solo los hallazgos nuevos de severidad alta; no falles builds por deuda antigua.",
       "h": "942645ff"
@@ -784,6 +1868,526 @@
       "t": "Commits firmados",
       "h": "dbce16ff"
     },
+    "nodes.soc.points.0": {
+      "t": "Cada etapa alimenta a la siguiente, y la última alimenta a la primera.",
+      "h": "41f0b269"
+    },
+    "nodes.soc.points.1": {
+      "t": "La velocidad importa, pero acertar también.",
+      "h": "820779a8"
+    },
+    "nodes.soc.points.2": {
+      "t": "Abre una parada para ver qué ocurre allí.",
+      "h": "8c277956"
+    },
+    "nodes.soc.summary": {
+      "t": "La vida de una alerta en un centro de operaciones de seguridad: recoger, detectar, clasificar, investigar, contener y aprender.",
+      "h": "833567a4"
+    },
+    "nodes.soc.title": {
+      "t": "De la señal a la respuesta",
+      "h": "1e2e5331"
+    },
+    "nodes.w-app.points.0": {
+      "t": "Comprueba la autorización en cada petición, en el servidor.",
+      "h": "554c1876"
+    },
+    "nodes.w-app.points.1": {
+      "t": "Mantén los datos separados del código y de los comandos.",
+      "h": "177bebf8"
+    },
+    "nodes.w-app.points.2": {
+      "t": "Falla de forma segura y no filtres detalles en los errores.",
+      "h": "829e23b8"
+    },
+    "nodes.w-app.summary": {
+      "t": "Donde viven tus propias reglas y donde se encuentran los fallos más graves.",
+      "h": "3d29807a"
+    },
+    "nodes.w-app.title": {
+      "t": "Lógica de la aplicación",
+      "h": "16abfde4"
+    },
+    "nodes.w-auth.points.0": {
+      "t": "Ofrece MFA y protege frente al credential stuffing.",
+      "h": "a2d0fac4"
+    },
+    "nodes.w-auth.points.1": {
+      "t": "Las sesiones necesitan caducidad, rotación y cookies seguras.",
+      "h": "3acea50a"
+    },
+    "nodes.w-auth.points.2": {
+      "t": "Trata la recuperación de contraseña con el mismo cuidado que el inicio de sesión.",
+      "h": "85d9d9b4"
+    },
+    "nodes.w-auth.summary": {
+      "t": "Demostrar quién es el usuario y recordarlo de forma segura entre peticiones.",
+      "h": "aab0ffb6"
+    },
+    "nodes.w-auth.title": {
+      "t": "Autenticación y sesiones",
+      "h": "d5053ed7"
+    },
+    "nodes.w-browser.points.0": {
+      "t": "Nunca confíes en la entrada que viene del cliente.",
+      "h": "e1b005e6"
+    },
+    "nodes.w-browser.points.1": {
+      "t": "Las defensas del navegador (CSP, flags de cookie) limitan el daño de los errores.",
+      "h": "f0b296ee"
+    },
+    "nodes.w-browser.points.2": {
+      "t": "La salida debe codificarse para el lugar donde se coloca.",
+      "h": "3fe718b6"
+    },
+    "nodes.w-browser.summary": {
+      "t": "El cliente ejecuta código y guarda sesiones. Todo lo que el usuario puede cambiar, un atacante también.",
+      "h": "de5ed23b"
+    },
+    "nodes.w-browser.title": {
+      "t": "Navegador",
+      "h": "54a2cf5e"
+    },
+    "nodes.w-config.points.0": {
+      "t": "Endurece los valores por defecto y elimina lo que no uses.",
+      "h": "46614aa7"
+    },
+    "nodes.w-config.points.1": {
+      "t": "Usa la misma configuración revisada en todos los entornos.",
+      "h": "f0e75522"
+    },
+    "nodes.w-config.points.2": {
+      "t": "Escanea la configuración de forma continua.",
+      "h": "303deadd"
+    },
+    "nodes.w-config.summary": {
+      "t": "Cuentas por defecto, consolas abiertas, errores demasiado detallados y ajustes permisivos.",
+      "h": "fe3b9675"
+    },
+    "nodes.w-config.title": {
+      "t": "Configuración incorrecta",
+      "h": "84999c60"
+    },
+    "nodes.w-crypto.points.0": {
+      "t": "Usa bibliotecas bien revisadas y algoritmos actuales.",
+      "h": "5f6add05"
+    },
+    "nodes.w-crypto.points.1": {
+      "t": "Nunca inventes tu propio esquema.",
+      "h": "74fa9752"
+    },
+    "nodes.w-crypto.points.2": {
+      "t": "Gestiona las claves por separado de los datos que protegen.",
+      "h": "6dc742be"
+    },
+    "nodes.w-crypto.summary": {
+      "t": "Cifrado débil o ausente, mal manejo de claves o criptografía casera.",
+      "h": "22ee73aa"
+    },
+    "nodes.w-crypto.title": {
+      "t": "Fallos criptográficos",
+      "h": "70a9d36b"
+    },
+    "nodes.w-csrf.points.0": {
+      "t": "Las cookies SameSite frenan la mayoría de los casos por defecto.",
+      "h": "38c6492b"
+    },
+    "nodes.w-csrf.points.1": {
+      "t": "Añade tokens antifalsificación en las peticiones que cambian el estado.",
+      "h": "8b91014f"
+    },
+    "nodes.w-csrf.points.2": {
+      "t": "Nunca cambies el estado con peticiones GET.",
+      "h": "f7c0de8d"
+    },
+    "nodes.w-csrf.summary": {
+      "t": "Una página maliciosa hace que el navegador envíe una petición con las cookies de la víctima.",
+      "h": "7f599af1"
+    },
+    "nodes.w-csrf.title": {
+      "t": "Cross-site request forgery",
+      "h": "9f699a27"
+    },
+    "nodes.w-data.points.0": {
+      "t": "Recoge menos y guárdalo menos tiempo.",
+      "h": "9e0bbd63"
+    },
+    "nodes.w-data.points.1": {
+      "t": "Cifra en tránsito y en reposo.",
+      "h": "c2491a67"
+    },
+    "nodes.w-data.points.2": {
+      "t": "Mantén los secretos fuera del código y de las imágenes.",
+      "h": "628b3879"
+    },
+    "nodes.w-data.summary": {
+      "t": "Donde viven las cosas valiosas y las claves que las abren.",
+      "h": "3bee2fac"
+    },
+    "nodes.w-data.title": {
+      "t": "Datos y secretos",
+      "h": "5710aa4c"
+    },
+    "nodes.w-deps.points.0": {
+      "t": "Escanea los lockfiles y revisa las actualizaciones sin demora.",
+      "h": "ac18dc7d"
+    },
+    "nodes.w-deps.points.1": {
+      "t": "Prefiere pocas dependencias bien mantenidas.",
+      "h": "1326bef1"
+    },
+    "nodes.w-deps.points.2": {
+      "t": "Mantén un SBOM para saber qué apps están afectadas.",
+      "h": "1467ff56"
+    },
+    "nodes.w-deps.summary": {
+      "t": "Un fallo conocido en una biblioteca es un fallo en tu app hasta que actualices o mitigues.",
+      "h": "ae84e608"
+    },
+    "nodes.w-deps.title": {
+      "t": "Componentes vulnerables",
+      "h": "d62b156e"
+    },
+    "nodes.w-deser.points.0": {
+      "t": "No deserialices datos no confiables en objetos ricos.",
+      "h": "d92b61b7"
+    },
+    "nodes.w-deser.points.1": {
+      "t": "Verifica las firmas de actualizaciones y artefactos.",
+      "h": "f2e1d3c8"
+    },
+    "nodes.w-deser.points.2": {
+      "t": "Protege el pipeline que construye lo que entregas.",
+      "h": "15caae4f"
+    },
+    "nodes.w-deser.summary": {
+      "t": "Confiar en datos o código sin comprobar de dónde vienen, como la deserialización insegura o las actualizaciones sin firmar.",
+      "h": "469ffc15"
+    },
+    "nodes.w-deser.title": {
+      "t": "Fallos de integridad",
+      "h": "adb43584"
+    },
+    "nodes.w-design.points.0": {
+      "t": "Modela las amenazas antes de construir la funcionalidad.",
+      "h": "f6fd8c60"
+    },
+    "nodes.w-design.points.1": {
+      "t": "Escribe casos de abuso junto a los casos de uso.",
+      "h": "cdd9f930"
+    },
+    "nodes.w-design.points.2": {
+      "t": "Los patrones listos (autenticación, subidas, pagos) evitan errores repetidos.",
+      "h": "f24548ab"
+    },
+    "nodes.w-design.summary": {
+      "t": "Algunos fallos no son errores sino falta de reflexión: un flujo que nunca se pensó para resistir abusos.",
+      "h": "ef631258"
+    },
+    "nodes.w-design.title": {
+      "t": "Diseño inseguro",
+      "h": "7aeaae5a"
+    },
+    "nodes.w-edge.points.0": {
+      "t": "Un buen lugar para protecciones amplias y baratas.",
+      "h": "31e52382"
+    },
+    "nodes.w-edge.points.1": {
+      "t": "No conoce las reglas de tu negocio.",
+      "h": "d9981cda"
+    },
+    "nodes.w-edge.points.2": {
+      "t": "Asegúrate de que nada llegue a la app saltándose el borde.",
+      "h": "a3a9d706"
+    },
+    "nodes.w-edge.summary": {
+      "t": "El primer servidor que encuentra la petición: terminación TLS, caché, límites de tasa y filtrado.",
+      "h": "6ed5b722"
+    },
+    "nodes.w-edge.title": {
+      "t": "Borde y gateway",
+      "h": "874b980f"
+    },
+    "nodes.w-errors.points.0": {
+      "t": "Falla cerrado: ante un error, deniega.",
+      "h": "afe440b4"
+    },
+    "nodes.w-errors.points.1": {
+      "t": "No muestres stack traces ni detalles internos a los usuarios.",
+      "h": "11c6f5d9"
+    },
+    "nodes.w-errors.points.2": {
+      "t": "Registra los detalles en privado con un id que el usuario pueda citar.",
+      "h": "bac046e1"
+    },
+    "nodes.w-errors.summary": {
+      "t": "Lo que ocurre cuando algo sale mal decide si es una molestia o una vulnerabilidad.",
+      "h": "1d8d92d6"
+    },
+    "nodes.w-errors.title": {
+      "t": "Condiciones excepcionales",
+      "h": "c0c84543"
+    },
+    "nodes.w-headers.points.0": {
+      "t": "CSP limita desde dónde pueden cargarse scripts y frames.",
+      "h": "355ba9f0"
+    },
+    "nodes.w-headers.points.1": {
+      "t": "HSTS hace que el navegador insista en HTTPS.",
+      "h": "3093c256"
+    },
+    "nodes.w-headers.points.2": {
+      "t": "nosniff y una política de referrer estricta eliminan pequeñas fugas.",
+      "h": "0f4bc47a"
+    },
+    "nodes.w-headers.summary": {
+      "t": "Cabeceras de respuesta que dicen al navegador qué protecciones aplicar.",
+      "h": "63b86154"
+    },
+    "nodes.w-headers.title": {
+      "t": "Cabeceras de seguridad",
+      "h": "96c790be"
+    },
+    "nodes.w-idor.points.0": {
+      "t": "Autenticación no es autorización: comprueba la propiedad cada vez.",
+      "h": "11a3d509"
+    },
+    "nodes.w-idor.points.1": {
+      "t": "Filtra las consultas por el usuario actual, para que la fila equivocada nunca se cargue.",
+      "h": "9c41f9ae"
+    },
+    "nodes.w-idor.points.2": {
+      "t": "Prueba con dos cuentas e intercambia los ids.",
+      "h": "bb71886c"
+    },
+    "nodes.w-idor.summary": {
+      "t": "La app devuelve un registro porque el id era válido, sin preguntar si este usuario puede verlo.",
+      "h": "297308db"
+    },
+    "nodes.w-idor.title": {
+      "t": "Control de acceso roto",
+      "h": "7a4477e8"
+    },
+    "nodes.w-jwt.points.0": {
+      "t": "Verifica siempre la firma y el algoritmo que esperas.",
+      "h": "f6d6ade4"
+    },
+    "nodes.w-jwt.points.1": {
+      "t": "Mantén vidas cortas y planifica la revocación.",
+      "h": "97b7f979"
+    },
+    "nodes.w-jwt.points.2": {
+      "t": "No pongas secretos en un token: está firmado, no oculto.",
+      "h": "14a15441"
+    },
+    "nodes.w-jwt.summary": {
+      "t": "Los tokens firmados llevan declaraciones entre servicios. Son fáciles de usar mal.",
+      "h": "bd8ca177"
+    },
+    "nodes.w-jwt.title": {
+      "t": "Tokens (JWT)",
+      "h": "c45e0bfc"
+    },
+    "nodes.w-logging.points.0": {
+      "t": "Registra inicios de sesión, fallos de control de acceso y fallos de validación de entrada.",
+      "h": "30f426bf"
+    },
+    "nodes.w-logging.points.1": {
+      "t": "Asegúrate de que alguien reciba la alerta y sepa qué hacer.",
+      "h": "fe228e91"
+    },
+    "nodes.w-logging.points.2": {
+      "t": "Nunca registres secretos ni datos personales completos.",
+      "h": "6d70e75a"
+    },
+    "nodes.w-logging.summary": {
+      "t": "Sin logs ni alertas, un ataque puede durar meses sin ser notado.",
+      "h": "d52e8256"
+    },
+    "nodes.w-logging.title": {
+      "t": "Logs y alertas",
+      "h": "3f5e67a0"
+    },
+    "nodes.w-passwords.points.0": {
+      "t": "Usa una función moderna de hash de contraseñas con sal única.",
+      "h": "ce02f07b"
+    },
+    "nodes.w-passwords.points.1": {
+      "t": "Bloquea contraseñas ya filtradas y limita los intentos.",
+      "h": "e63958bb"
+    },
+    "nodes.w-passwords.points.2": {
+      "t": "Da la misma respuesta exista o no la cuenta.",
+      "h": "f9354f64"
+    },
+    "nodes.w-passwords.summary": {
+      "t": "Guarda solo hashes lentos y haz que adivinar sea caro.",
+      "h": "cfd3a77a"
+    },
+    "nodes.w-passwords.title": {
+      "t": "Contraseñas e inicio de sesión",
+      "h": "aa021fd6"
+    },
+    "nodes.w-ratelimit.points.0": {
+      "t": "Limita por cuenta y por dirección, no solo por dirección.",
+      "h": "ce3fb0c8"
+    },
+    "nodes.w-ratelimit.points.1": {
+      "t": "Sé más estricto en inicio de sesión, recuperación y endpoints costosos.",
+      "h": "3909d52d"
+    },
+    "nodes.w-ratelimit.points.2": {
+      "t": "Devuelve errores claros para que los clientes legítimos reduzcan el ritmo.",
+      "h": "a7cf771b"
+    },
+    "nodes.w-ratelimit.summary": {
+      "t": "Límites sobre la rapidez con que un cliente puede llamar, lo que frena las adivinaciones, el scraping y el abuso.",
+      "h": "d9096912"
+    },
+    "nodes.w-ratelimit.title": {
+      "t": "Límite de tasa",
+      "h": "e663f74e"
+    },
+    "nodes.w-secrets.points.0": {
+      "t": "Obtén los secretos en tiempo de ejecución desde un almacén gestionado.",
+      "h": "c1120d1e"
+    },
+    "nodes.w-secrets.points.1": {
+      "t": "Rota con regularidad y ante cualquier sospecha.",
+      "h": "33816984"
+    },
+    "nodes.w-secrets.points.2": {
+      "t": "Busca fugas en el código y en el historial.",
+      "h": "3a602196"
+    },
+    "nodes.w-secrets.summary": {
+      "t": "Las claves de API, contraseñas y certificados necesitan un hogar que no sea el repositorio.",
+      "h": "8366d88c"
+    },
+    "nodes.w-secrets.title": {
+      "t": "Gestión de secretos",
+      "h": "e55322cc"
+    },
+    "nodes.w-session.points.0": {
+      "t": "Secure la mantiene en HTTPS, HttpOnly la oculta a los scripts.",
+      "h": "56fde145"
+    },
+    "nodes.w-session.points.1": {
+      "t": "SameSite limita el envío entre sitios.",
+      "h": "a47f3d22"
+    },
+    "nodes.w-session.points.2": {
+      "t": "Vidas cortas y revocación en el servidor limitan el robo.",
+      "h": "171818c4"
+    },
+    "nodes.w-session.summary": {
+      "t": "La cookie que mantiene al usuario con sesión iniciada vale tanto como la contraseña mientras dure.",
+      "h": "e5bfddc0"
+    },
+    "nodes.w-session.title": {
+      "t": "Cookies de sesión",
+      "h": "a5de7556"
+    },
+    "nodes.w-sqli.points.0": {
+      "t": "Usa consultas parametrizadas, nunca concatenación de cadenas.",
+      "h": "c376fc05"
+    },
+    "nodes.w-sqli.points.1": {
+      "t": "Valida la entrada como segunda línea de defensa.",
+      "h": "45fa35fb"
+    },
+    "nodes.w-sqli.points.2": {
+      "t": "La misma idea vale para shells, LDAP, plantillas y más.",
+      "h": "ba927a84"
+    },
+    "nodes.w-sqli.summary": {
+      "t": "Una entrada no confiable pasa a formar parte de una consulta o comando, y el intérprete obedece.",
+      "h": "6e2209a3"
+    },
+    "nodes.w-sqli.title": {
+      "t": "Inyección",
+      "h": "2d851649"
+    },
+    "nodes.w-supply.points.0": {
+      "t": "Sabe de qué dependes y mantenlo actualizado.",
+      "h": "311c4d07"
+    },
+    "nodes.w-supply.points.1": {
+      "t": "Fija versiones y verifica lo que descargas.",
+      "h": "a5bac81a"
+    },
+    "nodes.w-supply.points.2": {
+      "t": "Trata el sistema de build como un objetivo.",
+      "h": "1db936d8"
+    },
+    "nodes.w-supply.summary": {
+      "t": "La mayor parte del código que se ejecuta no es tuyo, y tampoco todas las herramientas que lo construyeron.",
+      "h": "53332801"
+    },
+    "nodes.w-supply.title": {
+      "t": "Dependencias y build",
+      "h": "1cd1beba"
+    },
+    "nodes.w-tls.points.0": {
+      "t": "Usa versiones modernas y deja que los certificados se renueven solos.",
+      "h": "ead09671"
+    },
+    "nodes.w-tls.points.1": {
+      "t": "Redirige a HTTPS y usa HSTS.",
+      "h": "39c7dc63"
+    },
+    "nodes.w-tls.points.2": {
+      "t": "No omitas la comprobación de certificados en clientes internos.",
+      "h": "89243e4d"
+    },
+    "nodes.w-tls.summary": {
+      "t": "Cifrado en tránsito entre el navegador y el servidor, y también entre servicios internos.",
+      "h": "513abe0f"
+    },
+    "nodes.w-tls.title": {
+      "t": "TLS",
+      "h": "d91e1888"
+    },
+    "nodes.w-waf.points.0": {
+      "t": "Útil para virtual patching y ruido de bots.",
+      "h": "6a808025"
+    },
+    "nodes.w-waf.points.1": {
+      "t": "Ajústalo primero en modo solo registro.",
+      "h": "6ed240b3"
+    },
+    "nodes.w-waf.points.2": {
+      "t": "Es una red de seguridad, no sustituye al código seguro.",
+      "h": "584c3c60"
+    },
+    "nodes.w-waf.summary": {
+      "t": "Filtra patrones de petición conocidos como maliciosos antes de que lleguen a la app.",
+      "h": "26620f59"
+    },
+    "nodes.w-waf.title": {
+      "t": "Web application firewall",
+      "h": "b0009ee0"
+    },
+    "nodes.w-xss.points.0": {
+      "t": "Inserta texto con textContent, no como HTML.",
+      "h": "ad925229"
+    },
+    "nodes.w-xss.points.1": {
+      "t": "Codifica la salida según el contexto (HTML, atributo, URL, script).",
+      "h": "119e38b7"
+    },
+    "nodes.w-xss.points.2": {
+      "t": "Una política de seguridad de contenido estricta es una segunda capa potente.",
+      "h": "add627f9"
+    },
+    "nodes.w-xss.summary": {
+      "t": "Texto controlado por un atacante se interpreta como marcado o script en el navegador de otra persona.",
+      "h": "1d43763d"
+    },
+    "nodes.w-xss.title": {
+      "t": "Cross-site scripting",
+      "h": "09db5159"
+    },
     "nodes.waf.points.0": {
       "t": "Bueno para virtual patching mientras se construye la corrección real.",
       "h": "48f47efa"
@@ -808,6 +2412,30 @@
       "t": "CDN o balanceador delante de la app",
       "h": "e70efe2b"
     },
+    "nodes.webapp.points.0": {
+      "t": "La misma petición cruza muchas fronteras de confianza.",
+      "h": "8d5eafb7"
+    },
+    "nodes.webapp.points.1": {
+      "t": "Cada salto necesita su propia defensa; ninguna capa por sí sola basta.",
+      "h": "a8e64833"
+    },
+    "nodes.webapp.points.2": {
+      "t": "Abre un salto para ver el riesgo y localizarlo en el código.",
+      "h": "e00cebe2"
+    },
+    "nodes.webapp.summary": {
+      "t": "Sigue una petición desde el navegador hasta los datos y de vuelta. En cada salto hay una clase distinta de debilidad del OWASP Top 10.",
+      "h": "330b8d2e"
+    },
+    "nodes.webapp.title": {
+      "t": "Una petición web, salto a salto",
+      "h": "3acc2189"
+    },
+    "ui.allMaps": {
+      "t": "todos los mapas",
+      "h": "a9b3d53d"
+    },
     "ui.back": {
       "t": "volver",
       "h": "61bb8d29"
@@ -831,6 +2459,10 @@
     "ui.challengeCorrect": {
       "t": "Correcto.",
       "h": "1919e7be"
+    },
+    "ui.challengesCount": {
+      "t": "{n} desafíos",
+      "h": "98269d16"
     },
     "ui.challengeSelect": {
       "t": "Selecciona las líneas de riesgo ({n} por encontrar) y comprueba tu respuesta.",
@@ -904,13 +2536,13 @@
       "t": "Ajustar el mapa a la pantalla",
       "h": "40995523"
     },
-    "ui.heading": {
-      "t": "Del commit a producción",
-      "h": "72d2c719"
+    "ui.indexHeading": {
+      "t": "Mapas explorables",
+      "h": "a394e00a"
     },
-    "ui.intro": {
-      "t": "Empieza en la entrada del sendero y abre cualquier lugar. Cada uno tiene más dentro: archivos, herramientas, verificaciones y pequeños desafíos. Vuelve cuando quieras. Lo que exploras se guarda en este navegador.",
-      "h": "b16265d2"
+    "ui.indexIntro": {
+      "t": "Elige un mapa y ábrelo. Cada uno es un árbol vivo: abre una rama para ver qué hay dentro, sigue una misión y resuelve pequeños desafíos. Lo que exploras se queda en este navegador.",
+      "h": "4777b2a1"
     },
     "ui.keys": {
       "t": "Esc o Backspace vuelve un nivel.",
@@ -996,6 +2628,18 @@
       "t": "siguiente en el sendero",
       "h": "95fabc91"
     },
+    "ui.onMap": {
+      "t": "míralo en el mapa",
+      "h": "0778feae"
+    },
+    "ui.openMap": {
+      "t": "abrir el mapa",
+      "h": "761bb871"
+    },
+    "ui.overview": {
+      "t": "Vista general del mapa",
+      "h": "93cfa815"
+    },
     "ui.pageTitle": {
       "t": "explorar",
       "h": "9dda9754"
@@ -1004,6 +2648,10 @@
       "t": "Dónde estás",
       "h": "cd3e9b3e"
     },
+    "ui.placesCount": {
+      "t": "{n} lugares",
+      "h": "71d7ccfb"
+    },
     "ui.pointsTitle": {
       "t": "qué saber",
       "h": "3077a75e"
@@ -1011,6 +2659,18 @@
     "ui.reset": {
       "t": "reiniciar exploración",
       "h": "d6f76d7f"
+    },
+    "ui.searchLabel": {
+      "t": "Buscar en este mapa",
+      "h": "12f23f66"
+    },
+    "ui.searchNone": {
+      "t": "No hay resultados.",
+      "h": "9f857673"
+    },
+    "ui.searchPlaceholder": {
+      "t": "Buscar lugares…",
+      "h": "7dfcd47f"
     },
     "ui.stageAria": {
       "t": "Mapa",

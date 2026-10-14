@@ -2,6 +2,8 @@
 // (unit "explore", strict: every string must be translated and fresh).
 // Keep ids in sync with ./world.ts (validate-content R12 checks it).
 
+import { worldsChallenges, worldsMissions, worldsNodes } from "./text-worlds";
+
 export interface NodeText {
   title: string;
   summary: string;
@@ -21,9 +23,6 @@ export const exploreText = {
     description:
       "An explorable map of how code reaches production: open the repository, the CI workflow, the scanners and the runtime, and see where each security control lives.",
     eyebrow: "explorable map",
-    heading: "From commit to production",
-    intro:
-      "Start at the trailhead and open any place. Each one has more inside: files, tools, checks and small challenges. Go back whenever you like. What you explore is remembered in this browser.",
     trailhead: "trailhead",
     start: "start here",
     back: "back",
@@ -80,6 +79,18 @@ export const exploreText = {
     expandAll: "Open every branch",
     collapseAll: "Close every branch",
     close: "Close",
+    indexHeading: "Explorable maps",
+    indexIntro:
+      "Pick a map and open it. Each one is a living tree: open a branch to see what is inside, follow a mission, and solve small challenges. What you explore stays in this browser.",
+    openMap: "open the map",
+    placesCount: "{n} places",
+    challengesCount: "{n} challenges",
+    allMaps: "all maps",
+    searchLabel: "Search this map",
+    searchPlaceholder: "Search places…",
+    searchNone: "Nothing matches.",
+    overview: "Overview of the map",
+    onMap: "see it on the map",
   },
 
   nodes: {
@@ -400,6 +411,7 @@ export const exploreText = {
         "Share findings with developers in the tools they already use.",
       ],
     },
+  ...worldsNodes,
   } satisfies Record<string, NodeText>,
 
   missions: {
@@ -419,6 +431,7 @@ export const exploreText = {
       title: "Trust your dependencies",
       intro: "From the update bot to the cluster gate: how a risky package is stopped.",
     },
+    ...worldsMissions,
   },
 
   challenges: {
@@ -447,6 +460,7 @@ export const exploreText = {
       why: "latest is an unpinned, moving base (line 1). ADD from a URL downloads unverified code at build time (line 4). A password in ENV is stored in the image layers, readable by anyone who can pull it (line 6). There is also no USER instruction, so the process runs as root.",
       hint: "Three lines: a base tag, a download and a secret.",
     },
+    ...worldsChallenges,
   } satisfies Record<string, ChallengeText>,
 };
 

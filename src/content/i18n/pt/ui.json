@@ -801,8 +801,8 @@
       "h": "5a550d11"
     },
     "hub.explore.map.body": {
-      "t": "Abra o repositório, o arquivo de CI e os scanners. Vá mais fundo, volte, cumpra missões.",
-      "h": "25c53c27"
+      "t": "Abra árvores vivas do pipeline, da nuvem, de um SOC e de uma requisição web. Vá mais fundo, volte, cumpra missões.",
+      "h": "3bf87b6e"
     },
     "hub.explore.map.title": {
       "t": "Mapa explorável",
@@ -1493,8 +1493,8 @@
       "h": "d9bce3a6"
     },
     "nav.learnItems.exploreDesc": {
-      "t": "Siga um commit até a produção e abra cada parada: arquivos, scanners, desafios.",
-      "h": "2e3c4198"
+      "t": "Árvores vivas para abrir: do commit à produção, a nuvem, um SOC e uma requisição web.",
+      "h": "f7700d18"
     },
     "nav.learnItems.glossary": {
       "t": "Glossário",

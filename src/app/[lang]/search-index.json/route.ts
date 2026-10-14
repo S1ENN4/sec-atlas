@@ -3,7 +3,8 @@ import { domains, getTopic } from "@/content/registry";
 import type { DomainId } from "@/content/types";
 import { LOCALES, isLocale, localePath, type Locale } from "@/i18n/config";
 import { localizeDomain } from "@/i18n/content";
-import { localizedRoles } from "@/i18n/globals";
+import { worlds } from "@/content/explore/worlds";
+import { localizedExplore, localizedRoles } from "@/i18n/globals";
 import { getUi } from "@/i18n/ui";
 
 // Static search index per locale, emitted at build time as
@@ -57,6 +58,8 @@ export async function GET(_req: Request, ctx: { params: Promise<{ lang: string }
   const { lang } = await ctx.params;
   if (!isLocale(lang)) return new Response("Not found", { status: 404 });
   const items: Item[] = pages(lang);
+  const ex = localizedExplore(lang).value.nodes as Record<string, { title: string; summary: string }>;
+  for (const w of worlds) items.push({ k: "p", d: "", t: ex[w.id].title, s: clip(ex[w.id].summary), u: localePath(lang, `/explore/${w.id}`) });
   for (const r of localizedRoles(lang).value) {
     items.push({ k: "p", d: "", t: r.title, s: clip(r.tagline), u: localePath(lang, `/careers/${r.id}`), x: r.summary });
   }

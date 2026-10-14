@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, MoveRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, Map as MapIcon, MoveRight } from "lucide-react";
 
 import { ContentNotice } from "@/components/content-notice";
 import { CopyCodeButton } from "@/components/copy-code-button";
@@ -16,11 +16,13 @@ import { TopicToolbar } from "@/components/topic-toolbar";
 import { createTermLinker } from "@/components/glossary-text";
 import { TopicVisitRecorder } from "@/components/topic-visit-recorder";
 import { Badge } from "@/components/ui/badge";
+import { nodesByTopic } from "@/content/explore/worlds";
 import { levels } from "@/content/levels";
 import { domains, domainIdFromRoute, domainMeta, domainRouteSegments, getTopic } from "@/content/registry";
 import type { DomainId } from "@/content/types";
 import { LOCALES, localePath } from "@/i18n/config";
 import { localizeDomain, localizedTopic } from "@/i18n/content";
+import { localizedExplore } from "@/i18n/globals";
 import { fmt } from "@/i18n/format";
 import { kindMetaFor } from "@/i18n/labels";
 import { alternatesFor, resolveLocale } from "@/i18n/server";
@@ -66,6 +68,15 @@ export default async function TopicPage({ params }: { params: Params }) {
   const rels = domain.relations.filter((r) => r.source.slug === slug || r.target.slug === slug);
   const byslug = new Map(domain.topics.map((x) => [x.slug, x]));
   const minutes = estimateReadingMinutes(topicBodyText(topic));
+
+  // Where this topic appears on the explorable maps (back-links).
+  const exploreText = localizedExplore(locale).value;
+  const exploreNodes = exploreText.nodes as Record<string, { title: string }>;
+  const mapLinks = (nodesByTopic()[`${id}/${slug}`] ?? []).map((l) => ({
+    ...l,
+    label: exploreNodes[l.node].title,
+    worldLabel: exploreNodes[l.world].title,
+  }));
 
   // --- study-before / unlocks / next-topic (Phase 3 A4) -------------------
   // Prereqs and unlocks can be in another domain (e.g. seceng.iac-seguro
@@ -237,6 +248,27 @@ export default async function TopicPage({ params }: { params: Params }) {
                 </li>
               );
             })}
+          </ul>
+        </section>
+      ) : null}
+
+      {mapLinks.length > 0 ? (
+        <section className="mt-10 rounded-xl border border-border bg-card/60 p-4">
+          <h2 className="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-primary">
+            <MapIcon className="size-3.5" aria-hidden /> {exploreText.ui.onMap}
+          </h2>
+          <ul className="mt-3 flex flex-wrap gap-2">
+            {mapLinks.map((l) => (
+              <li key={`${l.world}/${l.node}`}>
+                <Link
+                  href={`${localePath(locale, `/explore/${l.world}`)}#${l.node}`}
+                  className="inline-flex items-center gap-1.5 rounded-md border border-border bg-muted/40 px-2.5 py-1.5 text-sm transition-colors hover:border-primary/60 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  {l.label}
+                  <span className="font-mono text-[11px] text-muted-foreground">{l.worldLabel}</span>
+                </Link>
+              </li>
+            ))}
           </ul>
         </section>
       ) : null}

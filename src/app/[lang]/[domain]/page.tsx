@@ -80,7 +80,7 @@ export default async function DomainHome({ params }: { params: Params }) {
         <h2 className="reveal font-mono text-sm uppercase tracking-wider text-muted-foreground">{copy.pipelineTitle}</h2>
         <p className="mt-2 max-w-2xl text-sm text-muted-foreground">{copy.pipelineIntro}</p>
         <div className="mt-6">
-          <PipelineRail stages={domain.pipeline} route={domain.route} locale={locale} gateLabel={t.pipeline.gate} loop={copy.loop || undefined} />
+          <PipelineRail stages={domain.pipeline} route={domain.route} domain={id} locale={locale} gateLabel={t.pipeline.gate} loop={copy.loop || undefined} />
         </div>
       </section>
 

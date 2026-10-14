@@ -41,7 +41,8 @@ O vault é saída gerada e somente leitura: edite as fontes e exporte de novo. A
 - Estrutura (ids, aninhamento, arquivos, código, linhas de risco): `src/content/explore/world.ts`.
 - Texto (inglês, traduzido para pt/es com a mesma checagem de drift, unidade estrita `explore`): `src/content/explore/text.ts`.
 - Regra R12 do validador confere nós, tópicos, linhas dos desafios e missões.
-- Para criar outro mundo (por exemplo, nuvem ou SOC), repita o par `world`/`text` com novos ids.
+- Há 4 mapas (`pipeline`, `cloud`, `soc`, `webapp`), agregados em `src/content/explore/worlds.ts`; os ids de nó são únicos entre mapas. Para criar outro, crie um arquivo de estrutura (como `cloud.ts`), o texto em `text-worlds.ts` e registre em `worlds.ts`; o validador e as traduções cobrem o resto.
+- Cada tópico mostra "veja no mapa" quando algum nó aponta para ele.
 
 ## Hospedagem
 

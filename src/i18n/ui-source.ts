@@ -51,7 +51,7 @@ export const ui = {
       glossary: "Glossary",
       glossaryDesc: "Acronyms, standards and concepts in one place.",
       explore: "Explorable map",
-      exploreDesc: "Follow a commit to production and open each stop: files, scanners, challenges.",
+      exploreDesc: "Living trees you can open: a commit to production, the cloud, a SOC and a web request.",
     },
     projectItems: {
       manifesto: "Manifesto",
@@ -242,7 +242,7 @@ export const ui = {
     explore: {
       map: {
         title: "Explorable map",
-        body: "Open the repository, the CI file and the scanners. Go deeper, come back, take missions.",
+        body: "Open living trees of the pipeline, the cloud, a SOC and a web request. Go deeper, come back, take missions.",
       },
       journey: {
         title: "Guided journey",

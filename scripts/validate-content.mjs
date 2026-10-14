@@ -30,7 +30,8 @@ import { scenarios } from "@/content/scenarios";
 import { allUnits, auditAll } from "@/i18n/audit";
 import { levels } from "@/content/levels";
 import { roles } from "@/content/careers";
-import { world, missions, flatten } from "@/content/explore/world";
+import { flatten } from "@/content/explore/world";
+import { worlds } from "@/content/explore/worlds";
 import { exploreText } from "@/content/explore/text";
 
 // ---------------------------------------------------------------------------
@@ -414,14 +415,17 @@ const liveDomainIds = allDomainIds.filter((id) => domains[id].status === "live")
   const broken = [];
   const all = new Set();
   for (const id of allDomainIds) for (const t of domains[id].topics) all.add(`${id}/${t.slug}`);
-  const flat = flatten(world);
+  const flat = {};
   const seen = new Set();
   const walk = (n) => {
     if (seen.has(n.id)) broken.push(`${n.id}: duplicate node id`);
     seen.add(n.id);
     (n.children ?? []).forEach(walk);
   };
-  walk(world);
+  for (const w of worlds) {
+    walk(w.root);
+    Object.assign(flat, flatten(w.root));
+  }
   for (const n of Object.values(flat)) {
     const t = exploreText.nodes[n.id];
     if (!t) broken.push(`${n.id}: no entry in text.nodes`);
@@ -435,12 +439,18 @@ const liveDomainIds = allDomainIds.filter((id) => domains[id].status === "live")
     } else if (exploreText.challenges[n.id]) broken.push(`${n.id}: challenge text without risky lines`);
   }
   for (const id of Object.keys(exploreText.nodes)) if (!flat[id]) broken.push(`text.nodes.${id}: no such node`);
-  for (const m of missions) {
-    if (!exploreText.missions[m.id]) broken.push(`mission ${m.id}: no text`);
-    if (m.steps.length < 2) broken.push(`mission ${m.id}: needs at least 2 steps`);
-    for (const st of m.steps) if (!flat[st]) broken.push(`mission ${m.id}: unknown step "${st}"`);
+  const missionIds = new Set();
+  for (const w of worlds) {
+    for (const m of w.missions) {
+      if (missionIds.has(m.id)) broken.push(`mission ${m.id}: duplicate id`);
+      missionIds.add(m.id);
+      if (!exploreText.missions[m.id]) broken.push(`mission ${m.id}: no text`);
+      if (m.steps.length < 2) broken.push(`mission ${m.id}: needs at least 2 steps`);
+      for (const st of m.steps) if (!flat[st]) broken.push(`mission ${m.id}: unknown step "${st}"`);
+    }
   }
-  record("R12 explorable map", broken.length === 0, `${Object.keys(flat).length} nodes, ${missions.length} missions, ${Object.keys(exploreText.challenges).length} challenges`, broken);
+  for (const id of Object.keys(exploreText.missions)) if (!missionIds.has(id)) broken.push(`text.missions.${id}: no such mission`);
+  record("R12 explorable map", broken.length === 0, `${worlds.length} maps, ${Object.keys(flat).length} nodes, ${missionIds.size} missions, ${Object.keys(exploreText.challenges).length} challenges`, broken);
 }
 
 // ---------------------------------------------------------------------------

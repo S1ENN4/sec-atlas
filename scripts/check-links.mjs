@@ -34,6 +34,8 @@ const ids = (url) => {
   if (!idsOf.has(url)) {
     const set = new Set();
     for (const m of (html.get(url) ?? "").matchAll(/\sid="([^"]+)"/g)) set.add(m[1]);
+    // Explorable maps draw their nodes on the client; the ids they accept as #fragment are listed here.
+    for (const m of (html.get(url) ?? "").matchAll(/\sdata-node-ids="([^"]+)"/g)) for (const id of m[1].split(" ")) set.add(id);
     idsOf.set(url, set);
   }
   return idsOf.get(url);

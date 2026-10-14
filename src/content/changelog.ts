@@ -19,6 +19,7 @@ export const changelog: ChangelogEntry[] = [
       "Tudo em português, inglês e espanhol, com verificação automática contra tradução desatualizada, e exportação para o Obsidian.",
       "O projeto agora se chama sec/atlas.",
       "Mapa explorável: siga um commit até a produção, abra cada parada (CI, scanners, registry, cluster) e cumpra missões e desafios.",
+      "Mais três mapas exploráveis em tela cheia (nuvem, SOC e uma requisição web), com busca, minimapa, 13 desafios e links dos tópicos para o mapa.",
     ],
   },
   {

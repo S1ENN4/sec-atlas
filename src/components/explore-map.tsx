@@ -23,6 +23,7 @@ import {
   Minus,
   Package,
   Plus,
+  Search,
   RotateCcw,
   ShieldCheck,
   Swords,
@@ -210,9 +211,10 @@ export interface ExploreMapProps {
   eyebrow: string;
   heading: string;
   intro: string;
+  indexHref: string;
 }
 
-export function ExploreMap({ nodes, rootId, missions, ui, eyebrow, heading, intro }: ExploreMapProps) {
+export function ExploreMap({ nodes, rootId, missions, ui, eyebrow, heading, intro, indexHref }: ExploreMapProps) {
   const hash = useSyncExternalStore(subscribeHash, getHash, () => "");
   const selId = nodes[hash] && hash !== rootId ? hash : null;
   const sel = selId ? nodes[selId] : null;
@@ -473,6 +475,37 @@ export function ExploreMap({ nodes, rootId, missions, ui, eyebrow, heading, intr
     if (pointers.current.size < 2) pinch.current = null;
   };
 
+  // Arrow keys walk the tree: towards the outside opens into children, towards the
+  // centre climbs to the parent, up and down move between siblings on the same side.
+  const focusNode = (id: string) => svgRef.current?.querySelector<SVGGElement>(`[data-id="${id}"]`)?.focus();
+  const arrowTarget = (key: string, id: string): string | null => {
+    const n = nodes[id];
+    const open = id === rootId || expanded.has(id);
+    if (key === "ArrowRight" || key === "ArrowLeft") {
+      const dir = key === "ArrowRight" ? 1 : -1;
+      if (id === rootId) return n.children.find((c) => side[c] === dir) ?? null;
+      if (side[id] === dir) return open ? (n.children[0] ?? null) : null;
+      return n.parent;
+    }
+    if (key === "ArrowDown" || key === "ArrowUp") {
+      if (!n.parent) return null;
+      const sibs = nodes[n.parent].children.filter((c) => side[c] === side[id] && visible.has(c));
+      const i = sibs.indexOf(id) + (key === "ArrowDown" ? 1 : -1);
+      return sibs[i] ?? null;
+    }
+    return null;
+  };
+
+  // --- search -----------------------------------------------------------------------
+  const [query, setQuery] = useState("");
+  const q = query.trim().toLowerCase();
+  const results = q
+    ? Object.values(nodes)
+        .filter((n) => n.id !== rootId && (n.title.toLowerCase().includes(q) || n.summary.toLowerCase().includes(q) || n.points.some((p) => p.toLowerCase().includes(q))))
+        .sort((a, b) => Number(b.title.toLowerCase().includes(q)) - Number(a.title.toLowerCase().includes(q)))
+        .slice(0, 7)
+    : [];
+
   // --- keyboard -----------------------------------------------------------------------
   const up = useCallback(() => {
     if (sel) go(sel.parent === rootId ? null : sel.parent);
@@ -550,7 +583,7 @@ export function ExploreMap({ nodes, rootId, missions, ui, eyebrow, heading, intr
     "grid size-9 place-items-center rounded-lg border border-border bg-background/85 text-foreground/90 backdrop-blur transition-colors hover:border-primary/60 hover:text-primary";
 
   return (
-    <div ref={boxRef} className="explore-canvas relative h-[calc(100svh-3.5rem)] min-h-[30rem] w-full overflow-hidden bg-background">
+    <div ref={boxRef} data-node-ids={Object.keys(nodes).join(" ")} className="explore-canvas relative h-[calc(100svh-3.5rem)] min-h-[30rem] w-full overflow-hidden bg-background">
       <svg
         ref={svgRef}
         role="group"
@@ -617,11 +650,18 @@ export function ExploreMap({ nodes, rootId, missions, ui, eyebrow, heading, intr
                 aria-current={isSel ? "true" : undefined}
                 onPointerDown={(e) => e.stopPropagation()}
                 onClick={() => (isRoot ? go(null) : activate(n.id))}
+                data-id={n.id}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
                     e.preventDefault();
                     if (isRoot) go(null);
                     else activate(n.id);
+                    return;
+                  }
+                  const next = arrowTarget(e.key, n.id);
+                  if (next) {
+                    e.preventDefault();
+                    focusNode(next);
                   }
                 }}
               >
@@ -688,8 +728,50 @@ export function ExploreMap({ nodes, rootId, missions, ui, eyebrow, heading, intr
             </span>
             <ChevronRight className={cn("mt-1 size-4 shrink-0 text-muted-foreground transition-transform", infoOpen && "rotate-90")} aria-hidden />
           </button>
+          <div className="relative mt-3">
+            <Search className="pointer-events-none absolute left-2.5 top-2.5 size-3.5 text-muted-foreground" aria-hidden />
+            <input
+              type="search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              aria-label={ui.searchLabel}
+              placeholder={ui.searchPlaceholder}
+              className={cn("w-full rounded-lg border border-border bg-muted/40 py-2 pl-8 pr-2 text-sm placeholder:text-muted-foreground", focusRing)}
+            />
+          </div>
+          {q ? (
+            results.length ? (
+              <ul className="mt-2 space-y-1" aria-label={ui.searchLabel}>
+                {results.map((n) => {
+                  const Icon = KIND_ICON[n.kind];
+                  return (
+                    <li key={n.id}>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setQuery("");
+                          go(n.id);
+                        }}
+                        className={cn("flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-sm hover:bg-muted", focusRing)}
+                      >
+                        <Icon className="size-3.5 shrink-0 text-muted-foreground" aria-hidden />
+                        <span className="truncate">{n.title}</span>
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : (
+              <p className="mt-2 text-xs text-muted-foreground" role="status">
+                {ui.searchNone}
+              </p>
+            )
+          ) : null}
           {infoOpen ? (
-            <div className="mt-2">
+            <div className="mt-3">
+              <Link href={indexHref} className={cn("mb-3 inline-flex items-center gap-1.5 rounded font-mono text-[11px] text-muted-foreground hover:text-foreground", focusRing)}>
+                <ArrowLeft className="size-3" aria-hidden /> {ui.allMaps}
+              </Link>
               <p className="text-xs leading-relaxed text-muted-foreground">{intro}</p>
               <p className="mt-2 font-mono text-[11px] text-muted-foreground">{ui.canvasHint}</p>
               <div className="mt-3 flex items-center gap-3 font-mono text-[11px] text-muted-foreground">
@@ -733,6 +815,24 @@ export function ExploreMap({ nodes, rootId, missions, ui, eyebrow, heading, intr
           <ChevronsDownUp className="size-4" aria-hidden />
         </button>
       </div>
+
+      {/* overview */}
+      {wide && visible.size > 10 ? (
+        <Minimap
+          target={target}
+          visible={visible}
+          nodes={nodes}
+          rootId={rootId}
+          hueOf={hueOf}
+          view={v}
+          size={size}
+          label={ui.overview}
+          onJump={(x, y) => {
+            goal.current = { k: view.current.k, x: size.w / 2 - x * view.current.k, y: size.h / 2 - y * view.current.k };
+            run();
+          }}
+        />
+      ) : null}
 
       {/* details */}
       {sel ? (
@@ -783,6 +883,68 @@ export function ExploreMap({ nodes, rootId, missions, ui, eyebrow, heading, intr
         {sel?.title ?? heading}
       </p>
     </div>
+  );
+}
+
+function Minimap({
+  target,
+  visible,
+  nodes,
+  rootId,
+  hueOf,
+  view,
+  size,
+  label,
+  onJump,
+}: {
+  target: Record<string, Pt>;
+  visible: Set<string>;
+  nodes: Record<string, ExploreNodeData>;
+  rootId: string;
+  hueOf: (id: string) => number;
+  view: View;
+  size: { w: number; h: number };
+  label: string;
+  onJump: (x: number, y: number) => void;
+}) {
+  const W = 170;
+  const H = 112;
+  const ids = [...visible];
+  let x0 = Infinity,
+    x1 = -Infinity,
+    y0 = Infinity,
+    y1 = -Infinity;
+  for (const id of ids) {
+    const p = target[id];
+    const w = pillWidth(nodes[id].title, id === rootId) / 2;
+    x0 = Math.min(x0, p.x - w);
+    x1 = Math.max(x1, p.x + w);
+    y0 = Math.min(y0, p.y - 20);
+    y1 = Math.max(y1, p.y + 20);
+  }
+  const sc = Math.min((W - 8) / (x1 - x0), (H - 8) / (y1 - y0));
+  const ox = (W - (x1 - x0) * sc) / 2 - x0 * sc;
+  const oy = (H - (y1 - y0) * sc) / 2 - y0 * sc;
+  const vx = (-view.x / view.k) * sc + ox;
+  const vy = (-view.y / view.k) * sc + oy;
+  return (
+    <svg
+      role="img"
+      aria-label={label}
+      width={W}
+      height={H}
+      className="absolute bottom-4 left-4 cursor-pointer rounded-lg border border-border bg-background/85 backdrop-blur"
+      onClick={(e) => {
+        const r = e.currentTarget.getBoundingClientRect();
+        onJump((e.clientX - r.left - ox) / sc, (e.clientY - r.top - oy) / sc);
+      }}
+    >
+      {ids.map((id) => {
+        const p = target[id];
+        return <circle key={id} cx={f1(p.x * sc + ox)} cy={f1(p.y * sc + oy)} r={id === rootId ? 3 : 2} style={{ fill: `oklch(var(--nl) var(--nc) ${hueOf(id)})` }} />;
+      })}
+      <rect x={f1(vx)} y={f1(vy)} width={f1((size.w / view.k) * sc)} height={f1((size.h / view.k) * sc)} className="fill-primary/10 stroke-primary" strokeWidth={1} />
+    </svg>
   );
 }
 

@@ -28,6 +28,10 @@
       "t": "Mapa explorable: sigue un commit hasta producción, abre cada parada (CI, escáneres, registry, clúster) y cumple misiones y desafíos.",
       "h": "e088414f"
     },
+    "items.0.items.7": {
+      "t": "Tres mapas explorables más a pantalla completa (nube, SOC y una petición web), con búsqueda, minimapa, 13 desafíos y enlaces desde los temas al mapa.",
+      "h": "ea9b843c"
+    },
     "items.0.title": {
       "t": "sec/atlas: once dominios, un mapa de aprendizaje y carreras",
       "h": "55798f56"
