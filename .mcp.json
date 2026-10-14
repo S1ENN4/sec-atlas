@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "appsec-kb": {
+    "sec-atlas": {
       "command": "node",
       "args": ["--import", "./scripts/content-alias-loader.mjs", "mcp/server.mjs"]
     }

@@ -32,7 +32,7 @@ mudanças** e **compartilhe as adaptações sob a mesma licença**.
 
 Em um reuso, algo como:
 
-> Conteúdo de [appsec/kb](https://github.com/S1ENN4/appsec-kb), de Vitor Sienna,
+> Conteúdo de [sec/atlas](https://github.com/S1ENN4/sec-atlas), de Vitor Sienna,
 > sob CC BY-SA 4.0. Adaptado.
 
 ## Transparência sobre IA

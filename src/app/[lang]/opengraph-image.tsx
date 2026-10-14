@@ -9,7 +9,7 @@ import { getUi } from "@/i18n/ui";
 export const dynamic = "force-static";
 export const dynamicParams = false;
 export const generateStaticParams = () => LOCALES.map((lang) => ({ lang }));
-export const alt = "appsec/kb";
+export const alt = "sec/atlas";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -33,7 +33,7 @@ export default async function Image({ params }: { params: Promise<{ lang: string
           fontFamily: "sans-serif",
         }}
       >
-        <div style={{ display: "flex", fontSize: 34, color: "#3ddc97" }}>appsec/kb</div>
+        <div style={{ display: "flex", fontSize: 34, color: "#3ddc97" }}>sec/atlas</div>
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ display: "flex", fontSize: 76, fontWeight: 700, lineHeight: 1.1 }}>{tail.length ? `${head},` : head}</div>
           {tail.length ? (

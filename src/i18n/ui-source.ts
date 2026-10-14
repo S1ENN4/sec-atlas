@@ -8,8 +8,8 @@
 
 export const ui = {
   meta: {
-    siteName: "appsec/kb",
-    title: "appsec/kb — interactive map of software security",
+    siteName: "sec/atlas",
+    title: "sec/atlas — interactive map of software security",
     description:
       "Interactive security knowledge base: AppSec, CloudSec, AI agents, SecOps and security engineering, with study paths, attack scenarios and quizzes. Static content, no tracking.",
     ogTitle: "Software security, mapped by domain.",
@@ -431,7 +431,7 @@ export const ui = {
     tableCaption: "Comparison between a generic notes workspace and this project",
     colCriterion: "criterion",
     colNotes: "notes workspace (e.g. Notion)",
-    colKb: "appsec/kb",
+    colKb: "sec/atlas",
     advantage: "advantage",
     limitation: "limitation",
     rows: {

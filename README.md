@@ -1,7 +1,7 @@
-# appsec/kb
+# sec/atlas
 
-[![CI](https://github.com/S1ENN4/appsec-kb/actions/workflows/ci.yml/badge.svg)](https://github.com/S1ENN4/appsec-kb/actions/workflows/ci.yml)
-[![CodeQL](https://github.com/S1ENN4/appsec-kb/actions/workflows/codeql.yml/badge.svg)](https://github.com/S1ENN4/appsec-kb/actions/workflows/codeql.yml)
+[![CI](https://github.com/S1ENN4/sec-atlas/actions/workflows/ci.yml/badge.svg)](https://github.com/S1ENN4/sec-atlas/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/S1ENN4/sec-atlas/actions/workflows/codeql.yml/badge.svg)](https://github.com/S1ENN4/sec-atlas/actions/workflows/codeql.yml)
 [![Código: MIT](https://img.shields.io/badge/código-MIT-blue.svg)](LICENSE)
 [![Conteúdo: CC BY-SA 4.0](https://img.shields.io/badge/conteúdo-CC%20BY--SA%204.0-lightgrey.svg)](LICENSE-CONTENT.md)
 
@@ -29,7 +29,7 @@ O conteúdo continua em TypeScript (tipos, validação, detecção de drift de t
 
 ```bash
 npm run export:obsidian                      # vault/<en|pt|es>/
-npm run export:obsidian -- --locale pt --out ~/Notas/appsec-kb
+npm run export:obsidian -- --locale pt --out ~/Notas/sec-atlas
 ```
 
 O vault é saída gerada e somente leitura: edite as fontes e exporte de novo. Aponte o Obsidian para a pasta do idioma que quiser.
@@ -261,7 +261,7 @@ npm run mcp        # equivale a: node --import ./scripts/content-alias-loader.mj
 O `.mcp.json` na raiz já registra o servidor (Claude Code pede aprovação na primeira vez). Em outros clientes, use o mesmo comando. Com o Claude Code:
 
 ```bash
-claude mcp add appsec-kb -- node --import ./scripts/content-alias-loader.mjs mcp/server.mjs
+claude mcp add sec-atlas -- node --import ./scripts/content-alias-loader.mjs mcp/server.mjs
 ```
 
 | Ferramenta | Para quê |

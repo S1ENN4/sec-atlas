@@ -34,7 +34,7 @@ export const profile = {
     linkedin: "https://www.linkedin.com/in/vitor-sienna/",
     website: "https://vitorsienna.com/",
     github: "https://github.com/S1ENN4",
-    repo: "https://github.com/S1ENN4/appsec-kb",
+    repo: "https://github.com/S1ENN4/sec-atlas",
     email: "", // shown publicly if filled
   },
 

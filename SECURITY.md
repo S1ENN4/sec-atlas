@@ -2,7 +2,7 @@
 
 ## Escopo
 
-O appsec/kb é um **site estático** (sem backend, banco ou formulários). A superfície
+O sec/atlas é um **site estático** (sem backend, banco ou formulários). A superfície
 de ataque relevante é:
 
 - vulnerabilidades no **código do site** (por exemplo, XSS no renderizador do mapa ou da busca);
@@ -12,7 +12,7 @@ de ataque relevante é:
 ## Como reportar uma vulnerabilidade
 
 **Não abra uma issue pública.** Use o
-[relato privado de vulnerabilidades do GitHub](https://github.com/S1ENN4/appsec-kb/security/advisories/new)
+[relato privado de vulnerabilidades do GitHub](https://github.com/S1ENN4/sec-atlas/security/advisories/new)
 ("Report a vulnerability" na aba Security). Se não conseguir, mande uma mensagem
 direta ao mantenedor pelo [LinkedIn](https://www.linkedin.com/in/vitor-sienna/).
 

@@ -1,5 +1,5 @@
 {
-  "name": "appsec-kb",
+  "name": "sec-atlas",
   "version": "0.1.0",
   "private": true,
   "description": "Knowledge base interativa de segurança de software: mapas por domínio (AppSec, CloudSec, agentes de IA, SecOps e Engenharia de segurança), trilhas, cenários e quizzes.",
@@ -10,12 +10,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/S1ENN4/appsec-kb.git"
+    "url": "git+https://github.com/S1ENN4/sec-atlas.git"
   },
   "bugs": {
-    "url": "https://github.com/S1ENN4/appsec-kb/issues"
+    "url": "https://github.com/S1ENN4/sec-atlas/issues"
   },
-  "homepage": "https://github.com/S1ENN4/appsec-kb#readme",
+  "homepage": "https://github.com/S1ENN4/sec-atlas#readme",
   "keywords": [
     "appsec",
     "devsecops",

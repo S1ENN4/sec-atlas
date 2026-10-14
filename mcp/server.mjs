@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// appsec/kb MCP server: lets a coding agent read, search, validate and extend
+// sec/atlas MCP server: lets a coding agent read, search, validate and extend
 // the knowledge base with the same guardrails a human contributor has.
 //
 // Zero dependencies. Speaks MCP over stdio (newline-delimited JSON-RPC 2.0).
@@ -38,7 +38,7 @@ const KINDS = ["tecnica", "pratica", "conceito"];
 const SLUG_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 
 const INSTRUCTIONS =
-  "appsec/kb: a validated, multi-domain security knowledge base. Read with list_domains/list_topics/get_topic/search. " +
+  "sec/atlas: a validated, multi-domain security knowledge base. Read with list_domains/list_topics/get_topic/search. " +
   "Before writing content call get_authoring_guide. After ANY change run validate_content; the build fails if it does not pass. " +
   "scaffold_topic only creates a skeleton: you must still register the topic in the domain index, position it on the map, " +
   "add relations, a pipeline entry and a quiz (see the guide). Never invent sources: every non-obvious claim needs a primary source.";
@@ -280,7 +280,7 @@ function handle(msg) {
     return reply(id, {
       protocolVersion: SUPPORTED.includes(asked) ? asked : SUPPORTED[0],
       capabilities: { tools: { listChanged: false } },
-      serverInfo: { name: "appsec-kb", version: pkg.version },
+      serverInfo: { name: "sec-atlas", version: pkg.version },
       instructions: INSTRUCTIONS,
     });
   }
@@ -313,9 +313,9 @@ rl.on("line", (line) => {
   try {
     handle(msg);
   } catch (e) {
-    console.error("[appsec-kb-mcp] internal error:", e);
+    console.error("[sec-atlas-mcp] internal error:", e);
     if (msg?.id !== undefined) replyError(msg.id, -32603, "Internal error");
   }
 });
 rl.on("close", () => process.exit(0));
-console.error(`[appsec-kb-mcp] ready (${tools.length} tools)`);
+console.error(`[sec-atlas-mcp] ready (${tools.length} tools)`);

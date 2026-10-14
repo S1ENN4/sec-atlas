@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 
 const MCP_CONFIG = `{
   "mcpServers": {
-    "appsec-kb": {
+    "sec-atlas": {
       "command": "node",
       "args": ["--import", "./scripts/content-alias-loader.mjs", "mcp/server.mjs"]
     }

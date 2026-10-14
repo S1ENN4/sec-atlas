@@ -62,7 +62,7 @@ check("gate: empty translations are rejected", checkTranslation("t", "Hello", " 
 check("gate: a code sample must keep its number of lines", checkTranslation("sections.1.code.0.code", "a\nb\nc", "a\nb") !== null);
 check("gate: translated code comments pass", checkTranslation("sections.1.code.0.code", "# observe\nlog", "# observar\nlog") === null);
 check("gate: pasted-back long prose is flagged", looksUntranslated("This sentence is long enough to count as prose, so copying it is wrong.", "This sentence is long enough to count as prose, so copying it is wrong."));
-check("gate: short strings may legitimately be identical", !looksUntranslated("appsec/kb", "appsec/kb"));
+check("gate: short strings may legitimately be identical", !looksUntranslated("sec/atlas", "sec/atlas"));
 
 // --- hashing ------------------------------------------------------------------
 check("hash: stable and sensitive to a one-character change", hashText("abc") === hashText("abc") && hashText("abc") !== hashText("abd"));

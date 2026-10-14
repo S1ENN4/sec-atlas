@@ -19,7 +19,7 @@ export function SiteFooter({ locale, t }: { locale: Locale; t: Ui }) {
       <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-8 font-mono text-xs text-muted-foreground md:flex-row md:items-start md:justify-between">
         <div className="flex flex-col gap-1">
           <span>
-            appsec<span className="text-primary">/</span>kb — {fmt(t.footer.tagline, { name: profile.name })}
+            sec<span className="text-primary">/</span>atlas — {fmt(t.footer.tagline, { name: profile.name })}
           </span>
           <span className="flex flex-wrap gap-x-4">
             <Link href={lp("/manifesto")} className={link}>{t.footer.manifesto}</Link>

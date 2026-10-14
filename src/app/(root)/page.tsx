@@ -10,7 +10,7 @@ export default function RootPage() {
       <meta httpEquiv="refresh" content="3; url=/en" />
       <LocaleRedirect />
       <nav aria-label="Language" className="text-center font-mono text-sm">
-        <p className="mb-4 text-muted-foreground">appsec/kb</p>
+        <p className="mb-4 text-muted-foreground">sec/atlas</p>
         <ul className="flex gap-4">
           {LOCALES.map((l) => (
             <li key={l}>

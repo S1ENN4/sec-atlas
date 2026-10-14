@@ -1,6 +1,6 @@
 # Como contribuir
 
-Obrigado por querer melhorar o appsec/kb. A forma mais valiosa de ajudar é **achar
+Obrigado por querer melhorar o sec/atlas. A forma mais valiosa de ajudar é **achar
 e corrigir erros**: este é um projeto de segurança, e conteúdo impreciso é pior que
 conteúdo ausente.
 

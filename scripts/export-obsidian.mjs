@@ -3,7 +3,7 @@
 //
 //   npm run export:obsidian                 -> vault/<locale>/ for every locale
 //   npm run export:obsidian -- --locale pt  -> only one locale
-//   npm run export:obsidian -- --out ~/Notes/appsec-kb
+//   npm run export:obsidian -- --out ~/Notes/sec-atlas
 //
 // The TypeScript sources stay the single source of truth (types, validation,
 // translation drift checks). The vault is generated, read-only output: edit the
@@ -37,9 +37,9 @@ if (only && !LOCALES.includes(only)) {
 }
 
 const LABELS = {
-  en: { related: "Related", bridges: "Same problem, other domain", prereq: "Study first", unlocks: "Unlocks", quiz: "Quiz", answer: "Answer", sources: "Sources", map: "Map", glossary: "Glossary", careers: "Careers", paths: "Study paths", stage: "Stage", home: "Home", topics: "Topics", pipeline: "Pipeline", tools: "Tools", day: "A day in the job", study: "Study here", outside: "Learn elsewhere", build: "Build this", show: "What to show", certs: "Certifications (examples)", level: ["", "Foundations", "Practitioner", "Advanced"], generated: "Generated from appsec/kb. Edit the sources, not this note." },
-  pt: { related: "Relacionados", bridges: "Mesmo problema, outro domínio", prereq: "Estude antes", unlocks: "Abre caminho para", quiz: "Quiz", answer: "Resposta", sources: "Fontes", map: "Mapa", glossary: "Glossário", careers: "Carreiras", paths: "Trilhas de estudo", stage: "Etapa", home: "Início", topics: "Tópicos", pipeline: "Esteira", tools: "Ferramentas", day: "Um dia no cargo", study: "Estude aqui", outside: "Aprenda fora", build: "Construa isto", show: "O que mostrar", certs: "Certificações (exemplos)", level: ["", "Fundamentos", "Prática", "Avançado"], generated: "Gerado a partir do appsec/kb. Edite as fontes, não esta nota." },
-  es: { related: "Relacionados", bridges: "Mismo problema, otro dominio", prereq: "Estudia antes", unlocks: "Abre el camino a", quiz: "Quiz", answer: "Respuesta", sources: "Fuentes", map: "Mapa", glossary: "Glosario", careers: "Carreras", paths: "Rutas de estudio", stage: "Etapa", home: "Inicio", topics: "Temas", pipeline: "Pipeline", tools: "Herramientas", day: "Un día en el cargo", study: "Estudia aquí", outside: "Aprende fuera", build: "Construye esto", show: "Qué mostrar", certs: "Certificaciones (ejemplos)", level: ["", "Fundamentos", "Práctica", "Avanzado"], generated: "Generado desde appsec/kb. Edita las fuentes, no esta nota." },
+  en: { related: "Related", bridges: "Same problem, other domain", prereq: "Study first", unlocks: "Unlocks", quiz: "Quiz", answer: "Answer", sources: "Sources", map: "Map", glossary: "Glossary", careers: "Careers", paths: "Study paths", stage: "Stage", home: "Home", topics: "Topics", pipeline: "Pipeline", tools: "Tools", day: "A day in the job", study: "Study here", outside: "Learn elsewhere", build: "Build this", show: "What to show", certs: "Certifications (examples)", level: ["", "Foundations", "Practitioner", "Advanced"], generated: "Generated from sec/atlas. Edit the sources, not this note." },
+  pt: { related: "Relacionados", bridges: "Mesmo problema, outro domínio", prereq: "Estude antes", unlocks: "Abre caminho para", quiz: "Quiz", answer: "Resposta", sources: "Fontes", map: "Mapa", glossary: "Glossário", careers: "Carreiras", paths: "Trilhas de estudo", stage: "Etapa", home: "Início", topics: "Tópicos", pipeline: "Esteira", tools: "Ferramentas", day: "Um dia no cargo", study: "Estude aqui", outside: "Aprenda fora", build: "Construa isto", show: "O que mostrar", certs: "Certificações (exemplos)", level: ["", "Fundamentos", "Prática", "Avançado"], generated: "Gerado a partir do sec/atlas. Edite as fontes, não esta nota." },
+  es: { related: "Relacionados", bridges: "Mismo problema, otro dominio", prereq: "Estudia antes", unlocks: "Abre el camino a", quiz: "Quiz", answer: "Respuesta", sources: "Fuentes", map: "Mapa", glossary: "Glosario", careers: "Carreras", paths: "Rutas de estudio", stage: "Etapa", home: "Inicio", topics: "Temas", pipeline: "Pipeline", tools: "Herramientas", day: "Un día en el cargo", study: "Estudia aquí", outside: "Aprende fuera", build: "Construye esto", show: "Qué mostrar", certs: "Certificaciones (ejemplos)", level: ["", "Fundamentos", "Práctica", "Avanzado"], generated: "Generado desde sec/atlas. Edita las fuentes, no esta nota." },
 };
 
 const safe = (s) => s.replace(/[\\/:*?"<>|#^[\]]/g, "").replace(/\s+/g, " ").trim();
@@ -185,7 +185,7 @@ for (const locale of locales) {
   }
 
   // 5. home (map of content)
-  const home = ["---", `title: ${q("appsec/kb")}`, "tags: [home]", "---", "", "# appsec/kb", ""];
+  const home = ["---", `title: ${q("sec/atlas")}`, "tags: [home]", "---", "", "# sec/atlas", ""];
   for (const id of Object.keys(domains)) {
     home.push(`- [[00 ${safe(ui.domains[id].name)} (${L.map})|${ui.domains[id].name}]]: ${ui.domains[id].pitch}`);
   }

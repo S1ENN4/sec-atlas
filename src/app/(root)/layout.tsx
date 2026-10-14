@@ -5,7 +5,7 @@ import "../globals.css";
 
 // Root layout for "/": a tiny page that sends the reader to a locale.
 export const metadata: Metadata = {
-  title: "appsec/kb",
+  title: "sec/atlas",
   robots: { index: false, follow: true },
 };
 

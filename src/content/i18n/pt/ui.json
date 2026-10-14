@@ -1069,8 +1069,8 @@
       "h": "ad3bcfda"
     },
     "manifesto.colKb": {
-      "t": "appsec/kb",
-      "h": "730d67df"
+      "t": "sec/atlas",
+      "h": "035c8d05"
     },
     "manifesto.colNotes": {
       "t": "workspace de notas (ex.: Notion)",
@@ -1425,12 +1425,12 @@
       "h": "40ab5cd3"
     },
     "meta.siteName": {
-      "t": "appsec/kb",
-      "h": "730d67df"
+      "t": "sec/atlas",
+      "h": "035c8d05"
     },
     "meta.title": {
-      "t": "appsec/kb — mapa interativo de segurança de software",
-      "h": "c065740d"
+      "t": "sec/atlas — mapa interativo de segurança de software",
+      "h": "5bd09bf4"
     },
     "nav.allDomains": {
       "t": "Todos os domínios",

@@ -70,7 +70,7 @@ export function SiteHeader({ locale, t }: { locale: Locale; t: Ui }) {
           className="flex shrink-0 items-center gap-2 rounded-sm font-mono text-sm font-semibold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         >
           <ShieldCheck className="size-5 text-primary" aria-hidden />
-          appsec<span className="text-primary">/</span>kb
+          sec<span className="text-primary">/</span>atlas
         </Link>
         <SiteNav data={nav} />
         <div className="ml-auto flex shrink-0 items-center gap-2 md:ml-0">
