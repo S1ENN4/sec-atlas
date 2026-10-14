@@ -1,8 +1,8 @@
 {
   "entries": {
     "sections.0.body.0": {
-      "t": "CI/CD hardening is reducing what an attacker can do if they compromise the pipeline: a runner, a third-party action, a leaked token or a malicious pull request. Real supply chain incidents show the pattern: the target is no longer the application but the path that carries code to production.",
-      "h": "c9ded992"
+      "t": "CI/CD hardening is reducing the damage an attacker can cause by compromising the pipeline: a runner, a third-party action, a leaked token or a malicious pull request. Real supply chain incidents show the pattern: the target is no longer the application but the path that carries code to production.",
+      "h": "a408f0fa"
     },
     "sections.0.heading": {
       "t": "What it is",

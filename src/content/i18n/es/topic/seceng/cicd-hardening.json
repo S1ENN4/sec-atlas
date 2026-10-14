@@ -1,8 +1,8 @@
 {
   "entries": {
     "sections.0.body.0": {
-      "t": "El hardening de CI/CD consiste en reducir lo que un atacante puede lograr si compromete el pipeline: un runner, una acción de terceros, un token filtrado o un pull request malicioso. Los incidentes reales de cadena de suministro muestran el patrón: el objetivo deja de ser la aplicación y pasa a ser el camino que lleva el código a producción.",
-      "h": "c9ded992"
+      "t": "El hardening de CI/CD consiste en reducir el daño que un atacante puede causar al comprometer el pipeline: un runner, una acción de terceros, un token filtrado o un pull request malicioso. Los incidentes reales de cadena de suministro muestran el patrón: el objetivo deja de ser la aplicación y pasa a ser el camino que lleva el código a producción.",
+      "h": "a408f0fa"
     },
     "sections.0.heading": {
       "t": "Qué es",

@@ -29,7 +29,7 @@ export const infrastructureAsCode: Topic = {
         {
           language: "hcl",
           filename: "main.tf",
-          code: "terraform {\n  required_version = \">= 1.6\"\n  required_providers {\n    aws = { source = \"hashicorp/aws\", version = \"~> 5.0\" }\n  }\n  backend \"s3\" {\n    bucket         = \"example-terraform-state\"\n    key            = \"network/prod.tfstate\"\n    region         = \"us-east-1\"\n    dynamodb_table = \"terraform-locks\"\n    encrypt        = true\n  }\n}\n\nresource \"aws_vpc\" \"main\" {\n  cidr_block           = var.vpc_cidr\n  enable_dns_hostnames = true\n  tags                 = merge(var.tags, { Name = \"main\" })\n}",
+          code: "terraform {\n  required_version = \">= 1.10\"\n  required_providers {\n    aws = { source = \"hashicorp/aws\", version = \"~> 6.0\" }\n  }\n  backend \"s3\" {\n    bucket         = \"example-terraform-state\"\n    key            = \"network/prod.tfstate\"\n    region         = \"us-east-1\"\n    use_lockfile   = true\n    encrypt        = true\n  }\n}\n\nresource \"aws_vpc\" \"main\" {\n  cidr_block           = var.vpc_cidr\n  enable_dns_hostnames = true\n  tags                 = merge(var.tags, { Name = \"main\" })\n}",
         },
         {
           language: "bash",

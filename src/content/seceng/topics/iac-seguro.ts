@@ -40,14 +40,14 @@ export const iacSeguro: Topic = {
         {
           language: "hcl",
           filename: "backend.tf",
-          code: "terraform {\n  backend \"s3\" {\n    bucket         = \"minha-org-tfstate\"\n    key            = \"prod/network.tfstate\"\n    region         = \"us-east-1\"\n    encrypt        = true\n    dynamodb_table = \"tfstate-lock\"   # bloqueio contra apply simultâneo\n  }\n}",
+          code: "terraform {\n  backend \"s3\" {\n    bucket         = \"minha-org-tfstate\"\n    key            = \"prod/network.tfstate\"\n    region         = \"us-east-1\"\n    encrypt        = true\n    use_lockfile   = true             # bloqueio nativo contra apply simultâneo\n  }\n}",
         },
       ],
     },
     {
       heading: "Drift: o que mudou por fora",
       body: [
-        "Alguém altera um recurso no console durante um incidente e esquece de voltar. O estado real diverge do código (drift), e o código deixa de ser a verdade. Rodar um plano periódico, ou ferramentas de detecção de drift, transforma essa divergência em alerta, e o postura da nuvem (CSPM) olha o mesmo problema pelo lado do ambiente.",
+        "Alguém altera um recurso no console durante um incidente e esquece de voltar. O estado real diverge do código (drift), e o código deixa de ser a verdade. Rodar um plano periódico, ou ferramentas de detecção de drift, transforma essa divergência em alerta, e a gestão de postura da nuvem (CSPM) olha o mesmo problema pelo lado do ambiente.",
       ],
     },
     {

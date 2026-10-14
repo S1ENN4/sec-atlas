@@ -33,8 +33,8 @@
       "h": "223d7a5c"
     },
     "sections.2.code.0.code": {
-      "t": "terraform {\n  backend \"s3\" {\n    bucket         = \"minha-org-tfstate\"\n    key            = \"prod/network.tfstate\"\n    region         = \"us-east-1\"\n    encrypt        = true\n    dynamodb_table = \"tfstate-lock\"   # bloqueo contra apply simultáneo\n  }\n}",
-      "h": "b0128b30"
+      "t": "terraform {\n  backend \"s3\" {\n    bucket         = \"minha-org-tfstate\"\n    key            = \"prod/network.tfstate\"\n    region         = \"us-east-1\"\n    encrypt        = true\n    use_lockfile   = true             # bloqueo nativo contra apply simultáneo\n  }\n}",
+      "h": "420fa083"
     },
     "sections.2.code.0.filename": {
       "t": "backend.tf",
@@ -46,7 +46,7 @@
     },
     "sections.3.body.0": {
       "t": "Alguien modifica un recurso en la consola durante un incidente y olvida revertirlo. El estado real diverge del código (drift), y el código deja de ser la verdad. Ejecutar un plan periódico, o usar herramientas de detección de drift, convierte esa divergencia en una alerta, y la gestión de postura en la nube (CSPM) mira el mismo problema desde el lado del entorno.",
-      "h": "cb9638b0"
+      "h": "8fdce04a"
     },
     "sections.3.heading": {
       "t": "Drift: lo que cambió por fuera",

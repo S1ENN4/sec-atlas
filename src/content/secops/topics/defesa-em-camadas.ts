@@ -6,7 +6,7 @@ export const defesaEmCamadas: Topic = {
   title: "Defesa em camadas: system design de borda",
   short: "onde cada controle vive, e o que acontece quando ele falha",
   tagline:
-    "Projetar a defesa é decidir, camada por camada, quem inspeciona o quê, quanto latência isso custa e se o sistema abre ou fecha quando um controle cai.",
+    "Projetar a defesa é decidir, camada por camada, quem inspeciona o quê, quanta latência isso custa e se o sistema abre ou fecha quando um controle cai.",
   kind: "conceito",
   stage: null,
   tools: ["Cloudflare", "API Gateway", "Envoy", "Terraform"],

@@ -1,8 +1,8 @@
 {
   "entries": {
     "sections.0.body.0": {
-      "t": "La guía de manejo de incidentes del NIST describe un ciclo que la mayoría de los programas adopta de alguna forma. Tómalo como un bucle, no como una línea: lo que aprendes alimenta la preparación.",
-      "h": "a1d448ef"
+      "t": "El modelo clásico de NIST SP 800-61 (Rev. 2) describe un ciclo que la mayoría de los programas adopta de alguna forma; la Rev. 3 (2025) asigna el mismo trabajo a las funciones del Cybersecurity Framework 2.0. Tómalo como un bucle, no como una línea: lo que aprendes alimenta la preparación.",
+      "h": "dde4d480"
     },
     "sections.0.bullets.0": {
       "t": "Preparación: política, turnos de guardia, herramientas y accesos listos, logging que responda preguntas, playbooks practicados, listas de contactos (legal, comunicaciones, proveedores, reguladores).",

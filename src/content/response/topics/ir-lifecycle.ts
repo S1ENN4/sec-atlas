@@ -13,7 +13,7 @@ export const irLifecycle: Topic = {
   sections: [
     {
       heading: "The phases",
-      body: ["NIST's incident handling guide describes a cycle that most programs adopt in some form. Treat it as a loop, not a line: what you learn feeds preparation."],
+      body: ["The classic model from NIST SP 800-61 (Rev. 2) describes a cycle that most programs adopt in some form; Rev. 3 (2025) maps the same work onto the functions of the Cybersecurity Framework 2.0. Treat it as a loop, not a line: what you learn feeds preparation."],
       bullets: [
         "Preparation: policy, an on-call rota, tools and access in place, logging that answers questions, practiced playbooks, contact lists (legal, communications, vendors, regulators).",
         "Detection and analysis: recognize that something is wrong, decide whether it is an incident, scope it, and assign a severity.",

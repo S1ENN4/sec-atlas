@@ -1,8 +1,8 @@
 {
   "entries": {
     "sections.0.body.0": {
-      "t": "O guia de tratamento de incidentes do NIST descreve um ciclo que a maioria dos programas adota de alguma forma. Trate-o como um laço, não como uma linha: o que você aprende alimenta a preparação.",
-      "h": "a1d448ef"
+      "t": "O modelo clássico da NIST SP 800-61 (Rev. 2) descreve um ciclo que a maioria dos programas adota de alguma forma; a Rev. 3 (2025) mapeia o mesmo trabalho nas funções do Cybersecurity Framework 2.0. Trate-o como um laço, não como uma linha: o que você aprende alimenta a preparação.",
+      "h": "dde4d480"
     },
     "sections.0.bullets.0": {
       "t": "Preparação: política, escala de plantão, ferramentas e acessos prontos, logging que responde perguntas, playbooks praticados, listas de contatos (jurídico, comunicação, fornecedores, reguladores).",

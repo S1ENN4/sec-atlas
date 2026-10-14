@@ -14,7 +14,7 @@ export const cicdHardening: Topic = {
     {
       heading: "O que é",
       body: [
-        "Hardening de CI/CD é reduzir o que um atacante consegue se comprometer a esteira: um runner, uma ação de terceiros, um token vazado ou um pull request malicioso. Os incidentes reais de cadeia de suprimentos mostram o padrão: o alvo deixa de ser a aplicação e passa a ser o caminho que leva o código à produção.",
+        "Hardening de CI/CD é reduzir o estrago que um atacante consegue causar ao comprometer a esteira: um runner, uma ação de terceiros, um token vazado ou um pull request malicioso. Os incidentes reais de cadeia de suprimentos mostram o padrão: o alvo deixa de ser a aplicação e passa a ser o caminho que leva o código à produção.",
       ],
     },
     {
