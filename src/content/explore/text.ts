@@ -2,6 +2,7 @@
 // (unit "explore", strict: every string must be translated and fresh).
 // Keep ids in sync with ./world.ts (validate-content R12 checks it).
 
+import { netChallenges, netMissions, netNodes } from "./text-net";
 import { worldsChallenges, worldsMissions, worldsNodes } from "./text-worlds";
 
 export interface NodeText {
@@ -412,6 +413,7 @@ export const exploreText = {
       ],
     },
   ...worldsNodes,
+  ...netNodes,
   } satisfies Record<string, NodeText>,
 
   missions: {
@@ -432,6 +434,7 @@ export const exploreText = {
       intro: "From the update bot to the cluster gate: how a risky package is stopped.",
     },
     ...worldsMissions,
+    ...netMissions,
   },
 
   challenges: {
@@ -461,6 +464,7 @@ export const exploreText = {
       hint: "Three lines: a base tag, a download and a secret.",
     },
     ...worldsChallenges,
+    ...netChallenges,
   } satisfies Record<string, ChallengeText>,
 };
 

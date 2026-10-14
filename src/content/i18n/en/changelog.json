@@ -32,6 +32,10 @@
       "t": "Three more full-screen explorable maps (cloud, SOC and a web request), with search, a minimap, 13 challenges and links from topics to the map.",
       "h": "ea9b843c"
     },
+    "items.0.items.8": {
+      "t": "Network and OSI model map: the seven layers, from the cable to the application, with 4 challenges (firewall, port scan, TLS and DNS).",
+      "h": "c63cba36"
+    },
     "items.0.title": {
       "t": "sec/atlas: eleven domains, a learning map and careers",
       "h": "55798f56"

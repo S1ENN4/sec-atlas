@@ -32,6 +32,10 @@
       "t": "Tres mapas explorables más a pantalla completa (nube, SOC y una petición web), con búsqueda, minimapa, 13 desafíos y enlaces desde los temas al mapa.",
       "h": "ea9b843c"
     },
+    "items.0.items.8": {
+      "t": "Mapa de red y del modelo OSI: las siete capas, del cable a la aplicación, con 4 desafíos (firewall, escaneo, TLS y DNS).",
+      "h": "c63cba36"
+    },
     "items.0.title": {
       "t": "sec/atlas: once dominios, un mapa de aprendizaje y carreras",
       "h": "55798f56"

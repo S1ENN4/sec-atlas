@@ -108,6 +108,54 @@
       "t": "latest es una base móvil y sin versión fijada (línea 1). ADD desde una URL descarga código sin verificar durante el build (línea 4). Una contraseña en ENV queda guardada en las capas de la imagen, legible para quien pueda descargarla (línea 6). Tampoco hay instrucción USER, así que el proceso corre como root.",
       "h": "675e029c"
     },
+    "challenges.n-dns.hint": {
+      "t": "Dos líneas que dicen any.",
+      "h": "c381493d"
+    },
+    "challenges.n-dns.prompt": {
+      "t": "Este servidor DNS es alcanzable desde internet. ¿Qué líneas son peligrosas?",
+      "h": "c0e77a05"
+    },
+    "challenges.n-dns.why": {
+      "t": "allow-recursion { any; } (línea 4) lo convierte en un resolvedor abierto, que los atacantes usan en ataques de amplificación. allow-transfer { any; } (línea 5) deja que cualquiera descargue la zona entera, un mapa de tus hosts. Limita la recursión a tus redes y las transferencias a tus servidores secundarios.",
+      "h": "0f880bec"
+    },
+    "challenges.n-firewall.hint": {
+      "t": "Dos reglas: una de administración y una de base de datos.",
+      "h": "da4f20b8"
+    },
+    "challenges.n-firewall.prompt": {
+      "t": "Este host sirve un sitio público. ¿Qué reglas exponen servicios que no deberían estar abiertos a todos?",
+      "h": "708fefe5"
+    },
+    "challenges.n-firewall.why": {
+      "t": "El puerto 22 (línea 7) deja que todo internet intente entrar por SSH, y el puerto 3306 (línea 9) expone la base de datos. Restringe el SSH a una VPN o dirección de bastión y deja la base accesible solo desde los servidores de la aplicación. El puerto 443 es el sitio y el ICMP, de forma limitada, es aceptable.",
+      "h": "e53319f7"
+    },
+    "challenges.n-scans.hint": {
+      "t": "Cuatro líneas: un origen, muchos puertos, casi nada de tiempo.",
+      "h": "053f2b25"
+    },
+    "challenges.n-scans.prompt": {
+      "t": "Una dirección está sondeando este servidor. ¿Qué líneas son sus sondas?",
+      "h": "70aa1cb0"
+    },
+    "challenges.n-scans.why": {
+      "t": "Las líneas 1, 2, 3 y 5 son paquetes SYN del mismo origen (203.0.113.9) a los puertos 22, 23, 80 y 443 en tres milisegundos: un escaneo. Las líneas 6 a 8 son un handshake normal de otra dirección, y la línea 4 es el servidor respondiendo al escaneo en el puerto abierto.",
+      "h": "69fc7e6b"
+    },
+    "challenges.n-tls.hint": {
+      "t": "Dos líneas: versiones y cifrados.",
+      "h": "97bbd3fd"
+    },
+    "challenges.n-tls.prompt": {
+      "t": "¿Qué líneas debilitan el cifrado de este servidor?",
+      "h": "f7937132"
+    },
+    "challenges.n-tls.why": {
+      "t": "La línea 4 aún acepta TLS 1.0 y 1.1, que son obsoletos y tienen debilidades conocidas. La línea 5 permite todos los cifrados salvo los anónimos, incluidos los débiles y heredados. Permite solo TLS 1.2 y 1.3 y una lista explícita de cifrados modernos.",
+      "h": "21d2f5ef"
+    },
     "challenges.s-runbooks.hint": {
       "t": "Tres pasos: uno pierde la memoria, uno borra evidencia, uno mantiene el host en uso.",
       "h": "7c447e69"
@@ -188,6 +236,14 @@
       "t": "Refuerza el pipeline",
       "h": "ebbb3583"
     },
+    "missions.harden-the-edge.intro": {
+      "t": "Corrige un firewall, una configuración de TLS y un servidor DNS.",
+      "h": "a0985314"
+    },
+    "missions.harden-the-edge.title": {
+      "t": "Refuerza el borde",
+      "h": "ca543174"
+    },
     "missions.lock-front-door.intro": {
       "t": "Arregla los errores clásicos de la nube: identidad, red y almacenamiento.",
       "h": "bbe2cad3"
@@ -203,6 +259,14 @@
     "missions.owasp-walk.title": {
       "t": "Recorre la petición",
       "h": "0e33de99"
+    },
+    "missions.read-the-wire.intro": {
+      "t": "Entiende el handshake, detecta un escaneo y mira cómo funciona la amplificación.",
+      "h": "ef700213"
+    },
+    "missions.read-the-wire.title": {
+      "t": "Lee el cable",
+      "h": "abc64180"
     },
     "missions.see-everything.intro": {
       "t": "Activa el registro de auditoría, revisa la postura, alerta sobre llamadas arriesgadas y limita lo que pueden hacer las cuentas.",
@@ -235,6 +299,14 @@
     "missions.trust-dependencies.title": {
       "t": "Confía en tus dependencias",
       "h": "2509c74e"
+    },
+    "missions.walk-the-stack.intro": {
+      "t": "Visita las siete capas, del cable a la aplicación.",
+      "h": "7481fa7f"
+    },
+    "missions.walk-the-stack.title": {
+      "t": "Baja por la pila",
+      "h": "58d16dd8"
     },
     "nodes.admission.points.0": {
       "t": "Es la última puerta: funciona incluso si alguien se salta el pipeline.",
@@ -1087,6 +1159,546 @@
     "nodes.iac.title": {
       "t": "Infraestructura como código",
       "h": "a50d125d"
+    },
+    "nodes.n-8021x.points.0": {
+      "t": "Las credenciales o los certificados deciden en qué segmento cae el dispositivo.",
+      "h": "e4df102c"
+    },
+    "nodes.n-8021x.points.1": {
+      "t": "Los dispositivos desconocidos pueden ir a una red de cuarentena.",
+      "h": "a6e8c2a6"
+    },
+    "nodes.n-8021x.points.2": {
+      "t": "Impide que un extraño simplemente conecte un cable.",
+      "h": "cdd6190b"
+    },
+    "nodes.n-8021x.summary": {
+      "t": "El 802.1X hace que un dispositivo demuestre quién es antes de que el switch o el punto de acceso lo deje entrar en la red.",
+      "h": "76df5b7d"
+    },
+    "nodes.n-8021x.title": {
+      "t": "Autenticación de puerto",
+      "h": "ec6f44a7"
+    },
+    "nodes.n-amplification.points.0": {
+      "t": "Los resolvedores DNS abiertos, NTP y servicios similares son amplificadores comunes.",
+      "h": "d9558353"
+    },
+    "nodes.n-amplification.points.1": {
+      "t": "No mantengas resolvedores abiertos y filtra el tráfico falsificado.",
+      "h": "32963c06"
+    },
+    "nodes.n-amplification.points.2": {
+      "t": "La limpieza de tráfico en el proveedor absorbe la inundación que tú no puedes.",
+      "h": "8de4f320"
+    },
+    "nodes.n-amplification.summary": {
+      "t": "Los atacantes envían pequeñas peticiones falsificadas a servidores abiertos, que mandan respuestas grandes a la víctima.",
+      "h": "364b0c75"
+    },
+    "nodes.n-amplification.title": {
+      "t": "Amplificación UDP",
+      "h": "e4a4a285"
+    },
+    "nodes.n-application.points.0": {
+      "t": "Las capas bajas entregan el mensaje, esta le da significado.",
+      "h": "a198aec9"
+    },
+    "nodes.n-application.points.1": {
+      "t": "Los controles de red no pueden juzgar si una petición válida es dañina.",
+      "h": "ab71c88d"
+    },
+    "nodes.n-application.points.2": {
+      "t": "Los firewalls de aplicación y el código seguro actúan en esta capa.",
+      "h": "0ee82991"
+    },
+    "nodes.n-application.summary": {
+      "t": "Los protocolos que personas y programas usan de verdad: HTTP, DNS, correo y más. La mayoría de los ataques que lees ocurren aquí.",
+      "h": "38b7f8e3"
+    },
+    "nodes.n-application.title": {
+      "t": "7. Aplicación",
+      "h": "c56f4a67"
+    },
+    "nodes.n-arp.points.0": {
+      "t": "El atacante lee o modifica el tráfico entre las víctimas y el router.",
+      "h": "74009fd7"
+    },
+    "nodes.n-arp.points.1": {
+      "t": "Funciones del switch, como la inspección dinámica de ARP, pueden bloquearlo.",
+      "h": "7b4b45b1"
+    },
+    "nodes.n-arp.points.2": {
+      "t": "El cifrado de extremo a extremo limita lo que puede ver un hombre en el medio.",
+      "h": "1e06775c"
+    },
+    "nodes.n-arp.summary": {
+      "t": "Las respuestas ARP no tienen autenticación, así que un vecino puede hacerse pasar por el gateway y colocarse en medio.",
+      "h": "91df54b6"
+    },
+    "nodes.n-arp.title": {
+      "t": "ARP spoofing",
+      "h": "7bc9ded7"
+    },
+    "nodes.n-bgp.points.0": {
+      "t": "Los secuestros y las fugas pueden hundir o interceptar el tráfico de toda una red.",
+      "h": "1368f1ce"
+    },
+    "nodes.n-bgp.points.1": {
+      "t": "La validación de rutas (RPKI) ayuda a otros a rechazar anuncios falsos.",
+      "h": "c4aeae22"
+    },
+    "nodes.n-bgp.points.2": {
+      "t": "El TLS de extremo a extremo mantiene ilegible el tráfico interceptado.",
+      "h": "8731bf61"
+    },
+    "nodes.n-bgp.summary": {
+      "t": "El BGP dice a internet dónde vive cada red. Un anuncio falso puede arrastrar el tráfico por el lugar equivocado.",
+      "h": "7187ddf2"
+    },
+    "nodes.n-bgp.title": {
+      "t": "BGP y secuestro de rutas",
+      "h": "e9ae3fd1"
+    },
+    "nodes.n-certs.points.0": {
+      "t": "Automatiza la renovación: los certificados caducados causan caídas.",
+      "h": "c071242b"
+    },
+    "nodes.n-certs.points.1": {
+      "t": "Protege las claves privadas, y revoca o sustituye las expuestas.",
+      "h": "e6067fca"
+    },
+    "nodes.n-certs.points.2": {
+      "t": "Los logs de transparencia de certificados revelan certificados emitidos para tus nombres.",
+      "h": "9c40911f"
+    },
+    "nodes.n-certs.summary": {
+      "t": "Un certificado dice que una clave pertenece a un nombre, avalado por una autoridad certificadora.",
+      "h": "a8e822fe"
+    },
+    "nodes.n-certs.title": {
+      "t": "Certificados y PKI",
+      "h": "f0d2c03b"
+    },
+    "nodes.n-datalink.points.0": {
+      "t": "Las redes locales confían en sus vecinos por defecto.",
+      "h": "f60b7b90"
+    },
+    "nodes.n-datalink.points.1": {
+      "t": "Los switches y las VLAN deciden quién comparte un segmento.",
+      "h": "c5099c35"
+    },
+    "nodes.n-datalink.points.2": {
+      "t": "Los ataques aquí requieren un punto de apoyo en la red local.",
+      "h": "5582179c"
+    },
+    "nodes.n-datalink.summary": {
+      "t": "Tramas entre dispositivos de la misma red local, direccionadas por MAC y organizadas por switches.",
+      "h": "1e3b9fe2"
+    },
+    "nodes.n-datalink.title": {
+      "t": "2. Enlace de datos",
+      "h": "dc89e065"
+    },
+    "nodes.n-dns.points.0": {
+      "t": "Un resolvedor abierto puede abusarse en ataques de amplificación.",
+      "h": "5be7f7ca"
+    },
+    "nodes.n-dns.points.1": {
+      "t": "Las transferencias de zona deben ir solo a tus servidores secundarios.",
+      "h": "513a3b17"
+    },
+    "nodes.n-dns.points.2": {
+      "t": "Registra el DNS: revela malware, tunelización y dominios parecidos.",
+      "h": "1af246c4"
+    },
+    "nodes.n-dns.summary": {
+      "t": "Convierte nombres en direcciones. Está en todas partes, rara vez se monitoriza y a menudo está mal configurado.",
+      "h": "d56eb262"
+    },
+    "nodes.n-dns.title": {
+      "t": "DNS",
+      "h": "3ddc21b1"
+    },
+    "nodes.n-email.points.0": {
+      "t": "SPF enumera qué servidores pueden enviar por tu dominio.",
+      "h": "0963d12a"
+    },
+    "nodes.n-email.points.1": {
+      "t": "DKIM firma los mensajes, y DMARC dice qué hacer cuando fallan las comprobaciones.",
+      "h": "b8de4677"
+    },
+    "nodes.n-email.points.2": {
+      "t": "Lleva DMARC poco a poco del monitoreo al rechazo.",
+      "h": "ec442154"
+    },
+    "nodes.n-email.summary": {
+      "t": "SPF, DKIM y DMARC permiten al receptor comprobar que un correo que dice venir de tu dominio de verdad vino.",
+      "h": "98d9e09d"
+    },
+    "nodes.n-email.title": {
+      "t": "Autenticación de correo",
+      "h": "9515157b"
+    },
+    "nodes.n-firewall.points.0": {
+      "t": "Empieza denegando y permite solo lo que un host necesita.",
+      "h": "5c86d19a"
+    },
+    "nodes.n-firewall.points.1": {
+      "t": "Mantén los puertos de administración y de base de datos fuera de internet.",
+      "h": "29e3249d"
+    },
+    "nodes.n-firewall.points.2": {
+      "t": "Revisa las reglas con regularidad: solo crecen si nadie las poda.",
+      "h": "70b9d5ea"
+    },
+    "nodes.n-firewall.summary": {
+      "t": "Reglas que aceptan o descartan paquetes por dirección, puerto y estado. El valor por defecto debería ser descartar.",
+      "h": "05d70808"
+    },
+    "nodes.n-firewall.title": {
+      "t": "Filtrado de paquetes",
+      "h": "ccfee4ac"
+    },
+    "nodes.n-hijack.points.0": {
+      "t": "Los tokens se filtran por logs, URL, enlaces sin cifrar y scripts.",
+      "h": "ce0ec3b8"
+    },
+    "nodes.n-hijack.points.1": {
+      "t": "Vincula las sesiones al contexto cuando tenga sentido y mantenlas cortas.",
+      "h": "6ca06b9d"
+    },
+    "nodes.n-hijack.points.2": {
+      "t": "Deja que usuarios y administradores vean y cierren las sesiones activas.",
+      "h": "c45bf157"
+    },
+    "nodes.n-hijack.summary": {
+      "t": "Si un atacante obtiene un identificador de sesión, actúa como el usuario sin necesitar la contraseña.",
+      "h": "236d9df8"
+    },
+    "nodes.n-hijack.title": {
+      "t": "Secuestro de sesión",
+      "h": "3c48df6b"
+    },
+    "nodes.n-http.points.0": {
+      "t": "Toda cabecera, parámetro y cookie la controla el atacante.",
+      "h": "52019272"
+    },
+    "nodes.n-http.points.1": {
+      "t": "Un WAF filtra patrones conocidos como malos, pero no sustituye al código seguro.",
+      "h": "b518255b"
+    },
+    "nodes.n-http.points.2": {
+      "t": "Sigue una petición en el mapa de la petición web para ver los riesgos de OWASP.",
+      "h": "7f46441c"
+    },
+    "nodes.n-http.summary": {
+      "t": "El protocolo de la web. Las peticiones son texto que la aplicación debe tratar como no confiable.",
+      "h": "def00d28"
+    },
+    "nodes.n-http.title": {
+      "t": "HTTP",
+      "h": "f40b27d6"
+    },
+    "nodes.n-icmp.points.0": {
+      "t": "Bloquear todo el ICMP rompe cosas como el descubrimiento de MTU de la ruta.",
+      "h": "555030a2"
+    },
+    "nodes.n-icmp.points.1": {
+      "t": "Permite los tipos que necesites y limita la tasa del resto.",
+      "h": "45690bcc"
+    },
+    "nodes.n-icmp.points.2": {
+      "t": "Un volumen o contenido inusual de ICMP puede señalar tunelización o escaneo.",
+      "h": "6833727d"
+    },
+    "nodes.n-icmp.summary": {
+      "t": "Los mensajes de control tras el ping y el traceroute. Útiles para diagnosticar y también para mapear una red.",
+      "h": "75d30c0e"
+    },
+    "nodes.n-icmp.title": {
+      "t": "ICMP",
+      "h": "05eceda6"
+    },
+    "nodes.n-ip.points.0": {
+      "t": "Los rangos privados no son alcanzables desde internet, pero no son por sí solos una frontera de seguridad.",
+      "h": "44c59a95"
+    },
+    "nodes.n-ip.points.1": {
+      "t": "Filtra las direcciones de origen falsificadas en el borde de la red.",
+      "h": "628e1335"
+    },
+    "nodes.n-ip.points.2": {
+      "t": "Conoce tus rutas: una ruta inesperada es un camino inesperado para el tráfico.",
+      "h": "c78f3da3"
+    },
+    "nodes.n-ip.summary": {
+      "t": "Cada host tiene una dirección, y los routers eligen el siguiente salto hacia el destino.",
+      "h": "dc86aafd"
+    },
+    "nodes.n-ip.title": {
+      "t": "IP y enrutamiento",
+      "h": "a55236b7"
+    },
+    "nodes.n-network.points.0": {
+      "t": "Los routers reenvían paquetes; los firewalls deciden cuáles se permiten.",
+      "h": "8b11c8bb"
+    },
+    "nodes.n-network.points.1": {
+      "t": "Las direcciones de origen pueden falsificarse, así que no confíes solo en ellas.",
+      "h": "081120fc"
+    },
+    "nodes.n-network.points.2": {
+      "t": "La mayoría de las reglas de red en la nube viven en esta capa y en la siguiente.",
+      "h": "f0c2f802"
+    },
+    "nodes.n-network.summary": {
+      "t": "Direcciones IP y enrutamiento: llevar un paquete de una red a otra, a través de muchos saltos.",
+      "h": "3e48e3af"
+    },
+    "nodes.n-network.title": {
+      "t": "3. Red",
+      "h": "9a632d93"
+    },
+    "nodes.n-physical-access.points.0": {
+      "t": "Cierra salas y armarios, y desactiva las tomas de pared sin uso.",
+      "h": "c150f3d0"
+    },
+    "nodes.n-physical-access.points.1": {
+      "t": "Cifra los discos para que un portátil perdido sea solo un portátil perdido.",
+      "h": "110c03ed"
+    },
+    "nodes.n-physical-access.points.2": {
+      "t": "Registra y revisa quién entra en las zonas sensibles.",
+      "h": "c8655782"
+    },
+    "nodes.n-physical-access.summary": {
+      "t": "Puertos sin vigilancia, salas de servidores abiertas y dispositivos robados se saltan todos los controles superiores.",
+      "h": "31f69d6a"
+    },
+    "nodes.n-physical-access.title": {
+      "t": "Acceso físico",
+      "h": "44399483"
+    },
+    "nodes.n-physical.points.0": {
+      "t": "El acceso físico suele derrotar los controles de software.",
+      "h": "fef13f79"
+    },
+    "nodes.n-physical.points.1": {
+      "t": "La radio lleva señales más allá de tus paredes.",
+      "h": "061139dd"
+    },
+    "nodes.n-physical.points.2": {
+      "t": "El propio hardware forma parte de la cadena de suministro.",
+      "h": "07e25041"
+    },
+    "nodes.n-physical.summary": {
+      "t": "Cables, radio y puertos: los bits en el medio. Quien puede tocarlo muchas veces puede escucharlo.",
+      "h": "16351de4"
+    },
+    "nodes.n-physical.title": {
+      "t": "1. Física",
+      "h": "10fe2301"
+    },
+    "nodes.n-presentation.points.0": {
+      "t": "El cifrado convierte una red no confiable en una aceptable.",
+      "h": "71b041cd"
+    },
+    "nodes.n-presentation.points.1": {
+      "t": "Los ajustes débiles quitan esa protección en silencio.",
+      "h": "fc68cc87"
+    },
+    "nodes.n-presentation.points.2": {
+      "t": "Los certificados unen un nombre a una clave.",
+      "h": "bd189972"
+    },
+    "nodes.n-presentation.summary": {
+      "t": "Cómo se representan y protegen los datos: codificación, compresión y cifrado. TLS es lo que más te encuentras.",
+      "h": "203de530"
+    },
+    "nodes.n-presentation.title": {
+      "t": "6. Presentación",
+      "h": "a253e117"
+    },
+    "nodes.n-scans.points.0": {
+      "t": "Un escaneo es un origen tocando muchos puertos en poco tiempo.",
+      "h": "21f9f331"
+    },
+    "nodes.n-scans.points.1": {
+      "t": "Solo lo que está abierto y alcanzable puede atacarse: redúcelo.",
+      "h": "46e52c8d"
+    },
+    "nodes.n-scans.points.2": {
+      "t": "Alerta sobre escaneos, pero espera el ruido de fondo de internet.",
+      "h": "68239899"
+    },
+    "nodes.n-scans.summary": {
+      "t": "Sondear muchos puertos para ver qué servicios responden. El primer paso de la mayoría de los ataques, y visible en los logs.",
+      "h": "02d2936f"
+    },
+    "nodes.n-scans.title": {
+      "t": "Escaneo de puertos",
+      "h": "24b965d7"
+    },
+    "nodes.n-session.points.0": {
+      "t": "Una sesión es tan fuerte como el secreto que la identifica.",
+      "h": "d9d5aecc"
+    },
+    "nodes.n-session.points.1": {
+      "t": "Los túneles extienden una red privada sobre una pública.",
+      "h": "a57b6ea1"
+    },
+    "nodes.n-session.points.2": {
+      "t": "La caducidad y la reautenticación limitan las sesiones robadas.",
+      "h": "24b1f258"
+    },
+    "nodes.n-session.summary": {
+      "t": "Abrir, mantener y cerrar conversaciones. En la práctica, esta capa la manejan aplicaciones y túneles.",
+      "h": "2e203e5b"
+    },
+    "nodes.n-session.title": {
+      "t": "5. Sesión",
+      "h": "179b1263"
+    },
+    "nodes.n-tcp.points.0": {
+      "t": "Un SYN flood llena ese estado con intentos falsos.",
+      "h": "c3817d92"
+    },
+    "nodes.n-tcp.points.1": {
+      "t": "Las SYN cookies y los límites de tasa mantienen en pie al servidor bajo una inundación.",
+      "h": "650fefaa"
+    },
+    "nodes.n-tcp.points.2": {
+      "t": "Conocer el handshake normal facilita ver el tráfico raro.",
+      "h": "34cb65dd"
+    },
+    "nodes.n-tcp.summary": {
+      "t": "Una conexión empieza con SYN, SYN-ACK, ACK. Los servidores guardan estado semiabierto hasta que llega el tercer paso.",
+      "h": "0669aece"
+    },
+    "nodes.n-tcp.title": {
+      "t": "Handshake TCP",
+      "h": "4a04f737"
+    },
+    "nodes.n-tls.points.0": {
+      "t": "Permite solo TLS 1.2 y 1.3, con cifrados modernos.",
+      "h": "53c31b77"
+    },
+    "nodes.n-tls.points.1": {
+      "t": "Activa HSTS, para que los navegadores nunca vuelvan a HTTP plano.",
+      "h": "8e4b5f24"
+    },
+    "nodes.n-tls.points.2": {
+      "t": "Usa un generador de configuración probado en lugar de inventar una.",
+      "h": "9002ef6c"
+    },
+    "nodes.n-tls.summary": {
+      "t": "Qué versiones y cifrados acepta un servidor decide lo fuerte que es en realidad su cifrado.",
+      "h": "0a26f3ca"
+    },
+    "nodes.n-tls.title": {
+      "t": "Configuración de TLS",
+      "h": "0a5df8f5"
+    },
+    "nodes.n-transport.points.0": {
+      "t": "Un puerto identifica un servicio en un host.",
+      "h": "ac32f83e"
+    },
+    "nodes.n-transport.points.1": {
+      "t": "El estado (abierto, cerrado, filtrado) es lo que miden los escáneres.",
+      "h": "27fd2801"
+    },
+    "nodes.n-transport.points.2": {
+      "t": "Muchos ataques de denegación de servicio viven aquí.",
+      "h": "343dd973"
+    },
+    "nodes.n-transport.summary": {
+      "t": "Puertos y conexiones. TCP da flujos fiables, UDP da datagramas rápidos y sin conexión.",
+      "h": "d928d473"
+    },
+    "nodes.n-transport.title": {
+      "t": "4. Transporte",
+      "h": "e0fadb11"
+    },
+    "nodes.n-vlan.points.0": {
+      "t": "Pon servidores, usuarios, invitados y dispositivos en segmentos distintos.",
+      "h": "3961717f"
+    },
+    "nodes.n-vlan.points.1": {
+      "t": "Una VLAN separa el tráfico, pero un router o firewall sigue teniendo que imponer reglas entre ellas.",
+      "h": "aa4f2628"
+    },
+    "nodes.n-vlan.points.2": {
+      "t": "Desactiva la negociación de trunk sin uso para evitar el VLAN hopping.",
+      "h": "6ac4a378"
+    },
+    "nodes.n-vlan.summary": {
+      "t": "Las VLAN dividen una red física en dominios de broadcast separados.",
+      "h": "4092d2bc"
+    },
+    "nodes.n-vlan.title": {
+      "t": "VLAN y segmentación",
+      "h": "aece0e2f"
+    },
+    "nodes.n-vpn.points.0": {
+      "t": "Una VPN protege el camino, no los extremos de cada lado.",
+      "h": "7bae4b06"
+    },
+    "nodes.n-vpn.points.1": {
+      "t": "Una VPN plana da a un portátil robado toda la red: limita el acceso por usuario.",
+      "h": "fda3fa21"
+    },
+    "nodes.n-vpn.points.2": {
+      "t": "El acceso zero-trust cambia el acceso amplio a la red por acceso por aplicación.",
+      "h": "141ec901"
+    },
+    "nodes.n-vpn.summary": {
+      "t": "Un túnel cifrado que lleva el tráfico por una red no confiable.",
+      "h": "155758e0"
+    },
+    "nodes.n-vpn.title": {
+      "t": "VPN y túneles",
+      "h": "63b14077"
+    },
+    "nodes.n-wifi.points.0": {
+      "t": "Usa WPA3 o WPA2 con una clave fuerte, y autenticación corporativa para el personal.",
+      "h": "dd06f327"
+    },
+    "nodes.n-wifi.points.1": {
+      "t": "Separa las redes de invitados y de dispositivos de la red corporativa.",
+      "h": "b92d0766"
+    },
+    "nodes.n-wifi.points.2": {
+      "t": "Ojo con los puntos de acceso falsos que imitan el tuyo.",
+      "h": "09d2ea7e"
+    },
+    "nodes.n-wifi.summary": {
+      "t": "El Wi-Fi pone la red en el aire, donde cualquiera cerca puede intentar entrar o escuchar.",
+      "h": "e94344a3"
+    },
+    "nodes.n-wifi.title": {
+      "t": "Inalámbrica",
+      "h": "b4ec1067"
+    },
+    "nodes.net.points.0": {
+      "t": "Un problema en una capa es invisible para los controles de las otras capas.",
+      "h": "fb4302d5"
+    },
+    "nodes.net.points.1": {
+      "t": "Las capas bajas tratan del alcance, las altas del significado.",
+      "h": "dd00891a"
+    },
+    "nodes.net.points.2": {
+      "t": "Abre una capa para ver qué vive allí y cómo falla.",
+      "h": "7015ae99"
+    },
+    "nodes.net.summary": {
+      "t": "El modelo OSI divide la red en siete capas. Cada una añade algo al mensaje, y cada una tiene sus propios ataques y sus propios controles.",
+      "h": "d0c14ffc"
+    },
+    "nodes.net.title": {
+      "t": "Un mensaje bajando por la pila",
+      "h": "5114cbba"
     },
     "nodes.pipeline.points.0": {
       "t": "Los controles van en capas: un error que se escapa en una parada debe atraparse en la siguiente.",
