@@ -17,8 +17,8 @@
       "h": "ac842f04"
     },
     "sections.1.body.1": {
-      "t": "La métrica define qué es 'bueno'. La fidelidad pregunta si la respuesta es fiel al contexto recuperado (sin inventar fuente). La relevancia pregunta si responde lo que se pidió. El groundedness pregunta si cada afirmación tiene sustento extraído del contexto, no inventado por el modelo. Cada métrica se vuelve una función determinística o un prompt de juez; las dos viven en el mismo archivo.",
-      "h": "02211010"
+      "t": "La métrica define qué es 'bueno'. La fidelidad pregunta si la respuesta es fiel al contexto recuperado (sin inventar fuente). La relevancia pregunta si responde lo que se pidió. La groundedness pregunta si cada afirmación tiene respaldo en el contexto y no fue inventada por el modelo. Cada métrica se vuelve una función determinística o un prompt de juez; las dos viven en el mismo archivo.",
+      "h": "0fe7ed36"
     },
     "sections.1.body.2": {
       "t": "El runner es el pegamento. Recibe el dataset, recorre cada caso, llama al agente con timeout, captura la salida (y la cadena de tool calls, si es un agente), aplica la métrica y devuelve un informe en JSON o CSV. Es el componente que entra en el CI.",
@@ -45,8 +45,8 @@
       "h": "c6729797"
     },
     "sections.3.body.0": {
-      "t": "La fidelidad (groundedness) compara cada frase de la respuesta con el contexto recuperado. Si el modelo afirma algo sin sustento extraído, pierde puntos. Es la métrica que detecta la alucinación más temprano.",
-      "h": "63122a2b"
+      "t": "La fidelidad (groundedness) compara cada frase de la respuesta con el contexto recuperado. Si el modelo afirma algo sin respaldo en el contexto, pierde puntos. Es la métrica que antes detecta la alucinación.",
+      "h": "bfed2c34"
     },
     "sections.3.body.1": {
       "t": "La relevancia mide si la respuesta cubre lo que se preguntó. Un juez LLM con rúbrica binaria (respondió / no respondió) ya lo resuelve. La trampa es la respuesta técnicamente correcta que ignora la pregunta, y la métrica necesita detectar eso.",
@@ -113,8 +113,8 @@
       "h": "0d5073b5"
     },
     "sections.7.bullets.2": {
-      "t": "costo: correr 500 casos con un juez LLM cuesta dinero, lleva tiempo y exige rate limit en la API del juez",
-      "h": "7716f507"
+      "t": "costo: correr 500 casos con juez LLM se cobra por token, toma tiempo y exige respetar el rate limit de la API del juez",
+      "h": "f08835ed"
     },
     "sections.7.heading": {
       "t": "Limitaciones",

@@ -17,8 +17,8 @@
       "h": "4810537a"
     },
     "sections.1.body.1": {
-      "t": "The description is the most neglected part. The LLM does not read code: it reads the string. 'Gets the weather of a city' is better than 'get_weather', because the model decides when to call based on prose. Schemas with bad descriptions produce right or wrong calls at random.",
-      "h": "d0c5dc12"
+      "t": "The description is the most neglected part. The LLM does not read code: it reads the string. 'Gets the weather for a city' is better than 'get_weather', because the model decides when to call based on prose. Schemas with poor descriptions lead the model to call the tool at the wrong time, or not to call it at all.",
+      "h": "d2d6c3c6"
     },
     "sections.1.code.0.code": {
       "t": "{\n  \"name\": \"get_weather\",\n  \"description\": \"Gets the current temperature and the forecast for the next 3 days in a city.\",\n  \"parameters\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"city\": {\n        \"type\": \"string\",\n        \"description\": \"City name, in Portuguese or English (e.g. 'São Paulo', 'Lisbon').\"\n      },\n      \"unit\": {\n        \"type\": \"string\",\n        \"enum\": [\"celsius\", \"fahrenheit\"],\n        \"default\": \"celsius\"\n      }\n    },\n    \"required\": [\"city\"]\n  }\n}",
@@ -53,8 +53,8 @@
       "h": "2265f64e"
     },
     "sections.3.body.0": {
-      "t": "A tool call goes through five steps, each with a possible response and a distinct error path. Without seeing all five, it looks like magic, and the bugs are not where you expect.",
-      "h": "9725ea27"
+      "t": "A tool call goes through five stages, each with a possible response and a distinct error path. Without seeing all five it looks like magic, and the bugs stay hidden.",
+      "h": "f10bfa93"
     },
     "sections.3.body.1": {
       "t": "1. declaration: the list of schemas is handed to the LLM along with the prompt.",
@@ -77,8 +77,8 @@
       "h": "9e12d84a"
     },
     "sections.3.code.0.code": {
-      "t": "import Anthropic from '@anthropic-ai/sdk';\nimport { z } from 'zod';\n\nconst GetWeather = z.object({\n  city: z.string().min(1),\n  unit: z.enum(['celsius', 'fahrenheit']).default('celsius'),\n});\n\nasync function run(anthropic: Anthropic, userMessage: string) {\n  const tools = [{\n    name: 'get_weather',\n    description: 'Gets the current weather of a city.',\n    input_schema: /* JSON shape of the schema */,\n  }];\n\n  let msg = await anthropic.messages.create({\n    model: 'claude-opus-4', max_tokens: 1024, tools,\n    messages: [{ role: 'user', content: userMessage }],\n  });\n\n  if (msg.stop_reason === 'tool_use') {\n    const call = msg.content.find((b) => b.type === 'tool_use');\n    const parsed = GetWeather.safeParse(call.input);\n    if (!parsed.success) return { error: 'invalid_args', issues: parsed.error.issues };\n    const result = await fetchWeather(parsed.data.city, parsed.data.unit);\n    msg = await anthropic.messages.create({\n      model: 'claude-opus-4', max_tokens: 1024, tools,\n      messages: [\n        { role: 'user',     content: userMessage },\n        { role: 'assistant',content: msg.content },\n        { role: 'user',     content: [{ type: 'tool_result', tool_use_id: call.id, content: JSON.stringify(result) }] },\n      ],\n    });\n  }\n  return msg;\n}",
-      "h": "437f5636"
+      "t": "import Anthropic from '@anthropic-ai/sdk';\nimport { z } from 'zod';\n\nconst GetWeather = z.object({\n  city: z.string().min(1),\n  unit: z.enum(['celsius', 'fahrenheit']).default('celsius'),\n});\n\nasync function run(anthropic: Anthropic, userMessage: string) {\n  const tools = [{\n    name: 'get_weather',\n    description: 'Gets the current weather for a city.',\n    input_schema: z.toJSONSchema(GetWeather),\n  }];\n\n  let msg = await anthropic.messages.create({\n    model: 'claude-sonnet-5-5', max_tokens: 1024, tools,\n    messages: [{ role: 'user', content: userMessage }],\n  });\n\n  if (msg.stop_reason === 'tool_use') {\n    const call = msg.content.find((b) => b.type === 'tool_use');\n    const parsed = GetWeather.safeParse(call.input);\n    if (!parsed.success) return { error: 'invalid_args', issues: parsed.error.issues };\n    const result = await fetchWeather(parsed.data.city, parsed.data.unit);\n    msg = await anthropic.messages.create({\n      model: 'claude-sonnet-5-5', max_tokens: 1024, tools,\n      messages: [\n        { role: 'user',     content: userMessage },\n        { role: 'assistant',content: msg.content },\n        { role: 'user',     content: [{ type: 'tool_result', tool_use_id: call.id, content: JSON.stringify(result) }] },\n      ],\n    });\n  }\n  return msg;\n}",
+      "h": "9dfda52b"
     },
     "sections.3.code.0.filename": {
       "t": "runtime.tsx",
@@ -93,16 +93,16 @@
       "h": "30a66c07"
     },
     "sections.4.bullets.1": {
-      "t": "types are guaranteed, values are not: it knows 'unit' is a string, but it may send 'celcius' (typo) from time to time",
-      "h": "d74ba362"
+      "t": "types are guaranteed, values are not: it knows 'unit' is a string, but may send 'celcius' (misspelled)",
+      "h": "cfca311e"
     },
     "sections.4.bullets.2": {
-      "t": "enums are the most common error boundary: the model rarely respects the enum without an explicit prompt",
-      "h": "8bb586ff"
+      "t": "enums are the most common error boundary: the model does not always respect the enum, especially without strict structured output",
+      "h": "205b5035"
     },
     "sections.4.bullets.3": {
-      "t": "validation is cheap: it costs microseconds; unvalidated execution can allow a critical execution order",
-      "h": "abe9749c"
+      "t": "validation is cheap: it costs microseconds; executing without validation can trigger a critical action with wrong arguments",
+      "h": "2905c5e8"
     },
     "sections.4.heading": {
       "t": "Why you cannot skip validation",
@@ -117,8 +117,8 @@
       "h": "0650dc21"
     },
     "sections.5.bullets.2": {
-      "t": "weakness: a bad description leads to right or wrong calls at random; writing a good schema is design work",
-      "h": "4fafa0c8"
+      "t": "weak: a poor description leads to calls at the wrong time; writing a good schema is design work",
+      "h": "4dd5996f"
     },
     "sections.5.bullets.3": {
       "t": "weakness: the call is opaque to the user; if they do not read the trace, they do not know which tool ran",

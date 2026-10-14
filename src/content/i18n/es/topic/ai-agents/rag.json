@@ -17,8 +17,8 @@
       "h": "ba449822"
     },
     "sections.1.body.0": {
-      "t": "El flujo tiene cinco etapas, todas determinísticas y auditables:",
-      "h": "f2338bb7"
+      "t": "El flujo suele tener cinco etapas, todas observables y auditables:",
+      "h": "c1cd4a50"
     },
     "sections.1.bullets.0": {
       "t": "1. el usuario envía una pregunta; el sistema escribe una versión limpia de ella (a veces expandida por un LLM de query expansion).",

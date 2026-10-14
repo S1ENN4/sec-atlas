@@ -15,14 +15,14 @@ export const regressionEvals: Topic = {
       heading: "O que é",
       body: [
         "Regression eval é uma suite de casos que não muda junto com o código. Você congela o dataset (input, gabarito, métrica), e cada PR é avaliado contra esse dataset. Se uma métrica cai abaixo do baseline, o PR falha e o merge trava. O objetivo é simples: parar de discutir se a mudança melhorou ou piorou.",
-        "A diferença para o eval genérico é a imutação. O eval do PR pode crescer, ser editado, incluir casos novos. O regression eval é contrato: igual ao da última release, com a única mudança permitida sendo a versão baseline.",
+        "A diferença para o eval genérico é a imutabilidade. O eval do PR pode crescer, ser editado, incluir casos novos. O regression eval é contrato: igual ao da última release, com a única mudança permitida sendo a versão baseline.",
       ],
     },
     {
       heading: "Dataset imutável versus dataset vivo",
       body: [
-        "A manutenção do dataset é onde a maioria dos times erra. Dois caminhos. Imutável puro: dataset freezeado a cada release, só cresce quando uma regressão é detectada e adicionada como caso novo. Versátil: dataset versionado (git LFS), PR pode propor casos, merge só aceita se aumentar a cobertura.",
-        "A escolha muda o que 'regressão' significa. Imutável puro detecta só drift; versátil detecta drift e adiciona novos buracos. Para times que ainda estão aprendendo o que medir, versátil vence. Para times que têm o produto estável há meses, imutável vence, porque a suite vira contrato de SLA.",
+        "A manutenção do dataset é onde a maioria dos times erra. Dois caminhos. Imutável puro: dataset freezeado a cada release, só cresce quando uma regressão é detectada e adicionada como caso novo. Vivo: dataset versionado (git LFS), PR pode propor casos, merge só aceita se aumentar a cobertura.",
+        "A escolha muda o que 'regressão' significa. Imutável puro detecta só drift; vivo detecta drift e adiciona novos buracos. Para times que ainda estão aprendendo o que medir, o vivo vence. Para times que têm o produto estável há meses, imutável vence, porque a suite vira contrato de SLA.",
       ],
     },
     {
@@ -34,7 +34,7 @@ export const regressionEvals: Topic = {
         {
           language: "typescript",
           filename: "regression/run.ts (estilo promptfoo + Braintrust CI)",
-          code: "import fs from \"node:fs\";\nimport { runAgent } from \"../src/agent\";\nimport { assertFidelidade, assertRelevancia } from \"./asserts\";\nimport { loadBaseline, saveBaseline } from \"./baseline\";\n\ntype Case = { id: string; pergunta: string; gabarito: string; contexto: string };\n\ntype Metric = \"fidelidade\" | \"relevancia\";\n\nasync function runOne(c: Case) {\n  const out = await runAgent({ pergunta: c.pergunta, contexto: c.contexto });\n  return {\n    id: c.id,\n    fidelidade: await assertFidelidade(out, c.gabarito, c.contexto),\n    relevancia: await assertRelevancia(out, c.pergunta),\n  };\n}\n\nexport async function runRegressionSuite(path: string) {\n  const cases: Case[] = parseCases(fs.readFileSync(path, \"utf8\"));\n  const baseline = loadBaseline(\"regression.baseline.json\");\n  const results = await Promise.all(cases.map(runOne));\n  const report: Record<Metric, number> = { fidelidade: 0, relevancia: 0 };\n  for (const m of [\"fidelidade\", \"relevancia\"] as Metric[]) {\n    const avg = results.reduce((a, r) => a + r[m], 0) / results.length;\n    report[m] = avg;\n    const drop = baseline[m] - avg;\n    if (drop > 0.02) throw new Error(`regressão em ${m}: baseline ${baseline[m]} vs atual ${avg}`);\n  }\n  return report; // CI consome e decide gate",
+          code: "import fs from \"node:fs\";\nimport { runAgent } from \"../src/agent\";\nimport { assertFidelidade, assertRelevancia } from \"./asserts\";\nimport { loadBaseline, saveBaseline } from \"./baseline\";\n\ntype Case = { id: string; pergunta: string; gabarito: string; contexto: string };\n\ntype Metric = \"fidelidade\" | \"relevancia\";\n\nasync function runOne(c: Case) {\n  const out = await runAgent({ pergunta: c.pergunta, contexto: c.contexto });\n  return {\n    id: c.id,\n    fidelidade: await assertFidelidade(out, c.gabarito, c.contexto),\n    relevancia: await assertRelevancia(out, c.pergunta),\n  };\n}\n\nexport async function runRegressionSuite(path: string) {\n  const cases: Case[] = parseCases(fs.readFileSync(path, \"utf8\"));\n  const baseline = loadBaseline(\"regression.baseline.json\");\n  const results = await Promise.all(cases.map(runOne));\n  const report: Record<Metric, number> = { fidelidade: 0, relevancia: 0 };\n  for (const m of [\"fidelidade\", \"relevancia\"] as Metric[]) {\n    const avg = results.reduce((a, r) => a + r[m], 0) / results.length;\n    report[m] = avg;\n    const drop = baseline[m] - avg;\n    if (drop > 0.02) throw new Error(`regressão em ${m}: baseline ${baseline[m]} vs atual ${avg}`);\n  }\n  return report; // CI consome e decide gate\n}",
         },
       ],
     },

@@ -1,8 +1,8 @@
 {
   "entries": {
     "sections.0.body.0": {
-      "t": "Every agent, from the simplest to the most complex, runs the same loop four times, until it exhausts a step budget or reaches a final answer:",
-      "h": "516ab361"
+      "t": "Every agent, from the simplest to the most complex, runs the same four-step loop, until it exhausts a step budget or reaches a final answer:",
+      "h": "ca84da09"
     },
     "sections.0.body.1": {
       "t": "1. perceive: the agent looks at the current state (system prompt, history, result of the last action) and what the user asked for.",
@@ -10,7 +10,7 @@
     },
     "sections.0.body.2": {
       "t": "2. decide: the LLM produces either a final answer to the user, or a tool call with structured arguments.",
-      "h": "1a085695"
+      "h": "5dd22237"
     },
     "sections.0.body.3": {
       "t": "3. act: the runtime validates the arguments against the tool's schema, executes it and captures the result.",
@@ -21,8 +21,8 @@
       "h": "1981bc75"
     },
     "sections.0.body.5": {
-      "t": "The reasoning part is only worth anything if the loop terminates, and that is why every framework exposes a maximum step limit and an explicit end criterion.",
-      "h": "50b5d9c0"
+      "t": "An agent is only worth anything if the loop terminates, which is why every framework exposes a maximum step limit and an explicit stop criterion.",
+      "h": "f18cc671"
     },
     "sections.0.code.0.code": {
       "t": "type Step = { kind: 'final'; answer: string }\n       | { kind: 'tool';    tool: string; args: unknown };\n\nasync function agentLoop(state, llm, tools, maxSteps = 8) {\n  for (let i = 0; i < maxSteps; i++) {\n    const step: Step = await llm.decide(state);   // perceive + decide\n    if (step.kind === 'final') return step.answer; // end\n    const out = await tools[step.tool].run(step.args); // act\n    state = state.observe(step, out);              // observe\n  }\n  throw new Error('loop budget exhausted');\n}",
@@ -57,8 +57,8 @@
       "h": "b4456e51"
     },
     "sections.2.code.0.code": {
-      "t": "import { StateGraph, END } from '@langchain/langgraph';\nimport { ChatAnthropic } from '@langchain/anthropic';\n\ntype S = { messages: Array<{ role: string; content: string }> };\n\nconst llm = new ChatAnthropic({ model: 'claude-opus-4' });\nconst tools = { search: { run: async (q: string) => `result for ${q}` } };\n\nconst graph = new StateGraph<S>({ channels: { messages: { value: [] } } })\n  .addNode('llm', async (s) => ({ messages: s.messages.concat([await llm.invoke(s.messages)]) }))\n  .addNode('tool', async (s) => ({ messages: s.messages.concat([{ role: 'tool', content: 'ok' }]) }))\n  .addEdge('__start__', 'llm')\n  .addConditionalEdges('llm',\n    (s) => s.messages.at(-1)?.content.startsWith('CALL ') ? 'tool' : END,\n    { tool: 'tool', [END]: END })\n  .addEdge('tool', 'llm')\n  .compile();\n\nconst out = await graph.invoke({ messages: [{ role: 'user', content: 'what is the capital of France?' }] });",
-      "h": "60980232"
+      "t": "import { StateGraph, END } from '@langchain/langgraph';\nimport { ChatAnthropic } from '@langchain/anthropic';\n\ntype S = { messages: Array<{ role: string; content: string }> };\n\nconst llm = new ChatAnthropic({ model: 'claude-sonnet-5-5' });\nconst tools = { search: { run: async (q: string) => `result for ${q}` } };\n\nconst graph = new StateGraph<S>({ channels: { messages: { value: [] } } })\n  .addNode('llm', async (s) => ({ messages: s.messages.concat([await llm.invoke(s.messages)]) }))\n  .addNode('tool', async (s) => ({ messages: s.messages.concat([{ role: 'tool', content: 'ok' }]) }))\n  .addEdge('__start__', 'llm')\n  .addConditionalEdges('llm',\n    (s) => s.messages.at(-1)?.content.startsWith('CALL ') ? 'tool' : END,\n    { tool: 'tool', [END]: END })\n  .addEdge('tool', 'llm')\n  .compile();\n\nconst out = await graph.invoke({ messages: [{ role: 'user', content: 'what is the capital of France?' }] });",
+      "h": "dd6f22b6"
     },
     "sections.2.code.0.filename": {
       "t": "research-agent.tsx",
@@ -69,28 +69,28 @@
       "h": "3ecbd26d"
     },
     "sections.3.body.0": {
-      "t": "DeepAgents, launched in 2025, generalize the graph model to multiple cooperating agents: each subagent is a node with its own prompt, tools and budget, and the graph describes who delegates to whom. The orchestrator decomposes the task, assigns subtasks to subagents and consolidates the result.",
-      "h": "cbc68f61"
+      "t": "Deep Agents is an open-source (MIT license) agent harness from LangChain, built on LangGraph. Instead of asking you to assemble the graph, it ships an agent that already works and can be extended piece by piece: subagents that receive delegated tasks with isolated context windows, a filesystem (local, sandboxed or remote) to read, write and search, context management (summarizing long conversations and offloading tool outputs to disk), shell access in a sandbox, persistent memory, human approval of tool calls, on-demand skills, custom tools and MCP servers.",
+      "h": "3ff9beb3"
     },
     "sections.3.body.1": {
-      "t": "The practical difference from a classic framework is that the unit of composition is no longer a tool but an entire agent. When the task is 'research, analyze and write', you instantiate three subagents and connect them in a graph, instead of trying a single agent with 40 tools and a monster prompt.",
-      "h": "a1fa7ce6"
+      "t": "The difference from a graph framework is the starting point: instead of drawing nodes and edges, you start from a complete agent and swap the model, the prompt, the tools or the backend as needed. Security follows the 'trust the LLM' model: the protective barrier has to live in the tools and the sandbox, never in the model.",
+      "h": "38aa95df"
     },
     "sections.3.code.0.code": {
-      "t": "from deepagents import Agent, Graph, tool as tasks\n\n\n@tasks\ndef fetch_url(url: str) -> str:\n    \"\"\"Fetches the raw content of a URL.\"\"\"\n    return requests.get(url, timeout=10).text\n\nresearcher = Agent(name='researcher', system='research primary sources', tools=[fetch_url])\nanalyst    = Agent(name='analyst',    system='synthesize findings into bullet points')\nwriter     = Agent(name='writer',     system='produce the final report')\n\ngraph = Graph()\ngraph.add_edge('__start__', researcher)\ngraph.add_edge(researcher,   analyst)\ngraph.add_edge(analyst,      writer)\ngraph.add_edge(writer,       '__end__')\n\nreport = graph.run('report on the LLM market in 2026')",
-      "h": "8360fa62"
+      "t": "from deepagents import create_deep_agent\n\nagent = create_deep_agent(\n    model=\"provider:model-name\",   # swap in the model you use\n    system_prompt=\"You are a research assistant. Cite your sources.\",\n)\n\nresult = agent.invoke({\"messages\": \"Research what LangGraph is and write a 5-line summary\"})",
+      "h": "fd23449e"
     },
     "sections.3.code.0.filename": {
       "t": "deepagents.py",
       "h": "61be5693"
     },
     "sections.3.heading": {
-      "t": "DeepAgents (2025-2026): a graph of subagents",
-      "h": "2b715b7e"
+      "t": "Deep Agents: a ready-made harness on top of LangGraph",
+      "h": "4bac9073"
     },
     "sections.4.body.0": {
-      "t": "CrewAI focuses on teams with fixed roles (researcher, writer, reviewer) and a more opinionated delegation process; it is fast for prototypes where the division of labor is known. AutoGen, from Microsoft, generalizes to multiple agents conversing with each other, useful for exploration but with a tendency toward long loops and hard-to-control cost.",
-      "h": "b140d31d"
+      "t": "CrewAI focuses on teams with fixed roles (researcher, writer, reviewer) and a more opinionated delegation process; it is fast for prototypes where the division of work is known. AutoGen, from Microsoft (now in maintenance mode, with the Microsoft Agent Framework as its successor), generalizes to multiple agents talking to each other, useful for exploration but prone to long loops and hard-to-control cost.",
+      "h": "5de75482"
     },
     "sections.4.body.1": {
       "t": "The choice between frameworks is rarely technical: it is about the level of structure you want in the graph. The more fixed each node's role, the easier to audit; the more flexible, the more powerful for ill-defined tasks and the more expensive to operate.",

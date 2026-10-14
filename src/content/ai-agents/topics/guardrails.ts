@@ -15,7 +15,7 @@ export const guardrails: Topic = {
       heading: "O que é",
       body: [
         "Guardrail é uma camada de validação que fica entre o usuário e o agente, e entre o agente e a resposta final. Em cada turno, duas bordas: a borda de cima analisa a mensagem do usuário (e o histórico, e os documentos que vão entrar como contexto) e decide se passa, bloqueia ou reescreve. A borda de baixo faz o mesmo com a saída do agente antes dela alcançar quem pediu.",
-        "A diferença para o eval é a posição no tempo. Eval mede qualidade depois que a resposta foi gerada, em batch ou em amostragem. Guarda age agora, em cada request. São complementares. Quem substitui um pelo outro vira teatro de segurança: o eval lento demais para bloquear e o guardrail sozinho sem visão da qualidade geral.",
+        "A diferença para o eval é a posição no tempo. Eval mede qualidade depois que a resposta foi gerada, em batch ou em amostragem. O guardrail age agora, em cada request. São complementares. Quem substitui um pelo outro vira teatro de segurança: o eval lento demais para bloquear e o guardrail sozinho sem visão da qualidade geral.",
       ],
     },
     {
@@ -29,7 +29,7 @@ export const guardrails: Topic = {
       heading: "Saída: schema, PII, política",
       body: [
         "A saída precisa de três camadas também. Validação de schema garante que a resposta final tem a forma esperada (JSON tipado, markdown válido, links com host confiável). Máscara de PII redige email, telefone, endereço que o modelo tenha inventado ou copiado. Política rejeita conteúdo proibido pelo negócio (concorrente citado, jurisdição restrita, categoria sensível).",
-        "A camada de schema merece atenção especial. Sem schema válido, o frontend não renderiza e o agente parece quebrado. Por isso o guardrail de saída começa quase-falino: melhor bloquear uma resposta válida e devolver fallback do que entregar resposta que quebra o consumidor.",
+        "A camada de schema merece atenção especial. Sem schema válido, o frontend não renderiza e o agente parece quebrado. Por isso o guardrail de saída começa fail-closed: melhor bloquear uma resposta válida e devolver fallback do que entregar resposta que quebra o consumidor.",
       ],
     },
     {
@@ -71,7 +71,7 @@ export const guardrails: Topic = {
       heading: "Limitações",
       bullets: [
         "falso negativo em ataque novo: prompt injection evolui, e o detector treinado em 2024 erra em 2026",
-        "custo de latência: cada camada a mais sincrona é visível no SLA, e pipeline de 5 guardrails começa a parecer caro",
+        "custo de latência: cada camada síncrona a mais é visível no SLA, e pipeline de 5 guardrails começa a parecer caro",
         "cegueira de qualidade: bloqueia o perigoso, mas não mede se o que passou é bom, e isso continua sendo do eval",
       ],
     },

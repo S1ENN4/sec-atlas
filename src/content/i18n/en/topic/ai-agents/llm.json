@@ -89,16 +89,16 @@
       "h": "46f7f26f"
     },
     "sections.4.bullets.4": {
-      "t": "keep secrets by itself: secrets in the system prompt do not stay secret forever; the prompt leaks via exfiltrated logs",
-      "h": "597b8f40"
+      "t": "secrecy alone: secrets in the system prompt do not stay secret forever; the prompt can leak through logs, prompt injection or extraction",
+      "h": "d4a563dd"
     },
     "sections.4.heading": {
       "t": "What the model does not do",
       "h": "c38e7545"
     },
     "sections.5.bullets.0": {
-      "t": "finite context window: go past the limit and the history disappears; go past the limit and the cost of the view changes.",
-      "h": "6e19ee12"
+      "t": "finite context window: once past the limit, the start of the history no longer exists for the model",
+      "h": "f4f75f77"
     },
     "sections.5.bullets.1": {
       "t": "the model is not deterministic: the same question can generate different answers on each call; temperature controls this",
@@ -109,8 +109,8 @@
       "h": "b7c4db66"
     },
     "sections.5.bullets.3": {
-      "t": "cost grows with use: agents that call the LLM several times per task multiply the cost, times the usage",
-      "h": "a0020c53"
+      "t": "cost grows with usage: agents that call the LLM several times per task multiply the cost at every step",
+      "h": "8519dad7"
     },
     "sections.5.heading": {
       "t": "Limitations",

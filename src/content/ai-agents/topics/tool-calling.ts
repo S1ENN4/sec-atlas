@@ -22,7 +22,7 @@ export const toolCalling: Topic = {
       heading: "O schema JSON: o contrato",
       body: [
         "Cada ferramenta é declarada para o modelo por um schema JSON com nome, descrição e parâmetros tipados. O LLM usa esse schema como gramática: ele sabe o nome, sabe o formato dos argumentos e usa a descrição para decidir quando faz sentido chamar.",
-        "A descrição é a parte mais negligenciada. O LLM não lê código: ele lê a string. 'Obtém o clima de uma cidade' é melhor que 'get_weather', porque o modelo decide quando chamar baseado em prosa. Schemas com descrições ruins geram chamadas certas ou erradas.",
+        "A descrição é a parte mais negligenciada. O LLM não lê código: ele lê a string. 'Obtém o clima de uma cidade' é melhor que 'get_weather', porque o modelo decide quando chamar baseado em prosa. Schemas com descrições ruins levam o modelo a chamar a ferramenta na hora errada, ou a não chamá-la.",
       ],
       code: [
         {
@@ -49,7 +49,7 @@ export const toolCalling: Topic = {
     {
       heading: "O fluxo completo, fim a fim",
       body: [
-        "A chamada de ferramenta atravessa cinco etapas, cada uma com uma resposta possível e um caminho de erro distinto. Sem ver os cinco, parece mágica — e os bugs não-estão.",
+        "A chamada de ferramenta atravessa cinco etapas, cada uma com uma resposta possível e um caminho de erro distinto. Sem ver os cinco, parece mágica — e os bugs ficam escondidos.",
         "1. declaração: a lista de schemas é entregue ao LLM junto do prompt.",
         "2. proposta: o LLM devolve tool_calls com name + JSON arguments.",
         "3. validação: o runtime parseia e valida contra o schema — falha aqui significa 'o modelo alucinou'; trate como erro e devolva o motivo ao LLM.",
@@ -60,7 +60,7 @@ export const toolCalling: Topic = {
         {
           language: "typescript",
           filename: "runtime.tsx",
-          code: "import Anthropic from '@anthropic-ai/sdk';\nimport { z } from 'zod';\n\nconst GetWeather = z.object({\n  city: z.string().min(1),\n  unit: z.enum(['celsius', 'fahrenheit']).default('celsius'),\n});\n\nasync function run(anthropic: Anthropic, userMessage: string) {\n  const tools = [{\n    name: 'get_weather',\n    description: 'Obtém o clima atual de uma cidade.',\n    input_schema: /* shape JSON do schema */,\n  }];\n\n  let msg = await anthropic.messages.create({\n    model: 'claude-opus-4', max_tokens: 1024, tools,\n    messages: [{ role: 'user', content: userMessage }],\n  });\n\n  if (msg.stop_reason === 'tool_use') {\n    const call = msg.content.find((b) => b.type === 'tool_use');\n    const parsed = GetWeather.safeParse(call.input);\n    if (!parsed.success) return { error: 'invalid_args', issues: parsed.error.issues };\n    const result = await fetchWeather(parsed.data.city, parsed.data.unit);\n    msg = await anthropic.messages.create({\n      model: 'claude-opus-4', max_tokens: 1024, tools,\n      messages: [\n        { role: 'user',     content: userMessage },\n        { role: 'assistant',content: msg.content },\n        { role: 'user',     content: [{ type: 'tool_result', tool_use_id: call.id, content: JSON.stringify(result) }] },\n      ],\n    });\n  }\n  return msg;\n}",
+          code: "import Anthropic from '@anthropic-ai/sdk';\nimport { z } from 'zod';\n\nconst GetWeather = z.object({\n  city: z.string().min(1),\n  unit: z.enum(['celsius', 'fahrenheit']).default('celsius'),\n});\n\nasync function run(anthropic: Anthropic, userMessage: string) {\n  const tools = [{\n    name: 'get_weather',\n    description: 'Obtém o clima atual de uma cidade.',\n    input_schema: z.toJSONSchema(GetWeather),\n  }];\n\n  let msg = await anthropic.messages.create({\n    model: 'claude-sonnet-5-5', max_tokens: 1024, tools,\n    messages: [{ role: 'user', content: userMessage }],\n  });\n\n  if (msg.stop_reason === 'tool_use') {\n    const call = msg.content.find((b) => b.type === 'tool_use');\n    const parsed = GetWeather.safeParse(call.input);\n    if (!parsed.success) return { error: 'invalid_args', issues: parsed.error.issues };\n    const result = await fetchWeather(parsed.data.city, parsed.data.unit);\n    msg = await anthropic.messages.create({\n      model: 'claude-sonnet-5-5', max_tokens: 1024, tools,\n      messages: [\n        { role: 'user',     content: userMessage },\n        { role: 'assistant',content: msg.content },\n        { role: 'user',     content: [{ type: 'tool_result', tool_use_id: call.id, content: JSON.stringify(result) }] },\n      ],\n    });\n  }\n  return msg;\n}",
         },
       ],
     },
@@ -68,9 +68,9 @@ export const toolCalling: Topic = {
       heading: "Por que não dá para pular a validação",
       bullets: [
         "o modelo pode inventar campos: ele viu 1000 schemas diferentes, não garante consistência",
-        "tipos são garantidos, valores não: ele sabe que 'unit' é string, mas pode mandar 'celcius' (typo) por 2s",
-        "enums são a fronteira mais comum de erro: o modelo raramente respeita o enum sem prompt explícito",
-        "validação é barata: custa microssegundos; execução não validada pode permitir ordem de execução crítica",
+        "tipos são garantidos, valores não: ele sabe que 'unit' é string, mas pode mandar 'celcius' (com erro de digitação)",
+        "enums são a fronteira mais comum de erro: o modelo nem sempre respeita o enum, principalmente sem structured output estrito",
+        "validação é barata: custa microssegundos; execução sem validação pode disparar uma ação crítica com argumentos errados",
       ],
     },
     {
@@ -78,7 +78,7 @@ export const toolCalling: Topic = {
       bullets: [
         "forte: o schema força estrutura — o modelo não precisa 'tentar' produzir JSON válido; ele está produzindo tokens dentro de uma gramática",
         "forte: erros de validação devolvem mensagem rica para o modelo, que quase sempre se corrige no próximo turno",
-        "fraco: descrição ruim leva a chamadas certas ou erradas — escrever schema bom é trabalho de design",
+        "fraco: descrição ruim leva a chamadas na hora errada — escrever schema bom é trabalho de design",
         "fraco: a chamada é opaca para o usuário — se ele não ler o trace, não sabe que ferramenta rodou",
         "fraco: paralelismo depende do provedor — alguns permitem várias tool_calls em uma resposta, outros só uma",
       ],

@@ -5,8 +5,8 @@
       "h": "07279d7f"
     },
     "sections.0.body.1": {
-      "t": "La diferencia con el eval es la posición en el tiempo. El eval mide la calidad después de que se generó la respuesta, en batch o por muestreo. El guardrail actúa ahora, en cada request. Son complementarios. Quien reemplaza uno por el otro crea teatro de seguridad: un eval demasiado lento para bloquear y un guardrail solo sin visión de la calidad general.",
-      "h": "1697b5f5"
+      "t": "La diferencia con el eval es la posición en el tiempo. El eval mide calidad después de que la respuesta fue generada, en batch o por muestreo. El guardrail actúa ahora, en cada request. Son complementarios. Quien reemplaza uno por el otro termina en teatro de seguridad: el eval demasiado lento para bloquear y el guardrail solo, sin visión de la calidad general.",
+      "h": "d0afed43"
     },
     "sections.0.heading": {
       "t": "Qué es",
@@ -29,8 +29,8 @@
       "h": "dcf680e7"
     },
     "sections.2.body.1": {
-      "t": "La capa de schema merece atención especial. Sin un schema válido, el frontend no renderiza y el agente parece roto. Por eso el guardrail de salida arranca casi paranoico: es mejor bloquear una respuesta válida y devolver un fallback que entregar una respuesta que rompe al consumidor.",
-      "h": "6f580b06"
+      "t": "La capa de schema merece atención especial. Sin un schema válido, el frontend no renderiza y el agente parece roto. Por eso el guardrail de salida empieza fail-closed: es mejor bloquear una respuesta válida y devolver un fallback que entregar una respuesta que rompe al consumidor.",
+      "h": "5e472ed0"
     },
     "sections.2.heading": {
       "t": "Salida: schema, PII, política",
@@ -97,8 +97,8 @@
       "h": "2706af06"
     },
     "sections.7.bullets.1": {
-      "t": "costo de latencia: cada capa síncrona adicional se ve en el SLA, y un pipeline de 5 guardrails empieza a parecer caro",
-      "h": "6805d8b8"
+      "t": "costo de latencia: cada capa síncrona adicional se nota en el SLA, y un pipeline de 5 guardrails empieza a parecer caro",
+      "h": "50d175fa"
     },
     "sections.7.bullets.2": {
       "t": "ceguera de calidad: bloquea lo peligroso, pero no mide si lo que pasó es bueno, y eso sigue siendo del eval",

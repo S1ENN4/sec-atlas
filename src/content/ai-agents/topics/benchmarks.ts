@@ -21,7 +21,7 @@ export const benchmarks: Topic = {
     {
       heading: "Os quatro que importam",
       body: [
-        "SWE-bench (Verified) é o padrão de fato para coding agents. Cerca de 500 issues reais do GitHub, cada uma com a descrição do bug e o teste que valida o fix. O agente recebe o repositório, lê o código, propõe patch e roda os testes. Um agente que resolve patch resolve N% do benchmark.",
+        "SWE-bench (Verified) é o padrão de fato para coding agents. Cerca de 500 issues reais do GitHub, cada uma com a descrição do bug e o teste que valida o fix. O agente recebe o repositório, lê o código, propõe patch e roda os testes. A nota é a porcentagem de issues cujo patch passa nos testes.",
         "GAIA mede agente de propósito geral em tarefas multi-hop (cruzar fontes, ler PDF, somar valores). Mistura ferramenta, raciocínio e recuperação. É o benchmark mais usado para comparar agentes que navegam a web.",
         "τ-bench (tau-bench) foca em diálogo agente vs usuário simulado, com ferramentas e políticas. Mede se o agente cumpre a tarefa do cliente sem estourar orçamento de tool calls. É referência recente (2024) e ganhou tração em atendimento.",
         "HumanEval é o pai de todos: 164 problemas de código em Python, função gera função, asserts validam. Continua útil como sanity check de modelo puro, mas qualquer agente moderno passa sem suar.",

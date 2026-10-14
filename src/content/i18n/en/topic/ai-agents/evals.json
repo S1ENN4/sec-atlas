@@ -17,8 +17,8 @@
       "h": "ac842f04"
     },
     "sections.1.body.1": {
-      "t": "The metric defines what is 'good'. Faithfulness asks whether the answer is faithful to the retrieved context (without inventing a source). Relevance asks whether it answers what was asked. Groundedness asks whether each claim has support extracted from the context, not invented by the model. Each metric becomes a deterministic function or a judge prompt; both live in the same file.",
-      "h": "02211010"
+      "t": "The metric defines what 'good' is. Faithfulness asks whether the answer is faithful to the retrieved context (no invented sources). Relevance asks whether it answers what was asked. Groundedness asks whether every claim is supported by the context and was not made up by the model. Each metric becomes a deterministic function or a judge prompt; both live in the same file.",
+      "h": "0fe7ed36"
     },
     "sections.1.body.2": {
       "t": "The runner is the glue. It receives the dataset, walks through each case, calls the agent with a timeout, captures the output (and the chain of tool calls, if it is an agent), applies the metric and returns a report in JSON or CSV. It is the component that goes into CI.",
@@ -45,8 +45,8 @@
       "h": "c6729797"
     },
     "sections.3.body.0": {
-      "t": "Faithfulness (groundedness) compares each sentence of the answer with the retrieved context. If the model claims something without extracted support, it loses points. It is the metric that catches hallucination earliest.",
-      "h": "63122a2b"
+      "t": "Faithfulness (groundedness) compares each sentence of the answer with the retrieved context. If the model claims something with no support in the context, it loses points. It is the metric that catches hallucination earliest.",
+      "h": "bfed2c34"
     },
     "sections.3.body.1": {
       "t": "Relevance measures whether the answer covers what was asked. An LLM judge with a binary rubric (answered / did not answer) already solves it. The catch is the technically correct answer that ignores the question, and the metric needs to catch that.",
@@ -113,8 +113,8 @@
       "h": "0d5073b5"
     },
     "sections.7.bullets.2": {
-      "t": "cost: running 500 cases with an LLM judge costs money, takes time and demands rate limiting on the judge's API",
-      "h": "7716f507"
+      "t": "cost: running 500 cases with an LLM judge is billed per token, takes time and requires respecting the judge API's rate limit",
+      "h": "f08835ed"
     },
     "sections.7.heading": {
       "t": "Limitations",

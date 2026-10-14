@@ -22,7 +22,7 @@ export const evals: Topic = {
       heading: "Dataset, métrica e runner",
       body: [
         "O dataset precisa ter cobertura real: casos fáceis (smoke), casos de borda (contradição no histórico, ferramenta que falha) e casos adversariais (instrução maliciosa embutida num documento recuperado). 50 casos bem escolhidos vencem 5.000 casos gerados por template. Cobertura importa mais que volume.",
-        "A métrica define o que é 'bom'. Fidelidade pergunta se ela é fiel ao contexto recuperado (sem inventar fonte). Relevância pergunta se ela responde o que foi pedido. Groundedness pergunta se cada afirmação tem cabimento extraído, não inventado pelo modelo. Cada métrica vira uma função determinística ou um prompt de juiz; as duas moram no mesmo arquivo.",
+        "A métrica define o que é 'bom'. Fidelidade pergunta se a resposta é fiel ao contexto recuperado (sem inventar fonte). Relevância pergunta se ela responde o que foi pedido. Groundedness pergunta se cada afirmação tem apoio no contexto, e não foi inventada pelo modelo. Cada métrica vira uma função determinística ou um prompt de juiz; as duas moram no mesmo arquivo.",
         "O runner é a cola. Recebe o dataset, percorre cada caso, chama o agente com timeout, captura a saída (e a cadeia de tool calls, se for agente), aplica a métrica e devolve um relatório em JSON ou CSV. É o componente que entra no CI.",
       ],
     },
@@ -42,7 +42,7 @@ export const evals: Topic = {
     {
       heading: "Métricas: as três que importam",
       body: [
-        "Fidelidade (groundedness) compara cada frase da resposta com o contexto recuperado. Se o modelo afirmar algo sem cabimento extraído, perde pontos. É a métrica que mais cedo pega alucinação.",
+        "Fidelidade (groundedness) compara cada frase da resposta com o contexto recuperado. Se o modelo afirmar algo sem apoio no contexto, perde pontos. É a métrica que mais cedo pega alucinação.",
         "Relevância mede se a resposta cobre o que foi perguntado. Um juiz LLM com rubrica binária (respondeu / não respondeu) já resolve. A pegadinha é a resposta tecnicamente correta que ignora a pergunta, e a métrica precisa pegar isso.",
         "Qualidade geral (helpfulness, completeness) agrega tudo: tom, clareza, utilidade. Costuma ser a mais subjetiva e onde o juiz humano brilha. Reserve-a para amostras pequenas, não para 100% do dataset.",
       ],
@@ -80,7 +80,7 @@ export const evals: Topic = {
       bullets: [
         "métricas ruins passam a iludir: juiz LLM não calibrado vira carimbo que aceita qualquer coisa",
         "dataset parado envelhece: o agente evolui, a suite não, e a métrica para de refletir a realidade",
-        "custo: rodar 500 casos com juiz LLM cobra tempo, leva tempo e exige rate limit na API do juiz",
+        "custo: rodar 500 casos com juiz LLM cobra por token, leva tempo e exige respeitar o rate limit da API do juiz",
       ],
     },
   ],

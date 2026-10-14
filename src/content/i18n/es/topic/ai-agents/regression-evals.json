@@ -5,20 +5,20 @@
       "h": "494be4c5"
     },
     "sections.0.body.1": {
-      "t": "La diferencia con el eval genérico es la inmutabilidad. El eval del PR puede crecer, editarse, incluir casos nuevos. El regression eval es un contrato: igual al de la última release, con el único cambio permitido siendo la versión del baseline.",
-      "h": "ee5597f2"
+      "t": "La diferencia con el eval genérico es la inmutabilidad. El eval del PR puede crecer, editarse, incluir casos nuevos. El regression eval es un contrato: igual al de la última release, con el único cambio permitido siendo la versión baseline.",
+      "h": "236a6167"
     },
     "sections.0.heading": {
       "t": "Qué es",
       "h": "ba449822"
     },
     "sections.1.body.0": {
-      "t": "El mantenimiento del dataset es donde la mayoría de los equipos se equivoca. Dos caminos. Inmutable puro: un dataset congelado en cada release, que solo crece cuando se detecta una regresión y se agrega como caso nuevo. Versátil: un dataset versionado (git LFS), donde un PR puede proponer casos, y el merge solo acepta si aumenta la cobertura.",
-      "h": "ac04a746"
+      "t": "El mantenimiento del dataset es donde la mayoría de los equipos se equivoca. Dos caminos. Inmutable puro: dataset congelado en cada release, solo crece cuando se detecta una regresión y se agrega como caso nuevo. Vivo: dataset versionado (git LFS), un PR puede proponer casos, y el merge solo los acepta si aumenta la cobertura.",
+      "h": "d6da3342"
     },
     "sections.1.body.1": {
-      "t": "La elección cambia lo que 'regresión' significa. El inmutable puro detecta solo drift; el versátil detecta drift y agrega nuevos huecos. Para equipos que todavía están aprendiendo qué medir, gana el versátil. Para equipos con un producto estable desde hace meses, gana el inmutable, porque la suite se vuelve un contrato de SLA.",
-      "h": "9d7b476d"
+      "t": "La elección cambia lo que significa 'regresión'. El inmutable puro solo detecta drift; el vivo detecta drift y agrega nuevos huecos. Para equipos que aún están aprendiendo qué medir, gana el vivo. Para equipos con un producto estable desde hace meses, gana el inmutable, porque la suite se vuelve un contrato de SLA.",
+      "h": "15b8c26c"
     },
     "sections.1.heading": {
       "t": "Dataset inmutable versus dataset vivo",
@@ -29,8 +29,8 @@
       "h": "94e6755f"
     },
     "sections.2.code.0.code": {
-      "t": "import fs from \"node:fs\";\nimport { runAgent } from \"../src/agent\";\nimport { assertFidelidade, assertRelevancia } from \"./asserts\";\nimport { loadBaseline, saveBaseline } from \"./baseline\";\n\ntype Case = { id: string; pergunta: string; gabarito: string; contexto: string };\n\ntype Metric = \"fidelidade\" | \"relevancia\";\n\nasync function runOne(c: Case) {\n  const out = await runAgent({ pergunta: c.pergunta, contexto: c.contexto });\n  return {\n    id: c.id,\n    fidelidade: await assertFidelidade(out, c.gabarito, c.contexto),\n    relevancia: await assertRelevancia(out, c.pergunta),\n  };\n}\n\nexport async function runRegressionSuite(path: string) {\n  const cases: Case[] = parseCases(fs.readFileSync(path, \"utf8\"));\n  const baseline = loadBaseline(\"regression.baseline.json\");\n  const results = await Promise.all(cases.map(runOne));\n  const report: Record<Metric, number> = { fidelidade: 0, relevancia: 0 };\n  for (const m of [\"fidelidade\", \"relevancia\"] as Metric[]) {\n    const avg = results.reduce((a, r) => a + r[m], 0) / results.length;\n    report[m] = avg;\n    const drop = baseline[m] - avg;\n    if (drop > 0.02) throw new Error(`regresión en ${m}: baseline ${baseline[m]} vs actual ${avg}`);\n  }\n  return report; // el CI lo consume y decide el gate",
-      "h": "1f557572"
+      "t": "import fs from \"node:fs\";\nimport { runAgent } from \"../src/agent\";\nimport { assertFidelidade, assertRelevancia } from \"./asserts\";\nimport { loadBaseline, saveBaseline } from \"./baseline\";\n\ntype Case = { id: string; pergunta: string; gabarito: string; contexto: string };\n\ntype Metric = \"fidelidade\" | \"relevancia\";\n\nasync function runOne(c: Case) {\n  const out = await runAgent({ pergunta: c.pergunta, contexto: c.contexto });\n  return {\n    id: c.id,\n    fidelidade: await assertFidelidade(out, c.gabarito, c.contexto),\n    relevancia: await assertRelevancia(out, c.pergunta),\n  };\n}\n\nexport async function runRegressionSuite(path: string) {\n  const cases: Case[] = parseCases(fs.readFileSync(path, \"utf8\"));\n  const baseline = loadBaseline(\"regression.baseline.json\");\n  const results = await Promise.all(cases.map(runOne));\n  const report: Record<Metric, number> = { fidelidade: 0, relevancia: 0 };\n  for (const m of [\"fidelidade\", \"relevancia\"] as Metric[]) {\n    const avg = results.reduce((a, r) => a + r[m], 0) / results.length;\n    report[m] = avg;\n    const drop = baseline[m] - avg;\n    if (drop > 0.02) throw new Error(`regresión en ${m}: baseline ${baseline[m]} vs actual ${avg}`);\n  }\n  return report; // el CI lo consume y decide el gate\n}",
+      "h": "8c0a86ae"
     },
     "sections.2.code.0.filename": {
       "t": "regression/run.ts (al estilo de promptfoo + Braintrust CI)",

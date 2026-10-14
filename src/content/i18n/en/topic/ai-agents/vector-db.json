@@ -37,8 +37,8 @@
       "h": "119325cd"
     },
     "sections.3.body.0": {
-      "t": "pgvector is PostgreSQL's vector extension: it runs alongside the relational database and lets you filter metadata in the WHERE clause before the search. The example creates the table with a 1536-dimension vector (typical size for text-embedding-3-small), inserts chunks and runs a top-5 search with a category filter.",
-      "h": "f377d93a"
+      "t": "pgvector is the PostgreSQL vector extension: it runs alongside the relational database and lets you combine vector search with metadata filters in the WHERE clause. Caution: with an HNSW index the filter is applied after the index scan, so a very restrictive filter can return fewer than k results (use iterative scan, partial indexes or partitioning). The example creates the table with a 1536-dimension vector (the typical size of text-embedding-3-small), inserts chunks and runs a top-5 search with a category filter.",
+      "h": "fcd0c4eb"
     },
     "sections.3.code.0.code": {
       "t": "-- creation\nCREATE EXTENSION IF NOT EXISTS vector;\n\nCREATE TABLE chunks (\n  id          BIGSERIAL,\n  doc_id      TEXT NOT NULL,\n  category    TEXT NOT NULL,\n  content     TEXT NOT NULL,\n  embedding   vector(1536),\n  PRIMARY KEY (id)\n);\n\nCREATE INDEX chunks_embedding_hnsw\n  ON chunks USING hnsw (embedding vector_cosine_ops);\nCREATE INDEX chunks_category_idx ON chunks (category);\n\n-- insertion (chunks with embeddings already computed in another step)\nINSERT INTO chunks (doc_id, category, content, embedding)\nVALUES ($1, $2, $3, $4);\n\n-- top-5 search with metadata filter\nSELECT id, doc_id, content,\n       1 - (embedding <=> $1::vector) AS score\nFROM chunks\nWHERE category = 'manual'\nORDER BY embedding <=> $1::vector\nLIMIT 5;",

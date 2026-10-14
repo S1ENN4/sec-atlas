@@ -1,16 +1,16 @@
 {
   "entries": {
     "sections.0.body.0": {
-      "t": "Todo agente, del más simple al más complejo, ejecuta el mismo loop cuatro veces, hasta agotar un presupuesto de pasos o llegar a una respuesta final:",
-      "h": "516ab361"
+      "t": "Todo agente, del más simple al más complejo, ejecuta el mismo loop de cuatro pasos, hasta agotar un presupuesto de pasos o llegar a una respuesta final:",
+      "h": "ca84da09"
     },
     "sections.0.body.1": {
       "t": "1. percibir: el agente mira el estado actual (system prompt, historial, resultado de la última acción) y lo que pidió el usuario.",
       "h": "161a1dfa"
     },
     "sections.0.body.2": {
-      "t": "2. decidir: el LLM produce o una respuesta final al usuario, o una llamada a herramienta con argumentos estructurados.",
-      "h": "1a085695"
+      "t": "2. decidir: el LLM produce o una respuesta final al usuario, o una llamada a una herramienta con argumentos estructurados.",
+      "h": "5dd22237"
     },
     "sections.0.body.3": {
       "t": "3. actuar: el runtime valida los argumentos contra el schema de la herramienta, la ejecuta y captura el resultado.",
@@ -21,8 +21,8 @@
       "h": "1981bc75"
     },
     "sections.0.body.5": {
-      "t": "La parte del razonamiento solo vale algo si el loop termina, y por eso todo framework expone un límite máximo de pasos y un criterio de fin explícito.",
-      "h": "50b5d9c0"
+      "t": "Un agente solo tiene valor si el loop termina, y por eso todo framework expone un límite máximo de pasos y un criterio de fin explícito.",
+      "h": "f18cc671"
     },
     "sections.0.code.0.code": {
       "t": "type Step = { kind: 'final'; answer: string }\n       | { kind: 'tool';    tool: string; args: unknown };\n\nasync function agentLoop(state, llm, tools, maxSteps = 8) {\n  for (let i = 0; i < maxSteps; i++) {\n    const step: Step = await llm.decide(state);   // percibir + decidir\n    if (step.kind === 'final') return step.answer; // fin\n    const out = await tools[step.tool].run(step.args); // actuar\n    state = state.observe(step, out);              // observar\n  }\n  throw new Error('loop budget exhausted');\n}",
@@ -57,8 +57,8 @@
       "h": "b4456e51"
     },
     "sections.2.code.0.code": {
-      "t": "import { StateGraph, END } from '@langchain/langgraph';\nimport { ChatAnthropic } from '@langchain/anthropic';\n\ntype S = { messages: Array<{ role: string; content: string }> };\n\nconst llm = new ChatAnthropic({ model: 'claude-opus-4' });\nconst tools = { search: { run: async (q: string) => `result for ${q}` } };\n\nconst graph = new StateGraph<S>({ channels: { messages: { value: [] } } })\n  .addNode('llm', async (s) => ({ messages: s.messages.concat([await llm.invoke(s.messages)]) }))\n  .addNode('tool', async (s) => ({ messages: s.messages.concat([{ role: 'tool', content: 'ok' }]) }))\n  .addEdge('__start__', 'llm')\n  .addConditionalEdges('llm',\n    (s) => s.messages.at(-1)?.content.startsWith('CALL ') ? 'tool' : END,\n    { tool: 'tool', [END]: END })\n  .addEdge('tool', 'llm')\n  .compile();\n\nconst out = await graph.invoke({ messages: [{ role: 'user', content: '¿cuál es la capital de Francia?' }] });",
-      "h": "60980232"
+      "t": "import { StateGraph, END } from '@langchain/langgraph';\nimport { ChatAnthropic } from '@langchain/anthropic';\n\ntype S = { messages: Array<{ role: string; content: string }> };\n\nconst llm = new ChatAnthropic({ model: 'claude-sonnet-5-5' });\nconst tools = { search: { run: async (q: string) => `result for ${q}` } };\n\nconst graph = new StateGraph<S>({ channels: { messages: { value: [] } } })\n  .addNode('llm', async (s) => ({ messages: s.messages.concat([await llm.invoke(s.messages)]) }))\n  .addNode('tool', async (s) => ({ messages: s.messages.concat([{ role: 'tool', content: 'ok' }]) }))\n  .addEdge('__start__', 'llm')\n  .addConditionalEdges('llm',\n    (s) => s.messages.at(-1)?.content.startsWith('CALL ') ? 'tool' : END,\n    { tool: 'tool', [END]: END })\n  .addEdge('tool', 'llm')\n  .compile();\n\nconst out = await graph.invoke({ messages: [{ role: 'user', content: '¿cuál es la capital de Francia?' }] });",
+      "h": "dd6f22b6"
     },
     "sections.2.code.0.filename": {
       "t": "research-agent.tsx",
@@ -69,28 +69,28 @@
       "h": "3ecbd26d"
     },
     "sections.3.body.0": {
-      "t": "DeepAgents, lanzados en 2025, generalizan el modelo de grafo a múltiples agentes cooperando: cada subagente es un nodo con su propio prompt, herramientas y presupuesto, y el grafo describe quién delega a quién. El orquestador descompone la tarea, asigna subtareas a los subagentes y consolida el resultado.",
-      "h": "cbc68f61"
+      "t": "Deep Agents es un agent harness de código abierto (licencia MIT) de LangChain, construido sobre LangGraph. En lugar de pedirte que armes el grafo, entrega un agente que ya funciona y que se puede extender pieza por pieza: subagentes que reciben tareas delegadas con ventanas de contexto aisladas, un sistema de archivos (local, en sandbox o remoto) para leer, escribir y buscar, gestión de contexto (resumir conversaciones largas y descargar salidas de herramientas a disco), acceso a shell en un sandbox, memoria persistente, aprobación humana de llamadas a herramientas, skills cargadas bajo demanda, herramientas propias y servidores MCP.",
+      "h": "3ff9beb3"
     },
     "sections.3.body.1": {
-      "t": "La diferencia práctica con un framework clásico es que la unidad de composición dejó de ser una herramienta y pasó a ser un agente completo. Cuando la tarea es 'investigar, analizar y redactar', instancias tres subagentes y los conectas por grafo, en vez de intentar con un único agente con 40 herramientas y un prompt monstruoso.",
-      "h": "a1fa7ce6"
+      "t": "La diferencia con un framework de grafos es el punto de partida: en lugar de dibujar nodos y aristas, partes de un agente completo y cambias el modelo, el prompt, las herramientas o el backend según necesites. La seguridad sigue el modelo 'confía en el LLM': la barrera de protección debe estar en las herramientas y en el sandbox, nunca en el modelo.",
+      "h": "38aa95df"
     },
     "sections.3.code.0.code": {
-      "t": "from deepagents import Agent, Graph, tool as tasks\n\n\n@tasks\ndef fetch_url(url: str) -> str:\n    \"\"\"Obtiene el contenido bruto de una URL.\"\"\"\n    return requests.get(url, timeout=10).text\n\nresearcher = Agent(name='researcher', system='investiga fuentes primarias', tools=[fetch_url])\nanalyst    = Agent(name='analyst',    system='sintetiza los hallazgos en puntos')\nwriter     = Agent(name='writer',     system='produce el informe final')\n\ngraph = Graph()\ngraph.add_edge('__start__', researcher)\ngraph.add_edge(researcher,   analyst)\ngraph.add_edge(analyst,      writer)\ngraph.add_edge(writer,       '__end__')\n\nreport = graph.run('informe sobre el mercado de LLMs en 2026')",
-      "h": "8360fa62"
+      "t": "from deepagents import create_deep_agent\n\nagent = create_deep_agent(\n    model=\"proveedor:nombre-del-modelo\",   # cambia por el modelo que uses\n    system_prompt=\"Eres un asistente de investigación. Cita las fuentes.\",\n)\n\nresult = agent.invoke({\"messages\": \"Investiga qué es LangGraph y escribe un resumen de 5 líneas\"})",
+      "h": "fd23449e"
     },
     "sections.3.code.0.filename": {
       "t": "deepagents.py",
       "h": "61be5693"
     },
     "sections.3.heading": {
-      "t": "DeepAgents (2025-2026): grafo de subagentes",
-      "h": "2b715b7e"
+      "t": "Deep Agents: un harness listo sobre LangGraph",
+      "h": "4bac9073"
     },
     "sections.4.body.0": {
-      "t": "CrewAI se enfoca en equipos con roles fijos (investigador, redactor, revisor) y un proceso de delegación más opinado; es rápido para prototipos donde la división del trabajo es conocida. AutoGen, de Microsoft, generaliza a múltiples agentes conversando entre sí, útil para explorar pero con tendencia a loops largos y un costo difícil de controlar.",
-      "h": "b140d31d"
+      "t": "CrewAI se enfoca en equipos con roles fijos (investigador, redactor, revisor) y un proceso de delegación más opinado; es rápido para prototipos donde la división del trabajo es conocida. AutoGen, de Microsoft (hoy en modo de mantenimiento, con Microsoft Agent Framework como sucesor), se generaliza a múltiples agentes conversando entre sí, útil para explorar pero con tendencia a loops largos y un costo difícil de controlar.",
+      "h": "5de75482"
     },
     "sections.4.body.1": {
       "t": "La elección entre frameworks rara vez es técnica: se trata del nivel de estructura que quieres en el grafo. Cuanto más fijo el rol de cada nodo, más fácil de auditar; cuanto más flexible, más poderoso para tareas mal definidas y más caro de operar.",

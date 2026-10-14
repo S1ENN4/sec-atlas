@@ -35,7 +35,7 @@ export const vectorDb: Topic = {
     {
       heading: "Na prática",
       body: [
-        "pgvector é a extensão vetorial do PostgreSQL: roda junto com o banco relacional e permite filtrar metadata na cláusula WHERE antes da busca. O exemplo cria a tabela com vetor de 1536 dimensões (tamanho típico de text-embedding-3-small), insere chunks e faz a busca top-5 com filtro de categoria.",
+        "pgvector é a extensão vetorial do PostgreSQL: roda junto com o banco relacional e permite combinar a busca vetorial com filtros de metadata na cláusula WHERE. Atenção: com índice HNSW o filtro é aplicado depois da varredura do índice, então um filtro muito restritivo pode devolver menos de k resultados (use iterative scan, índices parciais ou particionamento). O exemplo cria a tabela com vetor de 1536 dimensões (tamanho típico de text-embedding-3-small), insere chunks e faz a busca top-5 com filtro de categoria.",
       ],
       code: [
         {

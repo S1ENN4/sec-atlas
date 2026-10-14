@@ -5,8 +5,8 @@
       "h": "07279d7f"
     },
     "sections.0.body.1": {
-      "t": "The difference from evals is the position in time. An eval measures quality after the response was generated, in batch or by sampling. A guardrail acts now, on every request. They are complementary. Whoever replaces one with the other creates security theater: an eval too slow to block and a guardrail alone with no view of overall quality.",
-      "h": "1697b5f5"
+      "t": "The difference from eval is the position in time. Eval measures quality after the answer has been generated, in batch or by sampling. The guardrail acts now, on every request. They are complementary. Whoever replaces one with the other ends up with security theater: the eval too slow to block, and the guardrail alone with no view of overall quality.",
+      "h": "d0afed43"
     },
     "sections.0.heading": {
       "t": "What it is",
@@ -29,8 +29,8 @@
       "h": "dcf680e7"
     },
     "sections.2.body.1": {
-      "t": "The schema layer deserves special attention. Without a valid schema, the frontend does not render and the agent looks broken. That is why the output guardrail starts almost paranoid: better to block a valid response and return a fallback than to deliver a response that breaks the consumer.",
-      "h": "6f580b06"
+      "t": "The schema layer deserves special attention. Without a valid schema, the frontend does not render and the agent looks broken. That is why the output guardrail starts fail-closed: better to block a valid answer and return a fallback than to deliver an answer that breaks the consumer.",
+      "h": "5e472ed0"
     },
     "sections.2.heading": {
       "t": "Output: schema, PII, policy",
@@ -97,8 +97,8 @@
       "h": "2706af06"
     },
     "sections.7.bullets.1": {
-      "t": "latency cost: each additional synchronous layer shows up in the SLA, and a pipeline of 5 guardrails starts to look expensive",
-      "h": "6805d8b8"
+      "t": "latency cost: every extra synchronous layer shows up in the SLA, and a 5-guardrail pipeline starts to look expensive",
+      "h": "50d175fa"
     },
     "sections.7.bullets.2": {
       "t": "quality blindness: it blocks the dangerous, but does not measure whether what passed is good, and that remains the eval's job",

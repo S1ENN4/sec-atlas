@@ -17,8 +17,8 @@
       "h": "4810537a"
     },
     "sections.1.body.1": {
-      "t": "La descripción es la parte más descuidada. El LLM no lee código: lee el string. 'Obtiene el clima de una ciudad' es mejor que 'get_weather', porque el modelo decide cuándo llamar con base en prosa. Los schemas con malas descripciones generan llamadas correctas o erróneas al azar.",
-      "h": "d0c5dc12"
+      "t": "La descripción es la parte más descuidada. El LLM no lee código: lee la cadena de texto. 'Obtiene el clima de una ciudad' es mejor que 'get_weather', porque el modelo decide cuándo llamar basándose en prosa. Los schemas con descripciones pobres llevan al modelo a llamar a la herramienta en el momento equivocado, o a no llamarla.",
+      "h": "d2d6c3c6"
     },
     "sections.1.code.0.code": {
       "t": "{\n  \"name\": \"get_weather\",\n  \"description\": \"Obtiene la temperatura actual y el pronóstico de los próximos 3 días en una ciudad.\",\n  \"parameters\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"city\": {\n        \"type\": \"string\",\n        \"description\": \"Nombre de la ciudad, en portugués o inglés (ej: 'São Paulo', 'Lisbon').\"\n      },\n      \"unit\": {\n        \"type\": \"string\",\n        \"enum\": [\"celsius\", \"fahrenheit\"],\n        \"default\": \"celsius\"\n      }\n    },\n    \"required\": [\"city\"]\n  }\n}",
@@ -53,8 +53,8 @@
       "h": "2265f64e"
     },
     "sections.3.body.0": {
-      "t": "La llamada a una herramienta atraviesa cinco etapas, cada una con una respuesta posible y un camino de error distinto. Sin ver las cinco, parece magia, y los bugs no están donde esperas.",
-      "h": "9725ea27"
+      "t": "La llamada a una herramienta atraviesa cinco etapas, cada una con una respuesta posible y un camino de error distinto. Sin ver las cinco parece magia, y los bugs quedan ocultos.",
+      "h": "f10bfa93"
     },
     "sections.3.body.1": {
       "t": "1. declaración: la lista de schemas se entrega al LLM junto con el prompt.",
@@ -77,8 +77,8 @@
       "h": "9e12d84a"
     },
     "sections.3.code.0.code": {
-      "t": "import Anthropic from '@anthropic-ai/sdk';\nimport { z } from 'zod';\n\nconst GetWeather = z.object({\n  city: z.string().min(1),\n  unit: z.enum(['celsius', 'fahrenheit']).default('celsius'),\n});\n\nasync function run(anthropic: Anthropic, userMessage: string) {\n  const tools = [{\n    name: 'get_weather',\n    description: 'Obtiene el clima actual de una ciudad.',\n    input_schema: /* shape JSON del schema */,\n  }];\n\n  let msg = await anthropic.messages.create({\n    model: 'claude-opus-4', max_tokens: 1024, tools,\n    messages: [{ role: 'user', content: userMessage }],\n  });\n\n  if (msg.stop_reason === 'tool_use') {\n    const call = msg.content.find((b) => b.type === 'tool_use');\n    const parsed = GetWeather.safeParse(call.input);\n    if (!parsed.success) return { error: 'invalid_args', issues: parsed.error.issues };\n    const result = await fetchWeather(parsed.data.city, parsed.data.unit);\n    msg = await anthropic.messages.create({\n      model: 'claude-opus-4', max_tokens: 1024, tools,\n      messages: [\n        { role: 'user',     content: userMessage },\n        { role: 'assistant',content: msg.content },\n        { role: 'user',     content: [{ type: 'tool_result', tool_use_id: call.id, content: JSON.stringify(result) }] },\n      ],\n    });\n  }\n  return msg;\n}",
-      "h": "437f5636"
+      "t": "import Anthropic from '@anthropic-ai/sdk';\nimport { z } from 'zod';\n\nconst GetWeather = z.object({\n  city: z.string().min(1),\n  unit: z.enum(['celsius', 'fahrenheit']).default('celsius'),\n});\n\nasync function run(anthropic: Anthropic, userMessage: string) {\n  const tools = [{\n    name: 'get_weather',\n    description: 'Obtiene el clima actual de una ciudad.',\n    input_schema: z.toJSONSchema(GetWeather),\n  }];\n\n  let msg = await anthropic.messages.create({\n    model: 'claude-sonnet-5-5', max_tokens: 1024, tools,\n    messages: [{ role: 'user', content: userMessage }],\n  });\n\n  if (msg.stop_reason === 'tool_use') {\n    const call = msg.content.find((b) => b.type === 'tool_use');\n    const parsed = GetWeather.safeParse(call.input);\n    if (!parsed.success) return { error: 'invalid_args', issues: parsed.error.issues };\n    const result = await fetchWeather(parsed.data.city, parsed.data.unit);\n    msg = await anthropic.messages.create({\n      model: 'claude-sonnet-5-5', max_tokens: 1024, tools,\n      messages: [\n        { role: 'user',     content: userMessage },\n        { role: 'assistant',content: msg.content },\n        { role: 'user',     content: [{ type: 'tool_result', tool_use_id: call.id, content: JSON.stringify(result) }] },\n      ],\n    });\n  }\n  return msg;\n}",
+      "h": "9dfda52b"
     },
     "sections.3.code.0.filename": {
       "t": "runtime.tsx",
@@ -93,16 +93,16 @@
       "h": "30a66c07"
     },
     "sections.4.bullets.1": {
-      "t": "los tipos están garantizados, los valores no: sabe que 'unit' es un string, pero puede mandar 'celcius' (typo) de vez en cuando",
-      "h": "d74ba362"
+      "t": "los tipos están garantizados, los valores no: sabe que 'unit' es un string, pero puede mandar 'celcius' (con error de tipeo)",
+      "h": "cfca311e"
     },
     "sections.4.bullets.2": {
-      "t": "los enums son la frontera de error más común: el modelo rara vez respeta el enum sin un prompt explícito",
-      "h": "8bb586ff"
+      "t": "los enums son la frontera de error más común: el modelo no siempre respeta el enum, sobre todo sin structured output estricto",
+      "h": "205b5035"
     },
     "sections.4.bullets.3": {
-      "t": "la validación es barata: cuesta microsegundos; una ejecución sin validar puede permitir un orden de ejecución crítico",
-      "h": "abe9749c"
+      "t": "validar es barato: cuesta microsegundos; ejecutar sin validación puede disparar una acción crítica con argumentos erróneos",
+      "h": "2905c5e8"
     },
     "sections.4.heading": {
       "t": "Por qué no se puede omitir la validación",
@@ -117,8 +117,8 @@
       "h": "0650dc21"
     },
     "sections.5.bullets.2": {
-      "t": "débil: una mala descripción lleva a llamadas correctas o erróneas al azar; escribir un buen schema es trabajo de diseño",
-      "h": "4fafa0c8"
+      "t": "débil: una descripción pobre lleva a llamadas en el momento equivocado; escribir un buen schema es trabajo de diseño",
+      "h": "4dd5996f"
     },
     "sections.5.bullets.3": {
       "t": "débil: la llamada es opaca para el usuario; si no lee el trace, no sabe qué herramienta se ejecutó",

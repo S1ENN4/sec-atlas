@@ -89,16 +89,16 @@
       "h": "46f7f26f"
     },
     "sections.4.bullets.4": {
-      "t": "guardar secretos por sí solo: los secretos en el system prompt no se mantienen secretos para siempre; el prompt se filtra vía logs exfiltrados",
-      "h": "597b8f40"
+      "t": "el secreto por sí solo: los secretos en el system prompt no se mantienen secretos para siempre; el prompt puede filtrarse por logs, prompt injection o extracción",
+      "h": "d4a563dd"
     },
     "sections.4.heading": {
       "t": "Lo que el modelo no hace",
       "h": "c38e7545"
     },
     "sections.5.bullets.0": {
-      "t": "ventana de contexto finita: si pasas el límite, el historial desaparece; si pasas el límite, cambia el costo de la vista.",
-      "h": "6e19ee12"
+      "t": "ventana de contexto finita: al pasar el límite, el inicio del historial deja de existir para el modelo",
+      "h": "f4f75f77"
     },
     "sections.5.bullets.1": {
       "t": "el modelo no es determinístico: la misma pregunta puede generar respuestas distintas en cada llamada; la temperatura controla esto",
@@ -109,8 +109,8 @@
       "h": "b7c4db66"
     },
     "sections.5.bullets.3": {
-      "t": "el costo crece con el uso: los agentes que llaman al LLM varias veces por tarea multiplican el costo, por las veces de uso",
-      "h": "a0020c53"
+      "t": "el costo crece con el uso: los agentes que llaman al LLM varias veces por tarea multiplican el costo en cada paso",
+      "h": "8519dad7"
     },
     "sections.5.heading": {
       "t": "Limitaciones",

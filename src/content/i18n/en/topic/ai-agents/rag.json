@@ -17,8 +17,8 @@
       "h": "ba449822"
     },
     "sections.1.body.0": {
-      "t": "The flow has five steps, all deterministic and auditable:",
-      "h": "f2338bb7"
+      "t": "The flow usually has five stages, all observable and auditable:",
+      "h": "c1cd4a50"
     },
     "sections.1.bullets.0": {
       "t": "1. the user sends a question; the system writes a clean version of it (sometimes expanded by a query expansion LLM).",

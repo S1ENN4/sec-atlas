@@ -22,7 +22,7 @@ export const rag: Topic = {
     {
       heading: "Como funciona",
       body: [
-        "O fluxo tem cinco etapas, todas determinísticas e auditáveis:",
+        "O fluxo costuma ter cinco etapas, todas observáveis e auditáveis:",
       ],
       bullets: [
         "1. o usuário envia uma pergunta; o sistema escreve uma versão limpa dela (às vezes expandida por um LLM de query expansion).",

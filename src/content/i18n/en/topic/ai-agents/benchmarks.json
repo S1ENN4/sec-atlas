@@ -13,8 +13,8 @@
       "h": "ba449822"
     },
     "sections.1.body.0": {
-      "t": "SWE-bench (Verified) is the de facto standard for coding agents. About 500 real GitHub issues, each with the bug description and the test that validates the fix. The agent receives the repository, reads the code, proposes a patch and runs the tests. An agent that resolves patches resolves N% of the benchmark.",
-      "h": "ef6afbea"
+      "t": "SWE-bench (Verified) is the de facto standard for coding agents. About 500 real GitHub issues, each with the bug description and the test that validates the fix. The agent receives the repository, reads the code, proposes a patch and runs the tests. The score is the percentage of issues whose patch passes the tests.",
+      "h": "7a98a1e4"
     },
     "sections.1.body.1": {
       "t": "GAIA measures general-purpose agents on multi-hop tasks (cross-referencing sources, reading PDFs, summing values). It mixes tools, reasoning and retrieval. It is the most used benchmark for comparing agents that browse the web.",
