@@ -836,6 +836,14 @@
       "t": "base de conocimiento · seguridad de software",
       "h": "38d61907"
     },
+    "hub.continueRead": {
+      "t": "Continuar leyendo",
+      "h": "4f4840a8"
+    },
+    "hub.continueWhere": {
+      "t": "Continuar donde lo dejaste",
+      "h": "fe2d8685"
+    },
     "hub.explore.careers.body": {
       "t": "Hojas de ruta para AppSec, DevSecOps, DevOps y más: qué hace el rol y cómo llegar.",
       "h": "a35d9d04"
@@ -2016,17 +2024,45 @@
       "t": "Copiar",
       "h": "af74f7c5"
     },
+    "topicPage.endOfPath": {
+      "t": "Fin del camino.",
+      "h": "74ff0a02"
+    },
     "topicPage.minRead": {
       "t": "min de lectura",
       "h": "2bf93931"
+    },
+    "topicPage.nextTopic": {
+      "t": "Siguiente: {title}",
+      "h": "932179a5"
+    },
+    "topicPage.shortcuts": {
+      "t": "Pulsa j/k para desplazar entre secciones, g y luego h para el hub, c para copiar código.",
+      "h": "4b202bed"
     },
     "topicPage.stageBadge": {
       "t": "etapa: {stage}",
       "h": "61970ed7"
     },
+    "topicPage.studyBefore": {
+      "t": "Estudia antes",
+      "h": "c15984f9"
+    },
+    "topicPage.studyBeforeEmpty": {
+      "t": "Sin requisitos previos.",
+      "h": "18ff18f2"
+    },
     "topicPage.summary": {
       "t": "En esta página",
       "h": "7e439c35"
+    },
+    "topicPage.unlocks": {
+      "t": "Desbloquea",
+      "h": "aecf18a9"
+    },
+    "topicPage.unlocksEmpty": {
+      "t": "Este es un tema hoja.",
+      "h": "b1521ebd"
     }
   }
 }

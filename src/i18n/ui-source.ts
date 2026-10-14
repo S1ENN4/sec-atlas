@@ -142,6 +142,16 @@ export const ui = {
     copy: "Copy",
     copied: "Copied!",
     minRead: "min read",
+    // Added 2026-10-14 with phase 3.A4: study-before / unlocks / next-topic
+    // blocks on the topic page footer, plus the toast shown by the
+    // keyboard-shortcuts client island.
+    studyBefore: "Study before",
+    studyBeforeEmpty: "No prerequisites.",
+    unlocks: "Unlocks",
+    unlocksEmpty: "This is a leaf topic.",
+    nextTopic: "Next: {title}",
+    endOfPath: "End of the path.",
+    shortcuts: "Press j/k to scroll sections, g then h for the hub, c to copy code.",
   },
 
   toolbar: {
@@ -227,6 +237,11 @@ export const ui = {
     openMap: "open map",
     notify: "notify me",
     exploreTitle: "ways to explore",
+    // Added 2026-10-14 with phase 3.A4: "Continue where you left off" card on
+    // the hub that surfaces the last topic the reader opened (read from
+    // localStorage via the progress helper).
+    continueWhere: "Continue where you left off",
+    continueRead: "Continue reading",
     explore: {
       journey: {
         title: "Guided journey",

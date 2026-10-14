@@ -4,10 +4,12 @@ import { ArrowUpRight, Compass, Route, Swords, Briefcase } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { ContinueCard, type ContinueTopicRef } from "@/components/continue-card";
 import { ProfileStrip } from "@/components/profile-strip";
 import { ProgressSummary } from "@/components/progress-summary";
-import { domains } from "@/content/registry";
+import { domainMeta, domains } from "@/content/registry";
 import { localePath } from "@/i18n/config";
+import { localizeDomain } from "@/i18n/content";
 import { fmt, plural } from "@/i18n/format";
 import { alternatesFor, resolveLocale } from "@/i18n/server";
 import { cn } from "@/lib/utils";
@@ -31,6 +33,19 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
     { href: lp("/scenarios"), icon: Swords, ...t.hub.explore.scenarios },
   ];
   const nav = t.nav as unknown as Record<string, string>;
+
+  // "Continue where you left off" (P3.7): pre-compute the localized
+  // title + route for every topic in the locale so the client island
+  // can look its id up after reading localStorage. The list stays tiny
+  // (< 10 KB) because every entry is just three short strings.
+  const continueTopics: ContinueTopicRef[] = (Object.values(domains) as Array<typeof domains[keyof typeof domains]>).flatMap((d) => {
+    const loc = localizeDomain(d.id, locale);
+    return loc.domain.topics.map((tp) => ({
+      id: `${tp.domain}/${tp.slug}`,
+      title: tp.title,
+      route: localePath(locale, `${domainMeta[tp.domain].route}/topic/${tp.slug}`),
+    }));
+  });
 
   return (
     <div className="animate-page-enter mx-auto max-w-6xl px-4 pb-10 pt-12 md:pt-20">
@@ -74,6 +89,17 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       </header>
 
       <hr className="mt-10 border-border/60" />
+
+      {/* "Continue where you left off" (P3.7). The client island renders
+          nothing when there is no last-topic pointer or it points to a
+          topic that no longer ships; the hub stays clean either way. */}
+      <div className="mt-10">
+        <ContinueCard
+          topics={continueTopics}
+          locale={locale}
+          t={{ where: t.hub.continueWhere, read: t.hub.continueRead }}
+        />
+      </div>
 
       <section className="mt-10">
         <ProgressSummary

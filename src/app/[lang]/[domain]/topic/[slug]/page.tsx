@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, MoveRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, MoveRight } from "lucide-react";
 
 import { ContentNotice } from "@/components/content-notice";
 import { CopyCodeButton } from "@/components/copy-code-button";
+import { KeyboardShortcuts } from "@/components/keyboard-shortcuts";
 import { Quiz } from "@/components/quiz";
 import { TopicBridges } from "@/components/topic-bridges";
 import { TopicIcon } from "@/components/topic-icon";
@@ -14,9 +15,11 @@ import { TopicSources } from "@/components/topic-sources";
 import { TopicToolbar } from "@/components/topic-toolbar";
 import { TopicVisitRecorder } from "@/components/topic-visit-recorder";
 import { Badge } from "@/components/ui/badge";
-import { domains, domainIdFromRoute, domainRouteSegments } from "@/content/registry";
+import { levels } from "@/content/levels";
+import { domains, domainIdFromRoute, domainMeta, domainRouteSegments, getTopic } from "@/content/registry";
+import type { DomainId } from "@/content/types";
 import { LOCALES, localePath } from "@/i18n/config";
-import { localizeDomain } from "@/i18n/content";
+import { localizeDomain, localizedTopic } from "@/i18n/content";
 import { fmt } from "@/i18n/format";
 import { kindMetaFor } from "@/i18n/labels";
 import { alternatesFor, resolveLocale } from "@/i18n/server";
@@ -62,6 +65,49 @@ export default async function TopicPage({ params }: { params: Params }) {
   const rels = domain.relations.filter((r) => r.source.slug === slug || r.target.slug === slug);
   const byslug = new Map(domain.topics.map((x) => [x.slug, x]));
   const minutes = estimateReadingMinutes(topicBodyText(topic));
+
+  // --- study-before / unlocks / next-topic (Phase 3 A4) -------------------
+  // Prereqs and unlocks can be in another domain (e.g. seceng.iac-seguro
+  // requires cloudsec.iam). The localized title comes from
+  // localizedTopic (a fallback to the source-language title for
+  // untranslated units); the link uses the prereq's own domain route so
+  // the URL stays correct.
+  const topicKey = `${id}/${slug}`;
+  const resolvePrereq = (key: string): { key: string; title: string; route: string } | null => {
+    const [pdom, pslug] = key.split("/");
+    if (!pdom || !pslug) return null;
+    // Validate the entry is well-formed against the registry (R10 keeps
+    // this honest; a missing prereq means the levels map is stale).
+    if (!getTopic({ domain: pdom as keyof typeof domains, slug: pslug })) return null;
+    const pt = localizedTopic(pdom as DomainId, pslug, locale);
+    if (!pt) return null;
+    return { key, title: pt.title, route: localePath(locale, domainMeta[pt.domain].route) };
+  };
+  const prereqs = (levels[topicKey]?.requires ?? []).map(resolvePrereq).filter((x): x is { key: string; title: string; route: string } => x !== null);
+  // Inverse: every topic whose `requires` list includes this one. Same
+  // shape as `prereqs` so both lists share the same list layout.
+  const unlocks = Object.entries(levels)
+    .filter(([, info]) => (info.requires ?? []).includes(topicKey))
+    .map(([key]) => resolvePrereq(key))
+    .filter((x): x is { key: string; title: string; route: string } => x !== null);
+
+  // Next topic: walk the domain's pipeline in order. The first item that
+  // sits AFTER the current topic and carries a slug wins. Items without a
+  // slug are skipped (they are plain stage labels, not real topics).
+  const flat = domain.pipeline.flatMap((stage) => stage.items);
+  const currentIdx = flat.findIndex((it) => it.slug === slug);
+  let nextTopic: { title: string; route: string } | null = null;
+  if (currentIdx >= 0) {
+    for (let i = currentIdx + 1; i < flat.length; i++) {
+      const cand = flat[i];
+      if (!cand.slug) continue;
+      const nt = byslug.get(cand.slug);
+      if (!nt) continue;
+      nextTopic = { title: nt.title, route: `${base}/topic/${cand.slug}` };
+      break;
+    }
+  }
+  const endOfPath = currentIdx >= 0 && !nextTopic;
 
   return (
     <article data-domain={id} className="animate-page-enter mx-auto max-w-3xl px-4 pb-24 pt-10">
@@ -194,7 +240,81 @@ export default async function TopicPage({ params }: { params: Params }) {
       <TopicSources domain={id} locale={locale} t={t} />
       <TopicPathNav domain={id} slug={slug} locale={locale} t={t} />
       <TopicBridges domain={id} slug={slug} locale={locale} t={t} />
+
+      {/* study-before (P3.4): a list of prerequisite topics, in the
+          order they appear in the levels map. Rendered when the topic
+          has at least one requirement. */}
+      {prereqs.length > 0 ? (
+        <section className="mt-14 border-t border-border pt-8">
+          <h2 className="font-mono text-sm uppercase tracking-wider text-muted-foreground">{t.topicPage.studyBefore}</h2>
+          <ul className="mt-4 space-y-2.5">
+            {prereqs.map((p) => (
+              <li key={p.key} className="text-sm">
+                <Link
+                  href={`${p.route}/topic/${p.key.split("/")[1]}`}
+                  className="focus-ring rounded-sm font-medium text-foreground transition-colors hover:text-primary"
+                >
+                  {p.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
+
+      {/* unlocks (P3.4): the inverse of the requires map: every topic
+          whose prereq list includes the current one. */}
+      {unlocks.length > 0 ? (
+        <section className="mt-14 border-t border-border pt-8">
+          <h2 className="font-mono text-sm uppercase tracking-wider text-muted-foreground">{t.topicPage.unlocks}</h2>
+          <ul className="mt-4 space-y-2.5">
+            {unlocks.map((u) => (
+              <li key={u.key} className="text-sm">
+                <Link
+                  href={`${u.route}/topic/${u.key.split("/")[1]}`}
+                  className="focus-ring rounded-sm font-medium text-foreground transition-colors hover:text-primary"
+                >
+                  {u.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
+
+      {/* next topic (P3.5): either a footer with the next topic in the
+          domain's pipeline, or an "end of the path" footer that links
+          back to the hub. */}
+      {nextTopic ? (
+        <footer className="mt-14 border-t border-border pt-8">
+          <Link
+            href={nextTopic.route}
+            className="focus-ring group inline-flex items-center gap-2 rounded-md font-medium text-primary transition-colors hover:text-primary/80"
+          >
+            <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
+              {fmt(t.topicPage.nextTopic, { title: nextTopic.title })}
+            </span>
+            <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
+          </Link>
+        </footer>
+      ) : endOfPath ? (
+        <footer className="mt-14 border-t border-border pt-8">
+          <p className="text-sm text-muted-foreground">{t.topicPage.endOfPath}</p>
+          <Link
+            href={localePath(locale)}
+            className="focus-ring mt-2 inline-flex items-center gap-2 rounded-sm font-medium text-foreground transition-colors hover:text-primary"
+          >
+            <ArrowLeft className="size-3.5" aria-hidden /> {t.topicPage.back}
+          </Link>
+        </footer>
+      ) : null}
+
       <Quiz domain={id} slug={slug} t={t.quiz} />
+
+      {/* keyboard shortcuts (P3.6): j/k, g h, c. Renders a polite-live
+          hint once per tab. Mounted last so its listener is bound when
+          the page is interactive. */}
+      <KeyboardShortcuts locale={locale} hint={t.topicPage.shortcuts} />
     </article>
   );
 }

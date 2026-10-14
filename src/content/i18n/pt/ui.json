@@ -836,6 +836,14 @@
       "t": "knowledge base · segurança de software",
       "h": "38d61907"
     },
+    "hub.continueRead": {
+      "t": "Continuar leitura",
+      "h": "4f4840a8"
+    },
+    "hub.continueWhere": {
+      "t": "Continuar de onde parou",
+      "h": "fe2d8685"
+    },
     "hub.explore.careers.body": {
       "t": "Roteiros para AppSec, DevSecOps, DevOps e mais: o que a função faz e como chegar lá.",
       "h": "a35d9d04"
@@ -2016,17 +2024,45 @@
       "t": "Copiar",
       "h": "af74f7c5"
     },
+    "topicPage.endOfPath": {
+      "t": "Fim do caminho.",
+      "h": "74ff0a02"
+    },
     "topicPage.minRead": {
       "t": "min de leitura",
       "h": "2bf93931"
+    },
+    "topicPage.nextTopic": {
+      "t": "Próximo: {title}",
+      "h": "932179a5"
+    },
+    "topicPage.shortcuts": {
+      "t": "Pressione j/k para rolar entre seções, g depois h para o hub, c para copiar código.",
+      "h": "4b202bed"
     },
     "topicPage.stageBadge": {
       "t": "etapa: {stage}",
       "h": "61970ed7"
     },
+    "topicPage.studyBefore": {
+      "t": "Estude antes",
+      "h": "c15984f9"
+    },
+    "topicPage.studyBeforeEmpty": {
+      "t": "Sem pré-requisitos.",
+      "h": "18ff18f2"
+    },
     "topicPage.summary": {
       "t": "Nesta página",
       "h": "7e439c35"
+    },
+    "topicPage.unlocks": {
+      "t": "Desbloqueia",
+      "h": "aecf18a9"
+    },
+    "topicPage.unlocksEmpty": {
+      "t": "Este é um tópico folha.",
+      "h": "b1521ebd"
     }
   }
 }
