@@ -197,13 +197,8 @@ upgrade-insecure-requests`}
               cada tópico em domínio{" "}
               <code className="font-mono text-xs">live</code>, ≥ 4 seções e{" "}
               <code className="font-mono text-xs">(code ≥ 1 OR bullets ≥ 3)</code> e
-              tagline não vazia e ≥ 3 ferramentas. Hoje os cinco domínios (
-              <code className="font-mono text-xs">appsec</code>,{" "}
-              <code className="font-mono text-xs">cloudsec</code>,{" "}
-              <code className="font-mono text-xs">ai-agents</code>,{" "}
-              <code className="font-mono text-xs">secops</code>,{" "}
-              <code className="font-mono text-xs">seceng</code>) são live e cobrem
-              33 tópicos no total, todos passando.
+              tagline não vazia e ≥ 3 ferramentas. Todos os domínios são live e passam
+              por esta régua.
             </span>
           </li>
         </ul>
@@ -216,25 +211,12 @@ upgrade-insecure-requests`}
             next build &amp;&amp; node scripts/check-budget.mjs
           </code>
           . O segundo script caminha{" "}
-          <code className="font-mono text-xs">out/</code> inteiro e compara sete
-          métricas contra caps duros. O status atual:
-        </p>
-        <pre className="mt-4 overflow-x-auto rounded-lg border border-border bg-muted/40 p-4 font-mono text-xs leading-relaxed text-muted-foreground">
-{`first-load assets            3.458.978 B    cap 3.600.000  OK
-rsc prefetch payloads      2.980.616 B    cap 3.050.000  OK
-total                      6.439.594 B    cap 6.650.000  OK
-CSS raw                        57.843 B    cap    60.000  OK
-JS raw                     1.133.383 B    cap 1.200.000  OK
-JS gzip                      364.039 B    cap   400.000  OK
-out/index.html raw            28.307 B    cap    50.000  OK`}
-        </pre>
-        <p className="mt-4 leading-relaxed text-foreground/85">
-          Em números aproximados: ~3,4 MB de first-load, ~6,4 MB totais (incluindo RSC
-          prefetch), ~58 KB de CSS e ~1,13 MB de JS raw. 42 páginas pré-renderizadas
-          (3 hubs + 1 glossário + 1 segurança + 33 tópicos + rotas auxiliares). Os caps
-          sobem só quando o conteúdo sobe, e a cada bump fica registrado no cabeçalho do{" "}
-          <code className="font-mono text-xs">scripts/check-budget.mjs</code> para
-          manter a história de números rastreável.
+          <code className="font-mono text-xs">out/</code> inteiro e compara as
+          métricas (first-load, RSC prefetch, total, todos os idiomas, CSS, JS bruto e
+          gzip, e a página inicial) contra tetos duros. Os tetos só sobem quando o
+          conteúdo sobe, e cada mudança fica registrada, com os números medidos, no
+          cabeçalho do <code className="font-mono text-xs">scripts/check-budget.mjs</code>
+          . O status atual aparece no log de cada build e do CI.
         </p>
       </section>
 

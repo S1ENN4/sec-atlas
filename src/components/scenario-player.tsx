@@ -107,7 +107,7 @@ export function ScenarioPlayer({ scenarios, t }: { scenarios: ScenarioData[]; t:
                 !active && !passed && "border-border text-muted-foreground"
               )}
             >
-              <span className="text-primary/80">{st.index}</span> {st.name}
+              <span className="text-primary">{st.index}</span> {st.name}
             </li>
           );
         })}

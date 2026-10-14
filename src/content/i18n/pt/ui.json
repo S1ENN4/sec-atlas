@@ -821,8 +821,8 @@
       "h": "e492b0d9"
     },
     "hub.lead": {
-      "t": "Cada domínio é um grafo independente: conceitos, esteira, conexões e glossário. {n} mapas prontos, todos com o mesmo nível de profundidade.",
-      "h": "16f5816f"
+      "t": "Cada domínio é um mapa de aprendizado: tópicos por nível, pré-requisitos, um próximo passo guiado, glossário e quizzes. {n} mapas prontos, todos com o mesmo nível de profundidade.",
+      "h": "dd18bd7f"
     },
     "hub.manifestoLink": {
       "t": "ler o manifesto: por que este projeto existe",
@@ -849,12 +849,12 @@
       "h": "98aadb37"
     },
     "hub.title": {
-      "t": "Segurança de software,",
-      "h": "09ad8d01"
+      "t": "Segurança,",
+      "h": "43884644"
     },
     "hub.titleAccent": {
-      "t": "mapeada por domínio.",
-      "h": "48f5bbee"
+      "t": "mapeada para aprender.",
+      "h": "e55ab62b"
     },
     "journey.allDomains": {
       "t": "todos os domínios",
@@ -1417,24 +1417,24 @@
       "h": "c398c640"
     },
     "meta.description": {
-      "t": "Knowledge base interativa de segurança: AppSec, CloudSec, agentes de IA, SecOps e engenharia de segurança, com trilhas de estudo, cenários de ataque e quizzes. Conteúdo estático, sem rastreamento.",
-      "h": "b45b9cb8"
+      "t": "Aprenda segurança por nível com mapas interativos: OWASP Top 10 com código, DevOps, nuvem, resposta a incidentes, segurança ofensiva, GRC e agentes de IA, além de carreiras, cenários de ataque e quizzes. Conteúdo estático, sem rastreamento.",
+      "h": "d12ba7a6"
     },
     "meta.ogTagline": {
-      "t": "AppSec · CloudSec · SecOps · Engenharia · Agentes de IA",
-      "h": "91196295"
+      "t": "AppSec · OWASP · DevOps · Nuvem · Resposta · Ofensiva · GRC · IA",
+      "h": "3c4b4dbf"
     },
     "meta.ogTitle": {
-      "t": "Segurança de software, mapeada por domínio.",
-      "h": "40ab5cd3"
+      "t": "Segurança, mapeada para aprender.",
+      "h": "0022cb65"
     },
     "meta.siteName": {
       "t": "sec/atlas",
       "h": "035c8d05"
     },
     "meta.title": {
-      "t": "sec/atlas — mapa interativo de segurança de software",
-      "h": "5bd09bf4"
+      "t": "sec/atlas — um atlas interativo de segurança",
+      "h": "45daba26"
     },
     "nav.allDomains": {
       "t": "Todos os domínios",

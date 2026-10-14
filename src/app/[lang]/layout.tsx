@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 export default async function LocaleLayout({ children, params }: { children: ReactNode; params: Promise<{ lang: string }> }) {
   const { locale, t } = await resolveLocale(params);
   return (
-    <html lang={HTML_LANG[locale]} className={`${inter.variable} ${jetbrains.variable}`} suppressHydrationWarning>
+    <html lang={HTML_LANG[locale]} data-scroll-behavior="smooth" className={`${inter.variable} ${jetbrains.variable}`} suppressHydrationWarning>
       <head>
         <script
           // Inline anti-flash: set [data-theme] on <html> from localStorage["kb-theme"]

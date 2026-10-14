@@ -34,6 +34,7 @@
     "prebuild": "node --import ./scripts/content-alias-loader.mjs scripts/validate-content.mjs",
     "build": "next build && node scripts/check-budget.mjs",
     "mcp": "node --import ./scripts/content-alias-loader.mjs mcp/server.mjs",
+    "check:links": "node scripts/check-links.mjs",
     "test:mcp": "node scripts/mcp-smoke.mjs",
     "export:obsidian": "node --import ./scripts/content-alias-loader.mjs scripts/export-obsidian.mjs",
     "i18n": "node --import ./scripts/content-alias-loader.mjs scripts/i18n.mjs",

@@ -37,8 +37,14 @@ jobs:
       # The MCP server is part of the public promise: keep it working.
       - run: npm run test:mcp
 
+      # Learning engine: ready / locked / next rules shared by the maps.
+      - run: npm run test:learning
+
       # prebuild runs the content validator (R1-R8); build ends with the
       # bundle-size budget. Any failure fails the job.
       - run: npm run build
         env:
           NEXT_PUBLIC_SITE_URL: https://example.com
+
+      # Every internal link and anchor in the exported site must resolve.
+      - run: npm run check:links

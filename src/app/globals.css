@@ -138,14 +138,14 @@
   --foreground: oklch(0.18 0.012 250);
   --card: oklch(0.97 0.006 250);
   --card-foreground: oklch(0.18 0.012 250);
-  --primary: oklch(0.55 0.16 155);
+  --primary: oklch(0.41 0.13 155);
   --primary-foreground: oklch(0.98 0.005 155);
   --muted: oklch(0.95 0.005 250);
-  --muted-foreground: oklch(0.45 0.015 250);
+  --muted-foreground: oklch(0.4 0.02 250);
   --border: oklch(0.88 0.008 250);
   --accent: oklch(0.94 0.006 250);
   --accent-foreground: oklch(0.18 0.012 250);
-  --ring: oklch(0.55 0.16 155 / 0.5);
+  --ring: oklch(0.41 0.13 155 / 0.5);
 }
 
 body {
@@ -227,57 +227,57 @@ body {
  * Source order matters — they sit below the dark defaults so the dark
  * variants keep winning when [data-theme] is dark or absent. */
 :root[data-theme="light"] [data-domain="cloudsec"] {
-  --primary: oklch(0.5 0.15 230);
+  --primary: oklch(0.4 0.12 230);
   --primary-foreground: oklch(0.98 0.005 230);
-  --ring: oklch(0.5 0.15 230 / 0.5);
+  --ring: oklch(0.4 0.12 230 / 0.5);
 }
 
 :root[data-theme="light"] [data-domain="secops"] {
-  --primary: oklch(0.5 0.15 55);
+  --primary: oklch(0.4 0.12 55);
   --primary-foreground: oklch(0.98 0.005 55);
-  --ring: oklch(0.5 0.15 55 / 0.5);
+  --ring: oklch(0.4 0.12 55 / 0.5);
 }
 
 :root[data-theme="light"] [data-domain="seceng"] {
-  --primary: oklch(0.5 0.17 10);
+  --primary: oklch(0.4 0.12 10);
   --primary-foreground: oklch(0.98 0.005 10);
-  --ring: oklch(0.5 0.17 10 / 0.5);
+  --ring: oklch(0.4 0.12 10 / 0.5);
 }
 
 :root[data-theme="light"] [data-domain="owasp"] {
-  --primary: oklch(0.5 0.17 120);
+  --primary: oklch(0.4 0.12 120);
   --primary-foreground: oklch(0.98 0.005 120);
-  --ring: oklch(0.5 0.17 120 / 0.5);
+  --ring: oklch(0.4 0.12 120 / 0.5);
 }
 
 :root[data-theme="light"] [data-domain="vibecoding"] {
-  --primary: oklch(0.5 0.18 330);
+  --primary: oklch(0.4 0.12 330);
   --primary-foreground: oklch(0.98 0.005 330);
-  --ring: oklch(0.5 0.18 330 / 0.5);
+  --ring: oklch(0.4 0.12 330 / 0.5);
 }
 
 :root[data-theme="light"] [data-domain="devops"] {
-  --primary: oklch(0.5 0.16 85);
+  --primary: oklch(0.4 0.12 85);
   --primary-foreground: oklch(0.98 0.005 85);
-  --ring: oklch(0.5 0.16 85 / 0.5);
+  --ring: oklch(0.4 0.12 85 / 0.5);
 }
 
 :root[data-theme="light"] [data-domain="response"] {
-  --primary: oklch(0.5 0.15 200);
+  --primary: oklch(0.4 0.12 200);
   --primary-foreground: oklch(0.98 0.005 200);
-  --ring: oklch(0.5 0.15 200 / 0.5);
+  --ring: oklch(0.4 0.12 200 / 0.5);
 }
 
 :root[data-theme="light"] [data-domain="offsec"] {
-  --primary: oklch(0.5 0.18 25);
+  --primary: oklch(0.4 0.12 25);
   --primary-foreground: oklch(0.98 0.005 25);
-  --ring: oklch(0.5 0.18 25 / 0.5);
+  --ring: oklch(0.4 0.12 25 / 0.5);
 }
 
 :root[data-theme="light"] [data-domain="grc"] {
-  --primary: oklch(0.5 0.17 262);
+  --primary: oklch(0.4 0.12 262);
   --primary-foreground: oklch(0.98 0.005 262);
-  --ring: oklch(0.5 0.17 262 / 0.5);
+  --ring: oklch(0.4 0.12 262 / 0.5);
 }
 
 :root[data-theme="light"] [data-domain="ai-agents"] {
@@ -550,4 +550,22 @@ body {
   .gloss-term {
     border-bottom: 0;
   }
+}
+
+/* Light theme: the palette utilities used as TEXT (kind labels, status colors)
+ * are tuned for a dark surface; on a near-white one they need a darker shade
+ * to reach AA contrast. Backgrounds and dots (bg-*) are left as they are. */
+:root[data-theme="light"] .text-emerald-400 {
+  color: oklch(0.42 0.12 160);
+}
+:root[data-theme="light"] .text-sky-400 {
+  color: oklch(0.42 0.13 235);
+}
+:root[data-theme="light"] .text-amber-400,
+:root[data-theme="light"] .text-amber-400\/90,
+:root[data-theme="light"] .text-amber-400\/80 {
+  color: oklch(0.44 0.11 70);
+}
+:root[data-theme="light"] .text-red-400 {
+  color: oklch(0.45 0.18 25);
 }

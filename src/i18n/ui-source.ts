@@ -9,11 +9,11 @@
 export const ui = {
   meta: {
     siteName: "sec/atlas",
-    title: "sec/atlas — interactive map of software security",
+    title: "sec/atlas — an interactive atlas of security",
     description:
-      "Interactive security knowledge base: AppSec, CloudSec, AI agents, SecOps and security engineering, with study paths, attack scenarios and quizzes. Static content, no tracking.",
-    ogTitle: "Software security, mapped by domain.",
-    ogTagline: "AppSec · CloudSec · SecOps · Engineering · AI agents",
+      "Learn security by level with interactive maps: OWASP Top 10 with code, DevOps, cloud, incident response, offensive security, GRC and AI agents, plus careers, attack scenarios and quizzes. Static content, no tracking.",
+    ogTitle: "Security, mapped to learn.",
+    ogTagline: "AppSec · OWASP · DevOps · Cloud · Response · Offensive · GRC · AI",
   },
 
   a11y: {
@@ -222,9 +222,9 @@ export const ui = {
 
   hub: {
     badge: "knowledge base · software security",
-    title: "Software security,",
-    titleAccent: "mapped by domain.",
-    lead: "Each domain is an independent graph: concepts, pipeline, connections and glossary. {n} ready maps, all at the same level of depth.",
+    title: "Security,",
+    titleAccent: "mapped to learn.",
+    lead: "Each domain is a learning map: topics by level, prerequisites, a guided next step, glossary and quizzes. {n} ready maps, all at the same level of depth.",
     manifestoLink: "read the manifesto: why this project exists",
     statDomains: "domains",
     statLive: "live",
