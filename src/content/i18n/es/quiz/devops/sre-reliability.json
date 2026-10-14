@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Mientras queda budget, entrega; cuando se agota, invierte en confiabilidad.",
+      "h": "c39c29e8"
+    },
+    "questions.0.options.0": {
+      "t": "Dinero reservado para caídas",
+      "h": "761400ea"
+    },
+    "questions.0.options.1": {
+      "t": "La falta de confiabilidad permitida, 100% menos el SLO",
+      "h": "ecc9c40c"
+    },
+    "questions.0.options.2": {
+      "t": "Una lista de bugs conocidos",
+      "h": "d448ec10"
+    },
+    "questions.0.options.3": {
+      "t": "Un cronograma de QA",
+      "h": "cde88b35"
+    },
+    "questions.0.q": {
+      "t": "¿Qué es un error budget?",
+      "h": "db0eccf1"
+    },
+    "questions.1.explain": {
+      "t": "Restaura el servicio primero. El análisis de causa raíz puede venir después.",
+      "h": "158e323d"
+    },
+    "questions.1.options.0": {
+      "t": "Encontrar quién lo causó",
+      "h": "03f61cb0"
+    },
+    "questions.1.options.1": {
+      "t": "Mitigar el impacto (rollback, failover, apagar una flag) y solo después diagnosticar",
+      "h": "76c94fc9"
+    },
+    "questions.1.options.2": {
+      "t": "Escribir el postmortem",
+      "h": "bbd7627c"
+    },
+    "questions.1.options.3": {
+      "t": "Esperar más datos",
+      "h": "7f886f9a"
+    },
+    "questions.1.q": {
+      "t": "En un incidente, ¿qué va primero?",
+      "h": "7e9d351d"
+    },
+    "questions.2.explain": {
+      "t": "La culpa oculta información. Aprender requiere que las personas describan con honestidad lo que ocurrió.",
+      "h": "d1e2fd9d"
+    },
+    "questions.2.options.0": {
+      "t": "No se menciona a nadie",
+      "h": "49b56513"
+    },
+    "questions.2.options.1": {
+      "t": "Pregunta cómo permitió el sistema la falla y termina con acciones que tienen responsable, no con castigo",
+      "h": "1f84bb62"
+    },
+    "questions.2.options.2": {
+      "t": "Nunca se escribe",
+      "h": "e98b3063"
+    },
+    "questions.2.options.3": {
+      "t": "Es privado para los gerentes",
+      "h": "065cf82d"
+    },
+    "questions.2.q": {
+      "t": "¿Qué define a un postmortem sin culpables?",
+      "h": "4ba3ff25"
+    }
+  }
+}

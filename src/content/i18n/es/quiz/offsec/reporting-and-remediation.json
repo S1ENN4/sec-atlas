@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Quienes deciden necesitan el riesgo y las prioridades, en palabras sobre las que puedan actuar.",
+      "h": "5844fbac"
+    },
+    "questions.0.options.0": {
+      "t": "Salida de herramientas",
+      "h": "363f4fd0"
+    },
+    "questions.0.options.1": {
+      "t": "Qué se probó, el riesgo general en lenguaje claro y las acciones más importantes",
+      "h": "459d4d59"
+    },
+    "questions.0.options.2": {
+      "t": "La lista completa de solicitudes",
+      "h": "279d148f"
+    },
+    "questions.0.options.3": {
+      "t": "Solo los conteos por severidad",
+      "h": "a172226c"
+    },
+    "questions.0.q": {
+      "t": "¿Qué debe contener el resumen ejecutivo de un informe?",
+      "h": "645d364f"
+    },
+    "questions.1.explain": {
+      "t": "La reproducibilidad hace posibles las correcciones y los retestes.",
+      "h": "77b4fc89"
+    },
+    "questions.1.options.0": {
+      "t": "Para alargar el informe",
+      "h": "d69aefd3"
+    },
+    "questions.1.options.1": {
+      "t": "Para que los ingenieros del cliente lo confirmen y corrijan sin adivinar, y verifiquen la corrección después",
+      "h": "6c8ce964"
+    },
+    "questions.1.options.2": {
+      "t": "Para presumir herramientas",
+      "h": "2aa6bf2c"
+    },
+    "questions.1.options.3": {
+      "t": "Porque CVSS lo exige",
+      "h": "200e4399"
+    },
+    "questions.1.q": {
+      "t": "¿Por qué un hallazgo debe incluir pasos reproducibles?",
+      "h": "feb7f511"
+    },
+    "questions.2.explain": {
+      "t": "Un reteste confirma que se corrigió la causa raíz, y no solo la solicitud reportada.",
+      "h": "a079ed8f"
+    },
+    "questions.2.options.0": {
+      "t": "Para cobrar otra vez",
+      "h": "c7ccdeaf"
+    },
+    "questions.2.options.1": {
+      "t": "Las correcciones a menudo solo bloquean el caso de prueba exacto, así que hay que verificar que el problema de fondo esté cerrado",
+      "h": "1b7b1910"
+    },
+    "questions.2.options.2": {
+      "t": "Hacer reteste es ilegal",
+      "h": "eb7f4b1c"
+    },
+    "questions.2.options.3": {
+      "t": "Para encontrar nuevos clientes",
+      "h": "839ed7aa"
+    },
+    "questions.2.q": {
+      "t": "¿Por qué hacer reteste después de las correcciones?",
+      "h": "1001a1bc"
+    }
+  }
+}

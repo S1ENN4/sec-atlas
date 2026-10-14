@@ -1,0 +1,168 @@
+{
+  "entries": {
+    "graph.0.label": {
+      "t": "es lo que un contenedor aísla",
+      "h": "dd047ba1"
+    },
+    "graph.1.label": {
+      "t": "dispara",
+      "h": "0d850d1f"
+    },
+    "graph.2.label": {
+      "t": "es automatizado por",
+      "h": "d4e3d939"
+    },
+    "graph.3.label": {
+      "t": "entrega artefactos a",
+      "h": "63282556"
+    },
+    "graph.4.label": {
+      "t": "corre sobre",
+      "h": "ca26d3a8"
+    },
+    "graph.5.label": {
+      "t": "aprovisiona",
+      "h": "adbe7660"
+    },
+    "graph.6.label": {
+      "t": "es observado por",
+      "h": "bb669d84"
+    },
+    "graph.7.label": {
+      "t": "alimenta los SLOs de",
+      "h": "9969c55c"
+    },
+    "pipeline.0.description": {
+      "t": "el suelo sobre el que se apoya todo",
+      "h": "cc2a6d03"
+    },
+    "pipeline.0.gate": {
+      "t": "puedes reproducir, inspeccionar y explicar un servicio desde el shell",
+      "h": "ae774805"
+    },
+    "pipeline.0.items.0.label": {
+      "t": "Linux, procesos y redes",
+      "h": "950b8279"
+    },
+    "pipeline.0.items.1.label": {
+      "t": "branches, pull requests y ownership",
+      "h": "3b746c3b"
+    },
+    "pipeline.0.items.2.label": {
+      "t": "imágenes y contenedores",
+      "h": "14f2a854"
+    },
+    "pipeline.0.name": {
+      "t": "fundamentos",
+      "h": "1b58aad0"
+    },
+    "pipeline.1.description": {
+      "t": "del commit a producción",
+      "h": "c9e98d89"
+    },
+    "pipeline.1.gate": {
+      "t": "todo cambio se entrega por el mismo camino automatizado y reversible",
+      "h": "a1c269cc"
+    },
+    "pipeline.1.items.0.label": {
+      "t": "el ciclo de entrega y sus principios",
+      "h": "cc92489d"
+    },
+    "pipeline.1.items.1.label": {
+      "t": "pipelines rápidos y confiables",
+      "h": "7ce7c3eb"
+    },
+    "pipeline.1.items.2.label": {
+      "t": "canary, blue/green y flags",
+      "h": "600205aa"
+    },
+    "pipeline.1.name": {
+      "t": "entregar",
+      "h": "c3a71b15"
+    },
+    "pipeline.2.description": {
+      "t": "sobre qué corre todo",
+      "h": "3dae98b2"
+    },
+    "pipeline.2.gate": {
+      "t": "los entornos se reconstruyen desde el código, no se reparan a mano",
+      "h": "41ee9125"
+    },
+    "pipeline.2.items.0.label": {
+      "t": "infraestructura descrita como código",
+      "h": "f3c03bc3"
+    },
+    "pipeline.2.items.1.label": {
+      "t": "ejecutar contenedores en un clúster",
+      "h": "169477a5"
+    },
+    "pipeline.2.name": {
+      "t": "aprovisionar",
+      "h": "868b357f"
+    },
+    "pipeline.3.description": {
+      "t": "sano en producción, aprendiendo de los fallos",
+      "h": "1f349a2e"
+    },
+    "pipeline.3.gate": {
+      "t": "sabes cuándo los usuarios sufren antes de que ellos te avisen",
+      "h": "ded7565a"
+    },
+    "pipeline.3.items.0.label": {
+      "t": "métricas, logs, traces y alertas",
+      "h": "3fbccad0"
+    },
+    "pipeline.3.items.1.label": {
+      "t": "SLOs, error budgets e incidentes",
+      "h": "54556c72"
+    },
+    "pipeline.3.items.2.label": {
+      "t": "postmortems y reducción de toil",
+      "h": "d6dfea9f"
+    },
+    "pipeline.3.name": {
+      "t": "operar",
+      "h": "ddb3ef2a"
+    },
+    "relations.0.label": {
+      "t": "es lo que un contenedor aísla",
+      "h": "dd047ba1"
+    },
+    "relations.1.label": {
+      "t": "dispara",
+      "h": "0d850d1f"
+    },
+    "relations.2.label": {
+      "t": "es programado por",
+      "h": "7507b454"
+    },
+    "relations.3.label": {
+      "t": "es automatizado por",
+      "h": "d4e3d939"
+    },
+    "relations.4.label": {
+      "t": "entrega artefactos a",
+      "h": "63282556"
+    },
+    "relations.5.label": {
+      "t": "corre sobre",
+      "h": "ca26d3a8"
+    },
+    "relations.6.label": {
+      "t": "aprovisiona",
+      "h": "adbe7660"
+    },
+    "relations.7.label": {
+      "t": "es observado por",
+      "h": "bb669d84"
+    },
+    "relations.8.label": {
+      "t": "alimenta los SLOs de",
+      "h": "9969c55c"
+    },
+    "relations.9.label": {
+      "t": "consume el budget de",
+      "h": "24e0a4cf"
+    }
+  }
+}

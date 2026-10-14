@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Los worktrees aíslan los cambios y cada resultado llega como una branch que puedes revisar.",
+      "h": "9524a13e"
+    },
+    "questions.0.options.0": {
+      "t": "Un agent editando el mismo directorio de trabajo",
+      "h": "d0b91b3a"
+    },
+    "questions.0.options.1": {
+      "t": "Git worktrees separados, uno por agent, con revisión humana de cada branch",
+      "h": "45f131a2"
+    },
+    "questions.0.options.2": {
+      "t": "Dar a cada agent acceso a producción",
+      "h": "1dede8fb"
+    },
+    "questions.0.options.3": {
+      "t": "Desactivar las aprobaciones",
+      "h": "a3484e83"
+    },
+    "questions.0.q": {
+      "t": "Hay que hacer muchas tareas independientes a la vez. ¿Cuál es la configuración más segura?",
+      "h": "3ccb0e3a"
+    },
+    "questions.1.explain": {
+      "t": "Los agents ayudan, pero el riesgo es lo bastante alto como para que un experto lea el resultado.",
+      "h": "69f56581"
+    },
+    "questions.1.options.0": {
+      "t": "Autonomía total sin revisión",
+      "h": "eb9bf251"
+    },
+    "questions.1.options.1": {
+      "t": "Para un borrador y para las pruebas, seguido de revisión línea por línea por alguien que conozca el área",
+      "h": "30494662"
+    },
+    "questions.1.options.2": {
+      "t": "Para nada, nunca",
+      "h": "2e08e033"
+    },
+    "questions.1.options.3": {
+      "t": "Solo con el modelo más barato",
+      "h": "77da379b"
+    },
+    "questions.1.q": {
+      "t": "Para código que maneja autenticación, ¿cómo se debe usar un agent?",
+      "h": "54a787cc"
+    },
+    "questions.2.explain": {
+      "t": "Los loops son señal de que la tarea o el contexto están mal. Intentos nuevos y más pequeños suelen funcionar mejor.",
+      "h": "90ec841d"
+    },
+    "questions.2.options.0": {
+      "t": "Dejarlo en loop más tiempo",
+      "h": "0cfbce69"
+    },
+    "questions.2.options.1": {
+      "t": "Reducir la tarea, reiniciar el contexto o cambiar de modelo",
+      "h": "4a069abf"
+    },
+    "questions.2.options.2": {
+      "t": "Apagar las pruebas",
+      "h": "c087d1ab"
+    },
+    "questions.2.options.3": {
+      "t": "Darle más permisos",
+      "h": "6bb44da7"
+    },
+    "questions.2.q": {
+      "t": "El agent sigue repitiendo la misma corrección fallida. ¿Cuál es la mejor respuesta?",
+      "h": "83bc7897"
+    }
+  }
+}

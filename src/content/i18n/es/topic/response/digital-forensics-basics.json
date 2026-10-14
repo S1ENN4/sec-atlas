@@ -1,0 +1,108 @@
+{
+  "entries": {
+    "sections.0.bullets.0": {
+      "t": "Preservar: cambia lo menos posible y demuestra la integridad con hashes criptográficos calculados en la recolección.",
+      "h": "7d0d1975"
+    },
+    "sections.0.bullets.1": {
+      "t": "Trabajar con copias: adquiere una imagen forense y analiza la imagen, nunca el original.",
+      "h": "e86d172c"
+    },
+    "sections.0.bullets.2": {
+      "t": "Orden de volatilidad: recolecta primero la evidencia más frágil. Memoria, luego procesos en ejecución y conexiones de red, luego archivos temporales, luego disco, luego logs y respaldos.",
+      "h": "2b4dd573"
+    },
+    "sections.0.bullets.3": {
+      "t": "Cadena de custodia: un registro escrito de quién tuvo la evidencia, cuándo y qué se hizo con ella. Es lo que hace creíble la evidencia en una disputa.",
+      "h": "0c64c5e4"
+    },
+    "sections.0.bullets.4": {
+      "t": "Documenta todo: comandos, horas (en UTC), herramientas y versiones, y tu razonamiento.",
+      "h": "a25669f7"
+    },
+    "sections.0.bullets.5": {
+      "t": "Legal y privacidad: ten autoridad para recolectar y maneja los datos personales como exigen la ley y la política. Involucra a asesoría jurídica cuando un caso pueda llegar a juicio.",
+      "h": "d58e882d"
+    },
+    "sections.0.heading": {
+      "t": "Principios",
+      "h": "4a8cf080"
+    },
+    "sections.1.body.0": {
+      "t": "Usa un bloqueador de escritura, de hardware o software, para medios físicos, captura la memoria antes de apagar un sistema y calcula el hash del resultado. Los comandos de abajo son el patrón estándar; los casos reales suelen usar herramientas de adquisición dedicadas.",
+      "h": "8503ca69"
+    },
+    "sections.1.code.0.code": {
+      "t": "# crea la imagen de un disco en solo lectura (usa un bloqueador de escritura en medios físicos)\nsudo dd if=/dev/sdb of=case42/evidence01.img bs=4M conv=noerror,sync status=progress\n\n# demuestra la integridad: registra el hash en la recolección y reverifica después\nsha256sum case42/evidence01.img | tee case42/evidence01.img.sha256\nsha256sum -c case42/evidence01.img.sha256\n\n# haz una copia de trabajo y analiza esa, nunca la imagen original\ncp case42/evidence01.img case42/work01.img",
+      "h": "f25feba8"
+    },
+    "sections.1.code.0.filename": {
+      "t": "acquire-disk.sh",
+      "h": "7114eaa2"
+    },
+    "sections.1.code.1.code": {
+      "t": "Caso: INC-2026-0142    Ítem: evidence01.img (disco de web-prod-03)\nSHA-256: <hash registrado en la adquisición>\n\n2026-10-13 15:10Z  recolectado por A. Silva, con bloqueo de escritura, dc3dd v7.2\n2026-10-13 16:00Z  transferido a la bóveda de evidencia, bolsa sellada #118 (A. Silva -> M. Souza)\n2026-10-14 09:05Z  retirado para análisis (M. Souza), hash reverificado OK\n2026-10-14 17:30Z  devuelto a la bóveda, hash reverificado OK",
+      "h": "8b2481ab"
+    },
+    "sections.1.code.1.filename": {
+      "t": "chain-of-custody.txt",
+      "h": "f405e2f6"
+    },
+    "sections.1.heading": {
+      "t": "Adquisición de evidencia",
+      "h": "31fc2003"
+    },
+    "sections.2.bullets.0": {
+      "t": "Memoria: procesos en ejecución y ocultos, conexiones de red, módulos cargados y código inyectado, credenciales en memoria.",
+      "h": "6f66f606"
+    },
+    "sections.2.bullets.1": {
+      "t": "Disco: línea de tiempo del sistema de archivos, archivos eliminados, programas ejecutados recientemente, ubicaciones de persistencia (elementos de inicio, tareas programadas, servicios).",
+      "h": "4a8c00cb"
+    },
+    "sections.2.bullets.2": {
+      "t": "Artefactos de Windows: logs de eventos, hives del registro, prefetch, amcache y shimcache, historial del navegador.",
+      "h": "07d29fae"
+    },
+    "sections.2.bullets.3": {
+      "t": "Artefactos de Linux: historial del shell, logs de autenticación y del sistema, tareas cron, claves SSH, binarios modificados.",
+      "h": "3d5ea066"
+    },
+    "sections.2.bullets.4": {
+      "t": "Nube y SaaS: logs de auditoría y estado de configuración; la evidencia suele estar en los logs del proveedor, no en un disco.",
+      "h": "24b1db57"
+    },
+    "sections.2.code.0.code": {
+      "t": "vol -f mem.raw windows.pslist          # procesos en ejecución\nvol -f mem.raw windows.pstree          # relaciones de padre e hijo\nvol -f mem.raw windows.cmdline         # líneas de comandos\nvol -f mem.raw windows.netscan         # conexiones de red y listeners\nvol -f mem.raw windows.malfind         # regiones de memoria que parecen código inyectado",
+      "h": "b2de8e11"
+    },
+    "sections.2.code.0.filename": {
+      "t": "memory-analysis.sh (Volatility 3)",
+      "h": "460e74b5"
+    },
+    "sections.2.heading": {
+      "t": "Qué examinar",
+      "h": "ada35455"
+    },
+    "sections.3.body.0": {
+      "t": "Un informe forense indica qué se examinó, cómo, qué se encontró y qué significa, separando la observación de la interpretación. Escríbelo de modo que un lector que no estuvo allí pueda seguir el razonamiento y reproducirlo. Declara los límites con honestidad: lo que no pudiste determinar y por qué.",
+      "h": "f379b292"
+    },
+    "sections.3.heading": {
+      "t": "Informe",
+      "h": "c9e579d6"
+    },
+    "short": {
+      "t": "recolectar evidencia en el orden correcto, demostrar que no fue alterada y leer lo que muestra",
+      "h": "e7e238fe"
+    },
+    "tagline": {
+      "t": "La forense es la disciplina de la evidencia: recolectarla de modo que no pueda ser disputada, analizar copias en lugar de originales y documentar cada paso para que otro examinador llegue al mismo resultado.",
+      "h": "58b00a7b"
+    },
+    "title": {
+      "t": "Fundamentos de forense digital",
+      "h": "fc133344"
+    }
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Las fallas de integridad ocurren cuando se confía en código o datos sin verificarlos: actualizaciones automáticas sin firma, scripts cargados desde una CDN sin comprobación de integridad, deserialización de bytes no confiables y pipelines de CI/CD donde un solo paso comprometido puede alterar lo que se entrega.",
+      "h": "3f10ed13"
+    },
+    "sections.0.body.1": {
+      "t": "El OWASP Top 10:2025 mantiene esta categoría como A08. Es cercana al A03 (cadena de suministro), pero se centra en el paso de verificación: ¿puedes demostrar que lo que ejecutas es lo que se pretendía ejecutar?",
+      "h": "bae27673"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "f8c94a3b"
+    },
+    "sections.1.bullets.0": {
+      "t": "Deserialización insegura: la aplicación reconstruye objetos a partir de bytes suministrados por el atacante (serialización de Java, pickle de Python, YAML inseguro), y el stream provoca ejecución de código.",
+      "h": "fe04ce1f"
+    },
+    "sections.1.bullets.1": {
+      "t": "Actualización o plugin manipulado: una descarga por un canal sin firma se reemplaza en tránsito o en el mirror.",
+      "h": "27cc6777"
+    },
+    "sections.1.bullets.2": {
+      "t": "Script de terceros sin verificar: una CDN comprometida sirve JavaScript modificado a todos los visitantes.",
+      "h": "06b8744d"
+    },
+    "sections.1.bullets.3": {
+      "t": "Estado controlado por el cliente: una cookie o un campo oculto que lleva un rol, precio u objeto se edita y se acepta.",
+      "h": "da1f013f"
+    },
+    "sections.1.heading": {
+      "t": "Cómo funciona el ataque",
+      "h": "4443eb22"
+    },
+    "sections.2.body.0": {
+      "t": "Deserializar bytes no confiables con pickle, confiar en una cookie editable por el usuario y cargar un script sin atributo de integridad.",
+      "h": "22d2cbaa"
+    },
+    "sections.2.code.0.code": {
+      "t": "import pickle, base64\n\ndef load_prefs(cookie):\n    return pickle.loads(base64.b64decode(cookie))   # los bytes controlados por el atacante ejecutan código",
+      "h": "961bc658"
+    },
+    "sections.2.code.0.filename": {
+      "t": "session.py",
+      "h": "fb3e15f9"
+    },
+    "sections.2.code.1.code": {
+      "t": "const cart = JSON.parse(Buffer.from(req.cookies.cart, \"base64\").toString());\ntotal = cart.total;          // el cliente escribió este número",
+      "h": "a3ce76ee"
+    },
+    "sections.2.code.1.filename": {
+      "t": "cart.js",
+      "h": "5fb51018"
+    },
+    "sections.2.code.2.code": {
+      "t": "<script src=\"https://cdn.example.com/lib/chart.min.js\"></script>",
+      "h": "fa38fdb7"
+    },
+    "sections.2.code.2.filename": {
+      "t": "index.html",
+      "h": "f6013a00"
+    },
+    "sections.2.heading": {
+      "t": "Código vulnerable",
+      "h": "fe357299"
+    },
+    "sections.3.body.0": {
+      "t": "Usa formatos solo de datos (JSON) con validación de esquema, nunca serialización nativa de objetos para entradas no confiables. Si el estado debe pasar por el cliente, fírmalo (HMAC o un token firmado) y verifícalo antes de usarlo, o mejor, mantenlo en el servidor. Fija los scripts de terceros con Subresource Integrity y verifica las firmas de todo lo que instales o actualices.",
+      "h": "86b1f436"
+    },
+    "sections.3.code.0.code": {
+      "t": "import hmac, hashlib, json, base64\n\nSECRET = load_secret(\"PREFS_HMAC_KEY\")\n\ndef dump_prefs(prefs: dict) -> str:\n    body = base64.urlsafe_b64encode(json.dumps(prefs).encode())\n    mac = hmac.new(SECRET, body, hashlib.sha256).hexdigest().encode()\n    return (body + b\".\" + mac).decode()\n\ndef load_prefs(cookie: str) -> dict:\n    body, _, mac = cookie.encode().partition(b\".\")\n    expected = hmac.new(SECRET, body, hashlib.sha256).hexdigest().encode()\n    if not hmac.compare_digest(mac, expected):\n        raise ValueError(\"tampered\")\n    return json.loads(base64.urlsafe_b64decode(body))      # solo datos, validados después",
+      "h": "be2d51d6"
+    },
+    "sections.3.code.0.filename": {
+      "t": "session.py",
+      "h": "fb3e15f9"
+    },
+    "sections.3.code.1.code": {
+      "t": "// el estado vive en el servidor; la cookie solo lleva un id opaco\nconst cart = await carts.get(req.session.cartId);\nconst total = cart.items.reduce((s, i) => s + catalog.price(i.sku) * i.qty, 0);",
+      "h": "76b7de85"
+    },
+    "sections.3.code.1.filename": {
+      "t": "cart.js",
+      "h": "5fb51018"
+    },
+    "sections.3.code.2.code": {
+      "t": "<script src=\"https://cdn.example.com/lib/chart-4.4.1.min.js\"\n        integrity=\"sha384-<hash of the exact file>\"\n        crossorigin=\"anonymous\"></script>",
+      "h": "d2730dec"
+    },
+    "sections.3.code.2.filename": {
+      "t": "index.html",
+      "h": "f6013a00"
+    },
+    "sections.3.code.3.code": {
+      "t": "# el artefacto debe estar firmado por la identidad de pipeline esperada\ncosign verify-blob --certificate-identity 'https://github.com/example/app/.github/workflows/release.yml@refs/heads/main' \\\n  --certificate-oidc-issuer https://token.actions.githubusercontent.com \\\n  --signature app.tgz.sig --certificate app.tgz.pem app.tgz",
+      "h": "2b22842c"
+    },
+    "sections.3.code.3.filename": {
+      "t": "verifica antes de ejecutar",
+      "h": "ca0f5400"
+    },
+    "sections.3.heading": {
+      "t": "La corrección",
+      "h": "7188b1fb"
+    },
+    "sections.4.body.0": {
+      "t": "Alimenta el código exactamente con lo que haría un atacante: una cookie modificada, un payload de un gadget de deserialización y un archivo de script alterado. El resultado correcto es el rechazo, sin ejecutar ningún código.",
+      "h": "498ac40a"
+    },
+    "sections.4.code.0.code": {
+      "t": "def test_tampered_cookie_is_rejected():\n    cookie = dump_prefs({\"theme\": \"dark\"})\n    body, mac = cookie.split(\".\")\n    forged = base64.urlsafe_b64encode(b'{\"theme\":\"dark\",\"role\":\"admin\"}').decode() + \".\" + mac\n    with pytest.raises(ValueError):\n        load_prefs(forged)\n\ndef test_pickle_payload_is_not_executed(tmp_path):\n    marker = tmp_path / \"pwned\"\n    class Evil:\n        def __reduce__(self):\n            return (open, (str(marker), \"w\"))\n    payload = base64.b64encode(pickle.dumps(Evil())).decode()\n    with pytest.raises(Exception):\n        load_prefs(payload)\n    assert not marker.exists()",
+      "h": "1c3e6e46"
+    },
+    "sections.4.code.0.filename": {
+      "t": "test_integrity.py (pytest)",
+      "h": "eea6e930"
+    },
+    "sections.4.code.1.code": {
+      "t": "# todo <script> y <link rel=stylesheet> externo debe llevar un atributo integrity\n! grep -RInE '<script[^>]+src=\"https?://' dist/ | grep -v 'integrity='",
+      "h": "a3b3a210"
+    },
+    "sections.4.code.1.filename": {
+      "t": "sri-check.sh",
+      "h": "78745f92"
+    },
+    "sections.4.heading": {
+      "t": "Demuestra la corrección",
+      "h": "665c8226"
+    },
+    "sections.5.bullets.0": {
+      "t": "Nunca deserialices datos no confiables con un formato capaz de instanciar objetos; prefiere JSON con validación de esquema.",
+      "h": "4f8f500a"
+    },
+    "sections.5.bullets.1": {
+      "t": "Firma todo lo que deba cruzar una frontera de confianza (cookies, archivos de actualización, mensajes) y verifica antes de usar.",
+      "h": "9c6104a6"
+    },
+    "sections.5.bullets.2": {
+      "t": "Usa Subresource Integrity para scripts y estilos de terceros, o alójalos tú mismo.",
+      "h": "0954bfba"
+    },
+    "sections.5.bullets.3": {
+      "t": "Firma los artefactos de build y las imágenes de contenedor; verifica la firma en el momento del deploy.",
+      "h": "35931c21"
+    },
+    "sections.5.bullets.4": {
+      "t": "Protege el pipeline: cambios revisados, permisos de build y deploy separados, ningún código sin revisar en los pasos de release.",
+      "h": "407af802"
+    },
+    "sections.5.bullets.5": {
+      "t": "Prefiere el estado del lado del servidor para precios, roles y permisos.",
+      "h": "b5d8c71c"
+    },
+    "sections.5.heading": {
+      "t": "Checklist",
+      "h": "61b29464"
+    },
+    "short": {
+      "t": "confiar en código o datos que pudieron haber sido manipulados",
+      "h": "fe0286e5"
+    },
+    "tagline": {
+      "t": "Si el programa acepta actualizaciones, plugins, objetos serializados o la salida de un pipeline sin probar de dónde vienen, quien pueda alterarlos puede ejecutar código como tú.",
+      "h": "20b313bf"
+    },
+    "title": {
+      "t": "A08 Software or Data Integrity Failures",
+      "h": "8f344756"
+    }
+  }
+}

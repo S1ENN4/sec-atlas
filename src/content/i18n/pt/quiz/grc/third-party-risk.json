@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "A classificação em níveis concentra o esforço onde uma falha causaria mais dano.",
+      "h": "1d942ae3"
+    },
+    "questions.0.options.0": {
+      "t": "Todo fornecedor recebe a mesma revisão completa",
+      "h": "db5ac9ce"
+    },
+    "questions.0.options.1": {
+      "t": "Por criticidade: dados tratados, acesso detido e a dificuldade de substituir o fornecedor",
+      "h": "62c3beeb"
+    },
+    "questions.0.options.2": {
+      "t": "Pelo porte do fornecedor",
+      "h": "733119e5"
+    },
+    "questions.0.options.3": {
+      "t": "Pelo preço",
+      "h": "6427dab4"
+    },
+    "questions.0.q": {
+      "t": "Como deve ser decidida a profundidade da revisão de um fornecedor?",
+      "h": "9555be39"
+    },
+    "questions.1.explain": {
+      "t": "Os prazos regulatórios costumam começar quando você toma conhecimento. O contrato deve fazer com que você saiba rapidamente.",
+      "h": "4b56c39c"
+    },
+    "questions.1.options.0": {
+      "t": "Para reduzir o preço",
+      "h": "80e253d7"
+    },
+    "questions.1.options.1": {
+      "t": "Para que você saiba de um incidente a tempo de responder e cumprir suas próprias obrigações",
+      "h": "1b840c4e"
+    },
+    "questions.1.options.2": {
+      "t": "Porque auditores gostam de contratos",
+      "h": "8cb3ee0f"
+    },
+    "questions.1.options.3": {
+      "t": "Para evitar os patches do fornecedor",
+      "h": "250afe07"
+    },
+    "questions.1.q": {
+      "t": "Por que incluir termos de notificação de violação em um contrato com fornecedor?",
+      "h": "14027efd"
+    },
+    "questions.2.explain": {
+      "t": "Planeje saídas e backups fora de um provedor único crítico.",
+      "h": "c755fdf2"
+    },
+    "questions.2.options.0": {
+      "t": "Fornecedores demais",
+      "h": "e5857c26"
+    },
+    "questions.2.options.1": {
+      "t": "Dependência de um único fornecedor ou provedor, de modo que a falha dele se torna a sua",
+      "h": "81ae6e31"
+    },
+    "questions.2.options.2": {
+      "t": "Um preço alto",
+      "h": "c410c2f0"
+    },
+    "questions.2.options.3": {
+      "t": "Um desenho de rede",
+      "h": "bf0dce6a"
+    },
+    "questions.2.q": {
+      "t": "O que é risco de concentração?",
+      "h": "fd27e8b1"
+    }
+  }
+}

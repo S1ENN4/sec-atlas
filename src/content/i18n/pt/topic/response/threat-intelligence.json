@@ -1,0 +1,108 @@
+{
+  "entries": {
+    "sections.0.bullets.0": {
+      "t": "Estratégica: tendências e riscos para a liderança (quais atores de ameaça miram seu setor, por quê, com que impacto).",
+      "h": "b76f2046"
+    },
+    "sections.0.bullets.1": {
+      "t": "Operacional: como funciona uma campanha, para que os defensores possam antecipá-la: infraestrutura, momento, técnicas.",
+      "h": "6695d43d"
+    },
+    "sections.0.bullets.2": {
+      "t": "Tática: as técnicas, ferramentas e procedimentos (TTPs) que um adversário usa, mapeados para um framework como o ATT&CK.",
+      "h": "52dc3b9e"
+    },
+    "sections.0.bullets.3": {
+      "t": "Técnica: indicadores de comprometimento (IOCs) como hashes, domínios, endereços e nomes de arquivo. Baratos de usar e rápidos de expirar.",
+      "h": "2910c594"
+    },
+    "sections.0.heading": {
+      "t": "Níveis de inteligência",
+      "h": "1d96d901"
+    },
+    "sections.1.body.0": {
+      "t": "A Pirâmide da Dor classifica os indicadores pelo quanto bloqueá-los prejudica o atacante. Valores de hash e endereços IP são triviais de mudar; nomes de domínio são um pouco mais difíceis; ferramentas e, acima de tudo, táticas e técnicas são caras de substituir. Defender-se contra o comportamento (TTPs) dura mais do que bloquear listas de indicadores, então use IOCs para triagem rápida e TTPs para detecção durável.",
+      "h": "09c7d23e"
+    },
+    "sections.1.heading": {
+      "t": "Indicadores versus comportamento",
+      "h": "5648bf49"
+    },
+    "sections.2.bullets.0": {
+      "t": "Quem produziu e com base em que evidência? Observação primária vale mais que afirmações repetidas.",
+      "h": "7aaad207"
+    },
+    "sections.2.bullets.1": {
+      "t": "Quão recente é? Muitos indicadores são úteis por dias, não por anos.",
+      "h": "99333a47"
+    },
+    "sections.2.bullets.2": {
+      "t": "É relevante para o seu ambiente, tecnologia e setor?",
+      "h": "231c2983"
+    },
+    "sections.2.bullets.3": {
+      "t": "Qual é a confiança, e ela está declarada? Boa inteligência diz o quão segura está.",
+      "h": "3cd357d3"
+    },
+    "sections.2.bullets.4": {
+      "t": "É acionável: você consegue detectar, bloquear ou caçar com isso hoje?",
+      "h": "13bd3af0"
+    },
+    "sections.2.heading": {
+      "t": "Avaliando uma fonte",
+      "h": "c67ea53a"
+    },
+    "sections.3.body.0": {
+      "t": "STIX é uma linguagem padrão para descrever objetos de inteligência, e TAXII é um protocolo para trocá-los. Um indicador mínimo em STIX 2.1 se parece com isto.",
+      "h": "34841f64"
+    },
+    "sections.3.code.0.code": {
+      "t": "{\n  \"type\": \"indicator\",\n  \"spec_version\": \"2.1\",\n  \"id\": \"indicator--8e2e2d2b-17d4-4cbf-938f-98ee46b3cd3f\",\n  \"created\": \"2026-10-01T10:00:00.000Z\",\n  \"modified\": \"2026-10-01T10:00:00.000Z\",\n  \"name\": \"Endereço C2 visto na intrusão INC-2026-0142\",\n  \"pattern\": \"[ipv4-addr:value = '203.0.113.9']\",\n  \"pattern_type\": \"stix\",\n  \"valid_from\": \"2026-10-01T00:00:00Z\",\n  \"confidence\": 70,\n  \"labels\": [\"malicious-activity\"]\n}",
+      "h": "41054335"
+    },
+    "sections.3.code.0.filename": {
+      "t": "indicator.json (STIX 2.1)",
+      "h": "288d07e1"
+    },
+    "sections.3.heading": {
+      "t": "Um indicador compartilhável",
+      "h": "2b1a156f"
+    },
+    "sections.4.bullets.0": {
+      "t": "Alimente a detecção e o bloqueio com indicadores validados, cada um com data de expiração.",
+      "h": "2c730948"
+    },
+    "sections.4.bullets.1": {
+      "t": "Mapeie o comportamento do adversário para o ATT&CK, verifique sua cobertura e priorize as lacunas para os atores que importam para você.",
+      "h": "30b1b88a"
+    },
+    "sections.4.bullets.2": {
+      "t": "Informe a liderança com poucas mensagens claras e as decisões que elas implicam, não com um despejo de dados.",
+      "h": "b734bb41"
+    },
+    "sections.4.bullets.3": {
+      "t": "Compartilhe o que puder: grupos setoriais de compartilhamento (ISACs) e pares de confiança melhoram a detecção de todos.",
+      "h": "8ad4c6b3"
+    },
+    "sections.4.bullets.4": {
+      "t": "Trate inteligência sensível com as marcações de compartilhamento (como o TLP) com que ela veio.",
+      "h": "4d707c16"
+    },
+    "sections.4.heading": {
+      "t": "Colocando em prática",
+      "h": "f33a57dd"
+    },
+    "short": {
+      "t": "saber quem ataca você e como, e usar isso para decidir o que defender primeiro",
+      "h": "fa6e87c5"
+    },
+    "tagline": {
+      "t": "Uma lista de endereços IP maliciosos é dado. Inteligência é saber quais adversários miram em você, o que eles fazem e o que isso significa para suas prioridades, com um nível de confiança associado.",
+      "h": "c951fe2a"
+    },
+    "title": {
+      "t": "Inteligência de ameaças",
+      "h": "b1cc7111"
+    }
+  }
+}

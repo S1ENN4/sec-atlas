@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "La honestidad sobre la incertidumbre, con una hora de actualización prometida, genera confianza. Adivinar la daña.",
+      "h": "67b45090"
+    },
+    "questions.0.options.0": {
+      "t": "Nada",
+      "h": "44819483"
+    },
+    "questions.0.options.1": {
+      "t": "Indicar con claridad qué aún no se sabe y cuándo habrá una actualización",
+      "h": "bbe65513"
+    },
+    "questions.0.options.2": {
+      "t": "Adivinar para tranquilizar",
+      "h": "fd9de141"
+    },
+    "questions.0.options.3": {
+      "t": "Negar el incidente",
+      "h": "bd32c06b"
+    },
+    "questions.0.q": {
+      "t": "¿Qué debe decir un mensaje externo sobre un incidente respecto de lo que aún no se sabe?",
+      "h": "80619e1f"
+    },
+    "questions.1.explain": {
+      "t": "El primer reporte suele ser lo que salva el día. El miedo hace que la gente oculte los problemas.",
+      "h": "6df56e0d"
+    },
+    "questions.1.options.0": {
+      "t": "Evita la rendición de cuentas",
+      "h": "cb6fbe93"
+    },
+    "questions.1.options.1": {
+      "t": "Las personas reportan los errores rápidamente cuando no se las castiga, y los reportes tempranos limitan el daño",
+      "h": "b6fcdb3c"
+    },
+    "questions.1.options.2": {
+      "t": "Lo exige la ley",
+      "h": "4ec3bf9e"
+    },
+    "questions.1.options.3": {
+      "t": "Reduce los costos de capacitación",
+      "h": "362f02c9"
+    },
+    "questions.1.q": {
+      "t": "¿Por qué importa el reporte sin culpa?",
+      "h": "ac7eddb8"
+    },
+    "questions.2.explain": {
+      "t": "Los plazos pueden ser cortos. Conózcalos y ensaye la decisión con anticipación.",
+      "h": "a546a1c7"
+    },
+    "questions.2.options.0": {
+      "t": "Cuando ocurre un incidente",
+      "h": "b23e1243"
+    },
+    "questions.2.options.1": {
+      "t": "Antes de un incidente, para que las decisiones no se improvisen bajo presión",
+      "h": "a4108ddc"
+    },
+    "questions.2.options.2": {
+      "t": "Después de la investigación",
+      "h": "df5ebf14"
+    },
+    "questions.2.options.3": {
+      "t": "Nunca",
+      "h": "80c3052d"
+    },
+    "questions.2.q": {
+      "t": "¿Cuándo debe conocer sus plazos regulatorios de notificación?",
+      "h": "129ad408"
+    }
+  }
+}

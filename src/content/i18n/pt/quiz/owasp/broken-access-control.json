@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "A autorização deve ser aplicada no servidor em cada requisição. Um id impossível de adivinhar ajuda, mas não é um controle.",
+      "h": "eca2269b"
+    },
+    "questions.0.options.0": {
+      "t": "Esconder os links das faturas na interface do usuário",
+      "h": "029e9634"
+    },
+    "questions.0.options.1": {
+      "t": "Fazer a consulta filtrar pelo dono obtido da sessão e devolver o mesmo 404 para inexistente e não pertencente",
+      "h": "a8ea6c92"
+    },
+    "questions.0.options.2": {
+      "t": "Usar um id aleatório mais longo e manter a mesma consulta",
+      "h": "6623cc13"
+    },
+    "questions.0.options.3": {
+      "t": "Bloquear o endereço IP do usuário",
+      "h": "4e5dc703"
+    },
+    "questions.0.q": {
+      "t": "Um usuário logado troca /api/invoices/1041 por /api/invoices/1042 e vê a fatura de outro cliente. Qual é a melhor correção?",
+      "h": "02d76700"
+    },
+    "questions.1.explain": {
+      "t": "Com negar por padrão, uma rota para a qual ninguém escreveu uma regra fica proibida em vez de aberta.",
+      "h": "17f6a4bf"
+    },
+    "questions.1.options.0": {
+      "t": "Permitir por padrão",
+      "h": "7aaefb85"
+    },
+    "questions.1.options.1": {
+      "t": "Negar por padrão",
+      "h": "88262657"
+    },
+    "questions.1.options.2": {
+      "t": "Registrar em log por padrão",
+      "h": "12f69a66"
+    },
+    "questions.1.options.3": {
+      "t": "Fazer cache por padrão",
+      "h": "b394a39d"
+    },
+    "questions.1.q": {
+      "t": "Qual padrão torna segura uma rota esquecida?",
+      "h": "2847a152"
+    },
+    "questions.2.explain": {
+      "t": "O cliente está sob o controle do atacante. Só vale a verificação no servidor.",
+      "h": "304c0072"
+    },
+    "questions.2.options.0": {
+      "t": "Porque botões são lentos",
+      "h": "b98d3072"
+    },
+    "questions.2.options.1": {
+      "t": "Porque os atacantes chamam o endpoint diretamente, então o servidor precisa verificar o papel",
+      "h": "730e6b00"
+    },
+    "questions.2.options.2": {
+      "t": "Porque os navegadores fazem cache de botões",
+      "h": "8e626c9e"
+    },
+    "questions.2.options.3": {
+      "t": "Porque prejudica a acessibilidade",
+      "h": "76a94b38"
+    },
+    "questions.2.q": {
+      "t": "Por que esconder o botão de admin na UI não é controle de acesso?",
+      "h": "7ff80cfc"
+    }
+  }
+}

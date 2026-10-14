@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Un modelo barato que necesita tres intentos puede costar más que uno potente que acierta de una vez.",
+      "h": "e884e46b"
+    },
+    "questions.0.options.0": {
+      "t": "Elegir el que está en la cima de un leaderboard público",
+      "h": "219f37d0"
+    },
+    "questions.0.options.1": {
+      "t": "Ejecutar tareas reales de tu repositorio con pruebas y comparar el costo por tarea resuelta",
+      "h": "c4989018"
+    },
+    "questions.0.options.2": {
+      "t": "Elegir el menor precio por token",
+      "h": "c228ed1d"
+    },
+    "questions.0.options.3": {
+      "t": "Elegir el más nuevo",
+      "h": "f2ffaf03"
+    },
+    "questions.0.q": {
+      "t": "¿Cuál es la forma correcta de comparar dos modelos para tu trabajo?",
+      "h": "7da987e1"
+    },
+    "questions.1.explain": {
+      "t": "Revisa la política del provider y las reglas de tu empresa. Alojar tú mismo los pesos abiertos es una opción para código sensible.",
+      "h": "4b799796"
+    },
+    "questions.1.options.0": {
+      "t": "Qué tan bonito es el sitio web",
+      "h": "96353dcd"
+    },
+    "questions.1.options.1": {
+      "t": "Dónde se procesan tu código y tus prompts, bajo qué términos, y si tu empresa lo permite",
+      "h": "6b3910d9"
+    },
+    "questions.1.options.2": {
+      "t": "Si soporta modo oscuro",
+      "h": "2367fc94"
+    },
+    "questions.1.options.3": {
+      "t": "Cuántos usuarios tiene",
+      "h": "47689db3"
+    },
+    "questions.1.q": {
+      "t": "¿Cuál es la principal cuestión de privacidad al usar un servicio de modelo alojado?",
+      "h": "18b0d911"
+    },
+    "questions.2.explain": {
+      "t": "Gasta donde la ambigüedad es alta y ahorra donde una prueba puede decidir.",
+      "h": "c94531d6"
+    },
+    "questions.2.options.0": {
+      "t": "Usar un modelo para cada paso",
+      "h": "2872427b"
+    },
+    "questions.2.options.1": {
+      "t": "Usar un modelo potente para planificar y revisar y uno más barato para ediciones bien especificadas, con pruebas como juez",
+      "h": "50a224b6"
+    },
+    "questions.2.options.2": {
+      "t": "Usar siempre el modelo más barato",
+      "h": "737dfc11"
+    },
+    "questions.2.options.3": {
+      "t": "Cambiar de modelo al azar",
+      "h": "322093b1"
+    },
+    "questions.2.q": {
+      "t": "Una política de enrutamiento sensata es:",
+      "h": "d2cb0d57"
+    }
+  }
+}

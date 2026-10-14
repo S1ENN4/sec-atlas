@@ -1,0 +1,104 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Muchas tareas son independientes: una corrección de bug, un relleno de pruebas, una pasada de documentación, una actualización de dependencia. Ejecutarlas al mismo tiempo convierte la espera en rendimiento. Los límites no son de cómputo sino de atención y de conflictos: debes revisar cada resultado, y dos agents que editen los mismos archivos chocarán.",
+      "h": "f4708b3b"
+    },
+    "sections.0.heading": {
+      "t": "Por qué ejecutar agents en paralelo",
+      "h": "615394e5"
+    },
+    "sections.1.body.0": {
+      "t": "Un git worktree da a cada agent su propio directorio de trabajo y branch del mismo repositorio, de modo que no pueden sobrescribir los archivos del otro y cada resultado llega como una branch que puedes revisar y fusionar.",
+      "h": "8dda4b3b"
+    },
+    "sections.1.code.0.code": {
+      "t": "# desde el checkout principal\ngit worktree add ../app-fix-login   -b agent/fix-login\ngit worktree add ../app-add-tests   -b agent/add-tests\ngit worktree add ../app-upgrade-dep -b agent/upgrade-dep\n\n# inicia un agent en cada directorio (cualquier harness) y luego revisa cada branch\ngit -C ../app-fix-login diff main --stat\n\n# limpia después del merge\ngit worktree remove ../app-fix-login",
+      "h": "e7107e36"
+    },
+    "sections.1.code.0.filename": {
+      "t": "un worktree por tarea",
+      "h": "d1642a82"
+    },
+    "sections.1.heading": {
+      "t": "Aislamiento con git worktrees",
+      "h": "b9178486"
+    },
+    "sections.2.bullets.0": {
+      "t": "Un multiplexor de terminal como tmux mantiene vivas las sesiones y te permite alternar entre ellas.",
+      "h": "efdbf601"
+    },
+    "sections.2.bullets.1": {
+      "t": "herdr es un multiplexor hecho para agents: paneles de terminal reales para cada agent en un workspace persistente, una barra lateral que muestra qué agents están trabajando, bloqueados esperándote o terminados, detach y reattach, y uso por SSH. Organiza los agents; no los reemplaza.",
+      "h": "0579eae1"
+    },
+    "sections.2.bullets.2": {
+      "t": "Algunos harnesses tienen subagents integrados: el agent principal delega un trabajo enfocado a un ayudante con su propio contexto y recibe de vuelta un resumen.",
+      "h": "cf5e0ddf"
+    },
+    "sections.2.bullets.3": {
+      "t": "Los plugins de orquestación como Oh My OpenAgent (OMO) sobre OpenCode añaden roles predefinidos (un coordinador, un planificador, ejecutores, investigadores) y un modo en el que el equipo resuelve una tarea con poca supervisión.",
+      "h": "98b1a6dc"
+    },
+    "sections.2.heading": {
+      "t": "Ver y gestionar muchas sesiones",
+      "h": "4cbaaf21"
+    },
+    "sections.3.bullets.0": {
+      "t": "Planificador, implementador, revisor: un agent planifica, otro implementa, un tercero revisa, idealmente con un modelo distinto para tener una visión independiente.",
+      "h": "4841874c"
+    },
+    "sections.3.bullets.1": {
+      "t": "Fan-out: divide un gran cambio mecánico por directorio o módulo y ejecuta un agent por porción.",
+      "h": "a49f2341"
+    },
+    "sections.3.bullets.2": {
+      "t": "Investigación en paralelo: varios agents de solo lectura investigan preguntas distintas y reportan; ninguno edita.",
+      "h": "a62b8d67"
+    },
+    "sections.3.bullets.3": {
+      "t": "Termina siempre con un merge humano: los agents abren pull requests, corre el CI, una persona decide.",
+      "h": "a6eb9edc"
+    },
+    "sections.3.heading": {
+      "t": "Patrones que funcionan",
+      "h": "c44a3581"
+    },
+    "sections.4.bullets.0": {
+      "t": "Deuda de revisión: diez agents hacen diez diffs. Si no puedes revisarlos, solo estás creando código sin leer.",
+      "h": "f82e3b12"
+    },
+    "sections.4.bullets.1": {
+      "t": "Costo: los modos paralelos y autónomos queman tokens rápidamente. Fija presupuestos y vigila el uso.",
+      "h": "d60439cb"
+    },
+    "sections.4.bullets.2": {
+      "t": "Recursos compartidos: las bases de datos, los puertos y las APIs externas no quedan aislados por un worktree.",
+      "h": "2e34813c"
+    },
+    "sections.4.bullets.3": {
+      "t": "Radio de impacto: un agent con permisos amplios ejecutándose sin supervisión puede causar un daño amplio. Usa un sandbox o contenedor, credenciales acotadas y ningún acceso a producción.",
+      "h": "d9705cfd"
+    },
+    "sections.4.bullets.4": {
+      "t": "Más capas, más confianza: cada plugin y herramienta de orquestación se ejecuta con tus permisos. Fija versiones y lee lo que instalas.",
+      "h": "af371a98"
+    },
+    "sections.4.heading": {
+      "t": "Riesgos y límites",
+      "h": "b1434b0d"
+    },
+    "short": {
+      "t": "git worktrees, multiplexores como herdr y capas como OMO: ejecutar muchos agents sin caos",
+      "h": "e897a672"
+    },
+    "tagline": {
+      "t": "Un agent es un pair programmer. Varios agents son un equipo pequeño, y un equipo necesita aislamiento, una forma de ver quién hace qué y un humano que revise los merges.",
+      "h": "544cf2f9"
+    },
+    "title": {
+      "t": "Orquestación y agents en paralelo",
+      "h": "10e78c54"
+    }
+  }
+}

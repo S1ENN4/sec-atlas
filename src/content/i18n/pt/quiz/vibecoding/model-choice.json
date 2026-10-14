@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Um modelo barato que precisa de três tentativas pode custar mais que um forte que acerta de primeira.",
+      "h": "e884e46b"
+    },
+    "questions.0.options.0": {
+      "t": "Escolher o que está no topo de um leaderboard público",
+      "h": "219f37d0"
+    },
+    "questions.0.options.1": {
+      "t": "Executar tarefas reais do seu repositório com testes e comparar o custo por tarefa resolvida",
+      "h": "c4989018"
+    },
+    "questions.0.options.2": {
+      "t": "Escolher o menor preço por token",
+      "h": "c228ed1d"
+    },
+    "questions.0.options.3": {
+      "t": "Escolher o mais novo",
+      "h": "f2ffaf03"
+    },
+    "questions.0.q": {
+      "t": "Qual é a forma certa de comparar dois modelos para o seu trabalho?",
+      "h": "7da987e1"
+    },
+    "questions.1.explain": {
+      "t": "Verifique a política do provider e as regras da sua empresa. Hospedar pesos abertos por conta própria é uma opção para código sensível.",
+      "h": "4b799796"
+    },
+    "questions.1.options.0": {
+      "t": "Quão bonito é o site",
+      "h": "96353dcd"
+    },
+    "questions.1.options.1": {
+      "t": "Onde seu código e seus prompts são processados, sob quais termos, e se sua empresa permite",
+      "h": "6b3910d9"
+    },
+    "questions.1.options.2": {
+      "t": "Se ele suporta modo escuro",
+      "h": "2367fc94"
+    },
+    "questions.1.options.3": {
+      "t": "Quantos usuários ele tem",
+      "h": "47689db3"
+    },
+    "questions.1.q": {
+      "t": "Qual é a principal questão de privacidade ao usar um serviço de modelo hospedado?",
+      "h": "18b0d911"
+    },
+    "questions.2.explain": {
+      "t": "Gaste onde a ambiguidade é alta e economize onde um teste pode decidir.",
+      "h": "c94531d6"
+    },
+    "questions.2.options.0": {
+      "t": "Usar um modelo para todas as etapas",
+      "h": "2872427b"
+    },
+    "questions.2.options.1": {
+      "t": "Usar um modelo forte para planejar e revisar e um mais barato para edições bem especificadas, com testes como juiz",
+      "h": "50a224b6"
+    },
+    "questions.2.options.2": {
+      "t": "Usar sempre o modelo mais barato",
+      "h": "737dfc11"
+    },
+    "questions.2.options.3": {
+      "t": "Trocar de modelo aleatoriamente",
+      "h": "322093b1"
+    },
+    "questions.2.q": {
+      "t": "Uma política de roteamento sensata é:",
+      "h": "d2cb0d57"
+    }
+  }
+}

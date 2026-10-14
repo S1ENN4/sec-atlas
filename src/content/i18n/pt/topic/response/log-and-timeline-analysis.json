@@ -1,0 +1,124 @@
+{
+  "entries": {
+    "sections.0.bullets.0": {
+      "t": "Converta todo timestamp para UTC antes de comparar qualquer coisa. Fusos horários e horário de verão causam a maioria dos erros em linhas do tempo.",
+      "h": "4e6ebfa5"
+    },
+    "sections.0.bullets.1": {
+      "t": "Observe o desvio de relógio (clock skew): um host com o relógio errado desloca toda a sua história. Compare um evento compartilhado entre fontes para medir o deslocamento.",
+      "h": "33184e78"
+    },
+    "sections.0.bullets.2": {
+      "t": "Registre a fonte, o campo e a resolução de tempo de cada evento; um log com resolução de apenas minutos não consegue ordenar eventos dentro do minuto.",
+      "h": "9e2c6233"
+    },
+    "sections.0.bullets.3": {
+      "t": "Guarde cópias brutas e trabalhe nas cópias.",
+      "h": "4a043bc3"
+    },
+    "sections.0.heading": {
+      "t": "Comece com o tempo limpo",
+      "h": "1be6f41c"
+    },
+    "sections.1.body.0": {
+      "t": "Uma investigação avança por pivoteamento: pegue um fato conhecido e pergunte o que mais o compartilha. Cada pivô estreita ou amplia o escopo.",
+      "h": "f73da1e8"
+    },
+    "sections.1.bullets.0": {
+      "t": "De um IP para todas as contas que fizeram login a partir dele e todas as requisições que ele fez.",
+      "h": "aade9ed5"
+    },
+    "sections.1.bullets.1": {
+      "t": "De uma conta para suas sessões, seus dispositivos, os recursos que tocou e as mudanças que fez.",
+      "h": "83210524"
+    },
+    "sections.1.bullets.2": {
+      "t": "De um host para seus processos pai e filho, conexões de rede e arquivos criados.",
+      "h": "287a67e1"
+    },
+    "sections.1.bullets.3": {
+      "t": "De um hash de arquivo para todos os hosts onde ele apareceu.",
+      "h": "9a75e747"
+    },
+    "sections.1.bullets.4": {
+      "t": "Do primeiro evento malicioso para trás: como o acesso começou?",
+      "h": "d23450ef"
+    },
+    "sections.1.heading": {
+      "t": "Pivoteamento",
+      "h": "4c720538"
+    },
+    "sections.2.body.0": {
+      "t": "Extraia do CloudTrail, em ordem, tudo o que uma identidade fez e procure por primeiras vezes: um novo endereço de origem, uma nova região, uma chamada de API sensível.",
+      "h": "cca98ff3"
+    },
+    "sections.2.code.0.code": {
+      "t": "# todas as ações da identidade suspeita, em ordem de tempo\njq -r '.Records[]\n  | select(.userIdentity.arn // \"\" | test(\"build-bot\"))\n  | [.eventTime, .eventName, .awsRegion, .sourceIPAddress, (.errorCode // \"ok\")] | @tsv' \\\n  cloudtrail/*.json | sort\n\n# quais endereços de origem essa identidade usou?\njq -r '.Records[] | select(.userIdentity.arn // \"\" | test(\"build-bot\")) | .sourceIPAddress' \\\n  cloudtrail/*.json | sort | uniq -c | sort -rn",
+      "h": "cc70fe5a"
+    },
+    "sections.2.code.0.filename": {
+      "t": "cloudtrail-pivot.sh",
+      "h": "14227737"
+    },
+    "sections.2.code.1.code": {
+      "t": "import csv, heapq\nfrom datetime import datetime, timezone\n\ndef load(path, source, ts_field, fmt):\n    with open(path, newline=\"\") as f:\n        for row in csv.DictReader(f):\n            ts = datetime.strptime(row[ts_field], fmt).replace(tzinfo=timezone.utc)\n            yield ts, source, row.get(\"message\", \"\")\n\nstreams = [\n    load(\"idp.csv\", \"idp\", \"time\", \"%Y-%m-%dT%H:%M:%SZ\"),\n    load(\"proxy.csv\", \"proxy\", \"ts\", \"%Y-%m-%d %H:%M:%S\"),\n]\nfor ts, source, msg in heapq.merge(*(sorted(s) for s in streams)):\n    print(ts.isoformat(), source, msg)  # saída em ordem cronológica",
+      "h": "f810a2df"
+    },
+    "sections.2.code.1.filename": {
+      "t": "merge_timeline.py",
+      "h": "11d7a006"
+    },
+    "sections.2.heading": {
+      "t": "Exemplo: uma identidade de nuvem comprometida",
+      "h": "c5b4609f"
+    },
+    "sections.3.body.0": {
+      "t": "Quando você encontrar uma técnica usada pelo atacante, escreva uma regra para que ela seja pega da próxima vez. O Sigma é um formato neutro em relação a fornecedores que converte para muitas linguagens de consulta de SIEM.",
+      "h": "e877bcf7"
+    },
+    "sections.3.code.0.code": {
+      "t": "title: PowerShell iniciado com um comando codificado\nstatus: experimental\nlogsource:\n  category: process_creation\n  product: windows\ndetection:\n  selection:\n    Image|endswith: '\\powershell.exe'\n    CommandLine|contains:\n      - ' -enc '\n      - ' -EncodedCommand '\n  condition: selection\nfalsepositives:\n  - Algumas ferramentas de gerenciamento usam comandos codificados; estabeleça a linha de base antes\nlevel: medium",
+      "h": "bd14ca63"
+    },
+    "sections.3.code.0.filename": {
+      "t": "suspicious-encoded-powershell.yml (Sigma)",
+      "h": "d6856430"
+    },
+    "sections.3.heading": {
+      "t": "Transforme achados em detecções",
+      "h": "86749b20"
+    },
+    "sections.4.bullets.0": {
+      "t": "Escreva a linha do tempo enquanto avança, com a evidência de cada linha.",
+      "h": "1fa1e669"
+    },
+    "sections.4.bullets.1": {
+      "t": "Separe fatos de hipóteses e marque qual é qual.",
+      "h": "94d5a3ac"
+    },
+    "sections.4.bullets.2": {
+      "t": "Procure também a ausência de logs: uma lacuna pode ser a limpeza do atacante.",
+      "h": "57e41d46"
+    },
+    "sections.4.bullets.3": {
+      "t": "Mantenha uma lista de perguntas que você ainda não sabe responder e de logs que gostaria de ter; essa lista melhora o seu logging.",
+      "h": "55b9e0e3"
+    },
+    "sections.4.heading": {
+      "t": "Hábitos",
+      "h": "45ab397b"
+    },
+    "short": {
+      "t": "transformar logs dispersos na história do que o atacante fez e quando",
+      "h": "3ad456de"
+    },
+    "tagline": {
+      "t": "Toda investigação termina como uma linha do tempo: primeiro acesso, o que tocaram, como se movimentaram, o que levaram. A qualidade dessa linha do tempo depende de timestamps limpos e bons pivôs.",
+      "h": "0bd6e251"
+    },
+    "title": {
+      "t": "Análise de logs e construção de uma linha do tempo",
+      "h": "8c7d550c"
+    }
+  }
+}

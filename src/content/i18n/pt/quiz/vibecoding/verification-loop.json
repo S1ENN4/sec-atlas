@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Código e resumos gerados parecem confiantes. Verifique as evidências.",
+      "h": "86b0a05d"
+    },
+    "questions.0.options.0": {
+      "t": "Fazer merge",
+      "h": "ea8f0d02"
+    },
+    "questions.0.options.1": {
+      "t": "Executar os testes você mesmo e ler o diff, incluindo mudanças em arquivos de teste",
+      "h": "429b566f"
+    },
+    "questions.0.options.2": {
+      "t": "Perguntar de novo",
+      "h": "39348299"
+    },
+    "questions.0.options.3": {
+      "t": "Apagar os testes",
+      "h": "af0c02e9"
+    },
+    "questions.0.q": {
+      "t": "Um agent diz que todos os testes passam. O que você deve fazer?",
+      "h": "baefdba0"
+    },
+    "questions.1.explain": {
+      "t": "Proteja arquivos de teste e a configuração de CI com revisão para que os testes continuem sendo uma verificação independente.",
+      "h": "3262d8e5"
+    },
+    "questions.1.options.0": {
+      "t": "São rápidos demais",
+      "h": "a7355945"
+    },
+    "questions.1.options.1": {
+      "t": "Fazem asserções sobre mocks, atualizam snapshots para combinar com um bug ou são apagados para deixar o build verde",
+      "h": "2568d52b"
+    },
+    "questions.1.options.2": {
+      "t": "Usam poucos comentários",
+      "h": "8c589311"
+    },
+    "questions.1.options.3": {
+      "t": "Rodam em paralelo",
+      "h": "58ddb1ea"
+    },
+    "questions.1.q": {
+      "t": "Qual é uma falha típica de testes gerados?",
+      "h": "e203073f"
+    },
+    "questions.2.explain": {
+      "t": "Os gates independem do autor. São a parte confiável do loop.",
+      "h": "5eba1b91"
+    },
+    "questions.2.options.0": {
+      "t": "Para atrasar todo mundo",
+      "h": "25cb0405"
+    },
+    "questions.2.options.1": {
+      "t": "As verificações protegem a base de código não importa quem escreveu a mudança, e agents produzem mais mudanças com erros plausíveis",
+      "h": "bf91d48f"
+    },
+    "questions.2.options.2": {
+      "t": "Agents sempre estão certos",
+      "h": "c6a7d934"
+    },
+    "questions.2.options.3": {
+      "t": "Humanos sempre estão errados",
+      "h": "23b3e594"
+    },
+    "questions.2.q": {
+      "t": "Por que rodar os mesmos gates de CI em mudanças escritas por agents e por humanos?",
+      "h": "fef3521e"
+    }
+  }
+}

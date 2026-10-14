@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Código limpo não corrige um controle ausente. A correção começa antes: modelos de ameaça e casos de abuso.",
+      "h": "8740e297"
+    },
+    "questions.0.options.0": {
+      "t": "Os designs inseguros estão sempre no banco de dados",
+      "h": "d8a00678"
+    },
+    "questions.0.options.1": {
+      "t": "O código faz exatamente o que o design diz, e o próprio design permite o abuso",
+      "h": "cecfe947"
+    },
+    "questions.0.options.2": {
+      "t": "Os designs inseguros só afetam apps móveis",
+      "h": "ca1f9cda"
+    },
+    "questions.0.options.3": {
+      "t": "Os bugs são mais graves",
+      "h": "f4515c69"
+    },
+    "questions.0.q": {
+      "t": "O que distingue um design inseguro de um bug de implementação?",
+      "h": "146f3321"
+    },
+    "questions.1.explain": {
+      "t": "Escrever o que um atacante quer torna visíveis os controles ausentes antes de existir código.",
+      "h": "f50412f3"
+    },
+    "questions.1.options.0": {
+      "t": "Uma reclamação de usuário",
+      "h": "1f72cbb1"
+    },
+    "questions.1.options.1": {
+      "t": "Uma user story escrita do ponto de vista do atacante, que gera um requisito e um teste",
+      "h": "fc8fe1a5"
+    },
+    "questions.1.options.2": {
+      "t": "Um relatório de teste de penetração",
+      "h": "b0e10b67"
+    },
+    "questions.1.options.3": {
+      "t": "Um tipo de regra de firewall",
+      "h": "5bd3d7e7"
+    },
+    "questions.1.q": {
+      "t": "O que é um caso de abuso?",
+      "h": "79036c8d"
+    },
+    "questions.2.explain": {
+      "t": "Tudo o que o cliente envia pode ser alterado. O servidor é a fonte da verdade.",
+      "h": "3d6e02fa"
+    },
+    "questions.2.options.0": {
+      "t": "No navegador",
+      "h": "03e4d011"
+    },
+    "questions.2.options.1": {
+      "t": "Em um campo oculto de formulário",
+      "h": "8006919a"
+    },
+    "questions.2.options.2": {
+      "t": "No servidor, a partir de dados confiáveis do catálogo",
+      "h": "accc7ffd"
+    },
+    "questions.2.options.3": {
+      "t": "No app móvel",
+      "h": "39d9b7ed"
+    },
+    "questions.2.q": {
+      "t": "Onde deve ser calculado o preço de um pedido?",
+      "h": "8a91c212"
+    }
+  }
+}

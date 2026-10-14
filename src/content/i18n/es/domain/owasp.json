@@ -1,0 +1,164 @@
+{
+  "entries": {
+    "graph.0.label": {
+      "t": "define las reglas de",
+      "h": "65278aba"
+    },
+    "graph.1.label": {
+      "t": "puede eludir",
+      "h": "40e256d9"
+    },
+    "graph.2.label": {
+      "t": "protege las credenciales de",
+      "h": "c745fca1"
+    },
+    "graph.3.label": {
+      "t": "aporta identidad a",
+      "h": "3a1553d3"
+    },
+    "graph.4.label": {
+      "t": "se detiene al verificar",
+      "h": "002a3f8f"
+    },
+    "graph.5.label": {
+      "t": "depende de configuraciones seguras",
+      "h": "18b5a555"
+    },
+    "graph.6.label": {
+      "t": "registra",
+      "h": "86761b63"
+    },
+    "pipeline.0.description": {
+      "t": "decide qué debe ser imposible",
+      "h": "ca342602"
+    },
+    "pipeline.0.gate": {
+      "t": "toda funcionalidad tiene casos de abuso y una regla de autorización antes del código",
+      "h": "21b6f87d"
+    },
+    "pipeline.0.items.0.label": {
+      "t": "modelos de amenazas y casos de abuso",
+      "h": "60cb07bf"
+    },
+    "pipeline.0.items.1.label": {
+      "t": "quién puede hacer qué, en cada solicitud",
+      "h": "471b9f40"
+    },
+    "pipeline.0.items.2.label": {
+      "t": "requisitos de seguridad (ASVS)",
+      "h": "101056fd"
+    },
+    "pipeline.0.name": {
+      "t": "diseño",
+      "h": "056f1182"
+    },
+    "pipeline.1.description": {
+      "t": "maneja entradas, secretos e identidad de forma segura",
+      "h": "788a29d6"
+    },
+    "pipeline.1.gate": {
+      "t": "los patrones peligrosos se bloquean en la revisión y en el CI",
+      "h": "c5bbd8e6"
+    },
+    "pipeline.1.items.0.label": {
+      "t": "mantén los datos lejos de las instrucciones",
+      "h": "fba0c31b"
+    },
+    "pipeline.1.items.1.label": {
+      "t": "protege los datos en reposo y en tránsito",
+      "h": "5416bcc8"
+    },
+    "pipeline.1.items.2.label": {
+      "t": "demuestra quién es el usuario",
+      "h": "689fd2f5"
+    },
+    "pipeline.1.name": {
+      "t": "código",
+      "h": "e6fb0621"
+    },
+    "pipeline.2.description": {
+      "t": "entrega código verificado con configuraciones seguras",
+      "h": "30592314"
+    },
+    "pipeline.2.gate": {
+      "t": "solo los artefactos firmados, escaneados y endurecidos llegan a producción",
+      "h": "b8aeb22f"
+    },
+    "pipeline.2.items.0.label": {
+      "t": "conoce y fija aquello de lo que dependes",
+      "h": "eca2ede1"
+    },
+    "pipeline.2.items.1.label": {
+      "t": "verifica lo que ejecutas",
+      "h": "5c868e4e"
+    },
+    "pipeline.2.items.2.label": {
+      "t": "configuración endurecida y escaneada",
+      "h": "d2bcab7b"
+    },
+    "pipeline.2.name": {
+      "t": "entrega",
+      "h": "ed43a8a0"
+    },
+    "pipeline.3.description": {
+      "t": "detecta ataques y falla de forma segura",
+      "h": "3b526a5d"
+    },
+    "pipeline.3.gate": {
+      "t": "un ataque se detecta, se contiene y deja rastro",
+      "h": "57d5968f"
+    },
+    "pipeline.3.items.0.label": {
+      "t": "logs que se convierten en alertas",
+      "h": "b2e38d29"
+    },
+    "pipeline.3.items.1.label": {
+      "t": "errores que niegan, no filtran",
+      "h": "77e9b2f0"
+    },
+    "pipeline.3.items.2.label": {
+      "t": "runbooks y respuesta",
+      "h": "007590bb"
+    },
+    "pipeline.3.name": {
+      "t": "operación",
+      "h": "ddb3ef2a"
+    },
+    "relations.0.label": {
+      "t": "define las reglas de",
+      "h": "65278aba"
+    },
+    "relations.1.label": {
+      "t": "define el flujo de recuperación de",
+      "h": "b0cb82e7"
+    },
+    "relations.2.label": {
+      "t": "necesita una identidad confiable de",
+      "h": "bc5172e9"
+    },
+    "relations.3.label": {
+      "t": "puede eludir",
+      "h": "40e256d9"
+    },
+    "relations.4.label": {
+      "t": "protege las credenciales de",
+      "h": "c745fca1"
+    },
+    "relations.5.label": {
+      "t": "se detiene al verificar",
+      "h": "002a3f8f"
+    },
+    "relations.6.label": {
+      "t": "incluye el pipeline de",
+      "h": "09160228"
+    },
+    "relations.7.label": {
+      "t": "registra",
+      "h": "86761b63"
+    },
+    "relations.8.label": {
+      "t": "detecta el abuso de",
+      "h": "1f401743"
+    }
+  }
+}

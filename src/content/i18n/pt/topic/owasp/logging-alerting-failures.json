@@ -1,0 +1,148 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Esta categoria cobre logging, monitoramento e alertas de segurança ausentes ou ruins: logins e falhas de controle de acesso que não são registrados, logs que ficam apenas na máquina que o atacante controla, eventos sem nenhum alerta por trás e logs que vazam dados sensíveis ou podem ser forjados pela entrada do usuário.",
+      "h": "07cc0295"
+    },
+    "sections.0.body.1": {
+      "t": "É o A09 no OWASP Top 10:2025, com um nome que enfatiza o alerta: um log sobre o qual ninguém é acionado não é um controle.",
+      "h": "6556ace8"
+    },
+    "sections.0.heading": {
+      "t": "O que é",
+      "h": "f8c94a3b"
+    },
+    "sections.1.bullets.0": {
+      "t": "Uma rodada de credential stuffing com milhares de logins falhos não é registrada, ou é registrada e nunca revisada.",
+      "h": "3623a1a2"
+    },
+    "sections.1.bullets.1": {
+      "t": "Um atacante com acesso inicial apaga os logs locais; sem cópia central, o rastro desaparece.",
+      "h": "29395562"
+    },
+    "sections.1.bullets.2": {
+      "t": "Log injection: um nome de usuário contendo uma quebra de linha escreve uma linha falsa de \"login com sucesso\".",
+      "h": "b1d8edc8"
+    },
+    "sections.1.bullets.3": {
+      "t": "Os logs registram senhas, tokens ou números de cartão, transformando o repositório de logs no alvo mais rico.",
+      "h": "4f2e39c1"
+    },
+    "sections.1.heading": {
+      "t": "Como o ataque funciona",
+      "h": "4443eb22"
+    },
+    "sections.2.body.0": {
+      "t": "Logging de texto livre com entrada bruta do usuário, um segredo na mensagem e nenhum registro da falha que importa.",
+      "h": "de76310e"
+    },
+    "sections.2.code.0.code": {
+      "t": "def login(email, password):\n    print(f\"login attempt {email} / {password}\")          # segredo no log, possível injeção de quebra de linha\n    user = authenticate(email, password)\n    if not user:\n        return None                                        # falha não registrada\n    return user",
+      "h": "5c8bb6a4"
+    },
+    "sections.2.code.0.filename": {
+      "t": "login.py",
+      "h": "9e1b290c"
+    },
+    "sections.2.code.1.code": {
+      "t": "console.log(\"login failed for \" + req.body.email + \" with token \" + req.headers.authorization);",
+      "h": "3321f0d6"
+    },
+    "sections.2.code.1.filename": {
+      "t": "login.js",
+      "h": "4b3387e2"
+    },
+    "sections.2.heading": {
+      "t": "Código vulnerável",
+      "h": "fe357299"
+    },
+    "sections.3.body.0": {
+      "t": "Registre os eventos de segurança como dados estruturados com nomes de campo estáveis: quem, o quê, de onde, resultado e um correlation id. Nunca registre segredos; codifique a entrada do usuário para que não possa forjar linhas. Envie os logs para fora do host imediatamente e associe regras de alerta aos eventos que importam (picos de falhas, mudanças de privilégio, acesso negado a objetos sensíveis).",
+      "h": "ea912abb"
+    },
+    "sections.3.code.0.code": {
+      "t": "import json, logging\nlog = logging.getLogger(\"security\")\n\ndef event(action, outcome, **fields):\n    log.info(json.dumps({\"action\": action, \"outcome\": outcome, **fields}))   # json.dumps faz escape de quebras de linha\n\ndef login(email, password, ip, request_id):\n    user = authenticate(email, password)\n    if not user:\n        event(\"login\", \"failure\", email=email, ip=ip, request_id=request_id)   # sem senha, sem token\n        return None\n    event(\"login\", \"success\", user_id=user.id, ip=ip, request_id=request_id)\n    return user",
+      "h": "87044664"
+    },
+    "sections.3.code.0.filename": {
+      "t": "login.py",
+      "h": "9e1b290c"
+    },
+    "sections.3.code.1.code": {
+      "t": "req.log.warn({ action: \"login\", outcome: \"failure\", email: req.body.email, ip: req.ip }, \"auth\");\n// a redaction do pino mantém os segredos fora mesmo que alguém registre o objeto inteiro\nconst logger = pino({ redact: [\"req.headers.authorization\", \"*.password\", \"*.token\"] });",
+      "h": "9587ecd2"
+    },
+    "sections.3.code.1.filename": {
+      "t": "login.js (pino)",
+      "h": "9018ce7d"
+    },
+    "sections.3.code.2.code": {
+      "t": "- alert: LoginFailureSpike\n  expr: sum(rate(auth_events_total{action=\"login\",outcome=\"failure\"}[5m])) > 5\n  for: 5m\n  labels: { severity: page }\n  annotations:\n    summary: \"Falhas de login acima do normal: possível credential stuffing\"",
+      "h": "4b25657c"
+    },
+    "sections.3.code.2.filename": {
+      "t": "alert.yml (regra no estilo Prometheus)",
+      "h": "8657127c"
+    },
+    "sections.3.heading": {
+      "t": "A correção",
+      "h": "7188b1fb"
+    },
+    "sections.4.body.0": {
+      "t": "Teste que o evento é emitido com os campos certos, que nenhum segredo aparece e que a entrada não consegue forjar uma linha. Depois teste o próprio caminho do alerta: reproduza uma rajada e confirme que alguém é notificado. Um alerta não testado é uma esperança.",
+      "h": "f5fa855e"
+    },
+    "sections.4.code.0.code": {
+      "t": "def test_failed_login_is_logged_without_secrets(caplog):\n    with caplog.at_level(\"INFO\", logger=\"security\"):\n        login(\"bob@x.io\\nlogin success\", \"hunter2\", \"203.0.113.9\", \"req-1\")\n    text = caplog.text\n    assert \"hunter2\" not in text                      # sem segredo\n    assert text.count(\"\\n\") == 1                       # a quebra de linha injetada não criou uma linha\n    assert '\"outcome\": \"failure\"' in text\n\ndef test_alert_fires_on_burst(alert_harness):\n    for _ in range(200):\n        login(\"bob@x.io\", \"bad\", \"203.0.113.9\", \"r\")\n    assert alert_harness.fired(\"LoginFailureSpike\")",
+      "h": "0d6d2db0"
+    },
+    "sections.4.code.0.filename": {
+      "t": "test_logging.py (pytest)",
+      "h": "82a5997d"
+    },
+    "sections.4.heading": {
+      "t": "Prove a correção",
+      "h": "665c8226"
+    },
+    "sections.5.bullets.0": {
+      "t": "Registre: autenticação, falhas de controle de acesso, falhas de validação de entrada, ações privilegiadas e mudanças na configuração de segurança.",
+      "h": "05a8a3fe"
+    },
+    "sections.5.bullets.1": {
+      "t": "Use um formato estruturado consistente; inclua hora, ator, ação, alvo, resultado, origem e um correlation id.",
+      "h": "887f5d98"
+    },
+    "sections.5.bullets.2": {
+      "t": "Envie os logs rapidamente a um repositório central somente de anexação; restrinja quem pode alterá-los ou apagá-los.",
+      "h": "7d6d5305"
+    },
+    "sections.5.bullets.3": {
+      "t": "Não registre segredos, tokens nem números completos de cartão/documento; codifique a entrada não confiável.",
+      "h": "6b376334"
+    },
+    "sections.5.bullets.4": {
+      "t": "Defina alertas e um responsável para cada um; escreva a resposta em um runbook; teste o caminho do alerta.",
+      "h": "9d16d9a0"
+    },
+    "sections.5.bullets.5": {
+      "t": "Defina uma retenção que atenda às necessidades legais e de investigação.",
+      "h": "1a5e03b8"
+    },
+    "sections.5.heading": {
+      "t": "Checklist",
+      "h": "61b29464"
+    },
+    "short": {
+      "t": "ataques que passam despercebidos porque nada os registrou ou ninguém foi avisado",
+      "h": "bc7791d5"
+    },
+    "tagline": {
+      "t": "Você não consegue responder ao que não consegue ver. Logs sem alertas são um arquivo morto; alertas sem bons logs são ruído. Ambos precisam existir, e nenhum pode ser injetável nem estar cheio de segredos.",
+      "h": "cfd47bfe"
+    },
+    "title": {
+      "t": "A09 Security Logging and Alerting Failures",
+      "h": "eacffeb7"
+    }
+  }
+}

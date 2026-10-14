@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "A credencial está vinculada ao domínio genuíno, então uma página parecida não obtém nada.",
+      "h": "e0dc72c6"
+    },
+    "questions.0.options.0": {
+      "t": "Uma senha mais longa",
+      "h": "f75cbc11"
+    },
+    "questions.0.options.1": {
+      "t": "MFA resistente a phishing, como FIDO2 ou passkeys, que só funcionam no site real",
+      "h": "ca140bfc"
+    },
+    "questions.0.options.2": {
+      "t": "Treinamento de segurança uma vez por ano",
+      "h": "94212085"
+    },
+    "questions.0.options.3": {
+      "t": "Bloquear todo o e-mail",
+      "h": "3cb6517d"
+    },
+    "questions.0.q": {
+      "t": "Qual controle melhor derrota páginas de phishing de credenciais?",
+      "h": "69c82757"
+    },
+    "questions.1.explain": {
+      "t": "Um reporte rápido permite que a equipe contenha a campanha antes que ela se espalhe.",
+      "h": "9e43a1c1"
+    },
+    "questions.1.options.0": {
+      "t": "Apenas a taxa de cliques",
+      "h": "f1ce8a34"
+    },
+    "questions.1.options.1": {
+      "t": "Quantas pessoas reportam e com que rapidez, pois reportar transforma os usuários em detecção",
+      "h": "f0c1cc66"
+    },
+    "questions.1.options.2": {
+      "t": "O número de e-mails enviados",
+      "h": "a84ae69c"
+    },
+    "questions.1.options.3": {
+      "t": "O design da simulação",
+      "h": "bf7f70c1"
+    },
+    "questions.1.q": {
+      "t": "Qual métrica de phishing mais importa para a defesa?",
+      "h": "dc0c1aa6"
+    },
+    "questions.2.explain": {
+      "t": "Impede que outros forjem o seu domínio no endereço From.",
+      "h": "cb8471e5"
+    },
+    "questions.2.options.0": {
+      "t": "Criptografa o e-mail",
+      "h": "b4a6f1e7"
+    },
+    "questions.2.options.1": {
+      "t": "Diz aos receptores para rejeitar mensagens que falham na autenticação do seu domínio",
+      "h": "774d6b0d"
+    },
+    "questions.2.options.2": {
+      "t": "Apaga a sua caixa de entrada",
+      "h": "1861de40"
+    },
+    "questions.2.options.3": {
+      "t": "Bloqueia o envio de e-mails",
+      "h": "ea753e11"
+    },
+    "questions.2.q": {
+      "t": "O que faz uma política DMARC reject?",
+      "h": "51839079"
+    }
+  }
+}

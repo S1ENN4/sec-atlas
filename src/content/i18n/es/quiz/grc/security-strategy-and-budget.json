@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "La seguridad existe para que el negocio asuma riesgos de forma segura, así que parte de lo que el negocio necesita proteger.",
+      "h": "1ff0cde8"
+    },
+    "questions.0.options.0": {
+      "t": "Por las herramientas más nuevas",
+      "h": "a6b683b4"
+    },
+    "questions.0.options.1": {
+      "t": "Por los objetivos del negocio, las joyas de la corona, las obligaciones y el apetito de riesgo",
+      "h": "3ded1aff"
+    },
+    "questions.0.options.2": {
+      "t": "Por el calendario de auditorías",
+      "h": "83dc8ae3"
+    },
+    "questions.0.options.3": {
+      "t": "Por el presupuesto",
+      "h": "b21fa1ef"
+    },
+    "questions.0.q": {
+      "t": "¿Por dónde debe comenzar una estrategia de seguridad?",
+      "h": "84ca5faa"
+    },
+    "questions.1.explain": {
+      "t": "Una estrategia trata tanto de lo que no se hace como de lo que se hace.",
+      "h": "8bcb3de9"
+    },
+    "questions.1.options.0": {
+      "t": "Para parecer humilde",
+      "h": "c926b192"
+    },
+    "questions.1.options.1": {
+      "t": "Las prioridades son elecciones, y los riesgos no abordados deben ser explícitos, tener responsable y revisarse",
+      "h": "094b3f8a"
+    },
+    "questions.1.options.2": {
+      "t": "Es una regla legal",
+      "h": "6347e628"
+    },
+    "questions.1.options.3": {
+      "t": "Para acortar la hoja de ruta",
+      "h": "8c3322e6"
+    },
+    "questions.1.q": {
+      "t": "¿Por qué una hoja de ruta debe declarar lo que se acepta por ahora?",
+      "h": "c0dfef74"
+    },
+    "questions.2.explain": {
+      "t": "Las herramientas sin uso no protegen a nadie. Las bases sólidas y las personas capacitadas reducen el riesgo en toda la línea.",
+      "h": "0ad554b2"
+    },
+    "questions.2.options.0": {
+      "t": "Otra herramienta que se superpone",
+      "h": "02200ce3"
+    },
+    "questions.2.options.1": {
+      "t": "Bases y personas: inventario, identidad, logging, respaldos, capacitación y retención",
+      "h": "1c223e10"
+    },
+    "questions.2.options.2": {
+      "t": "Un logotipo más grande",
+      "h": "e82c050c"
+    },
+    "questions.2.options.3": {
+      "t": "Más dashboards",
+      "h": "47fa37fb"
+    },
+    "questions.2.q": {
+      "t": "¿Qué gasto suele dar el mejor retorno en un equipo pequeño?",
+      "h": "0bd08109"
+    }
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "entries": {
+    "graph.0.label": {
+      "t": "é o que um contêiner isola",
+      "h": "dd047ba1"
+    },
+    "graph.1.label": {
+      "t": "dispara",
+      "h": "0d850d1f"
+    },
+    "graph.2.label": {
+      "t": "é automatizado por",
+      "h": "d4e3d939"
+    },
+    "graph.3.label": {
+      "t": "entrega artefatos para",
+      "h": "63282556"
+    },
+    "graph.4.label": {
+      "t": "roda sobre",
+      "h": "ca26d3a8"
+    },
+    "graph.5.label": {
+      "t": "provisiona",
+      "h": "adbe7660"
+    },
+    "graph.6.label": {
+      "t": "é observado por",
+      "h": "bb669d84"
+    },
+    "graph.7.label": {
+      "t": "alimenta os SLOs de",
+      "h": "9969c55c"
+    },
+    "pipeline.0.description": {
+      "t": "o chão sobre o qual tudo se apoia",
+      "h": "cc2a6d03"
+    },
+    "pipeline.0.gate": {
+      "t": "você consegue reproduzir, inspecionar e explicar um serviço pelo shell",
+      "h": "ae774805"
+    },
+    "pipeline.0.items.0.label": {
+      "t": "Linux, processos e redes",
+      "h": "950b8279"
+    },
+    "pipeline.0.items.1.label": {
+      "t": "branches, pull requests e ownership",
+      "h": "3b746c3b"
+    },
+    "pipeline.0.items.2.label": {
+      "t": "imagens e contêineres",
+      "h": "14f2a854"
+    },
+    "pipeline.0.name": {
+      "t": "fundamentos",
+      "h": "1b58aad0"
+    },
+    "pipeline.1.description": {
+      "t": "do commit à produção",
+      "h": "c9e98d89"
+    },
+    "pipeline.1.gate": {
+      "t": "toda mudança chega por um mesmo caminho automatizado e reversível",
+      "h": "a1c269cc"
+    },
+    "pipeline.1.items.0.label": {
+      "t": "o ciclo de entrega e seus princípios",
+      "h": "cc92489d"
+    },
+    "pipeline.1.items.1.label": {
+      "t": "pipelines rápidos e confiáveis",
+      "h": "7ce7c3eb"
+    },
+    "pipeline.1.items.2.label": {
+      "t": "canary, blue/green e flags",
+      "h": "600205aa"
+    },
+    "pipeline.1.name": {
+      "t": "entregar",
+      "h": "c3a71b15"
+    },
+    "pipeline.2.description": {
+      "t": "onde tudo isso roda",
+      "h": "3dae98b2"
+    },
+    "pipeline.2.gate": {
+      "t": "ambientes são reconstruídos a partir do código, não consertados à mão",
+      "h": "41ee9125"
+    },
+    "pipeline.2.items.0.label": {
+      "t": "infraestrutura descrita como código",
+      "h": "f3c03bc3"
+    },
+    "pipeline.2.items.1.label": {
+      "t": "executar contêineres em um cluster",
+      "h": "169477a5"
+    },
+    "pipeline.2.name": {
+      "t": "provisionar",
+      "h": "868b357f"
+    },
+    "pipeline.3.description": {
+      "t": "saudável em produção, aprendendo com as falhas",
+      "h": "1f349a2e"
+    },
+    "pipeline.3.gate": {
+      "t": "você sabe quando os usuários estão sofrendo antes que eles avisem",
+      "h": "ded7565a"
+    },
+    "pipeline.3.items.0.label": {
+      "t": "métricas, logs, traces e alertas",
+      "h": "3fbccad0"
+    },
+    "pipeline.3.items.1.label": {
+      "t": "SLOs, error budgets e incidentes",
+      "h": "54556c72"
+    },
+    "pipeline.3.items.2.label": {
+      "t": "postmortems e redução de toil",
+      "h": "d6dfea9f"
+    },
+    "pipeline.3.name": {
+      "t": "operar",
+      "h": "ddb3ef2a"
+    },
+    "relations.0.label": {
+      "t": "é o que um contêiner isola",
+      "h": "dd047ba1"
+    },
+    "relations.1.label": {
+      "t": "dispara",
+      "h": "0d850d1f"
+    },
+    "relations.2.label": {
+      "t": "é agendado por",
+      "h": "7507b454"
+    },
+    "relations.3.label": {
+      "t": "é automatizado por",
+      "h": "d4e3d939"
+    },
+    "relations.4.label": {
+      "t": "entrega artefatos para",
+      "h": "63282556"
+    },
+    "relations.5.label": {
+      "t": "roda sobre",
+      "h": "ca26d3a8"
+    },
+    "relations.6.label": {
+      "t": "provisiona",
+      "h": "adbe7660"
+    },
+    "relations.7.label": {
+      "t": "é observado por",
+      "h": "bb669d84"
+    },
+    "relations.8.label": {
+      "t": "alimenta os SLOs de",
+      "h": "9969c55c"
+    },
+    "relations.9.label": {
+      "t": "consome o budget de",
+      "h": "24e0a4cf"
+    }
+  }
+}

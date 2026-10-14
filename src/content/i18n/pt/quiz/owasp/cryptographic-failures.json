@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "As senhas precisam de um hash lento, com salt e feito para esse fim. A criptografia é reversível e os hashes rápidos são baratos de quebrar por força bruta.",
+      "h": "94f17062"
+    },
+    "questions.0.options.0": {
+      "t": "MD5 com salt",
+      "h": "f041e53b"
+    },
+    "questions.0.options.1": {
+      "t": "SHA-256 da senha",
+      "h": "e183c571"
+    },
+    "questions.0.options.2": {
+      "t": "Argon2id, scrypt ou bcrypt por meio de uma biblioteca mantida",
+      "h": "a818b0d0"
+    },
+    "questions.0.options.3": {
+      "t": "Criptografia AES com uma chave compartilhada",
+      "h": "97be3d97"
+    },
+    "questions.0.q": {
+      "t": "Qual é a forma correta de armazenar senhas?",
+      "h": "14f7429c"
+    },
+    "questions.1.explain": {
+      "t": "Os tokens de segurança precisam ser imprevisíveis, o que só um CSPRNG garante.",
+      "h": "67b26847"
+    },
+    "questions.1.options.0": {
+      "t": "Math.random()",
+      "h": "0ab0041a"
+    },
+    "questions.1.options.1": {
+      "t": "Um timestamp",
+      "h": "8c56abe5"
+    },
+    "questions.1.options.2": {
+      "t": "O gerador aleatório criptográfico do sistema operacional",
+      "h": "7dacbae5"
+    },
+    "questions.1.options.3": {
+      "t": "O id do usuário mais um contador",
+      "h": "6b0d6e98"
+    },
+    "questions.1.q": {
+      "t": "Qual fonte é aceitável para um token de redefinição de senha?",
+      "h": "52fe5020"
+    },
+    "questions.2.explain": {
+      "t": "Sem autenticação, um atacante pode modificar o texto cifrado e às vezes descobrir o texto original.",
+      "h": "358be7cf"
+    },
+    "questions.2.options.0": {
+      "t": "É a única que funciona com TLS",
+      "h": "7702dafd"
+    },
+    "questions.2.options.1": {
+      "t": "Detecta adulteração do texto cifrado",
+      "h": "e1bf6a25"
+    },
+    "questions.2.options.2": {
+      "t": "Produz uma saída menor",
+      "h": "99530d88"
+    },
+    "questions.2.options.3": {
+      "t": "Não precisa de chave",
+      "h": "ac3ce1f7"
+    },
+    "questions.2.q": {
+      "t": "Por que preferir criptografia autenticada como AES-GCM em vez de AES-CBC simples?",
+      "h": "88d28c07"
+    }
+  }
+}

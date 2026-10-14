@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Se o id não muda, quem o conhecia antes do login compartilha a sessão autenticada.",
+      "h": "46812e4e"
+    },
+    "questions.0.options.0": {
+      "t": "Para economizar memória",
+      "h": "92e93d21"
+    },
+    "questions.0.options.1": {
+      "t": "Para evitar a session fixation, em que um atacante plantou o id antigo",
+      "h": "1acf749e"
+    },
+    "questions.0.options.2": {
+      "t": "Para desconectar o usuário de outros dispositivos",
+      "h": "5206d2c4"
+    },
+    "questions.0.options.3": {
+      "t": "Porque os cookies expiram no login",
+      "h": "1ef55009"
+    },
+    "questions.0.q": {
+      "t": "Por que o id de sessão precisa mudar após um login bem-sucedido?",
+      "h": "dc56e5d1"
+    },
+    "questions.1.explain": {
+      "t": "Decodificar não é verificar. Aceitar alg none ou pular a assinatura permite que qualquer um forje tokens.",
+      "h": "3c877b55"
+    },
+    "questions.1.options.0": {
+      "t": "Decodificá-lo e ler o payload",
+      "h": "e71bc659"
+    },
+    "questions.1.options.1": {
+      "t": "Verificar a assinatura com um algoritmo fixado e checar emissor, audiência e expiração",
+      "h": "8f7171f7"
+    },
+    "questions.1.options.2": {
+      "t": "Verificar se está em Base64",
+      "h": "659dd721"
+    },
+    "questions.1.options.3": {
+      "t": "Guardá-lo no localStorage",
+      "h": "bfe7a187"
+    },
+    "questions.1.q": {
+      "t": "O que um serviço deve fazer com um JWT antes de confiar nas suas claims?",
+      "h": "365a3237"
+    },
+    "questions.2.explain": {
+      "t": "O stuffing usa senhas reais e válidas de outros vazamentos, então a complexidade não ajuda. Rate limits e um segundo fator, sim.",
+      "h": "8dbc99dc"
+    },
+    "questions.2.options.0": {
+      "t": "Regras de senha complexa",
+      "h": "e6016ace"
+    },
+    "questions.2.options.1": {
+      "t": "Throttling, verificação de senhas vazadas e autenticação multifator",
+      "h": "025d25ff"
+    },
+    "questions.2.options.2": {
+      "t": "Renomear a URL de login",
+      "h": "990603f8"
+    },
+    "questions.2.options.3": {
+      "t": "Maior duração do cookie",
+      "h": "86d868f7"
+    },
+    "questions.2.q": {
+      "t": "Qual controle reduz melhor o impacto do credential stuffing?",
+      "h": "7db8fa7b"
+    }
+  }
+}

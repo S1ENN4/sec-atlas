@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Exige un sistema de gestión basado en riesgos y la certificación la otorga un auditor externo.",
+      "h": "d5a4195f"
+    },
+    "questions.0.options.0": {
+      "t": "Es una lista de verificación gratuita",
+      "h": "79031506"
+    },
+    "questions.0.options.1": {
+      "t": "Es un estándar certificable para un sistema de gestión de seguridad de la información, auditado por un tercero",
+      "h": "1e86ac35"
+    },
+    "questions.0.options.2": {
+      "t": "Se aplica solo a pagos",
+      "h": "e8462b78"
+    },
+    "questions.0.options.3": {
+      "t": "Es una ley",
+      "h": "6353ff68"
+    },
+    "questions.0.q": {
+      "t": "¿Qué es cierto sobre la ISO/IEC 27001?",
+      "h": "1eea3c19"
+    },
+    "questions.1.explain": {
+      "t": "El mapeo evita trabajo duplicado, ya que la mayoría de los marcos piden las mismas ideas.",
+      "h": "828d484a"
+    },
+    "questions.1.options.0": {
+      "t": "Mantener un programa separado para cada uno",
+      "h": "ab726129"
+    },
+    "questions.1.options.1": {
+      "t": "Usar uno como columna vertebral y mapear los demás a él, de modo que un control satisfaga muchos requisitos",
+      "h": "5c76b18a"
+    },
+    "questions.1.options.2": {
+      "t": "Elegir el más largo",
+      "h": "5832ca37"
+    },
+    "questions.1.options.3": {
+      "t": "Evitarlos todos",
+      "h": "7f50ffe7"
+    },
+    "questions.1.q": {
+      "t": "¿Cuál es una forma sensata de usar varios marcos en conjunto?",
+      "h": "fd94367f"
+    },
+    "questions.2.explain": {
+      "t": "Un marco fija un piso. La seguridad real requiere trabajo basado en riesgos más allá de él.",
+      "h": "67945ec7"
+    },
+    "questions.2.options.0": {
+      "t": "Las auditorías son ilegales",
+      "h": "31e21e16"
+    },
+    "questions.2.options.1": {
+      "t": "Las auditorías muestrean el pasado dentro de un alcance definido y no conocen sus amenazas específicas",
+      "h": "e262ae73"
+    },
+    "questions.2.options.2": {
+      "t": "Los auditores no son competentes",
+      "h": "c705dcfa"
+    },
+    "questions.2.options.3": {
+      "t": "Los marcos son secretos",
+      "h": "1a587c16"
+    },
+    "questions.2.q": {
+      "t": "¿Por qué aprobar una auditoría no es prueba de seguridad?",
+      "h": "9f17122b"
+    }
+  }
+}

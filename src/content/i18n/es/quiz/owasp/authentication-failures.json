@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Si el id no cambia, quien lo conocía antes del login comparte la sesión autenticada.",
+      "h": "46812e4e"
+    },
+    "questions.0.options.0": {
+      "t": "Para ahorrar memoria",
+      "h": "92e93d21"
+    },
+    "questions.0.options.1": {
+      "t": "Para evitar la session fixation, donde un atacante plantó el id anterior",
+      "h": "1acf749e"
+    },
+    "questions.0.options.2": {
+      "t": "Para cerrar la sesión del usuario en otros dispositivos",
+      "h": "5206d2c4"
+    },
+    "questions.0.options.3": {
+      "t": "Porque las cookies expiran al iniciar sesión",
+      "h": "1ef55009"
+    },
+    "questions.0.q": {
+      "t": "¿Por qué debe cambiar el id de sesión tras un login exitoso?",
+      "h": "dc56e5d1"
+    },
+    "questions.1.explain": {
+      "t": "Decodificar no es verificar. Aceptar alg none u omitir la firma permite que cualquiera falsifique tokens.",
+      "h": "3c877b55"
+    },
+    "questions.1.options.0": {
+      "t": "Decodificarlo y leer el payload",
+      "h": "e71bc659"
+    },
+    "questions.1.options.1": {
+      "t": "Verificar la firma con un algoritmo fijado y comprobar emisor, audiencia y expiración",
+      "h": "8f7171f7"
+    },
+    "questions.1.options.2": {
+      "t": "Comprobar que está en Base64",
+      "h": "659dd721"
+    },
+    "questions.1.options.3": {
+      "t": "Guardarlo en localStorage",
+      "h": "bfe7a187"
+    },
+    "questions.1.q": {
+      "t": "¿Qué debe hacer un servicio con un JWT antes de confiar en sus claims?",
+      "h": "365a3237"
+    },
+    "questions.2.explain": {
+      "t": "El stuffing usa contraseñas reales y válidas de otras filtraciones, así que la complejidad no ayuda. Los rate limits y un segundo factor sí.",
+      "h": "8dbc99dc"
+    },
+    "questions.2.options.0": {
+      "t": "Reglas de contraseñas complejas",
+      "h": "e6016ace"
+    },
+    "questions.2.options.1": {
+      "t": "Throttling, verificación de contraseñas filtradas y autenticación multifactor",
+      "h": "025d25ff"
+    },
+    "questions.2.options.2": {
+      "t": "Renombrar la URL de login",
+      "h": "990603f8"
+    },
+    "questions.2.options.3": {
+      "t": "Mayor duración de la cookie",
+      "h": "86d868f7"
+    },
+    "questions.2.q": {
+      "t": "¿Qué control reduce mejor el impacto del credential stuffing?",
+      "h": "7db8fa7b"
+    }
+  }
+}

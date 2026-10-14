@@ -1,0 +1,200 @@
+{
+  "entries": {
+    "groups.0.entries.0.aka": {
+      "t": "integração contínua",
+      "h": "de0e29b0"
+    },
+    "groups.0.entries.0.meaning": {
+      "t": "Integrar mudanças pequenas a um branch compartilhado com frequência, com cada mudança compilada e testada automaticamente, para que problemas de integração apareçam em minutos.",
+      "h": "d113345a"
+    },
+    "groups.0.entries.0.term": {
+      "t": "CI",
+      "h": "13844228"
+    },
+    "groups.0.entries.1.aka": {
+      "t": "entrega contínua · implantação contínua",
+      "h": "e71f45b7"
+    },
+    "groups.0.entries.1.meaning": {
+      "t": "A entrega contínua mantém toda mudança pronta para ser implantada a qualquer momento; a implantação contínua vai além e libera automaticamente em produção cada mudança aprovada.",
+      "h": "931c84c1"
+    },
+    "groups.0.entries.1.term": {
+      "t": "CD",
+      "h": "07306c8e"
+    },
+    "groups.0.entries.2.meaning": {
+      "t": "A saída versionada e imutável de um build (uma imagem de contêiner, um pacote). O mesmo artefato é promovido por todos os ambientes.",
+      "h": "814280d1"
+    },
+    "groups.0.entries.2.term": {
+      "t": "Artefato",
+      "h": "aa778b50"
+    },
+    "groups.0.entries.3.meaning": {
+      "t": "Trabalhar em branches de vida curta, integrados com frequência ao branch principal, escondendo o trabalho inacabado atrás de feature flags.",
+      "h": "af596be9"
+    },
+    "groups.0.entries.3.term": {
+      "t": "Trunk-based development",
+      "h": "67511243"
+    },
+    "groups.0.entries.4.meaning": {
+      "t": "Um arquivo do repositório que mapeia caminhos para as pessoas ou equipes que devem revisar as mudanças ali.",
+      "h": "68de5ac7"
+    },
+    "groups.0.entries.4.term": {
+      "t": "CODEOWNERS",
+      "h": "abe89576"
+    },
+    "groups.0.title": {
+      "t": "entrega",
+      "h": "391cb1e0"
+    },
+    "groups.1.entries.0.meaning": {
+      "t": "Enviar uma pequena parcela do tráfego para uma nova versão, observar suas métricas e só então ampliar. Limita o dano de um release ruim.",
+      "h": "543e9ce1"
+    },
+    "groups.1.entries.0.term": {
+      "t": "Canary release",
+      "h": "2a771536"
+    },
+    "groups.1.entries.1.meaning": {
+      "t": "Dois ambientes completos: o tráfego muda do antigo para o novo de uma só vez, e o rollback é voltar a chave.",
+      "h": "33ac6678"
+    },
+    "groups.1.entries.1.term": {
+      "t": "Blue/green deployment",
+      "h": "0fc61edd"
+    },
+    "groups.1.entries.2.meaning": {
+      "t": "Uma chave na configuração que liga ou desliga uma funcionalidade sem novo deploy. Separa implantar o código de liberá-lo.",
+      "h": "e76bd700"
+    },
+    "groups.1.entries.2.term": {
+      "t": "Feature flag",
+      "h": "d6c167ef"
+    },
+    "groups.1.title": {
+      "t": "release",
+      "h": "01f561ac"
+    },
+    "groups.2.entries.0.aka": {
+      "t": "infraestrutura como código",
+      "h": "2c829da3"
+    },
+    "groups.2.entries.0.meaning": {
+      "t": "Descrever a infraestrutura em arquivos versionados, revisados e aplicados por ferramentas, de modo que os ambientes sejam reproduzíveis.",
+      "h": "c0ac80d6"
+    },
+    "groups.2.entries.0.term": {
+      "t": "IaC",
+      "h": "aca5adb7"
+    },
+    "groups.2.entries.1.meaning": {
+      "t": "Uma diferença entre a infraestrutura real e o que o código diz, geralmente causada por uma mudança manual.",
+      "h": "8911d98b"
+    },
+    "groups.2.entries.1.term": {
+      "t": "Drift",
+      "h": "4876f7b9"
+    },
+    "groups.2.entries.2.meaning": {
+      "t": "Uma pilha de camadas somente leitura mais metadados, a partir da qual os contêineres iniciam. Identificada por um digest, rotulada por um nome mutável.",
+      "h": "43f2fe0f"
+    },
+    "groups.2.entries.2.term": {
+      "t": "Imagem de contêiner",
+      "h": "2efa4dd1"
+    },
+    "groups.2.entries.3.meaning": {
+      "t": "No Kubernetes, um ou mais contêineres que rodam juntos e compartilham uma identidade de rede. A menor unidade implantável, e descartável.",
+      "h": "b6d4bb68"
+    },
+    "groups.2.entries.3.term": {
+      "t": "Pod",
+      "h": "eb8e24a7"
+    },
+    "groups.2.entries.4.aka": {
+      "t": "readiness · liveness",
+      "h": "43df220d"
+    },
+    "groups.2.entries.4.meaning": {
+      "t": "Uma verificação de saúde executada pelo cluster: a readiness decide se um pod recebe tráfego, a liveness decide se ele deve ser reiniciado.",
+      "h": "254647fa"
+    },
+    "groups.2.entries.4.term": {
+      "t": "Probe",
+      "h": "1a1a99d7"
+    },
+    "groups.2.title": {
+      "t": "plataforma",
+      "h": "3c72abbe"
+    },
+    "groups.3.entries.0.aka": {
+      "t": "indicador de nível de serviço",
+      "h": "ec995f58"
+    },
+    "groups.3.entries.0.meaning": {
+      "t": "Uma medição da qualidade do serviço como os usuários a percebem, como a fração de requisições que têm sucesso rapidamente.",
+      "h": "2a875df3"
+    },
+    "groups.3.entries.0.term": {
+      "t": "SLI",
+      "h": "ff501cb3"
+    },
+    "groups.3.entries.1.aka": {
+      "t": "objetivo de nível de serviço",
+      "h": "ea7374ca"
+    },
+    "groups.3.entries.1.meaning": {
+      "t": "A meta de um SLI em uma janela de tempo. Define quão confiável é confiável o bastante.",
+      "h": "b3ef7d0c"
+    },
+    "groups.3.entries.1.term": {
+      "t": "SLO",
+      "h": "001ca9f0"
+    },
+    "groups.3.entries.2.meaning": {
+      "t": "A não confiabilidade permitida: 100% menos o SLO. Enquanto sobra, dá para assumir riscos; quando acaba, o trabalho de confiabilidade vem primeiro.",
+      "h": "69488152"
+    },
+    "groups.3.entries.2.term": {
+      "t": "Error budget",
+      "h": "caad54c8"
+    },
+    "groups.3.entries.3.meaning": {
+      "t": "Latência, tráfego, erros e saturação: quatro medições que descrevem a saúde de quase qualquer serviço.",
+      "h": "b0b8877c"
+    },
+    "groups.3.entries.3.term": {
+      "t": "Golden signals",
+      "h": "c008256f"
+    },
+    "groups.3.entries.4.meaning": {
+      "t": "O número de combinações distintas de labels em uma métrica. Labels ilimitados (ids de usuário) podem sobrecarregar um sistema de métricas.",
+      "h": "3c7f3317"
+    },
+    "groups.3.entries.4.term": {
+      "t": "Cardinalidade",
+      "h": "404a2710"
+    },
+    "groups.3.entries.5.aka": {
+      "t": "revisão sem culpados",
+      "h": "35b3d544"
+    },
+    "groups.3.entries.5.meaning": {
+      "t": "Uma revisão escrita de um incidente que pergunta como o sistema permitiu o problema, e não quem errou, e termina com ações que têm responsável.",
+      "h": "8febc762"
+    },
+    "groups.3.entries.5.term": {
+      "t": "Postmortem",
+      "h": "619b6536"
+    },
+    "groups.3.title": {
+      "t": "operações e confiabilidade",
+      "h": "4ad97822"
+    }
+  }
+}

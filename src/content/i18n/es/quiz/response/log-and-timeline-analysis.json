@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Las zonas horarias y los relojes desfasados son la fuente más común de una línea de tiempo errónea.",
+      "h": "952b4a91"
+    },
+    "questions.0.options.0": {
+      "t": "Ordenar alfabéticamente",
+      "h": "cdce2555"
+    },
+    "questions.0.options.1": {
+      "t": "Normalizar cada marca de tiempo a UTC y revisar el desfase del reloj",
+      "h": "03d99752"
+    },
+    "questions.0.options.2": {
+      "t": "Eliminar duplicados",
+      "h": "6bb05c34"
+    },
+    "questions.0.options.3": {
+      "t": "Convertir a CSV",
+      "h": "b957d386"
+    },
+    "questions.0.q": {
+      "t": "¿Cuál es el primer paso antes de comparar eventos de varias fuentes?",
+      "h": "dd7edac6"
+    },
+    "questions.1.explain": {
+      "t": "Cada pivote amplía o estrecha el alcance: de una dirección a cuentas, de una cuenta a recursos.",
+      "h": "b5ddcba0"
+    },
+    "questions.1.options.0": {
+      "t": "Cambiar de trabajo",
+      "h": "a7030731"
+    },
+    "questions.1.options.1": {
+      "t": "Tomar un hecho conocido y buscar todo lo demás que lo comparte",
+      "h": "b7eecdee"
+    },
+    "questions.1.options.2": {
+      "t": "Cifrar logs",
+      "h": "fa09bbe9"
+    },
+    "questions.1.options.3": {
+      "t": "Rotar archivos de log",
+      "h": "f748c00a"
+    },
+    "questions.1.q": {
+      "t": "¿Qué es el pivoteo?",
+      "h": "90ba3858"
+    },
+    "questions.2.explain": {
+      "t": "La falta de datos es un hallazgo. Regístrala y mejora tu logging.",
+      "h": "fa3f5d69"
+    },
+    "questions.2.options.0": {
+      "t": "No importa",
+      "h": "450c103c"
+    },
+    "questions.2.options.1": {
+      "t": "Puede ser la limpieza del atacante o un punto ciego que debes corregir",
+      "h": "1b48f295"
+    },
+    "questions.2.options.2": {
+      "t": "Ahorra almacenamiento",
+      "h": "7b6bb293"
+    },
+    "questions.2.options.3": {
+      "t": "Significa que no hubo ataque",
+      "h": "83d61fa0"
+    },
+    "questions.2.q": {
+      "t": "¿Por qué importa un hueco en los logs?",
+      "h": "3f6b46b7"
+    }
+  }
+}

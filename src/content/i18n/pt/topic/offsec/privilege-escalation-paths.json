@@ -1,0 +1,108 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Após o acesso inicial, o atacante procura uma rota de onde está até o que quer: privilégios mais altos, outros sistemas, dados sensíveis. Cada etapa usa uma permissão, uma credencial armazenada, uma relação de confiança ou uma configuração incorreta. Vistos como um grafo, os ambientes têm muitos desses caminhos, e encurtá-los ou cortá-los é trabalho do defensor. Este tópico descreve os conceitos e as defesas, não procedimentos de ataque passo a passo.",
+      "h": "b9249d33"
+    },
+    "sections.0.heading": {
+      "t": "A ideia de caminho",
+      "h": "53407bb0"
+    },
+    "sections.1.bullets.0": {
+      "t": "Exposição de credenciais: senhas e tokens em arquivos, scripts, memória, histórico do shell e configuração, reutilizados entre sistemas.",
+      "h": "835e8a04"
+    },
+    "sections.1.bullets.1": {
+      "t": "Excesso de privilégio: contas e papéis com muito mais permissão do que a tarefa exige, incluindo admins que fazem login em estações de trabalho comuns.",
+      "h": "f686065c"
+    },
+    "sections.1.bullets.2": {
+      "t": "Relações de confiança: um sistema em que muitos outros confiam (um servidor de build, um host de gerenciamento) vira um pivô para todos eles.",
+      "h": "fb237f17"
+    },
+    "sections.1.bullets.3": {
+      "t": "Contas de serviço fracas: de longa duração, altamente privilegiadas, com senhas que nunca são rotacionadas.",
+      "h": "6fe78fd2"
+    },
+    "sections.1.bullets.4": {
+      "t": "Delegação ou permissões mal configuradas: no Active Directory, no RBAC do Kubernetes e no IAM de nuvem, onde o direito de passar ou assumir um papel pode ser o direito de se tornar esse papel.",
+      "h": "db6196cc"
+    },
+    "sections.1.bullets.5": {
+      "t": "Falhas locais sem patch: um ponto de apoio de baixo privilégio que vira administrador por meio de uma vulnerabilidade conhecida.",
+      "h": "9e01c88f"
+    },
+    "sections.1.heading": {
+      "t": "Blocos de construção comuns",
+      "h": "9550c5fb"
+    },
+    "sections.2.body.0": {
+      "t": "Uma política que permite a um usuário passar qualquer papel a um serviço de computação, combinada com o direito de criar esse serviço, permite que o usuário execute código com o papel mais privilegiado. A correção é limitar o que pode ser passado.",
+      "h": "a19bad81"
+    },
+    "sections.2.code.0.code": {
+      "t": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    { \"Effect\": \"Allow\", \"Action\": [\"iam:PassRole\", \"lambda:CreateFunction\", \"lambda:InvokeFunction\"], \"Resource\": \"*\" }\n  ]\n}",
+      "h": "f1f811cf"
+    },
+    "sections.2.code.0.filename": {
+      "t": "risky-policy.json",
+      "h": "37443164"
+    },
+    "sections.2.code.1.code": {
+      "t": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"iam:PassRole\",\n      \"Resource\": \"arn:aws:iam::123456789012:role/app-lambda-low-privilege\",\n      \"Condition\": { \"StringEquals\": { \"iam:PassedToService\": \"lambda.amazonaws.com\" } }\n    },\n    { \"Effect\": \"Allow\", \"Action\": [\"lambda:CreateFunction\", \"lambda:InvokeFunction\"], \"Resource\": \"arn:aws:lambda:us-east-1:123456789012:function:app-*\" }\n  ]\n}",
+      "h": "06372439"
+    },
+    "sections.2.code.1.filename": {
+      "t": "scoped-policy.json",
+      "h": "66472658"
+    },
+    "sections.2.heading": {
+      "t": "Exemplo: uma permissão de nuvem que é mais do que parece",
+      "h": "e339249e"
+    },
+    "sections.3.bullets.0": {
+      "t": "Mapeie os caminhos você mesmo: execute uma ferramenta de caminhos de ataque (BloodHound para Active Directory, um analisador de IAM para nuvem) e trate os caminhos mais curtos até suas joias da coroa como correções prioritárias.",
+      "h": "c4cec3a3"
+    },
+    "sections.3.bullets.1": {
+      "t": "Administração em camadas (tiering): contas privilegiadas só fazem login em sistemas privilegiados, nunca em estações de trabalho ou servidores de uma camada inferior.",
+      "h": "1be89a56"
+    },
+    "sections.3.bullets.2": {
+      "t": "Privilégio mínimo e acesso just-in-time: sem direitos de admin permanentes, elevações curtas com aprovação e registro.",
+      "h": "ea897fbc"
+    },
+    "sections.3.bullets.3": {
+      "t": "Proteja e rotacione credenciais: gerenciadores de segredos, contas de serviço gerenciadas ou de grupo, nenhum segredo em arquivos.",
+      "h": "1d1b92b4"
+    },
+    "sections.3.bullets.4": {
+      "t": "Segmente a rede e reduza a confiança entre sistemas; não deixe um host alcançar tudo.",
+      "h": "db35df8b"
+    },
+    "sections.3.bullets.5": {
+      "t": "Detecte as etapas: alerte sobre mudanças de privilégio, novas assunções de papel, padrões incomuns de autenticação e acesso a credenciais.",
+      "h": "967d3184"
+    },
+    "sections.3.bullets.6": {
+      "t": "Valide a detecção emulando técnicas com segurança (por exemplo, com o Atomic Red Team) em um laboratório ou com aprovação.",
+      "h": "8f3d35dc"
+    },
+    "sections.3.heading": {
+      "t": "Defendendo-se contra cadeias",
+      "h": "6f717d99"
+    },
+    "short": {
+      "t": "como pequenas configurações incorretas se encadeiam até o comprometimento total, e como os defensores encontram a cadeia primeiro",
+      "h": "ea74c610"
+    },
+    "tagline": {
+      "t": "Os atacantes raramente precisam de um zero-day. Eles encadeiam fraquezas comuns (uma credencial reutilizada, uma permissão ampla demais, uma relação de confiança) até chegar a algo valioso. A vantagem do defensor é mapear esses caminhos antes que sejam usados.",
+      "h": "3c4309c7"
+    },
+    "title": {
+      "t": "Caminhos de ataque e escalação de privilégios",
+      "h": "55a1fe38"
+    }
+  }
+}

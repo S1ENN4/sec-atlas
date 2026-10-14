@@ -1,0 +1,104 @@
+{
+  "entries": {
+    "sections.0.bullets.0": {
+      "t": "Pod: um ou mais contêineres que rodam juntos e compartilham uma identidade de rede. A menor unidade que você implanta, e descartável.",
+      "h": "034b7136"
+    },
+    "sections.0.bullets.1": {
+      "t": "Deployment: declara quantas réplicas de um pod executar e como distribuir as mudanças. Um ReplicaSet por baixo mantém a contagem.",
+      "h": "c59d1357"
+    },
+    "sections.0.bullets.2": {
+      "t": "Service: um nome e um endereço estáveis que balanceiam carga para os pods correspondentes, que vêm e vão.",
+      "h": "9ee1b583"
+    },
+    "sections.0.bullets.3": {
+      "t": "Ingress ou Gateway: roteia o tráfego externo por host e caminho para os services.",
+      "h": "64c5fbe1"
+    },
+    "sections.0.bullets.4": {
+      "t": "ConfigMap e Secret: configuração e valores sensíveis injetados como variáveis de ambiente ou arquivos. Um Secret é codificado, não criptografado por padrão; proteja-o com criptografia em repouso e acesso restrito.",
+      "h": "bd370698"
+    },
+    "sections.0.bullets.5": {
+      "t": "Namespace: um escopo para nomes, quotas e regras de acesso, usado para separar equipes ou ambientes.",
+      "h": "72eaa177"
+    },
+    "sections.0.bullets.6": {
+      "t": "O control loop: você declara o estado desejado; os controllers fazem continuamente o estado real corresponder a ele.",
+      "h": "5a9c0401"
+    },
+    "sections.0.heading": {
+      "t": "Os objetos principais",
+      "h": "8558accf"
+    },
+    "sections.1.body.0": {
+      "t": "Defina requests e limits de recursos, probes de saúde, uma estratégia de rollout e um security context restrito. Isso é a diferença entre um pod que se comporta bem e um que surpreende você.",
+      "h": "2fe075f6"
+    },
+    "sections.1.code.0.code": {
+      "t": "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: api\nspec:\n  replicas: 3\n  selector:\n    matchLabels: { app: api }\n  strategy:\n    rollingUpdate: { maxUnavailable: 0, maxSurge: 1 }\n  template:\n    metadata:\n      labels: { app: api }\n    spec:\n      securityContext:\n        runAsNonRoot: true\n        seccompProfile: { type: RuntimeDefault }\n      containers:\n        - name: api\n          image: registry.example.com/api@sha256:<digest>\n          ports: [{ containerPort: 8080 }]\n          resources:\n            requests: { cpu: 100m, memory: 128Mi }\n            limits: { memory: 256Mi }\n          readinessProbe:\n            httpGet: { path: /ready, port: 8080 }\n          livenessProbe:\n            httpGet: { path: /health, port: 8080 }\n          securityContext:\n            allowPrivilegeEscalation: false\n            readOnlyRootFilesystem: true\n            capabilities: { drop: [\"ALL\"] }",
+      "h": "5efac651"
+    },
+    "sections.1.code.0.filename": {
+      "t": "deployment.yaml",
+      "h": "a6219c80"
+    },
+    "sections.1.heading": {
+      "t": "Um deployment que vale a pena rodar",
+      "h": "5a929c2e"
+    },
+    "sections.2.body.0": {
+      "t": "Prefira mudar o cluster por controle de versão e um controller GitOps, e deixe o kubectl para leitura e emergências.",
+      "h": "d5284abd"
+    },
+    "sections.2.code.0.code": {
+      "t": "kubectl get pods -n prod -o wide\nkubectl describe pod api-7c9d -n prod           # os eventos explicam a maioria das falhas\nkubectl logs deploy/api -n prod --tail=100 -f\nkubectl rollout status deploy/api -n prod\nkubectl rollout undo deploy/api -n prod          # volta para a revisão anterior\nkubectl top pods -n prod",
+      "h": "4598c0eb"
+    },
+    "sections.2.code.0.filename": {
+      "t": "kubectl",
+      "h": "4baeaee2"
+    },
+    "sections.2.heading": {
+      "t": "Comandos do dia a dia",
+      "h": "7256fcac"
+    },
+    "sections.3.bullets.0": {
+      "t": "Sem limites de recursos: um pod deixa seus vizinhos sem recursos.",
+      "h": "76595744"
+    },
+    "sections.3.bullets.1": {
+      "t": "Liveness probes que dependem de serviços externos, reiniciando pods saudáveis durante uma queda.",
+      "h": "4420c75c"
+    },
+    "sections.3.bullets.2": {
+      "t": "Usar tags latest ou mutáveis, de modo que reiniciar um pod muda a versão.",
+      "h": "9c9f8092"
+    },
+    "sections.3.bullets.3": {
+      "t": "Tudo no namespace default, com permissões em todo o cluster para cada workload.",
+      "h": "a01a2cfd"
+    },
+    "sections.3.bullets.4": {
+      "t": "Tratar o cluster como aquilo que você opera, em vez da plataforma que suas equipes usam.",
+      "h": "45e725d0"
+    },
+    "sections.3.heading": {
+      "t": "Erros comuns",
+      "h": "62264fc1"
+    },
+    "short": {
+      "t": "pods, deployments, services, configuração, probes e limites de recursos",
+      "h": "9c44c327"
+    },
+    "tagline": {
+      "t": "O Kubernetes executa contêineres em um cluster e os mantém no estado que você declarou. Aprenda os poucos objetos que importam e as configurações que impedem que um pod ruim derrube tudo.",
+      "h": "689be152"
+    },
+    "title": {
+      "t": "Fundamentos de Kubernetes",
+      "h": "645d4553"
+    }
+  }
+}

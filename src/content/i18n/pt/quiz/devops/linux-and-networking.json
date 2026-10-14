@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Trabalhe de fora para dentro e leia antes de mudar. A maioria das causas é DNS, certificados, portas ou o próprio serviço.",
+      "h": "c872c0c2"
+    },
+    "questions.0.options.0": {
+      "t": "Reinstalar o servidor primeiro",
+      "h": "ed483849"
+    },
+    "questions.0.options.1": {
+      "t": "Resolução de nome, acessibilidade da porta, se o serviço escuta, validade do certificado e, por fim, os logs",
+      "h": "92b93e09"
+    },
+    "questions.0.options.2": {
+      "t": "Reiniciar tudo e torcer",
+      "h": "f9e44c3d"
+    },
+    "questions.0.options.3": {
+      "t": "Mudar o firewall para permitir tudo",
+      "h": "1c0554b2"
+    },
+    "questions.0.q": {
+      "t": "Um serviço está inacessível. Qual é a ordem sensata de verificações?",
+      "h": "2d7075d5"
+    },
+    "questions.1.explain": {
+      "t": "O menor privilégio limita o dano de qualquer bug ou intrusão.",
+      "h": "e276cc50"
+    },
+    "questions.1.options.0": {
+      "t": "Deixa o programa mais rápido",
+      "h": "afe6c35e"
+    },
+    "questions.1.options.1": {
+      "t": "Um comprometimento fica então com o acesso apenas desse usuário, não o do root",
+      "h": "aac72733"
+    },
+    "questions.1.options.2": {
+      "t": "O root não consegue abrir portas de rede",
+      "h": "d2c9cfe2"
+    },
+    "questions.1.options.3": {
+      "t": "O systemd exige",
+      "h": "b1b8adc8"
+    },
+    "questions.1.q": {
+      "t": "Por que rodar um serviço como seu próprio usuário sem privilégios?",
+      "h": "c024730c"
+    },
+    "questions.2.explain": {
+      "t": "As janelas de validade dependem do horário. Mantenha os relógios sincronizados.",
+      "h": "d4dab716"
+    },
+    "questions.2.options.0": {
+      "t": "Excesso de RAM",
+      "h": "ba5fe39e"
+    },
+    "questions.2.options.1": {
+      "t": "Defasagem de relógio entre máquinas",
+      "h": "a607934b"
+    },
+    "questions.2.options.2": {
+      "t": "Arquivos de log demais",
+      "h": "5f2fc19e"
+    },
+    "questions.2.options.3": {
+      "t": "Um teclado lento",
+      "h": "1e1849cf"
+    },
+    "questions.2.q": {
+      "t": "Muitas quedas estranhas com tokens ou certificados vêm de:",
+      "h": "a6274b8e"
+    }
+  }
+}

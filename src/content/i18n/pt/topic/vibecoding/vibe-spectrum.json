@@ -1,0 +1,92 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "O termo vibe coding foi popularizado por Andrej Karpathy no início de 2025 para um estilo de programação em que você \"se entrega por completo às vibes\": diz a uma IA o que construir, aceita o que ela escreve, executa e descreve a próxima mudança, sem examinar o código. No uso cotidiano, a palavra agora cobre toda a gama de programação assistida por IA, de uma sugestão no editor a um agent que trabalha sozinho por uma hora.",
+      "h": "d817e1d6"
+    },
+    "sections.0.body.1": {
+      "t": "Esta seção da base de conhecimento trata dessa gama: o que são as ferramentas, como diferem, como obter resultados confiáveis e como manter o resultado seguro. Trate os nomes das ferramentas como um retrato do momento (outubro de 2026); as ideias por baixo mudam muito mais devagar.",
+      "h": "fbd4662c"
+    },
+    "sections.0.heading": {
+      "t": "O que é",
+      "h": "f8c94a3b"
+    },
+    "sections.1.body.0": {
+      "t": "Cada passo dá mais autonomia à IA e menos controle linha a linha ao humano. Avançar para a direita é mais rápido e mais arriscado.",
+      "h": "d4bda1f0"
+    },
+    "sections.1.bullets.0": {
+      "t": "Autocomplete: o editor sugere a próxima linha ou bloco. Você lê cada sugestão. Risco baixo, ganho modesto.",
+      "h": "61c3a582"
+    },
+    "sections.1.bullets.1": {
+      "t": "Chat e edição: você pede uma função ou um refactor em um painel lateral e aplica o diff. Você revisa o diff.",
+      "h": "b549baaa"
+    },
+    "sections.1.bullets.2": {
+      "t": "Agent no loop: a ferramenta lê o repositório, edita vários arquivos, executa comandos e testes e pede aprovação em passos arriscados. Você revisa o resultado e o plano.",
+      "h": "9bdfff2b"
+    },
+    "sections.1.bullets.3": {
+      "t": "Agents autônomos ou paralelos: um ou muitos agents trabalham em tarefas separadas com pouca supervisão e devolvem branches prontas. Você revisa pull requests, não teclas digitadas.",
+      "h": "d973a1b0"
+    },
+    "sections.1.bullets.4": {
+      "t": "Vibecoding puro: você não lê o código e julga apenas executando o programa. Serve para um script descartável; é errado para qualquer coisa que guarde dados, dinheiro ou outras pessoas.",
+      "h": "c2109e31"
+    },
+    "sections.1.heading": {
+      "t": "O espectro",
+      "h": "262633bd"
+    },
+    "sections.2.bullets.0": {
+      "t": "Ótimo: protótipos, ferramentas internas, scripts, testes, boilerplate, migrações com regra clara, explorar uma base de código desconhecida, primeiros rascunhos de documentação.",
+      "h": "749592a9"
+    },
+    "sections.2.bullets.1": {
+      "t": "Bom com cuidado: funcionalidades em uma base de código existente que tenha testes e convenções que o agent possa seguir.",
+      "h": "f75b8d2a"
+    },
+    "sections.2.bullets.2": {
+      "t": "Perigoso sem revisão especializada: autenticação, autorização, criptografia, pagamentos, qualquer coisa que processe entrada não confiável, mudanças de infraestrutura e de permissões.",
+      "h": "901ce275"
+    },
+    "sections.2.bullets.3": {
+      "t": "Mau encaixe: problemas que você não consegue verificar. Se você não sabe dizer se a saída está certa, velocidade é só uma forma mais rápida de errar.",
+      "h": "378d1403"
+    },
+    "sections.2.heading": {
+      "t": "Onde funciona, onde não funciona",
+      "h": "c5e68a8c"
+    },
+    "sections.3.body.0": {
+      "t": "À medida que gerar fica barato, as habilidades escassas são as que o cercam: descrever o problema com precisão, dividi-lo em passos verificáveis, ler um diff com senso crítico, escrever o teste que prova o resultado e conhecer os modos de falha da stack. Engenheiros experientes costumam tirar mais proveito dessas ferramentas, porque sabem conduzir e verificar. Iniciantes ganham velocidade, mas ainda não distinguem uma boa saída de uma saída plausível, então o ciclo de aprendizado é: gerar, ler, perguntar por quê e testar.",
+      "h": "c017adf0"
+    },
+    "sections.3.heading": {
+      "t": "A habilidade que permanece",
+      "h": "153f25e8"
+    },
+    "sections.4.body.0": {
+      "t": "Ajuste a autonomia ao raio de impacto e à sua capacidade de verificar. Um script que renomeia arquivos no seu notebook pode rodar com autonomia total. Uma mudança no fluxo de login exige um plano que você aprovou, um diff que você leu, testes que você escreveu ou revisou e um segundo par de olhos.",
+      "h": "30c76299"
+    },
+    "sections.4.heading": {
+      "t": "Uma regra prática simples",
+      "h": "9a63f4ce"
+    },
+    "short": {
+      "t": "do autocomplete aos agents autônomos, e onde cada um se encaixa",
+      "h": "59513398"
+    },
+    "tagline": {
+      "t": "\"Vibecoding\" nomeia uma forma de trabalhar, não uma ferramenta: você descreve o que quer e conduz pelos resultados em vez de ler cada linha. É excelente para alguns trabalhos e imprudente para outros, e saber qual é qual é a habilidade.",
+      "h": "ecf6c045"
+    },
+    "title": {
+      "t": "O espectro do vibecoding",
+      "h": "6fcd2fba"
+    }
+  }
+}

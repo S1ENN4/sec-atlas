@@ -1,0 +1,120 @@
+{
+  "entries": {
+    "sections.0.bullets.0": {
+      "t": "Passe o navegador por um proxy de interceptação (Burp, ZAP) para ver, reenviar e modificar cada requisição.",
+      "h": "05ff262d"
+    },
+    "sections.0.bullets.1": {
+      "t": "Crie pelo menos duas contas de teste no mesmo nível de privilégio e uma em um nível superior, se o escopo permitir. Bugs de autorização são encontrados comparando contas.",
+      "h": "999c436b"
+    },
+    "sections.0.bullets.2": {
+      "t": "Mapeie a aplicação: páginas, rotas da API, parâmetros, papéis, uploads de arquivos, integrações. O esquema da API (OpenAPI) é um presente quando existe.",
+      "h": "e5ee8c1f"
+    },
+    "sections.0.bullets.3": {
+      "t": "Anote quais requisições são autenticadas e como: cookie, bearer token, chave de API.",
+      "h": "d3562bda"
+    },
+    "sections.0.heading": {
+      "t": "Preparação",
+      "h": "a5041fda"
+    },
+    "sections.1.body.0": {
+      "t": "Percorra as categorias do OWASP Top 10 e do Web Security Testing Guide. O domínio deste site sobre o OWASP Top 10 mostra a correção de cada uma; aqui está como procurá-las.",
+      "h": "1c2f9842"
+    },
+    "sections.1.bullets.0": {
+      "t": "Controle de acesso: reenvie as requisições da conta A com o token da conta B; altere ids; chame rotas de admin como usuário comum; teste métodos que a interface nunca usa.",
+      "h": "9c3ba7ac"
+    },
+    "sections.1.bullets.1": {
+      "t": "Autenticação e sessão: rate limiting no login e na redefinição, expiração e rotação de sessão, flags de cookie, validação de token.",
+      "h": "f9611fa2"
+    },
+    "sections.1.bullets.2": {
+      "t": "Injeção: envie caracteres e tipos inesperados a cada parâmetro, cabeçalhos e campos JSON, e observe erros ou mudanças de comportamento.",
+      "h": "6c5d1c75"
+    },
+    "sections.1.bullets.3": {
+      "t": "Lógica de negócio: pule etapas, repita etapas, altere quantidades e preços, dispare duas requisições ao mesmo tempo (race condition).",
+      "h": "490f0710"
+    },
+    "sections.1.bullets.4": {
+      "t": "Configuração incorreta: erros detalhados, endpoints de debug, listagem de diretórios, CORS permissivo, cabeçalhos ausentes.",
+      "h": "73d9484e"
+    },
+    "sections.1.bullets.5": {
+      "t": "Tratamento de arquivos: verificações de tipo e tamanho, tratamento de caminhos, onde os uploads são armazenados e servidos.",
+      "h": "e24df98f"
+    },
+    "sections.1.heading": {
+      "t": "Um checklist de testes",
+      "h": "4cfb508e"
+    },
+    "sections.2.body.0": {
+      "t": "Automatize a comparação repetitiva e mantenha o teste somente leitura. Este script, para um alvo autorizado, verifica se a conta B consegue ler objetos criados pela conta A.",
+      "h": "71e5e486"
+    },
+    "sections.2.code.0.code": {
+      "t": "import requests\n\nBASE = \"https://api.example.com/v2\"\nA = {\"Authorization\": \"Bearer <token do tester-a>\"}\nB = {\"Authorization\": \"Bearer <token do tester-b>\"}\n\n# objetos que a conta A possui (listados com o token da própria A)\nids = [o[\"id\"] for o in requests.get(f\"{BASE}/invoices\", headers=A, timeout=10).json()]\n\nfor oid in ids:\n    r = requests.get(f\"{BASE}/invoices/{oid}\", headers=B, timeout=10)\n    verdict = \"VULNERABLE\" if r.status_code == 200 else \"ok\"\n    print(f\"{oid}: B -> {r.status_code} {verdict}\")",
+      "h": "63e6007f"
+    },
+    "sections.2.code.0.filename": {
+      "t": "bola_check.py (apenas alvos autorizados)",
+      "h": "d984c21c"
+    },
+    "sections.2.code.1.code": {
+      "t": "ffuf -u https://app.example.com/FUZZ -w common-paths.txt -rate 10 -mc 200,204,301,302,401,403 -o ffuf.json",
+      "h": "164280f1"
+    },
+    "sections.2.code.1.filename": {
+      "t": "descoberta de conteúdo em taxa moderada (apenas alvos autorizados)",
+      "h": "4010738a"
+    },
+    "sections.2.heading": {
+      "t": "Exemplo: uma verificação de autorização com duas contas",
+      "h": "4c200e8a"
+    },
+    "sections.3.bullets.0": {
+      "t": "Autorização em nível de objeto (BOLA) e em nível de função são os achados mais comuns em APIs.",
+      "h": "c96e43c0"
+    },
+    "sections.3.bullets.1": {
+      "t": "Mass assignment: envie campos extras (role, isAdmin, price) que o cliente nunca envia.",
+      "h": "77db3c9f"
+    },
+    "sections.3.bullets.2": {
+      "t": "Exposição excessiva de dados: a API devolve objetos inteiros e a interface esconde campos; leia a resposta bruta.",
+      "h": "6d3e1ed2"
+    },
+    "sections.3.bullets.3": {
+      "t": "Limites de taxa e de recursos em operações caras.",
+      "h": "91fa6e73"
+    },
+    "sections.3.bullets.4": {
+      "t": "Deriva de versões: versões antigas da API e rotas não documentadas que não têm os controles das novas.",
+      "h": "1970564f"
+    },
+    "sections.3.bullets.5": {
+      "t": "Fique dentro das regras de engajamento: teste com dados de teste, evite chamadas destrutivas e mantenha a taxa de requisições baixa.",
+      "h": "22107ef0"
+    },
+    "sections.3.heading": {
+      "t": "Teste APIs de forma deliberada",
+      "h": "369c28b3"
+    },
+    "short": {
+      "t": "um método para testar autenticação, autorização e tratamento de entrada, com duas contas e um proxy de interceptação",
+      "h": "78b86533"
+    },
+    "tagline": {
+      "t": "A maioria dos achados web graves vem de uma lista curta de perguntas: quem pode ver o quê, quem pode alterar o quê e o que acontece com uma entrada diferente da que o desenvolvedor esperava. Um proxy e duas contas respondem à maioria delas.",
+      "h": "1e020536"
+    },
+    "title": {
+      "t": "Testes de segurança de web e API",
+      "h": "12e5c2b7"
+    }
+  }
+}

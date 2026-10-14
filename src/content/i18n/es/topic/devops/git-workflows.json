@@ -1,0 +1,108 @@
+{
+  "entries": {
+    "sections.0.bullets.0": {
+      "t": "Trunk-based development: ramas de corta vida (horas o un día o dos) integradas con frecuencia en main, con feature flags que ocultan el trabajo sin terminar. Ideal para feedback rápido y entrega continua.",
+      "h": "2b0f31bd"
+    },
+    "sections.0.bullets.1": {
+      "t": "Feature branches con pull requests: el punto medio habitual. Mantén las ramas pequeñas y cortas.",
+      "h": "f7a40d69"
+    },
+    "sections.0.bullets.2": {
+      "t": "Ramas de release de larga vida (estilo Gitflow): útiles cuando hay que mantener varias versiones publicadas a la vez; más lentas y con más trabajo de merge.",
+      "h": "bed0cb7c"
+    },
+    "sections.0.bullets.3": {
+      "t": "Sea cual sea el modelo, main debe estar siempre lista para release, y todo cambio llega a ella mediante un pull request revisado.",
+      "h": "b24b28a0"
+    },
+    "sections.0.heading": {
+      "t": "Modelos de branching",
+      "h": "d0083289"
+    },
+    "sections.1.bullets.0": {
+      "t": "Pequeño: un revisor lo entiende en minutos. Los cambios grandes esconden errores.",
+      "h": "36c07724"
+    },
+    "sections.1.bullets.1": {
+      "t": "Un solo propósito, con una descripción del porqué, no solo del qué.",
+      "h": "b0a2a678"
+    },
+    "sections.1.bullets.2": {
+      "t": "CI en verde antes de que empiece la revisión, para que las personas dediquen tiempo al diseño y al riesgo, no a erratas.",
+      "h": "bc2dee5c"
+    },
+    "sections.1.bullets.3": {
+      "t": "Revisado por quien es dueño del área: CODEOWNERS automatiza la solicitud.",
+      "h": "ffa9684f"
+    },
+    "sections.1.bullets.4": {
+      "t": "Integrado con un historial claro (squash o rebase merge) para que un revert sea un solo comando.",
+      "h": "8e9dff4b"
+    },
+    "sections.1.heading": {
+      "t": "Qué es un buen pull request",
+      "h": "7e6a9e78"
+    },
+    "sections.2.body.0": {
+      "t": "Las reglas que viven solo en una wiki se olvidan. Codifica el ownership en el repositorio y aplica la protección de ramas en la plataforma.",
+      "h": "f56564ad"
+    },
+    "sections.2.code.0.code": {
+      "t": "# gana el último patrón que coincida\n*                    @example/engineering\n/infra/              @example/platform\n/.github/workflows/  @example/platform @example/security\n/src/auth/           @example/security",
+      "h": "e7d8a996"
+    },
+    "sections.2.code.0.filename": {
+      "t": ".github/CODEOWNERS",
+      "h": "7f9004ad"
+    },
+    "sections.2.code.1.code": {
+      "t": "gh api -X PUT repos/example/app/branches/main/protection --input - <<'EOF'\n{\n  \"required_status_checks\": { \"strict\": true, \"contexts\": [\"verify\"] },\n  \"enforce_admins\": true,\n  \"required_pull_request_reviews\": { \"required_approving_review_count\": 1, \"require_code_owner_reviews\": true },\n  \"restrictions\": null\n}\nEOF",
+      "h": "9fee20d5"
+    },
+    "sections.2.code.1.filename": {
+      "t": "proteger main con el GitHub CLI (requiere derechos de admin)",
+      "h": "4cc604e0"
+    },
+    "sections.2.heading": {
+      "t": "Haz que las reglas sean automáticas",
+      "h": "a480d667"
+    },
+    "sections.3.bullets.0": {
+      "t": "Haz commits temprano y a menudo en tu rama; limpia antes de integrar.",
+      "h": "2280bc7c"
+    },
+    "sections.3.bullets.1": {
+      "t": "Nunca reescribas el historial de una rama compartida.",
+      "h": "91e9a7ce"
+    },
+    "sections.3.bullets.2": {
+      "t": "Firma commits o tags de releases cuando la procedencia importe.",
+      "h": "9af3ef3d"
+    },
+    "sections.3.bullets.3": {
+      "t": "Mantén los secretos fuera del historial: un secreto commiteado una vez debe rotarse, no solo borrarse.",
+      "h": "64367c3f"
+    },
+    "sections.3.bullets.4": {
+      "t": "Revierte primero, investiga después, cuando main se rompa.",
+      "h": "ae9d7dd0"
+    },
+    "sections.3.heading": {
+      "t": "Hábitos que rinden",
+      "h": "9f5d8e24"
+    },
+    "short": {
+      "t": "branching, pull requests, ramas protegidas y ownership como la puerta de entrada de la entrega",
+      "h": "9c66360e"
+    },
+    "tagline": {
+      "t": "Todo cambio entra a producción por el control de versiones. Cómo creas ramas, revisas e integras define qué tan rápido puedes entregar y con qué seguridad puedes deshacer.",
+      "h": "19541aee"
+    },
+    "title": {
+      "t": "Flujos de Git y code review",
+      "h": "03f763eb"
+    }
+  }
+}

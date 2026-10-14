@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Campos consistentes permitem alertas e investigação. Um log apenas local desaparece quando o host é comprometido.",
+      "h": "8a37985e"
+    },
+    "questions.0.options.0": {
+      "t": "Contém o corpo completo da requisição",
+      "h": "693a635a"
+    },
+    "questions.0.options.1": {
+      "t": "Eventos estruturados com quem, o quê, de onde e resultado, enviados rapidamente para fora do host",
+      "h": "ad4c66da"
+    },
+    "questions.0.options.2": {
+      "t": "É armazenado apenas no servidor da aplicação",
+      "h": "80a78a39"
+    },
+    "questions.0.options.3": {
+      "t": "É rotacionado a cada hora",
+      "h": "ddb381db"
+    },
+    "questions.0.q": {
+      "t": "O que torna um log útil para a segurança?",
+      "h": "bdac0210"
+    },
+    "questions.1.explain": {
+      "t": "Um repositório de logs cheio de segredos vira o melhor alvo da empresa. Faça a redaction no logger.",
+      "h": "60f10720"
+    },
+    "questions.1.options.0": {
+      "t": "Request id",
+      "h": "9ad53f95"
+    },
+    "questions.1.options.1": {
+      "t": "Senhas e tokens",
+      "h": "3728d9ac"
+    },
+    "questions.1.options.2": {
+      "t": "Código de status HTTP",
+      "h": "2f229ba9"
+    },
+    "questions.1.options.3": {
+      "t": "Timestamp",
+      "h": "19eabc96"
+    },
+    "questions.1.q": {
+      "t": "O que nunca deve ser escrito nos logs?",
+      "h": "273843c9"
+    },
+    "questions.2.explain": {
+      "t": "A detecção precisa tanto do registro quanto de uma regra que acione alguém, testada de ponta a ponta.",
+      "h": "b4f71b82"
+    },
+    "questions.2.options.0": {
+      "t": "Porque os logs são caros",
+      "h": "e8e3d258"
+    },
+    "questions.2.options.1": {
+      "t": "Porque um log sobre o qual ninguém é notificado não detém um ataque a tempo",
+      "h": "90c35caf"
+    },
+    "questions.2.options.2": {
+      "t": "Porque os alertas substituem os logs",
+      "h": "8893236a"
+    },
+    "questions.2.options.3": {
+      "t": "Porque os auditores exigem",
+      "h": "ed7fc973"
+    },
+    "questions.2.q": {
+      "t": "Por que o nome da categoria de 2025 inclui alerting?",
+      "h": "71e4aa76"
+    }
+  }
+}

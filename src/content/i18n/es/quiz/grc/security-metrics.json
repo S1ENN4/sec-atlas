@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Las métricas de resultado muestran lo logrado. Las métricas de actividad muestran esfuerzo.",
+      "h": "e1c337d3"
+    },
+    "questions.0.options.0": {
+      "t": "Cantidad de escaneos ejecutados",
+      "h": "6b73dd9f"
+    },
+    "questions.0.options.1": {
+      "t": "Tiempo para contener incidentes de alta severidad",
+      "h": "e99e2927"
+    },
+    "questions.0.options.2": {
+      "t": "Cantidad de capacitaciones enviadas",
+      "h": "b9d6e8dc"
+    },
+    "questions.0.options.3": {
+      "t": "Cantidad de reglas de firewall",
+      "h": "20f649bd"
+    },
+    "questions.0.q": {
+      "t": "¿Cuál es una métrica de resultado?",
+      "h": "5bf705bc"
+    },
+    "questions.1.explain": {
+      "t": "Los líderes necesitan la conclusión y la decisión requerida, en términos de negocio.",
+      "h": "573ef7bd"
+    },
+    "questions.1.options.0": {
+      "t": "Con conteos técnicos",
+      "h": "2c3ac849"
+    },
+    "questions.1.options.1": {
+      "t": "Con la respuesta: ¿estamos más seguros y qué necesita del directorio?",
+      "h": "3acdcc10"
+    },
+    "questions.1.options.2": {
+      "t": "Con una lista de herramientas",
+      "h": "0ff63d4b"
+    },
+    "questions.1.options.3": {
+      "t": "Con un largo historial",
+      "h": "95a3492f"
+    },
+    "questions.1.q": {
+      "t": "¿Cómo debe comenzar un informe al directorio?",
+      "h": "b86dcc8c"
+    },
+    "questions.2.explain": {
+      "t": "Use las métricas para encontrar cuellos de botella del sistema, no para clasificar a las personas.",
+      "h": "51d8234c"
+    },
+    "questions.2.options.0": {
+      "t": "Nada",
+      "h": "44819483"
+    },
+    "questions.2.options.1": {
+      "t": "Las personas optimizan el número en lugar del riesgo (gaming)",
+      "h": "f170b1ff"
+    },
+    "questions.2.options.2": {
+      "t": "El dashboard se rompe",
+      "h": "e707025c"
+    },
+    "questions.2.options.3": {
+      "t": "Las auditorías se abaratan",
+      "h": "388608bc"
+    },
+    "questions.2.q": {
+      "t": "¿Qué sale mal cuando una métrica se convierte en meta individual?",
+      "h": "82091f49"
+    }
+  }
+}

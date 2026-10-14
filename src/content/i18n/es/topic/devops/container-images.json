@@ -1,0 +1,100 @@
+{
+  "entries": {
+    "sections.0.bullets.0": {
+      "t": "Un contenedor es un proceso Linux normal con su propia vista del sistema de archivos, la red y la tabla de procesos (namespaces) y con recursos limitados (cgroups). Comparte el kernel del host, a diferencia de una máquina virtual.",
+      "h": "34bccd34"
+    },
+    "sections.0.bullets.1": {
+      "t": "Una imagen es una pila de capas de solo lectura más metadatos. Un contenedor añade una capa delgada escribible encima.",
+      "h": "3034613c"
+    },
+    "sections.0.bullets.2": {
+      "t": "Un registry almacena imágenes por nombre y tag; un digest (sha256) identifica el contenido exacto y nunca cambia.",
+      "h": "29775f30"
+    },
+    "sections.0.bullets.3": {
+      "t": "Los contenedores están pensados para ser desechables: el estado vive en volúmenes, bases de datos u object storage, no dentro del contenedor.",
+      "h": "2c3e703a"
+    },
+    "sections.0.heading": {
+      "t": "Cómo funcionan los contenedores",
+      "h": "be92f59d"
+    },
+    "sections.1.body.0": {
+      "t": "Problemas: un tag flotante cambia sin aviso, se copia todo el directorio (incluidos .git y .env), las dependencias de desarrollo y las herramientas de build llegan a producción, no hay caché de capas y el proceso corre como root.",
+      "h": "49cc2d55"
+    },
+    "sections.1.code.0.code": {
+      "t": "FROM node:latest\nCOPY . .\nRUN npm install\nEXPOSE 3000\nCMD [\"node\", \"server.js\"]",
+      "h": "576b0c59"
+    },
+    "sections.1.code.0.filename": {
+      "t": "Dockerfile (antes)",
+      "h": "6ce56b79"
+    },
+    "sections.1.heading": {
+      "t": "Un Dockerfile débil",
+      "h": "89fb622b"
+    },
+    "sections.2.body.0": {
+      "t": "Usa una base fijada, un build multi-stage, instalación desde el lockfile, un usuario no root y un archivo de ignore.",
+      "h": "f0ae0951"
+    },
+    "sections.2.code.0.code": {
+      "t": "# etapa de build: tiene los compiladores y las dependencias de desarrollo\nFROM node:22-slim@sha256:<digest-you-reviewed> AS build\nWORKDIR /app\nCOPY package.json package-lock.json ./\nRUN npm ci\nCOPY . .\nRUN npm run build && npm prune --omit=dev\n\n# etapa de runtime: solo lo que la aplicación necesita\nFROM node:22-slim@sha256:<digest-you-reviewed>\nENV NODE_ENV=production\nWORKDIR /app\nCOPY --from=build --chown=node:node /app/dist ./dist\nCOPY --from=build --chown=node:node /app/node_modules ./node_modules\nUSER node\nEXPOSE 3000\nHEALTHCHECK CMD node -e \"fetch('http://localhost:3000/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))\"\nCMD [\"node\", \"dist/server.js\"]",
+      "h": "6c9226de"
+    },
+    "sections.2.code.0.filename": {
+      "t": "Dockerfile (después)",
+      "h": "546b736c"
+    },
+    "sections.2.code.1.code": {
+      "t": ".git\nnode_modules\n.env\n*.log\ncoverage",
+      "h": "7299bf5d"
+    },
+    "sections.2.code.1.filename": {
+      "t": ".dockerignore",
+      "h": "05a721eb"
+    },
+    "sections.2.heading": {
+      "t": "Uno mejor",
+      "h": "adca1662"
+    },
+    "sections.3.bullets.0": {
+      "t": "Reconstruye y vuelve a desplegar con regularidad: las imágenes no se parchean solas.",
+      "h": "3a684526"
+    },
+    "sections.3.bullets.1": {
+      "t": "Escanea las imágenes en CI y falla ante hallazgos graves que puedas corregir.",
+      "h": "04aa6246"
+    },
+    "sections.3.bullets.2": {
+      "t": "Un proceso por contenedor, logs a stdout, configuración mediante el entorno o archivos montados.",
+      "h": "57be6db2"
+    },
+    "sections.3.bullets.3": {
+      "t": "Etiqueta con el commit y despliega por digest para que el rollback sea exacto.",
+      "h": "df206270"
+    },
+    "sections.3.bullets.4": {
+      "t": "Mantén las imágenes pequeñas: menos paquetes, menos vulnerabilidades, pulls más rápidos.",
+      "h": "67f32650"
+    },
+    "sections.3.heading": {
+      "t": "Hábitos",
+      "h": "45ab397b"
+    },
+    "short": {
+      "t": "imágenes, capas, registries y un Dockerfile pequeño, reproducible y seguro de ejecutar",
+      "h": "d5d3c9c4"
+    },
+    "tagline": {
+      "t": "Un contenedor empaqueta una aplicación con sus dependencias y la ejecuta aislada del host. Una buena imagen es pequeña, determinista y corre como usuario no root.",
+      "h": "9643e7e2"
+    },
+    "title": {
+      "t": "Contenedores e imágenes",
+      "h": "d4e88b07"
+    }
+  }
+}

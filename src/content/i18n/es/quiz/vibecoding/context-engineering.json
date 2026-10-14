@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Manténlo corto. Los archivos largos se ignoran y los secretos nunca deben estar ahí.",
+      "h": "4e78a6d1"
+    },
+    "questions.0.options.0": {
+      "t": "Todo el código fuente",
+      "h": "c357ddd4"
+    },
+    "questions.0.options.1": {
+      "t": "Notas cortas y específicas: comandos, convenciones y límites que necesitaría un compañero nuevo",
+      "h": "40d3f8af"
+    },
+    "questions.0.options.2": {
+      "t": "Secretos y claves de API",
+      "h": "ed353bf8"
+    },
+    "questions.0.options.3": {
+      "t": "Una larga lista de reglas que el agent debe memorizar",
+      "h": "726667bc"
+    },
+    "questions.0.q": {
+      "t": "¿Qué pertenece a AGENTS.md o CLAUDE.md?",
+      "h": "56b83f36"
+    },
+    "questions.1.explain": {
+      "t": "La prosa es una petición. Los permisos y los gates son controles.",
+      "h": "f08ff84d"
+    },
+    "questions.1.options.0": {
+      "t": "Escribiéndola solo en el archivo de instrucciones",
+      "h": "94e88a91"
+    },
+    "questions.1.options.1": {
+      "t": "Imponiéndola con permisos, hooks o CI, además de documentarla",
+      "h": "383443f8"
+    },
+    "questions.1.options.2": {
+      "t": "Esperando que el modelo la recuerde",
+      "h": "4e3fbb1f"
+    },
+    "questions.1.options.3": {
+      "t": "Repitiéndola en cada prompt",
+      "h": "0a303e4b"
+    },
+    "questions.1.q": {
+      "t": "Una regla nunca debe romperse (por ejemplo, nunca hacer push a main). ¿Cómo se impone?",
+      "h": "f633498b"
+    },
+    "questions.2.explain": {
+      "t": "El plan mode te permite revisar el enfoque antes de que cambie cualquier archivo.",
+      "h": "dd8ee8e7"
+    },
+    "questions.2.options.0": {
+      "t": "Para perder tiempo",
+      "h": "00185b48"
+    },
+    "questions.2.options.1": {
+      "t": "Corregir un plan es más barato que corregir un diff grande",
+      "h": "019d84b8"
+    },
+    "questions.2.options.2": {
+      "t": "Git exige planes",
+      "h": "72e1d4bc"
+    },
+    "questions.2.options.3": {
+      "t": "Hace al modelo más inteligente",
+      "h": "3e76a429"
+    },
+    "questions.2.q": {
+      "t": "¿Por qué pedir un plan antes de que el agent edite código?",
+      "h": "d13dea53"
+    }
+  }
+}

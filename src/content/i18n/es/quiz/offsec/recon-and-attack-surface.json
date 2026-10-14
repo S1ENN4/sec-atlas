@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Los activos desconocidos quedan sin parchear y sin monitorear. El descubrimiento continuo cierra esa brecha.",
+      "h": "d2eda410"
+    },
+    "questions.0.options.0": {
+      "t": "Para asustar a los usuarios",
+      "h": "71dadb09"
+    },
+    "questions.0.options.1": {
+      "t": "Para encontrar activos olvidados o sin dueño antes que un atacante",
+      "h": "b095804c"
+    },
+    "questions.0.options.2": {
+      "t": "Para aumentar el tráfico",
+      "h": "b8106e82"
+    },
+    "questions.0.options.3": {
+      "t": "Para probar a la competencia",
+      "h": "a956b3c2"
+    },
+    "questions.0.q": {
+      "t": "¿Por qué los defensores deben ejecutar el descubrimiento de activos contra sus propios dominios?",
+      "h": "e163f426"
+    },
+    "questions.1.explain": {
+      "t": "Elimina los registros DNS cuando des de baja el recurso al que apuntan.",
+      "h": "052c8ff8"
+    },
+    "questions.1.options.0": {
+      "t": "Una caída de DNS",
+      "h": "68b5f90f"
+    },
+    "questions.1.options.1": {
+      "t": "Un registro DNS que apunta a un recurso de nube eliminado, que otra persona puede reclamar y servir desde tu dominio",
+      "h": "02d5fe66"
+    },
+    "questions.1.options.2": {
+      "t": "Una renovación de dominio",
+      "h": "294b45ad"
+    },
+    "questions.1.options.3": {
+      "t": "Un nuevo TLD",
+      "h": "3487a705"
+    },
+    "questions.1.q": {
+      "t": "¿Qué es un subdomain takeover?",
+      "h": "a9b99fb2"
+    },
+    "questions.2.explain": {
+      "t": "Los escaneos agresivos pueden causar caídas. La tasa y el alcance vienen de las reglas de compromiso.",
+      "h": "4a0105e9"
+    },
+    "questions.2.options.0": {
+      "t": "Nada, escanear lo más rápido posible",
+      "h": "cc8259f1"
+    },
+    "questions.2.options.1": {
+      "t": "El alcance y la tasa de solicitudes acordada",
+      "h": "5c4a5c17"
+    },
+    "questions.2.options.2": {
+      "t": "Solo la ventana de tiempo",
+      "h": "4434b5fb"
+    },
+    "questions.2.options.3": {
+      "t": "Solo la lista de IPs",
+      "h": "1892a89d"
+    },
+    "questions.2.q": {
+      "t": "En un escaneo autorizado, ¿qué debes respetar?",
+      "h": "cca90ae3"
+    }
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Los fallos de autenticación son debilidades al confirmar la identidad de un usuario o al gestionar la sesión que sigue: permitir credential stuffing y fuerza bruta, aceptar contraseñas débiles o filtradas, exponer ids de sesión, omitir o verificar mal los tokens, u ofrecer un flujo de recuperación débil.",
+      "h": "a4c9dcd6"
+    },
+    "sections.0.body.1": {
+      "t": "El OWASP Top 10:2025 lo lista como A07 con el nombre Authentication Failures.",
+      "h": "593b2346"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "f8c94a3b"
+    },
+    "sections.1.bullets.0": {
+      "t": "Credential stuffing: listas de pares de correo y contraseña filtrados de otros sitios se reutilizan a escala contra tu login.",
+      "h": "6ee327dc"
+    },
+    "sections.1.bullets.1": {
+      "t": "Fuerza bruta y password spraying: unas pocas contraseñas comunes en muchas cuentas, por debajo de cualquier bloqueo ingenuo.",
+      "h": "636048e5"
+    },
+    "sections.1.bullets.2": {
+      "t": "Manejo débil de JWT: el servidor acepta alg: none, nunca verifica la firma ni la expiración, o usa un secreto fácil de adivinar.",
+      "h": "cdf6d2c0"
+    },
+    "sections.1.bullets.3": {
+      "t": "Session fixation y robo de sesión: el id de sesión no se rota después del login, viaja en la URL, o la cookie no tiene HttpOnly ni Secure.",
+      "h": "6c256c29"
+    },
+    "sections.1.bullets.4": {
+      "t": "Bypass de la recuperación de cuenta: enlaces de restablecimiento que nunca expiran o preguntas de seguridad con respuestas públicas.",
+      "h": "29687ef0"
+    },
+    "sections.1.heading": {
+      "t": "Cómo funciona el ataque",
+      "h": "4443eb22"
+    },
+    "sections.2.body.0": {
+      "t": "Sin throttling, una comparación rápida de un hash sin salt, un id de sesión conservado después del login y un token que se decodifica pero nunca se verifica.",
+      "h": "0bc94c5c"
+    },
+    "sections.2.code.0.code": {
+      "t": "app.post(\"/login\", async (req, res) => {\n  const user = await db.user.findByEmail(req.body.email);\n  if (user && user.passwordHash === sha1(req.body.password)) {\n    req.session.userId = user.id;          // mismo id de sesión que antes del login\n    return res.json({ ok: true });\n  }\n  res.status(401).json({ error: \"wrong email or password\" });   // intentos ilimitados\n});\n\nconst claims = jwt.decode(token);          // decode() NO verifica la firma",
+      "h": "948ca6e9"
+    },
+    "sections.2.code.0.filename": {
+      "t": "login.js (Express)",
+      "h": "30eec5f9"
+    },
+    "sections.2.code.1.code": {
+      "t": "claims = jwt.decode(token, options={\"verify_signature\": False})",
+      "h": "8e2def54"
+    },
+    "sections.2.code.1.filename": {
+      "t": "tokens.py",
+      "h": "a1e24a1f"
+    },
+    "sections.2.heading": {
+      "t": "Código vulnerable",
+      "h": "fe357299"
+    },
+    "sections.3.body.0": {
+      "t": "Aplica throttling por cuenta y por IP, verifica las contraseñas con un hash lento, regenera la sesión en el login y define las flags de la cookie. Verifica los tokens con un algoritmo fijado, una clave real y comprobaciones de emisor, audiencia y expiración. Cuando puedas, usa passkeys o un proveedor de identidad en lugar de construir el login tú mismo, y agrega un segundo factor para las cuentas sensibles.",
+      "h": "3a1e3ba4"
+    },
+    "sections.3.code.0.code": {
+      "t": "const limiter = rateLimit({ windowMs: 15 * 60 * 1000, limit: 10, keyGenerator: (r) => `${r.ip}:${r.body?.email}` });\n\napp.post(\"/login\", limiter, async (req, res) => {\n  const user = await db.user.findByEmail(req.body.email);\n  const ok = user && (await argon2.verify(user.passwordHash, req.body.password));\n  if (!ok) return res.status(401).json({ error: \"wrong email or password\" });   // el mismo mensaje en ambos casos\n  req.session.regenerate(() => {         // id nuevo tras el login: derrota la fixation\n    req.session.userId = user.id;\n    res.json({ ok: true });\n  });\n});\n\napp.use(session({ cookie: { httpOnly: true, secure: true, sameSite: \"lax\", maxAge: 3600_000 } }));",
+      "h": "4be382c4"
+    },
+    "sections.3.code.0.filename": {
+      "t": "login.js (Express)",
+      "h": "30eec5f9"
+    },
+    "sections.3.code.1.code": {
+      "t": "claims = jwt.decode(\n    token,\n    key=PUBLIC_KEY,\n    algorithms=[\"RS256\"],          # fija el algoritmo; nunca aceptes \"none\"\n    audience=\"api.example.com\",\n    issuer=\"https://id.example.com\",\n    options={\"require\": [\"exp\", \"iat\", \"sub\"]},\n)",
+      "h": "9ea8a47d"
+    },
+    "sections.3.code.1.filename": {
+      "t": "tokens.py (PyJWT)",
+      "h": "36d3d49d"
+    },
+    "sections.3.code.2.code": {
+      "t": "http.sessionManagement(s -> s.sessionFixation().migrateSession())\n    .oauth2ResourceServer(o -> o.jwt(Customizer.withDefaults()));   // verifica firma, exp y emisor mediante configuración",
+      "h": "724fbf66"
+    },
+    "sections.3.code.2.filename": {
+      "t": "SecurityConfig.java (Spring Security)",
+      "h": "38e65123"
+    },
+    "sections.3.heading": {
+      "t": "La corrección",
+      "h": "7188b1fb"
+    },
+    "sections.4.body.0": {
+      "t": "Prueba los comportamientos de los que depende un atacante: el undécimo intento se rechaza, el id de sesión cambia tras el login y los tokens manipulados o sin firma se rechazan.",
+      "h": "6766c59a"
+    },
+    "sections.4.code.0.code": {
+      "t": "def test_login_is_throttled(client):\n    codes = [client.post(\"/login\", json={\"email\": \"a@x.io\", \"password\": f\"guess{i}\"}).status_code for i in range(15)]\n    assert 429 in codes\n\ndef test_session_id_changes_after_login(client, user):\n    before = client.get(\"/\").cookies.get(\"sid\")\n    client.post(\"/login\", json=user.credentials)\n    assert client.cookies.get(\"sid\") != before\n\ndef test_unsigned_token_is_rejected(client):\n    forged = b64(b'{\"alg\":\"none\"}') + \".\" + b64(b'{\"sub\":\"admin\"}') + \".\"\n    assert client.get(\"/api/me\", headers={\"Authorization\": f\"Bearer {forged}\"}).status_code == 401\n\ndef test_cookie_flags(client, user):\n    cookie = client.post(\"/login\", json=user.credentials).headers[\"set-cookie\"]\n    assert \"HttpOnly\" in cookie and \"Secure\" in cookie",
+      "h": "e10ae4b9"
+    },
+    "sections.4.code.0.filename": {
+      "t": "test_auth.py (pytest)",
+      "h": "9bca370e"
+    },
+    "sections.4.heading": {
+      "t": "Demuestra la corrección",
+      "h": "665c8226"
+    },
+    "sections.5.bullets.0": {
+      "t": "Aplica rate limiting y monitorea el login por cuenta, por IP y por dispositivo; agrega retraso progresivo o desafío, y no solo bloqueo total (que habilita la denegación de servicio).",
+      "h": "605064ad"
+    },
+    "sections.5.bullets.1": {
+      "t": "Verifica las contraseñas nuevas contra una lista de contraseñas filtradas; exige longitud en lugar de reglas arbitrarias de complejidad.",
+      "h": "b602b967"
+    },
+    "sections.5.bullets.2": {
+      "t": "Ofrece autenticación multifactor, idealmente resistente al phishing (passkeys, WebAuthn), y exígela a los administradores.",
+      "h": "988df2ac"
+    },
+    "sections.5.bullets.3": {
+      "t": "Rota el id de sesión en el login y en los cambios de privilegio; hazlo expirar; invalídalo al cerrar sesión.",
+      "h": "9900c630"
+    },
+    "sections.5.bullets.4": {
+      "t": "Verifica cada token: firma, algoritmo, emisor, audiencia, expiración. Nunca confíes solo en el decode.",
+      "h": "db386d26"
+    },
+    "sections.5.bullets.5": {
+      "t": "Haz la recuperación tan fuerte como el login: enlaces de un solo uso y corta duración; la misma respuesta genérica para correos conocidos y desconocidos.",
+      "h": "7046f2ca"
+    },
+    "sections.5.heading": {
+      "t": "Checklist",
+      "h": "61b29464"
+    },
+    "short": {
+      "t": "los atacantes se hacen pasar por otra persona: sesiones adivinadas, reutilizadas, robadas o fijadas",
+      "h": "4626f8cc"
+    },
+    "tagline": {
+      "t": "El login es la puerta de entrada. Los intentos ilimitados, las contraseñas reutilizadas, las sesiones que nunca expiran y los tokens que no se verifican de verdad dejan que un atacante entre como un usuario real.",
+      "h": "36fdd0ba"
+    },
+    "title": {
+      "t": "A07 Authentication Failures",
+      "h": "35361ea8"
+    }
+  }
+}

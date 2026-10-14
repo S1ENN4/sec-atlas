@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Desligar destrói evidências voláteis. O isolamento de rede contém e as preserva.",
+      "h": "7cffc6e4"
+    },
+    "questions.0.options.0": {
+      "t": "É mais barato",
+      "h": "75dd6b86"
+    },
+    "questions.0.options.1": {
+      "t": "A memória e o estado em execução são preservados para análise, e o host continua acessível às suas ferramentas",
+      "h": "243a268c"
+    },
+    "questions.0.options.2": {
+      "t": "Desligar é ilegal",
+      "h": "8bd4d984"
+    },
+    "questions.0.options.3": {
+      "t": "O EDR não consegue desligar hosts",
+      "h": "2c4686e5"
+    },
+    "questions.0.q": {
+      "t": "Por que isolar um host infectado pelo EDR em vez de desligá-lo?",
+      "h": "27c0f8dc"
+    },
+    "questions.1.explain": {
+      "t": "Desativar interrompe o uso e mantém o registro de que você precisa para a investigação.",
+      "h": "1341faad"
+    },
+    "questions.1.options.0": {
+      "t": "Excluí-la imediatamente e esquecer",
+      "h": "40da988a"
+    },
+    "questions.1.options.1": {
+      "t": "Desativá-la e guardá-la como evidência enquanto você investiga o que ela fez",
+      "h": "6d17530c"
+    },
+    "questions.1.options.2": {
+      "t": "Postá-la no chat da equipe",
+      "h": "d46750c3"
+    },
+    "questions.1.options.3": {
+      "t": "Deixá-la ativa para observar o atacante",
+      "h": "dcb0c1ad"
+    },
+    "questions.1.q": {
+      "t": "Uma chave de acesso de nuvem vazada foi encontrada. O que fazer com a própria chave?",
+      "h": "b213fdad"
+    },
+    "questions.2.explain": {
+      "t": "Os atacantes mantêm o acesso por sessões, tokens e regras, então revogue todos.",
+      "h": "74ef8487"
+    },
+    "questions.2.options.0": {
+      "t": "Delimitar o escopo antes de agir",
+      "h": "66a6bb59"
+    },
+    "questions.2.options.1": {
+      "t": "Redefinir uma senha mas deixar sessões, tokens e regras de caixa de correio ativos",
+      "h": "425903d9"
+    },
+    "questions.2.options.2": {
+      "t": "Registrar as ações com timestamps",
+      "h": "31edda7a"
+    },
+    "questions.2.options.3": {
+      "t": "Coordenar as ações em uma única janela",
+      "h": "2c565205"
+    },
+    "questions.2.q": {
+      "t": "Qual é um erro comum de contenção?",
+      "h": "a65d7bfa"
+    }
+  }
+}

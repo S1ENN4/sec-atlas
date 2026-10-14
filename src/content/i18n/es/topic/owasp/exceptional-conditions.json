@@ -1,0 +1,160 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "El manejo inadecuado de condiciones excepcionales es la preparación, detección y respuesta indebidas ante situaciones inusuales: dependencias que fallan, timeouts, entradas mal formadas, agotamiento de recursos, escrituras parciales y estados inesperados. Los errores típicos son fallar abierto, filtrar detalles en los mensajes de error, tragarse las excepciones y dejar transacciones a medias.",
+      "h": "1b1c55e8"
+    },
+    "sections.0.body.1": {
+      "t": "Es una categoría nueva en el OWASP Top 10:2025 (A10) y reúne varias debilidades más antiguas en torno al manejo de errores.",
+      "h": "117fd063"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "f8c94a3b"
+    },
+    "sections.1.bullets.0": {
+      "t": "Fail open: un servicio de autorización agota el tiempo de espera y el código trata la excepción como \"sin restricción\".",
+      "h": "d5f56a2c"
+    },
+    "sections.1.bullets.1": {
+      "t": "Fuga de información: un error de base de datos se devuelve al cliente con el nombre de la tabla, la consulta y la versión del driver.",
+      "h": "9981a8eb"
+    },
+    "sections.1.bullets.2": {
+      "t": "Errores tragados: un catch vacío oculta una verificación de firma fallida y el procesamiento continúa.",
+      "h": "d4b14d9d"
+    },
+    "sections.1.bullets.3": {
+      "t": "Estado parcial: se cobra un pago pero falla la escritura del pedido; reintentar duplica el cobro.",
+      "h": "024e46d7"
+    },
+    "sections.1.bullets.4": {
+      "t": "Agotamiento de recursos: una entrada sin límite o una excepción no controlada en un bucle permite que una sola solicitud tumbe el servicio.",
+      "h": "a8fd9f8b"
+    },
+    "sections.1.heading": {
+      "t": "Cómo funciona el ataque",
+      "h": "4443eb22"
+    },
+    "sections.2.body.0": {
+      "t": "La verificación falla abierta, el error filtra detalles internos y la actualización de varios pasos no es atómica.",
+      "h": "876b697a"
+    },
+    "sections.2.code.0.code": {
+      "t": "def can_access(user, doc):\n    try:\n        return policy_service.allowed(user.id, doc.id)\n    except Exception:\n        return True                    # el servicio está caído, así que déjalos pasar\n\n@app.errorhandler(Exception)\ndef on_error(e):\n    return str(e), 500                 # filtra detalles internos al cliente",
+      "h": "cbb3d733"
+    },
+    "sections.2.code.0.filename": {
+      "t": "access.py",
+      "h": "ae80d6e3"
+    },
+    "sections.2.code.1.code": {
+      "t": "await accounts.debit(from, amount);\nawait accounts.credit(to, amount);   // si esto lanza un error, el dinero desapareció",
+      "h": "b3d0acf7"
+    },
+    "sections.2.code.1.filename": {
+      "t": "transfer.js",
+      "h": "f48039db"
+    },
+    "sections.2.heading": {
+      "t": "Código vulnerable",
+      "h": "fe357299"
+    },
+    "sections.3.body.0": {
+      "t": "Falla cerrado: ante cualquier duda sobre una decisión de seguridad, deniega. Devuelve al cliente un mensaje genérico con un correlation id y deja los detalles en los logs. Haz atómicos los cambios de varios pasos con una transacción y acota todo: tiempo, tamaño, reintentos, memoria.",
+      "h": "cc6ce084"
+    },
+    "sections.3.code.0.code": {
+      "t": "def can_access(user, doc):\n    try:\n        return policy_service.allowed(user.id, doc.id, timeout=0.5)\n    except Exception:\n        log.exception(\"policy check failed\", extra={\"user\": user.id, \"doc\": doc.id})\n        return False                   # falla cerrado\n\n@app.errorhandler(Exception)\ndef on_error(e):\n    rid = uuid4().hex\n    log.exception(\"unhandled error\", extra={\"request_id\": rid})\n    return {\"error\": \"internal error\", \"request_id\": rid}, 500",
+      "h": "8c06a4fc"
+    },
+    "sections.3.code.0.filename": {
+      "t": "access.py",
+      "h": "ae80d6e3"
+    },
+    "sections.3.code.1.code": {
+      "t": "await db.transaction(async (trx) => {\n  await accounts.debit(from, amount, trx);\n  await accounts.credit(to, amount, trx);   // ocurren ambos o ninguno\n});",
+      "h": "1627533b"
+    },
+    "sections.3.code.1.filename": {
+      "t": "transfer.js",
+      "h": "f48039db"
+    },
+    "sections.3.code.2.code": {
+      "t": "ctx, cancel := context.WithTimeout(r.Context(), 800*time.Millisecond)\ndefer cancel()\n\nresp, err := policy.Check(ctx, user, doc)\nif err != nil {\n\tlog.Error(\"policy check failed\", \"err\", err)\n\thttp.Error(w, \"forbidden\", http.StatusForbidden) // falla cerrado\n\treturn\n}",
+      "h": "5f549e2a"
+    },
+    "sections.3.code.2.filename": {
+      "t": "client.go",
+      "h": "d633516f"
+    },
+    "sections.3.heading": {
+      "t": "La corrección",
+      "h": "7188b1fb"
+    },
+    "sections.4.body.0": {
+      "t": "Inyecta el fallo a propósito. Haz que la dependencia agote el tiempo de espera y verifica que se deniega el acceso; haz que el segundo paso lance un error y verifica que nada cambió; provoca un error y verifica que la respuesta no incluye detalles internos. El fuzzing agrega entradas extrañas en las que no pensaste.",
+      "h": "579e5ad6"
+    },
+    "sections.4.code.0.code": {
+      "t": "def test_denies_when_policy_service_is_down(monkeypatch, user, doc):\n    monkeypatch.setattr(policy_service, \"allowed\", lambda *a, **k: (_ for _ in ()).throw(TimeoutError()))\n    assert can_access(user, doc) is False\n\ndef test_error_response_has_no_internals(client, monkeypatch):\n    monkeypatch.setattr(db, \"query\", lambda *a, **k: (_ for _ in ()).throw(RuntimeError(\"relation users_secret does not exist\")))\n    body = client.get(\"/api/things\").get_json()\n    assert \"users_secret\" not in str(body) and \"request_id\" in body\n\n@given(st.text())\ndef test_parser_never_crashes_on_any_text(s):      # Hypothesis\n    parse_input(s)       # puede rechazar (ValueError) pero no debe lanzar ninguna otra excepción",
+      "h": "bf4f029f"
+    },
+    "sections.4.code.0.filename": {
+      "t": "test_failures.py (pytest)",
+      "h": "5fd0a884"
+    },
+    "sections.4.code.1.code": {
+      "t": "test(\"a failed credit rolls back the debit\", async () => {\n  jest.spyOn(accounts, \"credit\").mockRejectedValue(new Error(\"boom\"));\n  const before = await accounts.balance(from);\n  await expect(transfer(from, to, 50)).rejects.toThrow();\n  expect(await accounts.balance(from)).toBe(before);\n});",
+      "h": "d2b7270d"
+    },
+    "sections.4.code.1.filename": {
+      "t": "transfer.test.js",
+      "h": "25915da5"
+    },
+    "sections.4.heading": {
+      "t": "Demuestra la corrección",
+      "h": "665c8226"
+    },
+    "sections.5.bullets.0": {
+      "t": "Decide de antemano el comportamiento de fallo de cada verificación de seguridad: debe denegar.",
+      "h": "92290042"
+    },
+    "sections.5.bullets.1": {
+      "t": "Captura de forma acotada; nunca dejes un catch vacío; registra con contexto y vuelve a lanzar la excepción o devuelve un error seguro.",
+      "h": "6c3358de"
+    },
+    "sections.5.bullets.2": {
+      "t": "Devuelve errores genéricos con un correlation id; deja los stack traces y las consultas solo en los logs.",
+      "h": "412e9190"
+    },
+    "sections.5.bullets.3": {
+      "t": "Usa transacciones y claves de idempotencia en las operaciones de varios pasos, para que los reintentos sean seguros.",
+      "h": "25b42876"
+    },
+    "sections.5.bullets.4": {
+      "t": "Define timeouts, límites de tamaño, rate limits y presupuestos de reintentos en cada llamada externa y entrada.",
+      "h": "424d3b9a"
+    },
+    "sections.5.bullets.5": {
+      "t": "Practica el fallo: la inyección de fallos, el fuzzing y los game days revelan los caminos fail-open antes que los atacantes.",
+      "h": "326fe36c"
+    },
+    "sections.5.heading": {
+      "t": "Checklist",
+      "h": "61b29464"
+    },
+    "short": {
+      "t": "errores, timeouts y entradas extrañas que dejan el sistema abierto o filtrando",
+      "h": "e03dd4d4"
+    },
+    "tagline": {
+      "t": "La seguridad a menudo depende de lo que pasa cuando algo sale mal. Si un error significa \"permitir\", un stack trace significa \"aquí está mi código\" o una operación a medias significa \"estado corrupto\", el camino de fallo es la vulnerabilidad.",
+      "h": "99b0b3da"
+    },
+    "title": {
+      "t": "A10 Mishandling of Exceptional Conditions",
+      "h": "ed7cebad"
+    }
+  }
+}

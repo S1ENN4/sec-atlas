@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Quem decide precisa do risco e das prioridades, em palavras sobre as quais possa agir.",
+      "h": "5844fbac"
+    },
+    "questions.0.options.0": {
+      "t": "Saída de ferramentas",
+      "h": "363f4fd0"
+    },
+    "questions.0.options.1": {
+      "t": "O que foi testado, o risco geral em linguagem simples e as ações mais importantes",
+      "h": "459d4d59"
+    },
+    "questions.0.options.2": {
+      "t": "A lista completa de requisições",
+      "h": "279d148f"
+    },
+    "questions.0.options.3": {
+      "t": "Apenas as contagens por severidade",
+      "h": "a172226c"
+    },
+    "questions.0.q": {
+      "t": "O que o resumo executivo de um relatório deve conter?",
+      "h": "645d364f"
+    },
+    "questions.1.explain": {
+      "t": "A reprodutibilidade torna possíveis as correções e os retestes.",
+      "h": "77b4fc89"
+    },
+    "questions.1.options.0": {
+      "t": "Para deixar o relatório mais longo",
+      "h": "d69aefd3"
+    },
+    "questions.1.options.1": {
+      "t": "Para que os engenheiros do cliente confirmem e corrijam sem adivinhar, e verifiquem a correção depois",
+      "h": "6c8ce964"
+    },
+    "questions.1.options.2": {
+      "t": "Para exibir ferramentas",
+      "h": "2aa6bf2c"
+    },
+    "questions.1.options.3": {
+      "t": "Porque o CVSS exige",
+      "h": "200e4399"
+    },
+    "questions.1.q": {
+      "t": "Por que um achado deve incluir passos reproduzíveis?",
+      "h": "feb7f511"
+    },
+    "questions.2.explain": {
+      "t": "Um reteste confirma que a causa-raiz, e não apenas a requisição reportada, foi corrigida.",
+      "h": "a079ed8f"
+    },
+    "questions.2.options.0": {
+      "t": "Para cobrar de novo",
+      "h": "c7ccdeaf"
+    },
+    "questions.2.options.1": {
+      "t": "As correções muitas vezes só bloqueiam o caso de teste exato, então é preciso verificar se o problema de fundo foi fechado",
+      "h": "1b7b1910"
+    },
+    "questions.2.options.2": {
+      "t": "Retestar é ilegal",
+      "h": "eb7f4b1c"
+    },
+    "questions.2.options.3": {
+      "t": "Para encontrar novos clientes",
+      "h": "839ed7aa"
+    },
+    "questions.2.q": {
+      "t": "Por que retestar após as correções?",
+      "h": "1001a1bc"
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Los campos consistentes permiten alertas e investigación. Un log solo local desaparece cuando se compromete el host.",
+      "h": "8a37985e"
+    },
+    "questions.0.options.0": {
+      "t": "Contiene el cuerpo completo de la solicitud",
+      "h": "693a635a"
+    },
+    "questions.0.options.1": {
+      "t": "Eventos estructurados con quién, qué, desde dónde y resultado, enviados rápidamente fuera del host",
+      "h": "ad4c66da"
+    },
+    "questions.0.options.2": {
+      "t": "Se almacena solo en el servidor de la aplicación",
+      "h": "80a78a39"
+    },
+    "questions.0.options.3": {
+      "t": "Se rota cada hora",
+      "h": "ddb381db"
+    },
+    "questions.0.q": {
+      "t": "¿Qué hace útil un log para la seguridad?",
+      "h": "bdac0210"
+    },
+    "questions.1.explain": {
+      "t": "Un almacén de logs lleno de secretos se convierte en el mejor objetivo de la empresa. Haz la redaction en el logger.",
+      "h": "60f10720"
+    },
+    "questions.1.options.0": {
+      "t": "Request id",
+      "h": "9ad53f95"
+    },
+    "questions.1.options.1": {
+      "t": "Contraseñas y tokens",
+      "h": "3728d9ac"
+    },
+    "questions.1.options.2": {
+      "t": "Código de estado HTTP",
+      "h": "2f229ba9"
+    },
+    "questions.1.options.3": {
+      "t": "Timestamp",
+      "h": "19eabc96"
+    },
+    "questions.1.q": {
+      "t": "¿Qué nunca debe escribirse en los logs?",
+      "h": "273843c9"
+    },
+    "questions.2.explain": {
+      "t": "La detección necesita tanto el registro como una regla que avise a alguien, probada de extremo a extremo.",
+      "h": "b4f71b82"
+    },
+    "questions.2.options.0": {
+      "t": "Porque los logs son caros",
+      "h": "e8e3d258"
+    },
+    "questions.2.options.1": {
+      "t": "Porque un log por el que nadie recibe notificación no detiene un ataque a tiempo",
+      "h": "90c35caf"
+    },
+    "questions.2.options.2": {
+      "t": "Porque las alertas reemplazan a los logs",
+      "h": "8893236a"
+    },
+    "questions.2.options.3": {
+      "t": "Porque lo exigen los auditores",
+      "h": "ed7fc973"
+    },
+    "questions.2.q": {
+      "t": "¿Por qué el nombre de la categoría de 2025 incluye alerting?",
+      "h": "71e4aa76"
+    }
+  }
+}

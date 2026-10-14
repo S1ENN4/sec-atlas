@@ -1,0 +1,108 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Tras el acceso inicial, el atacante busca una ruta desde donde está hasta lo que quiere: privilegios más altos, otros sistemas, datos sensibles. Cada paso usa un permiso, una credencial almacenada, una relación de confianza o una configuración incorrecta. Vistos como un grafo, los entornos tienen muchas de estas rutas, y acortarlas o cortarlas es trabajo del defensor. Este tema describe los conceptos y las defensas, no procedimientos de ataque paso a paso.",
+      "h": "b9249d33"
+    },
+    "sections.0.heading": {
+      "t": "La idea de ruta",
+      "h": "53407bb0"
+    },
+    "sections.1.bullets.0": {
+      "t": "Exposición de credenciales: contraseñas y tokens en archivos, scripts, memoria, historial del shell y configuración, reutilizados entre sistemas.",
+      "h": "835e8a04"
+    },
+    "sections.1.bullets.1": {
+      "t": "Exceso de privilegios: cuentas y roles con mucho más permiso del que su tarea necesita, incluidos administradores que inician sesión en estaciones de trabajo comunes.",
+      "h": "f686065c"
+    },
+    "sections.1.bullets.2": {
+      "t": "Relaciones de confianza: un sistema en el que confían muchos otros (un servidor de build, un host de administración) se convierte en un pivote hacia todos ellos.",
+      "h": "fb237f17"
+    },
+    "sections.1.bullets.3": {
+      "t": "Cuentas de servicio débiles: de larga duración, altamente privilegiadas, con contraseñas que nunca se rotan.",
+      "h": "6fe78fd2"
+    },
+    "sections.1.bullets.4": {
+      "t": "Delegación o permisos mal configurados: en Active Directory, en el RBAC de Kubernetes y en el IAM de la nube, donde el derecho de pasar o asumir un rol puede ser el derecho de convertirse en él.",
+      "h": "db6196cc"
+    },
+    "sections.1.bullets.5": {
+      "t": "Fallas locales sin parchear: un punto de apoyo de bajo privilegio que se convierte en administrador mediante una vulnerabilidad conocida.",
+      "h": "9e01c88f"
+    },
+    "sections.1.heading": {
+      "t": "Bloques de construcción comunes",
+      "h": "9550c5fb"
+    },
+    "sections.2.body.0": {
+      "t": "Una política que permite a un usuario pasar cualquier rol a un servicio de cómputo, combinada con el derecho de crear ese servicio, permite al usuario ejecutar código con el rol más privilegiado. La corrección es limitar lo que se puede pasar.",
+      "h": "a19bad81"
+    },
+    "sections.2.code.0.code": {
+      "t": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    { \"Effect\": \"Allow\", \"Action\": [\"iam:PassRole\", \"lambda:CreateFunction\", \"lambda:InvokeFunction\"], \"Resource\": \"*\" }\n  ]\n}",
+      "h": "f1f811cf"
+    },
+    "sections.2.code.0.filename": {
+      "t": "risky-policy.json",
+      "h": "37443164"
+    },
+    "sections.2.code.1.code": {
+      "t": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"iam:PassRole\",\n      \"Resource\": \"arn:aws:iam::123456789012:role/app-lambda-low-privilege\",\n      \"Condition\": { \"StringEquals\": { \"iam:PassedToService\": \"lambda.amazonaws.com\" } }\n    },\n    { \"Effect\": \"Allow\", \"Action\": [\"lambda:CreateFunction\", \"lambda:InvokeFunction\"], \"Resource\": \"arn:aws:lambda:us-east-1:123456789012:function:app-*\" }\n  ]\n}",
+      "h": "06372439"
+    },
+    "sections.2.code.1.filename": {
+      "t": "scoped-policy.json",
+      "h": "66472658"
+    },
+    "sections.2.heading": {
+      "t": "Ejemplo: un permiso de nube que es más de lo que parece",
+      "h": "e339249e"
+    },
+    "sections.3.bullets.0": {
+      "t": "Mapea las rutas tú mismo: ejecuta una herramienta de rutas de ataque (BloodHound para Active Directory, un analizador de IAM para la nube) y trata las rutas más cortas hacia tus joyas de la corona como correcciones prioritarias.",
+      "h": "c4cec3a3"
+    },
+    "sections.3.bullets.1": {
+      "t": "Administración por niveles (tiering): las cuentas privilegiadas solo inician sesión en sistemas privilegiados, nunca en estaciones de trabajo ni servidores de un nivel inferior.",
+      "h": "1be89a56"
+    },
+    "sections.3.bullets.2": {
+      "t": "Mínimo privilegio y acceso just-in-time: sin derechos de administrador permanentes, elevaciones cortas con aprobación y registro.",
+      "h": "ea897fbc"
+    },
+    "sections.3.bullets.3": {
+      "t": "Protege y rota las credenciales: gestores de secretos, cuentas de servicio administradas o de grupo, ningún secreto en archivos.",
+      "h": "1d1b92b4"
+    },
+    "sections.3.bullets.4": {
+      "t": "Segmenta la red y reduce la confianza entre sistemas; no dejes que un host alcance todo.",
+      "h": "db35df8b"
+    },
+    "sections.3.bullets.5": {
+      "t": "Detecta los pasos: alerta sobre cambios de privilegio, nuevas asunciones de rol, patrones de autenticación inusuales y acceso a credenciales.",
+      "h": "967d3184"
+    },
+    "sections.3.bullets.6": {
+      "t": "Valida la detección emulando técnicas de forma segura (por ejemplo, con Atomic Red Team) en un laboratorio o con aprobación.",
+      "h": "8f3d35dc"
+    },
+    "sections.3.heading": {
+      "t": "Defensa contra cadenas",
+      "h": "6f717d99"
+    },
+    "short": {
+      "t": "cómo pequeñas configuraciones incorrectas se encadenan hasta el compromiso total, y cómo los defensores encuentran la cadena primero",
+      "h": "ea74c610"
+    },
+    "tagline": {
+      "t": "Los atacantes rara vez necesitan un zero-day. Encadenan debilidades comunes (una credencial reutilizada, un permiso demasiado amplio, una relación de confianza) hasta llegar a algo valioso. La ventaja del defensor es mapear esas rutas antes de que se usen.",
+      "h": "3c4309c7"
+    },
+    "title": {
+      "t": "Rutas de ataque y escalada de privilegios",
+      "h": "55a1fe38"
+    }
+  }
+}

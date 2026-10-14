@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Las referencias mutables permiten que un cambio del upstream se ejecute en tu pipeline, con tus secretos, sin que nadie lo note.",
+      "h": "f41f6331"
+    },
+    "questions.0.options.0": {
+      "t": "Los SHAs son más cortos que las tags",
+      "h": "34ad37d4"
+    },
+    "questions.0.options.1": {
+      "t": "Una tag o rama puede moverse a otro código, un SHA de commit no",
+      "h": "99c310fd"
+    },
+    "questions.0.options.2": {
+      "t": "Hace el build más rápido",
+      "h": "34a60eb1"
+    },
+    "questions.0.options.3": {
+      "t": "Git lo exige",
+      "h": "86211e4d"
+    },
+    "questions.0.q": {
+      "t": "¿Por qué hay que fijar las actions de CI a un SHA de commit completo?",
+      "h": "ac97f471"
+    },
+    "questions.1.explain": {
+      "t": "Un inventario de componentes convierte una búsqueda larga en una consulta rápida.",
+      "h": "f5a62790"
+    },
+    "questions.1.options.0": {
+      "t": "Qué tan rápido es el build",
+      "h": "8d838785"
+    },
+    "questions.1.options.1": {
+      "t": "Si te afecta cuando se anuncia una vulnerabilidad en un componente",
+      "h": "dc01cf9b"
+    },
+    "questions.1.options.2": {
+      "t": "Quién escribió cada línea de código",
+      "h": "66b1f998"
+    },
+    "questions.1.options.3": {
+      "t": "Qué región de nube es la más barata",
+      "h": "80bbbf70"
+    },
+    "questions.1.q": {
+      "t": "¿Qué ayuda principalmente a responder un SBOM?",
+      "h": "24e3bcf8"
+    },
+    "questions.2.explain": {
+      "t": "Los nombres con alcance y un registry privado con prioridad evitan el cambio.",
+      "h": "a958f686"
+    },
+    "questions.2.options.0": {
+      "t": "Usar demasiadas bibliotecas",
+      "h": "0da34d26"
+    },
+    "questions.2.options.1": {
+      "t": "Un build que descarga un paquete público con el mismo nombre que uno interno",
+      "h": "a6a2222e"
+    },
+    "questions.2.options.2": {
+      "t": "Dos bibliotecas con licencias incompatibles",
+      "h": "324de6f1"
+    },
+    "questions.2.options.3": {
+      "t": "Un import circular",
+      "h": "dd76389a"
+    },
+    "questions.2.q": {
+      "t": "¿Qué es el dependency confusion?",
+      "h": "3d8e9974"
+    }
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "entries": {
+    "sections.0.bullets.0": {
+      "t": "Resumo executivo: para leitores não técnicos. O que foi testado, o risco geral em linguagem simples, as poucas coisas que mais importam e o que fazer primeiro.",
+      "h": "82ad7db6"
+    },
+    "sections.0.bullets.1": {
+      "t": "Escopo e método: o que estava dentro e fora do escopo, as datas, a abordagem e quaisquer limitações (o que você não conseguiu testar).",
+      "h": "22306ea9"
+    },
+    "sections.0.bullets.2": {
+      "t": "Achados: uma entrada para cada um, ordenados por severidade, com um id único.",
+      "h": "898d5b46"
+    },
+    "sections.0.bullets.3": {
+      "t": "Recomendações estratégicas: os padrões por trás dos achados (por exemplo, ausência de uma camada central de autorização) e como corrigir a causa, não apenas as instâncias.",
+      "h": "edc125da"
+    },
+    "sections.0.bullets.4": {
+      "t": "Apêndices: evidências, saída das ferramentas e detalhes da metodologia.",
+      "h": "1cc3e7e4"
+    },
+    "sections.0.heading": {
+      "t": "Estrutura de um relatório",
+      "h": "13f83e3f"
+    },
+    "sections.1.body.0": {
+      "t": "Cada achado deve se sustentar sozinho e ser reproduzível por alguém que não estava lá.",
+      "h": "df356dd6"
+    },
+    "sections.1.code.0.code": {
+      "t": "## F-01  Autorização quebrada em nível de objeto em /api/invoices/{id}\n\n**Severidade:** Alta (CVSS v3.1 8.1, AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N)\n**Afetado:** https://api.example.com/v2/invoices/{id}\n**Categoria:** OWASP API Security: Broken Object Level Authorization\n\n### Resumo\nQualquer usuário autenticado pode ler e modificar as faturas de qualquer cliente alterando o id.\n\n### Impacto\nUm atacante com uma conta gratuita pode ler os dados de cobrança de todos os clientes e alterar os totais das faturas. Afeta todos os clientes.\n\n### Passos para reproduzir\n1. Faça login como tester-a e anote o id de uma fatura (1041).\n2. Faça login como tester-b e envie `GET /api/invoices/1041`.\n3. A resposta é 200 com a fatura do tester-a.\n\n### Evidências\nevidence/F-01-request.txt, evidence/F-01-response.txt\n\n### Remediação\nAutorize no servidor por propriedade em cada requisição (restrinja a consulta ao usuário autenticado). Retorne o mesmo 404 para \"não encontrado\" e \"não é seu\". Adicione um teste de regressão com dois usuários.\n\n### Referências\nOWASP Top 10 A01 Broken Access Control",
+      "h": "725caf0c"
+    },
+    "sections.1.code.0.filename": {
+      "t": "finding-template.md",
+      "h": "17755256"
+    },
+    "sections.1.heading": {
+      "t": "Um bom achado",
+      "h": "9c1a5cc3"
+    },
+    "sections.2.body.0": {
+      "t": "O CVSS dá uma pontuação técnica consistente, mas ignora o seu contexto. Ajuste a severidade pela explorabilidade real, pelo valor dos dados e sistemas afetados, por controles compensatórios e por o problema já estar sendo explorado ou não. Explique o raciocínio no relatório para que o cliente possa priorizar, em vez de copiar o número do scanner.",
+      "h": "3165fda6"
+    },
+    "sections.2.heading": {
+      "t": "Classificando o risco",
+      "h": "52ac11af"
+    },
+    "sections.3.bullets.0": {
+      "t": "Apresente os achados críticos aos engenheiros do cliente; uma conversa esclarece dúvidas mais rápido do que um documento.",
+      "h": "ca84cba1"
+    },
+    "sections.3.bullets.1": {
+      "t": "Combine responsáveis e datas, e acompanhe as correções no próprio issue tracker do cliente.",
+      "h": "4731cdfa"
+    },
+    "sections.3.bullets.2": {
+      "t": "Reteste: verifique se cada correção realmente fecha o problema e reporte o resultado. É comum que correções bloqueiem apenas o caso de teste exato.",
+      "h": "fdfdf14b"
+    },
+    "sections.3.bullets.3": {
+      "t": "Trate os dados: entregue o relatório com segurança e apague ou devolva os dados do cliente conforme combinado.",
+      "h": "4b752c9c"
+    },
+    "sections.3.bullets.4": {
+      "t": "Realimente as lições: causas-raiz recorrentes devem virar orientação de design, testes e treinamento.",
+      "h": "bd6fec56"
+    },
+    "sections.3.heading": {
+      "t": "Depois do relatório",
+      "h": "dcc3ff4b"
+    },
+    "short": {
+      "t": "o relatório é o produto: impacto claro, evidências reproduzíveis e correções que as pessoas conseguem aplicar",
+      "h": "90aba02b"
+    },
+    "tagline": {
+      "t": "Um achado que ninguém entende ou age sobre não tem valor. Os melhores testadores escrevem de modo que um executivo veja o risco e um engenheiro consiga corrigir em uma tarde.",
+      "h": "d360bfd1"
+    },
+    "title": {
+      "t": "Relatar achados e conduzir a remediação",
+      "h": "13589fed"
+    }
+  }
+}

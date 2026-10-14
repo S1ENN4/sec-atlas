@@ -1,0 +1,176 @@
+{
+  "entries": {
+    "groups.0.entries.0.aka": {
+      "t": "IC",
+      "h": "94ce9e96"
+    },
+    "groups.0.entries.0.meaning": {
+      "t": "La persona que es responsable de la respuesta y toma las decisiones, mientras otros hacen el trabajo técnico. Mantener estos roles separados evita que el líder desaparezca en los detalles técnicos.",
+      "h": "9d29f78d"
+    },
+    "groups.0.entries.0.term": {
+      "t": "Comandante del incidente",
+      "h": "29c8979f"
+    },
+    "groups.0.entries.1.aka": {
+      "t": "nivel SEV",
+      "h": "498e6540"
+    },
+    "groups.0.entries.1.meaning": {
+      "t": "Una escala acordada de qué tan grave es un incidente, definida de antemano para que nadie discuta sobre ello durante el evento. Determina a quién se avisa y con qué rapidez.",
+      "h": "39607313"
+    },
+    "groups.0.entries.1.term": {
+      "t": "Severidad",
+      "h": "de314fa0"
+    },
+    "groups.0.entries.2.meaning": {
+      "t": "Un ensayo basado en la discusión de un escenario de incidente. Prueba el plan, los contactos y las decisiones sin tocar producción.",
+      "h": "bf5fd23e"
+    },
+    "groups.0.entries.2.term": {
+      "t": "Ejercicio de mesa (tabletop)",
+      "h": "53d7f70a"
+    },
+    "groups.0.entries.3.meaning": {
+      "t": "Limitar la propagación y el daño de un incidente: aislar un host, revocar credenciales, bloquear un destino. La contención de corto plazo gana tiempo; la de largo plazo prepara una recuperación limpia.",
+      "h": "e76eb094"
+    },
+    "groups.0.entries.3.term": {
+      "t": "Contención",
+      "h": "4378934e"
+    },
+    "groups.0.entries.4.meaning": {
+      "t": "La primera evaluación de una alerta: si es real, hasta dónde llegó y qué tan urgente es.",
+      "h": "b3dd4fbf"
+    },
+    "groups.0.entries.4.term": {
+      "t": "Triaje",
+      "h": "013ec284"
+    },
+    "groups.0.title": {
+      "t": "proceso y roles",
+      "h": "304f8ef8"
+    },
+    "groups.1.entries.0.meaning": {
+      "t": "Una búsqueda proactiva en la telemetría de actividad de atacantes que las detecciones automáticas no vieron, guiada por una hipótesis comprobable.",
+      "h": "d09210e6"
+    },
+    "groups.1.entries.0.term": {
+      "t": "Threat hunting",
+      "h": "d6f65409"
+    },
+    "groups.1.entries.1.aka": {
+      "t": "indicador de compromiso",
+      "h": "a0c13482"
+    },
+    "groups.1.entries.1.meaning": {
+      "t": "Un observable que sugiere compromiso, como el hash de un archivo, un dominio o una dirección. Es rápido de usar y rápido de caducar, porque los atacantes los cambian con facilidad.",
+      "h": "dad49b5f"
+    },
+    "groups.1.entries.1.term": {
+      "t": "IOC",
+      "h": "d43789d4"
+    },
+    "groups.1.entries.2.aka": {
+      "t": "tácticas, técnicas y procedimientos",
+      "h": "58dbf9bc"
+    },
+    "groups.1.entries.2.meaning": {
+      "t": "Cómo opera un adversario. Al atacante le resulta mucho más difícil cambiar su comportamiento que un indicador, por lo que es una base más duradera para la detección.",
+      "h": "07505fa6"
+    },
+    "groups.1.entries.2.term": {
+      "t": "TTP",
+      "h": "496d3222"
+    },
+    "groups.1.entries.3.meaning": {
+      "t": "Una base de conocimiento pública de tácticas y técnicas de adversarios observadas en intrusiones reales, usada para describir comportamiento y medir la cobertura de detección.",
+      "h": "3cccb2bb"
+    },
+    "groups.1.entries.3.term": {
+      "t": "MITRE ATT&CK",
+      "h": "44660c8b"
+    },
+    "groups.1.entries.4.meaning": {
+      "t": "Un modelo que clasifica los indicadores según cuánto daña al atacante que se los bloquee, de triviales (valores hash) a dolorosos (tácticas y técnicas).",
+      "h": "8c3cc8ae"
+    },
+    "groups.1.entries.4.term": {
+      "t": "Pirámide del Dolor (Pyramid of Pain)",
+      "h": "5a1f18fa"
+    },
+    "groups.1.entries.5.meaning": {
+      "t": "Un formato neutral respecto a proveedores para reglas de detección, que puede convertirse al lenguaje de consulta de muchos productos SIEM.",
+      "h": "53a5d1d5"
+    },
+    "groups.1.entries.5.term": {
+      "t": "Sigma",
+      "h": "c51a7d43"
+    },
+    "groups.1.entries.6.meaning": {
+      "t": "Tomar un hecho conocido (una dirección, una cuenta, un hash) y buscar todo lo demás que lo comparte, para ampliar o reducir el alcance.",
+      "h": "e9eac459"
+    },
+    "groups.1.entries.6.term": {
+      "t": "Pivoteo (pivoting)",
+      "h": "4c720538"
+    },
+    "groups.1.title": {
+      "t": "detección e inteligencia",
+      "h": "d6b211fa"
+    },
+    "groups.2.entries.0.meaning": {
+      "t": "Un registro escrito de quién tuvo en su poder una evidencia, cuándo y qué se hizo con ella. Respalda la credibilidad de la evidencia en una disputa.",
+      "h": "ace79c1f"
+    },
+    "groups.2.entries.0.term": {
+      "t": "Cadena de custodia",
+      "h": "c638b727"
+    },
+    "groups.2.entries.1.meaning": {
+      "t": "El principio de recolectar primero la evidencia más frágil: la memoria, luego procesos y conexiones, luego archivos temporales, luego disco y logs.",
+      "h": "55fc6fa7"
+    },
+    "groups.2.entries.1.term": {
+      "t": "Orden de volatilidad",
+      "h": "a1a70597"
+    },
+    "groups.2.entries.2.meaning": {
+      "t": "Un dispositivo o software que permite leer un disco sin permitir ningún cambio en él, de modo que la evidencia quede intacta.",
+      "h": "de13d7a1"
+    },
+    "groups.2.entries.2.term": {
+      "t": "Bloqueador de escritura (write blocker)",
+      "h": "ecf9c7d3"
+    },
+    "groups.2.entries.3.meaning": {
+      "t": "Un lenguaje para describir los patrones que identifican una familia de archivos, usado para encontrar muestras y variantes de malware.",
+      "h": "331feac0"
+    },
+    "groups.2.entries.3.term": {
+      "t": "YARA",
+      "h": "bb230fcb"
+    },
+    "groups.2.entries.4.meaning": {
+      "t": "Un entorno aislado donde un archivo sospechoso puede ejecutarse bajo monitoreo para observar su comportamiento de forma segura.",
+      "h": "bada06c5"
+    },
+    "groups.2.entries.4.term": {
+      "t": "Sandbox",
+      "h": "0a771c36"
+    },
+    "groups.2.entries.5.meaning": {
+      "t": "Una táctica de ransomware que cifra los sistemas y además roba datos, amenazando con publicarlos, de modo que restaurar desde un respaldo no termina la presión.",
+      "h": "dd21f9fd"
+    },
+    "groups.2.entries.5.term": {
+      "t": "Doble extorsión (double extortion)",
+      "h": "f30687f4"
+    },
+    "groups.2.title": {
+      "t": "forense y malware",
+      "h": "7986332a"
+    }
+  }
+}

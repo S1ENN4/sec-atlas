@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Los merges pequeños y frecuentes reducen conflictos y mantienen main siempre lista para release.",
+      "h": "b815aa91"
+    },
+    "questions.0.options.0": {
+      "t": "Mantener ramas de larga vida para cada funcionalidad",
+      "h": "330e91d7"
+    },
+    "questions.0.options.1": {
+      "t": "Integrar con frecuencia cambios pequeños y de corta vida en main, ocultando el trabajo sin terminar detrás de flags",
+      "h": "4121387d"
+    },
+    "questions.0.options.2": {
+      "t": "No usar nunca ramas",
+      "h": "107fff65"
+    },
+    "questions.0.options.3": {
+      "t": "Integrar solo una vez por release",
+      "h": "383ee907"
+    },
+    "questions.0.q": {
+      "t": "¿Cuál es la idea central del trunk-based development?",
+      "h": "bdaa4a0b"
+    },
+    "questions.1.explain": {
+      "t": "Codifica el ownership para que se pida automáticamente a los revisores correctos.",
+      "h": "dfc8767f"
+    },
+    "questions.1.options.0": {
+      "t": "Cifra el repositorio",
+      "h": "2b1f96dc"
+    },
+    "questions.1.options.1": {
+      "t": "Solicita revisión a las personas o equipos dueños de las rutas que cambia un pull request",
+      "h": "23228d9f"
+    },
+    "questions.1.options.2": {
+      "t": "Borra ramas antiguas",
+      "h": "1d77877d"
+    },
+    "questions.1.options.3": {
+      "t": "Firma commits",
+      "h": "8c3ddb54"
+    },
+    "questions.1.q": {
+      "t": "¿Qué hace CODEOWNERS?",
+      "h": "a5560981"
+    },
+    "questions.2.explain": {
+      "t": "Cualquiera con un clon o una copia en caché puede leerlo. Trátalo como expuesto.",
+      "h": "4d0fb57a"
+    },
+    "questions.2.options.0": {
+      "t": "Nada, ya no está",
+      "h": "35123db6"
+    },
+    "questions.2.options.1": {
+      "t": "Rotar el secreto, porque sigue en el historial",
+      "h": "f6e83af0"
+    },
+    "questions.2.options.2": {
+      "t": "Renombrar el archivo",
+      "h": "03a73914"
+    },
+    "questions.2.options.3": {
+      "t": "Hacer force-push y no decirle a nadie",
+      "h": "1b2d97c0"
+    },
+    "questions.2.q": {
+      "t": "Se commiteó un secreto en el repositorio y luego se borró en el commit siguiente. ¿Qué debes hacer?",
+      "h": "56d0f4f9"
+    }
+  }
+}

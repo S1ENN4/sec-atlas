@@ -1,0 +1,100 @@
+{
+  "entries": {
+    "sections.0.bullets.0": {
+      "t": "ISO/IEC 27001: um padrão certificável para um sistema de gestão de segurança da informação (ISMS): escopo, avaliação de riscos, um conjunto de controles e melhoria contínua. A certificação é concedida por um auditor externo.",
+      "h": "09ff789f"
+    },
+    "sections.0.bullets.1": {
+      "t": "NIST Cybersecurity Framework (CSF): um framework voluntário organizado em funções (Govern, Identify, Protect, Detect, Respond, Recover), popular para descrever e comunicar a maturidade de um programa. Não é certificável.",
+      "h": "61caf7d4"
+    },
+    "sections.0.bullets.2": {
+      "t": "CIS Critical Security Controls: uma lista prática e priorizada de salvaguardas, agrupadas em níveis de implementação para que equipes pequenas saibam por onde começar.",
+      "h": "d6b1065a"
+    },
+    "sections.0.bullets.3": {
+      "t": "PCI DSS: um padrão obrigatório das bandeiras de cartão para organizações que armazenam, processam ou transmitem dados de cartões de pagamento, com requisitos técnicos e de processo específicos.",
+      "h": "2316d1a2"
+    },
+    "sections.0.bullets.4": {
+      "t": "SOC 2: um relatório de atestação de um auditor sobre os controles de um prestador de serviços relativos a segurança e critérios relacionados; amplamente solicitado por clientes.",
+      "h": "b75fa3d6"
+    },
+    "sections.0.bullets.5": {
+      "t": "Leis de privacidade (como o GDPR da UE e a LGPD do Brasil) são obrigações legais e não frameworks, mas impulsionam requisitos de segurança para dados pessoais.",
+      "h": "14c013b2"
+    },
+    "sections.0.heading": {
+      "t": "Os principais",
+      "h": "2e67c69c"
+    },
+    "sections.1.body.0": {
+      "t": "Comece pelo que é exigido: contratos, regulação e clientes definem quais você precisa cumprir. Use um framework como espinha dorsal interna, geralmente o NIST CSF ou a ISO 27001, use os CIS Controls para priorizar o trabalho prático e mapeie o restante a ele, de modo que um controle atenda a muitos requisitos. Controles que implementam a mesma ideia (por exemplo, autenticação multifator) aparecem em todos eles com numerações diferentes.",
+      "h": "a7a5d486"
+    },
+    "sections.1.code.0.code": {
+      "t": "- control: MFA required for all administrative and remote access\n  owner: it-security\n  maps_to:\n    nist_csf: PR.AA\n    cis_controls: \"6\"\n    iso_27001: A.8.5\n    pci_dss: \"8.4\"\n  evidence: [idp-policy-export, quarterly-access-review]",
+      "h": "7dda7169"
+    },
+    "sections.1.code.0.filename": {
+      "t": "control-mapping.yml",
+      "h": "41e21678"
+    },
+    "sections.1.heading": {
+      "t": "Escolher e combinar",
+      "h": "52c267f9"
+    },
+    "sections.2.bullets.0": {
+      "t": "Comece pela estrutura (funções, domínios, famílias de controles), não pelo texto completo.",
+      "h": "44c5cf66"
+    },
+    "sections.2.bullets.1": {
+      "t": "Leia cada controle pela sua intenção: que risco ele pretende reduzir?",
+      "h": "2416eeac"
+    },
+    "sections.2.bullets.2": {
+      "t": "Implemente a intenção de uma forma que se encaixe na sua tecnologia; o texto raramente cita as suas ferramentas.",
+      "h": "3a2e5034"
+    },
+    "sections.2.bullets.3": {
+      "t": "Anote o que está fora do seu escopo e registre o porquê, para que o auditor veja uma decisão e não uma omissão.",
+      "h": "76330a6b"
+    },
+    "sections.2.heading": {
+      "t": "Ler um framework sem se perder",
+      "h": "98b169ea"
+    },
+    "sections.3.bullets.0": {
+      "t": "Um framework define um piso e uma linguagem. Ele não conhece suas ameaças, sua arquitetura nem seu sistema mais fraco.",
+      "h": "98ae64c6"
+    },
+    "sections.3.bullets.1": {
+      "t": "Auditorias amostram o passado; atacantes testam o presente. Passar na auditoria do último trimestre diz pouco sobre hoje.",
+      "h": "9fdeffed"
+    },
+    "sections.3.bullets.2": {
+      "t": "O escopo pode esconder risco: um escopo de certificação estreito cobre apenas parte do negócio.",
+      "h": "1871eede"
+    },
+    "sections.3.bullets.3": {
+      "t": "Use os frameworks para impulsionar melhorias reais: pegue as lacunas e coloque-as no registro de riscos com responsáveis.",
+      "h": "c00c8c53"
+    },
+    "sections.3.heading": {
+      "t": "Conformidade não é segurança",
+      "h": "996fab0e"
+    },
+    "short": {
+      "t": "ISO 27001, NIST CSF, CIS Controls e PCI DSS: para que serve cada um e como escolher",
+      "h": "da1c2d43"
+    },
+    "tagline": {
+      "t": "Frameworks são vocabulários compartilhados sobre o que é bom. Escolha um como espinha dorsal, mapeie os demais a ele e nunca confunda passar em uma auditoria com ser seguro.",
+      "h": "e2689227"
+    },
+    "title": {
+      "t": "Frameworks e padrões de segurança",
+      "h": "b895d1b2"
+    }
+  }
+}

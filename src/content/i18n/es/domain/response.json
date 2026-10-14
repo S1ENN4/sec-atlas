@@ -1,0 +1,164 @@
+{
+  "entries": {
+    "graph.0.label": {
+      "t": "aporta hipótesis a",
+      "h": "2ebfb9ae"
+    },
+    "graph.1.label": {
+      "t": "depende de",
+      "h": "045ed874"
+    },
+    "graph.2.label": {
+      "t": "acota el alcance de",
+      "h": "e9b64ee9"
+    },
+    "graph.3.label": {
+      "t": "se especializa para",
+      "h": "98b97122"
+    },
+    "graph.4.label": {
+      "t": "preserva evidencia para",
+      "h": "173f456a"
+    },
+    "graph.5.label": {
+      "t": "entrega muestras a",
+      "h": "83af806f"
+    },
+    "graph.6.label": {
+      "t": "se nutre de",
+      "h": "b23ea947"
+    },
+    "pipeline.0.description": {
+      "t": "decidir antes de la crisis",
+      "h": "fbdd2ce4"
+    },
+    "pipeline.0.gate": {
+      "t": "la primera hora de un incidente es un procedimiento ensayado, no una improvisación",
+      "h": "5f25cd10"
+    },
+    "pipeline.0.items.0.label": {
+      "t": "roles, severidad y comunicación",
+      "h": "2a8c3c9b"
+    },
+    "pipeline.0.items.1.label": {
+      "t": "quién nos ataca y cómo",
+      "h": "b3e69e0d"
+    },
+    "pipeline.0.items.2.label": {
+      "t": "ejercicios de mesa (tabletop)",
+      "h": "45664d24"
+    },
+    "pipeline.0.name": {
+      "t": "preparar",
+      "h": "4197eb0c"
+    },
+    "pipeline.1.description": {
+      "t": "encontrar lo que las alertas no vieron",
+      "h": "17a9ec5b"
+    },
+    "pipeline.1.gate": {
+      "t": "toda técnica confirmada deja atrás una detección automatizada",
+      "h": "2e0b311e"
+    },
+    "pipeline.1.items.0.label": {
+      "t": "búsqueda guiada por hipótesis",
+      "h": "453477de"
+    },
+    "pipeline.1.items.1.label": {
+      "t": "marcas de tiempo limpias y pivotes",
+      "h": "63285c93"
+    },
+    "pipeline.1.items.2.label": {
+      "t": "las cacerías se convierten en detecciones",
+      "h": "5f21d002"
+    },
+    "pipeline.1.name": {
+      "t": "detectar",
+      "h": "2b66455f"
+    },
+    "pipeline.2.description": {
+      "t": "detener el daño, conservar la evidencia",
+      "h": "8c82c051"
+    },
+    "pipeline.2.gate": {
+      "t": "la contención es proporcional, coordinada y registrada",
+      "h": "ff3c72f1"
+    },
+    "pipeline.2.items.0.label": {
+      "t": "primero acotar el alcance, luego contener",
+      "h": "56f24575"
+    },
+    "pipeline.2.items.1.label": {
+      "t": "el playbook de ransomware",
+      "h": "a4fbfc61"
+    },
+    "pipeline.2.items.2.label": {
+      "t": "recuperar desde un estado confiable",
+      "h": "41666346"
+    },
+    "pipeline.2.name": {
+      "t": "responder",
+      "h": "c0b78996"
+    },
+    "pipeline.3.description": {
+      "t": "entender exactamente qué ocurrió",
+      "h": "b482120f"
+    },
+    "pipeline.3.gate": {
+      "t": "el informe explica cómo entraron, qué hicieron y qué cambia",
+      "h": "e2f84925"
+    },
+    "pipeline.3.items.0.label": {
+      "t": "evidencia, orden de volatilidad, custodia",
+      "h": "7856ad8f"
+    },
+    "pipeline.3.items.1.label": {
+      "t": "triaje seguro de un archivo sospechoso",
+      "h": "c5b3851d"
+    },
+    "pipeline.3.items.2.label": {
+      "t": "revisión posincidente sin culpables",
+      "h": "3f62c996"
+    },
+    "pipeline.3.name": {
+      "t": "investigar",
+      "h": "ff2ccd73"
+    },
+    "relations.0.label": {
+      "t": "es ejecutado por",
+      "h": "80ec6b4d"
+    },
+    "relations.1.label": {
+      "t": "aporta hipótesis a",
+      "h": "2ebfb9ae"
+    },
+    "relations.2.label": {
+      "t": "depende de",
+      "h": "045ed874"
+    },
+    "relations.3.label": {
+      "t": "acota el alcance de",
+      "h": "e9b64ee9"
+    },
+    "relations.4.label": {
+      "t": "se especializa para",
+      "h": "98b97122"
+    },
+    "relations.5.label": {
+      "t": "preserva evidencia para",
+      "h": "173f456a"
+    },
+    "relations.6.label": {
+      "t": "entrega muestras a",
+      "h": "83af806f"
+    },
+    "relations.7.label": {
+      "t": "produce indicadores para",
+      "h": "c121cd2f"
+    },
+    "relations.8.label": {
+      "t": "se nutre de",
+      "h": "b23ea947"
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "sections.0.bullets.0": {
+      "t": "Modelo: a rede neural que prevê o próximo passo (Claude, GPT, Gemini, DeepSeek, Qwen e outros). Lê texto de entrada e produz texto de saída, incluindo pedidos para chamar ferramentas.",
+      "h": "83b290b6"
+    },
+    "sections.0.bullets.1": {
+      "t": "Harness: o programa em torno do modelo. Monta o prompt, dá ao modelo ferramentas (ler um arquivo, editar, executar um comando, buscar, chamar um servidor MCP), aplica permissões, gerencia o contexto e repete o loop até a tarefa terminar. Claude Code, OpenCode, oh-my-pi e Codex CLI são harnesses.",
+      "h": "9b02170d"
+    },
+    "sections.0.bullets.2": {
+      "t": "Provider: onde o modelo roda e como você chega até ele: a API do próprio fornecedor, uma nuvem (Bedrock, Vertex, Azure), um roteador (OpenRouter) ou a sua própria máquina (Ollama, llama.cpp, vLLM).",
+      "h": "b6fb772e"
+    },
+    "sections.0.heading": {
+      "t": "As três camadas",
+      "h": "274f0a23"
+    },
+    "sections.1.body.0": {
+      "t": "O harness decide o que o modelo vê e o que ele pode fazer. Duas ferramentas com o mesmo modelo podem diferir muito em como editam arquivos (reescrita do arquivo inteiro versus edições pontuais), quanto do repositório carregam, se usam um language server para achar definições, como se recuperam de um comando que falhou e como comprimem uma conversa longa. Relatos de grandes diferenças de qualidade entre ferramentas com o mesmo modelo geralmente remontam a esses detalhes, não ao modelo.",
+      "h": "beed7877"
+    },
+    "sections.1.body.1": {
+      "t": "O inverso também vale: um harness ajustado para uma família de modelos pode render menos com outra, porque prompts e formatos de ferramentas são adaptados aos hábitos de cada modelo.",
+      "h": "583dd021"
+    },
+    "sections.1.heading": {
+      "t": "Por que o mesmo modelo parece diferente em duas ferramentas",
+      "h": "990b794a"
+    },
+    "sections.2.bullets.0": {
+      "t": "Monta o contexto: system prompt, instruções do projeto (CLAUDE.md ou AGENTS.md), arquivos abertos, resultados de busca, histórico da conversa.",
+      "h": "0e1e9ea6"
+    },
+    "sections.2.bullets.1": {
+      "t": "Expõe ferramentas com um schema: ler, escrever, editar, shell, buscar, fetch e qualquer servidor MCP que você conectar.",
+      "h": "13f2a744"
+    },
+    "sections.2.bullets.2": {
+      "t": "Aplica permissões: quais comandos rodam sem perguntar, quais caminhos são proibidos, se há sandbox.",
+      "h": "5422a0aa"
+    },
+    "sections.2.bullets.3": {
+      "t": "Executa o loop: o modelo propõe uma chamada de ferramenta, o harness a executa, o resultado volta ao modelo, e assim até terminar ou ser interrompido.",
+      "h": "73c4c165"
+    },
+    "sections.2.bullets.4": {
+      "t": "Gerencia custo e contexto: cache, resumo de turnos antigos, troca para um modelo mais barato em passos pequenos.",
+      "h": "72a5a859"
+    },
+    "sections.2.heading": {
+      "t": "O que um harness realmente faz",
+      "h": "4ae076d8"
+    },
+    "sections.3.body.0": {
+      "t": "Escolha o harness pelo fluxo de trabalho (terminal ou IDE, modelo de permissões, trabalho paralelo, extensibilidade) e o modelo pelo trabalho (qualidade, velocidade, preço, privacidade). Harnesses que suportam vários providers permitem trocar de modelo sem reaprender a ferramenta; harnesses atrelados a um único fornecedor podem aprofundar mais a integração. Nenhum é melhor universalmente. Os próximos tópicos comparam as ferramentas comuns e os trade-offs de modelos.",
+      "h": "357c0f32"
+    },
+    "sections.3.heading": {
+      "t": "Por que isso importa na hora de escolher",
+      "h": "8edd99e1"
+    },
+    "short": {
+      "t": "as três camadas por trás de toda ferramenta de código com IA, e por que o mesmo modelo se comporta de forma diferente",
+      "h": "cc60410f"
+    },
+    "tagline": {
+      "t": "Um agent de código não é só um modelo. É um modelo mais um harness (o programa que lhe dá ferramentas, contexto e regras) acessado por meio de um provider. A maior parte da confusão neste campo vem de misturar os três.",
+      "h": "dbbf6514"
+    },
+    "title": {
+      "t": "Modelo, harness e provider",
+      "h": "cfb6a71b"
+    }
+  }
+}

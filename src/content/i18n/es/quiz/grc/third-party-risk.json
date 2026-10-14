@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "La clasificación por niveles concentra el esfuerzo donde una falla dañaría más.",
+      "h": "1d942ae3"
+    },
+    "questions.0.options.0": {
+      "t": "Todos los proveedores reciben la misma revisión completa",
+      "h": "db5ac9ce"
+    },
+    "questions.0.options.1": {
+      "t": "Por criticidad: datos que maneja, acceso que tiene y qué tan difícil es reemplazarlo",
+      "h": "62c3beeb"
+    },
+    "questions.0.options.2": {
+      "t": "Por el tamaño del proveedor",
+      "h": "733119e5"
+    },
+    "questions.0.options.3": {
+      "t": "Por el precio",
+      "h": "6427dab4"
+    },
+    "questions.0.q": {
+      "t": "¿Cómo debe decidirse la profundidad de la revisión de un proveedor?",
+      "h": "9555be39"
+    },
+    "questions.1.explain": {
+      "t": "Los plazos regulatorios suelen comenzar cuando usted toma conocimiento. El contrato debe lograr que se entere rápidamente.",
+      "h": "4b56c39c"
+    },
+    "questions.1.options.0": {
+      "t": "Para bajar el precio",
+      "h": "80e253d7"
+    },
+    "questions.1.options.1": {
+      "t": "Para enterarse de un incidente a tiempo para responder y cumplir las propias obligaciones",
+      "h": "1b840c4e"
+    },
+    "questions.1.options.2": {
+      "t": "Porque a los auditores les gustan los contratos",
+      "h": "8cb3ee0f"
+    },
+    "questions.1.options.3": {
+      "t": "Para evitar los parches del proveedor",
+      "h": "250afe07"
+    },
+    "questions.1.q": {
+      "t": "¿Por qué incluir términos de notificación de brechas en un contrato con un proveedor?",
+      "h": "14027efd"
+    },
+    "questions.2.explain": {
+      "t": "Planifique salidas y respaldos fuera de un proveedor único crítico.",
+      "h": "c755fdf2"
+    },
+    "questions.2.options.0": {
+      "t": "Demasiados proveedores",
+      "h": "e5857c26"
+    },
+    "questions.2.options.1": {
+      "t": "Dependencia de un solo proveedor, de modo que su falla se convierte en la propia",
+      "h": "81ae6e31"
+    },
+    "questions.2.options.2": {
+      "t": "Un precio alto",
+      "h": "c410c2f0"
+    },
+    "questions.2.options.3": {
+      "t": "Un diseño de red",
+      "h": "bf0dce6a"
+    },
+    "questions.2.q": {
+      "t": "¿Qué es el riesgo de concentración?",
+      "h": "fd27e8b1"
+    }
+  }
+}

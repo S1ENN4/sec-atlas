@@ -1,0 +1,152 @@
+{
+  "entries": {
+    "graph.0.label": {
+      "t": "delimita",
+      "h": "94ae97ff"
+    },
+    "graph.1.label": {
+      "t": "comienza con",
+      "h": "2e2ec9b5"
+    },
+    "graph.2.label": {
+      "t": "alimenta",
+      "h": "56222773"
+    },
+    "graph.3.label": {
+      "t": "puede llevar a",
+      "h": "19e7b37d"
+    },
+    "graph.4.label": {
+      "t": "es una etapa de",
+      "h": "67c80d31"
+    },
+    "graph.5.label": {
+      "t": "es una puerta de entrada a",
+      "h": "c525197e"
+    },
+    "graph.6.label": {
+      "t": "se reporta en",
+      "h": "ac7ed873"
+    },
+    "pipeline.0.description": {
+      "t": "permiso, límites y método",
+      "h": "b1392cf1"
+    },
+    "pipeline.0.gate": {
+      "t": "nada se toca sin autorización por escrito y un alcance definido",
+      "h": "0f1c5896"
+    },
+    "pipeline.0.items.0.label": {
+      "t": "autorización, reglas de compromiso, ética",
+      "h": "9dc3df98"
+    },
+    "pipeline.0.items.1.label": {
+      "t": "fases y estándares",
+      "h": "a42dd0bd"
+    },
+    "pipeline.0.name": {
+      "t": "alcance",
+      "h": "aacd3103"
+    },
+    "pipeline.1.description": {
+      "t": "encontrar lo que está expuesto",
+      "h": "b0c1e6a5"
+    },
+    "pipeline.1.gate": {
+      "t": "todo test es reproducible y respeta la tasa y el alcance acordados",
+      "h": "67fbd779"
+    },
+    "pipeline.1.items.0.label": {
+      "t": "activos, servicios y sistemas olvidados",
+      "h": "4e5245f6"
+    },
+    "pipeline.1.items.1.label": {
+      "t": "dos cuentas y un proxy de interceptación",
+      "h": "7d954030"
+    },
+    "pipeline.1.name": {
+      "t": "descubrir",
+      "h": "1eb0b8dc"
+    },
+    "pipeline.2.description": {
+      "t": "mostrar el impacto real, con seguridad",
+      "h": "ddea6fc7"
+    },
+    "pipeline.2.gate": {
+      "t": "el impacto se prueba con el menor acceso necesario y luego se limpia",
+      "h": "f9cb635e"
+    },
+    "pipeline.2.items.0.label": {
+      "t": "cadenas de pequeñas debilidades",
+      "h": "507e0064"
+    },
+    "pipeline.2.items.1.label": {
+      "t": "la superficie de ataque humana",
+      "h": "bc72a23c"
+    },
+    "pipeline.2.items.2.label": {
+      "t": "¿pueden los defensores detener a un adversario realista?",
+      "h": "948e87d1"
+    },
+    "pipeline.2.name": {
+      "t": "atacar",
+      "h": "a6d81694"
+    },
+    "pipeline.3.description": {
+      "t": "convertir hallazgos en correcciones",
+      "h": "3bdf2158"
+    },
+    "pipeline.3.gate": {
+      "t": "cada hallazgo tiene un responsable, una corrección y un reteste verificado",
+      "h": "66c34426"
+    },
+    "pipeline.3.items.0.label": {
+      "t": "hallazgos, riesgo y reteste",
+      "h": "23670b89"
+    },
+    "pipeline.3.items.1.label": {
+      "t": "lecciones de vuelta al diseño y la detección",
+      "h": "d9dfc25d"
+    },
+    "pipeline.3.name": {
+      "t": "reportar",
+      "h": "a27297bd"
+    },
+    "relations.0.label": {
+      "t": "delimita",
+      "h": "94ae97ff"
+    },
+    "relations.1.label": {
+      "t": "comienza con",
+      "h": "2e2ec9b5"
+    },
+    "relations.2.label": {
+      "t": "alimenta",
+      "h": "56222773"
+    },
+    "relations.3.label": {
+      "t": "puede llevar a",
+      "h": "19e7b37d"
+    },
+    "relations.4.label": {
+      "t": "es una etapa de",
+      "h": "67c80d31"
+    },
+    "relations.5.label": {
+      "t": "es una puerta de entrada a",
+      "h": "c525197e"
+    },
+    "relations.6.label": {
+      "t": "termina con",
+      "h": "8cfa56f5"
+    },
+    "relations.7.label": {
+      "t": "se resume en",
+      "h": "a6ac004a"
+    },
+    "relations.8.label": {
+      "t": "se reporta en",
+      "h": "ac7ed873"
+    }
+  }
+}

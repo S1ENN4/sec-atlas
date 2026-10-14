@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Evidências coletadas às pressas na última semana indicam controles que ninguém opera durante o ano.",
+      "h": "9e8d6bab"
+    },
+    "questions.0.options.0": {
+      "t": "Contratar mais auditores",
+      "h": "4e5dd36f"
+    },
+    "questions.0.options.1": {
+      "t": "Controles com responsáveis e evidências produzidas de forma contínua e automática",
+      "h": "6204b7fa"
+    },
+    "questions.0.options.2": {
+      "t": "Adiar a auditoria",
+      "h": "27cbcbd6"
+    },
+    "questions.0.options.3": {
+      "t": "Reduzir o escopo a nada",
+      "h": "ee34867c"
+    },
+    "questions.0.q": {
+      "t": "O que torna as auditorias rotineiras em vez de dolorosas?",
+      "h": "a44bb34b"
+    },
+    "questions.1.explain": {
+      "t": "A responsabilidade da equipe que opera mantém os controles vivos entre as auditorias.",
+      "h": "6083ca4f"
+    },
+    "questions.1.options.0": {
+      "t": "Sempre a equipe de compliance",
+      "h": "604934b1"
+    },
+    "questions.1.options.1": {
+      "t": "A pessoa que responde pelo funcionamento do controle, normalmente na equipe que o opera",
+      "h": "44d5425d"
+    },
+    "questions.1.options.2": {
+      "t": "O auditor",
+      "h": "14ac7c6e"
+    },
+    "questions.1.options.3": {
+      "t": "Ninguém",
+      "h": "148ba2d2"
+    },
+    "questions.1.q": {
+      "t": "Quem deve ser o responsável por um controle?",
+      "h": "b7ab07ec"
+    },
+    "questions.2.explain": {
+      "t": "Uma lacuna conhecida com plano é bem melhor do que uma que o auditor descobre.",
+      "h": "f03e6f0c"
+    },
+    "questions.2.options.0": {
+      "t": "Escondê-la",
+      "h": "c002485a"
+    },
+    "questions.2.options.1": {
+      "t": "Documentá-la com um plano de ação e um responsável, e contar ao auditor",
+      "h": "394d7cef"
+    },
+    "questions.2.options.2": {
+      "t": "Excluir o controle",
+      "h": "243e38a6"
+    },
+    "questions.2.options.3": {
+      "t": "Mudar a data da auditoria",
+      "h": "323e6e1b"
+    },
+    "questions.2.q": {
+      "t": "Você encontra uma lacuna antes da auditoria. Qual é a melhor abordagem?",
+      "h": "a8cec40f"
+    }
+  }
+}

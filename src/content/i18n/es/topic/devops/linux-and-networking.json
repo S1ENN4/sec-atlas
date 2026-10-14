@@ -1,0 +1,96 @@
+{
+  "entries": {
+    "sections.0.bullets.0": {
+      "t": "Procesos y señales: todo programa es un proceso con un usuario, un padre y un estado; SIGTERM le pide que se detenga, SIGKILL lo fuerza.",
+      "h": "f12a1abd"
+    },
+    "sections.0.bullets.1": {
+      "t": "Archivos y permisos: propietario, grupo y bits de modo deciden quién puede leer, escribir o ejecutar; el principio de mínimo privilegio empieza aquí.",
+      "h": "bb26f6d2"
+    },
+    "sections.0.bullets.2": {
+      "t": "Servicios: systemd inicia, reinicia y registra en logs los programas de larga duración; journalctl lee esos logs.",
+      "h": "06dcc2ef"
+    },
+    "sections.0.bullets.3": {
+      "t": "La pila de red: una dirección IP identifica un host, un puerto identifica un servicio, TCP ofrece streams confiables, UDP ofrece datagramas.",
+      "h": "70e48821"
+    },
+    "sections.0.bullets.4": {
+      "t": "DNS convierte nombres en direcciones, y la mayoría de las caídas misteriosas son de DNS, certificados u hora.",
+      "h": "1d754ce3"
+    },
+    "sections.0.bullets.5": {
+      "t": "TLS envuelve una conexión para que esté cifrada y el servidor se autentique mediante una cadena de certificados.",
+      "h": "ee72b84b"
+    },
+    "sections.0.heading": {
+      "t": "Lo que necesitas saber",
+      "h": "5e2ac1c7"
+    },
+    "sections.1.body.0": {
+      "t": "Ve de afuera hacia adentro: el nombre resuelve, el puerto es alcanzable, el servicio está escuchando, el certificado es válido, qué dicen los logs.",
+      "h": "0fccf399"
+    },
+    "sections.1.code.0.code": {
+      "t": "dig +short api.example.com                      # ¿el nombre resuelve, y a qué?\ncurl -sv --max-time 5 https://api.example.com/health   # conexión, TLS y HTTP de una vez\nss -ltnp | grep :8080                           # ¿hay algo escuchando en este host?\nsystemctl status myapp --no-pager               # ¿el servicio está corriendo?\njournalctl -u myapp --since \"10 min ago\" -n 100 # ¿qué dijo?\nopenssl s_client -connect api.example.com:443 -servername api.example.com </dev/null 2>/dev/null | openssl x509 -noout -dates",
+      "h": "c5e6acdc"
+    },
+    "sections.1.code.0.filename": {
+      "t": "triage.sh",
+      "h": "4dc5a2da"
+    },
+    "sections.1.heading": {
+      "t": "Una rutina de depuración",
+      "h": "51f2cee6"
+    },
+    "sections.2.body.0": {
+      "t": "Un servicio debe correr como su propio usuario sin privilegios, con solo el acceso que necesita. systemd puede imponer buena parte de eso por ti.",
+      "h": "5900522e"
+    },
+    "sections.2.code.0.code": {
+      "t": "[Unit]\nDescription=My app\nAfter=network-online.target\n\n[Service]\nUser=myapp\nGroup=myapp\nExecStart=/opt/myapp/bin/myapp\nRestart=on-failure\nNoNewPrivileges=true\nProtectSystem=strict\nProtectHome=true\nReadWritePaths=/var/lib/myapp\n\n[Install]\nWantedBy=multi-user.target",
+      "h": "bfc0424a"
+    },
+    "sections.2.code.0.filename": {
+      "t": "/etc/systemd/system/myapp.service",
+      "h": "ad9d8553"
+    },
+    "sections.2.heading": {
+      "t": "Permisos y una unit de servicio",
+      "h": "88a0ac21"
+    },
+    "sections.3.bullets.0": {
+      "t": "Aprende a leer antes de cambiar: primero logs, estado y métricas, después las ediciones.",
+      "h": "4b0cdafd"
+    },
+    "sections.3.bullets.1": {
+      "t": "Nunca corras un servicio como root si no lo necesita.",
+      "h": "c698150c"
+    },
+    "sections.3.bullets.2": {
+      "t": "Mantén los relojes sincronizados (NTP): los tokens y certificados expirados suelen ser un problema de reloj.",
+      "h": "20a1421d"
+    },
+    "sections.3.bullets.3": {
+      "t": "Anota los comandos que funcionaron. Un runbook empieza como un historial del shell.",
+      "h": "82085733"
+    },
+    "sections.3.heading": {
+      "t": "Hábitos",
+      "h": "45ab397b"
+    },
+    "short": {
+      "t": "procesos, permisos, servicios, DNS, TCP y TLS: el suelo sobre el que se apoya toda otra herramienta",
+      "h": "959de935"
+    },
+    "tagline": {
+      "t": "Los contenedores, las nubes y los pipelines corren sobre Linux y se comunican por TCP/IP. Cuando algo falla a las 3 de la madrugada, estos fundamentos son lo que te permite descubrir por qué.",
+      "h": "96814ae1"
+    },
+    "title": {
+      "t": "Fundamentos de Linux y redes",
+      "h": "23304cf1"
+    }
+  }
+}

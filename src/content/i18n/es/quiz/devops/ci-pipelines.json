@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Falla rápido y barato para que la gente aprenda pronto.",
+      "h": "d085c94a"
+    },
+    "questions.0.options.0": {
+      "t": "Primero las pruebas más lentas",
+      "h": "bba25793"
+    },
+    "questions.0.options.1": {
+      "t": "Primero las verificaciones baratas (lint, pruebas unitarias), después las más lentas",
+      "h": "e0166ec6"
+    },
+    "questions.0.options.2": {
+      "t": "Desplegar primero, probar después",
+      "h": "17c35e84"
+    },
+    "questions.0.options.3": {
+      "t": "Orden aleatorio",
+      "h": "87adf222"
+    },
+    "questions.0.q": {
+      "t": "¿Qué orden da el feedback útil más rápido?",
+      "h": "48e36edb"
+    },
+    "questions.1.explain": {
+      "t": "Los reintentos ocultan el problema. Un pipeline en el que nadie confía deja de ser un gate.",
+      "h": "f0504cb3"
+    },
+    "questions.1.options.0": {
+      "t": "Agregar reintentos automáticos y seguir adelante",
+      "h": "8f873cd8"
+    },
+    "questions.1.options.1": {
+      "t": "Ponerla en cuarentena y corregirla, porque las pruebas inestables enseñan a ignorar las fallas",
+      "h": "582a0dd4"
+    },
+    "questions.1.options.2": {
+      "t": "Borrar el CI",
+      "h": "97677ae4"
+    },
+    "questions.1.options.3": {
+      "t": "Ejecutarla diez veces",
+      "h": "dad2fedf"
+    },
+    "questions.1.q": {
+      "t": "Una prueba falla una de cada diez ejecuciones. ¿Cuál es la respuesta correcta?",
+      "h": "37d266b6"
+    },
+    "questions.2.explain": {
+      "t": "La clave cambia exactamente cuando cambian las dependencias.",
+      "h": "bdbcabde"
+    },
+    "questions.2.options.0": {
+      "t": "La fecha",
+      "h": "f3488c72"
+    },
+    "questions.2.options.1": {
+      "t": "El contenido del lockfile",
+      "h": "9f2f686e"
+    },
+    "questions.2.options.2": {
+      "t": "Solo el nombre de la rama",
+      "h": "230dc349"
+    },
+    "questions.2.options.3": {
+      "t": "El nombre del runner",
+      "h": "9657f2ee"
+    },
+    "questions.2.q": {
+      "t": "¿Cuál debe ser la clave del caché de dependencias?",
+      "h": "6aed2d82"
+    }
+  }
+}

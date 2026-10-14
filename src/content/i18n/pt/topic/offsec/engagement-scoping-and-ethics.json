@@ -1,0 +1,88 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Testar um sistema que não é seu, ou além do que o dono permitiu, pode ser crime na maioria das jurisdições, independentemente da sua intenção. As leis variam por país e podem ser rígidas, então isto não é aconselhamento jurídico: confirme com um advogado. A regra profissional é simples. Nunca teste nada sem permissão explícita e por escrito de alguém com autoridade para concedê-la, e nunca vá além do que essa permissão cobre.",
+      "h": "6a5cdca3"
+    },
+    "sections.0.bullets.0": {
+      "t": "Autorização por escrito do dono do ativo (para hospedagem de terceiros ou nuvem, verifique também a política de testes do provedor).",
+      "h": "76c93b91"
+    },
+    "sections.0.bullets.1": {
+      "t": "Um escopo definido: quais sistemas, endereços, aplicações e contas estão dentro e quais estão explicitamente fora.",
+      "h": "bc906a9c"
+    },
+    "sections.0.bullets.2": {
+      "t": "Uma janela de tempo e uma forma de parar: quando os testes podem ocorrer e quem pode interrompê-los imediatamente.",
+      "h": "77061c76"
+    },
+    "sections.0.bullets.3": {
+      "t": "Um contato nomeado do lado do cliente que possa ser acionado se algo der errado.",
+      "h": "8a555f0e"
+    },
+    "sections.0.heading": {
+      "t": "A autorização vem primeiro",
+      "h": "12600972"
+    },
+    "sections.1.body.0": {
+      "t": "As regras de engajamento (RoE) transformam a permissão em limites práticos. Combine-as antes do primeiro pacote.",
+      "h": "07593fe6"
+    },
+    "sections.1.code.0.code": {
+      "t": "engagement: avaliação externa de web e API do Q4\nauthorized_by: \"CISO, Example Corp (carta assinada em anexo)\"\nwindow: { start: 2026-11-02T08:00:00Z, end: 2026-11-13T20:00:00Z, hours: \"apenas dias úteis\" }\nin_scope:\n  - https://app.example.com\n  - https://api.example.com/v2/*\n  - contas de teste: [tester-a@example.com, tester-b@example.com]\nout_of_scope:\n  - processador de pagamentos de produção (terceiro)\n  - testes de negação de serviço\n  - engenharia social de funcionários\nconstraints:\n  - sem exfiltração de dados além da prova de acesso (um registro, ocultado)\n  - limitar varreduras a 10 requisições por segundo\n  - parar e ligar para o contato se houver degradação em produção\nemergency_contact: \"+55 11 5555-0100 (SOC 24h)\"\nreporting: \"achados críticos reportados em até 24 horas; relatório final em 10 dias úteis\"",
+      "h": "ee3bd2d1"
+    },
+    "sections.1.code.0.filename": {
+      "t": "rules-of-engagement.yml",
+      "h": "e1cdcbb2"
+    },
+    "sections.1.heading": {
+      "t": "Regras de engajamento",
+      "h": "f803c64f"
+    },
+    "sections.2.bullets.0": {
+      "t": "Minimize os danos: prove o problema com o menor acesso necessário. Não leia, copie nem guarde dados reais de clientes de que você não precisa.",
+      "h": "62a751c0"
+    },
+    "sections.2.bullets.1": {
+      "t": "Proteja o que encontrar: os achados e quaisquer dados tocados são confidenciais, armazenados criptografados e apagados no fim, conforme combinado.",
+      "h": "f611dff5"
+    },
+    "sections.2.bullets.2": {
+      "t": "Seja honesto no relatório: não exagere nem esconda nada, incluindo seus próprios erros (por exemplo, um teste que causou uma indisponibilidade).",
+      "h": "b02498d1"
+    },
+    "sections.2.bullets.3": {
+      "t": "Pare no limite: se um caminho levar para fora do escopo, peça permissão em vez de continuar.",
+      "h": "ccb71765"
+    },
+    "sections.2.bullets.4": {
+      "t": "Prefira provas seguras: demonstre o impacto com um marcador inofensivo ou a leitura de um registro de teste, não com ações destrutivas.",
+      "h": "e758df79"
+    },
+    "sections.2.heading": {
+      "t": "Princípios éticos",
+      "h": "5b88955a"
+    },
+    "sections.3.body.0": {
+      "t": "Um programa de bug bounty publica um escopo e regras e convida pesquisadores a testar dentro deles, em geral com recompensas; os termos do programa são a sua autorização, e sair deles a remove. Quando você encontra uma vulnerabilidade em um sistema fora de qualquer programa, reporte-a com responsabilidade pelo canal de divulgação do dono (um arquivo security.txt, um endereço security@ ou uma política de divulgação coordenada), dê um prazo razoável para a correção e não a explore mais nem publique detalhes antes da hora.",
+      "h": "f016b9f6"
+    },
+    "sections.3.heading": {
+      "t": "Bug bounties e divulgação",
+      "h": "f102a79e"
+    },
+    "short": {
+      "t": "o que separa um teste de segurança de um crime: permissão, limites e regras de engajamento",
+      "h": "d41a2cc0"
+    },
+    "tagline": {
+      "t": "As técnicas de um pentester e de um atacante se sobrepõem. O que muda é a autorização por escrito, um escopo acordado e o dever de minimizar danos.",
+      "h": "9bf71213"
+    },
+    "title": {
+      "t": "Autorização, escopo e ética",
+      "h": "fc558be0"
+    }
+  }
+}

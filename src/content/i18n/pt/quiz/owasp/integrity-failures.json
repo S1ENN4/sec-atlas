@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "A serialização nativa de objetos pode instanciar tipos arbitrários. Use formatos somente de dados e valide-os.",
+      "h": "77a5ccff"
+    },
+    "questions.0.options.0": {
+      "t": "É lento",
+      "h": "89b0144b"
+    },
+    "questions.0.options.1": {
+      "t": "Bytes forjados podem executar código arbitrário durante a desserialização",
+      "h": "e62c1846"
+    },
+    "questions.0.options.2": {
+      "t": "Não consegue ler strings",
+      "h": "b231884d"
+    },
+    "questions.0.options.3": {
+      "t": "Só funciona no Windows",
+      "h": "016c876a"
+    },
+    "questions.0.q": {
+      "t": "Por que pickle.loads em dados de um cookie é perigoso?",
+      "h": "5864e8f2"
+    },
+    "questions.1.explain": {
+      "t": "O navegador recusa um arquivo cujo hash não corresponde ao atributo integrity.",
+      "h": "69b8dbc6"
+    },
+    "questions.1.options.0": {
+      "t": "Redes lentas",
+      "h": "0884ef4c"
+    },
+    "questions.1.options.1": {
+      "t": "Um script de terceiros ser substituído por um arquivo modificado",
+      "h": "ca9214af"
+    },
+    "questions.1.options.2": {
+      "t": "Cross-site request forgery",
+      "h": "9f699a27"
+    },
+    "questions.1.options.3": {
+      "t": "Certificados expirados",
+      "h": "c4195bd5"
+    },
+    "questions.1.q": {
+      "t": "Contra o que o Subresource Integrity protege?",
+      "h": "b88bb706"
+    },
+    "questions.2.explain": {
+      "t": "Codificar não é proteger. Uma assinatura (HMAC) detecta a adulteração.",
+      "h": "00dead7c"
+    },
+    "questions.2.options.0": {
+      "t": "Comprimido",
+      "h": "1238ea63"
+    },
+    "questions.2.options.1": {
+      "t": "Assinado e verificado no servidor, ou mantido no servidor",
+      "h": "2c8015eb"
+    },
+    "questions.2.options.2": {
+      "t": "Codificado em Base64",
+      "h": "cc561139"
+    },
+    "questions.2.options.3": {
+      "t": "Colocado em um campo oculto",
+      "h": "2d31b90b"
+    },
+    "questions.2.q": {
+      "t": "O estado que precisa viajar pelo cliente, como um blob de preferências, deve ser:",
+      "h": "b6640b1c"
+    }
+  }
+}

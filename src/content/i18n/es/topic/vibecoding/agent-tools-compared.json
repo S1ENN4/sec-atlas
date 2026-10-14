@@ -1,0 +1,104 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Esta es una instantánea de octubre de 2026, construida a partir de la documentación de cada proyecto y de descripciones públicas. El campo se mueve rápido: nombres, valores por defecto, licencias y funciones cambian, así que confirma los detalles en la página del proyecto antes de comprometerte con una herramienta. Los enlaces están en la lista de fuentes de este dominio.",
+      "h": "e58dc1ca"
+    },
+    "sections.0.body.1": {
+      "t": "Una herramienta pertenece a uno de tres tipos. Un harness ejecuta el loop del agent (Claude Code, OpenCode, OMP, Codex CLI, Aider). Una capa de orquestación añade roles y comportamiento multiagente sobre un harness (OMO sobre OpenCode). Un gestor de workspace no ejecuta ningún agent; organiza las terminales de varios agents (herdr). Un producto de editor empaqueta un harness en un IDE (Cursor).",
+      "h": "9168f23d"
+    },
+    "sections.0.heading": {
+      "t": "Cómo leer esta página",
+      "h": "e6aac897"
+    },
+    "sections.1.bullets.0": {
+      "t": "Claude Code (Anthropic): un agent de terminal, también disponible en extensiones de IDE, una app de escritorio y la web. Profundamente integrado con los modelos de Anthropic. Sistema de permisos sólido, memoria del proyecto en CLAUDE.md, hooks, skills, subagents, MCP, plan mode. Elígelo cuando quieras la experiencia más pulida y con respaldo del proveedor con modelos Claude.",
+      "h": "14b840b7"
+    },
+    "sections.1.bullets.1": {
+      "t": "OpenCode: un agent de terminal open source y agnóstico de providers (licencia MIT, creado por el equipo detrás de SST). Alcanza muchos providers, incluidos modelos locales, tiene agents de build y de plan, integración con LSP, MCP y un diseño cliente/servidor en el que la UI de terminal es solo un frontend. Elígelo cuando quieras libertad para cambiar de modelos y providers.",
+      "h": "92fe2f44"
+    },
+    "sections.1.bullets.2": {
+      "t": "oh-my-pi (OMP): un agent de terminal open source que comenzó como un fork del minimalista Pi agent y fue sumando funciones: ediciones estructuradas, operaciones de language server y debugger, acceso al navegador, plugins y subagents, muchos providers. Elígelo cuando quieras un harness con muchas funciones y modificable, y te guste ajustar tus herramientas.",
+      "h": "8e870025"
+    },
+    "sections.1.bullets.3": {
+      "t": "Oh My OpenAgent (OMO, antes oh-my-opencode): un plugin de OpenCode, no un agent independiente. Añade un equipo de agents especializados (un coordinador principal más roles de planificador, ejecutor e investigador), un modo autónomo y trabajo en paralelo. Elígelo cuando ya usas OpenCode y quieres orquestación lista para usar.",
+      "h": "806ccdb6"
+    },
+    "sections.1.bullets.4": {
+      "t": "herdr: un multiplexor de agents de terminal escrito en Rust. Ejecuta varios agents (Claude Code, OpenCode, Codex y otros) en paneles de terminal reales dentro de un workspace persistente, muestra el estado de cada agent (trabajando, bloqueado, terminado, inactivo), sobrevive a las desconexiones y funciona por SSH. No reemplaza a un agent; los organiza. Elígelo cuando ejecutas muchos agents a la vez.",
+      "h": "07e99e6b"
+    },
+    "sections.1.bullets.5": {
+      "t": "Codex CLI (OpenAI): un agent de terminal open source para modelos de OpenAI, que usa AGENTS.md para las instrucciones del proyecto. Elígelo para el ecosistema de OpenAI.",
+      "h": "0c4eb14c"
+    },
+    "sections.1.bullets.6": {
+      "t": "Cursor: un editor AI-first basado en VS Code con chat, ediciones inline y agents. Elígelo cuando prefieras un IDE gráfico a una terminal.",
+      "h": "f0ec288a"
+    },
+    "sections.1.bullets.7": {
+      "t": "Aider: un pair programmer de terminal de larga trayectoria que trabaja directamente con git y hace commit de sus cambios. Elígelo para un flujo pequeño, centrado en git y predecible.",
+      "h": "4f74e56b"
+    },
+    "sections.1.heading": {
+      "t": "Las herramientas",
+      "h": "3a1d2391"
+    },
+    "sections.2.bullets.0": {
+      "t": "Capa: harness, plugin de orquestación, gestor de workspace o IDE. Comparar OMO con herdr es comparar cosas distintas.",
+      "h": "609fb0d4"
+    },
+    "sections.2.bullets.1": {
+      "t": "Libertad de provider: atado a un proveedor (integración más profunda) frente a muchos providers (flexibilidad y comparación de precios).",
+      "h": "14c2cfeb"
+    },
+    "sections.2.bullets.2": {
+      "t": "Autonomía y permisos: cuánto se ejecuta sin preguntar y qué tan granulares son las reglas.",
+      "h": "516b65c1"
+    },
+    "sections.2.bullets.3": {
+      "t": "Método de edición: reescritura del archivo completo frente a ediciones estructuradas o puntuales, lo que cambia la confiabilidad en archivos grandes.",
+      "h": "2bad856e"
+    },
+    "sections.2.bullets.4": {
+      "t": "Extensibilidad: hooks, plugins, skills, MCP, agents personalizados.",
+      "h": "5fba721b"
+    },
+    "sections.2.bullets.5": {
+      "t": "Paralelismo: un agent a la vez, subagents o muchas sesiones independientes que tú gestionas.",
+      "h": "9743f941"
+    },
+    "sections.2.bullets.6": {
+      "t": "Interfaz: terminal, IDE, escritorio, web o un modo headless para scripts y CI.",
+      "h": "a7a7bbee"
+    },
+    "sections.2.heading": {
+      "t": "Qué difiere realmente",
+      "h": "404ae5f4"
+    },
+    "sections.3.body.0": {
+      "t": "No son mutuamente excluyentes. Una configuración común es OpenCode como harness, OMO para la orquestación y herdr para mantener varias sesiones visibles. Otra es Claude Code para el trabajo principal y un segundo agent de otro proveedor para la revisión independiente. Elige el conjunto más pequeño que cubra tu flujo; cada capa adicional es otra cosa que puede romperse, filtrar un secreto o cambiar de comportamiento tras una actualización.",
+      "h": "3c350524"
+    },
+    "sections.3.heading": {
+      "t": "Se combinan",
+      "h": "296d4111"
+    },
+    "short": {
+      "t": "Claude Code, OpenCode, OMP, OMO, herdr y el resto: qué es cada uno y en qué se diferencian",
+      "h": "f86bec63"
+    },
+    "tagline": {
+      "t": "Algunos son harnesses, otros son plugins que se montan sobre un harness, y otros ni siquiera son agents. Clasificarlos en la capa correcta explica la mayoría de las diferencias.",
+      "h": "98017bc5"
+    },
+    "title": {
+      "t": "Agents de código comparados",
+      "h": "e1c84e25"
+    }
+  }
+}

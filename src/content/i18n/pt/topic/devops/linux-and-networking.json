@@ -1,0 +1,96 @@
+{
+  "entries": {
+    "sections.0.bullets.0": {
+      "t": "Processos e sinais: todo programa é um processo com um usuário, um pai e um estado; SIGTERM pede que ele pare, SIGKILL o força.",
+      "h": "f12a1abd"
+    },
+    "sections.0.bullets.1": {
+      "t": "Arquivos e permissões: dono, grupo e bits de modo decidem quem pode ler, escrever ou executar; o princípio do menor privilégio começa aqui.",
+      "h": "bb26f6d2"
+    },
+    "sections.0.bullets.2": {
+      "t": "Serviços: o systemd inicia, reinicia e registra em log programas de longa duração; o journalctl lê esses logs.",
+      "h": "06dcc2ef"
+    },
+    "sections.0.bullets.3": {
+      "t": "A pilha de rede: um endereço IP identifica um host, uma porta identifica um serviço, o TCP oferece streams confiáveis, o UDP oferece datagramas.",
+      "h": "70e48821"
+    },
+    "sections.0.bullets.4": {
+      "t": "O DNS transforma nomes em endereços, e a maioria das quedas misteriosas é DNS, certificado ou horário.",
+      "h": "1d754ce3"
+    },
+    "sections.0.bullets.5": {
+      "t": "O TLS envolve uma conexão para que ela seja criptografada e o servidor seja autenticado por uma cadeia de certificados.",
+      "h": "ee72b84b"
+    },
+    "sections.0.heading": {
+      "t": "O que você precisa saber",
+      "h": "5e2ac1c7"
+    },
+    "sections.1.body.0": {
+      "t": "Vá de fora para dentro: o nome resolve, a porta está acessível, o serviço está escutando, o certificado é válido, o que dizem os logs.",
+      "h": "0fccf399"
+    },
+    "sections.1.code.0.code": {
+      "t": "dig +short api.example.com                      # o nome resolve, e para quê?\ncurl -sv --max-time 5 https://api.example.com/health   # conexão, TLS e HTTP de uma vez\nss -ltnp | grep :8080                           # há algo escutando neste host?\nsystemctl status myapp --no-pager               # o serviço está rodando?\njournalctl -u myapp --since \"10 min ago\" -n 100 # o que ele disse?\nopenssl s_client -connect api.example.com:443 -servername api.example.com </dev/null 2>/dev/null | openssl x509 -noout -dates",
+      "h": "c5e6acdc"
+    },
+    "sections.1.code.0.filename": {
+      "t": "triage.sh",
+      "h": "4dc5a2da"
+    },
+    "sections.1.heading": {
+      "t": "Uma rotina de depuração",
+      "h": "51f2cee6"
+    },
+    "sections.2.body.0": {
+      "t": "Um serviço deve rodar como seu próprio usuário sem privilégios, com apenas o acesso de que precisa. O systemd pode impor boa parte disso por você.",
+      "h": "5900522e"
+    },
+    "sections.2.code.0.code": {
+      "t": "[Unit]\nDescription=My app\nAfter=network-online.target\n\n[Service]\nUser=myapp\nGroup=myapp\nExecStart=/opt/myapp/bin/myapp\nRestart=on-failure\nNoNewPrivileges=true\nProtectSystem=strict\nProtectHome=true\nReadWritePaths=/var/lib/myapp\n\n[Install]\nWantedBy=multi-user.target",
+      "h": "bfc0424a"
+    },
+    "sections.2.code.0.filename": {
+      "t": "/etc/systemd/system/myapp.service",
+      "h": "ad9d8553"
+    },
+    "sections.2.heading": {
+      "t": "Permissões e uma unit de serviço",
+      "h": "88a0ac21"
+    },
+    "sections.3.bullets.0": {
+      "t": "Aprenda a ler antes de mudar: primeiro logs, status e métricas, depois as edições.",
+      "h": "4b0cdafd"
+    },
+    "sections.3.bullets.1": {
+      "t": "Nunca rode um serviço como root se ele não precisar.",
+      "h": "c698150c"
+    },
+    "sections.3.bullets.2": {
+      "t": "Mantenha os relógios sincronizados (NTP): tokens e certificados expirados muitas vezes são problema de relógio.",
+      "h": "20a1421d"
+    },
+    "sections.3.bullets.3": {
+      "t": "Anote os comandos que funcionaram. Um runbook começa como um histórico do shell.",
+      "h": "82085733"
+    },
+    "sections.3.heading": {
+      "t": "Hábitos",
+      "h": "45ab397b"
+    },
+    "short": {
+      "t": "processos, permissões, serviços, DNS, TCP e TLS: o chão sobre o qual toda outra ferramenta se apoia",
+      "h": "959de935"
+    },
+    "tagline": {
+      "t": "Contêineres, nuvens e pipelines rodam em Linux e se comunicam por TCP/IP. Quando algo quebra às 3 da manhã, esses fundamentos são o que permite descobrir por quê.",
+      "h": "96814ae1"
+    },
+    "title": {
+      "t": "Fundamentos de Linux e redes",
+      "h": "23304cf1"
+    }
+  }
+}

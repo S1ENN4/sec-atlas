@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "La colaboración acorta el ciclo entre una técnica y una detección funcionando.",
+      "h": "624d5571"
+    },
+    "questions.0.options.0": {
+      "t": "Ganarle al blue team",
+      "h": "71e9fb29"
+    },
+    "questions.0.options.1": {
+      "t": "Mejorar la detección ejecutando técnicas abiertamente y corrigiendo las brechas en conjunto",
+      "h": "33f7e166"
+    },
+    "questions.0.options.2": {
+      "t": "Evitar los informes",
+      "h": "0d49bbbd"
+    },
+    "questions.0.options.3": {
+      "t": "Probar las impresoras",
+      "h": "72efb1d9"
+    },
+    "questions.0.q": {
+      "t": "¿Cuál es el objetivo principal de un ejercicio de purple team?",
+      "h": "684c6956"
+    },
+    "questions.1.explain": {
+      "t": "Los defensores deben poder distinguir el ejercicio de un atacante real y escalar los reales.",
+      "h": "11dc6203"
+    },
+    "questions.1.options.0": {
+      "t": "Para hacerlo más difícil",
+      "h": "adf5f69d"
+    },
+    "questions.1.options.1": {
+      "t": "Para que un incidente real nunca se confunda con el ejercicio, y viceversa",
+      "h": "49394508"
+    },
+    "questions.1.options.2": {
+      "t": "Para acelerar el informe",
+      "h": "2ec7e30f"
+    },
+    "questions.1.options.3": {
+      "t": "Porque las herramientas lo necesitan",
+      "h": "10f4a517"
+    },
+    "questions.1.q": {
+      "t": "¿Por qué tener un proceso de deconfliction en un ejercicio de red team?",
+      "h": "90aebfd2"
+    },
+    "questions.2.explain": {
+      "t": "El red teaming pregunta si la organización puede detectar y detener a un adversario realista.",
+      "h": "07bb71a3"
+    },
+    "questions.2.options.0": {
+      "t": "Son idénticos",
+      "h": "e5727451"
+    },
+    "questions.2.options.1": {
+      "t": "Un red team persigue un objetivo de forma encubierta durante más tiempo, probando personas, procesos y detección, y no solo debilidades técnicas",
+      "h": "dfb121f7"
+    },
+    "questions.2.options.2": {
+      "t": "Un red team solo prueba sitios web",
+      "h": "4f3cef90"
+    },
+    "questions.2.options.3": {
+      "t": "Un red team no tiene reglas",
+      "h": "80a03ef2"
+    },
+    "questions.2.q": {
+      "t": "¿En qué se diferencia un red team de una prueba de penetración?",
+      "h": "230d698f"
+    }
+  }
+}

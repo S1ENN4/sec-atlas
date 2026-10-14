@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Lo que probaste es exactamente lo que entregas.",
+      "h": "87af3951"
+    },
+    "questions.0.options.0": {
+      "t": "Compilar por separado para cada entorno",
+      "h": "2c18585e"
+    },
+    "questions.0.options.1": {
+      "t": "El mismo artefacto se promueve por todos los entornos, y solo cambia la configuración",
+      "h": "7f52a06a"
+    },
+    "questions.0.options.2": {
+      "t": "Desplegar en muchas regiones a la vez",
+      "h": "f13ed357"
+    },
+    "questions.0.options.3": {
+      "t": "Hacer build solo los viernes",
+      "h": "bfca3755"
+    },
+    "questions.0.q": {
+      "t": "¿Qué significa \"build once, deploy many\"?",
+      "h": "1f3097b3"
+    },
+    "questions.1.explain": {
+      "t": "Ambos automatizan el camino. El despliegue además elimina el último paso manual de release.",
+      "h": "6a70c737"
+    },
+    "questions.1.options.0": {
+      "t": "Ninguna",
+      "h": "6eef6648"
+    },
+    "questions.1.options.1": {
+      "t": "La entrega mantiene cada cambio listo para desplegar; el despliegue libera automáticamente cada cambio que pasa las pruebas",
+      "h": "715627f3"
+    },
+    "questions.1.options.2": {
+      "t": "La entrega es para bases de datos",
+      "h": "b553a85a"
+    },
+    "questions.1.options.3": {
+      "t": "El despliegue requiere aprobación manual en cada paso",
+      "h": "563b1a6a"
+    },
+    "questions.1.q": {
+      "t": "¿Cuál es la diferencia entre entrega continua y despliegue continuo?",
+      "h": "0289233a"
+    },
+    "questions.2.explain": {
+      "t": "Una medida que se vuelve meta se manipula. Úsalas para encontrar cuellos de botella.",
+      "h": "e7dff7ff"
+    },
+    "questions.2.options.0": {
+      "t": "Como metas para clasificar a desarrolladores individuales",
+      "h": "0b4375f7"
+    },
+    "questions.2.options.1": {
+      "t": "Como señales para conversar sobre el sistema de entrega",
+      "h": "714bf3cd"
+    },
+    "questions.2.options.2": {
+      "t": "Solo por auditores",
+      "h": "ec643296"
+    },
+    "questions.2.options.3": {
+      "t": "Deben ignorarse",
+      "h": "0920bf1d"
+    },
+    "questions.2.q": {
+      "t": "¿Cómo deben usarse las medidas DORA?",
+      "h": "ba23c088"
+    }
+  }
+}

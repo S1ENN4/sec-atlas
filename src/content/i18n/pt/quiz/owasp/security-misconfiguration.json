@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Os recursos de debug revelam detalhes internos e às vezes permitem execução de código. Desligue-os fora do desenvolvimento.",
+      "h": "8d6ab5d5"
+    },
+    "questions.0.options.0": {
+      "t": "HSTS habilitado",
+      "h": "4a58ac5d"
+    },
+    "questions.0.options.1": {
+      "t": "Modo debug deixado ligado, expondo stack traces e um console",
+      "h": "bde75db9"
+    },
+    "questions.0.options.2": {
+      "t": "Segredos em um gerenciador de segredos",
+      "h": "374c7a0e"
+    },
+    "questions.0.options.3": {
+      "t": "Papéis com privilégio mínimo",
+      "h": "3449cbad"
+    },
+    "questions.0.q": {
+      "t": "Qual configuração é uma má configuração típica em produção?",
+      "h": "e07ce7fd"
+    },
+    "questions.1.explain": {
+      "t": "Configuração é código. O scan automatizado a cada mudança detecta o drift cedo e de forma consistente.",
+      "h": "6078f39c"
+    },
+    "questions.1.options.0": {
+      "t": "Ler a configuração uma vez por ano",
+      "h": "67d23989"
+    },
+    "questions.1.options.1": {
+      "t": "Escanear o código de infraestrutura e as imagens no CI e quebrar o build",
+      "h": "3f96bb81"
+    },
+    "questions.1.options.2": {
+      "t": "Pedir aos desenvolvedores que tenham cuidado",
+      "h": "068117f6"
+    },
+    "questions.1.options.3": {
+      "t": "Desativar os scanners que fazem muito ruído",
+      "h": "421ca3f7"
+    },
+    "questions.1.q": {
+      "t": "Como detectar com mais confiabilidade uma regressão para um padrão inseguro?",
+      "h": "d354de0f"
+    },
+    "questions.2.explain": {
+      "t": "As origens devem ser uma lista de permissão explícita quando há credenciais envolvidas.",
+      "h": "06c8b89d"
+    },
+    "questions.2.options.0": {
+      "t": "Deixa o site lento",
+      "h": "7c850489"
+    },
+    "questions.2.options.1": {
+      "t": "Qualquer site pode fazer requisições autenticadas como o visitante e ler as respostas",
+      "h": "a1443295"
+    },
+    "questions.2.options.2": {
+      "t": "Quebra o HTTPS",
+      "h": "4138efa7"
+    },
+    "questions.2.options.3": {
+      "t": "Desativa os cookies",
+      "h": "1d3d5248"
+    },
+    "questions.2.q": {
+      "t": "Por que uma origem CORS curinga com credenciais é perigosa?",
+      "h": "3877591c"
+    }
+  }
+}

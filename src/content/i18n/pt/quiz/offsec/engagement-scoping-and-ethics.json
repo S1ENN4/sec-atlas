@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "As técnicas se sobrepõem. A permissão e os limites definem o que é legítimo.",
+      "h": "778e4922"
+    },
+    "questions.0.options.0": {
+      "t": "As ferramentas usadas",
+      "h": "f8a41646"
+    },
+    "questions.0.options.1": {
+      "t": "Autorização por escrito, um escopo acordado e o dever de minimizar danos",
+      "h": "7c16d689"
+    },
+    "questions.0.options.2": {
+      "t": "O horário do dia",
+      "h": "3025c1c6"
+    },
+    "questions.0.options.3": {
+      "t": "O sistema operacional",
+      "h": "b8851fc9"
+    },
+    "questions.0.q": {
+      "t": "O que separa um teste de intrusão de um ataque?",
+      "h": "386ca0fa"
+    },
+    "questions.1.explain": {
+      "t": "O escopo é um limite rígido. Ampliá-lo exige autorização explícita de quem possa concedê-la.",
+      "h": "0b14fd4d"
+    },
+    "questions.1.options.0": {
+      "t": "Continua, já que está conectado",
+      "h": "81d4b380"
+    },
+    "questions.1.options.1": {
+      "t": "Para no limite e pede permissão ao cliente antes de ir além",
+      "h": "c9917278"
+    },
+    "questions.1.options.2": {
+      "t": "Testa discretamente e apaga os logs",
+      "h": "92afa9f3"
+    },
+    "questions.1.options.3": {
+      "t": "Reporta publicamente",
+      "h": "837c0d21"
+    },
+    "questions.1.q": {
+      "t": "Durante um teste você descobre um caminho que leva a um sistema fora do escopo. O que você faz?",
+      "h": "bb1b5f7d"
+    },
+    "questions.2.explain": {
+      "t": "Minimize os danos: use o menor acesso necessário e mantenha tudo confidencial.",
+      "h": "9107c698"
+    },
+    "questions.2.options.0": {
+      "t": "Baixar tudo como prova",
+      "h": "8763146b"
+    },
+    "questions.2.options.1": {
+      "t": "Provar o acesso com o mínimo (por exemplo, um registro ocultado) e proteger e apagar o que foi tocado",
+      "h": "6576f9f8"
+    },
+    "questions.2.options.2": {
+      "t": "Compartilhar no chat da equipe",
+      "h": "29ef49ba"
+    },
+    "questions.2.options.3": {
+      "t": "Guardar para trabalhos futuros",
+      "h": "984e29f7"
+    },
+    "questions.2.q": {
+      "t": "Como tratar dados reais de clientes encontrados durante um teste?",
+      "h": "856f2f93"
+    }
+  }
+}

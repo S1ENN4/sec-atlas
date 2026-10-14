@@ -1,0 +1,112 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "O guia de tratamento de incidentes do NIST descreve um ciclo que a maioria dos programas adota de alguma forma. Trate-o como um laço, não como uma linha: o que você aprende alimenta a preparação.",
+      "h": "a1d448ef"
+    },
+    "sections.0.bullets.0": {
+      "t": "Preparação: política, escala de plantão, ferramentas e acessos prontos, logging que responde perguntas, playbooks praticados, listas de contatos (jurídico, comunicação, fornecedores, reguladores).",
+      "h": "d6b6f415"
+    },
+    "sections.0.bullets.1": {
+      "t": "Detecção e análise: reconhecer que algo está errado, decidir se é um incidente, delimitar o escopo e atribuir uma severidade.",
+      "h": "423a6385"
+    },
+    "sections.0.bullets.2": {
+      "t": "Contenção: impedir que se espalhe ou piore, com a menor interrupção que funcione, preservando as evidências.",
+      "h": "7163df97"
+    },
+    "sections.0.bullets.3": {
+      "t": "Erradicação e recuperação: remover o acesso do atacante e a causa, restaurar os sistemas a partir de um estado confiável e acompanhar de perto à medida que voltam ao ar.",
+      "h": "173f7abe"
+    },
+    "sections.0.bullets.4": {
+      "t": "Atividade pós-incidente: uma revisão sem culpados, lições aprendidas e mudanças em detecção, controles e playbooks.",
+      "h": "5e232b97"
+    },
+    "sections.0.heading": {
+      "t": "As fases",
+      "h": "1595b046"
+    },
+    "sections.1.bullets.0": {
+      "t": "Comandante do incidente: é dono da resposta, toma as decisões e não faz o trabalho técnico.",
+      "h": "89d443cb"
+    },
+    "sections.1.bullets.1": {
+      "t": "Líderes técnicos: investigam e contêm, um por frente de trabalho (endpoint, identidade, nuvem, rede).",
+      "h": "ae93f358"
+    },
+    "sections.1.bullets.2": {
+      "t": "Comunicação: atualizações internas em horários fixos e mensagens externas a clientes, parceiros e reguladores, aprovadas pelo jurídico.",
+      "h": "42831add"
+    },
+    "sections.1.bullets.3": {
+      "t": "Escriba: mantém uma linha do tempo, com timestamps em UTC, do que foi visto e feito e por quem.",
+      "h": "0bd10ced"
+    },
+    "sections.1.bullets.4": {
+      "t": "Use um canal como fonte da verdade e um canal fora de banda caso o principal esteja comprometido.",
+      "h": "3f51691f"
+    },
+    "sections.1.heading": {
+      "t": "Papéis e comunicação",
+      "h": "e6ac1e63"
+    },
+    "sections.2.body.0": {
+      "t": "Combine os níveis de severidade com antecedência para que ninguém discuta sobre eles durante o evento, e abra um registro no momento em que declarar o incidente.",
+      "h": "db78a975"
+    },
+    "sections.2.code.0.code": {
+      "t": "id: INC-2026-0142\ndeclared_at: 2026-10-13T14:05:00Z      # sempre em UTC\nseverity: SEV2                          # SEV1 dados de clientes ou queda do núcleo; SEV2 contido mas grave; SEV3 menor\ncommander: a.silva\nsummary: Logins suspeitos no console de administração vindos de um país novo\nscope:\n  affected: [identity-provider, admin-console]\n  data_at_risk: none confirmed\ntimeline:\n  - { at: 2026-10-13T13:52:00Z, event: \"Alert fired: impossible travel\", by: detection }\n  - { at: 2026-10-13T14:05:00Z, event: \"Incident declared\", by: a.silva }\nnext_update: 2026-10-13T15:00:00Z",
+      "h": "ec9244a3"
+    },
+    "sections.2.code.0.filename": {
+      "t": "incident-record.yml",
+      "h": "a029bea7"
+    },
+    "sections.2.heading": {
+      "t": "Severidade e um registro",
+      "h": "e76204e1"
+    },
+    "sections.3.bullets.0": {
+      "t": "Preserve as evidências antes de mudar as coisas: faça snapshots, copie logs, registre o que você fez.",
+      "h": "3c284a58"
+    },
+    "sections.3.bullets.1": {
+      "t": "Contenha de forma proporcional: desligar a produção às vezes é certo e muitas vezes é exagero.",
+      "h": "f61c73c1"
+    },
+    "sections.3.bullets.2": {
+      "t": "Assuma que o atacante está observando: não anuncie o plano no canal que ele pode estar lendo.",
+      "h": "c7e49a68"
+    },
+    "sections.3.bullets.3": {
+      "t": "Decida com informação incompleta e atualize conforme os fatos chegam.",
+      "h": "47aa34b1"
+    },
+    "sections.3.bullets.4": {
+      "t": "Anote enquanto avança; a memória sob estresse não é confiável.",
+      "h": "0a4f4911"
+    },
+    "sections.3.bullets.5": {
+      "t": "Pratique com exercícios de mesa para que a primeira vez não seja a real.",
+      "h": "f1c6e759"
+    },
+    "sections.3.heading": {
+      "t": "Princípios que valem em todo incidente",
+      "h": "bc238269"
+    },
+    "short": {
+      "t": "preparar, detectar, conter, erradicar, recuperar e aprender: o ciclo que todo incidente segue",
+      "h": "2eed7b1d"
+    },
+    "tagline": {
+      "t": "O momento de um incidente não é hora de inventar um processo. As equipes que respondem bem definiram papéis, níveis de severidade e canais de comunicação muito antes de algo quebrar.",
+      "h": "baa78399"
+    },
+    "title": {
+      "t": "O ciclo de vida da resposta a incidentes",
+      "h": "70a93ff9"
+    }
+  }
+}

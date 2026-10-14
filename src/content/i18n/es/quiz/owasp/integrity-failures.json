@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "La serialización nativa de objetos puede instanciar tipos arbitrarios. Usa formatos solo de datos y valídalos.",
+      "h": "77a5ccff"
+    },
+    "questions.0.options.0": {
+      "t": "Es lento",
+      "h": "89b0144b"
+    },
+    "questions.0.options.1": {
+      "t": "Bytes manipulados pueden ejecutar código arbitrario durante la deserialización",
+      "h": "e62c1846"
+    },
+    "questions.0.options.2": {
+      "t": "No puede leer cadenas",
+      "h": "b231884d"
+    },
+    "questions.0.options.3": {
+      "t": "Solo funciona en Windows",
+      "h": "016c876a"
+    },
+    "questions.0.q": {
+      "t": "¿Por qué es peligroso pickle.loads sobre datos de una cookie?",
+      "h": "5864e8f2"
+    },
+    "questions.1.explain": {
+      "t": "El navegador rechaza un archivo cuyo hash no coincide con el atributo integrity.",
+      "h": "69b8dbc6"
+    },
+    "questions.1.options.0": {
+      "t": "Redes lentas",
+      "h": "0884ef4c"
+    },
+    "questions.1.options.1": {
+      "t": "Que un script de terceros sea reemplazado por un archivo modificado",
+      "h": "ca9214af"
+    },
+    "questions.1.options.2": {
+      "t": "Cross-site request forgery",
+      "h": "9f699a27"
+    },
+    "questions.1.options.3": {
+      "t": "Certificados vencidos",
+      "h": "c4195bd5"
+    },
+    "questions.1.q": {
+      "t": "¿Contra qué protege Subresource Integrity?",
+      "h": "b88bb706"
+    },
+    "questions.2.explain": {
+      "t": "Codificar no es proteger. Una firma (HMAC) detecta la manipulación.",
+      "h": "00dead7c"
+    },
+    "questions.2.options.0": {
+      "t": "Comprimido",
+      "h": "1238ea63"
+    },
+    "questions.2.options.1": {
+      "t": "Firmado y verificado en el servidor, o mantenido en el servidor",
+      "h": "2c8015eb"
+    },
+    "questions.2.options.2": {
+      "t": "Codificado en Base64",
+      "h": "cc561139"
+    },
+    "questions.2.options.3": {
+      "t": "Colocado en un campo oculto",
+      "h": "2d31b90b"
+    },
+    "questions.2.q": {
+      "t": "El estado que debe viajar por el cliente, como un blob de preferencias, debería ser:",
+      "h": "b6640b1c"
+    }
+  }
+}

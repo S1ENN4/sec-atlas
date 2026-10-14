@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Las fallas de autorización aparecen como diferencias entre cuentas.",
+      "h": "3d26e62e"
+    },
+    "questions.0.options.0": {
+      "t": "Para duplicar el tráfico",
+      "h": "4ad92a8b"
+    },
+    "questions.0.options.1": {
+      "t": "Para compararlas y encontrar bugs de autorización en los que un usuario alcanza los datos del otro",
+      "h": "fad1193b"
+    },
+    "questions.0.options.2": {
+      "t": "Porque el proxy lo requiere",
+      "h": "d4602fc8"
+    },
+    "questions.0.options.3": {
+      "t": "Para probar la velocidad del inicio de sesión",
+      "h": "9baaece6"
+    },
+    "questions.0.q": {
+      "t": "¿Por qué crear dos cuentas de prueba con el mismo nivel de privilegio?",
+      "h": "ca334ad4"
+    },
+    "questions.1.explain": {
+      "t": "Prueba enviando campos que el cliente nunca envía y verificando si se aceptan.",
+      "h": "300e96ce"
+    },
+    "questions.1.options.0": {
+      "t": "Creación masiva de usuarios",
+      "h": "f55311d9"
+    },
+    "questions.1.options.1": {
+      "t": "Una API que vincula campos enviados por el cliente (como role) a un objeto, permitiendo que quien llama defina lo que no debería",
+      "h": "6cc7da43"
+    },
+    "questions.1.options.2": {
+      "t": "Una prueba de carga",
+      "h": "8bb31e90"
+    },
+    "questions.1.options.3": {
+      "t": "Un modo de caché",
+      "h": "25cce3cf"
+    },
+    "questions.1.q": {
+      "t": "¿Qué es mass assignment?",
+      "h": "33283114"
+    },
+    "questions.2.explain": {
+      "t": "Usa tus propios datos de prueba para que la prueba no cause daño ni exponga a nadie.",
+      "h": "7f904b12"
+    },
+    "questions.2.options.0": {
+      "t": "Leer y descargar muchos registros de clientes",
+      "h": "830a4651"
+    },
+    "questions.2.options.1": {
+      "t": "Leer un registro de prueba que pertenezca a tu propia segunda cuenta",
+      "h": "9df1ef89"
+    },
+    "questions.2.options.2": {
+      "t": "Borrar datos para mostrar el impacto",
+      "h": "21c6c75d"
+    },
+    "questions.2.options.3": {
+      "t": "Publicar los datos en un canal público",
+      "h": "7f8aa75e"
+    },
+    "questions.2.q": {
+      "t": "¿Cuál es la forma más segura de probar un bug de control de acceso?",
+      "h": "63d7051e"
+    }
+  }
+}

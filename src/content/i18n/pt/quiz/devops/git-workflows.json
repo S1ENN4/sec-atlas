@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Merges pequenos e frequentes reduzem conflitos e mantêm a main sempre pronta para release.",
+      "h": "b815aa91"
+    },
+    "questions.0.options.0": {
+      "t": "Manter branches de longa duração para cada funcionalidade",
+      "h": "330e91d7"
+    },
+    "questions.0.options.1": {
+      "t": "Integrar mudanças pequenas e de vida curta à main com frequência, escondendo o trabalho inacabado atrás de flags",
+      "h": "4121387d"
+    },
+    "questions.0.options.2": {
+      "t": "Nunca usar branches",
+      "h": "107fff65"
+    },
+    "questions.0.options.3": {
+      "t": "Integrar só uma vez por release",
+      "h": "383ee907"
+    },
+    "questions.0.q": {
+      "t": "Qual é a ideia central do trunk-based development?",
+      "h": "bdaa4a0b"
+    },
+    "questions.1.explain": {
+      "t": "Ele codifica o ownership para que os revisores certos sejam acionados automaticamente.",
+      "h": "dfc8767f"
+    },
+    "questions.1.options.0": {
+      "t": "Criptografa o repositório",
+      "h": "2b1f96dc"
+    },
+    "questions.1.options.1": {
+      "t": "Solicita revisão das pessoas ou equipes donas dos caminhos que um pull request altera",
+      "h": "23228d9f"
+    },
+    "questions.1.options.2": {
+      "t": "Apaga branches antigos",
+      "h": "1d77877d"
+    },
+    "questions.1.options.3": {
+      "t": "Assina commits",
+      "h": "8c3ddb54"
+    },
+    "questions.1.q": {
+      "t": "O que faz o CODEOWNERS?",
+      "h": "a5560981"
+    },
+    "questions.2.explain": {
+      "t": "Qualquer pessoa com um clone ou uma cópia em cache pode lê-lo. Trate-o como exposto.",
+      "h": "4d0fb57a"
+    },
+    "questions.2.options.0": {
+      "t": "Nada, ele sumiu",
+      "h": "35123db6"
+    },
+    "questions.2.options.1": {
+      "t": "Rotacionar o segredo, porque ele continua no histórico",
+      "h": "f6e83af0"
+    },
+    "questions.2.options.2": {
+      "t": "Renomear o arquivo",
+      "h": "03a73914"
+    },
+    "questions.2.options.3": {
+      "t": "Fazer force-push e não contar a ninguém",
+      "h": "1b2d97c0"
+    },
+    "questions.2.q": {
+      "t": "Um segredo foi commitado no repositório e depois apagado no commit seguinte. O que você deve fazer?",
+      "h": "56d0f4f9"
+    }
+  }
+}

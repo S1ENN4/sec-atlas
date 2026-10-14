@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Claude Code, OpenCode, oh-my-pi e Codex CLI são harnesses. O modelo é uma camada separada.",
+      "h": "bc287c0a"
+    },
+    "questions.0.options.0": {
+      "t": "A rede neural que prevê tokens",
+      "h": "2b6d4f20"
+    },
+    "questions.0.options.1": {
+      "t": "O programa que dá ao modelo ferramentas, contexto e permissões e executa o loop",
+      "h": "8560e8b0"
+    },
+    "questions.0.options.2": {
+      "t": "Uma região de nuvem",
+      "h": "217a30d9"
+    },
+    "questions.0.options.3": {
+      "t": "Um tipo de GPU",
+      "h": "3aa8e4a3"
+    },
+    "questions.0.q": {
+      "t": "O que é um harness no contexto de agents de código?",
+      "h": "1e4377b5"
+    },
+    "questions.1.explain": {
+      "t": "As diferenças estão sobretudo em como o harness apresenta a tarefa e aplica as mudanças.",
+      "h": "3f519aad"
+    },
+    "questions.1.options.0": {
+      "t": "Modelos mudam aleatoriamente",
+      "h": "00b91d4e"
+    },
+    "questions.1.options.1": {
+      "t": "O harness controla o método de edição, o contexto carregado, as ferramentas e a recuperação de erros",
+      "h": "7aeb0e54"
+    },
+    "questions.1.options.2": {
+      "t": "Por causa do tema de cores",
+      "h": "87782259"
+    },
+    "questions.1.options.3": {
+      "t": "Só o preço difere",
+      "h": "831889aa"
+    },
+    "questions.1.q": {
+      "t": "Por que o mesmo modelo pode parecer melhor em uma ferramenta do que em outra?",
+      "h": "c4e935a5"
+    },
+    "questions.2.explain": {
+      "t": "É uma forma de chegar aos modelos. Você ainda precisa de um harness para usá-lo em programação.",
+      "h": "9f920f4f"
+    },
+    "questions.2.options.0": {
+      "t": "Um agent de código",
+      "h": "4f213d04"
+    },
+    "questions.2.options.1": {
+      "t": "Uma camada de provider que roteia requisições para muitos modelos",
+      "h": "e74c124d"
+    },
+    "questions.2.options.2": {
+      "t": "Um editor de texto",
+      "h": "f6634b8a"
+    },
+    "questions.2.options.3": {
+      "t": "Um host de git",
+      "h": "fe9c05ae"
+    },
+    "questions.2.q": {
+      "t": "O OpenRouter é melhor descrito como:",
+      "h": "70a11891"
+    }
+  }
+}

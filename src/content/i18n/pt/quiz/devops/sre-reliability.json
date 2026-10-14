@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Enquanto sobra budget, entregue; quando acaba, invista em confiabilidade.",
+      "h": "c39c29e8"
+    },
+    "questions.0.options.0": {
+      "t": "Dinheiro reservado para quedas",
+      "h": "761400ea"
+    },
+    "questions.0.options.1": {
+      "t": "A não confiabilidade permitida, 100% menos o SLO",
+      "h": "ecc9c40c"
+    },
+    "questions.0.options.2": {
+      "t": "Uma lista de bugs conhecidos",
+      "h": "d448ec10"
+    },
+    "questions.0.options.3": {
+      "t": "Um cronograma de QA",
+      "h": "cde88b35"
+    },
+    "questions.0.q": {
+      "t": "O que é um error budget?",
+      "h": "db0eccf1"
+    },
+    "questions.1.explain": {
+      "t": "Restaure o serviço primeiro. A análise da causa raiz pode vir depois.",
+      "h": "158e323d"
+    },
+    "questions.1.options.0": {
+      "t": "Descobrir quem causou",
+      "h": "03f61cb0"
+    },
+    "questions.1.options.1": {
+      "t": "Mitigar o impacto (rollback, failover, desligar uma flag) e só depois diagnosticar",
+      "h": "76c94fc9"
+    },
+    "questions.1.options.2": {
+      "t": "Escrever o postmortem",
+      "h": "bbd7627c"
+    },
+    "questions.1.options.3": {
+      "t": "Esperar por mais dados",
+      "h": "7f886f9a"
+    },
+    "questions.1.q": {
+      "t": "Em um incidente, o que vem primeiro?",
+      "h": "7e9d351d"
+    },
+    "questions.2.explain": {
+      "t": "A culpa esconde informação. Aprender exige que as pessoas descrevam o que aconteceu com honestidade.",
+      "h": "d1e2fd9d"
+    },
+    "questions.2.options.0": {
+      "t": "Ninguém é mencionado",
+      "h": "49b56513"
+    },
+    "questions.2.options.1": {
+      "t": "Ele pergunta como o sistema permitiu a falha e termina com ações que têm responsável, não com punição",
+      "h": "1f84bb62"
+    },
+    "questions.2.options.2": {
+      "t": "Nunca é escrito",
+      "h": "e98b3063"
+    },
+    "questions.2.options.3": {
+      "t": "É privado para os gestores",
+      "h": "065cf82d"
+    },
+    "questions.2.q": {
+      "t": "O que define um postmortem sem culpados?",
+      "h": "4ba3ff25"
+    }
+  }
+}

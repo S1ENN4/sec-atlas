@@ -1,0 +1,88 @@
+{
+  "entries": {
+    "sections.0.bullets.0": {
+      "t": "Trigger: un push, un pull request, un tag o una programación.",
+      "h": "a4da22b5"
+    },
+    "sections.0.bullets.1": {
+      "t": "Los jobs corren en runners nuevos; cada job está aislado, así que comparte datos mediante artefactos y cachés, no a través de la máquina.",
+      "h": "1229a815"
+    },
+    "sections.0.bullets.2": {
+      "t": "Los stages ordenan el trabajo: lint y pruebas unitarias primero (rápidas, baratas), luego pruebas de integración, luego build y publicación del artefacto.",
+      "h": "c543a716"
+    },
+    "sections.0.bullets.3": {
+      "t": "Gates: las verificaciones obligatorias deben pasar antes del merge.",
+      "h": "6f4f3a80"
+    },
+    "sections.0.bullets.4": {
+      "t": "Los entornos y las aprobaciones protegen el despliegue en destinos sensibles.",
+      "h": "9942fabc"
+    },
+    "sections.0.heading": {
+      "t": "Anatomía",
+      "h": "41570b18"
+    },
+    "sections.1.body.0": {
+      "t": "Falla rápido con verificaciones baratas, ejecuta jobs independientes en paralelo, cachea las dependencias, cancela las ejecuciones superadas y mantén los permisos al mínimo.",
+      "h": "03b20aa1"
+    },
+    "sections.1.code.0.code": {
+      "t": "name: ci\non:\n  pull_request:\n  push: { branches: [main] }\nconcurrency:\n  group: ci-${{ github.ref }}\n  cancel-in-progress: true\npermissions:\n  contents: read\njobs:\n  lint-test:\n    runs-on: ubuntu-latest\n    timeout-minutes: 15\n    steps:\n      - uses: actions/checkout@<full-commit-sha>\n      - uses: actions/setup-node@<full-commit-sha>\n        with: { node-version: 22, cache: npm }\n      - run: npm ci\n      - run: npm run lint && npm test\n  build:\n    needs: lint-test\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@<full-commit-sha>\n      - run: docker build -t app:${{ github.sha }} .",
+      "h": "911b3fb5"
+    },
+    "sections.1.code.0.filename": {
+      "t": ".github/workflows/ci.yml",
+      "h": "899ce9c2"
+    },
+    "sections.1.heading": {
+      "t": "Un ejemplo de pipeline",
+      "h": "a8105799"
+    },
+    "sections.2.bullets.0": {
+      "t": "Cachea las dependencias y las capas de build, usando el lockfile como clave.",
+      "h": "bfe72b32"
+    },
+    "sections.2.bullets.1": {
+      "t": "Ejecuta las pruebas en paralelo y divide las suites lentas; pon en cuarentena las pruebas inestables y corrígelas, nunca reintentes a ciegas.",
+      "h": "b015e6ce"
+    },
+    "sections.2.bullets.2": {
+      "t": "Define timeouts para que un job colgado no bloquee la cola.",
+      "h": "12154bb5"
+    },
+    "sections.2.bullets.3": {
+      "t": "Haz los builds reproducibles: herramientas fijadas, lockfiles, sin sorpresas de red.",
+      "h": "4e75b5af"
+    },
+    "sections.2.bullets.4": {
+      "t": "Trata el pipeline como código de producción: revísalo, prueba los cambios y dale el mínimo privilegio (ver el dominio Security engineering).",
+      "h": "34f68fc8"
+    },
+    "sections.2.heading": {
+      "t": "Mantenerlo rápido y confiable",
+      "h": "3269faeb"
+    },
+    "sections.3.body.0": {
+      "t": "Un job que falla debe decir qué se rompió en su primera pantalla. Muestra la prueba que falló y el comando que la reproduce localmente. Si la gente necesita preguntar \"¿por qué el CI está en rojo?\", al pipeline le falta información.",
+      "h": "7bf8b3c3"
+    },
+    "sections.3.heading": {
+      "t": "Leer una falla",
+      "h": "4fa3871e"
+    },
+    "short": {
+      "t": "stages, caché, artefactos y builds reproducibles",
+      "h": "aebffefb"
+    },
+    "tagline": {
+      "t": "Un pipeline en el que la gente confía es rápido, determinista y claro cuando falla. Uno lento o inestable enseña al equipo a ignorarlo.",
+      "h": "bd5f0a4c"
+    },
+    "title": {
+      "t": "Pipelines de CI que siguen siendo rápidos",
+      "h": "170e9663"
+    }
+  }
+}

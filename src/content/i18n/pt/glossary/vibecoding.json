@@ -1,0 +1,152 @@
+{
+  "entries": {
+    "groups.0.entries.0.meaning": {
+      "t": "Um estilo de programação em que você descreve o que quer e conduz executando o resultado, sem ler cada linha. O termo foi popularizado no início de 2025 e hoje costuma nomear a programação assistida por IA em geral.",
+      "h": "67ce394c"
+    },
+    "groups.0.entries.0.term": {
+      "t": "Vibe coding",
+      "h": "e34e38da"
+    },
+    "groups.0.entries.1.meaning": {
+      "t": "A rede neural que prevê o próximo passo. Ela produz texto, incluindo pedidos para chamar ferramentas. Não é a ferramenta em que você digita.",
+      "h": "28a436ae"
+    },
+    "groups.0.entries.1.term": {
+      "t": "Modelo",
+      "h": "68c2cc7f"
+    },
+    "groups.0.entries.2.aka": {
+      "t": "agent harness · scaffold",
+      "h": "98029759"
+    },
+    "groups.0.entries.2.meaning": {
+      "t": "O programa em torno do modelo: monta o prompt, expõe ferramentas, aplica permissões e executa o loop. Claude Code, OpenCode, oh-my-pi e Codex CLI são harnesses.",
+      "h": "8fea6c79"
+    },
+    "groups.0.entries.2.term": {
+      "t": "Harness",
+      "h": "2b7cfd59"
+    },
+    "groups.0.entries.3.meaning": {
+      "t": "Onde um modelo roda e como você chega até ele: a API do fornecedor, uma nuvem, um roteador como o OpenRouter ou a sua própria máquina.",
+      "h": "16a3ec34"
+    },
+    "groups.0.entries.3.term": {
+      "t": "Provider",
+      "h": "7ceee3f3"
+    },
+    "groups.0.entries.4.meaning": {
+      "t": "Um modelo cujos pesos treinados são publicados, de modo que você pode executá-lo por conta própria. Nem sempre é o mesmo que open source: verifique a licença.",
+      "h": "8050df95"
+    },
+    "groups.0.entries.4.term": {
+      "t": "Modelo open-weight",
+      "h": "f193aec4"
+    },
+    "groups.0.title": {
+      "t": "camadas e termos",
+      "h": "e0be7ddf"
+    },
+    "groups.1.entries.0.aka": {
+      "t": "oh-my-pi",
+      "h": "9896ae81"
+    },
+    "groups.1.entries.0.meaning": {
+      "t": "Um agent de código open source para terminal que começou como um fork do minimalista Pi agent e acrescentou edições estruturadas, operações de language server e debugger, acesso ao navegador, plugins e subagents.",
+      "h": "0fa1cc5b"
+    },
+    "groups.1.entries.0.term": {
+      "t": "OMP",
+      "h": "51ec1964"
+    },
+    "groups.1.entries.1.aka": {
+      "t": "Oh My OpenAgent · oh-my-opencode",
+      "h": "d3a3e1d1"
+    },
+    "groups.1.entries.1.meaning": {
+      "t": "Um plugin do OpenCode que adiciona uma equipe de agents especializados e um modo multiagente autônomo. Ele estende um harness; não é um.",
+      "h": "86890b28"
+    },
+    "groups.1.entries.1.term": {
+      "t": "OMO",
+      "h": "ba67c7b9"
+    },
+    "groups.1.entries.2.meaning": {
+      "t": "Um multiplexador de terminal para agents de código com IA. Mantém vários agents em painéis de terminal reais, mostra o status deles e persiste após desconexões. Organiza os agents em vez de substituí-los.",
+      "h": "9d13f711"
+    },
+    "groups.1.entries.2.term": {
+      "t": "herdr",
+      "h": "1697027e"
+    },
+    "groups.1.entries.3.meaning": {
+      "t": "Um diretório de trabalho extra, com branch própria, para o mesmo repositório. Dá a cada agent um lugar isolado para trabalhar.",
+      "h": "e9e200d9"
+    },
+    "groups.1.entries.3.term": {
+      "t": "Git worktree",
+      "h": "5a4f5ac5"
+    },
+    "groups.1.title": {
+      "t": "ferramentas",
+      "h": "0284c6ac"
+    },
+    "groups.2.entries.0.meaning": {
+      "t": "Um arquivo na raiz do repositório com instruções para agents de código (comandos, convenções, limites). Uma convenção comum entre ferramentas; o Claude Code lê CLAUDE.md.",
+      "h": "490db8b3"
+    },
+    "groups.2.entries.0.term": {
+      "t": "AGENTS.md",
+      "h": "37dd6836"
+    },
+    "groups.2.entries.1.aka": {
+      "t": "Model Context Protocol",
+      "h": "de09bded"
+    },
+    "groups.2.entries.1.meaning": {
+      "t": "Um protocolo aberto para conectar agents a ferramentas e fontes de dados por meio de servidores. Cada servidor que você conecta amplia o que o agent pode fazer e, portanto, também amplia a superfície de ataque.",
+      "h": "5d5a2a23"
+    },
+    "groups.2.entries.1.term": {
+      "t": "MCP",
+      "h": "21593b80"
+    },
+    "groups.2.entries.2.meaning": {
+      "t": "Um modo somente leitura em que o agent explora e propõe um plano para aprovação antes de editar qualquer coisa.",
+      "h": "e09c88b2"
+    },
+    "groups.2.entries.2.term": {
+      "t": "Plan mode",
+      "h": "bc0b2aff"
+    },
+    "groups.2.entries.3.meaning": {
+      "t": "Instruções ocultas em conteúdo que o agent lê (um README, uma página web, o resultado de uma ferramenta) e que o modelo pode seguir como se você as tivesse escrito.",
+      "h": "77d9f757"
+    },
+    "groups.2.entries.3.term": {
+      "t": "Prompt injection",
+      "h": "0ccdb9f8"
+    },
+    "groups.2.entries.4.meaning": {
+      "t": "Registrar um pacote com um nome que uma IA inventou, de modo que um agent ou desenvolvedor que o instale sem verificar receba malware.",
+      "h": "19ffe704"
+    },
+    "groups.2.entries.4.term": {
+      "t": "Slopsquatting",
+      "h": "db6e31c0"
+    },
+    "groups.2.entries.5.meaning": {
+      "t": "As verificações que toda mudança deve passar antes de ser considerada confiável: testes que decidem, um diff que você lê, gates de CI e revisão independente.",
+      "h": "0eaa6774"
+    },
+    "groups.2.entries.5.term": {
+      "t": "Loop de verificação",
+      "h": "cd4a46ba"
+    },
+    "groups.2.title": {
+      "t": "trabalhar bem e com segurança",
+      "h": "75005414"
+    }
+  }
+}

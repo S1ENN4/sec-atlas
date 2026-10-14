@@ -1,0 +1,88 @@
+{
+  "entries": {
+    "sections.0.bullets.0": {
+      "t": "Modelos de frontera (las mejores ofertas de Anthropic, OpenAI, Google): los mejores en trabajo largo, ambiguo y con varios archivos, y en recuperarse de errores. Mayor precio por token. Úsalos para planificar, bugs difíciles y código sensible a la seguridad.",
+      "h": "cf63ed8f"
+    },
+    "sections.0.bullets.1": {
+      "t": "Variantes rápidas y pequeñas de los mismos proveedores: mucho más baratas y veloces, buenas para ediciones con una instrucción clara, pruebas, renombrados y resúmenes.",
+      "h": "955dd9dd"
+    },
+    "sections.0.bullets.2": {
+      "t": "Modelos open-weight y de bajo costo (DeepSeek, Qwen, Kimi, GLM y otros): a menudo cercanos a la frontera en benchmarks de código por una fracción del precio, y algunos pueden ejecutarse en tu propio hardware. La calidad varía según la tarea y el harness, así que mide con tu código.",
+      "h": "6b783ee3"
+    },
+    "sections.0.bullets.3": {
+      "t": "Modelos locales: nada sale de la máquina; útiles para código privado y trabajo sin conexión. Limitados por tu hardware, por lo que suelen ser más pequeños y lentos que los alojados.",
+      "h": "bf96bd17"
+    },
+    "sections.0.heading": {
+      "t": "Piensa en niveles, no en marcas",
+      "h": "6c98fe9e"
+    },
+    "sections.1.body.0": {
+      "t": "DeepSeek es una familia de modelos, no una herramienta de código. Lo usas a través de un harness que pueda llegar a él: su propia API, un enrutador como OpenRouter, un host en la nube o un runtime local si ejecutas tú mismo los pesos abiertos. El mismo modelo puede comportarse de forma bastante distinta según el harness.",
+      "h": "c75d5197"
+    },
+    "sections.1.body.1": {
+      "t": "Dos preguntas deciden si se ajusta a tu proyecto. Primero, la calidad: ejecuta tus propias tareas y pruebas en lugar de confiar en un leaderboard. Segundo, los datos: cuando usas el servicio alojado del proveedor, tu código y tus prompts se procesan bajo los términos de privacidad y la jurisdicción de ese servicio. Muchas empresas restringen o prohíben enviar código propietario a algunos servicios alojados. Lee la política vigente, revisa las reglas de tu empresa y considera un host de confianza o ejecutar tú mismo los pesos abiertos cuando el código sea sensible.",
+      "h": "52e041a5"
+    },
+    "sections.1.heading": {
+      "t": "Sobre DeepSeek en particular",
+      "h": "1b09a4f6"
+    },
+    "sections.2.body.0": {
+      "t": "No elijas un solo modelo para todo. Usa un modelo potente para planificar y revisar, uno más barato para ejecutar ediciones bien especificadas, y las pruebas como juez. Muchos harnesses permiten definir un modelo por defecto y sobrescribirlo por agent o por tarea. El ejemplo de abajo es ilustrativo: las claves exactas difieren según la herramienta.",
+      "h": "f9e0ec28"
+    },
+    "sections.2.code.0.code": {
+      "t": "planning:     { model: frontier,   why: \"ambigüedad y arquitectura\" }\nimplementing: { model: fast-or-open, why: \"spec clara, las pruebas verifican\" }\nreview:       { model: frontier-from-a-different-vendor, why: \"segunda opinión independiente\" }\nsensitive-code:\n  allowed_providers: [\"self-hosted\", \"company-approved-cloud\"]\n  forbidden: [\"consumer chat endpoints\", \"unreviewed third-party routers\"]",
+      "h": "55f0fd26"
+    },
+    "sections.2.code.0.filename": {
+      "t": "routing-policy.example.yml (ilustrativo, no es el schema de una herramienta real)",
+      "h": "26f19364"
+    },
+    "sections.2.heading": {
+      "t": "Una política de enrutamiento que funciona",
+      "h": "c13a3486"
+    },
+    "sections.3.bullets.0": {
+      "t": "Arma un pequeño benchmark privado con tareas reales de tu repositorio (una corrección de bug, una funcionalidad, un refactor) con pruebas que decidan aprobado o reprobado.",
+      "h": "9c7d2e6d"
+    },
+    "sections.3.bullets.1": {
+      "t": "Compara el costo por tarea resuelta, no el precio por token: un modelo barato que necesita tres intentos puede costar más que uno potente que acierta de una vez.",
+      "h": "4af4bdc9"
+    },
+    "sections.3.bullets.2": {
+      "t": "Registra los modos de falla: APIs inventadas, ediciones rotas, rendirse pronto, ignorar instrucciones.",
+      "h": "ae296bc0"
+    },
+    "sections.3.bullets.3": {
+      "t": "Vuelve a ejecutar cuando aparezca un modelo nuevo o cambie tu harness; los resultados caducan en meses.",
+      "h": "b062fd30"
+    },
+    "sections.3.bullets.4": {
+      "t": "Revisa el manejo de datos de cada provider en la cadena, incluidos los enrutadores que reenvían tus prompts a otra parte.",
+      "h": "738a14ee"
+    },
+    "sections.3.heading": {
+      "t": "Mide antes de comprometerte",
+      "h": "59d1cd3a"
+    },
+    "short": {
+      "t": "Claude, GPT, Gemini, DeepSeek y modelos locales: calidad, costo, velocidad y a dónde va tu código",
+      "h": "2b0aaf72"
+    },
+    "tagline": {
+      "t": "El mejor modelo para una tarea es el más barato que pasa tus pruebas. El precio, la velocidad y la privacidad importan tanto como los puntajes de benchmark, y los modelos al estilo DeepSeek vuelven concreto ese trade-off.",
+      "h": "a391f0d5"
+    },
+    "title": {
+      "t": "Elegir un modelo: de frontera, barato y abierto",
+      "h": "235f9f84"
+    }
+  }
+}

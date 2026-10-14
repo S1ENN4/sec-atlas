@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Las funciones de debug revelan detalles internos y a veces permiten la ejecución de código. Desactívalas fuera del desarrollo.",
+      "h": "8d6ab5d5"
+    },
+    "questions.0.options.0": {
+      "t": "HSTS habilitado",
+      "h": "4a58ac5d"
+    },
+    "questions.0.options.1": {
+      "t": "Modo debug dejado activado, exponiendo stack traces y una consola",
+      "h": "bde75db9"
+    },
+    "questions.0.options.2": {
+      "t": "Secretos en un gestor de secretos",
+      "h": "374c7a0e"
+    },
+    "questions.0.options.3": {
+      "t": "Roles con privilegio mínimo",
+      "h": "3449cbad"
+    },
+    "questions.0.q": {
+      "t": "¿Qué ajuste es una mala configuración típica en producción?",
+      "h": "e07ce7fd"
+    },
+    "questions.1.explain": {
+      "t": "La configuración es código. El escaneo automatizado en cada cambio detecta el drift de forma temprana y consistente.",
+      "h": "6078f39c"
+    },
+    "questions.1.options.0": {
+      "t": "Leer la configuración una vez al año",
+      "h": "67d23989"
+    },
+    "questions.1.options.1": {
+      "t": "Escanear el código de infraestructura y las imágenes en el CI y romper el build",
+      "h": "3f96bb81"
+    },
+    "questions.1.options.2": {
+      "t": "Pedir a los desarrolladores que tengan cuidado",
+      "h": "068117f6"
+    },
+    "questions.1.options.3": {
+      "t": "Desactivar los scanners que hacen mucho ruido",
+      "h": "421ca3f7"
+    },
+    "questions.1.q": {
+      "t": "¿Cómo detectas con mayor fiabilidad una regresión a un valor inseguro por defecto?",
+      "h": "d354de0f"
+    },
+    "questions.2.explain": {
+      "t": "Los orígenes deben ser una lista de permitidos explícita cuando hay credenciales de por medio.",
+      "h": "06c8b89d"
+    },
+    "questions.2.options.0": {
+      "t": "Hace más lento el sitio",
+      "h": "7c850489"
+    },
+    "questions.2.options.1": {
+      "t": "Cualquier sitio web puede hacer solicitudes autenticadas como el visitante y leer las respuestas",
+      "h": "a1443295"
+    },
+    "questions.2.options.2": {
+      "t": "Rompe HTTPS",
+      "h": "4138efa7"
+    },
+    "questions.2.options.3": {
+      "t": "Desactiva las cookies",
+      "h": "1d3d5248"
+    },
+    "questions.2.q": {
+      "t": "¿Por qué es peligroso un origen CORS comodín con credenciales?",
+      "h": "3877591c"
+    }
+  }
+}

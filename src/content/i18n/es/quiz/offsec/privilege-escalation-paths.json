@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "El análisis de rutas de ataque convierte un grafo oculto de permisos en una lista priorizada de correcciones.",
+      "h": "812e6726"
+    },
+    "questions.0.options.0": {
+      "t": "Ninguna",
+      "h": "04bdaaf2"
+    },
+    "questions.0.options.1": {
+      "t": "Puede mapear las rutas con las mismas herramientas y cortar primero las más cortas",
+      "h": "f043cd2b"
+    },
+    "questions.0.options.2": {
+      "t": "Las rutas no existen en la nube",
+      "h": "37972509"
+    },
+    "questions.0.options.3": {
+      "t": "Las rutas siempre son largas",
+      "h": "19184f88"
+    },
+    "questions.0.q": {
+      "t": "¿Cuál es la ventaja del defensor respecto a las rutas de ataque?",
+      "h": "28ae0b12"
+    },
+    "questions.1.explain": {
+      "t": "El derecho de pasar un rol puede ser el derecho de convertirse en él. Limítalo a roles y servicios específicos.",
+      "h": "93665b49"
+    },
+    "questions.1.options.0": {
+      "t": "Hace más lentos los despliegues",
+      "h": "cbcd41f4"
+    },
+    "questions.1.options.1": {
+      "t": "Puede permitir que un usuario ejecute algo con un rol más privilegiado",
+      "h": "3298838f"
+    },
+    "questions.1.options.2": {
+      "t": "Desactiva el registro de logs",
+      "h": "c011169a"
+    },
+    "questions.1.options.3": {
+      "t": "Rompe la facturación",
+      "h": "c97f4917"
+    },
+    "questions.1.q": {
+      "t": "¿Por qué iam:PassRole sobre todos los recursos es riesgoso?",
+      "h": "692a3929"
+    },
+    "questions.2.explain": {
+      "t": "Evita que una credencial robada de una máquina de baja confianza llegue a la cima.",
+      "h": "b3f683c6"
+    },
+    "questions.2.options.0": {
+      "t": "Los administradores trabajan en niveles salariales",
+      "h": "8e94efa6"
+    },
+    "questions.2.options.1": {
+      "t": "Las cuentas privilegiadas solo inician sesión en sistemas del mismo nivel, nunca en estaciones de trabajo ni en niveles inferiores",
+      "h": "6239a5cd"
+    },
+    "questions.2.options.2": {
+      "t": "Tres administradores por servidor",
+      "h": "6ed38e18"
+    },
+    "questions.2.options.3": {
+      "t": "Usar tres contraseñas",
+      "h": "dd004462"
+    },
+    "questions.2.q": {
+      "t": "¿Qué significa la administración por niveles?",
+      "h": "0556916d"
+    }
+  }
+}

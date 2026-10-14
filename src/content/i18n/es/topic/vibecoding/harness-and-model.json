@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "sections.0.bullets.0": {
+      "t": "Modelo: la red neuronal que predice el siguiente paso (Claude, GPT, Gemini, DeepSeek, Qwen y otros). Lee texto de entrada y produce texto de salida, incluidas solicitudes para llamar herramientas.",
+      "h": "83b290b6"
+    },
+    "sections.0.bullets.1": {
+      "t": "Harness: el programa que rodea al modelo. Arma el prompt, le da herramientas al modelo (leer un archivo, editar, ejecutar un comando, buscar, llamar a un servidor MCP), aplica permisos, gestiona el contexto y repite el loop hasta que la tarea termina. Claude Code, OpenCode, oh-my-pi y Codex CLI son harnesses.",
+      "h": "9b02170d"
+    },
+    "sections.0.bullets.2": {
+      "t": "Provider: dónde se ejecuta el modelo y cómo llegas a él: la API del propio proveedor, una nube (Bedrock, Vertex, Azure), un enrutador (OpenRouter) o tu propia máquina (Ollama, llama.cpp, vLLM).",
+      "h": "b6fb772e"
+    },
+    "sections.0.heading": {
+      "t": "Las tres capas",
+      "h": "274f0a23"
+    },
+    "sections.1.body.0": {
+      "t": "El harness decide qué ve el modelo y qué puede hacer. Dos herramientas con el mismo modelo pueden diferir mucho en cómo editan archivos (reescritura del archivo completo frente a ediciones puntuales), cuánto del repositorio cargan, si usan un language server para hallar definiciones, cómo se recuperan de un comando fallido y cómo comprimen una conversación larga. Los reportes de grandes diferencias de calidad entre herramientas con el mismo modelo suelen deberse a estos detalles, no al modelo.",
+      "h": "beed7877"
+    },
+    "sections.1.body.1": {
+      "t": "Lo inverso también es cierto: un harness ajustado para una familia de modelos puede rendir menos con otra, porque los prompts y los formatos de herramientas se adaptan a los hábitos de cada modelo.",
+      "h": "583dd021"
+    },
+    "sections.1.heading": {
+      "t": "Por qué el mismo modelo se siente distinto en dos herramientas",
+      "h": "990b794a"
+    },
+    "sections.2.bullets.0": {
+      "t": "Arma el contexto: system prompt, instrucciones del proyecto (CLAUDE.md o AGENTS.md), archivos abiertos, resultados de búsqueda, historial de la conversación.",
+      "h": "0e1e9ea6"
+    },
+    "sections.2.bullets.1": {
+      "t": "Expone herramientas con un schema: leer, escribir, editar, shell, buscar, fetch y cualquier servidor MCP que conectes.",
+      "h": "13f2a744"
+    },
+    "sections.2.bullets.2": {
+      "t": "Aplica permisos: qué comandos se ejecutan sin preguntar, qué rutas están prohibidas, si hay sandbox.",
+      "h": "5422a0aa"
+    },
+    "sections.2.bullets.3": {
+      "t": "Ejecuta el loop: el modelo propone una llamada a herramienta, el harness la ejecuta, el resultado vuelve al modelo, y se repite hasta terminar o detenerse.",
+      "h": "73c4c165"
+    },
+    "sections.2.bullets.4": {
+      "t": "Gestiona costo y contexto: caché, resumen de turnos antiguos, cambio a un modelo más barato para pasos pequeños.",
+      "h": "72a5a859"
+    },
+    "sections.2.heading": {
+      "t": "Qué hace realmente un harness",
+      "h": "4ae076d8"
+    },
+    "sections.3.body.0": {
+      "t": "Elige el harness por el flujo de trabajo (terminal o IDE, modelo de permisos, trabajo en paralelo, extensibilidad) y el modelo por el trabajo (calidad, velocidad, precio, privacidad). Los harnesses que soportan muchos providers permiten cambiar de modelo sin reaprender la herramienta; los atados a un solo proveedor pueden profundizar más en la integración. Ninguno es mejor universalmente. Los siguientes temas comparan las herramientas comunes y los trade-offs de los modelos.",
+      "h": "357c0f32"
+    },
+    "sections.3.heading": {
+      "t": "Por qué importa al elegir",
+      "h": "8edd99e1"
+    },
+    "short": {
+      "t": "las tres capas detrás de toda herramienta de código con IA, y por qué el mismo modelo se comporta distinto",
+      "h": "cc60410f"
+    },
+    "tagline": {
+      "t": "Un agent de código no es solo un modelo. Es un modelo más un harness (el programa que le da herramientas, contexto y reglas) al que se accede a través de un provider. Gran parte de la confusión en este campo viene de mezclar los tres.",
+      "h": "dbbf6514"
+    },
+    "title": {
+      "t": "Modelo, harness y provider",
+      "h": "cfb6a71b"
+    }
+  }
+}

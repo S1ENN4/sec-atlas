@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "A segurança existe para permitir que o negócio assuma riscos com segurança, então parte do que o negócio precisa proteger.",
+      "h": "1ff0cde8"
+    },
+    "questions.0.options.0": {
+      "t": "Pelas ferramentas mais novas",
+      "h": "a6b683b4"
+    },
+    "questions.0.options.1": {
+      "t": "Pelos objetivos de negócio, joias da coroa, obrigações e apetite a risco",
+      "h": "3ded1aff"
+    },
+    "questions.0.options.2": {
+      "t": "Pelo calendário de auditorias",
+      "h": "83dc8ae3"
+    },
+    "questions.0.options.3": {
+      "t": "Pelo orçamento",
+      "h": "b21fa1ef"
+    },
+    "questions.0.q": {
+      "t": "Por onde deve começar uma estratégia de segurança?",
+      "h": "84ca5faa"
+    },
+    "questions.1.explain": {
+      "t": "Uma estratégia é tanto sobre o que você não faz quanto sobre o que faz.",
+      "h": "8bcb3de9"
+    },
+    "questions.1.options.0": {
+      "t": "Para parecer humilde",
+      "h": "c926b192"
+    },
+    "questions.1.options.1": {
+      "t": "Prioridades são escolhas, e os riscos não tratados devem ser explícitos, ter responsável e ser revisados",
+      "h": "094b3f8a"
+    },
+    "questions.1.options.2": {
+      "t": "É uma regra legal",
+      "h": "6347e628"
+    },
+    "questions.1.options.3": {
+      "t": "Para encurtar o roadmap",
+      "h": "8c3322e6"
+    },
+    "questions.1.q": {
+      "t": "Por que um roadmap deve declarar o que é aceito por enquanto?",
+      "h": "c0dfef74"
+    },
+    "questions.2.explain": {
+      "t": "Ferramentas sem uso não protegem ninguém. Bases sólidas e pessoas qualificadas reduzem o risco em toda a linha.",
+      "h": "0ad554b2"
+    },
+    "questions.2.options.0": {
+      "t": "Outra ferramenta sobreposta",
+      "h": "02200ce3"
+    },
+    "questions.2.options.1": {
+      "t": "Bases e pessoas: inventário, identidade, logging, backups, treinamento e retenção",
+      "h": "1c223e10"
+    },
+    "questions.2.options.2": {
+      "t": "Um logotipo maior",
+      "h": "e82c050c"
+    },
+    "questions.2.options.3": {
+      "t": "Mais dashboards",
+      "h": "47fa37fb"
+    },
+    "questions.2.q": {
+      "t": "Qual gasto costuma dar o melhor retorno em uma equipe pequena?",
+      "h": "0bd08109"
+    }
+  }
+}

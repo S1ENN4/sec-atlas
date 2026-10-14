@@ -1,0 +1,88 @@
+{
+  "entries": {
+    "sections.0.bullets.0": {
+      "t": "Resumen ejecutivo: para lectores no técnicos. Qué se probó, el riesgo general en lenguaje claro, las pocas cosas que más importan y qué hacer primero.",
+      "h": "82ad7db6"
+    },
+    "sections.0.bullets.1": {
+      "t": "Alcance y método: qué estaba dentro y fuera del alcance, las fechas, el enfoque y cualquier limitación (lo que no pudiste probar).",
+      "h": "22306ea9"
+    },
+    "sections.0.bullets.2": {
+      "t": "Hallazgos: una entrada para cada uno, ordenados por severidad, con un id único.",
+      "h": "898d5b46"
+    },
+    "sections.0.bullets.3": {
+      "t": "Recomendaciones estratégicas: los patrones detrás de los hallazgos (por ejemplo, la ausencia de una capa central de autorización) y cómo corregir la causa, no solo las instancias.",
+      "h": "edc125da"
+    },
+    "sections.0.bullets.4": {
+      "t": "Apéndices: evidencias, salida de las herramientas y detalles de la metodología.",
+      "h": "1cc3e7e4"
+    },
+    "sections.0.heading": {
+      "t": "Estructura de un informe",
+      "h": "13f83e3f"
+    },
+    "sections.1.body.0": {
+      "t": "Cada hallazgo debe sostenerse por sí solo y ser reproducible por alguien que no estuvo allí.",
+      "h": "df356dd6"
+    },
+    "sections.1.code.0.code": {
+      "t": "## F-01  Autorización rota a nivel de objeto en /api/invoices/{id}\n\n**Severidad:** Alta (CVSS v3.1 8.1, AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N)\n**Afectado:** https://api.example.com/v2/invoices/{id}\n**Categoría:** OWASP API Security: Broken Object Level Authorization\n\n### Resumen\nCualquier usuario autenticado puede leer y modificar las facturas de cualquier cliente cambiando el id.\n\n### Impacto\nUn atacante con una cuenta gratuita puede leer los datos de facturación de todos los clientes y alterar los totales de las facturas. Afecta a todos los clientes.\n\n### Pasos para reproducir\n1. Inicia sesión como tester-a y anota el id de una factura (1041).\n2. Inicia sesión como tester-b y envía `GET /api/invoices/1041`.\n3. La respuesta es 200 con la factura de tester-a.\n\n### Evidencia\nevidence/F-01-request.txt, evidence/F-01-response.txt\n\n### Remediación\nAutoriza en el servidor por propiedad en cada solicitud (acota la consulta al usuario autenticado). Devuelve el mismo 404 para \"no encontrado\" y \"no es tuyo\". Agrega una prueba de regresión con dos usuarios.\n\n### Referencias\nOWASP Top 10 A01 Broken Access Control",
+      "h": "725caf0c"
+    },
+    "sections.1.code.0.filename": {
+      "t": "finding-template.md",
+      "h": "17755256"
+    },
+    "sections.1.heading": {
+      "t": "Un buen hallazgo",
+      "h": "9c1a5cc3"
+    },
+    "sections.2.body.0": {
+      "t": "CVSS da una puntuación técnica consistente, pero ignora tu contexto. Ajusta la severidad según la explotabilidad real, el valor de los datos y sistemas afectados, si hay controles compensatorios y si el problema ya se está explotando. Explica el razonamiento en el informe para que el cliente pueda priorizar, en lugar de copiar el número del escáner.",
+      "h": "3165fda6"
+    },
+    "sections.2.heading": {
+      "t": "Clasificando el riesgo",
+      "h": "52ac11af"
+    },
+    "sections.3.bullets.0": {
+      "t": "Presenta los hallazgos críticos a los ingenieros del cliente; una conversación resuelve dudas más rápido que un documento.",
+      "h": "ca84cba1"
+    },
+    "sections.3.bullets.1": {
+      "t": "Acuerda responsables y fechas, y da seguimiento a las correcciones en el propio issue tracker del cliente.",
+      "h": "4731cdfa"
+    },
+    "sections.3.bullets.2": {
+      "t": "Reteste: verifica que cada corrección realmente cierre el problema e informa el resultado. Es común que las correcciones solo bloqueen el caso de prueba exacto.",
+      "h": "fdfdf14b"
+    },
+    "sections.3.bullets.3": {
+      "t": "Maneja los datos: entrega el informe de forma segura y elimina o devuelve los datos del cliente según lo acordado.",
+      "h": "4b752c9c"
+    },
+    "sections.3.bullets.4": {
+      "t": "Retroalimenta las lecciones: las causas raíz recurrentes deben convertirse en guía de diseño, pruebas y capacitación.",
+      "h": "bd6fec56"
+    },
+    "sections.3.heading": {
+      "t": "Después del informe",
+      "h": "dcc3ff4b"
+    },
+    "short": {
+      "t": "el informe es el producto: impacto claro, evidencias reproducibles y correcciones que las personas pueden aplicar",
+      "h": "90aba02b"
+    },
+    "tagline": {
+      "t": "Un hallazgo que nadie entiende o sobre el que nadie actúa no tiene valor. Los mejores evaluadores escriben de modo que un ejecutivo vea el riesgo y un ingeniero pueda corregirlo en una tarde.",
+      "h": "d360bfd1"
+    },
+    "title": {
+      "t": "Reportar hallazgos y conducir la remediación",
+      "h": "13589fed"
+    }
+  }
+}

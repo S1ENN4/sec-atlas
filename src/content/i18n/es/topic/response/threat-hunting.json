@@ -1,0 +1,116 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "El threat hunting es una búsqueda proactiva, dirigida por personas, en tu telemetría de actividad que las detecciones automáticas no señalaron. Una cacería no es un barrido al azar: parte de una hipótesis sobre cómo podría estar operando un atacante en tu entorno, la contrasta con los datos y termina con un hallazgo o con un resultado negativo documentado y una mejor detección.",
+      "h": "b98f6230"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "f8c94a3b"
+    },
+    "sections.1.bullets.0": {
+      "t": "Hipótesis: una afirmación específica y comprobable, por ejemplo \"un atacante que robó una clave de nube llamaría a la API de secretos desde una red nueva\".",
+      "h": "a8d7ef7a"
+    },
+    "sections.1.bullets.1": {
+      "t": "Datos: identifica qué logs podrían confirmarla o refutarla, y si los recolectas. La falta de datos es en sí misma un hallazgo.",
+      "h": "12c209a8"
+    },
+    "sections.1.bullets.2": {
+      "t": "Consultar y analizar: ejecuta búsquedas, establece la línea base de lo normal e investiga los valores atípicos.",
+      "h": "301f4b4a"
+    },
+    "sections.1.bullets.3": {
+      "t": "Concluir: la actividad confirmada se convierte en un incidente; los patrones benignos se documentan; las brechas se vuelven tareas.",
+      "h": "c916d556"
+    },
+    "sections.1.bullets.4": {
+      "t": "Operacionalizar: convierte la cacería en una detección automatizada y sigue su tasa de falsos positivos.",
+      "h": "3212b372"
+    },
+    "sections.1.heading": {
+      "t": "El ciclo de la cacería",
+      "h": "ec0e61bc"
+    },
+    "sections.2.bullets.0": {
+      "t": "Técnicas de ATT&CK que importan para tu entorno y tienen poca cobertura de detección.",
+      "h": "e56d4246"
+    },
+    "sections.2.bullets.1": {
+      "t": "Inteligencia de amenazas sobre grupos que apuntan a tu industria y las técnicas que usan.",
+      "h": "bcacbc7d"
+    },
+    "sections.2.bullets.2": {
+      "t": "Incidentes recientes (propios y públicos) y lo que revelaron sobre puntos ciegos.",
+      "h": "3a25338d"
+    },
+    "sections.2.bullets.3": {
+      "t": "Anomalías: pares raros de proceso padre e hijo, horarios de inicio de sesión inusuales, herramientas y destinos vistos por primera vez.",
+      "h": "df200e6d"
+    },
+    "sections.2.heading": {
+      "t": "De dónde salen las hipótesis",
+      "h": "befca114"
+    },
+    "sections.3.body.0": {
+      "t": "Dos patrones clásicos escritos como SQL genérico sobre tablas de eventos normalizadas; tradúcelos al lenguaje de tu plataforma.",
+      "h": "fb8e2758"
+    },
+    "sections.3.code.0.code": {
+      "t": "-- Hipótesis: un documento malicioso lanza un intérprete de scripts\nSELECT ts, host, user, parent_image, image, command_line\nFROM process_events\nWHERE lower(parent_image) LIKE '%\\winword.exe'\n  AND (lower(image) LIKE '%\\cmd.exe' OR lower(image) LIKE '%\\powershell.exe'\n       OR lower(image) LIKE '%\\wscript.exe' OR lower(image) LIKE '%\\mshta.exe')\n  AND ts > now() - interval '30 days'\nORDER BY ts DESC;",
+      "h": "3e018889"
+    },
+    "sections.3.code.0.filename": {
+      "t": "office-spawning-a-shell.sql",
+      "h": "9e5f6739"
+    },
+    "sections.3.code.1.code": {
+      "t": "-- Hipótesis: beaconing hacia un destino que pocos hosts contactan\nSELECT dest_domain, count(DISTINCT host) AS hosts, count(*) AS connections\nFROM proxy_events\nWHERE ts > now() - interval '14 days'\nGROUP BY dest_domain\nHAVING count(DISTINCT host) <= 2 AND count(*) > 200\nORDER BY connections DESC;",
+      "h": "4848f4da"
+    },
+    "sections.3.code.1.filename": {
+      "t": "rare-outbound-destinations.sql",
+      "h": "0e6ad4ba"
+    },
+    "sections.3.heading": {
+      "t": "Ejemplos de cacerías",
+      "h": "07f6b159"
+    },
+    "sections.4.bullets.0": {
+      "t": "Documenta cada cacería: hipótesis, datos, consultas, resultado. Las cacerías son conocimiento reutilizable.",
+      "h": "77ed3eb3"
+    },
+    "sections.4.bullets.1": {
+      "t": "Mide el programa: cacerías completadas, detecciones creadas, brechas encontradas. No encontrar nada es un resultado válido.",
+      "h": "7e23ae2a"
+    },
+    "sections.4.bullets.2": {
+      "t": "Establece la línea base antes de marcar algo: raro no es lo mismo que malicioso.",
+      "h": "6b85cde3"
+    },
+    "sections.4.bullets.3": {
+      "t": "Colabora con ingenieros de detección y respondedores; la salida de una cacería es su entrada.",
+      "h": "654b4d32"
+    },
+    "sections.4.bullets.4": {
+      "t": "Mantente dentro de las reglas de autorización y privacidad al consultar la actividad de los usuarios.",
+      "h": "1256b4b0"
+    },
+    "sections.4.heading": {
+      "t": "Hacerlo bien",
+      "h": "53cb5189"
+    },
+    "short": {
+      "t": "buscar atacantes que tus alertas no detectaron, a partir de una hipótesis",
+      "h": "d3be6829"
+    },
+    "tagline": {
+      "t": "La detección espera a que se dispare una regla. El hunting asume que algo ya puede estar adentro y busca la evidencia, y luego convierte lo que encuentra en detecciones permanentes.",
+      "h": "b4a09726"
+    },
+    "title": {
+      "t": "Threat hunting",
+      "h": "d6f65409"
+    }
+  }
+}

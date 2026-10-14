@@ -1,0 +1,148 @@
+{
+  "entries": {
+    "graph.0.label": {
+      "t": "alimenta",
+      "h": "56222773"
+    },
+    "graph.1.label": {
+      "t": "está estructurado por",
+      "h": "e7b05f61"
+    },
+    "graph.2.label": {
+      "t": "se implementa mediante",
+      "h": "d8cd470b"
+    },
+    "graph.3.label": {
+      "t": "se evidencia con",
+      "h": "9cc58a7e"
+    },
+    "graph.4.label": {
+      "t": "aporta datos a",
+      "h": "ca64136e"
+    },
+    "graph.5.label": {
+      "t": "informa a",
+      "h": "17160d2b"
+    },
+    "graph.6.label": {
+      "t": "incluye",
+      "h": "01c7ed68"
+    },
+    "pipeline.0.description": {
+      "t": "saber qué puede salir mal y por quién puede llegar",
+      "h": "e896f528"
+    },
+    "pipeline.0.gate": {
+      "t": "todo riesgo importante tiene un responsable, una calificación y una decisión",
+      "h": "a33c8e2a"
+    },
+    "pipeline.0.items.0.label": {
+      "t": "riesgos con responsables y tratamiento",
+      "h": "7aaa5366"
+    },
+    "pipeline.0.items.1.label": {
+      "t": "proveedores, socios y dependencias",
+      "h": "cfcaf4b4"
+    },
+    "pipeline.0.name": {
+      "t": "identificar",
+      "h": "9bf0f8ff"
+    },
+    "pipeline.1.description": {
+      "t": "marcos y arquitectura que escalan",
+      "h": "d825f088"
+    },
+    "pipeline.1.gate": {
+      "t": "los controles se diseñan una vez, como patrones, y se mapean a los requisitos",
+      "h": "1ab329ea"
+    },
+    "pipeline.1.items.0.label": {
+      "t": "ISO 27001, NIST CSF, CIS, PCI DSS",
+      "h": "34f29aec"
+    },
+    "pipeline.1.items.1.label": {
+      "t": "zero trust y patrones reutilizables",
+      "h": "a84f0763"
+    },
+    "pipeline.1.name": {
+      "t": "diseñar",
+      "h": "056f1182"
+    },
+    "pipeline.2.description": {
+      "t": "mostrar que los controles funcionan",
+      "h": "9972d456"
+    },
+    "pipeline.2.gate": {
+      "t": "las evidencias se producen de forma continua y las métricas informan las decisiones",
+      "h": "bfee2398"
+    },
+    "pipeline.2.items.0.label": {
+      "t": "evidencias y auditorías",
+      "h": "9fd8f602"
+    },
+    "pipeline.2.items.1.label": {
+      "t": "métricas de resultado e informes al directorio",
+      "h": "e6f941de"
+    },
+    "pipeline.2.name": {
+      "t": "demostrar",
+      "h": "82ffc943"
+    },
+    "pipeline.3.description": {
+      "t": "decidir, comunicar, construir cultura",
+      "h": "787550fb"
+    },
+    "pipeline.3.gate": {
+      "t": "la dirección entiende el riesgo, financia el plan y confía en el equipo",
+      "h": "d9b1cb48"
+    },
+    "pipeline.3.items.0.label": {
+      "t": "estrategia, hoja de ruta y presupuesto",
+      "h": "e8c0de0c"
+    },
+    "pipeline.3.items.1.label": {
+      "t": "comunicación de crisis y cultura",
+      "h": "978af6a8"
+    },
+    "pipeline.3.name": {
+      "t": "liderar",
+      "h": "8cb33b27"
+    },
+    "relations.0.label": {
+      "t": "está estructurado por",
+      "h": "e7b05f61"
+    },
+    "relations.1.label": {
+      "t": "alimenta",
+      "h": "56222773"
+    },
+    "relations.2.label": {
+      "t": "se implementa mediante",
+      "h": "d8cd470b"
+    },
+    "relations.3.label": {
+      "t": "se evidencia con",
+      "h": "9cc58a7e"
+    },
+    "relations.4.label": {
+      "t": "vuelve automática la evidencia",
+      "h": "ffb18bbf"
+    },
+    "relations.5.label": {
+      "t": "aporta datos a",
+      "h": "ca64136e"
+    },
+    "relations.6.label": {
+      "t": "informa a",
+      "h": "17160d2b"
+    },
+    "relations.7.label": {
+      "t": "define prioridades para",
+      "h": "635dcb5d"
+    },
+    "relations.8.label": {
+      "t": "incluye",
+      "h": "01c7ed68"
+    }
+  }
+}

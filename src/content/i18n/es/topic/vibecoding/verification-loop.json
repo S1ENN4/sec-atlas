@@ -1,0 +1,120 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Un loop de verificación es el conjunto de comprobaciones que todo cambio pasa antes de ser considerado confiable, sin importar quién lo escribió. Con código escrito por IA el loop importa más, porque el volumen es mayor y los errores son plausibles: nombres de función inventados, comportamiento alterado en silencio, pruebas reescritas para que pasen, casos límite ausentes.",
+      "h": "233bbd60"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "f8c94a3b"
+    },
+    "sections.1.bullets.0": {
+      "t": "Primero las pruebas: escribe o aprueba la prueba antes de la implementación, para que una prueba fallida defina qué es \"terminado\". Pide al agent que la ejecute y muestre la salida.",
+      "h": "4436e1cb"
+    },
+    "sections.1.bullets.1": {
+      "t": "Lee el diff: no el resumen del agent, el cambio real. Mira qué tocó más allá de lo pedido, pruebas eliminadas, aserciones relajadas, nuevas dependencias y configuración modificada.",
+      "h": "a4f507ae"
+    },
+    "sections.1.bullets.2": {
+      "t": "Gates automatizados en CI: lint, tipos, pruebas unitarias y de integración, SAST, escaneo de dependencias y de secretos. Corren en cada pull request sin importar el autor.",
+      "h": "2f3e7a49"
+    },
+    "sections.1.bullets.3": {
+      "t": "Revisión independiente: pide a otro modelo, o a una persona, que revise con contexto nuevo y sin memoria del razonamiento del autor.",
+      "h": "eebaf73a"
+    },
+    "sections.1.bullets.4": {
+      "t": "Ejecútalo: para cualquier cosa de cara al usuario, ejecuta el flujo real en lugar de confiar en que el código compila.",
+      "h": "1310d886"
+    },
+    "sections.1.heading": {
+      "t": "Capas de verificación",
+      "h": "6fd8b6f4"
+    },
+    "sections.2.bullets.0": {
+      "t": "APIs y paquetes alucinados: la llamada o la biblioteca no existe, o existe con otro nombre (y un atacante pudo haber registrado el nombre inventado).",
+      "h": "ce5e8ab6"
+    },
+    "sections.2.bullets.1": {
+      "t": "Pruebas que no demuestran nada: aserciones sobre mocks, snapshots actualizados para coincidir con el bug o pruebas eliminadas para poner el build en verde.",
+      "h": "d7f87cec"
+    },
+    "sections.2.bullets.2": {
+      "t": "Solo el camino feliz: sin manejo de entrada vacía, timeouts, concurrencia o entrada hostil.",
+      "h": "08b0db44"
+    },
+    "sections.2.bullets.3": {
+      "t": "Valores por defecto inseguros: SQL armado con strings, verificación TLS desactivada, CORS amplio, secretos hard-coded, falta de verificaciones de autorización.",
+      "h": "74888404"
+    },
+    "sections.2.bullets.4": {
+      "t": "Scope creep: refactors no relacionados mezclados con el cambio, que ocultan el diff real.",
+      "h": "b4650393"
+    },
+    "sections.2.heading": {
+      "t": "Modos de falla comunes del código generado",
+      "h": "e4cd70dc"
+    },
+    "sections.3.body.0": {
+      "t": "Haz que las verificaciones sean obligatorias y automáticas. El workflow de abajo corre en cada pull request y bloquea el merge cuando falla cualquier paso; es el mismo para autores humanos y agents.",
+      "h": "dc4288f2"
+    },
+    "sections.3.code.0.code": {
+      "t": "name: verify\non: pull_request\npermissions:\n  contents: read\njobs:\n  verify:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@<full-commit-sha>\n      - uses: actions/setup-node@<full-commit-sha>\n        with: { node-version: 22 }\n      - run: npm ci --ignore-scripts\n      - run: npm run lint && npm run typecheck\n      - run: npm test -- --coverage\n      - run: npx semgrep --config p/owasp-top-ten --error src/\n      - run: npx osv-scanner --lockfile=package-lock.json",
+      "h": "ccfd234d"
+    },
+    "sections.3.code.0.filename": {
+      "t": ".github/workflows/verify.yml",
+      "h": "00920853"
+    },
+    "sections.3.code.1.code": {
+      "t": "# el .pre-commit-config.yaml ejecuta esto antes de cada commit, incluidos los de agents\ngitleaks protect --staged --redact\nnpm run lint --silent\nnpm test --silent -- --bail",
+      "h": "6da893ba"
+    },
+    "sections.3.code.1.filename": {
+      "t": "pre-commit (local, rápido)",
+      "h": "59669f9c"
+    },
+    "sections.3.heading": {
+      "t": "Un gate que puedes copiar",
+      "h": "0898be0e"
+    },
+    "sections.4.bullets.0": {
+      "t": "Nunca aceptes un cambio que no podrías explicar a un compañero.",
+      "h": "1c318813"
+    },
+    "sections.4.bullets.1": {
+      "t": "Mantén los cambios lo bastante pequeños como para revisarlos en minutos.",
+      "h": "7d897834"
+    },
+    "sections.4.bullets.2": {
+      "t": "Protege las pruebas: exige revisión para ediciones en archivos de prueba y en la configuración de CI.",
+      "h": "a72531a8"
+    },
+    "sections.4.bullets.3": {
+      "t": "Pide al agent que enumere sus supuestos y lo que no probó.",
+      "h": "9ba42d7e"
+    },
+    "sections.4.bullets.4": {
+      "t": "Mide la calidad de las pruebas, no solo la cobertura: el mutation testing muestra si las pruebas detectarían un cambio roto.",
+      "h": "c2a37107"
+    },
+    "sections.4.heading": {
+      "t": "Hábitos",
+      "h": "45ab397b"
+    },
+    "short": {
+      "t": "pruebas, diffs, revisión y gates de CI: confiar en la salida de la IA solo hasta donde puedas comprobarla",
+      "h": "c3bbacbc"
+    },
+    "tagline": {
+      "t": "El código generado parece seguro de sí mismo esté bien o mal. La única defensa confiable es un loop que lo verifique: pruebas que deciden, un diff que tú lees y gates que corren sin importar quién escribió el código.",
+      "h": "84bb23f8"
+    },
+    "title": {
+      "t": "El loop de verificación",
+      "h": "79db82ef"
+    }
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Security misconfiguration es cualquier brecha entre cómo está configurado un sistema y cómo debería estarlo: funciones innecesarias habilitadas, cuentas por defecto sin tocar, modo debug en producción, headers de seguridad ausentes, permisos de nube permisivos o stack traces mostrados a los usuarios.",
+      "h": "7d59b310"
+    },
+    "sections.0.body.1": {
+      "t": "Es el A02 en el OWASP Top 10:2025 porque está en todas partes y es barato de encontrar: los atacantes escanean todo internet en busca de los mismos pocos errores.",
+      "h": "9c638fef"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "f8c94a3b"
+    },
+    "sections.1.bullets.0": {
+      "t": "Un framework dejado en modo debug expone una consola interactiva o stack traces completos con rutas de archivos y secretos.",
+      "h": "f567a846"
+    },
+    "sections.1.bullets.1": {
+      "t": "Un bucket de almacenamiento, una base de datos o un panel de administración es accesible desde internet con credenciales por defecto o sin ellas.",
+      "h": "fd3932bc"
+    },
+    "sections.1.bullets.2": {
+      "t": "El listado de directorios o un /.git, /.env o archivo de respaldo olvidado filtra código fuente y claves.",
+      "h": "3bfc2936"
+    },
+    "sections.1.bullets.3": {
+      "t": "Los parsers XML con entidades externas habilitadas permiten que un documento manipulado lea archivos locales.",
+      "h": "f28b28fd"
+    },
+    "sections.1.bullets.4": {
+      "t": "Un CORS permisivo (origen comodín con credenciales) permite que cualquier sitio web llame a la API como la víctima.",
+      "h": "e1987386"
+    },
+    "sections.1.heading": {
+      "t": "Cómo funciona el ataque",
+      "h": "4443eb22"
+    },
+    "sections.2.body.0": {
+      "t": "Tres formas comunes: debug activado, CORS comodín con credenciales y un contenedor público que expone una base de datos.",
+      "h": "0c6d79fe"
+    },
+    "sections.2.code.0.code": {
+      "t": "app = Flask(__name__)\napp.config[\"DEBUG\"] = True            # depurador interactivo accesible en producción\nCORS(app, origins=\"*\", supports_credentials=True)",
+      "h": "c5435e74"
+    },
+    "sections.2.code.0.filename": {
+      "t": "app.py (Flask)",
+      "h": "10acf9d8"
+    },
+    "sections.2.code.1.code": {
+      "t": "services:\n  db:\n    image: postgres:latest\n    ports:\n      - \"5432:5432\"            # publicado en todas las interfaces\n    environment:\n      POSTGRES_PASSWORD: postgres",
+      "h": "d6889f29"
+    },
+    "sections.2.code.1.filename": {
+      "t": "docker-compose.yml",
+      "h": "35b8c13c"
+    },
+    "sections.2.code.2.code": {
+      "t": "resource \"aws_s3_bucket_public_access_block\" \"assets\" {\n  bucket                  = aws_s3_bucket.assets.id\n  block_public_acls       = false\n  block_public_policy     = false\n}",
+      "h": "e208d667"
+    },
+    "sections.2.code.2.filename": {
+      "t": "bucket.tf",
+      "h": "dc4ffe32"
+    },
+    "sections.2.heading": {
+      "t": "Configuración vulnerable",
+      "h": "4d1f44aa"
+    },
+    "sections.3.body.0": {
+      "t": "Haz que la configuración segura sea la predeterminada y constrúyela una vez: una imagen base endurecida, un módulo de configuración revisado y los mismos ajustes en todos los entornos, aplicados desde código. Elimina lo que no uses.",
+      "h": "48871366"
+    },
+    "sections.3.code.0.code": {
+      "t": "app = Flask(__name__)\napp.config[\"DEBUG\"] = os.environ.get(\"APP_ENV\") == \"development\"\nCORS(app, origins=[\"https://app.example.com\"], supports_credentials=True)\n\n@app.after_request\ndef set_headers(resp):\n    resp.headers[\"Strict-Transport-Security\"] = \"max-age=31536000; includeSubDomains\"\n    resp.headers[\"X-Content-Type-Options\"] = \"nosniff\"\n    resp.headers[\"Content-Security-Policy\"] = \"default-src 'self'\"\n    return resp",
+      "h": "ce0ae0bc"
+    },
+    "sections.3.code.0.filename": {
+      "t": "app.py",
+      "h": "13cce7fd"
+    },
+    "sections.3.code.1.code": {
+      "t": "services:\n  db:\n    image: postgres:16\n    expose:\n      - \"5432\"                 # accesible solo para otros servicios de la red\n    environment:\n      POSTGRES_PASSWORD_FILE: /run/secrets/db_password\n    secrets:\n      - db_password",
+      "h": "07b433b5"
+    },
+    "sections.3.code.1.filename": {
+      "t": "docker-compose.yml",
+      "h": "35b8c13c"
+    },
+    "sections.3.code.2.code": {
+      "t": "resource \"aws_s3_bucket_public_access_block\" \"assets\" {\n  bucket                  = aws_s3_bucket.assets.id\n  block_public_acls       = true\n  block_public_policy     = true\n  ignore_public_acls      = true\n  restrict_public_buckets = true\n}",
+      "h": "591561eb"
+    },
+    "sections.3.code.2.filename": {
+      "t": "bucket.tf",
+      "h": "dc4ffe32"
+    },
+    "sections.3.heading": {
+      "t": "La corrección",
+      "h": "7188b1fb"
+    },
+    "sections.4.body.0": {
+      "t": "La mala configuración se verifica escaneando, no leyendo código. Ejecuta un scanner de configuración en el CI contra IaC e imágenes, y ejecuta una pequeña verificación contra la app desplegada. La prueba rompe el build cuando un valor seguro por defecto regresa a su estado inseguro.",
+      "h": "93948198"
+    },
+    "sections.4.code.0.code": {
+      "t": "# 1. código de infraestructura: fallar con recursos mal configurados\ncheckov -d infra/ --quiet --compact\n\n# 2. imagen de contenedor: fallar con hallazgos HIGH/CRITICAL\ntrivy image --exit-code 1 --severity HIGH,CRITICAL registry.example.com/app:$GIT_SHA\n\n# 3. app desplegada: los headers requeridos deben estar presentes\ncurl -sI https://staging.example.com | grep -qi '^strict-transport-security:' || exit 1\ncurl -sI https://staging.example.com | grep -qi '^content-security-policy:' || exit 1",
+      "h": "26103437"
+    },
+    "sections.4.code.0.filename": {
+      "t": "ci-checks.sh",
+      "h": "2513a9bc"
+    },
+    "sections.4.code.1.code": {
+      "t": "def test_debug_is_off_in_production(monkeypatch):\n    monkeypatch.setenv(\"APP_ENV\", \"production\")\n    assert create_app().config[\"DEBUG\"] is False\n\ndef test_cors_does_not_allow_any_origin(client):\n    resp = client.options(\"/api/me\", headers={\"Origin\": \"https://evil.example\"})\n    assert resp.headers.get(\"Access-Control-Allow-Origin\") != \"*\"",
+      "h": "f7d12008"
+    },
+    "sections.4.code.1.filename": {
+      "t": "test_config.py (pytest)",
+      "h": "d71d7706"
+    },
+    "sections.4.heading": {
+      "t": "Demuestra la corrección",
+      "h": "665c8226"
+    },
+    "sections.5.bullets.0": {
+      "t": "Un proceso de hardening repetible y automatizado para cada entorno; nada de servidores ajustados a mano.",
+      "h": "2d36c20f"
+    },
+    "sections.5.bullets.1": {
+      "t": "Elimina funciones sin uso, apps de ejemplo, cuentas por defecto y puertos abiertos.",
+      "h": "dc52f15c"
+    },
+    "sections.5.bullets.2": {
+      "t": "Envía los headers de seguridad que apliquen (HSTS, CSP, X-Content-Type-Options, protección contra frames).",
+      "h": "6f0029c5"
+    },
+    "sections.5.bullets.3": {
+      "t": "Muestra errores genéricos a los usuarios; envía los detalles a los logs, no a la respuesta.",
+      "h": "6f336ab1"
+    },
+    "sections.5.bullets.4": {
+      "t": "Revisa los permisos de nube y la exposición del almacenamiento de forma continua, no una sola vez.",
+      "h": "cd557c68"
+    },
+    "sections.5.bullets.5": {
+      "t": "Trata la configuración como código: revisada, versionada, escaneada.",
+      "h": "ca9ef2e9"
+    },
+    "sections.5.heading": {
+      "t": "Checklist",
+      "h": "61b29464"
+    },
+    "short": {
+      "t": "software seguro, entregado con configuraciones inseguras",
+      "h": "dd283cf0"
+    },
+    "tagline": {
+      "t": "Los valores por defecto se hacen para la comodidad, no para internet. Una bandera de debug, un bucket abierto, un error detallado o una contraseña por defecto convierten código correcto en un incidente.",
+      "h": "3cb2086e"
+    },
+    "title": {
+      "t": "A02 Security Misconfiguration",
+      "h": "52613921"
+    }
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "entries": {
+    "sections.0.bullets.0": {
+      "t": "Phishing: uma mensagem enganosa (e-mail, SMS, chat) que leva a vítima a clicar, inserir credenciais ou executar algo.",
+      "h": "a06250f2"
+    },
+    "sections.0.bullets.1": {
+      "t": "Spear phishing e business email compromise: mensagens pesquisadas e direcionadas, muitas vezes se passando por um executivo ou fornecedor para desviar um pagamento.",
+      "h": "b684805e"
+    },
+    "sections.0.bullets.2": {
+      "t": "Vishing e smishing: o mesmo por ligação telefônica ou mensagem de texto, incluindo falsas chamadas de suporte.",
+      "h": "43113ab3"
+    },
+    "sections.0.bullets.3": {
+      "t": "Pretexting: um cenário inventado que faz um pedido parecer legítimo.",
+      "h": "a4d2a7e7"
+    },
+    "sections.0.bullets.4": {
+      "t": "MFA fatigue e kits adversary-in-the-middle: enviar repetidos pedidos de aprovação, ou retransmitir um login ao vivo para roubar a sessão.",
+      "h": "f14ccccd"
+    },
+    "sections.0.bullets.5": {
+      "t": "Físico: tailgating, dispositivos deixados de isca, personificação de funcionários.",
+      "h": "eb9ee4a2"
+    },
+    "sections.0.heading": {
+      "t": "Como os ataques funcionam",
+      "h": "846baad8"
+    },
+    "sections.1.bullets.0": {
+      "t": "Autenticação multifator resistente a phishing (chaves de segurança FIDO2 ou passkeys): a credencial só funciona no site real, então uma página parecida não obtém nada.",
+      "h": "85cbb184"
+    },
+    "sections.1.bullets.1": {
+      "t": "Autenticação de e-mail para que ninguém consiga forjar o seu domínio: SPF, DKIM e DMARC com política de aplicação.",
+      "h": "b9370d80"
+    },
+    "sections.1.bullets.2": {
+      "t": "Filtragem e sandbox de anexos e links, e avisos para remetentes externos.",
+      "h": "5550d7de"
+    },
+    "sections.1.bullets.3": {
+      "t": "Controles de processo para dinheiro e acesso: um segundo canal para confirmar mudanças de pagamento, regras de aprovação para pedidos sensíveis.",
+      "h": "f05bdc61"
+    },
+    "sections.1.bullets.4": {
+      "t": "Privilégio mínimo e detecção em endpoints, para que um clique não vire uma violação.",
+      "h": "d0008969"
+    },
+    "sections.1.code.0.code": {
+      "t": "example.com.            TXT  \"v=spf1 include:_spf.mail-provider.example -all\"\n_dmarc.example.com.     TXT  \"v=DMARC1; p=reject; rua=mailto:dmarc-reports@example.com; adkim=s; aspf=s\"\nselector1._domainkey.example.com.  TXT  \"v=DKIM1; k=rsa; p=<public key>\"",
+      "h": "47bb0ca9"
+    },
+    "sections.1.code.0.filename": {
+      "t": "Registros DNS (example.com)",
+      "h": "e97bcc37"
+    },
+    "sections.1.heading": {
+      "t": "Controles que não dependem de um julgamento perfeito",
+      "h": "d753d766"
+    },
+    "sections.2.bullets.0": {
+      "t": "Somente com autorização por escrito, escopo definido e aprovação de RH e jurídico; muitas jurisdições têm regras sobre testes com funcionários.",
+      "h": "e76bb932"
+    },
+    "sections.2.bullets.1": {
+      "t": "Foque em aprender, não em punir: nunca exponha nomes e não use cenários cruéis (falsos bônus, falsas demissões, emergências familiares).",
+      "h": "ede64c10"
+    },
+    "sections.2.bullets.2": {
+      "t": "Meça o que importa: a taxa de reporte e o tempo para reportar importam mais do que a taxa de cliques. Uma cultura em que as pessoas reportam rápido é um controle de detecção.",
+      "h": "d0a386d2"
+    },
+    "sections.2.bullets.3": {
+      "t": "Facilite o reporte: um botão, uma resposta rápida e amigável, e agradecimento pelos reportes (incluindo falsos alarmes).",
+      "h": "0f0a9a04"
+    },
+    "sections.2.bullets.4": {
+      "t": "Dê orientação curta, específica e na hora certa a quem clica, em vez de treinamentos longos e obrigatórios.",
+      "h": "15cc32a5"
+    },
+    "sections.2.heading": {
+      "t": "Simulações feitas de forma ética",
+      "h": "f5aac2f2"
+    },
+    "sections.3.body.0": {
+      "t": "Assuma que alguém, mais cedo ou mais tarde, vai inserir credenciais em uma página falsa. Torne isso sobrevivível: MFA resistente a phishing, procedimentos de revogação de sessões e tokens, revisão de regras de caixa de entrada, detecção de logins anômalos e uma resposta ensaiada para contas comprometidas e fraude de pagamento.",
+      "h": "ac9643a6"
+    },
+    "sections.3.heading": {
+      "t": "Preparando-se para o dia em que funciona",
+      "h": "25c468d6"
+    },
+    "short": {
+      "t": "a superfície de ataque humana: como funciona, como simulá-la de forma ética e os controles que funcionam",
+      "h": "2ceed868"
+    },
+    "tagline": {
+      "t": "As pessoas não são o elo mais fraco; são o alvo de um adversário habilidoso que explora confiança e urgência. Controles técnicos que não dependem de um julgamento humano perfeito são a defesa mais forte.",
+      "h": "a583cc7f"
+    },
+    "title": {
+      "t": "Engenharia social e defesa contra phishing",
+      "h": "d017333b"
+    }
+  }
+}

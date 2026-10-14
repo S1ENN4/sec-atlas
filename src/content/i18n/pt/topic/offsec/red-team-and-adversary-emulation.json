@@ -1,0 +1,104 @@
+{
+  "entries": {
+    "sections.0.bullets.0": {
+      "t": "Teste de intrusão: cobertura ampla de fraquezas em um escopo definido, em geral anunciado aos defensores, com tempo limitado e uma lista de achados.",
+      "h": "f1daecd8"
+    },
+    "sections.0.bullets.1": {
+      "t": "Red team: baseado em objetivos (por exemplo, chegar ao banco de dados de clientes ou assumir o provedor de identidade), encoberto, mais longo e voltado para a organização inteira: pessoas, processos e tecnologia.",
+      "h": "b162485f"
+    },
+    "sections.0.bullets.2": {
+      "t": "Purple team: red e blue trabalham juntos às claras. O lado red executa uma técnica, o lado blue verifica se ela foi detectada e as lacunas são corrigidas na hora. A forma mais rápida de melhorar a detecção.",
+      "h": "f0d2419d"
+    },
+    "sections.0.bullets.3": {
+      "t": "Emulação de adversário: um exercício red ou purple que reproduz o comportamento documentado de um agente de ameaça específico e relevante para você.",
+      "h": "6032d1f9"
+    },
+    "sections.0.heading": {
+      "t": "Como se diferenciam",
+      "h": "277bf197"
+    },
+    "sections.1.body.0": {
+      "t": "Combine primeiro os objetivos e as regras, execute a cadeia de técnicas e depois dedique mais tempo ao que foi e ao que não foi detectado.",
+      "h": "b49d6621"
+    },
+    "sections.1.bullets.0": {
+      "t": "Escolha o adversário e o cenário com base em threat intelligence: quem ataca o seu setor e quais técnicas usa.",
+      "h": "819650e5"
+    },
+    "sections.1.bullets.1": {
+      "t": "Defina objetivos e critérios de sucesso, um pequeno grupo de controle que sabe do exercício (o white cell) e as regras: ações proibidas, paradas de segurança e um processo de deconfliction para que um incidente real nunca seja confundido com o exercício.",
+      "h": "618ba182"
+    },
+    "sections.1.bullets.2": {
+      "t": "Emule as técnicas em ordem, usando seus identificadores ATT&CK, e registre para cada uma: o que foi feito, quando e qual telemetria deveria gerar.",
+      "h": "c3af98d5"
+    },
+    "sections.1.bullets.3": {
+      "t": "Faça o debrief com abertura: quais etapas foram prevenidas, detectadas, alertadas, investigadas e contidas, e quanto tempo levou cada uma.",
+      "h": "a7e88018"
+    },
+    "sections.1.bullets.4": {
+      "t": "Transforme as lacunas em trabalho: novas detecções, hardening e mudanças nos playbooks, e depois reteste.",
+      "h": "5c799de9"
+    },
+    "sections.1.heading": {
+      "t": "Executando um exercício",
+      "h": "c6199bb1"
+    },
+    "sections.2.body.0": {
+      "t": "Uma tabela simples mantém o exercício honesto e se transforma em um mapa de cobertura.",
+      "h": "5fc6a45c"
+    },
+    "sections.2.code.0.code": {
+      "t": "attack_id,technique,executed_at_utc,expected_telemetry,detected,alert_fired,time_to_detect,action\nT1059.001,execução de PowerShell,2026-11-05T10:02Z,process_creation + script block log,sim,sim,2m,ajustar severidade do alerta\nT1003,tentativa de credential dumping,2026-11-05T10:20Z,acesso ao LSASS,parcial,não,n/d,adicionar regra de EDR + detecção Sigma\nT1021.001,movimento lateral via Remote Desktop,2026-11-05T10:45Z,logon type 10 + nova origem,não,não,n/d,habilitar logging no jump host; escrever detecção",
+      "h": "19617905"
+    },
+    "sections.2.code.0.filename": {
+      "t": "purple-team-log.csv",
+      "h": "0f945800"
+    },
+    "sections.2.heading": {
+      "t": "Um log de purple team",
+      "h": "705bc57f"
+    },
+    "sections.3.bullets.0": {
+      "t": "O objetivo é uma defesa mais forte. Um red team que nunca compartilha suas técnicas com o blue team está desperdiçando o exercício.",
+      "h": "aa48ebbd"
+    },
+    "sections.3.bullets.1": {
+      "t": "Realismo com segurança: emule o comportamento sem causar dano e mantenha controles para interromper o exercício instantaneamente.",
+      "h": "9d46af3c"
+    },
+    "sections.3.bullets.2": {
+      "t": "Use frameworks públicos e procedimentos de teste benignos para a emulação, não malware customizado, a menos que o escopo e a base legal o cubram explicitamente.",
+      "h": "d25328dc"
+    },
+    "sections.3.bullets.3": {
+      "t": "As regras legais e éticas do primeiro tópico se aplicam aqui com ainda mais força: autorização, escopo, tratamento mínimo de dados e relatório honesto.",
+      "h": "858492e2"
+    },
+    "sections.3.bullets.4": {
+      "t": "Meça a melhoria ao longo do tempo: cobertura de detecção, tempo para detectar, tempo para conter.",
+      "h": "116a7208"
+    },
+    "sections.3.heading": {
+      "t": "Princípios",
+      "h": "4a8cf080"
+    },
+    "short": {
+      "t": "testar se as pessoas e a detecção conseguem parar um adversário realista, e não apenas se um bug existe",
+      "h": "e8c2e586"
+    },
+    "tagline": {
+      "t": "Um teste de intrusão pergunta o que é vulnerável. Um red team pergunta se você notaria e pararia um adversário determinado perseguindo um objetivo. O ponto é melhorar a detecção e a resposta, não vencer.",
+      "h": "24daf8ea"
+    },
+    "title": {
+      "t": "Red team, purple team e emulação de adversário",
+      "h": "db9e297d"
+    }
+  }
+}

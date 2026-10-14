@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Las contraseñas necesitan un hash lento, con salt y diseñado para ese fin. El cifrado es reversible y los hashes rápidos son baratos de romper por fuerza bruta.",
+      "h": "94f17062"
+    },
+    "questions.0.options.0": {
+      "t": "MD5 con salt",
+      "h": "f041e53b"
+    },
+    "questions.0.options.1": {
+      "t": "SHA-256 de la contraseña",
+      "h": "e183c571"
+    },
+    "questions.0.options.2": {
+      "t": "Argon2id, scrypt o bcrypt mediante una biblioteca mantenida",
+      "h": "a818b0d0"
+    },
+    "questions.0.options.3": {
+      "t": "Cifrado AES con una clave compartida",
+      "h": "97be3d97"
+    },
+    "questions.0.q": {
+      "t": "¿Cuál es la forma correcta de almacenar contraseñas?",
+      "h": "14f7429c"
+    },
+    "questions.1.explain": {
+      "t": "Los tokens de seguridad deben ser impredecibles, algo que solo un CSPRNG garantiza.",
+      "h": "67b26847"
+    },
+    "questions.1.options.0": {
+      "t": "Math.random()",
+      "h": "0ab0041a"
+    },
+    "questions.1.options.1": {
+      "t": "Un timestamp",
+      "h": "8c56abe5"
+    },
+    "questions.1.options.2": {
+      "t": "El generador aleatorio criptográfico del sistema operativo",
+      "h": "7dacbae5"
+    },
+    "questions.1.options.3": {
+      "t": "El id del usuario más un contador",
+      "h": "6b0d6e98"
+    },
+    "questions.1.q": {
+      "t": "¿Qué fuente es aceptable para un token de restablecimiento de contraseña?",
+      "h": "52fe5020"
+    },
+    "questions.2.explain": {
+      "t": "Sin autenticación, un atacante puede modificar el texto cifrado y a veces averiguar el texto original.",
+      "h": "358be7cf"
+    },
+    "questions.2.options.0": {
+      "t": "Es el único que funciona con TLS",
+      "h": "7702dafd"
+    },
+    "questions.2.options.1": {
+      "t": "Detecta la manipulación del texto cifrado",
+      "h": "e1bf6a25"
+    },
+    "questions.2.options.2": {
+      "t": "Produce una salida más pequeña",
+      "h": "99530d88"
+    },
+    "questions.2.options.3": {
+      "t": "No necesita clave",
+      "h": "ac3ce1f7"
+    },
+    "questions.2.q": {
+      "t": "¿Por qué preferir el cifrado autenticado como AES-GCM frente a AES-CBC simple?",
+      "h": "88d28c07"
+    }
+  }
+}

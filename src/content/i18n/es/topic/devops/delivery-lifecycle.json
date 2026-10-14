@@ -1,0 +1,88 @@
+{
+  "entries": {
+    "sections.0.bullets.0": {
+      "t": "Planificar y codificar: cambios pequeños, en control de versiones.",
+      "h": "3c6e5e24"
+    },
+    "sections.0.bullets.1": {
+      "t": "Build y pruebas: cada commit se compila y se prueba automáticamente (integración continua).",
+      "h": "083179a3"
+    },
+    "sections.0.bullets.2": {
+      "t": "Release: el resultado probado se convierte en un artefacto versionado e inmutable (una imagen de contenedor, un paquete).",
+      "h": "405efb6c"
+    },
+    "sections.0.bullets.3": {
+      "t": "Deploy: el artefacto llega a un entorno mediante un proceso automatizado y repetible (entrega continua significa que puede ir a producción en cualquier momento; despliegue continuo significa que lo hace automáticamente).",
+      "h": "ff3b8b42"
+    },
+    "sections.0.bullets.4": {
+      "t": "Operar y observar: el monitoreo, los logs y los traces muestran cómo se comporta.",
+      "h": "1dd21b42"
+    },
+    "sections.0.bullets.5": {
+      "t": "Aprender y retroalimentar: incidentes, métricas y feedback de los usuarios dan forma al siguiente cambio.",
+      "h": "2bd21750"
+    },
+    "sections.0.heading": {
+      "t": "El ciclo",
+      "h": "a582ec34"
+    },
+    "sections.1.bullets.0": {
+      "t": "Build once, deploy many: el mismo artefacto pasa por pruebas, staging y producción. Solo cambia la configuración.",
+      "h": "fa6d1d67"
+    },
+    "sections.1.bullets.1": {
+      "t": "Todo como código: aplicación, infraestructura, pipeline y políticas viven en el control de versiones y pasan por revisión.",
+      "h": "3e905d99"
+    },
+    "sections.1.bullets.2": {
+      "t": "Lotes pequeños: los releases pequeños y frecuentes son más fáciles de entender, probar y revertir que los grandes y raros.",
+      "h": "2b378b65"
+    },
+    "sections.1.bullets.3": {
+      "t": "Automatiza lo repetible, reserva a las personas para el criterio: aprobaciones para pasos riesgosos, no para teclear comandos.",
+      "h": "2d654f47"
+    },
+    "sections.1.bullets.4": {
+      "t": "Feedback rápido: una verificación que falla debe avisarte en minutos.",
+      "h": "ba06b5b9"
+    },
+    "sections.1.bullets.5": {
+      "t": "You build it, you run it: el equipo que escribe el código es dueño de cómo se comporta en producción.",
+      "h": "b8d75261"
+    },
+    "sections.1.heading": {
+      "t": "Principios",
+      "h": "4a8cf080"
+    },
+    "sections.2.body.0": {
+      "t": "Los entornos típicos son desarrollo, staging (lo más parecido a producción que sea práctico) y producción. Sus diferencias deben ser de configuración, no de código, y cada uno debe ser reproducible desde el código. Un staging que difiere de producción en aspectos importantes genera falsa confianza.",
+      "h": "883d0d40"
+    },
+    "sections.2.heading": {
+      "t": "Entornos",
+      "h": "017b53c4"
+    },
+    "sections.3.body.0": {
+      "t": "Cuatro medidas de la investigación DORA se usan ampliamente: con qué frecuencia haces deploy, cuánto tarda un cambio del commit a producción, con qué frecuencia un cambio causa un fallo y qué tan rápido restauras el servicio. Úsalas como una conversación sobre el sistema, no como metas para individuos; una medida que se vuelve meta se manipula.",
+      "h": "8445ddaa"
+    },
+    "sections.3.heading": {
+      "t": "Medir la entrega",
+      "h": "d6ffcd01"
+    },
+    "short": {
+      "t": "del commit a producción y de vuelta: integración, entrega y despliegue continuos",
+      "h": "62139669"
+    },
+    "tagline": {
+      "t": "DevOps es la práctica de acortar el ciclo entre una idea y el aprendizaje de cómo se comporta en producción, manteniendo seguro cada paso. El pipeline es lo que hace repetible ese ciclo.",
+      "h": "ac043118"
+    },
+    "title": {
+      "t": "El ciclo de vida de la entrega",
+      "h": "21e33e2a"
+    }
+  }
+}

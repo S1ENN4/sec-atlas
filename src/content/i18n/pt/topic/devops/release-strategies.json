@@ -1,0 +1,84 @@
+{
+  "entries": {
+    "sections.0.bullets.0": {
+      "t": "Rolling: substitui instâncias poucas por vez. Simples e o padrão na maioria dos orquestradores; versões antigas e novas rodam lado a lado por um tempo.",
+      "h": "bb75a025"
+    },
+    "sections.0.bullets.1": {
+      "t": "Blue/green: mantém dois ambientes completos e troca o tráfego do antigo (blue) para o novo (green) de uma vez. O rollback é voltar a chave; custa o dobro de capacidade durante a troca.",
+      "h": "96be44a0"
+    },
+    "sections.0.bullets.2": {
+      "t": "Canary: envia uma pequena parcela do tráfego para a nova versão, observa as métricas e depois amplia. Limita o raio de impacto de um release ruim.",
+      "h": "06032aa9"
+    },
+    "sections.0.bullets.3": {
+      "t": "Feature flags: entregam o código desativado e o ativam por usuário, percentual ou ambiente. Separam deploy de release e dão um botão instantâneo de desligar.",
+      "h": "942ff56a"
+    },
+    "sections.0.bullets.4": {
+      "t": "Shadow traffic: copia requisições reais para a nova versão sem devolver suas respostas, para comparar o comportamento com segurança.",
+      "h": "9526ee9a"
+    },
+    "sections.0.heading": {
+      "t": "As estratégias",
+      "h": "4eba702a"
+    },
+    "sections.1.bullets.0": {
+      "t": "Mantenha o artefato anterior pronto para deploy e faça deploy por versão imutável ou digest.",
+      "h": "33f70349"
+    },
+    "sections.1.bullets.1": {
+      "t": "Torne as mudanças de banco de dados retrocompatíveis (expand, migrate, contract), para que o código antigo continue funcionando com o novo schema.",
+      "h": "fa23867f"
+    },
+    "sections.1.bullets.2": {
+      "t": "Decida com antecedência qual métrica dispara um rollback e automatize-o onde puder.",
+      "h": "d604833e"
+    },
+    "sections.1.bullets.3": {
+      "t": "Pratique o rollback: um rollback não testado é uma esperança.",
+      "h": "35491e19"
+    },
+    "sections.1.heading": {
+      "t": "Rollback é uma decisão de design",
+      "h": "b85ca8f9"
+    },
+    "sections.2.body.0": {
+      "t": "Um controlador de progressive delivery move o tráfego em etapas e verifica as métricas entre elas. O esboço abaixo usa a sintaxe do Argo Rollouts.",
+      "h": "f62a0058"
+    },
+    "sections.2.code.0.code": {
+      "t": "apiVersion: argoproj.io/v1alpha1\nkind: Rollout\nmetadata:\n  name: api\nspec:\n  replicas: 6\n  selector:\n    matchLabels: { app: api }\n  strategy:\n    canary:\n      steps:\n        - setWeight: 10\n        - pause: { duration: 5m }\n        - setWeight: 50\n        - pause: { duration: 10m }\n  template:\n    metadata:\n      labels: { app: api }\n    spec:\n      containers:\n        - name: api\n          image: registry.example.com/api@sha256:<digest>",
+      "h": "ae792cdd"
+    },
+    "sections.2.code.0.filename": {
+      "t": "rollout.yaml (Argo Rollouts)",
+      "h": "eb9718c9"
+    },
+    "sections.2.heading": {
+      "t": "Exemplo: um rollout canary",
+      "h": "f95dab78"
+    },
+    "sections.3.body.0": {
+      "t": "Ajuste a estratégia ao risco e ao custo. Uma ferramenta interna de baixo risco pode usar rolling updates. Um fluxo de pagamento merece um canary com rollback automático. Uma mudança que toca dados exige a disciplina de schema compatível, seja qual for a estratégia.",
+      "h": "c55751ec"
+    },
+    "sections.3.heading": {
+      "t": "Escolhendo",
+      "h": "27d0b935"
+    },
+    "short": {
+      "t": "blue/green, canary, rolling e feature flags: entregar sem apostar a empresa",
+      "h": "c61474a6"
+    },
+    "tagline": {
+      "t": "Fazer deploy e fazer release são coisas diferentes. Você pode colocar o código em produção às escuras, ligá-lo gradualmente e desligá-lo em segundos se ele se comportar mal.",
+      "h": "df6d5f23"
+    },
+    "title": {
+      "t": "Estratégias de release e rollback",
+      "h": "92932574"
+    }
+  }
+}

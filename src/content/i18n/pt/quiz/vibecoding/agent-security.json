@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "O modelo não consegue separar com confiabilidade o seu pedido de um texto que encontrou em um README, página ou resultado de ferramenta.",
+      "h": "2367b8bb"
+    },
+    "questions.0.options.0": {
+      "t": "Uma forma mais rápida de fazer prompts",
+      "h": "eeb82b37"
+    },
+    "questions.0.options.1": {
+      "t": "Instruções ocultas em conteúdo que o agent lê, que ele pode seguir como se o usuário as tivesse escrito",
+      "h": "6edcc8e1"
+    },
+    "questions.0.options.2": {
+      "t": "Um erro de sintaxe",
+      "h": "52e22af3"
+    },
+    "questions.0.options.3": {
+      "t": "Um tipo de teste unitário",
+      "h": "3f289267"
+    },
+    "questions.0.q": {
+      "t": "O que é prompt injection contra um agent de código?",
+      "h": "0d787735"
+    },
+    "questions.1.explain": {
+      "t": "Verifique cada dependência que o agent adiciona: ela deve existir, ser a pretendida e passar nas varreduras.",
+      "h": "0b54a426"
+    },
+    "questions.1.options.0": {
+      "t": "Comprimir logs",
+      "h": "45a1d5e0"
+    },
+    "questions.1.options.1": {
+      "t": "Registrar um pacote malicioso com um nome que uma IA inventou, para que as instalações desse nome recebam malware",
+      "h": "3a9fc88e"
+    },
+    "questions.1.options.2": {
+      "t": "Uma técnica de rate limiting",
+      "h": "877c08da"
+    },
+    "questions.1.options.3": {
+      "t": "Uma estratégia de merge do git",
+      "h": "38062150"
+    },
+    "questions.1.q": {
+      "t": "O que é slopsquatting?",
+      "h": "f63f3f67"
+    },
+    "questions.2.explain": {
+      "t": "Privilégio mínimo e isolamento limitam o que um agent equivocado ou manipulado consegue alcançar.",
+      "h": "3d66d6a5"
+    },
+    "questions.2.options.0": {
+      "t": "Credenciais de admin completas para que ele nunca seja bloqueado",
+      "h": "bc4f3b70"
+    },
+    "questions.2.options.1": {
+      "t": "Um container com apenas o projeto montado, sem credenciais de nuvem, permissões estreitas de comandos e aprovações para ações arriscadas",
+      "h": "190168be"
+    },
+    "questions.2.options.2": {
+      "t": "Executar como root",
+      "h": "0bbbcdad"
+    },
+    "questions.2.options.3": {
+      "t": "Desativar os logs",
+      "h": "0e79e910"
+    },
+    "questions.2.q": {
+      "t": "Qual configuração melhor limita o dano de um agent comprometido ou enganado?",
+      "h": "d668233b"
+    }
+  }
+}

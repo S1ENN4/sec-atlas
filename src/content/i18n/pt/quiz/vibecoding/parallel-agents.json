@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "O isolamento evita colisões e dá a você uma branch para revisar.",
+      "h": "b0bef0f3"
+    },
+    "questions.0.options.0": {
+      "t": "Uma CPU mais rápida",
+      "h": "e293db4f"
+    },
+    "questions.0.options.1": {
+      "t": "Um diretório de trabalho e uma branch separados do mesmo repositório para cada agent",
+      "h": "42ef3fa6"
+    },
+    "questions.0.options.2": {
+      "t": "Merges automáticos",
+      "h": "d5b52863"
+    },
+    "questions.0.options.3": {
+      "t": "Uma sandbox na nuvem",
+      "h": "f8f106e4"
+    },
+    "questions.0.q": {
+      "t": "O que um git worktree oferece a agents paralelos?",
+      "h": "6715a89a"
+    },
+    "questions.1.explain": {
+      "t": "Saída não revisada é dívida de revisão. O paralelismo só ajuda até onde você consegue verificar.",
+      "h": "11772f45"
+    },
+    "questions.1.options.0": {
+      "t": "Espaço em disco",
+      "h": "08a9b24f"
+    },
+    "questions.1.options.1": {
+      "t": "Sua capacidade de revisar os resultados",
+      "h": "eee7f1d4"
+    },
+    "questions.1.options.2": {
+      "t": "O número de branches git",
+      "h": "8c08db3b"
+    },
+    "questions.1.options.3": {
+      "t": "Cores do terminal",
+      "h": "e797102a"
+    },
+    "questions.1.q": {
+      "t": "Qual é o principal limite para rodar muitos agents ao mesmo tempo?",
+      "h": "ad66a781"
+    },
+    "questions.2.explain": {
+      "t": "Bancos de dados, portas e serviços externos são compartilhados. Use uma sandbox e credenciais com escopo.",
+      "h": "4d8dcc18"
+    },
+    "questions.2.options.0": {
+      "t": "Arquivos-fonte",
+      "h": "e660d20b"
+    },
+    "questions.2.options.1": {
+      "t": "A branch",
+      "h": "a3a7ccaa"
+    },
+    "questions.2.options.2": {
+      "t": "Um banco de dados compartilhado ou uma API externa",
+      "h": "55b568d3"
+    },
+    "questions.2.options.3": {
+      "t": "O diretório de trabalho",
+      "h": "2aea0dad"
+    },
+    "questions.2.q": {
+      "t": "O que NÃO é isolado por um worktree?",
+      "h": "38001c62"
+    }
+  }
+}

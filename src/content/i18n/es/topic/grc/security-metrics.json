@@ -1,0 +1,120 @@
+{
+  "entries": {
+    "sections.0.bullets.0": {
+      "t": "Las métricas de actividad cuentan trabajo (escaneos ejecutados, capacitaciones completadas, tickets cerrados). Muestran esfuerzo, no seguridad.",
+      "h": "030d8026"
+    },
+    "sections.0.bullets.1": {
+      "t": "Las métricas de resultado muestran lo logrado (tiempo para remediar problemas críticos, proporción de activos cubiertos por logging, tiempo para detectar y contener incidentes).",
+      "h": "953af072"
+    },
+    "sections.0.bullets.2": {
+      "t": "Los KPIs describen qué tan bien funciona un proceso; los KRIs (indicadores clave de riesgo) advierten que el riesgo está aumentando (backlog creciente de hallazgos críticos, mayor exposición de sistemas sin soporte).",
+      "h": "3a5dd81f"
+    },
+    "sections.0.bullets.3": {
+      "t": "Prefiera pocas métricas ligadas a decisiones antes que una lista larga que nadie lee.",
+      "h": "c36c32fe"
+    },
+    "sections.0.heading": {
+      "t": "Actividad frente a resultado",
+      "h": "34a867d8"
+    },
+    "sections.1.bullets.0": {
+      "t": "Detección y respuesta: tiempo medio para detectar, contener y recuperar, por severidad.",
+      "h": "d96630f5"
+    },
+    "sections.1.bullets.1": {
+      "t": "Gestión de vulnerabilidades: tiempo para corregir vulnerabilidades críticas y explotadas; proporción de activos expuestos a internet que están en el inventario; antigüedad del hallazgo crítico más viejo.",
+      "h": "235f0a18"
+    },
+    "sections.1.bullets.2": {
+      "t": "Cobertura: porcentaje de activos con protección de endpoint, logging, respaldos probados y autenticación multifactor.",
+      "h": "33357cbf"
+    },
+    "sections.1.bullets.3": {
+      "t": "Resiliencia: pruebas de restauración aprobadas, ejercicios de mesa (tabletop) realizados y acciones cerradas.",
+      "h": "1da7ecb7"
+    },
+    "sections.1.bullets.4": {
+      "t": "Terceros: proporción de proveedores críticos evaluados en el último año.",
+      "h": "f93928db"
+    },
+    "sections.1.bullets.5": {
+      "t": "Riesgo: cantidad y tendencia de los riesgos por encima del apetito, y cuántos tienen un plan financiado.",
+      "h": "b533190c"
+    },
+    "sections.1.code.0.code": {
+      "t": "- name: critical_vuln_time_to_remediate\n  definition: \"días desde la detección hasta la corrección verificada, para hallazgos críticos en activos expuestos a internet\"\n  source: vulnerability-scanner + ticketing\n  target: \"<= 7 días, percentil 90\"\n  owner: head-of-appsec\n  review: monthly\n  decision_it_informs: \"si se debe agregar capacidad de ingeniería al backlog de remediación\"",
+      "h": "926d95ed"
+    },
+    "sections.1.code.0.filename": {
+      "t": "metrics-definition.yml",
+      "h": "c1f6f3f1"
+    },
+    "sections.1.heading": {
+      "t": "Medidas útiles",
+      "h": "689ba252"
+    },
+    "sections.2.bullets.0": {
+      "t": "Empiece por la respuesta: ¿estamos más seguros y qué necesitan de nosotros?",
+      "h": "420a3a5a"
+    },
+    "sections.2.bullets.1": {
+      "t": "Traduzca a términos de negocio: dinero, clientes, exposición regulatoria, tiempo de inactividad, no conteos técnicos.",
+      "h": "2f4396ce"
+    },
+    "sections.2.bullets.2": {
+      "t": "Muestre tendencias y metas, no números aislados, y explique los cambios con honestidad, incluidas las malas noticias.",
+      "h": "cb73af1a"
+    },
+    "sections.2.bullets.3": {
+      "t": "Vincule los pedidos a decisiones: un presupuesto, una política, un responsable de una aceptación de riesgo.",
+      "h": "9733f091"
+    },
+    "sections.2.bullets.4": {
+      "t": "Sea breve (una página y unas pocas diapositivas) y consistente, para que los cambios se vean de un trimestre a otro.",
+      "h": "cf5632a3"
+    },
+    "sections.2.bullets.5": {
+      "t": "Informe los incidentes y cuasi-incidentes con lo que se aprendió y se corrigió.",
+      "h": "de0ced84"
+    },
+    "sections.2.heading": {
+      "t": "Informar a ejecutivos y al directorio",
+      "h": "bf966585"
+    },
+    "sections.3.bullets.0": {
+      "t": "Manipulación (gaming): cuando una métrica se convierte en meta individual, las personas optimizan el número, no el riesgo.",
+      "h": "803796d6"
+    },
+    "sections.3.bullets.1": {
+      "t": "Números de vitrina: ataques bloqueados y escaneos completados dicen poco sobre la seguridad.",
+      "h": "1d8b4c9e"
+    },
+    "sections.3.bullets.2": {
+      "t": "Falsa precisión: una puntuación de riesgo de 7,3 no es más precisa que \"alto\".",
+      "h": "d9bc4b84"
+    },
+    "sections.3.bullets.3": {
+      "t": "Cambiar definiciones en silencio: las tendencias pierden sentido; versione las definiciones de sus métricas.",
+      "h": "a3aa86b7"
+    },
+    "sections.3.heading": {
+      "t": "Trampas",
+      "h": "8ef57d28"
+    },
+    "short": {
+      "t": "medir resultados, no actividad, y contarle al directorio una historia sobre la que pueda actuar",
+      "h": "c6eea842"
+    },
+    "tagline": {
+      "t": "Un número que no puede cambiar una decisión es decoración. Las buenas métricas de seguridad muestran si el riesgo está bajando, qué tan rápido responde el equipo y dónde debe actuar la dirección.",
+      "h": "1b6d03e7"
+    },
+    "title": {
+      "t": "Métricas de seguridad e informes para la dirección",
+      "h": "a38db896"
+    }
+  }
+}

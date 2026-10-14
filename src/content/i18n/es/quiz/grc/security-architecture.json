@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Estar en la red interna ya no implica ser de confianza.",
+      "h": "222f0591"
+    },
+    "questions.0.options.0": {
+      "t": "No confiar en nadie de la empresa",
+      "h": "37b45b43"
+    },
+    "questions.0.options.1": {
+      "t": "No otorgar confianza por la ubicación en la red: autenticar y autorizar cada solicitud con identidad, dispositivo y contexto",
+      "h": "20b9c210"
+    },
+    "questions.0.options.2": {
+      "t": "Eliminar todos los firewalls",
+      "h": "bb184c7d"
+    },
+    "questions.0.options.3": {
+      "t": "Usar solo código abierto",
+      "h": "356fb2e6"
+    },
+    "questions.0.q": {
+      "t": "¿Qué significa zero trust?",
+      "h": "06bfc0fb"
+    },
+    "questions.1.explain": {
+      "t": "Los patrones permiten que los equipos hereden controles en lugar de esperar en colas de aprobación.",
+      "h": "d2e48def"
+    },
+    "questions.1.options.0": {
+      "t": "Aprobando personalmente cada cambio",
+      "h": "1a319d97"
+    },
+    "questions.1.options.1": {
+      "t": "Proporcionando patrones reutilizables y guardrails (landing zones, servicios de identidad, pipelines pavimentados)",
+      "h": "4992f265"
+    },
+    "questions.1.options.2": {
+      "t": "Escribiendo políticas largas",
+      "h": "003970c1"
+    },
+    "questions.1.options.3": {
+      "t": "Bloqueando despliegues",
+      "h": "80757458"
+    },
+    "questions.1.q": {
+      "t": "¿Cómo escala un arquitecto la seguridad entre muchos equipos?",
+      "h": "08aab97b"
+    },
+    "questions.2.explain": {
+      "t": "El contexto es lo primero que se pierde. Un registro breve lo conserva.",
+      "h": "79f1207d"
+    },
+    "questions.2.options.0": {
+      "t": "Para aumentar el papeleo",
+      "h": "53914e08"
+    },
+    "questions.2.options.1": {
+      "t": "El razonamiento y los trade-offs siguen siendo fáciles de encontrar después de que el equipo cambia",
+      "h": "a83d571f"
+    },
+    "questions.2.options.2": {
+      "t": "Los auditores exigen ADRs",
+      "h": "30072d5e"
+    },
+    "questions.2.options.3": {
+      "t": "Para evitar reuniones",
+      "h": "5c0259f7"
+    },
+    "questions.2.q": {
+      "t": "¿Por qué registrar las decisiones en ADRs?",
+      "h": "face61be"
+    }
+  }
+}

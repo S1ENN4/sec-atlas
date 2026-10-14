@@ -1,0 +1,112 @@
+{
+  "entries": {
+    "sections.0.bullets.0": {
+      "t": "¿Cuál es la alerta y es verdadera? Descarta rápido un falso positivo con una segunda fuente de datos.",
+      "h": "7547e1ae"
+    },
+    "sections.0.bullets.1": {
+      "t": "¿Qué está afectado: qué hosts, identidades, cuentas, servicios y datos?",
+      "h": "419552ec"
+    },
+    "sections.0.bullets.2": {
+      "t": "¿Cuándo empezó? La primera alerta rara vez es el primer evento; mira hacia atrás.",
+      "h": "c3164677"
+    },
+    "sections.0.bullets.3": {
+      "t": "¿Qué tiene ahora el atacante: credenciales, persistencia, un punto de apoyo en la nube?",
+      "h": "56ff6332"
+    },
+    "sections.0.bullets.4": {
+      "t": "¿Están saliendo datos y la actividad sigue en curso?",
+      "h": "951dcf21"
+    },
+    "sections.0.bullets.5": {
+      "t": "¿Cuál es el impacto en el negocio y qué severidad implica?",
+      "h": "6b0405dd"
+    },
+    "sections.0.heading": {
+      "t": "Preguntas de triaje",
+      "h": "e61a88ca"
+    },
+    "sections.1.body.0": {
+      "t": "Elige la acción más pequeña que detenga el daño. La contención de corto plazo gana tiempo; la de largo plazo prepara una recuperación limpia.",
+      "h": "92170f42"
+    },
+    "sections.1.bullets.0": {
+      "t": "Identidad: restablece credenciales, revoca sesiones y tokens, deshabilita la cuenta o la clave de acceso, exige reautenticación con un segundo factor.",
+      "h": "08cf7d4d"
+    },
+    "sections.1.bullets.1": {
+      "t": "Endpoint: aísla el host de la red mediante el EDR (sigue encendido y accesible para tus herramientas), en lugar de apagarlo y perder la memoria.",
+      "h": "0eb7d676"
+    },
+    "sections.1.bullets.2": {
+      "t": "Red: bloquea direcciones y dominios maliciosos conocidos, restringe el egress, mueve el sistema a un segmento de cuarentena.",
+      "h": "9f3e19b3"
+    },
+    "sections.1.bullets.3": {
+      "t": "Nube: política deny-all en el rol comprometido, security group de cuarentena en la instancia, snapshot del volumen antes de hacer cambios.",
+      "h": "f4aa5c0b"
+    },
+    "sections.1.bullets.4": {
+      "t": "Aplicación: deshabilita la función vulnerable o desvía el tráfico con una regla de WAF mientras se construye la corrección.",
+      "h": "e1b9e978"
+    },
+    "sections.1.heading": {
+      "t": "Opciones de contención",
+      "h": "e28c2f2a"
+    },
+    "sections.2.body.0": {
+      "t": "Contén primero, preserva después, investiga al final. Los comandos de abajo desactivan la clave, deniegan nuevas acciones y hacen un snapshot de un volumen sospechoso; adapta nombres e ids, y registra cada comando en la línea de tiempo del incidente.",
+      "h": "ab65e14c"
+    },
+    "sections.2.code.0.code": {
+      "t": "# 1. evita que la clave funcione (consérvala; no la borres, la necesitas como evidencia)\naws iam update-access-key --user-name build-bot --access-key-id AKIAEXAMPLEKEY --status Inactive\n\n# 2. deniega todo al usuario mientras investigas\naws iam attach-user-policy --user-name build-bot --policy-arn arn:aws:iam::aws:policy/AWSDenyAll\n\n# 3. aísla una instancia sospechosa con un security group que no permite nada\naws ec2 modify-instance-attribute --instance-id i-0abc123 --groups sg-0quarantine\n\n# 4. preserva su disco antes de cualquier limpieza\naws ec2 create-snapshot --volume-id vol-0abc123 --description \"INC-2026-0142 evidence\" \\\n  --tag-specifications 'ResourceType=snapshot,Tags=[{Key=incident,Value=INC-2026-0142}]'",
+      "h": "f700adf2"
+    },
+    "sections.2.code.0.filename": {
+      "t": "contain-leaked-key.sh",
+      "h": "9885db73"
+    },
+    "sections.2.heading": {
+      "t": "Ejemplo en la nube: contener una clave de acceso filtrada",
+      "h": "7f413954"
+    },
+    "sections.3.bullets.0": {
+      "t": "Borrar o reinstalar antes de tomar evidencia: pierdes la respuesta de cómo entraron.",
+      "h": "6888edf1"
+    },
+    "sections.3.bullets.1": {
+      "t": "Contener solo el host que encontraste: el atacante tiene otros puntos de apoyo, así que acota el alcance primero o contén de forma amplia de una sola vez.",
+      "h": "cf0d8348"
+    },
+    "sections.3.bullets.2": {
+      "t": "Restablecer una contraseña pero dejar activas las sesiones, tokens, claves de API y reglas de buzón.",
+      "h": "664a50d5"
+    },
+    "sections.3.bullets.3": {
+      "t": "Alertar al atacante al cambiar cosas poco a poco durante días; coordina la contención en una sola ventana decisiva.",
+      "h": "d28d3cbf"
+    },
+    "sections.3.bullets.4": {
+      "t": "Olvidar registrar quién hizo qué y cuándo.",
+      "h": "0f3a5574"
+    },
+    "sections.3.heading": {
+      "t": "Errores que evitar",
+      "h": "e4f0079c"
+    },
+    "short": {
+      "t": "decidir qué pasó y qué tan grande es, y luego detener la hemorragia sin destruir evidencia",
+      "h": "1d78dd81"
+    },
+    "tagline": {
+      "t": "La primera hora gira en torno a dos preguntas: ¿hasta dónde llegó esto y cuál es la forma menos dañina de detenerlo? Respóndelas en el orden correcto y mantén la evidencia intacta.",
+      "h": "47614418"
+    },
+    "title": {
+      "t": "Triaje, acotamiento del alcance y contención",
+      "h": "1cb4676f"
+    }
+  }
+}

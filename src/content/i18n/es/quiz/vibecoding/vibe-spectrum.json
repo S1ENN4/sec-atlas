@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "El trabajo barato y reversible puede ejecutarse sin supervisión. Autenticación, pagos e infraestructura necesitan planes, diffs y revisión.",
+      "h": "2b424ff7"
+    },
+    "questions.0.options.0": {
+      "t": "Siempre el máximo, para ir más rápido",
+      "h": "ccd61040"
+    },
+    "questions.0.options.1": {
+      "t": "Ajustar la autonomía al radio de impacto y a tu capacidad de verificar el resultado",
+      "h": "e35e03bd"
+    },
+    "questions.0.options.2": {
+      "t": "Nunca más que autocompletado",
+      "h": "94c87c8b"
+    },
+    "questions.0.options.3": {
+      "t": "Lo que la herramienta traiga por defecto",
+      "h": "1fa77db7"
+    },
+    "questions.0.q": {
+      "t": "¿Qué regla orienta mejor cuánta autonomía dar a una herramienta de código con IA?",
+      "h": "4a562e45"
+    },
+    "questions.1.explain": {
+      "t": "El resultado es barato de comprobar y el daño de un error es mínimo. Las otras contienen datos, dinero o acceso.",
+      "h": "de9c0b68"
+    },
+    "questions.1.options.0": {
+      "t": "El flujo de inicio de sesión",
+      "h": "58e1b7c8"
+    },
+    "questions.1.options.1": {
+      "t": "Un webhook de pagos",
+      "h": "24a5b07e"
+    },
+    "questions.1.options.2": {
+      "t": "Un script desechable que renombra archivos en tu laptop",
+      "h": "b2b8a543"
+    },
+    "questions.1.options.3": {
+      "t": "Un cambio en permisos de la nube",
+      "h": "f0b60c4d"
+    },
+    "questions.1.q": {
+      "t": "¿Qué tarea es la más adecuada para vibecoding puro, sin leer el código?",
+      "h": "012b5d82"
+    },
+    "questions.2.explain": {
+      "t": "Generar dejó de ser el cuello de botella. Juzgar y verificar la salida lo es.",
+      "h": "88604cd9"
+    },
+    "questions.2.options.0": {
+      "t": "Velocidad de escritura",
+      "h": "597a67a7"
+    },
+    "questions.2.options.1": {
+      "t": "Especificar problemas con precisión, revisar diffs con criterio y escribir pruebas que demuestren el resultado",
+      "h": "c98f78b5"
+    },
+    "questions.2.options.2": {
+      "t": "Memorizar sintaxis",
+      "h": "5327b266"
+    },
+    "questions.2.options.3": {
+      "t": "Elegir el prompt más largo",
+      "h": "2edeea85"
+    },
+    "questions.2.q": {
+      "t": "A medida que generar código se abarata, ¿qué habilidad se vuelve más valiosa?",
+      "h": "3b420754"
+    }
+  }
+}

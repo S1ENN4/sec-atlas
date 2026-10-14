@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Alertar sobre síntomas reduce el ruido y detecta problemas sea cual sea su causa.",
+      "h": "3d044bdd"
+    },
+    "questions.0.options.0": {
+      "t": "En cada causa, como la CPU de un pod",
+      "h": "748cd0cb"
+    },
+    "questions.0.options.1": {
+      "t": "En síntomas que sienten los usuarios, como errores y latencia",
+      "h": "c5951c87"
+    },
+    "questions.0.options.2": {
+      "t": "En el volumen de logs",
+      "h": "15c92ea9"
+    },
+    "questions.0.options.3": {
+      "t": "En el color del disco",
+      "h": "cd785eac"
+    },
+    "questions.0.q": {
+      "t": "¿En qué deben basarse la mayoría de las alertas?",
+      "h": "e2350dd9"
+    },
+    "questions.1.explain": {
+      "t": "Los traces muestran el camino y el tiempo gastado en cada servicio.",
+      "h": "f6cb816b"
+    },
+    "questions.1.options.0": {
+      "t": "Métricas",
+      "h": "ddf6a1f0"
+    },
+    "questions.1.options.1": {
+      "t": "Traces distribuidos",
+      "h": "748f590f"
+    },
+    "questions.1.options.2": {
+      "t": "Informes de facturación",
+      "h": "cb5978c8"
+    },
+    "questions.1.options.3": {
+      "t": "Historial de Git",
+      "h": "d3bb58de"
+    },
+    "questions.1.q": {
+      "t": "¿Qué señal es la mejor herramienta para \"¿dónde está lenta esta solicitud?\"",
+      "h": "066a1332"
+    },
+    "questions.2.explain": {
+      "t": "Cada valor distinto crea una nueva serie. Usa logs o traces para el detalle por usuario.",
+      "h": "b757ff4b"
+    },
+    "questions.2.options.0": {
+      "t": "Es privado",
+      "h": "2e397971"
+    },
+    "questions.2.options.1": {
+      "t": "La cardinalidad ilimitada puede saturar el sistema de métricas",
+      "h": "024920ea"
+    },
+    "questions.2.options.2": {
+      "t": "Los labels deben ser números",
+      "h": "84499d65"
+    },
+    "questions.2.options.3": {
+      "t": "Prometheus prohíbe los strings",
+      "h": "3607c944"
+    },
+    "questions.2.q": {
+      "t": "¿Por qué evitar un label de métrica como el id de usuario?",
+      "h": "f3df091a"
+    }
+  }
+}

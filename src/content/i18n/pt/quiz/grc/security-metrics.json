@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Métricas de resultado mostram o que foi alcançado. Métricas de atividade mostram esforço.",
+      "h": "e1c337d3"
+    },
+    "questions.0.options.0": {
+      "t": "Número de varreduras executadas",
+      "h": "6b73dd9f"
+    },
+    "questions.0.options.1": {
+      "t": "Tempo para conter incidentes de alta severidade",
+      "h": "e99e2927"
+    },
+    "questions.0.options.2": {
+      "t": "Número de treinamentos enviados",
+      "h": "b9d6e8dc"
+    },
+    "questions.0.options.3": {
+      "t": "Número de regras de firewall",
+      "h": "20f649bd"
+    },
+    "questions.0.q": {
+      "t": "Qual é uma métrica de resultado?",
+      "h": "5bf705bc"
+    },
+    "questions.1.explain": {
+      "t": "Os líderes precisam da conclusão e da decisão necessária, em termos de negócio.",
+      "h": "573ef7bd"
+    },
+    "questions.1.options.0": {
+      "t": "Com contagens técnicas",
+      "h": "2c3ac849"
+    },
+    "questions.1.options.1": {
+      "t": "Com a resposta: estamos ficando mais seguros e o que vocês precisam do conselho",
+      "h": "3acdcc10"
+    },
+    "questions.1.options.2": {
+      "t": "Com uma lista de ferramentas",
+      "h": "0ff63d4b"
+    },
+    "questions.1.options.3": {
+      "t": "Com um longo histórico",
+      "h": "95a3492f"
+    },
+    "questions.1.q": {
+      "t": "Como deve começar um relatório ao conselho?",
+      "h": "b86dcc8c"
+    },
+    "questions.2.explain": {
+      "t": "Use métricas para encontrar gargalos do sistema, não para ranquear pessoas.",
+      "h": "51d8234c"
+    },
+    "questions.2.options.0": {
+      "t": "Nada",
+      "h": "44819483"
+    },
+    "questions.2.options.1": {
+      "t": "As pessoas otimizam o número em vez do risco (gaming)",
+      "h": "f170b1ff"
+    },
+    "questions.2.options.2": {
+      "t": "O dashboard quebra",
+      "h": "e707025c"
+    },
+    "questions.2.options.3": {
+      "t": "As auditorias ficam mais baratas",
+      "h": "388608bc"
+    },
+    "questions.2.q": {
+      "t": "O que dá errado quando uma métrica vira meta individual?",
+      "h": "82091f49"
+    }
+  }
+}

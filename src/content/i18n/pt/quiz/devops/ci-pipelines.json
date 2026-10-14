@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Falhe rápido e barato para que as pessoas aprendam logo.",
+      "h": "d085c94a"
+    },
+    "questions.0.options.0": {
+      "t": "Os testes mais lentos primeiro",
+      "h": "bba25793"
+    },
+    "questions.0.options.1": {
+      "t": "Verificações baratas (lint, testes unitários) primeiro, depois as mais lentas",
+      "h": "e0166ec6"
+    },
+    "questions.0.options.2": {
+      "t": "Fazer deploy primeiro, testar depois",
+      "h": "17c35e84"
+    },
+    "questions.0.options.3": {
+      "t": "Ordem aleatória",
+      "h": "87adf222"
+    },
+    "questions.0.q": {
+      "t": "Qual ordenação dá o feedback útil mais rápido?",
+      "h": "48e36edb"
+    },
+    "questions.1.explain": {
+      "t": "Retentativas escondem o problema. Um pipeline em que ninguém confia deixa de ser um gate.",
+      "h": "f0504cb3"
+    },
+    "questions.1.options.0": {
+      "t": "Adicionar retentativas automáticas e seguir em frente",
+      "h": "8f873cd8"
+    },
+    "questions.1.options.1": {
+      "t": "Pôr em quarentena e corrigir, porque testes instáveis ensinam as pessoas a ignorar falhas",
+      "h": "582a0dd4"
+    },
+    "questions.1.options.2": {
+      "t": "Apagar o CI",
+      "h": "97677ae4"
+    },
+    "questions.1.options.3": {
+      "t": "Rodá-lo dez vezes",
+      "h": "dad2fedf"
+    },
+    "questions.1.q": {
+      "t": "Um teste falha uma vez a cada dez execuções. Qual é a resposta certa?",
+      "h": "37d266b6"
+    },
+    "questions.2.explain": {
+      "t": "A chave muda exatamente quando as dependências mudam.",
+      "h": "bdbcabde"
+    },
+    "questions.2.options.0": {
+      "t": "A data",
+      "h": "f3488c72"
+    },
+    "questions.2.options.1": {
+      "t": "O conteúdo do lockfile",
+      "h": "9f2f686e"
+    },
+    "questions.2.options.2": {
+      "t": "Apenas o nome do branch",
+      "h": "230dc349"
+    },
+    "questions.2.options.3": {
+      "t": "O nome do runner",
+      "h": "9657f2ee"
+    },
+    "questions.2.q": {
+      "t": "Qual deve ser a chave do cache de dependências?",
+      "h": "6aed2d82"
+    }
+  }
+}

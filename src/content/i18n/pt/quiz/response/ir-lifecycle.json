@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Níveis pré-acordados eliminam o debate quando o tempo é curto e tornam a resposta proporcional.",
+      "h": "1a3f98a6"
+    },
+    "questions.0.options.0": {
+      "t": "Para impressionar os auditores",
+      "h": "be269955"
+    },
+    "questions.0.options.1": {
+      "t": "Para que ninguém discuta a severidade durante o evento e o acionamento e a resposta sigam automaticamente",
+      "h": "f4dc1473"
+    },
+    "questions.0.options.2": {
+      "t": "Porque as ferramentas exigem",
+      "h": "685fe1fc"
+    },
+    "questions.0.options.3": {
+      "t": "Para reduzir o número de incidentes",
+      "h": "f99ba4ae"
+    },
+    "questions.0.q": {
+      "t": "Por que combinar os níveis de severidade antes de um incidente?",
+      "h": "ae45807e"
+    },
+    "questions.1.explain": {
+      "t": "Separar os papéis mantém alguém observando o quadro completo.",
+      "h": "9447a2bd"
+    },
+    "questions.1.options.0": {
+      "t": "Fazer a análise técnica mais profunda",
+      "h": "f9179d07"
+    },
+    "questions.1.options.1": {
+      "t": "Ser dono da resposta e tomar decisões enquanto os outros fazem o trabalho técnico",
+      "h": "944dedea"
+    },
+    "questions.1.options.2": {
+      "t": "Escrever sozinho o relatório final",
+      "h": "b58fa6ff"
+    },
+    "questions.1.options.3": {
+      "t": "Falar com a imprensa",
+      "h": "16c02d23"
+    },
+    "questions.1.q": {
+      "t": "Qual é o trabalho do comandante do incidente?",
+      "h": "642199f2"
+    },
+    "questions.2.explain": {
+      "t": "Assuma que o atacante pode estar observando e que suas ferramentas habituais podem estar fora do ar.",
+      "h": "c4a54420"
+    },
+    "questions.2.options.0": {
+      "t": "É mais rápido",
+      "h": "8cf0c2a9"
+    },
+    "questions.2.options.1": {
+      "t": "O canal principal pode estar comprometido ou indisponível, e o atacante pode estar lendo",
+      "h": "cd721131"
+    },
+    "questions.2.options.2": {
+      "t": "Os auditores exigem dois canais",
+      "h": "53b3302e"
+    },
+    "questions.2.options.3": {
+      "t": "Economiza dinheiro",
+      "h": "7d83f41d"
+    },
+    "questions.2.q": {
+      "t": "Por que manter um canal de comunicação fora de banda?",
+      "h": "d5330e60"
+    }
+  }
+}

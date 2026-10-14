@@ -1,0 +1,112 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Os ataques modernos de ransomware costumam ser operados por humanos. Um atacante entra (credenciais roubadas, um serviço exposto, um link de phishing), explora, rouba dados, remove ou corrompe backups e então criptografa o maior número possível de sistemas de uma só vez, muitas vezes fora do horário comercial. Muitos grupos também ameaçam publicar os dados roubados, então restaurar os arquivos não encerra o incidente.",
+      "h": "cbb83fa0"
+    },
+    "sections.0.heading": {
+      "t": "O que acontece",
+      "h": "d208fde7"
+    },
+    "sections.1.bullets.0": {
+      "t": "Isole da rede os sistemas afetados (não os desligue se puder evitar; a memória pode conter chaves e evidências).",
+      "h": "a08910c5"
+    },
+    "sections.1.bullets.1": {
+      "t": "Declare um incidente grave, abra o canal fora de banda e envolva o jurídico, a comunicação, os executivos e sua seguradora ou empresa contratada.",
+      "h": "1cb8c2b6"
+    },
+    "sections.1.bullets.2": {
+      "t": "Proteja os backups: desconecte ou bloqueie o sistema de backup agora, antes que seja criptografado ou apagado.",
+      "h": "b935452d"
+    },
+    "sections.1.bullets.3": {
+      "t": "Identifique o escopo: quais sistemas, quais contas, quais dados e se credenciais em nível de domínio estão comprometidas.",
+      "h": "5de21e74"
+    },
+    "sections.1.bullets.4": {
+      "t": "Preserve as evidências: nota de resgate, amostras de arquivos criptografados, logs, memória e imagens de disco dos sistemas principais.",
+      "h": "0a7d405e"
+    },
+    "sections.1.bullets.5": {
+      "t": "Redefina credenciais privilegiadas e tokens de forma controlada, a partir de uma máquina limpa.",
+      "h": "24c38cdc"
+    },
+    "sections.1.heading": {
+      "t": "Primeiras horas",
+      "h": "2ba2d302"
+    },
+    "sections.2.bullets.0": {
+      "t": "Reconstrua a partir de um estado confiável: restaure de backups verificados como limpos e anteriores ao primeiro acesso do atacante.",
+      "h": "6e971460"
+    },
+    "sections.2.bullets.1": {
+      "t": "Recupere em ordem de prioridade: primeiro a infraestrutura de identidade, depois os serviços de que o negócio mais precisa.",
+      "h": "d2135b12"
+    },
+    "sections.2.bullets.2": {
+      "t": "Não reconecte os sistemas restaurados até que o ponto de entrada esteja fechado e a persistência removida, ou você será criptografado de novo.",
+      "h": "4c88cd63"
+    },
+    "sections.2.bullets.3": {
+      "t": "Monitore de perto depois que cada sistema voltar: o atacante ainda pode ter um ponto de apoio.",
+      "h": "bbe993a3"
+    },
+    "sections.2.bullets.4": {
+      "t": "Teste as restaurações antes de precisar delas. Um backup que nunca foi restaurado é uma suposição.",
+      "h": "281126c4"
+    },
+    "sections.2.heading": {
+      "t": "Recuperação",
+      "h": "ea924f72"
+    },
+    "sections.3.body.0": {
+      "t": "Pagar ou não é uma decisão de negócio e jurídica, não técnica, e deve ser considerada com assessoria jurídica, a seguradora e as autoridades. O pagamento não garante um decryptor funcional nem que os dados roubados serão apagados, e pode trazer exposição legal, como sanções contra o destinatário. Defina sua posição com antecedência como política, para que ela não seja inventada sob pressão.",
+      "h": "39d9e5e3"
+    },
+    "sections.3.heading": {
+      "t": "A questão do pagamento",
+      "h": "d5a3d28f"
+    },
+    "sections.4.bullets.0": {
+      "t": "Aplique patches nos sistemas expostos à internet e remova serviços de acesso remoto expostos.",
+      "h": "740b5cd2"
+    },
+    "sections.4.bullets.1": {
+      "t": "Autenticação multifator para acesso remoto e para toda conta administrativa.",
+      "h": "f8618eae"
+    },
+    "sections.4.bullets.2": {
+      "t": "Privilégio mínimo e administração em camadas, para que uma credencial roubada não alcance tudo.",
+      "h": "8a432829"
+    },
+    "sections.4.bullets.3": {
+      "t": "Ensaie o playbook com um exercício de mesa, incluindo a decisão de tirar sistemas do ar.",
+      "h": "5dc44d75"
+    },
+    "sections.4.code.0.code": {
+      "t": "backups:\n  offline_or_immutable_copy: true       # um atacante com admin não consegue apagá-la\n  restore_test_frequency: quarterly\n  scope: [domain-controllers, databases, file-servers, config-repos]\nidentity:\n  mfa_for_admins_and_remote_access: true\n  tiered_admin_accounts: true           # sem logins de domain admin em estações de trabalho\n  service_account_review: quarterly\nnetwork:\n  segmentation: [workstations, servers, backup, management]\n  rdp_exposed_to_internet: false\ndetection:\n  edr_coverage: \"todos os servidores e endpoints\"\n  alert_on: [mass_file_rename, shadow_copy_deletion, backup_service_stop]\nrunbook:\n  out_of_band_comms: \"árvore de telefones e chat secundário, guardados offline\"\n  decision_owner_for_payment: \"CEO com assessoria jurídica\"",
+      "h": "3e8b9a77"
+    },
+    "sections.4.code.0.filename": {
+      "t": "ransomware-readiness.yml",
+      "h": "80cc4fd9"
+    },
+    "sections.4.heading": {
+      "t": "Reduza as chances e o dano",
+      "h": "1c4f7407"
+    },
+    "short": {
+      "t": "conter rápido, preservar evidências, recuperar a partir de backups e decidir junto com o jurídico e a liderança",
+      "h": "c7d77416"
+    },
+    "tagline": {
+      "t": "Ransomware é uma crise de negócio com um núcleo técnico. As equipes que se recuperam bem tinham backups funcionando, praticaram o playbook e tomaram as decisões difíceis antes da pressão.",
+      "h": "65ca584b"
+    },
+    "title": {
+      "t": "Playbook de resposta a ransomware",
+      "h": "3c5cefdf"
+    }
+  }
+}

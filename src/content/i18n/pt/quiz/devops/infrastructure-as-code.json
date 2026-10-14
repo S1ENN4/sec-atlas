@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "O state remoto com lock evita condições de corrida e mantém os valores sensíveis protegidos.",
+      "h": "8ba4e09a"
+    },
+    "questions.0.options.0": {
+      "t": "Ele é grande",
+      "h": "3b7dfb19"
+    },
+    "questions.0.options.1": {
+      "t": "Ele pode conter segredos e applies concorrentes podem corrompê-lo",
+      "h": "115fbbc3"
+    },
+    "questions.0.options.2": {
+      "t": "O Git não consegue armazenar JSON",
+      "h": "2dcaedca"
+    },
+    "questions.0.options.3": {
+      "t": "O state é opcional",
+      "h": "ba8c4a97"
+    },
+    "questions.0.q": {
+      "t": "Por que o state do Terraform deve ser armazenado remotamente, com lock e criptografado?",
+      "h": "11d9cee8"
+    },
+    "questions.1.explain": {
+      "t": "O plan é o artefato de revisão. Leia o que é substituído ou destruído.",
+      "h": "85b3a884"
+    },
+    "questions.1.options.0": {
+      "t": "Aplicar as mudanças imediatamente",
+      "h": "383f35ae"
+    },
+    "questions.1.options.1": {
+      "t": "Permitir que os revisores vejam exatamente o que será criado, alterado ou destruído",
+      "h": "845d89f2"
+    },
+    "questions.1.options.2": {
+      "t": "Formatar o código",
+      "h": "9d990efe"
+    },
+    "questions.1.options.3": {
+      "t": "Baixar providers",
+      "h": "30f1f98c"
+    },
+    "questions.1.q": {
+      "t": "Qual é o objetivo de rodar terraform plan em um pull request?",
+      "h": "588008f3"
+    },
+    "questions.2.explain": {
+      "t": "Detecte-o periodicamente e corrija-o para que o código continue sendo a fonte da verdade.",
+      "h": "b41d2880"
+    },
+    "questions.2.options.0": {
+      "t": "Um erro de sintaxe",
+      "h": "52e22af3"
+    },
+    "questions.2.options.1": {
+      "t": "A infraestrutura real diferir do que o código diz, geralmente por mudanças manuais",
+      "h": "8ebbea80"
+    },
+    "questions.2.options.2": {
+      "t": "Um apply lento",
+      "h": "cc7c5852"
+    },
+    "questions.2.options.3": {
+      "t": "Uma atualização de provider",
+      "h": "daaa55cd"
+    },
+    "questions.2.q": {
+      "t": "O que é drift?",
+      "h": "94ea99af"
+    }
+  }
+}

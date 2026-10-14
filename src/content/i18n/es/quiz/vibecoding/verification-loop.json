@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "El código y los resúmenes generados parecen seguros. Comprueba la evidencia.",
+      "h": "86b0a05d"
+    },
+    "questions.0.options.0": {
+      "t": "Hacer merge",
+      "h": "ea8f0d02"
+    },
+    "questions.0.options.1": {
+      "t": "Ejecutar las pruebas tú mismo y leer el diff, incluidos los cambios en archivos de prueba",
+      "h": "429b566f"
+    },
+    "questions.0.options.2": {
+      "t": "Preguntarle de nuevo",
+      "h": "39348299"
+    },
+    "questions.0.options.3": {
+      "t": "Borrar las pruebas",
+      "h": "af0c02e9"
+    },
+    "questions.0.q": {
+      "t": "Un agent dice que todas las pruebas pasan. ¿Qué debes hacer?",
+      "h": "baefdba0"
+    },
+    "questions.1.explain": {
+      "t": "Protege los archivos de prueba y la configuración de CI con revisión para que las pruebas sigan siendo una verificación independiente.",
+      "h": "3262d8e5"
+    },
+    "questions.1.options.0": {
+      "t": "Son demasiado rápidas",
+      "h": "a7355945"
+    },
+    "questions.1.options.1": {
+      "t": "Hacen aserciones sobre mocks, actualizan snapshots para coincidir con un bug o se eliminan para poner el build en verde",
+      "h": "2568d52b"
+    },
+    "questions.1.options.2": {
+      "t": "Usan muy pocos comentarios",
+      "h": "8c589311"
+    },
+    "questions.1.options.3": {
+      "t": "Corren en paralelo",
+      "h": "58ddb1ea"
+    },
+    "questions.1.q": {
+      "t": "¿Cuál es una falla típica de las pruebas generadas?",
+      "h": "e203073f"
+    },
+    "questions.2.explain": {
+      "t": "Los gates no dependen del autor. Son la parte confiable del loop.",
+      "h": "5eba1b91"
+    },
+    "questions.2.options.0": {
+      "t": "Para frenar a todos",
+      "h": "25cb0405"
+    },
+    "questions.2.options.1": {
+      "t": "Las verificaciones protegen el código base sin importar quién escribió el cambio, y los agents producen más cambios con errores plausibles",
+      "h": "bf91d48f"
+    },
+    "questions.2.options.2": {
+      "t": "Los agents siempre tienen razón",
+      "h": "c6a7d934"
+    },
+    "questions.2.options.3": {
+      "t": "Los humanos siempre se equivocan",
+      "h": "23b3e594"
+    },
+    "questions.2.q": {
+      "t": "¿Por qué correr los mismos gates de CI en cambios escritos por agents y por humanos?",
+      "h": "fef3521e"
+    }
+  }
+}

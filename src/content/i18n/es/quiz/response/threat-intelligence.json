@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "La Pirámide del Dolor: los hashes y las direcciones cambian trivialmente, las tácticas y técnicas no.",
+      "h": "8c1564cb"
+    },
+    "questions.0.options.0": {
+      "t": "Indicadores como los hashes",
+      "h": "36cf22e3"
+    },
+    "questions.0.options.1": {
+      "t": "Técnicas y comportamiento, porque son costosos de cambiar para un atacante",
+      "h": "6e03ffd1"
+    },
+    "questions.0.options.2": {
+      "t": "Ambos son igual de duraderos",
+      "h": "ff44e99a"
+    },
+    "questions.0.options.3": {
+      "t": "Ninguno es útil",
+      "h": "08286ded"
+    },
+    "questions.0.q": {
+      "t": "¿Contra qué es más duradero defenderse: indicadores o técnicas?",
+      "h": "949ed9a9"
+    },
+    "questions.1.explain": {
+      "t": "La inteligencia se juzga por su procedencia, relevancia y confianza, no por su volumen.",
+      "h": "1ddd1ffe"
+    },
+    "questions.1.options.0": {
+      "t": "Nada",
+      "h": "44819483"
+    },
+    "questions.1.options.1": {
+      "t": "Una fuente, una fecha de vigencia y un nivel de confianza declarado",
+      "h": "08756720"
+    },
+    "questions.1.options.2": {
+      "t": "El logo de un proveedor",
+      "h": "7ca2fdd7"
+    },
+    "questions.1.options.3": {
+      "t": "Una larga lista de IOCs",
+      "h": "93ecff24"
+    },
+    "questions.1.q": {
+      "t": "¿Qué debe acompañar a una afirmación de inteligencia de amenazas?",
+      "h": "9f14974d"
+    },
+    "questions.2.explain": {
+      "t": "STIX describe los objetos, TAXII los transporta entre sistemas.",
+      "h": "475be450"
+    },
+    "questions.2.options.0": {
+      "t": "Un SIEM",
+      "h": "68632958"
+    },
+    "questions.2.options.1": {
+      "t": "Un lenguaje estándar para describir inteligencia y un protocolo para intercambiarla",
+      "h": "dee01efe"
+    },
+    "questions.2.options.2": {
+      "t": "Un motor antivirus",
+      "h": "fa237650"
+    },
+    "questions.2.options.3": {
+      "t": "Un proveedor de nube",
+      "h": "a1d0104d"
+    },
+    "questions.2.q": {
+      "t": "¿Qué proporcionan STIX y TAXII?",
+      "h": "4dbf0965"
+    }
+  }
+}

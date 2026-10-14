@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "A Pirâmide da Dor: hashes e endereços mudam trivialmente, táticas e técnicas não.",
+      "h": "8c1564cb"
+    },
+    "questions.0.options.0": {
+      "t": "Indicadores como hashes",
+      "h": "36cf22e3"
+    },
+    "questions.0.options.1": {
+      "t": "Técnicas e comportamento, porque são caros para o atacante mudar",
+      "h": "6e03ffd1"
+    },
+    "questions.0.options.2": {
+      "t": "Ambos são igualmente duráveis",
+      "h": "ff44e99a"
+    },
+    "questions.0.options.3": {
+      "t": "Nenhum dos dois é útil",
+      "h": "08286ded"
+    },
+    "questions.0.q": {
+      "t": "Contra o que é mais durável se defender: indicadores ou técnicas?",
+      "h": "949ed9a9"
+    },
+    "questions.1.explain": {
+      "t": "A inteligência é julgada por procedência, relevância e confiança, não por volume.",
+      "h": "1ddd1ffe"
+    },
+    "questions.1.options.0": {
+      "t": "Nada",
+      "h": "44819483"
+    },
+    "questions.1.options.1": {
+      "t": "Uma fonte, uma data de atualidade e um nível de confiança declarado",
+      "h": "08756720"
+    },
+    "questions.1.options.2": {
+      "t": "O logotipo de um fornecedor",
+      "h": "7ca2fdd7"
+    },
+    "questions.1.options.3": {
+      "t": "Uma longa lista de IOCs",
+      "h": "93ecff24"
+    },
+    "questions.1.q": {
+      "t": "O que deve acompanhar uma afirmação de inteligência de ameaças?",
+      "h": "9f14974d"
+    },
+    "questions.2.explain": {
+      "t": "O STIX descreve os objetos, o TAXII os transporta entre sistemas.",
+      "h": "475be450"
+    },
+    "questions.2.options.0": {
+      "t": "Um SIEM",
+      "h": "68632958"
+    },
+    "questions.2.options.1": {
+      "t": "Uma linguagem padrão para descrever inteligência e um protocolo para trocá-la",
+      "h": "dee01efe"
+    },
+    "questions.2.options.2": {
+      "t": "Um motor de antivírus",
+      "h": "fa237650"
+    },
+    "questions.2.options.3": {
+      "t": "Um provedor de nuvem",
+      "h": "a1d0104d"
+    },
+    "questions.2.q": {
+      "t": "O que STIX e TAXII oferecem?",
+      "h": "4dbf0965"
+    }
+  }
+}

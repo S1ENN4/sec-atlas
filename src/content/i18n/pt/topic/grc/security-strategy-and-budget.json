@@ -1,0 +1,104 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "A segurança existe para permitir que o negócio assuma riscos com segurança, então uma estratégia começa pelos objetivos da empresa, suas joias da coroa (os ativos cuja perda mais doeria), suas obrigações e seu apetite a risco. Uma fintech, um hospital e uma empresa de mídia defendem coisas diferentes. Entenda como a empresa ganha dinheiro, o que a pararia e quem são os adversários plausíveis.",
+      "h": "401b6d39"
+    },
+    "sections.0.heading": {
+      "t": "Comece pelo negócio",
+      "h": "c8465c0e"
+    },
+    "sections.1.bullets.0": {
+      "t": "Avalie o estado atual em relação a um framework: onde somos fortes, onde estão as lacunas?",
+      "h": "8314b15e"
+    },
+    "sections.1.bullets.1": {
+      "t": "Defina o estado-alvo para um a três anos, com base no risco, não no máximo.",
+      "h": "cc95c2c0"
+    },
+    "sections.1.bullets.2": {
+      "t": "Priorize o fechamento das lacunas pela redução de risco por esforço e por dependências; as bases (inventário de ativos, identidade, logging, backups) costumam vir primeiro.",
+      "h": "03f6f25c"
+    },
+    "sections.1.bullets.3": {
+      "t": "Sequencie em um roadmap com temas, responsáveis, marcos e medidas de sucesso; deixe espaço para o inesperado.",
+      "h": "1dd6c2a4"
+    },
+    "sections.1.bullets.4": {
+      "t": "Diga por escrito o que você não fará e quais riscos aceita por enquanto.",
+      "h": "8574e39c"
+    },
+    "sections.1.bullets.5": {
+      "t": "Revise a cada trimestre; atualize quando o negócio ou as ameaças mudarem.",
+      "h": "b9af6778"
+    },
+    "sections.1.code.0.code": {
+      "t": "## Tema 1: Conhecer e controlar o acesso (T1-T2)\nObjetivo: MFA resistente a phishing para toda a equipe e administradores; acesso privilegiado just-in-time.\nMedida: parcela de contas com MFA resistente a phishing (meta 95%).\nResponsável: head de segurança de TI. Orçamento: upgrade da plataforma de identidade.\n\n## Tema 2: Ver e responder mais rápido (T2-T4)\nObjetivo: logging centralizado de todos os sistemas críticos; detecção 24x7 com um parceiro gerenciado.\nMedida: tempo médio para conter incidentes de alta severidade (meta abaixo de 4 horas).\n\n## Tema 3: Recuperar (T3)\nObjetivo: backups imutáveis; testes trimestrais de restauração dos sistemas de nível 1.\n\n## Aceito por enquanto (com responsável e data de revisão)\nSistema de faturamento legado sem MFA, segmento de rede isolado; revisão 2027-06.",
+      "h": "c133d9ad"
+    },
+    "sections.1.code.0.filename": {
+      "t": "roadmap-2027.md",
+      "h": "8415b9f9"
+    },
+    "sections.1.heading": {
+      "t": "Da avaliação ao roadmap",
+      "h": "7ff2b4ad"
+    },
+    "sections.2.bullets.0": {
+      "t": "Explique o gasto como redução de risco: qual risco, em quanto, a que custo, comparado com a alternativa (inclusive seguro).",
+      "h": "823a7352"
+    },
+    "sections.2.bullets.1": {
+      "t": "Distinga custos de operação (pessoas, licenças) de custos de mudança (projetos), e planeje as pessoas para operar o que você compra.",
+      "h": "3e30b21c"
+    },
+    "sections.2.bullets.2": {
+      "t": "Compre menos ferramentas, mais bem integradas, e use o que você já tem antes de adicionar mais; ferramentas sem uso são custo sem proteção.",
+      "h": "9a609742"
+    },
+    "sections.2.bullets.3": {
+      "t": "Inclua pessoas: contratação, treinamento e retenção costumam ser o melhor uso do dinheiro.",
+      "h": "1359bee3"
+    },
+    "sections.2.bullets.4": {
+      "t": "Mostre os resultados dos gastos anteriores; a credibilidade se acumula.",
+      "h": "31898c31"
+    },
+    "sections.2.heading": {
+      "t": "Orçamento e business case",
+      "h": "71e6e7d9"
+    },
+    "sections.3.bullets.0": {
+      "t": "Construa relações de confiança com engenharia, jurídico, financeiro e a diretoria antes da crise.",
+      "h": "b27bff8b"
+    },
+    "sections.3.bullets.1": {
+      "t": "Torne as decisões visíveis e a aceitação de risco explícita e de responsabilidade do negócio.",
+      "h": "2a9f13ab"
+    },
+    "sections.3.bullets.2": {
+      "t": "Contrate uma mistura de habilidades e desenvolva as pessoas; proteja a equipe do burnout, pois incidentes são exigentes.",
+      "h": "9d6140f4"
+    },
+    "sections.3.bullets.3": {
+      "t": "Responda com honestidade a \"estamos seguros?\": você não pode prometer risco zero, mas pode mostrar um risco bem gerenciado.",
+      "h": "f3a293f6"
+    },
+    "sections.3.heading": {
+      "t": "Liderando a área",
+      "h": "0e7195d2"
+    },
+    "short": {
+      "t": "o que um CISO decide: prioridades, um plano plurianual, um orçamento e os trade-offs por trás deles",
+      "h": "cc25b0f9"
+    },
+    "tagline": {
+      "t": "Uma estratégia é uma escolha sobre o que não fazer. Com pessoas e dinheiro limitados, o trabalho é colocá-los onde reduzem mais o risco para o negócio e explicar por quê.",
+      "h": "a4c3fb46"
+    },
+    "title": {
+      "t": "Estratégia, roadmap e orçamento de segurança",
+      "h": "ac220307"
+    }
+  }
+}

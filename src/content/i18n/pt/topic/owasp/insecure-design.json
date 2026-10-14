@@ -1,0 +1,136 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Insecure design é uma fraqueza em como uma funcionalidade é concebida: um controle ausente, uma suposição de confiança que não se sustenta ou um fluxo de negócio que pode ser abusado exatamente como foi escrito. Difere de um bug de implementação. Um bug é código que não faz o que o design diz; um design inseguro é código que faz exatamente o que o design diz, e o problema é o design.",
+      "h": "a6942d55"
+    },
+    "sections.0.body.1": {
+      "t": "O OWASP Top 10:2025 o mantém como A06. A correção é mais uma prática do que um patch: faça threat modeling cedo, escreva casos de abuso ao lado dos casos de uso e reutilize padrões de design seguro.",
+      "h": "bbf4603b"
+    },
+    "sections.0.heading": {
+      "t": "O que é",
+      "h": "f8c94a3b"
+    },
+    "sections.1.bullets.0": {
+      "t": "Uma redefinição de senha que pergunta \"qual foi o seu primeiro bichinho?\" permite que qualquer pessoa capaz de pesquisar sobre você assuma a conta.",
+      "h": "84ea56d4"
+    },
+    "sections.1.bullets.1": {
+      "t": "Um endpoint de cupom sem limite por cliente permite que um script esgote a promoção em minutos.",
+      "h": "ebe2664f"
+    },
+    "sections.1.bullets.2": {
+      "t": "Um fluxo de venda de ingressos que reserva assentos sem expiração permite que um bot bloqueie o local inteiro.",
+      "h": "afcecf58"
+    },
+    "sections.1.bullets.3": {
+      "t": "Um checkout em várias etapas que confia no preço enviado na última etapa permite que os usuários paguem o que quiserem.",
+      "h": "2d052aae"
+    },
+    "sections.1.bullets.4": {
+      "t": "Um formulário \"esqueci meu usuário\" que revela se um e-mail está cadastrado permite a enumeração de contas.",
+      "h": "504f8792"
+    },
+    "sections.1.heading": {
+      "t": "Como o ataque funciona",
+      "h": "4443eb22"
+    },
+    "sections.2.body.0": {
+      "t": "O código abaixo é limpo e não tem bugs. O design permite que um atacante teste códigos promocionais sem limite e confia em um preço fornecido pelo cliente.",
+      "h": "db894d65"
+    },
+    "sections.2.code.0.code": {
+      "t": "@app.post(\"/api/checkout\")\n@login_required\ndef checkout():\n    data = request.get_json()\n    total = data[\"total\"]                       # preço decidido pelo cliente\n    code = data.get(\"promo\")\n    if code and Promo.query.filter_by(code=code).first():\n        total = total * 0.5                     # tentativas ilimitadas, reuso ilimitado\n    return charge(current_user, total)",
+      "h": "4fcf9065"
+    },
+    "sections.2.code.0.filename": {
+      "t": "checkout.py",
+      "h": "56f225f2"
+    },
+    "sections.2.heading": {
+      "t": "Design vulnerável, em código",
+      "h": "d26a6b22"
+    },
+    "sections.3.body.0": {
+      "t": "Projete os controles dentro do fluxo: o servidor calcula o preço a partir de dados confiáveis, um código promocional é de uso único por conta e as tentativas sofrem rate limiting, e os limites são regras de negócio escritas antes de codificar. O caso de abuso \"enumerar códigos promocionais\" gerou o requisito.",
+      "h": "afca0f51"
+    },
+    "sections.3.code.0.code": {
+      "t": "@app.post(\"/api/checkout\")\n@login_required\n@rate_limit(\"10/minute\", key=lambda: current_user.id)\ndef checkout():\n    cart = Cart.for_user(current_user)           # fonte da verdade no servidor\n    total = cart.total()                         # os preços vêm do catálogo\n    code = request.get_json().get(\"promo\")\n    if code:\n        promo = Promo.redeem(code, user=current_user)   # uso único por usuário, atômico\n        if promo is None:\n            abort(400, \"invalid promo\")\n        total = promo.apply(total)\n    return charge(current_user, total)",
+      "h": "4613ab91"
+    },
+    "sections.3.code.0.filename": {
+      "t": "checkout.py",
+      "h": "56f225f2"
+    },
+    "sections.3.heading": {
+      "t": "A correção",
+      "h": "7188b1fb"
+    },
+    "sections.4.body.0": {
+      "t": "Um controle de design precisa de um teste escrito a partir do caso de abuso, não do caminho feliz. Cada caso de abuso que você listou vira um teste automatizado: o cliente não pode definir o preço, um código não pode ser reutilizado e uma rajada de tentativas é limitada.",
+      "h": "41472522"
+    },
+    "sections.4.code.0.code": {
+      "t": "def test_client_cannot_choose_the_price(client, alice, cart_of_100):\n    r = client.post(\"/api/checkout\", json={\"total\": 1}, auth=alice)\n    assert charged_amount(r) == 100\n\ndef test_promo_is_single_use(client, alice, promo_half_off):\n    assert client.post(\"/api/checkout\", json={\"promo\": promo_half_off}, auth=alice).status_code == 200\n    assert client.post(\"/api/checkout\", json={\"promo\": promo_half_off}, auth=alice).status_code == 400\n\ndef test_promo_guessing_is_throttled(client, alice):\n    codes = [client.post(\"/api/checkout\", json={\"promo\": f\"TRY{i}\"}, auth=alice).status_code for i in range(30)]\n    assert 429 in codes",
+      "h": "6596200f"
+    },
+    "sections.4.code.0.filename": {
+      "t": "test_checkout_abuse.py (pytest)",
+      "h": "46da6326"
+    },
+    "sections.4.code.1.code": {
+      "t": "Como atacante, quero adivinhar códigos promocionais para obter descontos que não deveria.\n  -> controle: rate limit por conta e por IP, códigos longos e aleatórios, uso único\n  -> teste: test_promo_guessing_is_throttled\n\nComo cliente, quero alterar o preço na requisição para pagar menos.\n  -> controle: o preço é calculado no servidor a partir do catálogo\n  -> teste: test_client_cannot_choose_the_price",
+      "h": "b8507c1e"
+    },
+    "sections.4.code.1.filename": {
+      "t": "abuse-cases.md (fica ao lado das user stories)",
+      "h": "cb863890"
+    },
+    "sections.4.heading": {
+      "t": "Prove a correção",
+      "h": "665c8226"
+    },
+    "sections.5.bullets.0": {
+      "t": "Faça threat modeling de novas funcionalidades antes de construí-las: o que estamos protegendo, quem ataca, o que os detém (STRIDE é um bom começo).",
+      "h": "cbb15197"
+    },
+    "sections.5.bullets.1": {
+      "t": "Escreva casos de abuso ao lado dos casos de uso e transforme cada um em um requisito e um teste.",
+      "h": "ad0ff004"
+    },
+    "sections.5.bullets.2": {
+      "t": "Reutilize padrões comprovados (autenticação, rate limiting, gestão segura de sessão) em vez de inventá-los.",
+      "h": "39653988"
+    },
+    "sections.5.bullets.3": {
+      "t": "Separe tenants e níveis de confiança por design; limite o uso de recursos por usuário.",
+      "h": "ed1fc81c"
+    },
+    "sections.5.bullets.4": {
+      "t": "Use um padrão como o OWASP ASVS para transformar \"seja seguro\" em requisitos verificáveis.",
+      "h": "cb6a9700"
+    },
+    "sections.5.bullets.5": {
+      "t": "Revise o modelo quando o design mudar, não uma vez por ano.",
+      "h": "f95f3e04"
+    },
+    "sections.5.heading": {
+      "t": "Checklist",
+      "h": "61b29464"
+    },
+    "short": {
+      "t": "uma falha na própria ideia, que nenhum código limpo corrige",
+      "h": "96be1e5c"
+    },
+    "tagline": {
+      "t": "Uma implementação perfeita de um design ruim continua sendo uma vulnerabilidade. A segurança precisa ser pedida antes da primeira linha de código, como requisito, e não encontrada depois como um bug.",
+      "h": "7f433491"
+    },
+    "title": {
+      "t": "A06 Insecure Design",
+      "h": "cee0525f"
+    }
+  }
+}

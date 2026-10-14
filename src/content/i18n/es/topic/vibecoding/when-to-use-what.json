@@ -1,0 +1,108 @@
+{
+  "entries": {
+    "sections.0.bullets.0": {
+      "t": "Una pregunta rápida sobre código, o una edición pequeña en un archivo que tienes abierto: chat de IDE o edición inline (Cursor, Copilot) o un agent de terminal en plan mode.",
+      "h": "b29b8cf3"
+    },
+    "sections.0.bullets.1": {
+      "t": "Una funcionalidad que atraviesa varios archivos en un repositorio con pruebas: un agent de terminal (Claude Code, OpenCode, OMP, Codex CLI) con aprobaciones activadas para escritura y shell.",
+      "h": "6abde112"
+    },
+    "sections.0.bullets.2": {
+      "t": "Un gran cambio mecánico (renombrado, migración, actualización): un agent con buenas herramientas de edición y una regla clara, ejecutado en una branch con la suite de pruebas como juez.",
+      "h": "09800824"
+    },
+    "sections.0.bullets.3": {
+      "t": "Muchas tareas independientes: varios agents en git worktrees separados, organizados con un multiplexor como herdr, o una capa de orquestación como OMO sobre OpenCode.",
+      "h": "5060afcd"
+    },
+    "sections.0.bullets.4": {
+      "t": "Un prototipo o script desechable: la autonomía total está bien. Ejecútalo en un sandbox o en un directorio temporal.",
+      "h": "aa88d1b5"
+    },
+    "sections.0.bullets.5": {
+      "t": "Código sensible a la seguridad (autenticación, pagos, criptografía, parsing): usa el agent para un borrador y para las pruebas, luego revisa línea por línea con una persona que conozca el área.",
+      "h": "f2eec09c"
+    },
+    "sections.0.bullets.6": {
+      "t": "Código base desconocido: pide al agent que primero lo mapee y lo explique, en solo lectura, antes de cualquier cambio.",
+      "h": "0ccc9abd"
+    },
+    "sections.0.heading": {
+      "t": "Empieza por la tarea",
+      "h": "6cffb161"
+    },
+    "sections.1.body.0": {
+      "t": "Piensa en dos diales. La autonomía es cuánto hace el agent sin preguntar. El riesgo es el daño que puede causar un cambio equivocado. Mantén pequeño el producto de ambos: alta autonomía solo donde los errores son baratos y reversibles (una branch, un sandbox, un script), y aprobaciones donde no lo son (configuración de producción, credenciales, migraciones de datos, eliminaciones).",
+      "h": "86463fc2"
+    },
+    "sections.1.heading": {
+      "t": "Ajusta la autonomía al riesgo",
+      "h": "6b110629"
+    },
+    "sections.2.bullets.0": {
+      "t": "Quieres una experiencia única, pulida y respaldada por el proveedor: Claude Code (modelos Claude) o Codex CLI (modelos de OpenAI).",
+      "h": "318d67d5"
+    },
+    "sections.2.bullets.1": {
+      "t": "Quieres cambiar de modelos y providers libremente, o ejecutar modelos locales: OpenCode u OMP.",
+      "h": "acc9b711"
+    },
+    "sections.2.bullets.2": {
+      "t": "Quieres roles integrados y trabajo multiagente autónomo sobre OpenCode: agrega OMO.",
+      "h": "33bb842b"
+    },
+    "sections.2.bullets.3": {
+      "t": "Ejecutas varias sesiones a la vez y pierdes el rastro: herdr o tmux.",
+      "h": "002605d0"
+    },
+    "sections.2.bullets.4": {
+      "t": "Prefieres un IDE gráfico: Cursor o una extensión de IDE.",
+      "h": "ab812707"
+    },
+    "sections.2.bullets.5": {
+      "t": "Quieres commits pequeños, git-first y predecibles: Aider.",
+      "h": "ea4f423c"
+    },
+    "sections.2.heading": {
+      "t": "Elegir el harness",
+      "h": "a6540f93"
+    },
+    "sections.3.bullets.0": {
+      "t": "Sigues aceptando cambios que no leíste.",
+      "h": "37b2b69a"
+    },
+    "sections.3.bullets.1": {
+      "t": "El agent entra en un loop, repitiendo la misma corrección fallida: reduce la tarea o cambia de modelo.",
+      "h": "4124f163"
+    },
+    "sections.3.bullets.2": {
+      "t": "Los costos te sorprenden: fija límites, usa modelos más baratos en pasos fáciles, mantén el contexto pequeño.",
+      "h": "a8aa2f3f"
+    },
+    "sections.3.bullets.3": {
+      "t": "No puedes explicar qué hace el código: detente y léelo antes de construir más encima.",
+      "h": "8ff8c48c"
+    },
+    "sections.3.bullets.4": {
+      "t": "Cada nueva capa de herramientas añade otra cosa que configurar y en la que confiar: quita lo que no uses.",
+      "h": "511c97d0"
+    },
+    "sections.3.heading": {
+      "t": "Señales de que elegiste mal",
+      "h": "66c5b2ca"
+    },
+    "short": {
+      "t": "una guía de decisión de la tarea a la herramienta, el modelo y el nivel de autonomía",
+      "h": "950db3da"
+    },
+    "tagline": {
+      "t": "Parte de la tarea y de su riesgo, no de la herramienta que te gusta. Una pequeña tabla de decisión cubre la mayoría de los días.",
+      "h": "ee6dbaf7"
+    },
+    "title": {
+      "t": "Cuándo usar qué",
+      "h": "64f93b08"
+    }
+  }
+}

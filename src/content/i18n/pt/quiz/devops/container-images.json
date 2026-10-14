@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "As ferramentas de build ficam no estágio de build e só o que a aplicação precisa chega à imagem final.",
+      "h": "3eba7e0c"
+    },
+    "questions.0.options.0": {
+      "t": "Internet mais rápida",
+      "h": "eae0a56b"
+    },
+    "questions.0.options.1": {
+      "t": "Uma imagem de runtime menor, sem compiladores nem dependências de desenvolvimento",
+      "h": "cf817821"
+    },
+    "questions.0.options.2": {
+      "t": "Camadas criptografadas",
+      "h": "baa24855"
+    },
+    "questions.0.options.3": {
+      "t": "Escalonamento automático",
+      "h": "b50838b2"
+    },
+    "questions.0.q": {
+      "t": "O que um build Docker multi-stage proporciona?",
+      "h": "b1125ac9"
+    },
+    "questions.1.explain": {
+      "t": "A exatidão torna deploys e rollbacks reproduzíveis.",
+      "h": "501077f2"
+    },
+    "questions.1.options.0": {
+      "t": "Digests são mais curtos",
+      "h": "14691e1a"
+    },
+    "questions.1.options.1": {
+      "t": "Uma tag pode passar a apontar para outro conteúdo, um digest identifica o conteúdo exato",
+      "h": "2b0b0ee6"
+    },
+    "questions.1.options.2": {
+      "t": "Registries exigem digests",
+      "h": "a2fa1ae8"
+    },
+    "questions.1.options.3": {
+      "t": "Tags não são suportadas no Kubernetes",
+      "h": "78d7750d"
+    },
+    "questions.1.q": {
+      "t": "Por que fazer deploy pelo digest da imagem em vez de uma tag?",
+      "h": "4d5873a0"
+    },
+    "questions.2.explain": {
+      "t": "Contêineres são descartáveis. O estado dentro de um desaparece com ele.",
+      "h": "9e047d28"
+    },
+    "questions.2.options.0": {
+      "t": "Na camada gravável do contêiner",
+      "h": "7537f3ae"
+    },
+    "questions.2.options.1": {
+      "t": "Em volumes, bancos de dados ou object storage fora do contêiner",
+      "h": "48fc5f8e"
+    },
+    "questions.2.options.2": {
+      "t": "Na imagem",
+      "h": "d0b680fc"
+    },
+    "questions.2.options.3": {
+      "t": "Em variáveis de ambiente",
+      "h": "e1d07a2c"
+    },
+    "questions.2.q": {
+      "t": "Onde deve ficar o estado persistente de uma aplicação?",
+      "h": "328af4fb"
+    }
+  }
+}

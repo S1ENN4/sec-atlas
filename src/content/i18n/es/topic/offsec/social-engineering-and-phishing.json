@@ -1,0 +1,108 @@
+{
+  "entries": {
+    "sections.0.bullets.0": {
+      "t": "Phishing: un mensaje engañoso (correo, SMS, chat) que lleva a la víctima a hacer clic, ingresar credenciales o ejecutar algo.",
+      "h": "a06250f2"
+    },
+    "sections.0.bullets.1": {
+      "t": "Spear phishing y business email compromise: mensajes investigados y dirigidos, a menudo haciéndose pasar por un ejecutivo o un proveedor para desviar un pago.",
+      "h": "b684805e"
+    },
+    "sections.0.bullets.2": {
+      "t": "Vishing y smishing: lo mismo por llamada telefónica o mensaje de texto, incluidas las falsas llamadas de soporte.",
+      "h": "43113ab3"
+    },
+    "sections.0.bullets.3": {
+      "t": "Pretexting: un escenario inventado que hace que una solicitud parezca legítima.",
+      "h": "a4d2a7e7"
+    },
+    "sections.0.bullets.4": {
+      "t": "MFA fatigue y kits adversary-in-the-middle: enviar solicitudes de aprobación repetidas, o retransmitir un inicio de sesión en vivo para robar la sesión.",
+      "h": "f14ccccd"
+    },
+    "sections.0.bullets.5": {
+      "t": "Físico: tailgating, dispositivos dejados como señuelo, suplantación de personal.",
+      "h": "eb9ee4a2"
+    },
+    "sections.0.heading": {
+      "t": "Cómo funcionan los ataques",
+      "h": "846baad8"
+    },
+    "sections.1.bullets.0": {
+      "t": "Autenticación multifactor resistente al phishing (llaves de seguridad FIDO2 o passkeys): la credencial solo funciona en el sitio real, así que una página parecida no obtiene nada.",
+      "h": "85cbb184"
+    },
+    "sections.1.bullets.1": {
+      "t": "Autenticación de correo para que nadie pueda falsificar tu dominio: SPF, DKIM y DMARC con una política de aplicación.",
+      "h": "b9370d80"
+    },
+    "sections.1.bullets.2": {
+      "t": "Filtrado y sandbox de adjuntos y enlaces, y avisos para remitentes externos.",
+      "h": "5550d7de"
+    },
+    "sections.1.bullets.3": {
+      "t": "Controles de proceso para dinero y acceso: un segundo canal para confirmar cambios de pago, reglas de aprobación para solicitudes sensibles.",
+      "h": "f05bdc61"
+    },
+    "sections.1.bullets.4": {
+      "t": "Mínimo privilegio y detección en endpoints, para que un clic no se convierta en una brecha.",
+      "h": "d0008969"
+    },
+    "sections.1.code.0.code": {
+      "t": "example.com.            TXT  \"v=spf1 include:_spf.mail-provider.example -all\"\n_dmarc.example.com.     TXT  \"v=DMARC1; p=reject; rua=mailto:dmarc-reports@example.com; adkim=s; aspf=s\"\nselector1._domainkey.example.com.  TXT  \"v=DKIM1; k=rsa; p=<public key>\"",
+      "h": "47bb0ca9"
+    },
+    "sections.1.code.0.filename": {
+      "t": "Registros DNS (example.com)",
+      "h": "e97bcc37"
+    },
+    "sections.1.heading": {
+      "t": "Controles que no dependen de un juicio perfecto",
+      "h": "d753d766"
+    },
+    "sections.2.bullets.0": {
+      "t": "Solo con autorización por escrito, alcance definido y aprobación de RR. HH. y legal; muchas jurisdicciones tienen reglas sobre pruebas con empleados.",
+      "h": "e76bb932"
+    },
+    "sections.2.bullets.1": {
+      "t": "Apunta a aprender, no a castigar: nunca expongas nombres y no uses escenarios crueles (bonos falsos, despidos falsos, emergencias familiares).",
+      "h": "ede64c10"
+    },
+    "sections.2.bullets.2": {
+      "t": "Mide lo que importa: la tasa de reporte y el tiempo para reportar importan más que la tasa de clics. Una cultura en la que las personas reportan rápido es un control de detección.",
+      "h": "d0a386d2"
+    },
+    "sections.2.bullets.3": {
+      "t": "Facilita el reporte: un botón, una respuesta rápida y amable, y agradecimiento por los reportes (incluidas las falsas alarmas).",
+      "h": "0f0a9a04"
+    },
+    "sections.2.bullets.4": {
+      "t": "Da orientación corta, específica y en el momento oportuno a quienes hacen clic, en lugar de capacitaciones largas y obligatorias.",
+      "h": "15cc32a5"
+    },
+    "sections.2.heading": {
+      "t": "Simulaciones hechas de forma ética",
+      "h": "f5aac2f2"
+    },
+    "sections.3.body.0": {
+      "t": "Asume que tarde o temprano alguien ingresará credenciales en una página falsa. Haz que eso sea sobrevivible: MFA resistente al phishing, procedimientos de revocación de sesiones y tokens, revisión de reglas de buzón, detección de inicios de sesión anómalos y una respuesta ensayada para cuentas comprometidas y fraude de pagos.",
+      "h": "ac9643a6"
+    },
+    "sections.3.heading": {
+      "t": "Prepararse para el día en que funcione",
+      "h": "25c468d6"
+    },
+    "short": {
+      "t": "la superficie de ataque humana: cómo funciona, cómo simularla de forma ética y los controles que funcionan",
+      "h": "2ceed868"
+    },
+    "tagline": {
+      "t": "Las personas no son el eslabón más débil; son el objetivo de un adversario hábil que explota la confianza y la urgencia. Los controles técnicos que no dependen de un juicio humano perfecto son la defensa más fuerte.",
+      "h": "a583cc7f"
+    },
+    "title": {
+      "t": "Ingeniería social y defensa contra phishing",
+      "h": "d017333b"
+    }
+  }
+}

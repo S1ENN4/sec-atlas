@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Uma decisão de segurança que não pode ser tomada é um não. Falhar aberto transforma toda indisponibilidade em um bypass.",
+      "h": "04d38e93"
+    },
+    "questions.0.options.0": {
+      "t": "Permitir a requisição para que os usuários não sejam bloqueados",
+      "h": "007b255a"
+    },
+    "questions.0.options.1": {
+      "t": "Negar e registrar a falha (fail closed)",
+      "h": "63664087"
+    },
+    "questions.0.options.2": {
+      "t": "Tentar de novo para sempre",
+      "h": "27987402"
+    },
+    "questions.0.options.3": {
+      "t": "Devolver o texto da exceção",
+      "h": "7d39051b"
+    },
+    "questions.0.q": {
+      "t": "Um serviço de autorização sofre timeout. O que o código chamador deve fazer?",
+      "h": "80106a6c"
+    },
+    "questions.1.explain": {
+      "t": "Os detalhes internos ajudam os atacantes. O id permite que o suporte encontre os detalhes com segurança.",
+      "h": "abab0efb"
+    },
+    "questions.1.options.0": {
+      "t": "O stack trace, para ajudar na depuração",
+      "h": "e206def1"
+    },
+    "questions.1.options.1": {
+      "t": "Uma mensagem genérica e um correlation id, com os detalhes mantidos nos logs",
+      "h": "0ca4246e"
+    },
+    "questions.1.options.2": {
+      "t": "A consulta SQL que falhou",
+      "h": "fc8a7412"
+    },
+    "questions.1.options.3": {
+      "t": "Nada, a conexão é encerrada",
+      "h": "64ec3f2a"
+    },
+    "questions.1.q": {
+      "t": "O que o cliente deve ver quando ocorre um erro inesperado?",
+      "h": "6080181c"
+    },
+    "questions.2.explain": {
+      "t": "A atomicidade evita o estado parcial. Adicione chaves de idempotência para que as retentativas sejam seguras.",
+      "h": "6b470ace"
+    },
+    "questions.2.options.0": {
+      "t": "Capturar o erro e ignorá-lo",
+      "h": "ec4489de"
+    },
+    "questions.2.options.1": {
+      "t": "Executar as duas etapas em uma única transação para que tenham sucesso ou falhem juntas",
+      "h": "51412a77"
+    },
+    "questions.2.options.2": {
+      "t": "Executar o crédito duas vezes",
+      "h": "7ffd397a"
+    },
+    "questions.2.options.3": {
+      "t": "Adicionar um sleep entre as etapas",
+      "h": "d387de72"
+    },
+    "questions.2.q": {
+      "t": "O débito é concluído, o crédito lança um erro. Como evitar perder dinheiro?",
+      "h": "efc92998"
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "La exposición gradual limita el radio de impacto y da tiempo para comparar métricas.",
+      "h": "fd661401"
+    },
+    "questions.0.options.0": {
+      "t": "No necesita monitoreo",
+      "h": "7d392df2"
+    },
+    "questions.0.options.1": {
+      "t": "Una versión mala llega solo a una pequeña parte de los usuarios antes de ser detectada",
+      "h": "d6749127"
+    },
+    "questions.0.options.2": {
+      "t": "Duplica la capacidad",
+      "h": "25840fdd"
+    },
+    "questions.0.options.3": {
+      "t": "Evita las bases de datos",
+      "h": "43f3d349"
+    },
+    "questions.0.q": {
+      "t": "¿Cuál es la principal ventaja de un canary release?",
+      "h": "10e788cb"
+    },
+    "questions.1.explain": {
+      "t": "Schema y código se despliegan en momentos distintos. La compatibilidad elimina la puerta de un solo sentido.",
+      "h": "1908ee97"
+    },
+    "questions.1.options.0": {
+      "t": "Para ahorrar espacio en disco",
+      "h": "4c23b341"
+    },
+    "questions.1.options.1": {
+      "t": "Para que el código antiguo y el nuevo funcionen durante un rollout y un rollback sea posible",
+      "h": "200e7b06"
+    },
+    "questions.1.options.2": {
+      "t": "Para evitar backups",
+      "h": "17e29586"
+    },
+    "questions.1.options.3": {
+      "t": "Para renombrar tablas con más frecuencia",
+      "h": "1a2838f5"
+    },
+    "questions.1.q": {
+      "t": "¿Por qué hacer los cambios de base de datos retrocompatibles (expand, migrate, contract)?",
+      "h": "686cc118"
+    },
+    "questions.2.explain": {
+      "t": "Puedes entregar a oscuras y activar gradualmente, y apagar al instante.",
+      "h": "b949d16e"
+    },
+    "questions.2.options.0": {
+      "t": "Código y pruebas",
+      "h": "6c09ab6e"
+    },
+    "questions.2.options.1": {
+      "t": "El deploy del código del release de una funcionalidad",
+      "h": "4e5a9f39"
+    },
+    "questions.2.options.2": {
+      "t": "Equipos de dev y ops",
+      "h": "2cea623a"
+    },
+    "questions.2.options.3": {
+      "t": "Ramas y tags",
+      "h": "589ed1fa"
+    },
+    "questions.2.q": {
+      "t": "¿Qué separan las feature flags?",
+      "h": "1c856cf9"
+    }
+  }
+}

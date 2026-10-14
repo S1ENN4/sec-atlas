@@ -1,0 +1,192 @@
+{
+  "entries": {
+    "groups.0.entries.0.aka": {
+      "t": "RoE",
+      "h": "df19d456"
+    },
+    "groups.0.entries.0.meaning": {
+      "t": "O documento acordado que transforma a permissão em limites práticos: escopo, janela de tempo, ações proibidas, taxa de requisições, contatos de emergência e como os achados são reportados.",
+      "h": "e172d3ff"
+    },
+    "groups.0.entries.0.term": {
+      "t": "Regras de engajamento",
+      "h": "f803c64f"
+    },
+    "groups.0.entries.1.meaning": {
+      "t": "A lista de sistemas, contas e atividades que podem ser testados, e daqueles explicitamente excluídos. Tudo o que está fora dela não é autorizado.",
+      "h": "cf279ef4"
+    },
+    "groups.0.entries.1.term": {
+      "t": "Escopo",
+      "h": "4651a34e"
+    },
+    "groups.0.entries.2.aka": {
+      "t": "divulgação responsável",
+      "h": "fff6e45c"
+    },
+    "groups.0.entries.2.meaning": {
+      "t": "Reportar uma vulnerabilidade de forma privada ao seu responsável e dar um prazo razoável para a correção antes de qualquer detalhe público.",
+      "h": "07297b13"
+    },
+    "groups.0.entries.2.term": {
+      "t": "Divulgação coordenada",
+      "h": "df62ad0d"
+    },
+    "groups.0.entries.3.aka": {
+      "t": "pentest",
+      "h": "26dd5ba4"
+    },
+    "groups.0.entries.3.meaning": {
+      "t": "Uma tentativa, com tempo limitado, de explorar fraquezas dentro de um escopo acordado, para mostrar o que um atacante realmente poderia fazer.",
+      "h": "247e7746"
+    },
+    "groups.0.entries.3.term": {
+      "t": "Teste de intrusão",
+      "h": "8c285167"
+    },
+    "groups.0.entries.4.meaning": {
+      "t": "Quanto o testador sabe de antemão: nada, algo (como contas e documentação) ou tudo, inclusive o código-fonte.",
+      "h": "b4ca9a16"
+    },
+    "groups.0.entries.4.term": {
+      "t": "Black, gray e white box",
+      "h": "5a8322de"
+    },
+    "groups.0.entries.5.aka": {
+      "t": "Penetration Testing Execution Standard",
+      "h": "6003af09"
+    },
+    "groups.0.entries.5.meaning": {
+      "t": "Uma descrição das fases de um teste de intrusão, do pré-engajamento ao relatório.",
+      "h": "20092246"
+    },
+    "groups.0.entries.5.term": {
+      "t": "PTES",
+      "h": "9ff376c6"
+    },
+    "groups.0.title": {
+      "t": "engajamentos",
+      "h": "0c5af593"
+    },
+    "groups.1.entries.0.meaning": {
+      "t": "Tudo o que um atacante pode alcançar e tentar: ativos expostos à internet, serviços, interfaces e as pessoas que os usam.",
+      "h": "db437f5e"
+    },
+    "groups.1.entries.0.term": {
+      "t": "Superfície de ataque",
+      "h": "dbc2f1da"
+    },
+    "groups.1.entries.1.meaning": {
+      "t": "O passivo reúne informações sem tocar no alvo; o ativo o sonda diretamente e deve respeitar o escopo e os limites de taxa.",
+      "h": "d5e57fd5"
+    },
+    "groups.1.entries.1.term": {
+      "t": "Recon passivo e ativo",
+      "h": "b4c90418"
+    },
+    "groups.1.entries.2.meaning": {
+      "t": "Um registro DNS que aponta para um recurso de nuvem ou SaaS que não existe mais e que outra pessoa pode reivindicar para servir conteúdo a partir do seu domínio.",
+      "h": "fe668eb7"
+    },
+    "groups.1.entries.2.term": {
+      "t": "Subdomain takeover",
+      "h": "0ae2c47a"
+    },
+    "groups.1.entries.3.aka": {
+      "t": "broken object level authorization",
+      "h": "550a7bec"
+    },
+    "groups.1.entries.3.meaning": {
+      "t": "Uma API aceita o id de um objeto e o devolve sem verificar se quem chama pode acessá-lo. É a forma de IDOR em APIs.",
+      "h": "d2ca6c7d"
+    },
+    "groups.1.entries.3.term": {
+      "t": "BOLA",
+      "h": "880ddce7"
+    },
+    "groups.1.entries.4.meaning": {
+      "t": "Uma API associa campos enviados pelo cliente a um objeto, permitindo que quem chama defina campos (como um papel) que não deveria controlar.",
+      "h": "854329d4"
+    },
+    "groups.1.entries.4.term": {
+      "t": "Mass assignment",
+      "h": "56d9d1aa"
+    },
+    "groups.1.entries.5.meaning": {
+      "t": "Uma cadeia de permissões, credenciais e relações de confiança que leva de um ponto de apoio a algo valioso. Os defensores mapeiam e cortam esses caminhos.",
+      "h": "961f3aee"
+    },
+    "groups.1.entries.5.term": {
+      "t": "Caminho de ataque",
+      "h": "ac1f0b7f"
+    },
+    "groups.1.entries.6.meaning": {
+      "t": "Obter mais direitos do que os concedidos inicialmente, por meio de uma falha, uma configuração incorreta ou uma credencial roubada.",
+      "h": "519ceffb"
+    },
+    "groups.1.entries.6.term": {
+      "t": "Escalação de privilégios",
+      "h": "11832e00"
+    },
+    "groups.1.title": {
+      "t": "técnicas",
+      "h": "d0975e67"
+    },
+    "groups.2.entries.0.meaning": {
+      "t": "Uma simulação baseada em objetivos, em geral encoberta, de um adversário realista, que testa as pessoas, os processos e a tecnologia da organização.",
+      "h": "148ab605"
+    },
+    "groups.2.entries.0.term": {
+      "t": "Red team",
+      "h": "ef2c034b"
+    },
+    "groups.2.entries.1.meaning": {
+      "t": "Um exercício colaborativo em que atacantes e defensores trabalham juntos às claras, verificando a detecção técnica por técnica e corrigindo as lacunas na hora.",
+      "h": "f12561b5"
+    },
+    "groups.2.entries.1.term": {
+      "t": "Purple team",
+      "h": "7421d5b9"
+    },
+    "groups.2.entries.2.meaning": {
+      "t": "Reproduzir o comportamento documentado de um agente de ameaça específico para testar se as defesas o detectariam.",
+      "h": "1fc86d9e"
+    },
+    "groups.2.entries.2.term": {
+      "t": "Emulação de adversário",
+      "h": "0f2a1e44"
+    },
+    "groups.2.entries.3.meaning": {
+      "t": "Uma política de autenticação de e-mail que diz aos receptores o que fazer com mensagens que falham nas verificações SPF ou DKIM do seu domínio e para onde enviar relatórios.",
+      "h": "2d085c20"
+    },
+    "groups.2.entries.3.term": {
+      "t": "DMARC",
+      "h": "7023e86c"
+    },
+    "groups.2.entries.4.aka": {
+      "t": "Common Vulnerability Scoring System",
+      "h": "090d06f8"
+    },
+    "groups.2.entries.4.meaning": {
+      "t": "Um padrão para pontuar a severidade técnica de uma vulnerabilidade. Precisa ser ajustado ao seu contexto antes de definir a prioridade.",
+      "h": "ffa47f83"
+    },
+    "groups.2.entries.4.term": {
+      "t": "CVSS",
+      "h": "57c970ca"
+    },
+    "groups.2.entries.5.meaning": {
+      "t": "Verificar se uma correção realmente fecha um achado, e não apenas a requisição exata que foi reportada.",
+      "h": "b7aea01f"
+    },
+    "groups.2.entries.5.term": {
+      "t": "Reteste",
+      "h": "90f0239d"
+    },
+    "groups.2.title": {
+      "t": "exercícios e relatórios",
+      "h": "d72fdbe1"
+    }
+  }
+}

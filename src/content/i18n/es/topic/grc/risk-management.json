@@ -1,0 +1,108 @@
+{
+  "entries": {
+    "sections.0.bullets.0": {
+      "t": "Activo: algo de valor (datos, un sistema, un servicio, la reputación).",
+      "h": "09af19d4"
+    },
+    "sections.0.bullets.1": {
+      "t": "Amenaza: algo que puede causar daño (un atacante, un error, una falla).",
+      "h": "5adf0c55"
+    },
+    "sections.0.bullets.2": {
+      "t": "Vulnerabilidad: una debilidad que una amenaza puede aprovechar.",
+      "h": "f788561d"
+    },
+    "sections.0.bullets.3": {
+      "t": "Riesgo: la probabilidad y el impacto de que una amenaza aproveche una vulnerabilidad contra un activo. Suele calificarse como probabilidad por impacto.",
+      "h": "dcc86e9f"
+    },
+    "sections.0.bullets.4": {
+      "t": "Control: algo que reduce la probabilidad o el impacto.",
+      "h": "deedffc3"
+    },
+    "sections.0.bullets.5": {
+      "t": "El riesgo inherente es el que existe antes de los controles; el riesgo residual es el que queda después.",
+      "h": "1876f655"
+    },
+    "sections.0.heading": {
+      "t": "El vocabulario",
+      "h": "b3acae46"
+    },
+    "sections.1.bullets.0": {
+      "t": "Establecer el contexto: qué busca lograr el negocio y qué puede tolerar (apetito de riesgo).",
+      "h": "dbe42318"
+    },
+    "sections.1.bullets.1": {
+      "t": "Identificar riesgos: a partir del modelado de amenazas, evaluaciones, incidentes, auditorías, proveedores y cambios.",
+      "h": "2274c7d6"
+    },
+    "sections.1.bullets.2": {
+      "t": "Analizar y evaluar: calificar probabilidad e impacto en una escala consistente y priorizar.",
+      "h": "0fc3b2e9"
+    },
+    "sections.1.bullets.3": {
+      "t": "Tratar: reducir (agregar controles), aceptar (con un responsable y una fecha), transferir (seguro, contrato) o evitar (detener la actividad).",
+      "h": "59d34ae5"
+    },
+    "sections.1.bullets.4": {
+      "t": "Monitorear y revisar: los riesgos cambian; revisarlos de forma periódica y después de eventos importantes.",
+      "h": "81b1df0e"
+    },
+    "sections.1.heading": {
+      "t": "El ciclo",
+      "h": "91cc7b9e"
+    },
+    "sections.2.body.0": {
+      "t": "El registro es el documento de trabajo. Cada riesgo tiene un único responsable que puede decidir sobre él, y no solo un contacto de seguridad.",
+      "h": "c5053f8e"
+    },
+    "sections.2.code.0.code": {
+      "t": "- id: R-014\n  title: Datos de clientes expuestos por una falla de autorización en la API\n  asset: customer-api\n  threat: atacante externo con una cuenta gratuita\n  likelihood: 4          # 1 raro .. 5 casi seguro\n  impact: 5              # 1 menor .. 5 grave (regulatorio, financiero, confianza)\n  inherent_score: 20\n  controls: [authorization tests in CI, WAF anomaly rules]\n  residual_score: 10\n  treatment: reduce\n  actions:\n    - { what: \"capa central de autorización\", owner: platform-lead, due: 2027-01-31 }\n  risk_owner: vp-engineering\n  review_date: 2026-12-15",
+      "h": "e2937972"
+    },
+    "sections.2.code.0.filename": {
+      "t": "risk-register.yml",
+      "h": "1e664560"
+    },
+    "sections.2.heading": {
+      "t": "Una entrada del registro de riesgos",
+      "h": "5b9f8937"
+    },
+    "sections.3.bullets.0": {
+      "t": "Use una sola escala en toda la empresa para poder comparar las puntuaciones; explique qué significa cada nivel en dinero, usuarios o tiempo de inactividad.",
+      "h": "fc89df8c"
+    },
+    "sections.3.bullets.1": {
+      "t": "Cuantifique donde pueda: los rangos de pérdida son más útiles que un color, aunque sean aproximados.",
+      "h": "3998137a"
+    },
+    "sections.3.bullets.2": {
+      "t": "Haga explícita la aceptación: un riesgo aceptado por un ejecutivo identificado durante un período definido es una decisión; uno que nadie menciona es negligencia.",
+      "h": "f3ef59cc"
+    },
+    "sections.3.bullets.3": {
+      "t": "Mantenga el registro lo bastante corto para poder actuar y ligado al trabajo: cada riesgo enlaza a acciones con responsables.",
+      "h": "ee8e1f98"
+    },
+    "sections.3.bullets.4": {
+      "t": "Conéctelo con la realidad: los incidentes, los hallazgos de auditoría y la threat intelligence deben modificar las puntuaciones.",
+      "h": "54443a05"
+    },
+    "sections.3.heading": {
+      "t": "Hacerlo bien",
+      "h": "53cb5189"
+    },
+    "short": {
+      "t": "identificar, calificar, tratar y dar seguimiento a los riesgos para que las decisiones se tomen a propósito",
+      "h": "fa42c23f"
+    },
+    "tagline": {
+      "t": "La seguridad no puede eliminar todo el riesgo, y no necesita hacerlo. La gestión de riesgos convierte \"todo es urgente\" en una lista priorizada que el negocio puede aceptar, reducir, transferir o evitar.",
+      "h": "81e97758"
+    },
+    "title": {
+      "t": "Gestión de riesgos de seguridad",
+      "h": "26f2dc90"
+    }
+  }
+}

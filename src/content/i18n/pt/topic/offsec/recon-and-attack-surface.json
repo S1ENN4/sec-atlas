@@ -1,0 +1,100 @@
+{
+  "entries": {
+    "sections.0.bullets.0": {
+      "t": "Passivo: reunir informações sem tocar nos sistemas do alvo, como registros públicos, dados de DNS, logs de transparência de certificados, mecanismos de busca e relatórios de credenciais vazadas.",
+      "h": "82782d36"
+    },
+    "sections.0.bullets.1": {
+      "t": "Ativo: interagir com o alvo para saber mais, como varreduras de portas e sondagens de serviços. Somente dentro do escopo e em uma taxa acordada nas regras de engajamento.",
+      "h": "e528ecdc"
+    },
+    "sections.0.bullets.2": {
+      "t": "Ativos: domínios, subdomínios, faixas de IP, recursos de nuvem, aplicações, APIs e serviços de terceiros.",
+      "h": "0792f6c7"
+    },
+    "sections.0.bullets.3": {
+      "t": "Pessoas e processos (quando estiverem no escopo): informações públicas sobre funções e tecnologia que moldam a abordagem de um atacante.",
+      "h": "6e815262"
+    },
+    "sections.0.heading": {
+      "t": "O que o recon cobre",
+      "h": "20bc8f62"
+    },
+    "sections.1.body.0": {
+      "t": "Execute isto contra ativos que sejam seus ou que você esteja autorizado a testar. Os mesmos comandos mostram a um atacante o que está visível e mostram a um defensor o que deveria ser desligado.",
+      "h": "c7d74f72"
+    },
+    "sections.1.code.0.code": {
+      "t": "# 1. subdomínios a partir de fontes passivas\nsubfinder -d example.com -silent > subs.txt\n\n# 2. quais deles respondem na web, com título e tecnologia\nhttpx -l subs.txt -title -tech-detect -status-code -silent > web.txt\n\n# 3. portas abertas e versões de serviço em um host dentro do escopo, em taxa moderada\nnmap -sV -T3 --top-ports 1000 --max-rate 100 -oA scans/web01 203.0.113.10\n\n# 4. transparência de certificados: nomes que já receberam um certificado\ncurl -s 'https://crt.sh/?q=%25.example.com&output=json' | jq -r '.[].name_value' | sort -u",
+      "h": "d5c96411"
+    },
+    "sections.1.code.0.filename": {
+      "t": "surface-discovery.sh (apenas alvos autorizados)",
+      "h": "5d276b31"
+    },
+    "sections.1.heading": {
+      "t": "Mapeando a sua própria superfície",
+      "h": "64a432b6"
+    },
+    "sections.2.bullets.0": {
+      "t": "Ativos esquecidos: servidores de staging antigos, domínios de teste, produtos desativados que ainda respondem.",
+      "h": "28a5ffdb"
+    },
+    "sections.2.bullets.1": {
+      "t": "Interfaces administrativas e bancos de dados expostos, e serviços que nem deveriam estar na internet.",
+      "h": "9e595c6d"
+    },
+    "sections.2.bullets.2": {
+      "t": "Versões desatualizadas e configurações padrão reveladas por banners.",
+      "h": "29493900"
+    },
+    "sections.2.bullets.3": {
+      "t": "Recursos de nuvem abertos ao mundo: armazenamento, snapshots, painéis.",
+      "h": "dffda0c0"
+    },
+    "sections.2.bullets.4": {
+      "t": "Subdomínios que apontam para serviços que você não controla mais (subdomain takeover).",
+      "h": "ad3b6378"
+    },
+    "sections.2.bullets.5": {
+      "t": "Segredos e detalhes internos em código público, documentos e páginas de erro.",
+      "h": "7c259972"
+    },
+    "sections.2.heading": {
+      "t": "O que procurar",
+      "h": "e540a6e5"
+    },
+    "sections.3.body.0": {
+      "t": "Trate isto como gestão contínua de ativos, não como um teste pontual. Mantenha um inventário autoritativo, execute a descoberta externa em uma agenda, compare-a com o inventário e investigue cada diferença. Reduza a superfície: feche o que não é necessário, coloque o acesso administrativo atrás de uma VPN ou gateway zero trust e remova registros DNS pendentes.",
+      "h": "27ec8330"
+    },
+    "sections.3.bullets.0": {
+      "t": "Alerte quando surgir um novo ativo exposto à internet que não esteja no inventário.",
+      "h": "2b32a119"
+    },
+    "sections.3.bullets.1": {
+      "t": "Atribua um responsável a cada ativo; um ativo sem dono é um risco.",
+      "h": "56ca22fd"
+    },
+    "sections.3.bullets.2": {
+      "t": "Desative as coisas corretamente: remova DNS, certificados e recursos de nuvem juntos.",
+      "h": "8259f5e3"
+    },
+    "sections.3.heading": {
+      "t": "A visão do defensor",
+      "h": "69960605"
+    },
+    "short": {
+      "t": "encontrar o que está exposto: ativos, serviços e sistemas esquecidos, do lado do atacante e do defensor",
+      "h": "ccc9010c"
+    },
+    "tagline": {
+      "t": "Você não pode defender o que não sabe que tem. Os atacantes começam mapeando o alvo; os defensores que executam a mesma descoberta primeiro encontram o servidor esquecido antes que ele seja usado contra eles.",
+      "h": "7871c616"
+    },
+    "title": {
+      "t": "Reconhecimento e superfície de ataque",
+      "h": "2923b229"
+    }
+  }
+}

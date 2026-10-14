@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "La estructura de la consulta se fija antes de que lleguen los datos. La validación y el privilegio mínimo son capas adicionales.",
+      "h": "7e107889"
+    },
+    "questions.0.options.0": {
+      "t": "Hacer escape de las comillas a mano",
+      "h": "ecf62b9f"
+    },
+    "questions.0.options.1": {
+      "t": "Consultas parametrizadas, para que los valores nunca pasen a formar parte del texto SQL",
+      "h": "4daf7ca0"
+    },
+    "questions.0.options.2": {
+      "t": "Una contraseña de base de datos más larga",
+      "h": "fd5a7dc5"
+    },
+    "questions.0.options.3": {
+      "t": "Ocultar los mensajes de error",
+      "h": "134cdac1"
+    },
+    "questions.0.q": {
+      "t": "¿Cuál es la defensa principal contra la SQL injection?",
+      "h": "a7787bd3"
+    },
+    "questions.1.explain": {
+      "t": "Sin shell no hay nada que interprete los metacaracteres. La lista de permitidos agrega defensa en profundidad.",
+      "h": "d11ab3c9"
+    },
+    "questions.1.options.0": {
+      "t": "Armar una cadena de shell y ejecutarla",
+      "h": "f3ee5f04"
+    },
+    "questions.1.options.1": {
+      "t": "Pasar un arreglo de argumentos sin shell, después de validar el valor contra una lista de permitidos",
+      "h": "46941b02"
+    },
+    "questions.1.options.2": {
+      "t": "Quitar los puntos y coma de la entrada",
+      "h": "08b11708"
+    },
+    "questions.1.options.3": {
+      "t": "Ejecutarlo como root para que siempre funcione",
+      "h": "58de96db"
+    },
+    "questions.1.q": {
+      "t": "Un servicio debe ejecutar un programa externo con un nombre de host proporcionado por el usuario. ¿Qué es lo más seguro?",
+      "h": "5661e0b5"
+    },
+    "questions.2.explain": {
+      "t": "Haz escape de la salida según el contexto, mantén activado el auto-escape y usa una Content-Security-Policy.",
+      "h": "2e61404f"
+    },
+    "questions.2.options.0": {
+      "t": "El motor SQL",
+      "h": "29bee328"
+    },
+    "questions.2.options.1": {
+      "t": "El shell del sistema operativo",
+      "h": "993524de"
+    },
+    "questions.2.options.2": {
+      "t": "El motor de HTML y JavaScript del navegador",
+      "h": "9f5862d6"
+    },
+    "questions.2.options.3": {
+      "t": "El resolvedor de DNS",
+      "h": "ef77dd33"
+    },
+    "questions.2.q": {
+      "t": "¿El XSS es una forma de injection en qué intérprete?",
+      "h": "9d52d376"
+    }
+  }
+}

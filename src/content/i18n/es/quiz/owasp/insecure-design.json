@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "El código limpio no puede arreglar un control ausente. La solución empieza antes: modelos de amenazas y casos de abuso.",
+      "h": "8740e297"
+    },
+    "questions.0.options.0": {
+      "t": "Los diseños inseguros siempre están en la base de datos",
+      "h": "d8a00678"
+    },
+    "questions.0.options.1": {
+      "t": "El código hace exactamente lo que dice el diseño, y el propio diseño permite el abuso",
+      "h": "cecfe947"
+    },
+    "questions.0.options.2": {
+      "t": "Los diseños inseguros solo afectan a las apps móviles",
+      "h": "ca1f9cda"
+    },
+    "questions.0.options.3": {
+      "t": "Los bugs son más graves",
+      "h": "f4515c69"
+    },
+    "questions.0.q": {
+      "t": "¿Qué distingue un diseño inseguro de un bug de implementación?",
+      "h": "146f3321"
+    },
+    "questions.1.explain": {
+      "t": "Escribir lo que quiere un atacante hace visibles los controles ausentes antes de que exista el código.",
+      "h": "f50412f3"
+    },
+    "questions.1.options.0": {
+      "t": "Una queja de un usuario",
+      "h": "1f72cbb1"
+    },
+    "questions.1.options.1": {
+      "t": "Una user story escrita desde el punto de vista del atacante, que produce un requisito y una prueba",
+      "h": "fc8fe1a5"
+    },
+    "questions.1.options.2": {
+      "t": "Un informe de pruebas de penetración",
+      "h": "b0e10b67"
+    },
+    "questions.1.options.3": {
+      "t": "Un tipo de regla de firewall",
+      "h": "5bd3d7e7"
+    },
+    "questions.1.q": {
+      "t": "¿Qué es un caso de abuso?",
+      "h": "79036c8d"
+    },
+    "questions.2.explain": {
+      "t": "Todo lo que envía el cliente puede modificarse. El servidor es la fuente de verdad.",
+      "h": "3d6e02fa"
+    },
+    "questions.2.options.0": {
+      "t": "En el navegador",
+      "h": "03e4d011"
+    },
+    "questions.2.options.1": {
+      "t": "En un campo oculto de un formulario",
+      "h": "8006919a"
+    },
+    "questions.2.options.2": {
+      "t": "En el servidor, a partir de datos confiables del catálogo",
+      "h": "accc7ffd"
+    },
+    "questions.2.options.3": {
+      "t": "En la app móvil",
+      "h": "39d9b7ed"
+    },
+    "questions.2.q": {
+      "t": "¿Dónde debe calcularse el precio de un pedido?",
+      "h": "8a91c212"
+    }
+  }
+}

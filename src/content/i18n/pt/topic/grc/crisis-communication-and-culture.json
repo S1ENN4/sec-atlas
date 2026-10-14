@@ -1,0 +1,112 @@
+{
+  "entries": {
+    "sections.0.bullets.0": {
+      "t": "Funcionários: o que aconteceu, o que fazer e não fazer, e onde perguntar. O silêncio alimenta boatos.",
+      "h": "6c6bc52b"
+    },
+    "sections.0.bullets.1": {
+      "t": "Clientes e parceiros: o que foi afetado, o que devem fazer e quando você os atualizará de novo.",
+      "h": "dc844bcc"
+    },
+    "sections.0.bullets.2": {
+      "t": "Reguladores: muitas leis exigem notificação dentro de um prazo definido após você tomar conhecimento de certas violações, especialmente de dados pessoais. Conheça os prazos das suas jurisdições antes de um incidente.",
+      "h": "413e25db"
+    },
+    "sections.0.bullets.3": {
+      "t": "Executivos e conselho: impacto, decisões necessárias e o plano atual.",
+      "h": "b2466581"
+    },
+    "sections.0.bullets.4": {
+      "t": "Autoridades policiais, seguradoras e fornecedores, conforme apropriado.",
+      "h": "0c0eb5bc"
+    },
+    "sections.0.bullets.5": {
+      "t": "O público e a imprensa, por meio de um único porta-voz designado.",
+      "h": "c0c153a8"
+    },
+    "sections.0.heading": {
+      "t": "Públicos e obrigações",
+      "h": "5d073c76"
+    },
+    "sections.1.bullets.0": {
+      "t": "Seja honesto e pontual: diga o que sabe, o que ainda não sabe e quando atualizará. Não adivinhe e não esconda.",
+      "h": "bc5b0507"
+    },
+    "sections.1.bullets.1": {
+      "t": "Uma fonte de verdade e uma só voz: todas as declarações externas são aprovadas pelo jurídico e pela comunicação e são consistentes entre si.",
+      "h": "2e5d0bc1"
+    },
+    "sections.1.bullets.2": {
+      "t": "Não culpe: nem a astúcia do atacante, nem o funcionário que clicou, nem o fornecedor, até que os fatos estejam estabelecidos.",
+      "h": "8de37649"
+    },
+    "sections.1.bullets.3": {
+      "t": "Dê às pessoas algo para fazer: passos concretos (trocar senhas, ficar atento a fraudes) valem mais do que tranquilização genérica.",
+      "h": "4876120e"
+    },
+    "sections.1.bullets.4": {
+      "t": "Atualize no cronograma prometido, mesmo quando a atualização for que nada mudou.",
+      "h": "a81833e8"
+    },
+    "sections.1.bullets.5": {
+      "t": "Prepare-se: modelos, listas de contatos e direitos de decisão escritos em tempos calmos e ensaiados em exercícios de mesa (tabletop) com executivos.",
+      "h": "cdd71765"
+    },
+    "sections.1.heading": {
+      "t": "Princípios",
+      "h": "4a8cf080"
+    },
+    "sections.2.code.0.code": {
+      "t": "Assunto: Incidente de segurança que afeta [serviço]\n\nO que aconteceu: Em [data] detectamos [descrição clara]. Nós [contivemos em data].\nQuais informações estiveram envolvidas: [categorias específicas; diga o que NÃO foi afetado, somente se confirmado].\nO que estamos fazendo: [contenção, investigação com especialistas externos, melhorias].\nO que você pode fazer: [passos concretos].\nO que acontece a seguir: atualizaremos você até [data/hora]. Contato: [canal e nome].\nLamentamos a preocupação que isso causa.",
+      "h": "8302b5dd"
+    },
+    "sections.2.code.0.filename": {
+      "t": "customer-notice-template.txt",
+      "h": "0b9819d7"
+    },
+    "sections.2.heading": {
+      "t": "Um esqueleto de mensagem",
+      "h": "5bf12ff4"
+    },
+    "sections.3.bullets.0": {
+      "t": "Relato sem culpa: quem reporta um erro rapidamente deve ser agradecido, não punido. O primeiro relato costuma ser o que salva o dia.",
+      "h": "f5257554"
+    },
+    "sections.3.bullets.1": {
+      "t": "Faça do jeito seguro o jeito fácil: ferramentas e padrões, não políticas longas que ninguém lê.",
+      "h": "a611c804"
+    },
+    "sections.3.bullets.2": {
+      "t": "Security champions nas equipes de engenharia e de negócio, que aproximam a segurança do trabalho diário.",
+      "h": "dcd68376"
+    },
+    "sections.3.bullets.3": {
+      "t": "Conteúdo de conscientização curto, relevante e respeitoso, que explique o porquê, com exemplos reais da sua empresa.",
+      "h": "f7b7eed6"
+    },
+    "sections.3.bullets.4": {
+      "t": "Os líderes dão o exemplo: os executivos seguem as mesmas regras (MFA, reporte, aprovações).",
+      "h": "76cbc360"
+    },
+    "sections.3.bullets.5": {
+      "t": "Meça a cultura: taxas de reporte, tempo para reportar, participação em exercícios e pesquisas sobre a confiança na equipe de segurança.",
+      "h": "d575d2de"
+    },
+    "sections.3.heading": {
+      "t": "A cultura decide a primeira hora",
+      "h": "909c2236"
+    },
+    "short": {
+      "t": "o que dizer, a quem e quando durante um incidente, e como a cultura decide tudo antes dele",
+      "h": "f78529ae"
+    },
+    "tagline": {
+      "t": "Em um incidente grave, a resposta técnica é metade do trabalho; a outra metade é dizer a verdade, no prazo, às pessoas certas. E a cultura que você construiu antes decide se as pessoas reportam problemas ou os escondem.",
+      "h": "281b9c3b"
+    },
+    "title": {
+      "t": "Comunicação de crise e cultura de segurança",
+      "h": "8627bf2b"
+    }
+  }
+}

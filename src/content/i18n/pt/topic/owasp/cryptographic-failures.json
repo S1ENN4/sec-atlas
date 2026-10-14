@@ -1,0 +1,180 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Uma falha criptográfica é qualquer coisa que expõe dados sensíveis porque a criptografia estava ausente, fraca ou foi usada de forma incorreta: dados enviados sem TLS, senhas armazenadas com um hash rápido, segredos no código-fonte, tokens \"aleatórios\" previsíveis, algoritmos caseiros ou chaves que nunca são rotacionadas.",
+      "h": "fd7e8f20"
+    },
+    "sections.0.body.1": {
+      "t": "É o A04 no OWASP Top 10:2025. A primeira pergunta é sempre: quais dados são sensíveis, por onde viajam e onde ficam em repouso, e quem pode lê-los ali?",
+      "h": "d53fe971"
+    },
+    "sections.0.heading": {
+      "t": "O que é",
+      "h": "f8c94a3b"
+    },
+    "sections.1.bullets.0": {
+      "t": "Sniffing de rede ou um ataque de downgrade lê o tráfego que não está protegido por TLS moderno.",
+      "h": "2b4c28b2"
+    },
+    "sections.1.bullets.1": {
+      "t": "O vazamento de um banco de dados entrega senhas com hash MD5 ou SHA-1 (ou sem salt); uma GPU quebra a maioria em horas.",
+      "h": "f22f9ae1"
+    },
+    "sections.1.bullets.2": {
+      "t": "Tokens construídos a partir de um timestamp ou de um gerador aleatório não criptográfico são previstos e forjados.",
+      "h": "a98d93d8"
+    },
+    "sections.1.bullets.3": {
+      "t": "Uma chave commitada em um repositório, ou compartilhada por todos os clientes, decifra tudo de uma vez.",
+      "h": "cb8637c5"
+    },
+    "sections.1.bullets.4": {
+      "t": "Modo ECB, nonces reutilizados ou criptografia sem autenticação permitem que o atacante identifique padrões ou modifique o texto cifrado.",
+      "h": "077edcbd"
+    },
+    "sections.1.heading": {
+      "t": "Como o ataque funciona",
+      "h": "4443eb22"
+    },
+    "sections.2.body.0": {
+      "t": "Um hash rápido e sem salt para senhas e um gerador previsível para um token de redefinição.",
+      "h": "a84aa059"
+    },
+    "sections.2.code.0.code": {
+      "t": "import hashlib, random\n\ndef store_password(pw):\n    return hashlib.md5(pw.encode()).hexdigest()      # rápido e sem salt\n\ndef reset_token():\n    return str(random.randint(100000, 999999))         # previsível",
+      "h": "c152171f"
+    },
+    "sections.2.code.0.filename": {
+      "t": "auth.py",
+      "h": "2a3ea49e"
+    },
+    "sections.2.code.1.code": {
+      "t": "const crypto = require(\"crypto\");\n\nconst storePassword = (pw) => crypto.createHash(\"sha1\").update(pw).digest(\"hex\");\nconst resetToken = () => Math.random().toString(36).slice(2);",
+      "h": "d42dcb1b"
+    },
+    "sections.2.code.1.filename": {
+      "t": "auth.js",
+      "h": "36a76196"
+    },
+    "sections.2.code.2.code": {
+      "t": "String hash = DigestUtils.md5Hex(password);\nString token = String.valueOf(new Random().nextInt(999999));",
+      "h": "be4c7cf8"
+    },
+    "sections.2.code.2.filename": {
+      "t": "Auth.java",
+      "h": "c8162ae0"
+    },
+    "sections.2.heading": {
+      "t": "Código vulnerável",
+      "h": "fe357299"
+    },
+    "sections.3.body.0": {
+      "t": "Use um hash de senha lento, com salt e feito para esse fim (Argon2id, scrypt ou bcrypt) por meio de uma biblioteca mantida, e obtenha os tokens da fonte aleatória criptográfica do sistema operacional. Não invente algoritmos; não gerencie chaves brutas à mão se uma biblioteca ou um KMS puder fazê-lo.",
+      "h": "e30061b1"
+    },
+    "sections.3.code.0.code": {
+      "t": "import secrets\nfrom argon2 import PasswordHasher\n\nph = PasswordHasher()\n\ndef store_password(pw):\n    return ph.hash(pw)                    # salt e parâmetros já estão incluídos\n\ndef verify_password(stored, pw):\n    try:\n        return ph.verify(stored, pw)\n    except Exception:\n        return False\n\ndef reset_token():\n    return secrets.token_urlsafe(32)      # 256 bits do CSPRNG do SO",
+      "h": "06151699"
+    },
+    "sections.3.code.0.filename": {
+      "t": "auth.py",
+      "h": "2a3ea49e"
+    },
+    "sections.3.code.1.code": {
+      "t": "const crypto = require(\"crypto\");\nconst argon2 = require(\"argon2\");\n\nconst storePassword = (pw) => argon2.hash(pw, { type: argon2.argon2id });\nconst verifyPassword = (stored, pw) => argon2.verify(stored, pw);\nconst resetToken = () => crypto.randomBytes(32).toString(\"base64url\");",
+      "h": "3f95aeda"
+    },
+    "sections.3.code.1.filename": {
+      "t": "auth.js",
+      "h": "36a76196"
+    },
+    "sections.3.code.2.code": {
+      "t": "PasswordEncoder encoder = Argon2PasswordEncoder.defaultsForSpringSecurity_v5_8();\nString hash = encoder.encode(password);\nboolean ok = encoder.matches(password, hash);\n\nbyte[] raw = new byte[32];\nnew SecureRandom().nextBytes(raw);\nString token = Base64.getUrlEncoder().withoutPadding().encodeToString(raw);",
+      "h": "dcfb4796"
+    },
+    "sections.3.code.2.filename": {
+      "t": "Auth.java (Spring Security)",
+      "h": "c5032747"
+    },
+    "sections.3.code.3.code": {
+      "t": "func ResetToken() (string, error) {\n\tb := make([]byte, 32)\n\tif _, err := rand.Read(b); err != nil { // crypto/rand\n\t\treturn \"\", err\n\t}\n\treturn base64.RawURLEncoding.EncodeToString(b), nil\n}",
+      "h": "c94c9015"
+    },
+    "sections.3.code.3.filename": {
+      "t": "token.go",
+      "h": "fdbcf0bb"
+    },
+    "sections.3.heading": {
+      "t": "A correção",
+      "h": "7188b1fb"
+    },
+    "sections.4.body.0": {
+      "t": "Teste propriedades, não algoritmos: dois hashes da mesma senha são diferentes (salt), o valor armazenado não é um simples hash rápido, os tokens são longos e únicos, e o transporte exige TLS moderno.",
+      "h": "697544fb"
+    },
+    "sections.4.code.0.code": {
+      "t": "def test_hashes_are_salted_and_slow_format():\n    a, b = store_password(\"correct horse\"), store_password(\"correct horse\")\n    assert a != b                          # salt aleatório por hash\n    assert a.startswith(\"$argon2id$\")       # não é hex de md5/sha1\n    assert verify_password(a, \"correct horse\")\n    assert not verify_password(a, \"wrong\")\n\ndef test_reset_tokens_are_long_and_unique():\n    tokens = {reset_token() for _ in range(1000)}\n    assert len(tokens) == 1000\n    assert all(len(t) >= 43 for t in tokens)   # 32 bytes, base64url",
+      "h": "840b8c06"
+    },
+    "sections.4.code.0.filename": {
+      "t": "test_crypto.py (pytest)",
+      "h": "c50995d1"
+    },
+    "sections.4.code.1.code": {
+      "t": "# falhar se o servidor ainda aceitar protocolos legados\ntestssl.sh --protocols --quiet https://staging.example.com | tee tls.txt\n! grep -E 'TLS 1(\\.0|\\.1)? .*offered' tls.txt",
+      "h": "01cc661b"
+    },
+    "sections.4.code.1.filename": {
+      "t": "tls-check.sh",
+      "h": "cf05c0bc"
+    },
+    "sections.4.heading": {
+      "t": "Prove a correção",
+      "h": "665c8226"
+    },
+    "sections.5.bullets.0": {
+      "t": "Classifique os dados: saiba o que é sensível antes de escolher os controles.",
+      "h": "5b36c731"
+    },
+    "sections.5.bullets.1": {
+      "t": "TLS em todo lugar, apenas versões modernas, HSTS ligado; nenhum dado sensível em URLs.",
+      "h": "cf75b958"
+    },
+    "sections.5.bullets.2": {
+      "t": "Senhas: Argon2id, scrypt ou bcrypt com uma biblioteca mantida; nunca um hash rápido.",
+      "h": "4996a9e3"
+    },
+    "sections.5.bullets.3": {
+      "t": "A aleatoriedade para segurança vem do CSPRNG do SO, nunca de Math.random ou random.",
+      "h": "04a43996"
+    },
+    "sections.5.bullets.4": {
+      "t": "Use criptografia autenticada (AES-GCM, ChaCha20-Poly1305); nunca reutilize um nonce com a mesma chave.",
+      "h": "56b6d098"
+    },
+    "sections.5.bullets.5": {
+      "t": "As chaves ficam em um KMS ou gerenciador de segredos, são rotacionadas e nunca estão no repositório.",
+      "h": "163c58e9"
+    },
+    "sections.5.bullets.6": {
+      "t": "Não armazene o que não precisa; apague quando terminar.",
+      "h": "bdf916e3"
+    },
+    "sections.5.heading": {
+      "t": "Checklist",
+      "h": "61b29464"
+    },
+    "short": {
+      "t": "dados sensíveis expostos por criptografia fraca, ausente ou mal usada",
+      "h": "ee8ef86f"
+    },
+    "tagline": {
+      "t": "A criptografia raramente é quebrada; ela é pulada, mal configurada ou mal usada. Transporte em texto puro, hashes de senha rápidos e chaves no código são como os dados realmente vazam.",
+      "h": "1811c60f"
+    },
+    "title": {
+      "t": "A04 Cryptographic Failures",
+      "h": "1d819b9d"
+    }
+  }
+}

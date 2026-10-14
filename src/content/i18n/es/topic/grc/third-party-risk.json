@@ -1,0 +1,88 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Cada proveedor con acceso a sus datos, sistemas o código amplía su superficie de ataque, y usted no puede aplicar parches a sus servidores. El riesgo abarca a los proveedores de software y sus dependencias, los proveedores de nube y SaaS, los servicios tercerizados con acceso a la red y los socios que se integran con sus sistemas. Los reguladores y los clientes lo responsabilizan cada vez más por los datos que entrega a un proveedor.",
+      "h": "f8c17b7f"
+    },
+    "sections.0.heading": {
+      "t": "Por qué importa",
+      "h": "750c2096"
+    },
+    "sections.1.bullets.0": {
+      "t": "Inventario: una lista viva de cada tercero, qué hace, qué datos y accesos tiene y quién es responsable de la relación.",
+      "h": "c0540157"
+    },
+    "sections.1.bullets.1": {
+      "t": "Clasificar por criticidad: la profundidad de la revisión debe corresponder al impacto si el proveedor falla o es vulnerado (datos sensibles, acceso a producción, dependencia del negocio).",
+      "h": "5a2e81b7"
+    },
+    "sections.1.bullets.2": {
+      "t": "Debida diligencia antes de firmar: cuestionarios, certificaciones e informes de auditoría, security ratings y, para proveedores críticos, una revisión más profunda o una prueba técnica.",
+      "h": "08f74d42"
+    },
+    "sections.1.bullets.3": {
+      "t": "Contrato: requisitos de seguridad, plazo de notificación de brechas, derecho de auditoría, manejo y eliminación de datos, reglas para subcontratistas, condiciones de salida.",
+      "h": "795cc41d"
+    },
+    "sections.1.bullets.4": {
+      "t": "Incorporación con mínimo privilegio: el acceso mínimo, con límite de tiempo, cuentas nominales y monitoreo.",
+      "h": "6d51b96b"
+    },
+    "sections.1.bullets.5": {
+      "t": "Monitoreo continuo: reevaluar periódicamente según el nivel, vigilar incidentes y cambios de rating, revisar accesos.",
+      "h": "75d0bec3"
+    },
+    "sections.1.bullets.6": {
+      "t": "Baja del proveedor: revocar el acceso y confirmar la devolución o eliminación de los datos.",
+      "h": "0a409d41"
+    },
+    "sections.1.heading": {
+      "t": "El ciclo de vida",
+      "h": "3934e449"
+    },
+    "sections.2.code.0.code": {
+      "t": "tiers:\n  critical:   # una brecha o caída aquí afecta directamente al negocio\n    criteria: [processes personal or payment data, has production or network access, no easy substitute]\n    review: [full questionnaire, SOC 2 Type II or ISO 27001 report, architecture review, annual reassessment]\n  important:\n    criteria: [handles internal confidential data, integrates through APIs]\n    review: [standard questionnaire, certification check, reassess every two years]\n  standard:\n    criteria: [no sensitive data, no integration]\n    review: [lightweight check at onboarding]\n\nvendors:\n  - { name: ExamplePay,     tier: critical,  owner: finance-eng, data: [payment tokens] }\n  - { name: ExampleSurvey,  tier: standard,  owner: marketing,   data: [] }",
+      "h": "9b0ef4a6"
+    },
+    "sections.2.code.0.filename": {
+      "t": "vendor-tiering.yml",
+      "h": "b6088b27"
+    },
+    "sections.2.heading": {
+      "t": "Una regla de clasificación por niveles",
+      "h": "e7ffe6a5"
+    },
+    "sections.3.bullets.0": {
+      "t": "Mantenga un SBOM de lo que entrega y solicite el de los proveedores críticos.",
+      "h": "9aad095c"
+    },
+    "sections.3.bullets.1": {
+      "t": "Escanee las dependencias de forma continua y fije versiones; verifique las firmas de lo que instala.",
+      "h": "bf1bb595"
+    },
+    "sections.3.bullets.2": {
+      "t": "Revise las prácticas de seguridad del propio proveedor, como la forma de firmar releases y de responder a vulnerabilidades.",
+      "h": "8742782c"
+    },
+    "sections.3.bullets.3": {
+      "t": "Planifique para la falla: riesgo de concentración (todo en un solo proveedor), planes de salida y respaldos fuera del proveedor.",
+      "h": "6c95f061"
+    },
+    "sections.3.heading": {
+      "t": "Cadena de suministro de software",
+      "h": "70169ff1"
+    },
+    "short": {
+      "t": "evaluar proveedores y socios, porque su debilidad se vuelve la tuya",
+      "h": "47804d9c"
+    },
+    "tagline": {
+      "t": "Una parte creciente de los incidentes entra por un proveedor, un socio o una dependencia: un atacante vulnera a una empresa más pequeña para llegar a su gran cliente. Sepa de quién depende y cuánto confía en ellos.",
+      "h": "023b6f93"
+    },
+    "title": {
+      "t": "Riesgo de terceros y de la cadena de suministro",
+      "h": "2a9aa4e4"
+    }
+  }
+}

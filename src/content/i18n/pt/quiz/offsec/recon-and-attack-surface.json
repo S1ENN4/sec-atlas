@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Ativos desconhecidos ficam sem patch e sem monitoramento. A descoberta contínua fecha essa lacuna.",
+      "h": "d2eda410"
+    },
+    "questions.0.options.0": {
+      "t": "Para assustar os usuários",
+      "h": "71dadb09"
+    },
+    "questions.0.options.1": {
+      "t": "Para encontrar ativos esquecidos ou sem dono antes de um atacante",
+      "h": "b095804c"
+    },
+    "questions.0.options.2": {
+      "t": "Para aumentar o tráfego",
+      "h": "b8106e82"
+    },
+    "questions.0.options.3": {
+      "t": "Para testar concorrentes",
+      "h": "a956b3c2"
+    },
+    "questions.0.q": {
+      "t": "Por que os defensores devem executar a descoberta de ativos contra os próprios domínios?",
+      "h": "e163f426"
+    },
+    "questions.1.explain": {
+      "t": "Remova os registros DNS quando desativar o recurso para o qual eles apontam.",
+      "h": "052c8ff8"
+    },
+    "questions.1.options.0": {
+      "t": "Uma queda de DNS",
+      "h": "68b5f90f"
+    },
+    "questions.1.options.1": {
+      "t": "Um registro DNS que aponta para um recurso de nuvem excluído, que outra pessoa pode reivindicar e servir a partir do seu domínio",
+      "h": "02d5fe66"
+    },
+    "questions.1.options.2": {
+      "t": "Uma renovação de domínio",
+      "h": "294b45ad"
+    },
+    "questions.1.options.3": {
+      "t": "Um novo TLD",
+      "h": "3487a705"
+    },
+    "questions.1.q": {
+      "t": "O que é um subdomain takeover?",
+      "h": "a9b99fb2"
+    },
+    "questions.2.explain": {
+      "t": "Varreduras agressivas podem causar indisponibilidade. A taxa e o escopo vêm das regras de engajamento.",
+      "h": "4a0105e9"
+    },
+    "questions.2.options.0": {
+      "t": "Nada, varrer o mais rápido possível",
+      "h": "cc8259f1"
+    },
+    "questions.2.options.1": {
+      "t": "O escopo e a taxa de requisições combinada",
+      "h": "5c4a5c17"
+    },
+    "questions.2.options.2": {
+      "t": "Apenas a janela de tempo",
+      "h": "4434b5fb"
+    },
+    "questions.2.options.3": {
+      "t": "Apenas a lista de IPs",
+      "h": "1892a89d"
+    },
+    "questions.2.q": {
+      "t": "Em uma varredura autorizada, o que você deve respeitar?",
+      "h": "cca90ae3"
+    }
+  }
+}

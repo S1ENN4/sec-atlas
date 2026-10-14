@@ -1,0 +1,100 @@
+{
+  "entries": {
+    "sections.0.bullets.0": {
+      "t": "Requisito: lo que exige un estándar o una ley, en sus propias palabras.",
+      "h": "bbf2ea43"
+    },
+    "sections.0.bullets.1": {
+      "t": "Control: lo que realmente hace para cumplirlo, escrito de forma que pueda probarse (quién, qué, con qué frecuencia).",
+      "h": "c10c1c19"
+    },
+    "sections.0.bullets.2": {
+      "t": "Responsable: la persona que responde por el funcionamiento del control, no el equipo de cumplimiento.",
+      "h": "e3502a97"
+    },
+    "sections.0.bullets.3": {
+      "t": "Evidencia: prueba de que el control operó durante el período, como una exportación de configuración, un log, un ticket, una aprobación.",
+      "h": "556ea23a"
+    },
+    "sections.0.bullets.4": {
+      "t": "Prueba: una verificación periódica de que el control funciona, realizada por su responsable y por una revisión independiente.",
+      "h": "3cc8a374"
+    },
+    "sections.0.heading": {
+      "t": "Del requisito al control",
+      "h": "e71877b1"
+    },
+    "sections.1.body.0": {
+      "t": "Siempre que un control sea técnico, deje que el sistema produzca la evidencia. Las políticas, la configuración y las revisiones de acceso bajo control de versiones dejan rastro por diseño.",
+      "h": "0d66ee03"
+    },
+    "sections.1.code.0.code": {
+      "t": "DATE=$(date -u +%F)\nmkdir -p evidence/$DATE\n\n# quién tiene acceso de administrador a la cuenta de nube\naws iam list-entities-for-policy --policy-arn arn:aws:iam::aws:policy/AdministratorAccess \\\n  > evidence/$DATE/aws-admin-principals.json\n\n# se exige MFA para los usuarios de la consola\naws iam generate-credential-report >/dev/null && aws iam get-credential-report --query Content --output text \\\n  | base64 -d > evidence/$DATE/iam-credential-report.csv\n\n# protección de ramas en el repositorio principal\ngh api repos/example/app/branches/main/protection > evidence/$DATE/branch-protection.json\n\nsha256sum evidence/$DATE/* > evidence/$DATE/SHA256SUMS",
+      "h": "3d3e8ed9"
+    },
+    "sections.1.code.0.filename": {
+      "t": "collect-evidence.sh",
+      "h": "3fa3dcbd"
+    },
+    "sections.1.heading": {
+      "t": "Evidencia continua",
+      "h": "c1925d14"
+    },
+    "sections.2.bullets.0": {
+      "t": "El alcance y el período se acuerdan primero; sepa qué está dentro y qué fuera.",
+      "h": "6c247837"
+    },
+    "sections.2.bullets.1": {
+      "t": "Los auditores piden una muestra de evidencias por cada control. Organícela por control, con nombres y fechas que tengan sentido.",
+      "h": "40c06f1a"
+    },
+    "sections.2.bullets.2": {
+      "t": "Sea honesto sobre las excepciones: una brecha documentada con un plan de acción es mucho mejor que una que encuentra el auditor.",
+      "h": "b92178fc"
+    },
+    "sections.2.bullets.3": {
+      "t": "Los hallazgos pasan a ser entradas del registro de riesgos y trabajo con seguimiento, con responsables y fechas.",
+      "h": "1c82f13d"
+    },
+    "sections.2.bullets.4": {
+      "t": "Mantenga un único punto de contacto y una cadencia tranquila; las solicitudes sorpresa suelen significar evidencia faltante.",
+      "h": "28b2ce16"
+    },
+    "sections.2.heading": {
+      "t": "La auditoría",
+      "h": "d51b35c2"
+    },
+    "sections.3.bullets.0": {
+      "t": "Pregunte de cada control qué riesgo reduce. Si nadie puede decirlo, cuestiónelo.",
+      "h": "76d51998"
+    },
+    "sections.3.bullets.1": {
+      "t": "Prefiera verificaciones automatizadas a capturas de pantalla y atestaciones anuales.",
+      "h": "6fb1f134"
+    },
+    "sections.3.bullets.2": {
+      "t": "Use un control para satisfacer varios marcos en lugar de un proceso por estándar.",
+      "h": "0bce073b"
+    },
+    "sections.3.bullets.3": {
+      "t": "Comparta el calendario de cumplimiento con ingeniería para que las solicitudes sean trabajo planificado y no interrupciones.",
+      "h": "06e7864d"
+    },
+    "sections.3.heading": {
+      "t": "Evitar la seguridad de casilla marcada",
+      "h": "c229922b"
+    },
+    "short": {
+      "t": "convertir requisitos en controles con responsable, recopilar evidencias de forma continua y aprobar auditorías con tranquilidad",
+      "h": "fa59fb8f"
+    },
+    "tagline": {
+      "t": "Las auditorías son dolorosas cuando las evidencias se reúnen a las carreras en la última semana. Son rutina cuando los controles tienen responsables y las evidencias se producen automáticamente durante todo el año.",
+      "h": "1537f08c"
+    },
+    "title": {
+      "t": "Cumplimiento en la práctica: controles, evidencias y auditorías",
+      "h": "ef679dac"
+    }
+  }
+}

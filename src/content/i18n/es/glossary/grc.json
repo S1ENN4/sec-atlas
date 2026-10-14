@@ -1,0 +1,172 @@
+{
+  "entries": {
+    "groups.0.entries.0.meaning": {
+      "t": "Cuánto riesgo está dispuesta a aceptar la organización en la búsqueda de sus objetivos. Define qué riesgos necesitan tratamiento y cuáles pueden aceptarse.",
+      "h": "db75c73c"
+    },
+    "groups.0.entries.0.term": {
+      "t": "Apetito de riesgo",
+      "h": "8a9d2d08"
+    },
+    "groups.0.entries.1.meaning": {
+      "t": "El riesgo inherente es el nivel antes de los controles; el riesgo residual es el que queda después. Reportar ambos muestra lo que los controles realmente logran.",
+      "h": "f4b3ba23"
+    },
+    "groups.0.entries.1.term": {
+      "t": "Riesgo inherente y residual",
+      "h": "7088ef7d"
+    },
+    "groups.0.entries.2.meaning": {
+      "t": "El registro de trabajo de los riesgos identificados: responsable, calificación, controles, tratamiento, acciones y fecha de revisión.",
+      "h": "c4712bcd"
+    },
+    "groups.0.entries.2.term": {
+      "t": "Registro de riesgos",
+      "h": "e2cb59b0"
+    },
+    "groups.0.entries.3.meaning": {
+      "t": "Las cuatro respuestas a un riesgo: reducirlo con controles, aceptarlo de forma consciente, transferirlo (seguro, contrato) o evitarlo dejando de realizar la actividad.",
+      "h": "0f4d01cd"
+    },
+    "groups.0.entries.3.term": {
+      "t": "Tratamiento del riesgo",
+      "h": "60577969"
+    },
+    "groups.0.entries.4.meaning": {
+      "t": "Dependencia excesiva de un proveedor, prestador o tecnología, de modo que su falla se convierte en la tuya.",
+      "h": "61d02e6b"
+    },
+    "groups.0.entries.4.term": {
+      "t": "Riesgo de concentración",
+      "h": "17243b42"
+    },
+    "groups.0.entries.5.meaning": {
+      "t": "Agrupar a los proveedores por criticidad para que la profundidad de la revisión y del monitoreo corresponda al impacto de su falla.",
+      "h": "beeba371"
+    },
+    "groups.0.entries.5.term": {
+      "t": "Clasificación de proveedores por niveles (vendor tiering)",
+      "h": "d0588c66"
+    },
+    "groups.0.title": {
+      "t": "riesgo",
+      "h": "11a110bb"
+    },
+    "groups.1.entries.0.aka": {
+      "t": "sistema de gestión de seguridad de la información",
+      "h": "76457f57"
+    },
+    "groups.1.entries.0.meaning": {
+      "t": "El conjunto de políticas, procesos y controles que una organización usa para gestionar la seguridad de la información, según exige la ISO 27001.",
+      "h": "664dfd89"
+    },
+    "groups.1.entries.0.term": {
+      "t": "ISMS",
+      "h": "fde4270b"
+    },
+    "groups.1.entries.1.meaning": {
+      "t": "Un marco voluntario que organiza un programa de seguridad en funciones: Govern, Identify, Protect, Detect, Respond y Recover.",
+      "h": "84e4d100"
+    },
+    "groups.1.entries.1.term": {
+      "t": "NIST CSF",
+      "h": "5f8e7dab"
+    },
+    "groups.1.entries.2.meaning": {
+      "t": "Una lista priorizada de salvaguardas prácticas agrupadas en niveles de implementación, útil para decidir por dónde empezar.",
+      "h": "f0ac5beb"
+    },
+    "groups.1.entries.2.term": {
+      "t": "CIS Controls",
+      "h": "049a0cdf"
+    },
+    "groups.1.entries.3.meaning": {
+      "t": "Un informe de un auditor sobre los controles de un proveedor de servicios en materia de seguridad y criterios relacionados, solicitado con frecuencia por los clientes.",
+      "h": "394a8a2d"
+    },
+    "groups.1.entries.3.term": {
+      "t": "SOC 2",
+      "h": "2776e78c"
+    },
+    "groups.1.entries.4.meaning": {
+      "t": "Una salvaguarda que reduce la probabilidad o el impacto de un riesgo; para ser auditable debe tener responsable, frecuencia y evidencia.",
+      "h": "db10051e"
+    },
+    "groups.1.entries.4.term": {
+      "t": "Control",
+      "h": "ea1d3df2"
+    },
+    "groups.1.entries.5.meaning": {
+      "t": "Prueba de que un control operó durante un período, como una exportación de configuración, un log, un ticket o un registro de aprobación.",
+      "h": "7fc05439"
+    },
+    "groups.1.entries.5.term": {
+      "t": "Evidencia",
+      "h": "7ea014de"
+    },
+    "groups.1.title": {
+      "t": "marcos y cumplimiento",
+      "h": "aeccf36d"
+    },
+    "groups.2.entries.0.meaning": {
+      "t": "Un enfoque que no otorga confianza por la ubicación en la red: cada solicitud se autentica y autoriza usando identidad, dispositivo y contexto.",
+      "h": "1ba7a4e5"
+    },
+    "groups.2.entries.0.term": {
+      "t": "Zero trust",
+      "h": "34fee458"
+    },
+    "groups.2.entries.1.aka": {
+      "t": "registro de decisión de arquitectura",
+      "h": "cdd47461"
+    },
+    "groups.2.entries.1.meaning": {
+      "t": "Un documento breve que registra una decisión significativa, su contexto, alternativas y consecuencias.",
+      "h": "a04fad67"
+    },
+    "groups.2.entries.1.term": {
+      "t": "ADR",
+      "h": "715ab7c2"
+    },
+    "groups.2.entries.2.aka": {
+      "t": "indicador clave de riesgo",
+      "h": "c0bf2d78"
+    },
+    "groups.2.entries.2.meaning": {
+      "t": "Una medida que advierte que el riesgo está aumentando, como un backlog creciente de hallazgos críticos o de sistemas sin soporte.",
+      "h": "da9bd239"
+    },
+    "groups.2.entries.2.term": {
+      "t": "KRI",
+      "h": "e17f28e0"
+    },
+    "groups.2.entries.3.meaning": {
+      "t": "Los activos cuya pérdida o compromiso dañaría más a la organización. La estrategia comienza por identificarlos y protegerlos.",
+      "h": "c308f0d4"
+    },
+    "groups.2.entries.3.term": {
+      "t": "Joyas de la corona (crown jewels)",
+      "h": "3e31b713"
+    },
+    "groups.2.entries.4.meaning": {
+      "t": "Una cultura en la que se apoya a quienes reportan errores o incidentes rápidamente, porque los reportes tempranos limitan el daño.",
+      "h": "9d5cafa1"
+    },
+    "groups.2.entries.4.term": {
+      "t": "Reporte sin culpa (blameless reporting)",
+      "h": "8dd4f5b9"
+    },
+    "groups.2.entries.5.meaning": {
+      "t": "Una persona de un equipo de ingeniería o de negocio que actúa como punto de contacto local para la seguridad y la incorpora al trabajo diario.",
+      "h": "f596c6dd"
+    },
+    "groups.2.entries.5.term": {
+      "t": "Security champion",
+      "h": "d8842a79"
+    },
+    "groups.2.title": {
+      "t": "arquitectura y liderazgo",
+      "h": "05bdd5b4"
+    }
+  }
+}

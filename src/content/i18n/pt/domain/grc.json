@@ -1,0 +1,148 @@
+{
+  "entries": {
+    "graph.0.label": {
+      "t": "alimenta",
+      "h": "56222773"
+    },
+    "graph.1.label": {
+      "t": "é estruturado por",
+      "h": "e7b05f61"
+    },
+    "graph.2.label": {
+      "t": "é implementado por meio de",
+      "h": "d8cd470b"
+    },
+    "graph.3.label": {
+      "t": "é evidenciado por",
+      "h": "9cc58a7e"
+    },
+    "graph.4.label": {
+      "t": "fornece dados para",
+      "h": "ca64136e"
+    },
+    "graph.5.label": {
+      "t": "informa",
+      "h": "17160d2b"
+    },
+    "graph.6.label": {
+      "t": "inclui",
+      "h": "01c7ed68"
+    },
+    "pipeline.0.description": {
+      "t": "saber o que pode dar errado e por quem pode chegar",
+      "h": "e896f528"
+    },
+    "pipeline.0.gate": {
+      "t": "todo risco importante tem um responsável, uma classificação e uma decisão",
+      "h": "a33c8e2a"
+    },
+    "pipeline.0.items.0.label": {
+      "t": "riscos com responsáveis e tratamento",
+      "h": "7aaa5366"
+    },
+    "pipeline.0.items.1.label": {
+      "t": "fornecedores, parceiros e dependências",
+      "h": "cfcaf4b4"
+    },
+    "pipeline.0.name": {
+      "t": "identificar",
+      "h": "9bf0f8ff"
+    },
+    "pipeline.1.description": {
+      "t": "frameworks e arquitetura que escalam",
+      "h": "d825f088"
+    },
+    "pipeline.1.gate": {
+      "t": "os controles são projetados uma vez, como padrões, e mapeados aos requisitos",
+      "h": "1ab329ea"
+    },
+    "pipeline.1.items.0.label": {
+      "t": "ISO 27001, NIST CSF, CIS, PCI DSS",
+      "h": "34f29aec"
+    },
+    "pipeline.1.items.1.label": {
+      "t": "zero trust e padrões reutilizáveis",
+      "h": "a84f0763"
+    },
+    "pipeline.1.name": {
+      "t": "projetar",
+      "h": "056f1182"
+    },
+    "pipeline.2.description": {
+      "t": "mostrar que os controles funcionam",
+      "h": "9972d456"
+    },
+    "pipeline.2.gate": {
+      "t": "as evidências são produzidas continuamente e as métricas orientam decisões",
+      "h": "bfee2398"
+    },
+    "pipeline.2.items.0.label": {
+      "t": "evidências e auditorias",
+      "h": "9fd8f602"
+    },
+    "pipeline.2.items.1.label": {
+      "t": "métricas de resultado e relatórios ao conselho",
+      "h": "e6f941de"
+    },
+    "pipeline.2.name": {
+      "t": "comprovar",
+      "h": "82ffc943"
+    },
+    "pipeline.3.description": {
+      "t": "decidir, comunicar, construir cultura",
+      "h": "787550fb"
+    },
+    "pipeline.3.gate": {
+      "t": "a liderança entende o risco, financia o plano e confia na equipe",
+      "h": "d9b1cb48"
+    },
+    "pipeline.3.items.0.label": {
+      "t": "estratégia, roadmap e orçamento",
+      "h": "e8c0de0c"
+    },
+    "pipeline.3.items.1.label": {
+      "t": "comunicação de crise e cultura",
+      "h": "978af6a8"
+    },
+    "pipeline.3.name": {
+      "t": "liderar",
+      "h": "8cb33b27"
+    },
+    "relations.0.label": {
+      "t": "é estruturado por",
+      "h": "e7b05f61"
+    },
+    "relations.1.label": {
+      "t": "alimenta",
+      "h": "56222773"
+    },
+    "relations.2.label": {
+      "t": "é implementado por meio de",
+      "h": "d8cd470b"
+    },
+    "relations.3.label": {
+      "t": "é evidenciado por",
+      "h": "9cc58a7e"
+    },
+    "relations.4.label": {
+      "t": "torna a evidência automática",
+      "h": "ffb18bbf"
+    },
+    "relations.5.label": {
+      "t": "fornece dados para",
+      "h": "ca64136e"
+    },
+    "relations.6.label": {
+      "t": "informa",
+      "h": "17160d2b"
+    },
+    "relations.7.label": {
+      "t": "define prioridades para",
+      "h": "635dcb5d"
+    },
+    "relations.8.label": {
+      "t": "inclui",
+      "h": "01c7ed68"
+    }
+  }
+}

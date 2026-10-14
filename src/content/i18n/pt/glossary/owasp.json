@@ -1,0 +1,244 @@
+{
+  "entries": {
+    "groups.0.entries.0.aka": {
+      "t": "referência direta insegura a objeto · BOLA",
+      "h": "5f2c7c9b"
+    },
+    "groups.0.entries.0.meaning": {
+      "t": "A requisição nomeia um objeto (um id) e o servidor o devolve sem verificar se quem chama pode vê-lo. É a forma mais comum de controle de acesso quebrado e, em APIs, chama-se broken object level authorization.",
+      "h": "972be726"
+    },
+    "groups.0.entries.0.term": {
+      "t": "IDOR",
+      "h": "f671f5a4"
+    },
+    "groups.0.entries.1.meaning": {
+      "t": "O acesso é proibido a menos que uma regra o permita explicitamente, de modo que uma rota esquecida falha fechada em vez de aberta.",
+      "h": "2e27753a"
+    },
+    "groups.0.entries.1.term": {
+      "t": "Negar por padrão",
+      "h": "88262657"
+    },
+    "groups.0.entries.2.meaning": {
+      "t": "Reutilizar pares de e-mail e senha vazados em outras violações contra o seu login. Funciona porque as pessoas reutilizam senhas, então a defesa é throttling, verificação de senhas vazadas e um segundo fator.",
+      "h": "bfd0827a"
+    },
+    "groups.0.entries.2.term": {
+      "t": "Credential stuffing",
+      "h": "4e7c0cba"
+    },
+    "groups.0.entries.3.meaning": {
+      "t": "Um atacante planta um id de sessão conhecido no navegador da vítima; se o app mantém esse id depois do login, o atacante compartilha a sessão. Regenere o id no login.",
+      "h": "2beb00b6"
+    },
+    "groups.0.entries.3.term": {
+      "t": "Session fixation",
+      "h": "b84f4f0d"
+    },
+    "groups.0.entries.4.aka": {
+      "t": "WebAuthn",
+      "h": "cfb9047b"
+    },
+    "groups.0.entries.4.meaning": {
+      "t": "Um login resistente a phishing baseado em um par de chaves guardado no dispositivo do usuário; o site guarda apenas a chave pública, então não há senha para roubar ou reutilizar.",
+      "h": "0cbc204f"
+    },
+    "groups.0.entries.4.term": {
+      "t": "Passkey",
+      "h": "e35828da"
+    },
+    "groups.0.title": {
+      "t": "acesso e identidade",
+      "h": "ac0a554a"
+    },
+    "groups.1.entries.0.aka": {
+      "t": "SQLi",
+      "h": "db612fbd"
+    },
+    "groups.1.entries.0.meaning": {
+      "t": "Entrada concatenada em uma string SQL é interpretada como parte da consulta. Consultas parametrizadas enviam os valores separadamente e eliminam o problema.",
+      "h": "ea830647"
+    },
+    "groups.1.entries.0.term": {
+      "t": "SQL injection",
+      "h": "0b806fff"
+    },
+    "groups.1.entries.1.aka": {
+      "t": "cross-site scripting",
+      "h": "c4e5937f"
+    },
+    "groups.1.entries.1.meaning": {
+      "t": "Injeção em uma página web: entrada não confiável é renderizada como HTML ou script no navegador de outro usuário. Faça escape na saída conforme o contexto e adicione uma Content-Security-Policy.",
+      "h": "ed2a7b26"
+    },
+    "groups.1.entries.1.term": {
+      "t": "XSS",
+      "h": "1033a063"
+    },
+    "groups.1.entries.2.aka": {
+      "t": "consulta parametrizada",
+      "h": "9a11c4c3"
+    },
+    "groups.1.entries.2.meaning": {
+      "t": "Uma consulta cuja estrutura é fixada antes de qualquer valor ser fornecido, de modo que o banco de dados não confunde dados com instruções.",
+      "h": "6480a074"
+    },
+    "groups.1.entries.2.term": {
+      "t": "Prepared statement",
+      "h": "d75238ae"
+    },
+    "groups.1.entries.3.meaning": {
+      "t": "Uma função de hash de senhas com uso intensivo de memória e salt embutido. A lentidão é o objetivo: ela torna cada tentativa cara para o atacante.",
+      "h": "49808e49"
+    },
+    "groups.1.entries.3.term": {
+      "t": "Argon2id",
+      "h": "8f99a820"
+    },
+    "groups.1.entries.4.aka": {
+      "t": "gerador de números aleatórios criptograficamente seguro",
+      "h": "29c429b0"
+    },
+    "groups.1.entries.4.meaning": {
+      "t": "A fonte de bytes imprevisíveis do sistema operacional (secrets em Python, crypto.randomBytes em Node, crypto/rand em Go). Use-a para tokens e chaves, nunca Math.random.",
+      "h": "fec1781d"
+    },
+    "groups.1.entries.4.term": {
+      "t": "CSPRNG",
+      "h": "735ffe35"
+    },
+    "groups.1.entries.5.aka": {
+      "t": "AEAD",
+      "h": "b17ab989"
+    },
+    "groups.1.entries.5.meaning": {
+      "t": "Criptografia que também detecta adulteração (AES-GCM, ChaCha20-Poly1305). Criptografia sozinha não impede que um atacante modifique o texto cifrado.",
+      "h": "b06b7509"
+    },
+    "groups.1.entries.5.term": {
+      "t": "Criptografia autenticada",
+      "h": "553cf9c1"
+    },
+    "groups.1.title": {
+      "t": "dados e entrada",
+      "h": "e59ccb02"
+    },
+    "groups.2.entries.0.meaning": {
+      "t": "Uma resposta estruturada a quatro perguntas: o que estamos construindo, o que pode dar errado, o que faremos a respeito e se fizemos um bom trabalho.",
+      "h": "754648ea"
+    },
+    "groups.2.entries.0.term": {
+      "t": "Modelo de ameaças",
+      "h": "eb92336a"
+    },
+    "groups.2.entries.1.meaning": {
+      "t": "Uma história de usuário escrita do lado do atacante. Cada uma gera um requisito e um teste.",
+      "h": "a40cf40d"
+    },
+    "groups.2.entries.1.term": {
+      "t": "Caso de abuso",
+      "h": "4c012f45"
+    },
+    "groups.2.entries.2.aka": {
+      "t": "lista de materiais de software",
+      "h": "f81c10a1"
+    },
+    "groups.2.entries.2.meaning": {
+      "t": "Um inventário legível por máquina dos componentes de um build. Responde \"somos afetados?\" em minutos quando uma nova vulnerabilidade é anunciada.",
+      "h": "4411ff32"
+    },
+    "groups.2.entries.2.term": {
+      "t": "SBOM",
+      "h": "bc385b71"
+    },
+    "groups.2.entries.3.meaning": {
+      "t": "Enganar um build para baixar um pacote público com o mesmo nome de um interno. Use nomes com escopo e um registry privado que tenha prioridade.",
+      "h": "ece325b7"
+    },
+    "groups.2.entries.3.term": {
+      "t": "Dependency confusion",
+      "h": "375a0eac"
+    },
+    "groups.2.entries.4.aka": {
+      "t": "SRI",
+      "h": "ec23d684"
+    },
+    "groups.2.entries.4.meaning": {
+      "t": "Um hash em uma tag script ou link que faz o navegador recusar o arquivo se ele não corresponder, de modo que uma CDN comprometida não consiga alterar sua página.",
+      "h": "8afa183c"
+    },
+    "groups.2.entries.4.term": {
+      "t": "Subresource Integrity",
+      "h": "d0b8ad91"
+    },
+    "groups.2.entries.5.meaning": {
+      "t": "Reconstruir objetos a partir de bytes não confiáveis usando um formato que pode instanciar tipos arbitrários (serialização Java, pickle). Os bytes podem provocar execução de código.",
+      "h": "abeeb37e"
+    },
+    "groups.2.entries.5.term": {
+      "t": "Desserialização insegura",
+      "h": "3e33e898"
+    },
+    "groups.2.title": {
+      "t": "design e cadeia de suprimentos",
+      "h": "7e923d1d"
+    },
+    "groups.3.entries.0.aka": {
+      "t": "fail secure",
+      "h": "c7347c28"
+    },
+    "groups.3.entries.0.meaning": {
+      "t": "Quando uma verificação de segurança não consegue decidir (timeout, erro), a resposta é negar. O oposto, falhar aberto, transforma toda indisponibilidade em um bypass de controle de acesso.",
+      "h": "81cf0bae"
+    },
+    "groups.3.entries.0.term": {
+      "t": "Fail closed",
+      "h": "9f590049"
+    },
+    "groups.3.entries.1.meaning": {
+      "t": "Entrada de usuário contendo quebras de linha ou caracteres de controle forja entradas de log. Codifique a entrada ou use logging estruturado (JSON).",
+      "h": "20870456"
+    },
+    "groups.3.entries.1.term": {
+      "t": "Log injection",
+      "h": "733bc827"
+    },
+    "groups.3.entries.2.aka": {
+      "t": "request id",
+      "h": "6c98408d"
+    },
+    "groups.3.entries.2.meaning": {
+      "t": "Um id único anexado a uma requisição e a cada linha de log que ela gera, exibido ao usuário nas mensagens de erro para que o suporte encontre os detalhes sem vazá-los.",
+      "h": "f76f1341"
+    },
+    "groups.3.entries.2.term": {
+      "t": "Correlation id",
+      "h": "8f07017a"
+    },
+    "groups.3.entries.3.meaning": {
+      "t": "Software correto rodando com configurações inseguras: debug ligado, credenciais padrão, armazenamento público, CORS permissivo, headers ausentes.",
+      "h": "c5f9f7e7"
+    },
+    "groups.3.entries.3.term": {
+      "t": "Má configuração de segurança",
+      "h": "d9c77846"
+    },
+    "groups.3.entries.4.aka": {
+      "t": "compartilhamento de recursos entre origens",
+      "h": "15aae0be"
+    },
+    "groups.3.entries.4.meaning": {
+      "t": "Um mecanismo do navegador que permite a um servidor dizer quais outras origens podem ler suas respostas. Uma origem curinga combinada com credenciais é uma má configuração.",
+      "h": "111bea84"
+    },
+    "groups.3.entries.4.term": {
+      "t": "CORS",
+      "h": "2139aade"
+    },
+    "groups.3.title": {
+      "t": "operação e falha",
+      "h": "08ef4ecc"
+    }
+  }
+}

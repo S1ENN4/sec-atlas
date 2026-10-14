@@ -1,0 +1,88 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Probar un sistema que no es tuyo, o ir más allá de lo que su dueño permitió, puede ser delito en la mayoría de las jurisdicciones, sin importar tu intención. Las leyes varían por país y pueden ser estrictas, así que esto no es asesoría legal: confírmalo con un abogado. La regla profesional es simple. Nunca pruebes nada sin permiso explícito y por escrito de alguien con autoridad para darlo, y nunca vayas más allá de lo que ese permiso cubre.",
+      "h": "6a5cdca3"
+    },
+    "sections.0.bullets.0": {
+      "t": "Autorización por escrito del dueño del activo (para alojamiento de terceros o nube, revisa también la política de pruebas del proveedor).",
+      "h": "76c93b91"
+    },
+    "sections.0.bullets.1": {
+      "t": "Un alcance definido: qué sistemas, direcciones, aplicaciones y cuentas están dentro y cuáles están explícitamente fuera.",
+      "h": "bc906a9c"
+    },
+    "sections.0.bullets.2": {
+      "t": "Una ventana de tiempo y una forma de detenerse: cuándo pueden realizarse las pruebas y quién puede interrumpirlas de inmediato.",
+      "h": "77061c76"
+    },
+    "sections.0.bullets.3": {
+      "t": "Un contacto designado del lado del cliente al que se pueda acudir si algo sale mal.",
+      "h": "8a555f0e"
+    },
+    "sections.0.heading": {
+      "t": "La autorización va primero",
+      "h": "12600972"
+    },
+    "sections.1.body.0": {
+      "t": "Las reglas de compromiso (RoE) convierten el permiso en límites prácticos. Acuérdalas antes del primer paquete.",
+      "h": "07593fe6"
+    },
+    "sections.1.code.0.code": {
+      "t": "engagement: evaluación externa de web y API del Q4\nauthorized_by: \"CISO, Example Corp (carta firmada adjunta)\"\nwindow: { start: 2026-11-02T08:00:00Z, end: 2026-11-13T20:00:00Z, hours: \"solo días hábiles\" }\nin_scope:\n  - https://app.example.com\n  - https://api.example.com/v2/*\n  - cuentas de prueba: [tester-a@example.com, tester-b@example.com]\nout_of_scope:\n  - procesador de pagos de producción (tercero)\n  - pruebas de denegación de servicio\n  - ingeniería social de empleados\nconstraints:\n  - sin exfiltración de datos más allá de la prueba de acceso (un registro, redactado)\n  - limitar los escaneos a 10 solicitudes por segundo\n  - detenerse y llamar al contacto si se observa degradación en producción\nemergency_contact: \"+55 11 5555-0100 (SOC 24h)\"\nreporting: \"hallazgos críticos reportados en 24 horas; informe final en 10 días hábiles\"",
+      "h": "ee3bd2d1"
+    },
+    "sections.1.code.0.filename": {
+      "t": "rules-of-engagement.yml",
+      "h": "e1cdcbb2"
+    },
+    "sections.1.heading": {
+      "t": "Reglas de compromiso",
+      "h": "f803c64f"
+    },
+    "sections.2.bullets.0": {
+      "t": "Minimiza el daño: prueba el problema con el menor acceso necesario. No leas, copies ni conserves datos reales de clientes que no necesites.",
+      "h": "62a751c0"
+    },
+    "sections.2.bullets.1": {
+      "t": "Protege lo que encuentres: los hallazgos y cualquier dato tocado son confidenciales, se almacenan cifrados y se eliminan al final, según lo acordado.",
+      "h": "f611dff5"
+    },
+    "sections.2.bullets.2": {
+      "t": "Sé honesto en el informe: no exageres ni ocultes nada, incluidos tus propios errores (por ejemplo, una prueba que causó una caída del servicio).",
+      "h": "b02498d1"
+    },
+    "sections.2.bullets.3": {
+      "t": "Detente en el límite: si un camino lleva fuera del alcance, pide permiso en lugar de continuar.",
+      "h": "ccb71765"
+    },
+    "sections.2.bullets.4": {
+      "t": "Prefiere pruebas seguras: demuestra el impacto con un marcador inofensivo o la lectura de un registro de prueba, no con acciones destructivas.",
+      "h": "e758df79"
+    },
+    "sections.2.heading": {
+      "t": "Principios éticos",
+      "h": "5b88955a"
+    },
+    "sections.3.body.0": {
+      "t": "Un programa de bug bounty publica un alcance y reglas e invita a los investigadores a probar dentro de ellos, por lo general con recompensas; los términos del programa son tu autorización, y salirte de ellos la elimina. Cuando encuentres una vulnerabilidad en un sistema fuera de cualquier programa, repórtala de forma responsable por el canal de divulgación del dueño (un archivo security.txt, una dirección security@ o una política de divulgación coordinada), da un plazo razonable para corregirla y no la explotes más ni publiques detalles antes de tiempo.",
+      "h": "f016b9f6"
+    },
+    "sections.3.heading": {
+      "t": "Bug bounties y divulgación",
+      "h": "f102a79e"
+    },
+    "short": {
+      "t": "lo que separa una prueba de seguridad de un delito: permiso, límites y reglas de compromiso",
+      "h": "d41a2cc0"
+    },
+    "tagline": {
+      "t": "Las técnicas de un pentester y de un atacante se superponen. Lo que cambia es la autorización por escrito, un alcance acordado y el deber de minimizar el daño.",
+      "h": "9bf71213"
+    },
+    "title": {
+      "t": "Autorización, alcance y ética",
+      "h": "fc558be0"
+    }
+  }
+}

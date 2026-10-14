@@ -1,0 +1,184 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "A injection acontece quando uma aplicação monta um comando ou consulta concatenando entrada não confiável, e um interpretador (um motor SQL, um shell, um servidor LDAP, um template engine, um navegador) não consegue distinguir onde terminam os dados e começa a instrução.",
+      "h": "12be603b"
+    },
+    "sections.0.body.1": {
+      "t": "O A05 no OWASP Top 10:2025 cobre injection de SQL, NoSQL, comandos do SO, LDAP e templates, e cross-site scripting (XSS), que é injection no interpretador de HTML e JavaScript do navegador.",
+      "h": "a9ef53df"
+    },
+    "sections.0.heading": {
+      "t": "O que é",
+      "h": "f8c94a3b"
+    },
+    "sections.1.body.0": {
+      "t": "Uma consulta de login é montada como \"SELECT * FROM users WHERE name = '\" + name + \"' AND pass = '\" + pass + \"'\". Digitar admin' -- como nome transforma o resto da consulta em comentário e a verificação da senha desaparece. Com um UNION o atacante lê outras tabelas; com consultas empilhadas, escreve nelas.",
+      "h": "5da3eac1"
+    },
+    "sections.1.bullets.0": {
+      "t": "SQL injection: ler, modificar ou apagar dados; às vezes alcançar o sistema operacional.",
+      "h": "db8ce883"
+    },
+    "sections.1.bullets.1": {
+      "t": "Injection de comandos do SO: a entrada chega a um shell (; cat /etc/passwd, $(...), crases).",
+      "h": "79b630da"
+    },
+    "sections.1.bullets.2": {
+      "t": "XSS: a entrada chega à página sem escape e executa script na sessão de outro usuário.",
+      "h": "7b6583c0"
+    },
+    "sections.1.bullets.3": {
+      "t": "A injection de NoSQL e de templates segue o mesmo padrão com sintaxe diferente.",
+      "h": "ddc422d9"
+    },
+    "sections.1.heading": {
+      "t": "Como o ataque funciona",
+      "h": "4443eb22"
+    },
+    "sections.2.body.0": {
+      "t": "Concatenação de strings em SQL e em um comando de shell.",
+      "h": "1a5f9870"
+    },
+    "sections.2.code.0.code": {
+      "t": "def find_user(db, name):\n    query = \"SELECT id, email FROM users WHERE name = '\" + name + \"'\"\n    return db.execute(query).fetchall()\n\ndef ping(host):\n    return os.popen(\"ping -c 1 \" + host).read()      # host = \"x; cat /etc/passwd\"",
+      "h": "6dc4a5ca"
+    },
+    "sections.2.code.0.filename": {
+      "t": "users.py",
+      "h": "e61dde77"
+    },
+    "sections.2.code.1.code": {
+      "t": "const rows = await db.query(`SELECT id, email FROM users WHERE name = '${req.query.name}'`);\nexec(`ping -c 1 ${req.query.host}`, cb);",
+      "h": "c14698a5"
+    },
+    "sections.2.code.1.filename": {
+      "t": "users.js",
+      "h": "661deb36"
+    },
+    "sections.2.code.2.code": {
+      "t": "String sql = \"SELECT id, email FROM users WHERE name = '\" + name + \"'\";\nStatement st = conn.createStatement();\nResultSet rs = st.executeQuery(sql);",
+      "h": "73e2dde8"
+    },
+    "sections.2.code.2.filename": {
+      "t": "UserDao.java",
+      "h": "95e52d19"
+    },
+    "sections.2.heading": {
+      "t": "Código vulnerável",
+      "h": "fe357299"
+    },
+    "sections.3.body.0": {
+      "t": "Parametrize: envie a consulta e os valores separadamente, para que o banco de dados nunca interprete o valor como SQL. Para comandos, evite o shell por completo e passe um array de argumentos. Para HTML, use um template engine que faça escape por padrão. A validação (listas de permissão de formato e tamanho) é uma segunda camada, não a correção.",
+      "h": "ba433566"
+    },
+    "sections.3.code.0.code": {
+      "t": "def find_user(db, name):\n    return db.execute(\"SELECT id, email FROM users WHERE name = ?\", (name,)).fetchall()\n\nHOST_RE = re.compile(r\"^[A-Za-z0-9.-]{1,253}$\")\n\ndef ping(host):\n    if not HOST_RE.fullmatch(host):\n        raise ValueError(\"invalid host\")\n    return subprocess.run([\"ping\", \"-c\", \"1\", host], capture_output=True, text=True).stdout",
+      "h": "e7b24db5"
+    },
+    "sections.3.code.0.filename": {
+      "t": "users.py",
+      "h": "e61dde77"
+    },
+    "sections.3.code.1.code": {
+      "t": "const { rows } = await db.query(\"SELECT id, email FROM users WHERE name = $1\", [req.query.name]);\n\n// sem shell: os argumentos são passados como array\nexecFile(\"ping\", [\"-c\", \"1\", host], cb);",
+      "h": "3f713393"
+    },
+    "sections.3.code.1.filename": {
+      "t": "users.js",
+      "h": "661deb36"
+    },
+    "sections.3.code.2.code": {
+      "t": "String sql = \"SELECT id, email FROM users WHERE name = ?\";\ntry (PreparedStatement ps = conn.prepareStatement(sql)) {\n    ps.setString(1, name);\n    ResultSet rs = ps.executeQuery();\n}",
+      "h": "b3a02a58"
+    },
+    "sections.3.code.2.filename": {
+      "t": "UserDao.java",
+      "h": "95e52d19"
+    },
+    "sections.3.code.3.code": {
+      "t": "rows, err := db.QueryContext(ctx, \"SELECT id, email FROM users WHERE name = $1\", name)",
+      "h": "38264db8"
+    },
+    "sections.3.code.3.filename": {
+      "t": "users.go",
+      "h": "7e42b6a2"
+    },
+    "sections.3.code.4.code": {
+      "t": "<p>Hello, {{ user_name }}</p>        {# com escape #}\n<p>Hello, {{ user_name | safe }}</p>  {# PERIGOSO: não faça isso com entrada do usuário #}",
+      "h": "c2b77327"
+    },
+    "sections.3.code.4.filename": {
+      "t": "XSS: faça escape na saída (o autoescape do Jinja2 vem ligado; nunca marque entrada do usuário como safe)",
+      "h": "cc99b142"
+    },
+    "sections.3.heading": {
+      "t": "A correção",
+      "h": "7188b1fb"
+    },
+    "sections.4.body.0": {
+      "t": "Escreva o ataque como um teste. Envie os payloads clássicos e verifique que são tratados como dados simples: a consulta não retorna nada em vez de tudo, o shell nunca é invocado e os caracteres de script voltam com escape. Mantenha esses testes para sempre; eles documentam a ameaça.",
+      "h": "3175bad4"
+    },
+    "sections.4.code.0.code": {
+      "t": "PAYLOADS = [\"' OR '1'='1\", \"admin' --\", \"'; DROP TABLE users; --\", \"x' UNION SELECT password,1 FROM users --\"]\n\n@pytest.mark.parametrize(\"payload\", PAYLOADS)\ndef test_sql_payloads_are_just_data(db, payload):\n    assert find_user(db, payload) == []          # nenhuma linha tem esse nome literal\n    assert db.execute(\"SELECT count(*) FROM users\").fetchone()[0] > 0   # a tabela continua existindo\n\ndef test_ping_rejects_shell_metacharacters():\n    with pytest.raises(ValueError):\n        ping(\"example.com; cat /etc/passwd\")\n\ndef test_html_is_escaped(client):\n    body = client.get(\"/hello?name=<script>alert(1)</script>\").text\n    assert \"<script>\" not in body and \"&lt;script&gt;\" in body",
+      "h": "05db0824"
+    },
+    "sections.4.code.0.filename": {
+      "t": "test_injection.py (pytest)",
+      "h": "b4c34e59"
+    },
+    "sections.4.code.1.code": {
+      "t": "# detectar SQL concatenado e shell=True na revisão, em qualquer commit\nsemgrep --config p/owasp-top-ten --error src/",
+      "h": "99203771"
+    },
+    "sections.4.code.1.filename": {
+      "t": "static-check.sh",
+      "h": "50736d15"
+    },
+    "sections.4.heading": {
+      "t": "Prove a correção",
+      "h": "665c8226"
+    },
+    "sections.5.bullets.0": {
+      "t": "Consultas parametrizadas ou um ORM confiável em toda chamada ao banco; nada de SQL montado com strings.",
+      "h": "b41de0e6"
+    },
+    "sections.5.bullets.1": {
+      "t": "Nunca passe entrada a um shell. Se precisar executar um programa, use um array de argumentos e uma lista de permissão.",
+      "h": "df61f39b"
+    },
+    "sections.5.bullets.2": {
+      "t": "Faça escape por contexto na saída (HTML, atributo, URL, JavaScript); mantenha o auto-escape ligado; adicione uma Content-Security-Policy.",
+      "h": "324cbb2d"
+    },
+    "sections.5.bullets.3": {
+      "t": "Valide a entrada por lista de permissão (tipo, tamanho, formato) como defesa em profundidade.",
+      "h": "f3fe2f08"
+    },
+    "sections.5.bullets.4": {
+      "t": "Rode a conta do banco com privilégio mínimo: sem DROP, sem acesso a arquivos, sem admin.",
+      "h": "1d7b5501"
+    },
+    "sections.5.bullets.5": {
+      "t": "Escaneie no CI (SAST para o padrão, DAST para o comportamento em runtime) e mantenha os payloads de ataque como testes de regressão.",
+      "h": "7a223b87"
+    },
+    "sections.5.heading": {
+      "t": "Checklist",
+      "h": "61b29464"
+    },
+    "short": {
+      "t": "entrada não confiável interpretada como código ou comandos",
+      "h": "63a85827"
+    },
+    "tagline": {
+      "t": "Quando dados e instruções viajam na mesma string, quem controla os dados controla a instrução. A cura é mantê-los separados, em qualquer linguagem.",
+      "h": "74210f33"
+    },
+    "title": {
+      "t": "A05 Injection",
+      "h": "9b12c5aa"
+    }
+  }
+}

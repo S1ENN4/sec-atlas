@@ -1,0 +1,104 @@
+{
+  "entries": {
+    "sections.0.bullets.0": {
+      "t": "Métricas: números a lo largo del tiempo (tasa de solicitudes, tasa de errores, latencia, CPU). Baratas de almacenar e ideales para dashboards y alertas.",
+      "h": "03ec4fe6"
+    },
+    "sections.0.bullets.1": {
+      "t": "Logs: registros de eventos con timestamp. Detalle rico para depurar; usa logs estructurados (JSON) con un id de solicitud.",
+      "h": "8b5695c5"
+    },
+    "sections.0.bullets.2": {
+      "t": "Traces: el camino de una solicitud a través de los servicios, con el tiempo gastado en cada uno. La herramienta para \"¿dónde está lento?\"",
+      "h": "f66f031f"
+    },
+    "sections.0.bullets.3": {
+      "t": "Conéctalos: un trace id en los logs y un enlace desde un pico de métrica a traces de ejemplo convierten tres herramientas en una sola investigación.",
+      "h": "4771c7a2"
+    },
+    "sections.0.heading": {
+      "t": "Las tres señales",
+      "h": "134bf3ed"
+    },
+    "sections.1.body.0": {
+      "t": "Las cuatro golden signals sirven para casi cualquier servicio: latencia, tráfico, errores y saturación. Para solicitudes orientadas al usuario, sigue tasa, errores y duración (el método RED); para recursos, sigue utilización, saturación y errores (el método USE).",
+      "h": "befe9832"
+    },
+    "sections.1.code.0.code": {
+      "t": "# tasa de errores en 5 minutos\nsum(rate(http_requests_total{status=~\"5..\"}[5m]))\n  / sum(rate(http_requests_total[5m]))\n\n# latencia en el percentil 95\nhistogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket[5m])))",
+      "h": "d4e126f8"
+    },
+    "sections.1.code.0.filename": {
+      "t": "Consultas de Prometheus",
+      "h": "ba6fcbef"
+    },
+    "sections.1.heading": {
+      "t": "Qué medir",
+      "h": "dd27c3b3"
+    },
+    "sections.2.bullets.0": {
+      "t": "Alerta sobre síntomas que sienten los usuarios (errores, latencia, disponibilidad), no sobre cada causa (la CPU de un pod).",
+      "h": "3034f190"
+    },
+    "sections.2.bullets.1": {
+      "t": "Toda alerta necesita un dueño, una severidad y un enlace al runbook que diga qué revisar primero.",
+      "h": "48b37063"
+    },
+    "sections.2.bullets.2": {
+      "t": "Haz page solo por lo que necesita a una persona ahora; manda el resto a una cola de tickets.",
+      "h": "241dac86"
+    },
+    "sections.2.bullets.3": {
+      "t": "La fatiga de alertas es un problema de confiabilidad: borra o corrige las alertas ruidosas.",
+      "h": "b5a4d07b"
+    },
+    "sections.2.bullets.4": {
+      "t": "Alerta por la tasa de consumo (burn rate) del SLO en lugar de umbrales crudos (ver el tema de SRE).",
+      "h": "b55da9cf"
+    },
+    "sections.2.code.0.code": {
+      "t": "groups:\n  - name: api\n    rules:\n      - alert: HighErrorRatio\n        expr: |\n          sum(rate(http_requests_total{job=\"api\",status=~\"5..\"}[5m]))\n            / sum(rate(http_requests_total{job=\"api\"}[5m])) > 0.02\n        for: 10m\n        labels: { severity: page }\n        annotations:\n          summary: \"Tasa de errores de la API por encima de 2% durante 10 minutos\"\n          runbook: \"https://wiki.example.com/runbooks/api-errors\"",
+      "h": "b2293bc3"
+    },
+    "sections.2.code.0.filename": {
+      "t": "alert-rule.yml",
+      "h": "a31e24a1"
+    },
+    "sections.2.heading": {
+      "t": "Alertas en las que la gente confía",
+      "h": "55e4cce2"
+    },
+    "sections.3.bullets.0": {
+      "t": "Instrumenta con un estándar (OpenTelemetry) en lugar de una biblioteca específica de un proveedor.",
+      "h": "c3b08d43"
+    },
+    "sections.3.bullets.1": {
+      "t": "Controla la cardinalidad: un label con valores ilimitados (id de usuario) puede tumbar un sistema de métricas.",
+      "h": "88819f75"
+    },
+    "sections.3.bullets.2": {
+      "t": "No registres secretos ni datos personales en los logs.",
+      "h": "aad682e8"
+    },
+    "sections.3.bullets.3": {
+      "t": "Revisa los dashboards después de cada incidente: ¿qué lo habría mostrado antes?",
+      "h": "9bc2f232"
+    },
+    "sections.3.heading": {
+      "t": "Hábitos",
+      "h": "45ab397b"
+    },
+    "short": {
+      "t": "saber qué hace tu sistema desde afuera y alertar sobre lo que importa",
+      "h": "70fafa34"
+    },
+    "tagline": {
+      "t": "El monitoreo te dice que algo está mal; la observabilidad te permite preguntar por qué. Tres señales, unas pocas métricas de oro y alertas sobre síntomas cubren la mayoría de las necesidades.",
+      "h": "e8b1bdb0"
+    },
+    "title": {
+      "t": "Observabilidad: métricas, logs y traces",
+      "h": "fc5782c7"
+    }
+  }
+}

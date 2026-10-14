@@ -1,0 +1,124 @@
+{
+  "entries": {
+    "sections.0.bullets.0": {
+      "t": "Convierte cada marca de tiempo a UTC antes de comparar nada. Las zonas horarias y el horario de verano causan la mayoría de los errores en una línea de tiempo.",
+      "h": "4e6ebfa5"
+    },
+    "sections.0.bullets.1": {
+      "t": "Anota el desfase del reloj (clock skew): un host con el reloj mal desplaza toda su historia. Compara un evento compartido entre fuentes para medir el desfase.",
+      "h": "33184e78"
+    },
+    "sections.0.bullets.2": {
+      "t": "Registra la fuente, el campo y la resolución de tiempo de cada evento; un log con resolución de solo minutos no puede ordenar eventos dentro del mismo minuto.",
+      "h": "9e2c6233"
+    },
+    "sections.0.bullets.3": {
+      "t": "Conserva copias sin procesar y trabaja sobre las copias.",
+      "h": "4a043bc3"
+    },
+    "sections.0.heading": {
+      "t": "Empieza con un tiempo limpio",
+      "h": "1be6f41c"
+    },
+    "sections.1.body.0": {
+      "t": "Una investigación avanza por pivoteo: toma un hecho conocido y pregunta qué más lo comparte. Cada pivote estrecha o amplía el alcance.",
+      "h": "f73da1e8"
+    },
+    "sections.1.bullets.0": {
+      "t": "De una IP a todas las cuentas que iniciaron sesión desde ella y todas las solicitudes que hizo.",
+      "h": "aade9ed5"
+    },
+    "sections.1.bullets.1": {
+      "t": "De una cuenta a sus sesiones, sus dispositivos, los recursos que tocó y los cambios que hizo.",
+      "h": "83210524"
+    },
+    "sections.1.bullets.2": {
+      "t": "De un host a sus procesos padre e hijo, conexiones de red y archivos creados.",
+      "h": "287a67e1"
+    },
+    "sections.1.bullets.3": {
+      "t": "De un hash de archivo a todos los hosts donde apareció.",
+      "h": "9a75e747"
+    },
+    "sections.1.bullets.4": {
+      "t": "Del primer evento malicioso hacia atrás: ¿cómo comenzó el acceso?",
+      "h": "d23450ef"
+    },
+    "sections.1.heading": {
+      "t": "Pivoteo",
+      "h": "4c720538"
+    },
+    "sections.2.body.0": {
+      "t": "Extrae de CloudTrail, en orden, todo lo que hizo una identidad y busca primeras veces: una nueva dirección de origen, una nueva región, una llamada a una API sensible.",
+      "h": "cca98ff3"
+    },
+    "sections.2.code.0.code": {
+      "t": "# todas las acciones de la identidad sospechosa, en orden cronológico\njq -r '.Records[]\n  | select(.userIdentity.arn // \"\" | test(\"build-bot\"))\n  | [.eventTime, .eventName, .awsRegion, .sourceIPAddress, (.errorCode // \"ok\")] | @tsv' \\\n  cloudtrail/*.json | sort\n\n# ¿qué direcciones de origen usó esta identidad?\njq -r '.Records[] | select(.userIdentity.arn // \"\" | test(\"build-bot\")) | .sourceIPAddress' \\\n  cloudtrail/*.json | sort | uniq -c | sort -rn",
+      "h": "cc70fe5a"
+    },
+    "sections.2.code.0.filename": {
+      "t": "cloudtrail-pivot.sh",
+      "h": "14227737"
+    },
+    "sections.2.code.1.code": {
+      "t": "import csv, heapq\nfrom datetime import datetime, timezone\n\ndef load(path, source, ts_field, fmt):\n    with open(path, newline=\"\") as f:\n        for row in csv.DictReader(f):\n            ts = datetime.strptime(row[ts_field], fmt).replace(tzinfo=timezone.utc)\n            yield ts, source, row.get(\"message\", \"\")\n\nstreams = [\n    load(\"idp.csv\", \"idp\", \"time\", \"%Y-%m-%dT%H:%M:%SZ\"),\n    load(\"proxy.csv\", \"proxy\", \"ts\", \"%Y-%m-%d %H:%M:%S\"),\n]\nfor ts, source, msg in heapq.merge(*(sorted(s) for s in streams)):\n    print(ts.isoformat(), source, msg)  # salida en orden cronológico",
+      "h": "f810a2df"
+    },
+    "sections.2.code.1.filename": {
+      "t": "merge_timeline.py",
+      "h": "11d7a006"
+    },
+    "sections.2.heading": {
+      "t": "Ejemplo: una identidad de nube comprometida",
+      "h": "c5b4609f"
+    },
+    "sections.3.body.0": {
+      "t": "Cuando encuentres una técnica que usó el atacante, escribe una regla para detectarla la próxima vez. Sigma es un formato neutral respecto a proveedores que se convierte a muchos lenguajes de consulta de SIEM.",
+      "h": "e877bcf7"
+    },
+    "sections.3.code.0.code": {
+      "t": "title: PowerShell iniciado con un comando codificado\nstatus: experimental\nlogsource:\n  category: process_creation\n  product: windows\ndetection:\n  selection:\n    Image|endswith: '\\powershell.exe'\n    CommandLine|contains:\n      - ' -enc '\n      - ' -EncodedCommand '\n  condition: selection\nfalsepositives:\n  - Algunas herramientas de administración usan comandos codificados; establece su línea base primero\nlevel: medium",
+      "h": "bd14ca63"
+    },
+    "sections.3.code.0.filename": {
+      "t": "suspicious-encoded-powershell.yml (Sigma)",
+      "h": "d6856430"
+    },
+    "sections.3.heading": {
+      "t": "Convierte los hallazgos en detecciones",
+      "h": "86749b20"
+    },
+    "sections.4.bullets.0": {
+      "t": "Escribe la línea de tiempo sobre la marcha, con la evidencia de cada línea.",
+      "h": "1fa1e669"
+    },
+    "sections.4.bullets.1": {
+      "t": "Separa los hechos de las hipótesis y marca cuál es cuál.",
+      "h": "94d5a3ac"
+    },
+    "sections.4.bullets.2": {
+      "t": "Busca también la ausencia de logs: un hueco puede ser la limpieza del atacante.",
+      "h": "57e41d46"
+    },
+    "sections.4.bullets.3": {
+      "t": "Mantén una lista de preguntas que aún no puedes responder y de logs que desearías tener; esa lista mejora tu logging.",
+      "h": "55b9e0e3"
+    },
+    "sections.4.heading": {
+      "t": "Hábitos",
+      "h": "45ab397b"
+    },
+    "short": {
+      "t": "convertir logs dispersos en la historia de lo que hizo el atacante y cuándo",
+      "h": "3ad456de"
+    },
+    "tagline": {
+      "t": "Toda investigación termina como una línea de tiempo: primer acceso, qué tocaron, cómo se movieron, qué se llevaron. La calidad de esa línea de tiempo depende de marcas de tiempo limpias y buenos pivotes.",
+      "h": "0bd6e251"
+    },
+    "title": {
+      "t": "Análisis de logs y construcción de una línea de tiempo",
+      "h": "8c7d550c"
+    }
+  }
+}

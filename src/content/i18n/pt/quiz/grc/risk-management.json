@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Aceitar risco é uma decisão do negócio. Deve ser explícita, ter responsável e prazo.",
+      "h": "f688a886"
+    },
+    "questions.0.options.0": {
+      "t": "Ninguém o menciona",
+      "h": "8ef3b318"
+    },
+    "questions.0.options.1": {
+      "t": "Um executivo identificado é responsável por ele por um período definido, com data de revisão",
+      "h": "dbb16abc"
+    },
+    "questions.0.options.2": {
+      "t": "Ele é removido do registro",
+      "h": "8c661f8b"
+    },
+    "questions.0.options.3": {
+      "t": "A equipe de segurança assina",
+      "h": "bbeb669f"
+    },
+    "questions.0.q": {
+      "t": "Um risco é formalmente aceito. O que faz disso uma decisão e não negligência?",
+      "h": "34d451e6"
+    },
+    "questions.1.explain": {
+      "t": "Comparar o risco inerente e o residual mostra o que os controles realmente alcançam.",
+      "h": "85237636"
+    },
+    "questions.1.options.0": {
+      "t": "O risco antes de quaisquer controles",
+      "h": "32f50d11"
+    },
+    "questions.1.options.1": {
+      "t": "O risco que permanece depois de aplicados os controles",
+      "h": "e509f367"
+    },
+    "questions.1.options.2": {
+      "t": "O risco de sistemas antigos",
+      "h": "d0a3f3a8"
+    },
+    "questions.1.options.3": {
+      "t": "O custo do seguro",
+      "h": "72632cab"
+    },
+    "questions.1.q": {
+      "t": "O que significa risco residual?",
+      "h": "d634e1f4"
+    },
+    "questions.2.explain": {
+      "t": "As respostas são reduzir, aceitar (conscientemente), transferir ou evitar. A negligência silenciosa não é um tratamento.",
+      "h": "2046a521"
+    },
+    "questions.2.options.0": {
+      "t": "Reduzir",
+      "h": "0f62a19e"
+    },
+    "questions.2.options.1": {
+      "t": "Transferir",
+      "h": "cbb4cc49"
+    },
+    "questions.2.options.2": {
+      "t": "Ignorar em silêncio",
+      "h": "c9fefb5b"
+    },
+    "questions.2.options.3": {
+      "t": "Evitar",
+      "h": "33fc27cf"
+    },
+    "questions.2.q": {
+      "t": "Qual NÃO é uma das quatro formas de tratar um risco?",
+      "h": "444f06f6"
+    }
+  }
+}

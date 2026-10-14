@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "A ordem de volatilidade coloca a evidência mais frágil primeiro.",
+      "h": "30c624e8"
+    },
+    "questions.0.options.0": {
+      "t": "A imagem de disco",
+      "h": "fdc3ea03"
+    },
+    "questions.0.options.1": {
+      "t": "Dados voláteis como memória e processos em execução",
+      "h": "9ba4d3cd"
+    },
+    "questions.0.options.2": {
+      "t": "Backups",
+      "h": "530cc25b"
+    },
+    "questions.0.options.3": {
+      "t": "Os documentos em papel",
+      "h": "ae8533a8"
+    },
+    "questions.0.q": {
+      "t": "Qual evidência deve ser coletada primeiro?",
+      "h": "a3f26300"
+    },
+    "questions.1.explain": {
+      "t": "Hashes iguais mostram integridade da coleta até a análise.",
+      "h": "7b6d5e70"
+    },
+    "questions.1.options.0": {
+      "t": "Para comprimi-la",
+      "h": "36757132"
+    },
+    "questions.1.options.1": {
+      "t": "Para provar depois que a evidência não mudou",
+      "h": "2dfbd8fb"
+    },
+    "questions.1.options.2": {
+      "t": "Para criptografá-la",
+      "h": "b446ddaa"
+    },
+    "questions.1.options.3": {
+      "t": "Para acelerar a análise",
+      "h": "60c41b7b"
+    },
+    "questions.1.q": {
+      "t": "Por que calcular o hash de uma imagem na aquisição?",
+      "h": "ab267da3"
+    },
+    "questions.2.explain": {
+      "t": "Sustenta a credibilidade da evidência caso ela seja contestada.",
+      "h": "3970a3c8"
+    },
+    "questions.2.options.0": {
+      "t": "A estrutura do sistema de arquivos",
+      "h": "6b284df3"
+    },
+    "questions.2.options.1": {
+      "t": "Quem teve a evidência, quando, e o que foi feito com ela",
+      "h": "4123965c"
+    },
+    "questions.2.options.2": {
+      "t": "O nome do atacante",
+      "h": "fb606db8"
+    },
+    "questions.2.options.3": {
+      "t": "O custo da investigação",
+      "h": "4988a04f"
+    },
+    "questions.2.q": {
+      "t": "O que a cadeia de custódia registra?",
+      "h": "5c236303"
+    }
+  }
+}

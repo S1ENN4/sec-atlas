@@ -1,0 +1,100 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "Context engineering es decidir qué entra en la ventana de contexto del modelo y en qué forma. Más texto no es mejor: un contexto largo y ruidoso hace que el modelo pase por alto instrucciones y cuesta más. El objetivo es el contexto más pequeño que contenga todo lo necesario para hacer bien la tarea.",
+      "h": "cb83ec8b"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "f8c94a3b"
+    },
+    "sections.1.body.0": {
+      "t": "La mayoría de los harnesses lee un archivo en la raíz del repositorio al inicio de cada sesión. AGENTS.md se ha vuelto una convención común entre herramientas; Claude Code lee CLAUDE.md (que puede apuntar a AGENTS.md). Pon en él lo que un compañero nuevo y con experiencia necesitaría el primer día, y mantenlo corto.",
+      "h": "cad14c2f"
+    },
+    "sections.1.code.0.code": {
+      "t": "# Notas del proyecto para agents de código\n\n## Comandos\n- Instalar: `npm ci`\n- Probar (ejecutar antes de cada commit): `npm test`\n- Lint y tipos: `npm run lint && npm run typecheck`\n\n## Convenciones\n- TypeScript strict. Sin `any`. Prefiere funciones pequeñas y puras.\n- Acceso a la base de datos solo mediante `src/db/*`; nunca armes SQL por concatenación de strings.\n- Los nuevos endpoints necesitan una verificación de autorización y una prueba de \"el usuario B no puede leer los datos del usuario A\".\n\n## Límites\n- No edites `infra/` ni `.github/workflows/` sin preguntar.\n- Nunca leas ni imprimas `.env` ni nada dentro de `secrets/`.\n- Pregunta antes de añadir una dependencia.",
+      "h": "2a28127b"
+    },
+    "sections.1.code.0.filename": {
+      "t": "AGENTS.md",
+      "h": "37dd6836"
+    },
+    "sections.1.heading": {
+      "t": "Un archivo de instrucciones del proyecto",
+      "h": "4285d1da"
+    },
+    "sections.2.bullets.0": {
+      "t": "Planifica primero: pide un plan (muchas herramientas tienen un plan mode de solo lectura), edítalo y luego apruébalo. Corregir un plan es más barato que corregir código.",
+      "h": "85799252"
+    },
+    "sections.2.bullets.1": {
+      "t": "Tareas pequeñas: un cambio por sesión o branch, con una prueba que decida el éxito. Las tareas grandes y vagas producen diffs grandes y vagos.",
+      "h": "fb183757"
+    },
+    "sections.2.bullets.2": {
+      "t": "Señala ejemplos: \"sigue el patrón de src/users/handler.ts\" vale más que un párrafo de descripción.",
+      "h": "17a72155"
+    },
+    "sections.2.bullets.3": {
+      "t": "Indica la verificación: dile al agent cómo comprobar su propio trabajo (ejecuta esta prueba, este linter, este comando).",
+      "h": "86081538"
+    },
+    "sections.2.bullets.4": {
+      "t": "Reinicia seguido: empieza una sesión nueva cuando el contexto se alargue o el agent se confunda, llevando solo las decisiones.",
+      "h": "eb6ad329"
+    },
+    "sections.2.bullets.5": {
+      "t": "Da herramientas, no ensayos: conecta un servidor MCP o un script para una necesidad repetida (consultar la base de datos de staging en solo lectura, abrir un ticket) en lugar de pegar datos en el chat.",
+      "h": "189edebf"
+    },
+    "sections.2.heading": {
+      "t": "Método de trabajo",
+      "h": "8b3a6dbc"
+    },
+    "sections.3.body.0": {
+      "t": "Además del archivo de instrucciones, los harnesses ofrecen puntos de extensión. Las skills empaquetan un procedimiento que el agent carga solo cuando es relevante. Los hooks ejecutan tu código en momentos fijos (antes de que corra una herramienta, después de una edición), que es el lugar confiable para imponer reglas que el modelo podría olvidar, como el formato o el bloqueo de un comando peligroso. Los subagents ejecutan una tarea enfocada en su propio contexto y devuelven un resumen, lo que mantiene limpia la conversación principal. Trata todo lo que un agent pueda ejecutar como código con tus permisos y revísalo como código.",
+      "h": "1a934b26"
+    },
+    "sections.3.heading": {
+      "t": "Skills, hooks y subagents",
+      "h": "c6b8652d"
+    },
+    "sections.4.bullets.0": {
+      "t": "Un archivo de instrucciones gigante lleno de reglas que el agent ignora. Corto y específico gana.",
+      "h": "7081f042"
+    },
+    "sections.4.bullets.1": {
+      "t": "Reglas que son solo prosa. Si nunca debe ocurrir, imponlo con permisos, hooks o CI, no con una frase.",
+      "h": "bde00854"
+    },
+    "sections.4.bullets.2": {
+      "t": "Secretos en las instrucciones o en logs pegados.",
+      "h": "db8cbcf4"
+    },
+    "sections.4.bullets.3": {
+      "t": "Dejar que el contexto se llene de intentos fallidos. Empieza de nuevo con lo que aprendiste.",
+      "h": "86c81393"
+    },
+    "sections.4.bullets.4": {
+      "t": "Confiar en que el agent dice que las pruebas pasan sin ejecutarlas tú mismo.",
+      "h": "5d5a64df"
+    },
+    "sections.4.heading": {
+      "t": "Errores comunes",
+      "h": "62264fc1"
+    },
+    "short": {
+      "t": "instrucciones del proyecto, planes, skills y tareas pequeñas: cómo obtener resultados confiables",
+      "h": "15c91128"
+    },
+    "tagline": {
+      "t": "Los agents no recuerdan tu proyecto; leen lo que les pones delante. Los buenos resultados vienen de lo que el modelo ve: instrucciones claras, los archivos correctos, un plan y tareas lo bastante pequeñas como para verificarlas.",
+      "h": "574ef812"
+    },
+    "title": {
+      "t": "Context engineering para agents de código",
+      "h": "9fd64324"
+    }
+  }
+}

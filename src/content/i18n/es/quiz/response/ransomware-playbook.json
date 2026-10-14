@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Los atacantes apuntan primero a los respaldos. Son tu camino hacia la recuperación.",
+      "h": "bf04fd56"
+    },
+    "questions.0.options.0": {
+      "t": "Las impresoras",
+      "h": "2060f338"
+    },
+    "questions.0.options.1": {
+      "t": "Los respaldos, antes de que sean cifrados o borrados",
+      "h": "fe3ae887"
+    },
+    "questions.0.options.2": {
+      "t": "El sitio de marketing",
+      "h": "21dcc234"
+    },
+    "questions.0.options.3": {
+      "t": "La firma del correo",
+      "h": "15c7d479"
+    },
+    "questions.0.q": {
+      "t": "¿Qué debes proteger en cuanto se sospecha de un ataque de ransomware?",
+      "h": "cfc5fd40"
+    },
+    "questions.1.explain": {
+      "t": "Define la política con antelación y con asesoría legal, no bajo presión.",
+      "h": "0a0a3d3e"
+    },
+    "questions.1.options.0": {
+      "t": "Sí",
+      "h": "5397e058"
+    },
+    "questions.1.options.1": {
+      "t": "No: no garantiza ninguna de las dos cosas y puede conllevar exposición legal, por lo que es una decisión para la dirección y la asesoría jurídica",
+      "h": "6bb8cf4f"
+    },
+    "questions.1.options.2": {
+      "t": "Sí, si los criminales son famosos",
+      "h": "44181069"
+    },
+    "questions.1.options.3": {
+      "t": "Sí, por montos pequeños",
+      "h": "d878d51f"
+    },
+    "questions.1.q": {
+      "t": "¿Pagar un rescate garantiza la recuperación y el borrado de los datos robados?",
+      "h": "c64f4c02"
+    },
+    "questions.2.explain": {
+      "t": "De lo contrario, el atacante simplemente te vuelve a cifrar.",
+      "h": "92de5c5d"
+    },
+    "questions.2.options.0": {
+      "t": "Restaurar todo a la vez",
+      "h": "cbf8222c"
+    },
+    "questions.2.options.1": {
+      "t": "Cerrar el punto de entrada y eliminar la persistencia, y luego monitorear de cerca",
+      "h": "a48e8531"
+    },
+    "questions.2.options.2": {
+      "t": "Omitir la verificación",
+      "h": "ba05779e"
+    },
+    "questions.2.options.3": {
+      "t": "Deshabilitar el EDR",
+      "h": "1da9805b"
+    },
+    "questions.2.q": {
+      "t": "Antes de reconectar los sistemas restaurados debes:",
+      "h": "e6b93c6d"
+    }
+  }
+}

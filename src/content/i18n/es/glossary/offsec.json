@@ -1,0 +1,192 @@
+{
+  "entries": {
+    "groups.0.entries.0.aka": {
+      "t": "RoE",
+      "h": "df19d456"
+    },
+    "groups.0.entries.0.meaning": {
+      "t": "El documento acordado que convierte el permiso en límites prácticos: alcance, ventana de tiempo, acciones prohibidas, tasa de solicitudes, contactos de emergencia y cómo se reportan los hallazgos.",
+      "h": "e172d3ff"
+    },
+    "groups.0.entries.0.term": {
+      "t": "Reglas de compromiso",
+      "h": "f803c64f"
+    },
+    "groups.0.entries.1.meaning": {
+      "t": "La lista de sistemas, cuentas y actividades que pueden probarse, y de los explícitamente excluidos. Todo lo que queda fuera no está autorizado.",
+      "h": "cf279ef4"
+    },
+    "groups.0.entries.1.term": {
+      "t": "Alcance",
+      "h": "4651a34e"
+    },
+    "groups.0.entries.2.aka": {
+      "t": "divulgación responsable",
+      "h": "fff6e45c"
+    },
+    "groups.0.entries.2.meaning": {
+      "t": "Reportar una vulnerabilidad de forma privada a su responsable y darle un plazo razonable para corregirla antes de publicar cualquier detalle.",
+      "h": "07297b13"
+    },
+    "groups.0.entries.2.term": {
+      "t": "Divulgación coordinada",
+      "h": "df62ad0d"
+    },
+    "groups.0.entries.3.aka": {
+      "t": "pentest",
+      "h": "26dd5ba4"
+    },
+    "groups.0.entries.3.meaning": {
+      "t": "Un intento, con tiempo limitado, de explotar debilidades dentro de un alcance acordado, para mostrar lo que un atacante realmente podría hacer.",
+      "h": "247e7746"
+    },
+    "groups.0.entries.3.term": {
+      "t": "Prueba de penetración",
+      "h": "8c285167"
+    },
+    "groups.0.entries.4.meaning": {
+      "t": "Cuánto sabe el evaluador de antemano: nada, algo (como cuentas y documentación) o todo, incluido el código fuente.",
+      "h": "b4ca9a16"
+    },
+    "groups.0.entries.4.term": {
+      "t": "Black, gray y white box",
+      "h": "5a8322de"
+    },
+    "groups.0.entries.5.aka": {
+      "t": "Penetration Testing Execution Standard",
+      "h": "6003af09"
+    },
+    "groups.0.entries.5.meaning": {
+      "t": "Una descripción de las fases de una prueba de penetración, desde el pre-compromiso hasta el informe.",
+      "h": "20092246"
+    },
+    "groups.0.entries.5.term": {
+      "t": "PTES",
+      "h": "9ff376c6"
+    },
+    "groups.0.title": {
+      "t": "compromisos de prueba",
+      "h": "0c5af593"
+    },
+    "groups.1.entries.0.meaning": {
+      "t": "Todo lo que un atacante puede alcanzar e intentar: activos expuestos a internet, servicios, interfaces y las personas que los usan.",
+      "h": "db437f5e"
+    },
+    "groups.1.entries.0.term": {
+      "t": "Superficie de ataque",
+      "h": "dbc2f1da"
+    },
+    "groups.1.entries.1.meaning": {
+      "t": "El pasivo reúne información sin tocar el objetivo; el activo lo sondea directamente y debe respetar el alcance y los límites de tasa.",
+      "h": "d5e57fd5"
+    },
+    "groups.1.entries.1.term": {
+      "t": "Recon pasivo y activo",
+      "h": "b4c90418"
+    },
+    "groups.1.entries.2.meaning": {
+      "t": "Un registro DNS que apunta a un recurso de nube o SaaS que ya no existe y que otra persona puede reclamar para servir contenido desde tu dominio.",
+      "h": "fe668eb7"
+    },
+    "groups.1.entries.2.term": {
+      "t": "Subdomain takeover",
+      "h": "0ae2c47a"
+    },
+    "groups.1.entries.3.aka": {
+      "t": "broken object level authorization",
+      "h": "550a7bec"
+    },
+    "groups.1.entries.3.meaning": {
+      "t": "Una API acepta el id de un objeto y lo devuelve sin verificar si quien llama puede acceder a él. Es la forma de IDOR en las APIs.",
+      "h": "d2ca6c7d"
+    },
+    "groups.1.entries.3.term": {
+      "t": "BOLA",
+      "h": "880ddce7"
+    },
+    "groups.1.entries.4.meaning": {
+      "t": "Una API vincula campos enviados por el cliente a un objeto, permitiendo que quien llama defina campos (como un rol) que no debería controlar.",
+      "h": "854329d4"
+    },
+    "groups.1.entries.4.term": {
+      "t": "Mass assignment",
+      "h": "56d9d1aa"
+    },
+    "groups.1.entries.5.meaning": {
+      "t": "Una cadena de permisos, credenciales y relaciones de confianza que lleva de un punto de apoyo a algo valioso. Los defensores mapean y cortan estas rutas.",
+      "h": "961f3aee"
+    },
+    "groups.1.entries.5.term": {
+      "t": "Ruta de ataque",
+      "h": "ac1f0b7f"
+    },
+    "groups.1.entries.6.meaning": {
+      "t": "Obtener más derechos de los concedidos inicialmente, mediante una falla, una configuración incorrecta o una credencial robada.",
+      "h": "519ceffb"
+    },
+    "groups.1.entries.6.term": {
+      "t": "Escalada de privilegios",
+      "h": "11832e00"
+    },
+    "groups.1.title": {
+      "t": "técnicas",
+      "h": "d0975e67"
+    },
+    "groups.2.entries.0.meaning": {
+      "t": "Una simulación basada en objetivos, por lo general encubierta, de un adversario realista, que pone a prueba las personas, los procesos y la tecnología de la organización.",
+      "h": "148ab605"
+    },
+    "groups.2.entries.0.term": {
+      "t": "Red team",
+      "h": "ef2c034b"
+    },
+    "groups.2.entries.1.meaning": {
+      "t": "Un ejercicio colaborativo en el que atacantes y defensores trabajan juntos abiertamente, verificando la detección técnica por técnica y corrigiendo las brechas de inmediato.",
+      "h": "f12561b5"
+    },
+    "groups.2.entries.1.term": {
+      "t": "Purple team",
+      "h": "7421d5b9"
+    },
+    "groups.2.entries.2.meaning": {
+      "t": "Reproducir el comportamiento documentado de un actor de amenaza específico para probar si las defensas lo detectarían.",
+      "h": "1fc86d9e"
+    },
+    "groups.2.entries.2.term": {
+      "t": "Emulación de adversario",
+      "h": "0f2a1e44"
+    },
+    "groups.2.entries.3.meaning": {
+      "t": "Una política de autenticación de correo que indica a los receptores qué hacer con los mensajes que fallan las verificaciones SPF o DKIM de tu dominio y adónde enviar los informes.",
+      "h": "2d085c20"
+    },
+    "groups.2.entries.3.term": {
+      "t": "DMARC",
+      "h": "7023e86c"
+    },
+    "groups.2.entries.4.aka": {
+      "t": "Common Vulnerability Scoring System",
+      "h": "090d06f8"
+    },
+    "groups.2.entries.4.meaning": {
+      "t": "Un estándar para puntuar la severidad técnica de una vulnerabilidad. Hay que ajustarlo a tu contexto antes de usarlo para fijar la prioridad.",
+      "h": "ffa47f83"
+    },
+    "groups.2.entries.4.term": {
+      "t": "CVSS",
+      "h": "57c970ca"
+    },
+    "groups.2.entries.5.meaning": {
+      "t": "Verificar que una corrección realmente cierra un hallazgo, y no solo la solicitud exacta que se reportó.",
+      "h": "b7aea01f"
+    },
+    "groups.2.entries.5.term": {
+      "t": "Reteste",
+      "h": "90f0239d"
+    },
+    "groups.2.title": {
+      "t": "ejercicios e informes",
+      "h": "d72fdbe1"
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "A exposição gradual limita o raio de impacto e dá tempo para comparar métricas.",
+      "h": "fd661401"
+    },
+    "questions.0.options.0": {
+      "t": "Não precisa de monitoramento",
+      "h": "7d392df2"
+    },
+    "questions.0.options.1": {
+      "t": "Uma versão ruim atinge só uma pequena parcela dos usuários antes de ser detectada",
+      "h": "d6749127"
+    },
+    "questions.0.options.2": {
+      "t": "Dobra a capacidade",
+      "h": "25840fdd"
+    },
+    "questions.0.options.3": {
+      "t": "Evita bancos de dados",
+      "h": "43f3d349"
+    },
+    "questions.0.q": {
+      "t": "Qual é a principal vantagem de um canary release?",
+      "h": "10e788cb"
+    },
+    "questions.1.explain": {
+      "t": "Schema e código são implantados em momentos diferentes. A compatibilidade elimina a porta de mão única.",
+      "h": "1908ee97"
+    },
+    "questions.1.options.0": {
+      "t": "Para economizar espaço em disco",
+      "h": "4c23b341"
+    },
+    "questions.1.options.1": {
+      "t": "Para que o código antigo e o novo funcionem durante um rollout e um rollback seja possível",
+      "h": "200e7b06"
+    },
+    "questions.1.options.2": {
+      "t": "Para evitar backups",
+      "h": "17e29586"
+    },
+    "questions.1.options.3": {
+      "t": "Para renomear tabelas com mais frequência",
+      "h": "1a2838f5"
+    },
+    "questions.1.q": {
+      "t": "Por que tornar as mudanças de banco de dados retrocompatíveis (expand, migrate, contract)?",
+      "h": "686cc118"
+    },
+    "questions.2.explain": {
+      "t": "Dá para entregar às escuras e ligar gradualmente, e desligar na hora.",
+      "h": "b949d16e"
+    },
+    "questions.2.options.0": {
+      "t": "Código e testes",
+      "h": "6c09ab6e"
+    },
+    "questions.2.options.1": {
+      "t": "O deploy do código do release de uma funcionalidade",
+      "h": "4e5a9f39"
+    },
+    "questions.2.options.2": {
+      "t": "Equipes de dev e ops",
+      "h": "2cea623a"
+    },
+    "questions.2.options.3": {
+      "t": "Branches e tags",
+      "h": "589ed1fa"
+    },
+    "questions.2.q": {
+      "t": "O que as feature flags separam?",
+      "h": "1c856cf9"
+    }
+  }
+}

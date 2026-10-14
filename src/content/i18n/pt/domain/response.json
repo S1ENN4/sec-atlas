@@ -1,0 +1,164 @@
+{
+  "entries": {
+    "graph.0.label": {
+      "t": "fornece hipóteses para",
+      "h": "2ebfb9ae"
+    },
+    "graph.1.label": {
+      "t": "depende de",
+      "h": "045ed874"
+    },
+    "graph.2.label": {
+      "t": "delimita o escopo de",
+      "h": "e9b64ee9"
+    },
+    "graph.3.label": {
+      "t": "é especializado para",
+      "h": "98b97122"
+    },
+    "graph.4.label": {
+      "t": "preserva evidências para",
+      "h": "173f456a"
+    },
+    "graph.5.label": {
+      "t": "entrega amostras para",
+      "h": "83af806f"
+    },
+    "graph.6.label": {
+      "t": "é informado por",
+      "h": "b23ea947"
+    },
+    "pipeline.0.description": {
+      "t": "decidir antes da crise",
+      "h": "fbdd2ce4"
+    },
+    "pipeline.0.gate": {
+      "t": "a primeira hora de um incidente é um procedimento ensaiado, não um improviso",
+      "h": "5f25cd10"
+    },
+    "pipeline.0.items.0.label": {
+      "t": "papéis, severidade e comunicação",
+      "h": "2a8c3c9b"
+    },
+    "pipeline.0.items.1.label": {
+      "t": "quem nos ataca e como",
+      "h": "b3e69e0d"
+    },
+    "pipeline.0.items.2.label": {
+      "t": "exercícios de mesa (tabletop)",
+      "h": "45664d24"
+    },
+    "pipeline.0.name": {
+      "t": "preparar",
+      "h": "4197eb0c"
+    },
+    "pipeline.1.description": {
+      "t": "encontrar o que os alertas deixaram passar",
+      "h": "17a9ec5b"
+    },
+    "pipeline.1.gate": {
+      "t": "toda técnica confirmada deixa uma detecção automatizada para trás",
+      "h": "2e0b311e"
+    },
+    "pipeline.1.items.0.label": {
+      "t": "busca guiada por hipótese",
+      "h": "453477de"
+    },
+    "pipeline.1.items.1.label": {
+      "t": "timestamps limpos e pivôs",
+      "h": "63285c93"
+    },
+    "pipeline.1.items.2.label": {
+      "t": "caças viram detecções",
+      "h": "5f21d002"
+    },
+    "pipeline.1.name": {
+      "t": "detectar",
+      "h": "2b66455f"
+    },
+    "pipeline.2.description": {
+      "t": "parar o dano, preservar a evidência",
+      "h": "8c82c051"
+    },
+    "pipeline.2.gate": {
+      "t": "a contenção é proporcional, coordenada e registrada",
+      "h": "ff3c72f1"
+    },
+    "pipeline.2.items.0.label": {
+      "t": "primeiro delimitar o escopo, depois conter",
+      "h": "56f24575"
+    },
+    "pipeline.2.items.1.label": {
+      "t": "o playbook de ransomware",
+      "h": "a4fbfc61"
+    },
+    "pipeline.2.items.2.label": {
+      "t": "recuperar a partir de um estado confiável",
+      "h": "41666346"
+    },
+    "pipeline.2.name": {
+      "t": "responder",
+      "h": "c0b78996"
+    },
+    "pipeline.3.description": {
+      "t": "entender exatamente o que aconteceu",
+      "h": "b482120f"
+    },
+    "pipeline.3.gate": {
+      "t": "o relatório explica como entraram, o que fizeram e o que muda",
+      "h": "e2f84925"
+    },
+    "pipeline.3.items.0.label": {
+      "t": "evidência, ordem de volatilidade, custódia",
+      "h": "7856ad8f"
+    },
+    "pipeline.3.items.1.label": {
+      "t": "triagem segura de um arquivo suspeito",
+      "h": "c5b3851d"
+    },
+    "pipeline.3.items.2.label": {
+      "t": "revisão pós-incidente sem culpados",
+      "h": "3f62c996"
+    },
+    "pipeline.3.name": {
+      "t": "investigar",
+      "h": "ff2ccd73"
+    },
+    "relations.0.label": {
+      "t": "é executado por",
+      "h": "80ec6b4d"
+    },
+    "relations.1.label": {
+      "t": "fornece hipóteses para",
+      "h": "2ebfb9ae"
+    },
+    "relations.2.label": {
+      "t": "depende de",
+      "h": "045ed874"
+    },
+    "relations.3.label": {
+      "t": "delimita o escopo de",
+      "h": "e9b64ee9"
+    },
+    "relations.4.label": {
+      "t": "é especializado para",
+      "h": "98b97122"
+    },
+    "relations.5.label": {
+      "t": "preserva evidências para",
+      "h": "173f456a"
+    },
+    "relations.6.label": {
+      "t": "entrega amostras para",
+      "h": "83af806f"
+    },
+    "relations.7.label": {
+      "t": "produz indicadores para",
+      "h": "c121cd2f"
+    },
+    "relations.8.label": {
+      "t": "é informado por",
+      "h": "b23ea947"
+    }
+  }
+}

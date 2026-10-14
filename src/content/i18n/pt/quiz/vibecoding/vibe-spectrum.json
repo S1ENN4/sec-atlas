@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Trabalho barato e reversível pode rodar sem supervisão. Autenticação, pagamentos e infraestrutura exigem planos, diffs e revisão.",
+      "h": "2b424ff7"
+    },
+    "questions.0.options.0": {
+      "t": "Sempre o máximo, para ir mais rápido",
+      "h": "ccd61040"
+    },
+    "questions.0.options.1": {
+      "t": "Ajustar a autonomia ao raio de impacto e à sua capacidade de verificar o resultado",
+      "h": "e35e03bd"
+    },
+    "questions.0.options.2": {
+      "t": "Nunca mais do que autocomplete",
+      "h": "94c87c8b"
+    },
+    "questions.0.options.3": {
+      "t": "O que a ferramenta trouxer por padrão",
+      "h": "1fa77db7"
+    },
+    "questions.0.q": {
+      "t": "Qual regra orienta melhor quanta autonomia dar a uma ferramenta de código com IA?",
+      "h": "4a562e45"
+    },
+    "questions.1.explain": {
+      "t": "O resultado é barato de checar e o dano de um erro é minúsculo. As outras guardam dados, dinheiro ou acesso.",
+      "h": "de9c0b68"
+    },
+    "questions.1.options.0": {
+      "t": "O fluxo de login",
+      "h": "58e1b7c8"
+    },
+    "questions.1.options.1": {
+      "t": "Um webhook de pagamento",
+      "h": "24a5b07e"
+    },
+    "questions.1.options.2": {
+      "t": "Um script descartável que renomeia arquivos no seu notebook",
+      "h": "b2b8a543"
+    },
+    "questions.1.options.3": {
+      "t": "Uma mudança em permissões da nuvem",
+      "h": "f0b60c4d"
+    },
+    "questions.1.q": {
+      "t": "Qual tarefa é a mais adequada para vibecoding puro, sem ler o código?",
+      "h": "012b5d82"
+    },
+    "questions.2.explain": {
+      "t": "Gerar deixou de ser o gargalo. Julgar e verificar a saída é.",
+      "h": "88604cd9"
+    },
+    "questions.2.options.0": {
+      "t": "Velocidade de digitação",
+      "h": "597a67a7"
+    },
+    "questions.2.options.1": {
+      "t": "Especificar problemas com precisão, revisar diffs com senso crítico e escrever testes que provem o resultado",
+      "h": "c98f78b5"
+    },
+    "questions.2.options.2": {
+      "t": "Decorar sintaxe",
+      "h": "5327b266"
+    },
+    "questions.2.options.3": {
+      "t": "Escolher o prompt mais longo",
+      "h": "2edeea85"
+    },
+    "questions.2.q": {
+      "t": "Conforme a geração de código fica barata, qual habilidade se torna mais valiosa?",
+      "h": "3b420754"
+    }
+  }
+}

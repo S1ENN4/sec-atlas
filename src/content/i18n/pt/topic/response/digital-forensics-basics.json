@@ -1,0 +1,108 @@
+{
+  "entries": {
+    "sections.0.bullets.0": {
+      "t": "Preservar: mude o mínimo possível e prove a integridade com hashes criptográficos calculados na coleta.",
+      "h": "7d0d1975"
+    },
+    "sections.0.bullets.1": {
+      "t": "Trabalhar com cópias: adquira uma imagem forense e analise a imagem, nunca o original.",
+      "h": "e86d172c"
+    },
+    "sections.0.bullets.2": {
+      "t": "Ordem de volatilidade: colete primeiro a evidência mais frágil. Memória, depois processos em execução e conexões de rede, depois arquivos temporários, depois disco, depois logs e backups.",
+      "h": "2b4dd573"
+    },
+    "sections.0.bullets.3": {
+      "t": "Cadeia de custódia: um registro escrito de quem teve a evidência, quando, e o que foi feito com ela. É o que torna a evidência crível em uma disputa.",
+      "h": "0c64c5e4"
+    },
+    "sections.0.bullets.4": {
+      "t": "Documente tudo: comandos, horários (em UTC), ferramentas e versões, e o seu raciocínio.",
+      "h": "a25669f7"
+    },
+    "sections.0.bullets.5": {
+      "t": "Legal e privacidade: tenha autoridade para coletar e trate os dados pessoais como a lei e a política exigem. Envolva a assessoria jurídica quando um caso puder ir a juízo.",
+      "h": "d58e882d"
+    },
+    "sections.0.heading": {
+      "t": "Princípios",
+      "h": "4a8cf080"
+    },
+    "sections.1.body.0": {
+      "t": "Use um bloqueador de escrita, de hardware ou software, para mídia física, capture a memória antes de desligar um sistema e calcule o hash do resultado. Os comandos abaixo são o padrão; casos reais costumam usar ferramentas de aquisição dedicadas.",
+      "h": "8503ca69"
+    },
+    "sections.1.code.0.code": {
+      "t": "# gere a imagem de um disco somente leitura (use um bloqueador de escrita em mídia física)\nsudo dd if=/dev/sdb of=case42/evidence01.img bs=4M conv=noerror,sync status=progress\n\n# prove a integridade: registre o hash na coleta e reverifique depois\nsha256sum case42/evidence01.img | tee case42/evidence01.img.sha256\nsha256sum -c case42/evidence01.img.sha256\n\n# faça uma cópia de trabalho e analise essa, nunca a imagem original\ncp case42/evidence01.img case42/work01.img",
+      "h": "f25feba8"
+    },
+    "sections.1.code.0.filename": {
+      "t": "acquire-disk.sh",
+      "h": "7114eaa2"
+    },
+    "sections.1.code.1.code": {
+      "t": "Caso: INC-2026-0142    Item: evidence01.img (disco do web-prod-03)\nSHA-256: <hash registrado na aquisição>\n\n2026-10-13 15:10Z  coletado por A. Silva, com bloqueio de escrita, dc3dd v7.2\n2026-10-13 16:00Z  transferido ao cofre de evidências, saco lacrado #118 (A. Silva -> M. Souza)\n2026-10-14 09:05Z  retirado para análise (M. Souza), hash reverificado OK\n2026-10-14 17:30Z  devolvido ao cofre, hash reverificado OK",
+      "h": "8b2481ab"
+    },
+    "sections.1.code.1.filename": {
+      "t": "chain-of-custody.txt",
+      "h": "f405e2f6"
+    },
+    "sections.1.heading": {
+      "t": "Aquisição de evidências",
+      "h": "31fc2003"
+    },
+    "sections.2.bullets.0": {
+      "t": "Memória: processos em execução e ocultos, conexões de rede, módulos carregados e código injetado, credenciais na memória.",
+      "h": "6f66f606"
+    },
+    "sections.2.bullets.1": {
+      "t": "Disco: linha do tempo do sistema de arquivos, arquivos excluídos, programas executados recentemente, locais de persistência (itens de inicialização, tarefas agendadas, serviços).",
+      "h": "4a8c00cb"
+    },
+    "sections.2.bullets.2": {
+      "t": "Artefatos do Windows: logs de eventos, hives do registro, prefetch, amcache e shimcache, histórico do navegador.",
+      "h": "07d29fae"
+    },
+    "sections.2.bullets.3": {
+      "t": "Artefatos do Linux: histórico do shell, logs de autenticação e do sistema, tarefas cron, chaves SSH, binários modificados.",
+      "h": "3d5ea066"
+    },
+    "sections.2.bullets.4": {
+      "t": "Nuvem e SaaS: logs de auditoria e estado de configuração; a evidência muitas vezes está nos logs do provedor, não em um disco.",
+      "h": "24b1db57"
+    },
+    "sections.2.code.0.code": {
+      "t": "vol -f mem.raw windows.pslist          # processos em execução\nvol -f mem.raw windows.pstree          # relações de pai e filho\nvol -f mem.raw windows.cmdline         # linhas de comando\nvol -f mem.raw windows.netscan         # conexões de rede e listeners\nvol -f mem.raw windows.malfind         # regiões de memória que parecem código injetado",
+      "h": "b2de8e11"
+    },
+    "sections.2.code.0.filename": {
+      "t": "memory-analysis.sh (Volatility 3)",
+      "h": "460e74b5"
+    },
+    "sections.2.heading": {
+      "t": "O que examinar",
+      "h": "ada35455"
+    },
+    "sections.3.body.0": {
+      "t": "Um relatório forense declara o que foi examinado, como, o que foi encontrado e o que isso significa, separando a observação da interpretação. Escreva de modo que um leitor que não estava lá consiga seguir o raciocínio e reproduzi-lo. Declare os limites com honestidade: o que você não conseguiu determinar e por quê.",
+      "h": "f379b292"
+    },
+    "sections.3.heading": {
+      "t": "Relatório",
+      "h": "c9e579d6"
+    },
+    "short": {
+      "t": "coletar evidências na ordem certa, provar que não foram alteradas e ler o que elas mostram",
+      "h": "e7e238fe"
+    },
+    "tagline": {
+      "t": "Forense é a disciplina da evidência: colete-a de modo que não possa ser contestada, analise cópias em vez de originais e documente cada passo para que outro perito chegue ao mesmo resultado.",
+      "h": "58b00a7b"
+    },
+    "title": {
+      "t": "Fundamentos de forense digital",
+      "h": "fc133344"
+    }
+  }
+}

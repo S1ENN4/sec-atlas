@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Las evidencias reunidas a las carreras en la última semana revelan controles que nadie opera durante el año.",
+      "h": "9e8d6bab"
+    },
+    "questions.0.options.0": {
+      "t": "Contratar más auditores",
+      "h": "4e5dd36f"
+    },
+    "questions.0.options.1": {
+      "t": "Controles con responsables y evidencias producidas de forma continua y automática",
+      "h": "6204b7fa"
+    },
+    "questions.0.options.2": {
+      "t": "Posponer la auditoría",
+      "h": "27cbcbd6"
+    },
+    "questions.0.options.3": {
+      "t": "Reducir el alcance a nada",
+      "h": "ee34867c"
+    },
+    "questions.0.q": {
+      "t": "¿Qué hace que las auditorías sean rutinarias en lugar de dolorosas?",
+      "h": "a44bb34b"
+    },
+    "questions.1.explain": {
+      "t": "Que el equipo operador sea responsable mantiene vivos los controles entre auditorías.",
+      "h": "6083ca4f"
+    },
+    "questions.1.options.0": {
+      "t": "Siempre el equipo de cumplimiento",
+      "h": "604934b1"
+    },
+    "questions.1.options.1": {
+      "t": "La persona que responde por el funcionamiento del control, normalmente en el equipo que lo opera",
+      "h": "44d5425d"
+    },
+    "questions.1.options.2": {
+      "t": "El auditor",
+      "h": "14ac7c6e"
+    },
+    "questions.1.options.3": {
+      "t": "Nadie",
+      "h": "148ba2d2"
+    },
+    "questions.1.q": {
+      "t": "¿Quién debe ser responsable de un control?",
+      "h": "b7ab07ec"
+    },
+    "questions.2.explain": {
+      "t": "Una brecha conocida con un plan es mucho mejor que una que descubre el auditor.",
+      "h": "f03e6f0c"
+    },
+    "questions.2.options.0": {
+      "t": "Ocultarla",
+      "h": "c002485a"
+    },
+    "questions.2.options.1": {
+      "t": "Documentarla con un plan de acción y un responsable, e informar al auditor",
+      "h": "394d7cef"
+    },
+    "questions.2.options.2": {
+      "t": "Eliminar el control",
+      "h": "243e38a6"
+    },
+    "questions.2.options.3": {
+      "t": "Cambiar la fecha de la auditoría",
+      "h": "323e6e1b"
+    },
+    "questions.2.q": {
+      "t": "Encuentra una brecha antes de la auditoría. ¿Cuál es el mejor enfoque?",
+      "h": "a8cec40f"
+    }
+  }
+}

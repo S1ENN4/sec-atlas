@@ -1,0 +1,112 @@
+{
+  "entries": {
+    "sections.0.bullets.0": {
+      "t": "Qual é o alerta e ele é verdadeiro? Descarte rapidamente um falso positivo com uma segunda fonte de dados.",
+      "h": "7547e1ae"
+    },
+    "sections.0.bullets.1": {
+      "t": "O que foi afetado: quais hosts, identidades, contas, serviços e dados?",
+      "h": "419552ec"
+    },
+    "sections.0.bullets.2": {
+      "t": "Quando começou? O primeiro alerta raramente é o primeiro evento; olhe para trás.",
+      "h": "c3164677"
+    },
+    "sections.0.bullets.3": {
+      "t": "O que o atacante tem agora: credenciais, persistência, uma base na nuvem?",
+      "h": "56ff6332"
+    },
+    "sections.0.bullets.4": {
+      "t": "Há dados saindo e a atividade continua?",
+      "h": "951dcf21"
+    },
+    "sections.0.bullets.5": {
+      "t": "Qual é o impacto no negócio e que severidade isso implica?",
+      "h": "6b0405dd"
+    },
+    "sections.0.heading": {
+      "t": "Perguntas de triagem",
+      "h": "e61a88ca"
+    },
+    "sections.1.body.0": {
+      "t": "Escolha a menor ação que interrompe o dano. A contenção de curto prazo ganha tempo; a de longo prazo prepara uma recuperação limpa.",
+      "h": "92170f42"
+    },
+    "sections.1.bullets.0": {
+      "t": "Identidade: redefina credenciais, revogue sessões e tokens, desative a conta ou chave de acesso, exija nova autenticação com um segundo fator.",
+      "h": "08cf7d4d"
+    },
+    "sections.1.bullets.1": {
+      "t": "Endpoint: isole o host na rede por meio do EDR (ele continua ligado e acessível às suas ferramentas), em vez de desligá-lo e perder a memória.",
+      "h": "0eb7d676"
+    },
+    "sections.1.bullets.2": {
+      "t": "Rede: bloqueie endereços e domínios conhecidamente maliciosos, restrinja o egress, mova o sistema para um segmento de quarentena.",
+      "h": "9f3e19b3"
+    },
+    "sections.1.bullets.3": {
+      "t": "Nuvem: política deny-all no papel comprometido, security group de quarentena na instância, snapshot do volume antes de qualquer mudança.",
+      "h": "f4aa5c0b"
+    },
+    "sections.1.bullets.4": {
+      "t": "Aplicação: desative o recurso vulnerável ou desvie o tráfego com uma regra de WAF enquanto a correção é construída.",
+      "h": "e1b9e978"
+    },
+    "sections.1.heading": {
+      "t": "Opções de contenção",
+      "h": "e28c2f2a"
+    },
+    "sections.2.body.0": {
+      "t": "Contenha primeiro, preserve em segundo, investigue em terceiro. Os comandos abaixo desativam a chave, negam novas ações e fazem um snapshot de um volume suspeito; adapte nomes e ids e registre cada comando na linha do tempo do incidente.",
+      "h": "ab65e14c"
+    },
+    "sections.2.code.0.code": {
+      "t": "# 1. impeça a chave de funcionar (mantenha-a; não exclua, você precisa dela como evidência)\naws iam update-access-key --user-name build-bot --access-key-id AKIAEXAMPLEKEY --status Inactive\n\n# 2. negue tudo para o usuário enquanto investiga\naws iam attach-user-policy --user-name build-bot --policy-arn arn:aws:iam::aws:policy/AWSDenyAll\n\n# 3. isole uma instância suspeita com um security group que não permite nada\naws ec2 modify-instance-attribute --instance-id i-0abc123 --groups sg-0quarantine\n\n# 4. preserve o disco dela antes de qualquer limpeza\naws ec2 create-snapshot --volume-id vol-0abc123 --description \"INC-2026-0142 evidence\" \\\n  --tag-specifications 'ResourceType=snapshot,Tags=[{Key=incident,Value=INC-2026-0142}]'",
+      "h": "f700adf2"
+    },
+    "sections.2.code.0.filename": {
+      "t": "contain-leaked-key.sh",
+      "h": "9885db73"
+    },
+    "sections.2.heading": {
+      "t": "Exemplo em nuvem: conter uma chave de acesso vazada",
+      "h": "7f413954"
+    },
+    "sections.3.bullets.0": {
+      "t": "Apagar ou reinstalar antes de coletar evidências: você perde a resposta de como eles entraram.",
+      "h": "6888edf1"
+    },
+    "sections.3.bullets.1": {
+      "t": "Conter apenas o host que você encontrou: o atacante tem outros pontos de apoio, então delimite o escopo primeiro ou contenha de forma ampla de uma vez.",
+      "h": "cf0d8348"
+    },
+    "sections.3.bullets.2": {
+      "t": "Redefinir uma senha mas deixar sessões, tokens, chaves de API e regras de caixa de correio ativos.",
+      "h": "664a50d5"
+    },
+    "sections.3.bullets.3": {
+      "t": "Alertar o atacante ao mudar coisas aos poucos ao longo de dias; coordene a contenção em uma única janela decisiva.",
+      "h": "d28d3cbf"
+    },
+    "sections.3.bullets.4": {
+      "t": "Esquecer de registrar quem fez o quê e quando.",
+      "h": "0f3a5574"
+    },
+    "sections.3.heading": {
+      "t": "Erros a evitar",
+      "h": "e4f0079c"
+    },
+    "short": {
+      "t": "decidir o que aconteceu e qual o tamanho, depois estancar o problema sem destruir evidências",
+      "h": "1d78dd81"
+    },
+    "tagline": {
+      "t": "A primeira hora gira em torno de duas perguntas: até onde isso chegou e qual é a forma menos danosa de parar? Responda na ordem certa e mantenha as evidências intactas.",
+      "h": "47614418"
+    },
+    "title": {
+      "t": "Triagem, delimitação de escopo e contenção",
+      "h": "1cb4676f"
+    }
+  }
+}

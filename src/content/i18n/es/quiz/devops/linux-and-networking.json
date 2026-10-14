@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Trabaja de afuera hacia adentro y lee antes de cambiar. La mayoría de las causas son DNS, certificados, puertos o el propio servicio.",
+      "h": "c872c0c2"
+    },
+    "questions.0.options.0": {
+      "t": "Reinstalar primero el servidor",
+      "h": "ed483849"
+    },
+    "questions.0.options.1": {
+      "t": "Resolución de nombres, alcanzabilidad del puerto, si el servicio escucha, validez del certificado y, por último, los logs",
+      "h": "92b93e09"
+    },
+    "questions.0.options.2": {
+      "t": "Reiniciar todo y esperar lo mejor",
+      "h": "f9e44c3d"
+    },
+    "questions.0.options.3": {
+      "t": "Cambiar el firewall para permitir todo",
+      "h": "1c0554b2"
+    },
+    "questions.0.q": {
+      "t": "Un servicio es inalcanzable. ¿Cuál es el orden sensato de verificaciones?",
+      "h": "2d7075d5"
+    },
+    "questions.1.explain": {
+      "t": "El mínimo privilegio limita el daño de cualquier bug o intrusión.",
+      "h": "e276cc50"
+    },
+    "questions.1.options.0": {
+      "t": "Hace el programa más rápido",
+      "h": "afe6c35e"
+    },
+    "questions.1.options.1": {
+      "t": "Un compromiso solo tendría el acceso de ese usuario, no el de root",
+      "h": "aac72733"
+    },
+    "questions.1.options.2": {
+      "t": "Root no puede abrir puertos de red",
+      "h": "d2c9cfe2"
+    },
+    "questions.1.options.3": {
+      "t": "systemd lo exige",
+      "h": "b1b8adc8"
+    },
+    "questions.1.q": {
+      "t": "¿Por qué correr un servicio como su propio usuario sin privilegios?",
+      "h": "c024730c"
+    },
+    "questions.2.explain": {
+      "t": "Las ventanas de validez dependen de la hora. Mantén los relojes sincronizados.",
+      "h": "d4dab716"
+    },
+    "questions.2.options.0": {
+      "t": "Demasiada RAM",
+      "h": "ba5fe39e"
+    },
+    "questions.2.options.1": {
+      "t": "Desfase de reloj entre máquinas",
+      "h": "a607934b"
+    },
+    "questions.2.options.2": {
+      "t": "Demasiados archivos de log",
+      "h": "5f2fc19e"
+    },
+    "questions.2.options.3": {
+      "t": "Un teclado lento",
+      "h": "1e1849cf"
+    },
+    "questions.2.q": {
+      "t": "Muchas caídas extrañas con tokens o certificados provienen de:",
+      "h": "a6274b8e"
+    }
+  }
+}

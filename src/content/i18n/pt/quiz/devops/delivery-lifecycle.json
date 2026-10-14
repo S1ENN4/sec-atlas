@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "O que você testou é exatamente o que você entrega.",
+      "h": "87af3951"
+    },
+    "questions.0.options.0": {
+      "t": "Compilar separadamente para cada ambiente",
+      "h": "2c18585e"
+    },
+    "questions.0.options.1": {
+      "t": "O mesmo artefato é promovido por todos os ambientes, e só a configuração muda",
+      "h": "7f52a06a"
+    },
+    "questions.0.options.2": {
+      "t": "Fazer deploy em várias regiões ao mesmo tempo",
+      "h": "f13ed357"
+    },
+    "questions.0.options.3": {
+      "t": "Fazer build apenas às sextas-feiras",
+      "h": "bfca3755"
+    },
+    "questions.0.q": {
+      "t": "O que significa \"build once, deploy many\"?",
+      "h": "1f3097b3"
+    },
+    "questions.1.explain": {
+      "t": "Ambas automatizam o caminho. A implantação também elimina o último passo manual de release.",
+      "h": "6a70c737"
+    },
+    "questions.1.options.0": {
+      "t": "Nenhuma",
+      "h": "6eef6648"
+    },
+    "questions.1.options.1": {
+      "t": "A entrega mantém toda mudança pronta para deploy; a implantação libera automaticamente cada mudança aprovada",
+      "h": "715627f3"
+    },
+    "questions.1.options.2": {
+      "t": "A entrega é para bancos de dados",
+      "h": "b553a85a"
+    },
+    "questions.1.options.3": {
+      "t": "A implantação exige aprovação manual a cada etapa",
+      "h": "563b1a6a"
+    },
+    "questions.1.q": {
+      "t": "Qual é a diferença entre entrega contínua e implantação contínua?",
+      "h": "0289233a"
+    },
+    "questions.2.explain": {
+      "t": "Uma medida que vira meta é manipulada. Use-as para encontrar gargalos.",
+      "h": "e7dff7ff"
+    },
+    "questions.2.options.0": {
+      "t": "Como metas para ranquear desenvolvedores individuais",
+      "h": "0b4375f7"
+    },
+    "questions.2.options.1": {
+      "t": "Como sinais para conversas sobre o sistema de entrega",
+      "h": "714bf3cd"
+    },
+    "questions.2.options.2": {
+      "t": "Somente por auditores",
+      "h": "ec643296"
+    },
+    "questions.2.options.3": {
+      "t": "Devem ser ignoradas",
+      "h": "0920bf1d"
+    },
+    "questions.2.q": {
+      "t": "Como as medidas DORA devem ser usadas?",
+      "h": "ba23c088"
+    }
+  }
+}

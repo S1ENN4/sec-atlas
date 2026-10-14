@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "La autorización debe aplicarse en el servidor en cada solicitud. Un id imposible de adivinar ayuda, pero no es un control.",
+      "h": "eca2269b"
+    },
+    "questions.0.options.0": {
+      "t": "Ocultar los enlaces de las facturas en la interfaz de usuario",
+      "h": "029e9634"
+    },
+    "questions.0.options.1": {
+      "t": "Hacer que la consulta filtre por el dueño tomado de la sesión y devolver el mismo 404 para inexistente y ajena",
+      "h": "a8ea6c92"
+    },
+    "questions.0.options.2": {
+      "t": "Usar un id aleatorio más largo y mantener la misma consulta",
+      "h": "6623cc13"
+    },
+    "questions.0.options.3": {
+      "t": "Bloquear la dirección IP del usuario",
+      "h": "4e5dc703"
+    },
+    "questions.0.q": {
+      "t": "Un usuario autenticado cambia /api/invoices/1041 por /api/invoices/1042 y ve la factura de otro cliente. ¿Cuál es la mejor corrección?",
+      "h": "02d76700"
+    },
+    "questions.1.explain": {
+      "t": "Con denegar por defecto, una ruta para la que nadie escribió una regla queda prohibida en lugar de abierta.",
+      "h": "17f6a4bf"
+    },
+    "questions.1.options.0": {
+      "t": "Permitir por defecto",
+      "h": "7aaefb85"
+    },
+    "questions.1.options.1": {
+      "t": "Denegar por defecto",
+      "h": "88262657"
+    },
+    "questions.1.options.2": {
+      "t": "Registrar en log por defecto",
+      "h": "12f69a66"
+    },
+    "questions.1.options.3": {
+      "t": "Usar caché por defecto",
+      "h": "b394a39d"
+    },
+    "questions.1.q": {
+      "t": "¿Qué valor por defecto hace segura una ruta olvidada?",
+      "h": "2847a152"
+    },
+    "questions.2.explain": {
+      "t": "El cliente está bajo el control del atacante. Solo cuenta la verificación en el servidor.",
+      "h": "304c0072"
+    },
+    "questions.2.options.0": {
+      "t": "Porque los botones son lentos",
+      "h": "b98d3072"
+    },
+    "questions.2.options.1": {
+      "t": "Porque los atacantes llaman al endpoint directamente, así que el servidor debe verificar el rol",
+      "h": "730e6b00"
+    },
+    "questions.2.options.2": {
+      "t": "Porque los navegadores guardan en caché los botones",
+      "h": "8e626c9e"
+    },
+    "questions.2.options.3": {
+      "t": "Porque rompe la accesibilidad",
+      "h": "76a94b38"
+    },
+    "questions.2.q": {
+      "t": "¿Por qué ocultar el botón de admin en la UI no es control de acceso?",
+      "h": "7ff80cfc"
+    }
+  }
+}

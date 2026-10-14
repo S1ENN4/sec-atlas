@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "A readiness controla o tráfego. A liveness controla as reinicializações.",
+      "h": "47c9798d"
+    },
+    "questions.0.options.0": {
+      "t": "Se o pod é reiniciado",
+      "h": "bd571986"
+    },
+    "questions.0.options.1": {
+      "t": "Se o pod recebe tráfego",
+      "h": "678a40ae"
+    },
+    "questions.0.options.2": {
+      "t": "Em qual node ele roda",
+      "h": "e7898bb9"
+    },
+    "questions.0.options.3": {
+      "t": "Quanta memória ele recebe",
+      "h": "062e41c8"
+    },
+    "questions.0.q": {
+      "t": "O que uma readiness probe decide?",
+      "h": "40ee6072"
+    },
+    "questions.1.explain": {
+      "t": "Sem eles, um pod problemático pode derrubar outros no node.",
+      "h": "43c24565"
+    },
+    "questions.1.options.0": {
+      "t": "São decorativos",
+      "h": "adb52366"
+    },
+    "questions.1.options.1": {
+      "t": "O scheduling precisa dos requests, e os limits impedem que um pod deixe seus vizinhos sem recursos",
+      "h": "41778bb3"
+    },
+    "questions.1.options.2": {
+      "t": "Aceleram as imagens",
+      "h": "9675cddd"
+    },
+    "questions.1.options.3": {
+      "t": "Criptografam a memória",
+      "h": "a55a82c5"
+    },
+    "questions.1.q": {
+      "t": "Por que definir requests e limits de recursos?",
+      "h": "89d317bd"
+    },
+    "questions.2.explain": {
+      "t": "Uma fonte da verdade revisada e versionada torna as mudanças repetíveis e reversíveis.",
+      "h": "71925425"
+    },
+    "questions.2.options.0": {
+      "t": "Comandos kubectl edit ad hoc",
+      "h": "90a22fb0"
+    },
+    "questions.2.options.1": {
+      "t": "Por controle de versão e um pipeline automatizado ou um controller GitOps",
+      "h": "f542ee42"
+    },
+    "questions.2.options.2": {
+      "t": "Por SSH nos nodes",
+      "h": "37d2a3a2"
+    },
+    "questions.2.options.3": {
+      "t": "Somente pelo dashboard",
+      "h": "df3740a5"
+    },
+    "questions.2.q": {
+      "t": "Como as mudanças devem chegar normalmente a um cluster?",
+      "h": "9752a8e1"
+    }
+  }
+}

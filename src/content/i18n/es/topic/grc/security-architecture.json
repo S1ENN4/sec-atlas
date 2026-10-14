@@ -1,0 +1,96 @@
+{
+  "entries": {
+    "sections.0.bullets.0": {
+      "t": "Mínimo privilegio: cada identidad y carga de trabajo recibe solo el acceso que su tarea necesita, durante el tiempo que lo necesite.",
+      "h": "141274b9"
+    },
+    "sections.0.bullets.1": {
+      "t": "Defensa en profundidad: varias capas independientes, para que una falla no sea una brecha.",
+      "h": "d26a4ac9"
+    },
+    "sections.0.bullets.2": {
+      "t": "Zero trust: nunca confiar por la ubicación en la red; autenticar y autorizar cada solicitud, usando identidad, dispositivo y contexto, y asumir que la brecha ya ocurrió.",
+      "h": "4e198924"
+    },
+    "sections.0.bullets.3": {
+      "t": "Seguro por defecto: el camino fácil es el camino seguro; las opciones inseguras requieren un esfuerzo explícito.",
+      "h": "a2fee4d4"
+    },
+    "sections.0.bullets.4": {
+      "t": "Separación de funciones y de entornos: ninguna persona ni compromiso aislado debería poder hacerlo todo.",
+      "h": "a01cb667"
+    },
+    "sections.0.bullets.5": {
+      "t": "Minimizar la superficie de ataque y el radio de impacto: exponer menos, segmentar más y limitar lo que una falla puede alcanzar.",
+      "h": "8bd5e687"
+    },
+    "sections.0.bullets.6": {
+      "t": "Fallar cerrado y mantenerlo simple: la complejidad es enemiga de la seguridad.",
+      "h": "d0c2566a"
+    },
+    "sections.0.heading": {
+      "t": "Principios centrales",
+      "h": "e3726fd7"
+    },
+    "sections.1.body.0": {
+      "t": "Los principios no escalan por sí solos; los patrones sí. Una landing zone da a cada nueva cuenta de nube el mismo logging, la misma línea base de red y los mismos guardrails. Un servicio de identidad estándar da a cada aplicación autenticación y autorización. Un camino pavimentado (paved path) para los pipelines lleva las verificaciones de seguridad. El entregable del arquitecto son estos bloques reutilizables, más la guía sobre cuándo usarlos y un proceso para las excepciones.",
+      "h": "660b7f21"
+    },
+    "sections.1.heading": {
+      "t": "De los principios a los patrones",
+      "h": "4948d0a5"
+    },
+    "sections.2.body.0": {
+      "t": "Escriba las decisiones significativas con su contexto y sus trade-offs. Los registros breves de decisión de arquitectura mantienen el razonamiento fácil de encontrar cuando el equipo cambia.",
+      "h": "88c26969"
+    },
+    "sections.2.code.0.code": {
+      "t": "# ADR-0012: La autenticación entre servicios usa identidad de workload (mTLS)\n\nEstado: aceptado   Fecha: 2026-10-02   Responsable: security-architecture\n\n## Contexto\nLos servicios se llaman entre sí dentro del clúster. Hoy el único control es una lista de permitidos de red; un pod comprometido puede llamar a cualquier cosa.\n\n## Decisión\nCada servicio recibe una identidad de workload y TLS mutuo a través de la malla. Las políticas de autorización indican qué servicio puede llamar a qué endpoint. Por defecto se deniega.\n\n## Consecuencias\n+ El compromiso de un servicio ya no otorga acceso de red a todos.\n+ Las llamadas son atribuibles en los logs.\n- Los equipos deben definir sus llamadores permitidos; la malla agrega complejidad operativa.\n\n## Alternativas consideradas\nSolo políticas de red (rechazada: sin identidad, difícil de auditar); claves de API compartidas (rechazada: sin rotación, sin atribución).",
+      "h": "697d4ed4"
+    },
+    "sections.2.code.0.filename": {
+      "t": "adr-0012-service-to-service-authentication.md",
+      "h": "4eb4d841"
+    },
+    "sections.2.heading": {
+      "t": "Registrar las decisiones",
+      "h": "2cb62dc5"
+    },
+    "sections.3.bullets.0": {
+      "t": "Revise los diseños temprano, cuando cambiar es barato; use modelado de amenazas en sistemas nuevos y cambios importantes.",
+      "h": "3e3d0b51"
+    },
+    "sections.3.bullets.1": {
+      "t": "Dé a los equipos patrones de autoservicio y guardrails en lugar de colas de aprobación que los frenan.",
+      "h": "0edf7230"
+    },
+    "sections.3.bullets.2": {
+      "t": "Explique el riesgo detrás de cada requisito; las reglas sin motivo terminan eludidas.",
+      "h": "e2a0fe3a"
+    },
+    "sections.3.bullets.3": {
+      "t": "Dé seguimiento a las excepciones con responsables y fechas de vencimiento, y devuelva las excepciones recurrentes al patrón.",
+      "h": "cc26f380"
+    },
+    "sections.3.bullets.4": {
+      "t": "Mida la adopción de los patrones: una arquitectura de referencia que nadie usa no protege a nadie.",
+      "h": "f75159bb"
+    },
+    "sections.3.heading": {
+      "t": "Trabajar con los equipos",
+      "h": "ddd392e8"
+    },
+    "short": {
+      "t": "zero trust, defensa en profundidad, mínimo privilegio y arquitecturas de referencia que escalan",
+      "h": "ddaa2d29"
+    },
+    "tagline": {
+      "t": "Un arquitecto de seguridad diseña los controles una vez, como patrones, para que cientos de equipos los hereden. El oficio es un pequeño conjunto de principios aplicados de forma consistente en nube, red, identidad y datos.",
+      "h": "2a4e6e81"
+    },
+    "title": {
+      "t": "Principios de arquitectura de seguridad",
+      "h": "677b102c"
+    }
+  }
+}

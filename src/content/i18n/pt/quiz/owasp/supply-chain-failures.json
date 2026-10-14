@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Referências mutáveis deixam uma mudança do upstream rodar no seu pipeline, com os seus segredos, sem ser notada.",
+      "h": "f41f6331"
+    },
+    "questions.0.options.0": {
+      "t": "Os SHAs são mais curtos que as tags",
+      "h": "34ad37d4"
+    },
+    "questions.0.options.1": {
+      "t": "Uma tag ou branch pode ser movida para outro código, um SHA de commit não",
+      "h": "99c310fd"
+    },
+    "questions.0.options.2": {
+      "t": "Deixa o build mais rápido",
+      "h": "34a60eb1"
+    },
+    "questions.0.options.3": {
+      "t": "O Git exige",
+      "h": "86211e4d"
+    },
+    "questions.0.q": {
+      "t": "Por que as actions de CI devem ser fixadas em um SHA de commit completo?",
+      "h": "ac97f471"
+    },
+    "questions.1.explain": {
+      "t": "Um inventário de componentes transforma uma longa busca em uma consulta rápida.",
+      "h": "f5a62790"
+    },
+    "questions.1.options.0": {
+      "t": "Quão rápido é o build",
+      "h": "8d838785"
+    },
+    "questions.1.options.1": {
+      "t": "Se você é afetado quando uma vulnerabilidade em um componente é anunciada",
+      "h": "dc01cf9b"
+    },
+    "questions.1.options.2": {
+      "t": "Quem escreveu cada linha de código",
+      "h": "66b1f998"
+    },
+    "questions.1.options.3": {
+      "t": "Qual região de nuvem é mais barata",
+      "h": "80bbbf70"
+    },
+    "questions.1.q": {
+      "t": "A que um SBOM ajuda principalmente a responder?",
+      "h": "24e3bcf8"
+    },
+    "questions.2.explain": {
+      "t": "Nomes com escopo e um registry privado com prioridade evitam a troca.",
+      "h": "a958f686"
+    },
+    "questions.2.options.0": {
+      "t": "Usar bibliotecas demais",
+      "h": "0da34d26"
+    },
+    "questions.2.options.1": {
+      "t": "Um build baixando um pacote público com o mesmo nome de um interno",
+      "h": "a6a2222e"
+    },
+    "questions.2.options.2": {
+      "t": "Duas bibliotecas com licenças incompatíveis",
+      "h": "324de6f1"
+    },
+    "questions.2.options.3": {
+      "t": "Um import circular",
+      "h": "dd76389a"
+    },
+    "questions.2.q": {
+      "t": "O que é dependency confusion?",
+      "h": "3d8e9974"
+    }
+  }
+}

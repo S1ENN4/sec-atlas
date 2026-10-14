@@ -1,0 +1,176 @@
+{
+  "entries": {
+    "sections.0.body.0": {
+      "t": "El control de acceso aplica la política para que los usuarios no actúen fuera de sus permisos previstos. Se rompe cuando el servidor confía en algo que controla el cliente: un id en la URL, un campo oculto, un claim de rol, una cookie. El resultado es leer datos de otras personas, modificarlos o llegar a funciones de administración.",
+      "h": "40c5f971"
+    },
+    "sections.0.body.1": {
+      "t": "El OWASP Top 10:2025 lo lista como A01. Las dos formas cotidianas son IDOR (insecure direct object reference, también llamado BOLA en seguridad de APIs): la solicitud nombra un objeto y el servidor lo devuelve sin preguntar si quien llama es su dueño; y la falta de verificaciones a nivel de función: existe un endpoint para administradores, pero nada impide que un usuario normal lo llame.",
+      "h": "e3bc646d"
+    },
+    "sections.0.heading": {
+      "t": "Qué es",
+      "h": "f8c94a3b"
+    },
+    "sections.1.body.0": {
+      "t": "El atacante inicia sesión como usuario normal, abre la pestaña de red del navegador y encuentra una solicitud como GET /api/invoices/1041. Cambia 1041 por 1042 y lee la factura de otra persona. Si los ids son secuenciales, un script de diez líneas recorre toda la tabla.",
+      "h": "5157c898"
+    },
+    "sections.1.bullets.0": {
+      "t": "Cambia un id en el path, en el query string, en el cuerpo JSON o en un header, y observa si la respuesta cambia de dueño.",
+      "h": "f114d28d"
+    },
+    "sections.1.bullets.1": {
+      "t": "Llama directamente a una ruta de admin o interna (/admin/users, DELETE /api/users/7) con una sesión normal.",
+      "h": "1709e0e8"
+    },
+    "sections.1.bullets.2": {
+      "t": "Envía campos adicionales que el formulario nunca muestra (\"role\": \"admin\"): el mass assignment deja que el cliente defina lo que no debería.",
+      "h": "d7a85e11"
+    },
+    "sections.1.bullets.3": {
+      "t": "Ocultar el botón en la UI: la UI no es un control, el servidor sí.",
+      "h": "c65bc4de"
+    },
+    "sections.1.heading": {
+      "t": "Cómo funciona el ataque",
+      "h": "4443eb22"
+    },
+    "sections.2.body.0": {
+      "t": "Cada handler verifica que el usuario haya iniciado sesión y luego carga el objeto solo por id. Nada vincula la factura con quien llama.",
+      "h": "a045339c"
+    },
+    "sections.2.code.0.code": {
+      "t": "app.get(\"/api/invoices/:id\", requireLogin, async (req, res) => {\n  const invoice = await db.invoice.findUnique({ where: { id: Number(req.params.id) } });\n  res.json(invoice); // cualquier usuario autenticado puede leer cualquier factura\n});",
+      "h": "c37921ee"
+    },
+    "sections.2.code.0.filename": {
+      "t": "invoices.js (Express + Prisma)",
+      "h": "125df489"
+    },
+    "sections.2.code.1.code": {
+      "t": "@app.get(\"/api/invoices/<int:invoice_id>\")\n@login_required\ndef get_invoice(invoice_id):\n    invoice = Invoice.query.get_or_404(invoice_id)\n    return jsonify(invoice.to_dict())",
+      "h": "fd92ef2c"
+    },
+    "sections.2.code.1.filename": {
+      "t": "invoices.py (Flask + SQLAlchemy)",
+      "h": "dae55db0"
+    },
+    "sections.2.code.2.code": {
+      "t": "@GetMapping(\"/api/invoices/{id}\")\npublic Invoice get(@PathVariable long id) {\n    return repo.findById(id).orElseThrow(NotFoundException::new);\n}",
+      "h": "0b6aee32"
+    },
+    "sections.2.code.2.filename": {
+      "t": "InvoiceController.java (Spring)",
+      "h": "2f975dad"
+    },
+    "sections.2.heading": {
+      "t": "Código vulnerable",
+      "h": "fe357299"
+    },
+    "sections.3.body.0": {
+      "t": "Pon la propiedad en la propia consulta, de modo que una fila que no es tuya simplemente no se encuentre. Responde igual para \"no existe\" y \"no es tuya\", para que la respuesta no confirme qué ids son válidos. La regla es la misma en cualquier lenguaje: autoriza en el servidor, en cada solicitud, denegando por defecto.",
+      "h": "459ce26e"
+    },
+    "sections.3.code.0.code": {
+      "t": "app.get(\"/api/invoices/:id\", requireLogin, async (req, res) => {\n  const invoice = await db.invoice.findFirst({\n    where: { id: Number(req.params.id), ownerId: req.user.id },\n  });\n  if (!invoice) return res.status(404).end();\n  res.json(invoice);\n});",
+      "h": "89fa8cd5"
+    },
+    "sections.3.code.0.filename": {
+      "t": "invoices.js",
+      "h": "f3795b27"
+    },
+    "sections.3.code.1.code": {
+      "t": "@app.get(\"/api/invoices/<int:invoice_id>\")\n@login_required\ndef get_invoice(invoice_id):\n    invoice = Invoice.query.filter_by(\n        id=invoice_id, owner_id=current_user.id\n    ).first_or_404()\n    return jsonify(invoice.to_dict())",
+      "h": "88ad7df6"
+    },
+    "sections.3.code.1.filename": {
+      "t": "invoices.py",
+      "h": "51858b83"
+    },
+    "sections.3.code.2.code": {
+      "t": "@GetMapping(\"/api/invoices/{id}\")\npublic Invoice get(@PathVariable long id, @AuthenticationPrincipal User user) {\n    return repo.findByIdAndOwnerId(id, user.getId())\n               .orElseThrow(NotFoundException::new);\n}",
+      "h": "0768094c"
+    },
+    "sections.3.code.2.filename": {
+      "t": "InvoiceController.java",
+      "h": "f2942186"
+    },
+    "sections.3.code.3.code": {
+      "t": "const requireRole = (role) => (req, res, next) =>\n  req.user?.roles?.includes(role) ? next() : res.status(403).end();\n\napp.delete(\"/api/users/:id\", requireLogin, requireRole(\"admin\"), deleteUser);",
+      "h": "88dc1d4f"
+    },
+    "sections.3.code.3.filename": {
+      "t": "admin.js (verificación a nivel de función, denegar por defecto)",
+      "h": "c5540b44"
+    },
+    "sections.3.heading": {
+      "t": "La corrección",
+      "h": "7188b1fb"
+    },
+    "sections.4.body.0": {
+      "t": "Una prueba de regresión usa dos usuarios. El usuario A crea una factura; el usuario B la solicita y debe recibir 404 (o 403), y una llamada anónima debe recibir 401. Ejecútala en el CI para que un refactor no elimine la verificación sin que nadie lo note. La misma forma de prueba funciona en cualquier lenguaje y para cualquier tipo de objeto.",
+      "h": "0f48c321"
+    },
+    "sections.4.code.0.code": {
+      "t": "def test_user_cannot_read_other_users_invoice(client, alice, bob):\n    invoice_id = client.post(\"/api/invoices\", json={\"total\": 10}, auth=alice).json()[\"id\"]\n\n    assert client.get(f\"/api/invoices/{invoice_id}\", auth=alice).status_code == 200\n    assert client.get(f\"/api/invoices/{invoice_id}\", auth=bob).status_code == 404\n    assert client.get(f\"/api/invoices/{invoice_id}\").status_code == 401",
+      "h": "e60f9e2d"
+    },
+    "sections.4.code.0.filename": {
+      "t": "test_invoices_access.py (pytest)",
+      "h": "e1adc7c0"
+    },
+    "sections.4.code.1.code": {
+      "t": "test(\"bob cannot read alice's invoice\", async () => {\n  const { body } = await request(app).post(\"/api/invoices\").set(alice).send({ total: 10 });\n  await request(app).get(`/api/invoices/${body.id}`).set(bob).expect(404);\n  await request(app).get(`/api/invoices/${body.id}`).expect(401);\n});",
+      "h": "2fc4daf1"
+    },
+    "sections.4.code.1.filename": {
+      "t": "invoices.test.js (supertest)",
+      "h": "4b708f86"
+    },
+    "sections.4.heading": {
+      "t": "Demuestra la corrección",
+      "h": "665c8226"
+    },
+    "sections.5.bullets.0": {
+      "t": "Denegar por defecto: una ruta sin regla explícita está prohibida, no abierta.",
+      "h": "6412f103"
+    },
+    "sections.5.bullets.1": {
+      "t": "Aplica la propiedad en un solo lugar compartido (un helper de consultas, un policy engine), no copiando verificaciones en cada handler.",
+      "h": "97d5f060"
+    },
+    "sections.5.bullets.2": {
+      "t": "No confíes en ids, roles ni precios que vienen del cliente. Deriva la identidad de la sesión.",
+      "h": "38c5797b"
+    },
+    "sections.5.bullets.3": {
+      "t": "Usa ids impredecibles cuando sirva (UUIDs), pero nunca como único control: un id imposible de adivinar no es autorización.",
+      "h": "a1d55b5c"
+    },
+    "sections.5.bullets.4": {
+      "t": "Registra los fallos de control de acceso y alerta ante ráfagas: alguien enumerando ids es visible.",
+      "h": "70dfef9c"
+    },
+    "sections.5.bullets.5": {
+      "t": "Prueba con dos cuentas en cada release. Los scanners automáticos rara vez entienden quién debería ver qué.",
+      "h": "a520f09b"
+    },
+    "sections.5.heading": {
+      "t": "Checklist",
+      "h": "61b29464"
+    },
+    "short": {
+      "t": "usuarios que actúan fuera de los permisos que debían tener",
+      "h": "81dbdb95"
+    },
+    "tagline": {
+      "t": "La autenticación dice quién eres; el control de acceso dice qué puedes hacer. Cuando el servidor olvida verificar en cada solicitud, cambiar un id en una URL es todo lo que necesita un atacante.",
+      "h": "3a3fe5fa"
+    },
+    "title": {
+      "t": "A01 Broken Access Control",
+      "h": "e845c4e4"
+    }
+  }
+}

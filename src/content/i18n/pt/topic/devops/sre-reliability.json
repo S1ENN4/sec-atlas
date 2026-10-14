@@ -1,0 +1,100 @@
+{
+  "entries": {
+    "sections.0.bullets.0": {
+      "t": "SLI (service level indicator): uma medição do serviço como os usuários o percebem, como a fração de requisições que têm sucesso com rapidez suficiente.",
+      "h": "4a41574d"
+    },
+    "sections.0.bullets.1": {
+      "t": "SLO (service level objective): a meta de um SLI em uma janela de tempo, por exemplo 99,9% das requisições com sucesso em até 300 ms em 30 dias.",
+      "h": "ebd752b8"
+    },
+    "sections.0.bullets.2": {
+      "t": "SLA (service level agreement): um contrato com consequências, geralmente mais frouxo que o SLO interno.",
+      "h": "e7d9addf"
+    },
+    "sections.0.bullets.3": {
+      "t": "Error budget: a não confiabilidade permitida (100% menos o SLO). Enquanto sobrar budget, entregue rápido; quando ele acabar, desacelere e invista em confiabilidade.",
+      "h": "c9d8cf96"
+    },
+    "sections.0.heading": {
+      "t": "SLI, SLO e error budget",
+      "h": "2c2d2a44"
+    },
+    "sections.1.body.0": {
+      "t": "O budget encerra a discussão entre \"entregar mais\" e \"ser mais estável\", tornando-a uma troca compartilhada e mensurável. Ele também diz sobre o que alertar: acione o plantão quando você estiver consumindo o budget rápido o bastante para esgotá-lo cedo, e abra um ticket quando o consumo for lento.",
+      "h": "7a959fed"
+    },
+    "sections.1.code.0.code": {
+      "t": "# SLI: proporção de requisições boas em 5 minutos\nsum(rate(http_requests_total{status!~\"5..\"}[5m])) / sum(rate(http_requests_total[5m]))\n\n# consumo rápido para um SLO de 99,9%: taxa de erros acima de 14,4x a permitida\n(1 - (sum(rate(http_requests_total{status!~\"5..\"}[1h])) / sum(rate(http_requests_total[1h])))) > (14.4 * 0.001)",
+      "h": "ec018f11"
+    },
+    "sections.1.code.0.filename": {
+      "t": "SLI de disponibilidade e um alerta de consumo rápido",
+      "h": "6a0042e6"
+    },
+    "sections.1.heading": {
+      "t": "Por que isso muda as decisões",
+      "h": "93648f67"
+    },
+    "sections.2.bullets.0": {
+      "t": "Declare cedo e nomeie papéis: um incident commander que coordena, alguém que investiga, alguém que comunica.",
+      "h": "03feeab7"
+    },
+    "sections.2.bullets.1": {
+      "t": "Mitigue primeiro, diagnostique depois: faça rollback, failover, desligue a flag.",
+      "h": "5e78e86a"
+    },
+    "sections.2.bullets.2": {
+      "t": "Comunique em intervalos regulares, mesmo quando não há nada de novo a dizer.",
+      "h": "d8445796"
+    },
+    "sections.2.bullets.3": {
+      "t": "Mantenha uma linha do tempo enquanto avança; ela é a matéria-prima da revisão.",
+      "h": "3edfc9f2"
+    },
+    "sections.2.bullets.4": {
+      "t": "Faça um postmortem sem culpados: pergunte como o sistema permitiu a falha, não quem errou. Termine com ações específicas e com responsável.",
+      "h": "b2613fd4"
+    },
+    "sections.2.heading": {
+      "t": "Resposta a incidentes",
+      "h": "6e590d95"
+    },
+    "sections.3.bullets.0": {
+      "t": "Remova o toil: automatize operações manuais repetitivas para que as pessoas tenham tempo para engenharia.",
+      "h": "2c89eb46"
+    },
+    "sections.3.bullets.1": {
+      "t": "Teste a falha de propósito com game days e injeção de falhas.",
+      "h": "4e232ea1"
+    },
+    "sections.3.bullets.2": {
+      "t": "Planejamento de capacidade e testes de carga antes de o tráfego chegar.",
+      "h": "ea7cf1f5"
+    },
+    "sections.3.bullets.3": {
+      "t": "Runbooks para falhas conhecidas, mantidos em dia com o sistema.",
+      "h": "917ae608"
+    },
+    "sections.3.bullets.4": {
+      "t": "Degradação graciosa: quando uma dependência falha, faça menos, não nada.",
+      "h": "c5feeaaa"
+    },
+    "sections.3.heading": {
+      "t": "Reduzindo o risco antes que ele aconteça",
+      "h": "606ce447"
+    },
+    "short": {
+      "t": "definir quão confiável é confiável o bastante e aprender com cada falha",
+      "h": "1840c74e"
+    },
+    "tagline": {
+      "t": "A confiabilidade perfeita é infinitamente cara e ninguém precisa dela. O SRE transforma \"seja confiável\" em um número que você pode orçar, usar em alertas e trocar por novas funcionalidades.",
+      "h": "781b61fb"
+    },
+    "title": {
+      "t": "Confiabilidade: SLOs, error budgets e incidentes",
+      "h": "18fe774d"
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Honestidade sobre a incerteza, com um horário de atualização prometido, gera confiança. Chutar a destrói.",
+      "h": "67b45090"
+    },
+    "questions.0.options.0": {
+      "t": "Nada",
+      "h": "44819483"
+    },
+    "questions.0.options.1": {
+      "t": "Declarar claramente o que ainda não se sabe e quando haverá atualização",
+      "h": "bbe65513"
+    },
+    "questions.0.options.2": {
+      "t": "Chutar para tranquilizar",
+      "h": "fd9de141"
+    },
+    "questions.0.options.3": {
+      "t": "Negar o incidente",
+      "h": "bd32c06b"
+    },
+    "questions.0.q": {
+      "t": "O que uma mensagem externa sobre um incidente deve dizer sobre o que você ainda não sabe?",
+      "h": "80619e1f"
+    },
+    "questions.1.explain": {
+      "t": "O primeiro relato costuma ser o que salva o dia. O medo faz as pessoas esconderem problemas.",
+      "h": "6df56e0d"
+    },
+    "questions.1.options.0": {
+      "t": "Evita a responsabilização",
+      "h": "cb6fbe93"
+    },
+    "questions.1.options.1": {
+      "t": "As pessoas reportam erros rapidamente quando não são punidas, e relatos precoces limitam o dano",
+      "h": "b6fcdb3c"
+    },
+    "questions.1.options.2": {
+      "t": "É exigido por lei",
+      "h": "4ec3bf9e"
+    },
+    "questions.1.options.3": {
+      "t": "Reduz custos de treinamento",
+      "h": "362f02c9"
+    },
+    "questions.1.q": {
+      "t": "Por que o relato sem culpa importa?",
+      "h": "ac7eddb8"
+    },
+    "questions.2.explain": {
+      "t": "Os prazos podem ser curtos. Conheça-os e ensaie a decisão com antecedência.",
+      "h": "a546a1c7"
+    },
+    "questions.2.options.0": {
+      "t": "Quando um incidente ocorre",
+      "h": "b23e1243"
+    },
+    "questions.2.options.1": {
+      "t": "Antes de um incidente, para que as decisões não sejam improvisadas sob pressão",
+      "h": "a4108ddc"
+    },
+    "questions.2.options.2": {
+      "t": "Depois da investigação",
+      "h": "df5ebf14"
+    },
+    "questions.2.options.3": {
+      "t": "Nunca",
+      "h": "80c3052d"
+    },
+    "questions.2.q": {
+      "t": "Quando você deve conhecer seus prazos regulatórios de notificação?",
+      "h": "129ad408"
+    }
+  }
+}

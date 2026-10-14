@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Exige um sistema de gestão baseado em risco e a certificação é concedida por um auditor externo.",
+      "h": "d5a4195f"
+    },
+    "questions.0.options.0": {
+      "t": "É um checklist gratuito",
+      "h": "79031506"
+    },
+    "questions.0.options.1": {
+      "t": "É um padrão certificável para um sistema de gestão de segurança da informação, auditado por terceiros",
+      "h": "1e86ac35"
+    },
+    "questions.0.options.2": {
+      "t": "Aplica-se apenas a pagamentos",
+      "h": "e8462b78"
+    },
+    "questions.0.options.3": {
+      "t": "É uma lei",
+      "h": "6353ff68"
+    },
+    "questions.0.q": {
+      "t": "O que é verdade sobre a ISO/IEC 27001?",
+      "h": "1eea3c19"
+    },
+    "questions.1.explain": {
+      "t": "O mapeamento evita trabalho duplicado, já que a maioria dos frameworks pede as mesmas ideias.",
+      "h": "828d484a"
+    },
+    "questions.1.options.0": {
+      "t": "Manter um programa separado para cada um",
+      "h": "ab726129"
+    },
+    "questions.1.options.1": {
+      "t": "Usar um como espinha dorsal e mapear os demais a ele, de modo que um controle atenda a muitos requisitos",
+      "h": "5c76b18a"
+    },
+    "questions.1.options.2": {
+      "t": "Escolher o mais longo",
+      "h": "5832ca37"
+    },
+    "questions.1.options.3": {
+      "t": "Evitar todos",
+      "h": "7f50ffe7"
+    },
+    "questions.1.q": {
+      "t": "Qual é uma forma sensata de usar vários frameworks em conjunto?",
+      "h": "fd94367f"
+    },
+    "questions.2.explain": {
+      "t": "Um framework define um piso. A segurança real exige trabalho baseado em risco além dele.",
+      "h": "67945ec7"
+    },
+    "questions.2.options.0": {
+      "t": "Auditorias são ilegais",
+      "h": "31e21e16"
+    },
+    "questions.2.options.1": {
+      "t": "Auditorias amostram o passado dentro de um escopo definido e não conhecem suas ameaças específicas",
+      "h": "e262ae73"
+    },
+    "questions.2.options.2": {
+      "t": "Auditores não são qualificados",
+      "h": "c705dcfa"
+    },
+    "questions.2.options.3": {
+      "t": "Frameworks são secretos",
+      "h": "1a587c16"
+    },
+    "questions.2.q": {
+      "t": "Por que passar em uma auditoria não é prova de segurança?",
+      "h": "9f17122b"
+    }
+  }
+}

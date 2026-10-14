@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "Extiende el harness OpenCode. Antes se llamaba oh-my-opencode.",
+      "h": "97ea3f4a"
+    },
+    "questions.0.options.0": {
+      "t": "Un agent de código independiente en Rust",
+      "h": "55f036c1"
+    },
+    "questions.0.options.1": {
+      "t": "Un plugin de OpenCode que añade agents especializados y orquestación multiagente",
+      "h": "b48086c6"
+    },
+    "questions.0.options.2": {
+      "t": "Un multiplexor de terminal",
+      "h": "117340d1"
+    },
+    "questions.0.options.3": {
+      "t": "Un modelo de un laboratorio chino",
+      "h": "57013043"
+    },
+    "questions.0.q": {
+      "t": "¿Qué es Oh My OpenAgent (OMO)?",
+      "h": "a624d7d4"
+    },
+    "questions.1.explain": {
+      "t": "Es un multiplexor de agents. No ejecuta por sí mismo el loop del agent.",
+      "h": "b4384377"
+    },
+    "questions.1.options.0": {
+      "t": "Entrena modelos de código",
+      "h": "f9b6f613"
+    },
+    "questions.1.options.1": {
+      "t": "Organiza varios agents en paneles de terminal persistentes y muestra el estado de cada uno",
+      "h": "8bec6ec7"
+    },
+    "questions.1.options.2": {
+      "t": "Reemplaza a git",
+      "h": "748a50b3"
+    },
+    "questions.1.options.3": {
+      "t": "Escanea dependencias",
+      "h": "c69cca72"
+    },
+    "questions.1.q": {
+      "t": "¿Qué hace herdr?",
+      "h": "29cac88a"
+    },
+    "questions.2.explain": {
+      "t": "DeepSeek es una familia de modelos. OpenCode es un harness que puede llegar a ella a través de un provider.",
+      "h": "7bf0c72d"
+    },
+    "questions.2.options.0": {
+      "t": "Claude Code, DeepSeek",
+      "h": "ba09bfce"
+    },
+    "questions.2.options.1": {
+      "t": "DeepSeek, OpenCode",
+      "h": "5b384a8b"
+    },
+    "questions.2.options.2": {
+      "t": "OpenCode, herdr",
+      "h": "a1fcc97c"
+    },
+    "questions.2.options.3": {
+      "t": "OMO, Claude Code",
+      "h": "e118a166"
+    },
+    "questions.2.q": {
+      "t": "¿Qué par es un modelo y un harness, en ese orden?",
+      "h": "18f1b60d"
+    }
+  }
+}

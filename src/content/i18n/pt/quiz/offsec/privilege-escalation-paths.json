@@ -1,0 +1,76 @@
+{
+  "entries": {
+    "questions.0.explain": {
+      "t": "A análise de caminhos de ataque transforma um grafo oculto de permissões em uma lista priorizada de correções.",
+      "h": "812e6726"
+    },
+    "questions.0.options.0": {
+      "t": "Nenhuma",
+      "h": "04bdaaf2"
+    },
+    "questions.0.options.1": {
+      "t": "Pode mapear os caminhos com as mesmas ferramentas e cortar primeiro os mais curtos",
+      "h": "f043cd2b"
+    },
+    "questions.0.options.2": {
+      "t": "Caminhos não existem na nuvem",
+      "h": "37972509"
+    },
+    "questions.0.options.3": {
+      "t": "Os caminhos são sempre longos",
+      "h": "19184f88"
+    },
+    "questions.0.q": {
+      "t": "Qual é a vantagem do defensor em relação aos caminhos de ataque?",
+      "h": "28ae0b12"
+    },
+    "questions.1.explain": {
+      "t": "O direito de passar um papel pode ser o direito de se tornar esse papel. Limite-o a papéis e serviços específicos.",
+      "h": "93665b49"
+    },
+    "questions.1.options.0": {
+      "t": "Deixa os deploys lentos",
+      "h": "cbcd41f4"
+    },
+    "questions.1.options.1": {
+      "t": "Pode permitir que um usuário execute algo com um papel mais privilegiado",
+      "h": "3298838f"
+    },
+    "questions.1.options.2": {
+      "t": "Desativa o registro de logs",
+      "h": "c011169a"
+    },
+    "questions.1.options.3": {
+      "t": "Quebra a cobrança",
+      "h": "c97f4917"
+    },
+    "questions.1.q": {
+      "t": "Por que iam:PassRole em todos os recursos é arriscado?",
+      "h": "692a3929"
+    },
+    "questions.2.explain": {
+      "t": "Impede que uma credencial roubada de uma máquina de baixa confiança chegue ao topo.",
+      "h": "b3f683c6"
+    },
+    "questions.2.options.0": {
+      "t": "Admins trabalham em faixas salariais",
+      "h": "8e94efa6"
+    },
+    "questions.2.options.1": {
+      "t": "Contas privilegiadas só fazem login em sistemas da mesma camada, nunca em estações de trabalho ou camadas inferiores",
+      "h": "6239a5cd"
+    },
+    "questions.2.options.2": {
+      "t": "Três admins por servidor",
+      "h": "6ed38e18"
+    },
+    "questions.2.options.3": {
+      "t": "Usar três senhas",
+      "h": "dd004462"
+    },
+    "questions.2.q": {
+      "t": "O que significa administração em camadas?",
+      "h": "0556916d"
+    }
+  }
+}

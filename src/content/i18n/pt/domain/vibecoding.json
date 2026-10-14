@@ -1,0 +1,164 @@
+{
+  "entries": {
+    "graph.0.label": {
+      "t": "é construído a partir de",
+      "h": "b5755e07"
+    },
+    "graph.1.label": {
+      "t": "classifica",
+      "h": "a71d61e1"
+    },
+    "graph.2.label": {
+      "t": "separa o modelo em",
+      "h": "9c91aa47"
+    },
+    "graph.3.label": {
+      "t": "alimenta",
+      "h": "56222773"
+    },
+    "graph.4.label": {
+      "t": "é seguido por",
+      "h": "3b5b771a"
+    },
+    "graph.5.label": {
+      "t": "escala para",
+      "h": "c4123266"
+    },
+    "graph.6.label": {
+      "t": "produz trabalho para",
+      "h": "896c9814"
+    },
+    "graph.7.label": {
+      "t": "inclui",
+      "h": "01c7ed68"
+    },
+    "pipeline.0.description": {
+      "t": "o que essas ferramentas realmente são",
+      "h": "1de3e977"
+    },
+    "pipeline.0.gate": {
+      "t": "você sabe dizer a qual camada uma ferramenta pertence e quanta autonomia cabe na tarefa",
+      "h": "be2ba666"
+    },
+    "pipeline.0.items.0.label": {
+      "t": "o espectro do autocomplete aos agents",
+      "h": "1bc9428f"
+    },
+    "pipeline.0.items.1.label": {
+      "t": "modelo, harness e provider",
+      "h": "86d6c45b"
+    },
+    "pipeline.0.name": {
+      "t": "entender",
+      "h": "8e73840b"
+    },
+    "pipeline.1.description": {
+      "t": "a ferramenta e o modelo certos para o trabalho",
+      "h": "dfd060c8"
+    },
+    "pipeline.1.gate": {
+      "t": "ferramenta e modelo escolhidos por tarefa e risco, não por hábito",
+      "h": "f9050b74"
+    },
+    "pipeline.1.items.0.label": {
+      "t": "Claude Code, OpenCode, OMP, OMO, herdr",
+      "h": "b8731272"
+    },
+    "pipeline.1.items.1.label": {
+      "t": "modelos de fronteira, baratos e abertos",
+      "h": "a6c953b5"
+    },
+    "pipeline.1.items.2.label": {
+      "t": "um guia de decisão",
+      "h": "ed8081d0"
+    },
+    "pipeline.1.name": {
+      "t": "escolher",
+      "h": "9477fdc8"
+    },
+    "pipeline.2.description": {
+      "t": "dar contexto, dividir o trabalho",
+      "h": "66b1e04d"
+    },
+    "pipeline.2.gate": {
+      "t": "cada tarefa é pequena, especificada e tem uma verificação que decide o sucesso",
+      "h": "15a9f413"
+    },
+    "pipeline.2.items.0.label": {
+      "t": "instruções, planos, skills e tarefas pequenas",
+      "h": "a25ee961"
+    },
+    "pipeline.2.items.1.label": {
+      "t": "worktrees e vários agents",
+      "h": "47430266"
+    },
+    "pipeline.2.name": {
+      "t": "conduzir",
+      "h": "4979d619"
+    },
+    "pipeline.3.description": {
+      "t": "confie apenas no que você pode checar",
+      "h": "11d35658"
+    },
+    "pipeline.3.gate": {
+      "t": "nada entra sem verificação, e o agent não alcança o que não deveria",
+      "h": "3ebbe809"
+    },
+    "pipeline.3.items.0.label": {
+      "t": "testes, diffs e gates de CI",
+      "h": "36679095"
+    },
+    "pipeline.3.items.1.label": {
+      "t": "permissões, sandboxes e injection",
+      "h": "26ba5509"
+    },
+    "pipeline.3.items.2.label": {
+      "t": "revisão humana antes do merge",
+      "h": "3dd7dd35"
+    },
+    "pipeline.3.name": {
+      "t": "verificar",
+      "h": "86a4261d"
+    },
+    "relations.0.label": {
+      "t": "é construído a partir de",
+      "h": "b5755e07"
+    },
+    "relations.1.label": {
+      "t": "classifica",
+      "h": "a71d61e1"
+    },
+    "relations.2.label": {
+      "t": "separa o modelo em",
+      "h": "9c91aa47"
+    },
+    "relations.3.label": {
+      "t": "alimenta",
+      "h": "56222773"
+    },
+    "relations.4.label": {
+      "t": "alimenta",
+      "h": "56222773"
+    },
+    "relations.5.label": {
+      "t": "é seguido por",
+      "h": "3b5b771a"
+    },
+    "relations.6.label": {
+      "t": "escala para",
+      "h": "c4123266"
+    },
+    "relations.7.label": {
+      "t": "produz trabalho para",
+      "h": "896c9814"
+    },
+    "relations.8.label": {
+      "t": "define as verificações de",
+      "h": "8977378a"
+    },
+    "relations.9.label": {
+      "t": "inclui",
+      "h": "01c7ed68"
+    }
+  }
+}

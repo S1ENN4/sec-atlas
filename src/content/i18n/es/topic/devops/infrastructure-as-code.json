@@ -1,0 +1,108 @@
+{
+  "entries": {
+    "sections.0.bullets.0": {
+      "t": "Las herramientas declarativas (Terraform, CloudFormation, manifiestos de Kubernetes) describen el estado final deseado; la herramienta descubre cómo llegar.",
+      "h": "797ae9cd"
+    },
+    "sections.0.bullets.1": {
+      "t": "Las herramientas y scripts imperativos describen los pasos. Son flexibles, pero es más fácil ejecutarlos dos veces con resultados distintos.",
+      "h": "2b543d85"
+    },
+    "sections.0.bullets.2": {
+      "t": "La gestión de configuración (Ansible, Chef) instala y configura software en las máquinas; las herramientas de aprovisionamiento crean las máquinas y los recursos de nube. Muchos equipos usan ambas, o evitan servidores mutables generando imágenes ya preparadas.",
+      "h": "c4d1f367"
+    },
+    "sections.0.bullets.3": {
+      "t": "Prefiere infraestructura inmutable: reemplaza en lugar de parchear en sitio.",
+      "h": "7f168864"
+    },
+    "sections.0.heading": {
+      "t": "Declarativo e imperativo",
+      "h": "0b6c5a40"
+    },
+    "sections.1.body.0": {
+      "t": "Terraform compara tu código con el state registrado y con el mundo real, muestra un plan de lo que va a crear, cambiar o destruir y lo aplica tras la aprobación. El plan es el artefacto de revisión: léelo y ejecútalo en CI para que las personas revisen diffs en lugar de acciones en la consola.",
+      "h": "43fc9d77"
+    },
+    "sections.1.code.0.code": {
+      "t": "terraform {\n  required_version = \">= 1.6\"\n  required_providers {\n    aws = { source = \"hashicorp/aws\", version = \"~> 5.0\" }\n  }\n  backend \"s3\" {\n    bucket         = \"example-terraform-state\"\n    key            = \"network/prod.tfstate\"\n    region         = \"us-east-1\"\n    dynamodb_table = \"terraform-locks\"\n    encrypt        = true\n  }\n}\n\nresource \"aws_vpc\" \"main\" {\n  cidr_block           = var.vpc_cidr\n  enable_dns_hostnames = true\n  tags                 = merge(var.tags, { Name = \"main\" })\n}",
+      "h": "19297f36"
+    },
+    "sections.1.code.0.filename": {
+      "t": "main.tf",
+      "h": "5bd615df"
+    },
+    "sections.1.code.1.code": {
+      "t": "terraform fmt -check && terraform validate\nterraform plan -out=tfplan             # revisa esto en el pull request\nterraform apply tfplan                 # lo ejecuta el pipeline, no una laptop",
+      "h": "47e0aab7"
+    },
+    "sections.1.code.1.filename": {
+      "t": "flujo",
+      "h": "899531e0"
+    },
+    "sections.1.heading": {
+      "t": "El ciclo de plan y apply",
+      "h": "cd87f8d4"
+    },
+    "sections.2.bullets.0": {
+      "t": "State remoto, con lock y cifrado; nunca hagas commit de archivos de state (pueden contener secretos).",
+      "h": "62f4ff8f"
+    },
+    "sections.2.bullets.1": {
+      "t": "Módulos pequeños con entradas y salidas claras, versionados y reutilizados; evita un único módulo raíz gigante.",
+      "h": "f2556fea"
+    },
+    "sections.2.bullets.2": {
+      "t": "Separa los entornos por state y por cuenta, no por una variable que puedes olvidar cambiar.",
+      "h": "157359b2"
+    },
+    "sections.2.bullets.3": {
+      "t": "Detecta y corrige el drift: programa un plan y alerta cuando la realidad difiera del código.",
+      "h": "300712a2"
+    },
+    "sections.2.bullets.4": {
+      "t": "Escanea el código y el plan en busca de configuraciones inseguras antes del apply (ver Infrastructure as code security en el dominio Engineering).",
+      "h": "72c372ff"
+    },
+    "sections.2.bullets.5": {
+      "t": "Mantén los secretos fuera del código; referencia un gestor de secretos.",
+      "h": "a03cc8f1"
+    },
+    "sections.2.heading": {
+      "t": "Prácticas",
+      "h": "e8339ebe"
+    },
+    "sections.3.bullets.0": {
+      "t": "Cambios manuales en la consola que el código luego sobrescribe o con los que pelea.",
+      "h": "3daf9f90"
+    },
+    "sections.3.bullets.1": {
+      "t": "Un destroy escondido en un plan grande: lee lo que se reemplaza, no solo lo que se agrega.",
+      "h": "d6a068b6"
+    },
+    "sections.3.bullets.2": {
+      "t": "Versiones de provider y de módulo dejadas flotantes, de modo que un plan cambia sin un cambio de código.",
+      "h": "57437384"
+    },
+    "sections.3.bullets.3": {
+      "t": "Un único state para todo: un pequeño error bloquea a todos los equipos y el radio de impacto es toda la empresa.",
+      "h": "9a43eb8c"
+    },
+    "sections.3.heading": {
+      "t": "Trampas",
+      "h": "8ef57d28"
+    },
+    "short": {
+      "t": "describe servidores, redes y servicios en archivos, revísalos y aplícalos de forma repetible",
+      "h": "1fa9f4c1"
+    },
+    "tagline": {
+      "t": "Cuando la infraestructura es código, un cambio tiene diff, revisor, historial y camino de vuelta. Cuando son clics en una consola, nadie puede decir qué existe ni por qué.",
+      "h": "bce5225d"
+    },
+    "title": {
+      "t": "Infraestructura como código",
+      "h": "a50d125d"
+    }
+  }
+}
