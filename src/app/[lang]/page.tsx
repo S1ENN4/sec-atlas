@@ -89,7 +89,6 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
             <Link
               key={d.id}
               href={lp(d.route)}
-              transitionTypes={["nav-forward"]}
               className="animate-hero-enter group block rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               style={{ animationDelay: `${120 + i * 80}ms` }}
             >

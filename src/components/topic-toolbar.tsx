@@ -41,14 +41,18 @@ export function TopicToolbar({ domain, slug, t }: { domain: DomainId; slug: stri
         type="button"
         onClick={() => toggleSeen(domain, slug)}
         aria-pressed={seen}
+        aria-label={t.markStudied}
         className={cn(btn, seen && "border-primary/60 bg-primary/10 text-primary")}
       >
         <Check className="size-3.5" aria-hidden />
         {seen ? t.studied : t.markStudied}
       </button>
-      <button type="button" onClick={copy} className={btn}>
+      <button type="button" onClick={copy} aria-label={t.copyLink} className={btn}>
         <Link2 className="size-3.5" aria-hidden />
-        <span aria-live="polite">{copied ? t.linkCopied : t.copyLink}</span>
+        <span aria-hidden>{copied ? t.linkCopied : t.copyLink}</span>
+        <span role="status" aria-live="polite" className="sr-only">
+          {copied ? t.linkCopied : ""}
+        </span>
       </button>
       <button type="button" onClick={() => window.print()} className={btn}>
         <Printer className="size-3.5" aria-hidden />

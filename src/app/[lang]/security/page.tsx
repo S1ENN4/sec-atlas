@@ -93,138 +93,37 @@ upgrade-insecure-requests`}
 
       <section className="mt-12">
         <h2 className="text-xl font-semibold tracking-tight text-primary/90">
-          Dependência adicionada neste ciclo
+          Animações sem dependência de runtime
         </h2>
         <p className="mt-3 leading-relaxed text-foreground/85">
-          Antes deste ciclo a KB não tinha nenhuma dependência de animação em runtime.
-          O upgrade adicionou uma única, fixada com versão exata:
+          O site não carrega nenhuma biblioteca de animação. Uma versão anterior incluía
+          uma (motion), mas ela nunca chegou a ser usada pelos componentes e custava cerca
+          de 43 KB de gzip em toda página, então foi removida. Hoje todo o movimento é CSS
+          puro em <code className="font-mono text-xs">globals.css</code>:
         </p>
         <ul className="mt-3 space-y-2">
           <li className="flex gap-3 leading-relaxed text-foreground/85">
             <span className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary" />
             <span>
-              <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">
-                motion@14.1.0
-              </code>{" "}
-              (pin exato no <code className="font-mono text-xs">package.json</code> e lockfile
-              versionado).
+              <strong className="font-semibold">Entrada de página e do hero</strong>: keyframes curtos (240 a 400ms) com fade e deslocamento discreto.
+            </span>
+          </li>
+          <li className="flex gap-3 leading-relaxed text-foreground/85">
+            <span className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary" />
+            <span>
+              <strong className="font-semibold">Reveal sob scroll</strong>: <code className="font-mono text-xs">animation-timeline: view()</code>, só onde o navegador suporta, e desligado com <code className="font-mono text-xs">prefers-reduced-motion</code>.
+            </span>
+          </li>
+          <li className="flex gap-3 leading-relaxed text-foreground/85">
+            <span className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary" />
+            <span>
+              <strong className="font-semibold">Transição entre páginas</strong>: a API nativa de view transitions entre documentos (<code className="font-mono text-xs">@view-transition</code>), sem JavaScript e com fallback silencioso.
             </span>
           </li>
         </ul>
         <p className="mt-4 leading-relaxed text-foreground/85">
-          A escolha foi feita depois de comparar com o caminho zero-dep em CSS puro. A
-          animação de entrada do hero em cascata e os reveals acionados por scroll precisam
-          de um orquestrador que conheça o ciclo de vida do componente, que respeite{" "}
-          <code className="font-mono text-xs">prefers-reduced-motion</code> via{" "}
-          <code className="font-mono text-xs">MotionConfig</code>, e que escreva estilos
-          inline de forma previsível (sem mutar classes do Tailwind em runtime). O{" "}
-          <code className="font-mono text-xs">motion/react</code> entrega isso via{" "}
-          <code className="font-mono text-xs">LazyMotion(domMax, strict)</code>{" "}
-          (tree-shaking das features que não usamos) e os componentes{" "}
-          <code className="font-mono text-xs">m.*</code>, que escrevem estilos inline
-          hidratáveis sem pisar no DOM. Reproduzir o mesmo em CSS exigiria hand-roll de
-          IntersectionObserver, timeouts e um controlador de stagger por componente, com
-          o mesmo orçamento de bytes e mais código para auditar.
-        </p>
-        <p className="mt-4 leading-relaxed text-foreground/85">
-          O custo, medido no build atual:
-        </p>
-        <ul className="mt-3 space-y-2">
-          <li className="flex gap-3 leading-relaxed text-foreground/85">
-            <span className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary" />
-            <span>
-              <strong className="font-semibold">~115 KB raw / ~38 KB gzip</strong>{" "}
-              (115.423 / 37.778 bytes) em um único chunk compartilhado, carregado uma vez
-              por sessão e reusado em todas as rotas que usam o provider.
-            </span>
-          </li>
-          <li className="flex gap-3 leading-relaxed text-foreground/85">
-            <span className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary" />
-            <span>
-              <strong className="font-semibold">CSP não muda</strong>: o que o motion
-              escreve é <code className="font-mono text-xs">style</code> inline (já
-              autorizado por{" "}
-              <code className="font-mono text-xs">style-src 'unsafe-inline'</code>{" "}
-              listado acima, cuja razão original era o React Flow e que continua válida).
-              Nada novo foi colocado no allowlist por causa desta dependência.
-            </span>
-          </li>
-          <li className="flex gap-3 leading-relaxed text-foreground/85">
-            <span className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary" />
-            <span>
-              <strong className="font-semibold">Disciplina de supply chain</strong>:
-              versão exata pinada, lockfile versionado, mesma política de auditoria que
-              já se aplica às demais deps. Não há fallback em CDN e nada é resolvido em
-              runtime.
-            </span>
-          </li>
-        </ul>
-      </section>
-
-      <section className="mt-12">
-        <h2 className="text-xl font-semibold tracking-tight text-primary/90">
-          Transições entre páginas
-        </h2>
-        <p className="mt-3 leading-relaxed text-foreground/85">
-          A primeira tentativa deste ciclo foi usar a API nativa de View Transitions
-          exposta pelo <code className="font-mono text-xs">react@19.3.0</code>, com{" "}
-          <code className="font-mono text-xs">&lt;ViewTransition name="..."&gt;</code>{" "}
-          envolvendo o conteúdo das rotas para nomear o snapshot no cross-fade. O export
-          ainda é experimental e quebrou a hidratação quando o atributo{" "}
-          <code className="font-mono text-xs">name</code> aparecia no server render: o
-          cliente e o servidor discordavam sobre o DOM inicial e o Next descartava a
-          árvore, voltando ao flicker padrão.
-        </p>
-        <p className="mt-4 leading-relaxed text-foreground/85">
-          A tentativa foi revertida e o que está no ar hoje é:
-        </p>
-        <ul className="mt-3 space-y-2">
-          <li className="flex gap-3 leading-relaxed text-foreground/85">
-            <span className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary" />
-            <span>
-              <strong className="font-semibold">Entrada de página</strong>: a classe
-              utilitária <code className="font-mono text-xs">animate-page-enter</code>{" "}
-              (240ms, keyframe em <code className="font-mono text-xs">globals.css</code>)
-              faz fade-in + rise discreto de cada rota. Pura CSS, sem JS de animação.
-            </span>
-          </li>
-          <li className="flex gap-3 leading-relaxed text-foreground/85">
-            <span className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary" />
-            <span>
-              <strong className="font-semibold">Cascata do hero</strong>: o stagger dos
-              blocos do hero usa <code className="font-mono text-xs">motion/react</code>{" "}
-              (60ms entre filhos,{" "}
-              <code className="font-mono text-xs">viewport.once</code>).
-            </span>
-          </li>
-          <li className="flex gap-3 leading-relaxed text-foreground/85">
-            <span className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary" />
-            <span>
-              <strong className="font-semibold">Reveal sob scroll</strong>: blocos abaixo
-              da dobra sobem 8px com fade de 400ms quando entram na viewport, também via
-              motion. Tudo respeita{" "}
-              <code className="font-mono text-xs">prefers-reduced-motion</code> pelo{" "}
-              <code className="font-mono text-xs">MotionConfig reducedMotion="user"</code>{" "}
-              no layout raiz.
-            </span>
-          </li>
-          <li className="flex gap-3 leading-relaxed text-foreground/85">
-            <span className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary" />
-            <span>
-              <strong className="font-semibold">Cross-fade entre rotas</strong>: o
-              atributo <code className="font-mono text-xs">transitionTypes</code> nos
-              <code className="font-mono text-xs">Link</code> das hubs (home, /appsec,
-              /cloudsec, /agentes) está mantido como no-op declarado. Ele não causa
-              efeito visível hoje, mas fica no código para quando a API estabilizar e o
-              nome do snapshot voltar a fazer sentido.
-            </span>
-          </li>
-        </ul>
-        <p className="mt-4 leading-relaxed text-foreground/85">
-          É o que tentamos e por que não está no ar: a regra do jogo foi tentar a
-          primitiva nativa primeiro e só cair para a lib onde ela falha. Se o React
-          estabilizar o export em uma release futura, o snapshot por nome volta; enquanto
-          isso, o pacote fica onde estava.
+          Menos dependências significam menos superfície de supply chain e nenhum
+          acréscimo ao allowlist da CSP.
         </p>
       </section>
 
@@ -354,32 +253,15 @@ out/index.html raw            28.307 B    cap    50.000  OK`}
           <li className="flex gap-3 leading-relaxed text-foreground/85">
             <span className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary" />
             <span>
-              <strong className="font-semibold">style-src com 'unsafe-inline'</strong>:
-              dois consumidores escrevem estilo inline. O grafo interativo (React Flow)
-              posiciona nós via atributos{" "}
-              <code className="font-mono text-xs">style</code>, e as animações desta
-              versão (motion) também:{" "}
-              <code className="font-mono text-xs">m.*</code> aplica transformações e
-              opacidade direto no atributo em runtime, não via classes. Sem isso o mapa
-              não renderiza e o stagger não anima. Risco aceito e delimitado, e o
-              mesmo allowlist cobre os dois.
+              <strong className="font-semibold">style-src com 'unsafe-inline'</strong>: o mapa de aprendizado posiciona setas e cartões com atributos <code className="font-mono text-xs">style</code> calculados no navegador. Sem isso o mapa não renderiza. Risco aceito e delimitado.
             </span>
           </li>
+
           <li className="flex gap-3 leading-relaxed text-foreground/85">
             <span className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary" />
             <span>
-              <strong className="font-semibold">Uma dependência de animação em runtime</strong>:
-              motion 14.1.0 é a única dep adicionada neste ciclo. Pinada com versão
-              exata, lockfile versionado, ~115 KB raw / ~38 KB gzip em um chunk
-              compartilhado, e nada de fallback em CDN. Os trade-offs completos estão na
-              seção "Dependência adicionada neste ciclo" acima.
-            </span>
-          </li>
-          <li className="flex gap-3 leading-relaxed text-foreground/85">
-            <span className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary" />
-            <span>
-              <strong className="font-semibold">Cinco domínios, 53 tópicos</strong>: o
-              catálogo cobre AppSec, CloudSec, Agentes, SecOps e Engenharia, todos com status{" "}
+              <strong className="font-semibold">Onze domínios, 106 tópicos</strong>: o
+              catálogo cobre AppSec, OWASP, Engenharia, DevOps, CloudSec, SecOps, resposta a incidentes, segurança ofensiva, GRC, Agentes e Vibecoding, todos com status{" "}
               <code className="font-mono text-xs">live</code> e passando no validador. A
               superfície de conteúdo cresceu desde a primeira publicação desta página,
               e o R6 (piso de conteúdo live) é o que segura a régua.

@@ -111,6 +111,19 @@ export function Quiz({ domain, slug, t }: { domain: DomainId; slug: string; t: Q
   const [score, setScore] = useState(0);
   const [done, setDone] = useState(false);
 
+  const questionRef = useRef<HTMLParagraphElement>(null);
+  const resultRef = useRef<HTMLDivElement>(null);
+  const firstRender = useRef(true);
+
+  // Move focus to the new question (or the result) so keyboard and screen-reader users keep their place.
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+      return;
+    }
+    (done ? resultRef.current : questionRef.current)?.focus();
+  }, [i, done]);
+
   const best = state.quiz[topicKey(domain, slug)];
   const cur = prepared[i];
 
@@ -151,6 +164,10 @@ export function Quiz({ domain, slug, t }: { domain: DomainId; slug: string; t: Q
         ) : null}
       </div>
 
+      <p role="status" aria-live="polite" className="sr-only">
+        {done ? `${score}/${prepared.length}` : ""}
+      </p>
+
       <div className="mt-4 min-h-[14rem] rounded-xl border border-border bg-card p-5">
         {failed ? (
           <p className="text-sm text-muted-foreground">{t.failed}</p>
@@ -161,7 +178,7 @@ export function Quiz({ domain, slug, t }: { domain: DomainId; slug: string; t: Q
         ) : prepared.length === 0 ? (
           <p className="text-sm text-muted-foreground">{t.none}</p>
         ) : done ? (
-          <div className="text-center" role="status">
+          <div ref={resultRef} tabIndex={-1} className="text-center focus:outline-none">
             <p className="font-mono text-3xl font-bold text-primary">
               {score}/{prepared.length}
             </p>
@@ -185,19 +202,21 @@ export function Quiz({ domain, slug, t }: { domain: DomainId; slug: string; t: Q
             <p className="font-mono text-[11px] text-muted-foreground">
               {fmt(t.question, { n: i + 1, total: prepared.length })}
             </p>
-            <p className="mt-2 text-base font-medium leading-snug">{cur.q}</p>
+            <p ref={questionRef} tabIndex={-1} className="mt-2 text-base font-medium leading-snug focus:outline-none">
+              {cur.q}
+            </p>
             <ul className="mt-4 space-y-2">
               {cur.options.map((opt, n) => {
                 const isRight = picked !== null && n === cur.answer;
                 const isWrong = picked === n && n !== cur.answer;
                 return (
-                  <li key={opt}>
+                  <li key={n}>
                     <button
                       type="button"
-                      disabled={picked !== null}
+                      aria-disabled={picked !== null}
                       onClick={() => pick(n)}
                       className={cn(
-                        "flex w-full items-start gap-3 rounded-lg border px-3 py-2.5 text-left text-sm leading-snug transition-colors duration-[120ms] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
+                        "flex w-full items-start gap-3 rounded-lg border px-3 py-2.5 text-left text-sm leading-snug transition-colors duration-[120ms] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring aria-disabled:cursor-default",
                         picked === null && "border-border bg-muted/30 hover:border-primary/60 hover:bg-primary/5",
                         isRight && "border-emerald-500/70 bg-emerald-500/10",
                         isWrong && "border-red-500/70 bg-red-500/10",
@@ -222,12 +241,17 @@ export function Quiz({ domain, slug, t }: { domain: DomainId; slug: string; t: Q
                 );
               })}
             </ul>
-            {picked !== null ? (
-              <div className="animate-page-enter mt-4" role="status">
+            {/* Persistent live region: it exists before the answer so the feedback is announced. */}
+            <div role="status" aria-live="polite" className={picked !== null ? "animate-page-enter mt-4" : ""}>
+              {picked !== null ? (
                 <p className="text-sm leading-relaxed text-foreground/85">
                   <span className="font-semibold">{picked === cur.answer ? t.right : t.wrong}</span>
                   {cur.explain}
                 </p>
+              ) : null}
+            </div>
+            {picked !== null ? (
+              <div>
                 <button
                   type="button"
                   onClick={next}

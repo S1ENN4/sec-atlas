@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Inter, JetBrains_Mono } from "next/font/google";
 
-import { MotionProvider } from "@/components/motion/provider";
 import { SearchPalette } from "@/components/search-palette";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -45,14 +44,12 @@ export default async function LocaleLayout({ children, params }: { children: Rea
           >
             {t.a11y.skipToContent}
           </a>
-          <MotionProvider>
-            <SiteHeader locale={locale} t={t} />
-            <main id="content" className="flex-1">
-              {children}
-            </main>
-            <SiteFooter locale={locale} t={t} />
-            <SearchPalette t={t.search} />
-          </MotionProvider>
+          <SiteHeader locale={locale} t={t} />
+          <main id="content" tabIndex={-1} className="flex-1 focus:outline-none">
+            {children}
+          </main>
+          <SiteFooter locale={locale} t={t} />
+          <SearchPalette t={t.search} />
         </LocaleProvider>
       </body>
     </html>

@@ -102,6 +102,9 @@ export function SiteNav({ data }: { data: NavData }) {
   const [open, setOpen] = useState<PanelId | null>(null);
   const [sheet, setSheet] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
+  const sheetRef = useRef<HTMLDivElement>(null);
+  const sheetBtn = useRef<HTMLButtonElement>(null);
+  const closeBtn = useRef<HTMLButtonElement>(null);
   const triggers = useRef<Partial<Record<PanelId, HTMLButtonElement | null>>>({});
 
   const close = useCallback(() => {
@@ -134,6 +137,32 @@ export function SiteNav({ data }: { data: NavData }) {
     };
   }, [open, sheet, close]);
 
+  // Mobile sheet: move focus in on open, keep Tab inside it, hand focus back on close.
+  useEffect(() => {
+    if (!sheet) return;
+    closeBtn.current?.focus();
+    const trap = (e: KeyboardEvent) => {
+      if (e.key !== "Tab" || !sheetRef.current) return;
+      const f = [...sheetRef.current.querySelectorAll<HTMLElement>("a[href],button:not([disabled])")];
+      if (!f.length) return;
+      const first = f[0];
+      const last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener("keydown", trap);
+    const btn = sheetBtn.current;
+    return () => {
+      document.removeEventListener("keydown", trap);
+      btn?.focus();
+    };
+  }, [sheet]);
+
   // Lock page scroll while the mobile sheet is open.
   useEffect(() => {
     document.body.style.overflow = sheet ? "hidden" : "";
@@ -145,6 +174,8 @@ export function SiteNav({ data }: { data: NavData }) {
   const studiedIn = (id: DomainId) => Object.keys(state.seen).filter((k) => k.startsWith(`${id}/`)).length;
   const section = pathname.split("/")[2] ?? "";
   const careersActive = section === "careers";
+  // Which route segments belong to Explore: derived from the groups, so a new domain lights it up.
+  const exploreSections = data.explore.groups.flatMap((g) => g.domains.map((d) => d.href.split("/")[2] ?? ""));
 
   const trigger = (id: PanelId, label: string, active: boolean) => (
     <button
@@ -154,7 +185,6 @@ export function SiteNav({ data }: { data: NavData }) {
       type="button"
       aria-expanded={open === id}
       aria-controls={`nav-panel-${id}`}
-      aria-haspopup="true"
       onClick={() => setOpen((cur) => (cur === id ? null : id))}
       className={cn(
         "flex items-center gap-1 rounded-md px-3 py-1.5 font-mono text-[13px] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
@@ -172,7 +202,7 @@ export function SiteNav({ data }: { data: NavData }) {
     <div ref={rootRef} className="flex min-w-0 flex-1 items-center">
       {/* desktop */}
       <nav aria-label={data.labels.mainNav} className="hidden items-center gap-1 md:flex">
-        {trigger("explore", data.explore.label, ["appsec", "cloudsec", "agents", "secops", "engineering"].includes(section))}
+        {trigger("explore", data.explore.label, exploreSections.includes(section))}
         <Link
           href={data.careers.href}
           className={cn(
@@ -223,6 +253,7 @@ export function SiteNav({ data }: { data: NavData }) {
 
       {/* mobile trigger lives next to the logo area: rendered by the header */}
       <button
+        ref={sheetBtn}
         type="button"
         onClick={() => setSheet(true)}
         aria-label={data.labels.openMenu}
@@ -233,10 +264,11 @@ export function SiteNav({ data }: { data: NavData }) {
       </button>
 
       {sheet ? (
-        <div role="dialog" aria-modal="true" aria-label={data.labels.menu} className="fixed inset-0 z-[60] overflow-y-auto bg-background md:hidden">
+        <div ref={sheetRef} role="dialog" aria-modal="true" aria-label={data.labels.menu} className="fixed inset-0 z-[60] overflow-y-auto bg-background md:hidden">
           <div className="flex h-14 items-center justify-between border-b border-border px-4">
             <span className="font-mono text-sm font-semibold">{data.labels.menu}</span>
             <button
+              ref={closeBtn}
               type="button"
               onClick={close}
               aria-label={data.labels.closeMenu}

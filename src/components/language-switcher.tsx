@@ -53,7 +53,6 @@ export function LanguageSwitcher({ label }: { label: string }) {
         type="button"
         aria-label={label}
         aria-expanded={open}
-        aria-haspopup="true"
         onClick={() => setOpen((v) => !v)}
         className="flex items-center gap-1.5 rounded-md border border-border bg-muted/40 px-2.5 py-1.5 font-mono text-[11px] uppercase text-muted-foreground transition-colors hover:border-primary/60 hover:text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
       >
@@ -61,11 +60,11 @@ export function LanguageSwitcher({ label }: { label: string }) {
         {locale}
       </button>
       {open ? (
-        <ul role="menu" className="animate-page-enter absolute right-0 top-full z-50 mt-2 min-w-36 rounded-lg border border-border bg-card p-1 shadow-xl">
+        <ul className="animate-page-enter absolute right-0 top-full z-50 mt-2 min-w-36 rounded-lg border border-border bg-card p-1 shadow-xl">
           {LOCALES.map((l) => (
-            <li key={l} role="none">
+            <li key={l}>
               <Link
-                role="menuitem"
+                aria-current={l === locale ? "true" : undefined}
                 href={switchLocalePath(pathname, l)}
                 hrefLang={l}
                 lang={l}

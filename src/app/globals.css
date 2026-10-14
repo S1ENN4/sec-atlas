@@ -29,9 +29,12 @@
    * entrances) but has no `animate-reveal` class because reveals run on their
    * own timeline (animation-timeline: view()), not the standard animation API.
    */
-  --animate-page-enter: page-enter 240ms var(--ease-out-quart) both;
-  --animate-hero-enter: hero-enter 400ms var(--ease-out-quart) both;
-  --animate-chip-in: chip-in 150ms var(--ease-out-cubic) both;
+  /* `backwards` fill, not `both`: after the animation ends no transform is left on
+   * the element, so it does not become the containing block of `position: fixed`
+   * descendants (sheets, overlays) the way a persistent transform would. */
+  --animate-page-enter: page-enter 240ms var(--ease-out-quart) backwards;
+  --animate-hero-enter: hero-enter 400ms var(--ease-out-quart) backwards;
+  --animate-chip-in: chip-in 150ms var(--ease-out-cubic) backwards;
 
   @keyframes page-enter {
     from {
@@ -301,6 +304,10 @@ body {
   }
   html {
     scroll-behavior: auto !important;
+  }
+  /* Scroll-driven animations ignore duration, so turn them off outright. */
+  .reveal {
+    animation: none !important;
   }
 }
 

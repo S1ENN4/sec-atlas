@@ -170,12 +170,30 @@ export function SearchPalette({ t }: { t: PaletteStrings }) {
     [close, pathname, router, locale],
   );
 
+  // Lock page scroll behind the dialog.
+  useEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [open]);
+
+  // Keep the highlighted option visible while arrowing through the list.
+  useEffect(() => {
+    if (!open) return;
+    document.getElementById(`${listId}-${cursor}`)?.scrollIntoView({ block: "nearest" });
+  }, [open, cursor, listId]);
+
   if (!open) return null;
 
   const onInputKey = (e: React.KeyboardEvent) => {
     if (e.key === "Escape") {
       e.preventDefault();
       close();
+    } else if (e.key === "Tab") {
+      e.preventDefault(); // the dialog has a single tab stop: the input
     } else if (e.key === "ArrowDown") {
       e.preventDefault();
       setCursor((c) => Math.min(c + 1, Math.max(results.length - 1, 0)));
@@ -203,7 +221,7 @@ export function SearchPalette({ t }: { t: PaletteStrings }) {
   return (
     <div
       className="fixed inset-0 z-[70] flex items-start justify-center bg-background/70 px-4 pt-[12vh] backdrop-blur-sm print:hidden"
-      onMouseDown={(e) => {
+      onClick={(e) => {
         if (e.target === e.currentTarget) close();
       }}
     >
@@ -224,7 +242,8 @@ export function SearchPalette({ t }: { t: PaletteStrings }) {
             }}
             onKeyDown={onInputKey}
             role="combobox"
-            aria-expanded="true"
+            aria-expanded={results.length > 0}
+            aria-autocomplete="list"
             aria-controls={listId}
             aria-activedescendant={results[cursor] ? `${listId}-${cursor}` : undefined}
             placeholder={t.placeholder}
@@ -235,14 +254,14 @@ export function SearchPalette({ t }: { t: PaletteStrings }) {
           <kbd className="shrink-0 rounded border border-border px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground">esc</kbd>
         </div>
 
-        <ul id={listId} role="listbox" aria-label={t.results} className="max-h-[50vh] overflow-y-auto p-2">
-          {failed ? (
-            <li className="px-3 py-6 text-center text-sm text-muted-foreground">{t.failed}</li>
-          ) : !index ? (
-            <li className="px-3 py-6 text-center text-sm text-muted-foreground">{t.loading}</li>
-          ) : results.length === 0 ? (
-            <li className="px-3 py-6 text-center text-sm text-muted-foreground">{fmt(t.empty, { query })}</li>
-          ) : (
+        {failed || !index || results.length === 0 ? (
+          <p role="status" className="px-3 py-6 text-center text-sm text-muted-foreground">
+            {failed ? t.failed : !index ? t.loading : fmt(t.empty, { query })}
+          </p>
+        ) : null}
+
+        <ul id={listId} role="listbox" aria-label={t.results} className={cn("max-h-[50vh] overflow-y-auto p-2", results.length === 0 && "hidden")}>
+          {results.length > 0 &&
             results.map((item, i) => (
               <li
                 key={`${item.k}-${item.d}-${item.u}-${item.t}`}
@@ -280,8 +299,7 @@ export function SearchPalette({ t }: { t: PaletteStrings }) {
                   </button>
                 ) : null}
               </li>
-            ))
-          )}
+            ))}
         </ul>
 
         <div className="flex items-center gap-4 border-t border-border px-4 py-2 font-mono text-[10px] text-muted-foreground">
