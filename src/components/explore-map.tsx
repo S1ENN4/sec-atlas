@@ -52,6 +52,10 @@ export interface ExploreNodeData {
   where?: string;
   path?: string;
   topics: { href: string; label: string }[];
+  /** The same idea on other maps. */
+  see?: { href: string; label: string }[];
+  /** Link to the hands-on lab exercise. */
+  lab?: { href: string; label: string };
   code?: { lang: string; text: string };
   risky?: number[];
   challenge?: { prompt: string; why: string; hint: string };
@@ -1063,6 +1067,39 @@ function FocusCard({
             <CodeBlock code={node.code} ui={ui} />
           )}
         </div>
+      ) : null}
+
+      {node.lab ? (
+        <Link
+          href={node.lab.href}
+          className={cn(
+            "mt-6 flex items-center justify-between gap-3 rounded-xl border border-primary/50 bg-primary/10 px-4 py-3 text-sm font-medium text-primary transition-colors hover:bg-primary/20",
+            focusRing,
+          )}
+        >
+          <span>{ui.tryLab}</span>
+          <ArrowRight className="size-4" aria-hidden />
+        </Link>
+      ) : null}
+
+      {node.see && node.see.length > 0 ? (
+        <>
+          <h3 className="mt-6 font-mono text-xs uppercase tracking-wider text-primary">{ui.seeAlso}</h3>
+          <div className="mt-2 flex flex-wrap gap-2">
+            {node.see.map((t) => (
+              <Link
+                key={t.href}
+                href={t.href}
+                className={cn(
+                  "rounded-md border border-border bg-muted/40 px-2.5 py-1.5 text-xs text-foreground/90 transition-colors hover:border-primary/60 hover:text-primary",
+                  focusRing,
+                )}
+              >
+                {t.label}
+              </Link>
+            ))}
+          </div>
+        </>
       ) : null}
 
       {node.topics.length > 0 ? (

@@ -44,6 +44,12 @@ export default async function ExploreWorldPage({ params }: { params: Params }) {
     return { href: localePath(locale, `${domainMeta[domain].route}/topic/${slug}`), label: topicTitles.get(ref) ?? slug };
   };
 
+  // Which map each node lives on, for "the same idea, in general" links.
+  const homeOf: Record<string, string> = {};
+  for (const other of worlds) for (const id2 of Object.keys(flatten(other.root))) homeOf[id2] = other.id;
+  const nodeText = text.nodes as Record<string, { title: string }>;
+  const labs = (text.lab.exercises as Record<string, { title: string }>);
+
   const challenges = text.challenges as Record<string, { prompt: string; why: string; hint: string }>;
   const nodes: Record<string, ExploreNodeData> = {};
   for (const n of Object.values(flat)) {
@@ -60,6 +66,8 @@ export default async function ExploreWorldPage({ params }: { params: Params }) {
       where: t.where,
       path: n.path,
       topics: (n.topics ?? []).map(topicLabel),
+      see: (n.see ?? []).map((sid) => ({ href: `${localePath(locale, `/explore/${homeOf[sid]}`)}#${sid}`, label: nodeText[sid].title })),
+      lab: n.lab ? { href: `${localePath(locale, "/lab")}#${n.lab}`, label: labs[n.lab].title } : undefined,
       code: n.code,
       risky: n.risky,
       challenge: n.risky ? challenges[n.id] : undefined,

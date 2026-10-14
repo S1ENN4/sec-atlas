@@ -1,5 +1,89 @@
 {
   "entries": {
+    "challenges.a-api-idor.hint": {
+      "t": "La ruta comprueba la clave. ¿Qué no pregunta la consulta?",
+      "h": "f2609353"
+    },
+    "challenges.a-api-idor.prompt": {
+      "t": "Una clave de API válida llega a este endpoint. ¿Qué línea olvida comprobar de quién es el mapa?",
+      "h": "952439ed"
+    },
+    "challenges.a-api-idor.why": {
+      "t": "La línea 2 carga un mapa solo por su id. La clave demuestra qué cliente llama, pero nada la compara con el propietario del mapa, así que cualquier cliente lee cualquier mapa cambiando el número. Cárgalo con el propietario en el filtro, por ejemplo por id y por id de cliente a la vez.",
+      "h": "a7c25dc5"
+    },
+    "challenges.a-api-search.hint": {
+      "t": "Busca interpolación de cadenas dentro del SQL.",
+      "h": "51ab102d"
+    },
+    "challenges.a-api-search.prompt": {
+      "t": "¿Qué línea deja que el término de búsqueda cambie el sentido de la consulta a la base de datos?",
+      "h": "16655841"
+    },
+    "challenges.a-api-search.why": {
+      "t": "La línea 3 construye el SQL pegando el texto de la búsqueda entre comillas. Una comilla en el texto cierra la cadena, y lo que venga después se convierte en SQL. Usa un marcador de parámetro y pasa el texto por separado, para que la base de datos siempre lo trate como dato.",
+      "h": "b53890ee"
+    },
+    "challenges.a-ci.hint": {
+      "t": "Un disparador, un permiso, un checkout, una inyección y una action sin versión fija.",
+      "h": "0779d82d"
+    },
+    "challenges.a-ci.prompt": {
+      "t": "¿Qué cinco líneas dejan que el pull request de un extraño llegue a las credenciales de producción?",
+      "h": "b785ef09"
+    },
+    "challenges.a-ci.why": {
+      "t": "pull_request_target (línea 3) se ejecuta con secretos y un token de escritura, write-all (línea 5) da a todos los pasos permisos totales, el checkout de la cabeza del pull request (línea 12) ejecuta el código del extraño, el título en el echo (línea 13) se inyecta en un shell y una referencia a una rama (línea 14) deja que la action cambie sin que lo notes. Las claves de larga duración de las líneas 16 y 17 también deberían pasar a credenciales OIDC de corta duración.",
+      "h": "914da117"
+    },
+    "challenges.a-iam.hint": {
+      "t": "Dos sentencias con comodín en los recursos.",
+      "h": "78e9be06"
+    },
+    "challenges.a-iam.prompt": {
+      "t": "La API solo necesita leer teselas. ¿Qué sentencias le dan mucho más que eso?",
+      "h": "a6795931"
+    },
+    "challenges.a-iam.why": {
+      "t": "secretsmanager:* sobre todos los recursos (línea 6) deja al rol leer todos los secretos de la cuenta, e iam:PassRole sobre todos los recursos (línea 7) le deja entregar roles poderosos a nuevas cargas, un camino clásico para tomar toda la cuenta. Conserva solo s3:GetObject sobre los objetos de teselas.",
+      "h": "a5032239"
+    },
+    "challenges.a-repo-secret.hint": {
+      "t": "Tres líneas: una cadena de conexión y dos credenciales de nube.",
+      "h": "3addc845"
+    },
+    "challenges.a-repo-secret.prompt": {
+      "t": "¿Qué líneas añadidas nunca deberían haberse commiteado?",
+      "h": "3d1c9fed"
+    },
+    "challenges.a-repo-secret.why": {
+      "t": "La línea 7 tiene una contraseña de base de datos y las líneas 8 y 9 tienen una clave de acceso a la nube y su secreto. Una vez enviadas, quedan en el historial para siempre, aunque el archivo se borre después, así que deben revocarse. El puerto de la línea 6 es inofensivo.",
+      "h": "cdadf60e"
+    },
+    "challenges.a-site-xss.hint": {
+      "t": "Una línea, y el nombre de la propiedad ya avisa.",
+      "h": "1b73aee3"
+    },
+    "challenges.a-site-xss.prompt": {
+      "t": "Los clientes ponen nombre a sus propios mapas. ¿Qué línea deja que el título de un mapa ejecute script en el navegador de otra persona?",
+      "h": "162c2707"
+    },
+    "challenges.a-site-xss.why": {
+      "t": "dangerouslySetInnerHTML (línea 4) inserta el título como HTML sin procesar, así que un título con script o una imagen con un manejador de error se ejecuta para cualquiera que lo vea, incluido el soporte. Renderiza el título como texto, que el framework escapa por ti.",
+      "h": "252f4718"
+    },
+    "challenges.a-tiles.hint": {
+      "t": "La lectura pública es por diseño. La escritura pública no.",
+      "h": "e2eaa442"
+    },
+    "challenges.a-tiles.prompt": {
+      "t": "Las teselas están pensadas para que todos las lean. ¿Qué línea va demasiado lejos?",
+      "h": "b0daaad4"
+    },
+    "challenges.a-tiles.why": {
+      "t": "Principal * vale para teselas públicas, pero Action s3:* (línea 11) también deja a cualquiera subir, sobrescribir o borrar objetos e incluso cambiar el bucket. Las teselas públicas solo necesitan s3:GetObject sobre los objetos.",
+      "h": "e12f734a"
+    },
     "challenges.c-buckets.hint": {
       "t": "Cuatro líneas, todas con el mismo valor.",
       "h": "62c07fcf"
@@ -204,6 +288,226 @@
       "t": "innerHTML (línea 3) interpreta la cadena como HTML, así que un nombre como una etiqueta de imagen con un manejador onerror ejecutaría script en el navegador del visitante. textContent (línea 4) lo trata como texto plano.",
       "h": "d2e8a37c"
     },
+    "lab.exercises.idor.field": {
+      "t": "Id del mapa",
+      "h": "236b7e76"
+    },
+    "lab.exercises.idor.goal": {
+      "t": "Leer un mapa que no es tuyo.",
+      "h": "062199d6"
+    },
+    "lab.exercises.idor.hint": {
+      "t": "Tus mapas son del 1 al 3. Prueba el 4.",
+      "h": "6e8b9fea"
+    },
+    "lab.exercises.idor.story": {
+      "t": "Los clientes de Atlas obtienen sus mapas con GET /v1/maps/:id. Eres un cliente, y tus mapas tienen ids del 1 al 3. Otras empresas, incluidos competidores, usan la misma API.",
+      "h": "f582a93e"
+    },
+    "lab.exercises.idor.title": {
+      "t": "El mapa de otra persona",
+      "h": "8aa53879"
+    },
+    "lab.exercises.idor.why": {
+      "t": "La consulta ahora filtra por el propietario además del id, así que un mapa de otra persona parece no existir.",
+      "h": "7a2f6674"
+    },
+    "lab.exercises.sqli.field": {
+      "t": "Texto de búsqueda",
+      "h": "36ff8eb3"
+    },
+    "lab.exercises.sqli.goal": {
+      "t": "Obtener resultados que no son de tus mapas, o leer otra tabla.",
+      "h": "572cc251"
+    },
+    "lab.exercises.sqli.hint": {
+      "t": "Usa una comilla simple para salir de la cadena y añade después una condición siempre verdadera.",
+      "h": "083359eb"
+    },
+    "lab.exercises.sqli.story": {
+      "t": "El cuadro de búsqueda del panel llama a GET /v1/search?q=. El servidor pega tu texto en el SQL que envía a la base de datos.",
+      "h": "cad14b54"
+    },
+    "lab.exercises.sqli.title": {
+      "t": "Una búsqueda que dice demasiado",
+      "h": "345c9b69"
+    },
+    "lab.exercises.sqli.why": {
+      "t": "La consulta ahora usa marcadores. El texto de la búsqueda viaja por separado, como valor, así que una comilla es solo un carácter y nunca pasa a formar parte del SQL.",
+      "h": "2725d22c"
+    },
+    "lab.exercises.xss.field": {
+      "t": "Nombre del mapa",
+      "h": "ca6fcaed"
+    },
+    "lab.exercises.xss.goal": {
+      "t": "Hacer que el nombre de tu mapa ejecute script en el navegador del agente.",
+      "h": "a29b287c"
+    },
+    "lab.exercises.xss.hint": {
+      "t": "Una imagen con origen roto y un manejador de error es el ejemplo clásico.",
+      "h": "ff7f6e9f"
+    },
+    "lab.exercises.xss.story": {
+      "t": "Puedes poner nombre a tus mapas. Cuando pides ayuda, el soporte ve tus tarjetas de mapa en una herramienta interna. Vas a poner nombre a un mapa.",
+      "h": "2922cf76"
+    },
+    "lab.exercises.xss.title": {
+      "t": "Un nombre de mapa que ejecuta código",
+      "h": "92d9727c"
+    },
+    "lab.exercises.xss.why": {
+      "t": "El título ahora se renderiza como texto, así que el framework escapa caracteres como los corchetes angulares. El marcado llega a la página como letras normales, no como elementos.",
+      "h": "15d00856"
+    },
+    "lab.ui.applyFix": {
+      "t": "aplicar la corrección",
+      "h": "e146ba22"
+    },
+    "lab.ui.attack": {
+      "t": "Ataque",
+      "h": "1b81f28b"
+    },
+    "lab.ui.attackedFixed": {
+      "t": "El código corregido está activo: vuelve a lanzar el ataque.",
+      "h": "5767e6cb"
+    },
+    "lab.ui.blocked": {
+      "t": "Bloqueado: el mismo ataque ya no funciona.",
+      "h": "34b5633e"
+    },
+    "lab.ui.builtHtml": {
+      "t": "HTML que construyó la página",
+      "h": "b21b98bb"
+    },
+    "lab.ui.builtSql": {
+      "t": "SQL que construyó el servidor",
+      "h": "4de11af3"
+    },
+    "lab.ui.description": {
+      "t": "Rompe y arregla tres fallos reales de la API y el panel de Atlas Maps, en una simulación segura que corre en tu navegador.",
+      "h": "e5fab1b4"
+    },
+    "lab.ui.done": {
+      "t": "Los tres ejercicios resueltos. Atlas está un poco más segura hoy.",
+      "h": "5fb1e96f"
+    },
+    "lab.ui.exercisesAria": {
+      "t": "Ejercicios",
+      "h": "4dc503da"
+    },
+    "lab.ui.eyebrow": {
+      "t": "laboratorio atlas",
+      "h": "0a5ffdfc"
+    },
+    "lab.ui.fixedCode": {
+      "t": "Código corregido",
+      "h": "dc470aec"
+    },
+    "lab.ui.goal": {
+      "t": "Tu objetivo",
+      "h": "95e161ed"
+    },
+    "lab.ui.heading": {
+      "t": "Rómpelo, arréglalo, demuéstralo",
+      "h": "0a666e0f"
+    },
+    "lab.ui.hint": {
+      "t": "Pista",
+      "h": "2284d040"
+    },
+    "lab.ui.intro": {
+      "t": "Cada ejercicio tiene tres pasos: explotar el fallo, aplicar la corrección y volver a lanzar el mismo ataque para ver que falla. Es una simulación con datos falsos que corre solo en tu navegador.",
+      "h": "170e2fb1"
+    },
+    "lab.ui.leak": {
+      "t": "Funcionó: obtuviste algo que no deberías.",
+      "h": "977c3541"
+    },
+    "lab.ui.markupShown": {
+      "t": "Marcado inofensivo, mostrado como formato. Prueba algo con un manejador de eventos.",
+      "h": "1f89be8d"
+    },
+    "lab.ui.needBreak": {
+      "t": "Primero rómpelo, para saber qué estás arreglando.",
+      "h": "3c01cb40"
+    },
+    "lab.ui.noResponse": {
+      "t": "Envía una petición para ver la respuesta.",
+      "h": "70b4bb89"
+    },
+    "lab.ui.normal": {
+      "t": "Un resultado normal. Prueba las sugerencias.",
+      "h": "4b0ce0aa"
+    },
+    "lab.ui.pageTitle": {
+      "t": "Laboratorio Atlas",
+      "h": "0aa7041c"
+    },
+    "lab.ui.presets": {
+      "t": "prueba estos",
+      "h": "bdbbcc5a"
+    },
+    "lab.ui.response": {
+      "t": "Respuesta",
+      "h": "6e617e4f"
+    },
+    "lab.ui.safe": {
+      "t": "Nada sale de tu ordenador. No se usa ningún servidor real.",
+      "h": "959f36cc"
+    },
+    "lab.ui.scriptRan": {
+      "t": "El script se ejecutó en el navegador del agente. Un atacante real podría ahora leer la cookie de sesión (simulado: session=sup_8f2c41).",
+      "h": "eba5c954"
+    },
+    "lab.ui.seeNode": {
+      "t": "míralo en la empresa",
+      "h": "c7f80c36"
+    },
+    "lab.ui.send": {
+      "t": "enviar petición",
+      "h": "a3682e94"
+    },
+    "lab.ui.solved": {
+      "t": "resuelto",
+      "h": "a0ac7419"
+    },
+    "lab.ui.step1": {
+      "t": "Rómpelo",
+      "h": "a6348773"
+    },
+    "lab.ui.step2": {
+      "t": "Arréglalo",
+      "h": "4c45f9d8"
+    },
+    "lab.ui.step3": {
+      "t": "Demuéstralo",
+      "h": "ff6531f4"
+    },
+    "lab.ui.story": {
+      "t": "La historia",
+      "h": "7c454f72"
+    },
+    "lab.ui.textShown": {
+      "t": "Se muestra como texto plano. No se ejecuta nada.",
+      "h": "f86ebc01"
+    },
+    "lab.ui.undoFix": {
+      "t": "deshacer la corrección",
+      "h": "b0ba5f36"
+    },
+    "lab.ui.vulnerableCode": {
+      "t": "Código vulnerable",
+      "h": "fe357299"
+    },
+    "lab.ui.why": {
+      "t": "Por qué funciona la corrección",
+      "h": "4ee83084"
+    },
+    "lab.ui.youAre": {
+      "t": "Has iniciado sesión como {name} (cliente {id}).",
+      "h": "5c62ddb7"
+    },
     "missions.break-the-app.intro": {
       "t": "Encuentra la línea que deja entrar a un atacante: script, consulta y control de acceso.",
       "h": "ebfcf410"
@@ -219,6 +523,14 @@
     "missions.build-a-detection.title": {
       "t": "Construye una detección",
       "h": "031cdc52"
+    },
+    "missions.first-week.intro": {
+      "t": "Conoce cada parte de la empresa, del sitio web a los auditores.",
+      "h": "0c53a0e2"
+    },
+    "missions.first-week.title": {
+      "t": "Primera semana en Atlas",
+      "h": "ac513064"
     },
     "missions.follow-commit.intro": {
       "t": "Recorre toda la ruta desde el portátil hasta producción, una parada a la vez.",
@@ -276,6 +588,14 @@
       "t": "Míralo todo",
       "h": "7bbd5faf"
     },
+    "missions.ship-the-fixes.intro": {
+      "t": "Encuentra el fallo en cuatro archivos que señaló el pentest.",
+      "h": "d82c3cf6"
+    },
+    "missions.ship-the-fixes.title": {
+      "t": "Entrega las correcciones",
+      "h": "7974f816"
+    },
     "missions.stop-leaks.intro": {
       "t": "Encuentra todos los lugares donde se puede atrapar una clave filtrada, del portátil a la app en vivo.",
       "h": "5e4695b7"
@@ -283,6 +603,14 @@
     "missions.stop-leaks.title": {
       "t": "Detén una filtración de secretos",
       "h": "4a336b45"
+    },
+    "missions.the-leaked-key.intro": {
+      "t": "Sigue un incidente desde un pull request descuidado hasta una clave revocada.",
+      "h": "69c9c664"
+    },
+    "missions.the-leaked-key.title": {
+      "t": "La clave filtrada",
+      "h": "f9ebca79"
     },
     "missions.triage-an-alert.intro": {
       "t": "De la severidad y el contexto al runbook y a un paso seguro de contención.",
@@ -308,6 +636,646 @@
       "t": "Baja por la pila",
       "h": "58d16dd8"
     },
+    "nodes.a-alert.points.0": {
+      "t": "La clave pertenece a la identidad de despliegue del CI, que ninguna persona debería usar.",
+      "h": "08baa8f1"
+    },
+    "nodes.a-alert.points.1": {
+      "t": "Se usó para listar el bucket de teselas, algo que el CI nunca hace.",
+      "h": "9a7e97d4"
+    },
+    "nodes.a-alert.points.2": {
+      "t": "La severidad es alta: una credencial válida está en manos de alguien desconocido.",
+      "h": "26b3b36c"
+    },
+    "nodes.a-alert.summary": {
+      "t": "El SIEM marca una clave de nube usada desde un país en el que Atlas nunca ha trabajado.",
+      "h": "3b4b119b"
+    },
+    "nodes.a-alert.title": {
+      "t": "La alerta de las 3 de la madrugada",
+      "h": "e72aac55"
+    },
+    "nodes.a-api-idor.points.0": {
+      "t": "Una clave válida demuestra quién es el cliente, no qué mapas puede leer.",
+      "h": "864cfefa"
+    },
+    "nodes.a-api-idor.points.1": {
+      "t": "Los ids de los mapas son números secuenciales pequeños, fáciles de adivinar.",
+      "h": "3a30e35f"
+    },
+    "nodes.a-api-idor.points.2": {
+      "t": "Cambia el id en el laboratorio y mira los datos de quién vuelven.",
+      "h": "ce67fc5a"
+    },
+    "nodes.a-api-idor.summary": {
+      "t": "GET /v1/maps/:id devuelve un mapa en JSON. El endpoint comprueba que quien llama tenga una clave válida.",
+      "h": "e849393e"
+    },
+    "nodes.a-api-idor.title": {
+      "t": "Obtener un mapa",
+      "h": "b80ab812"
+    },
+    "nodes.a-api-keys.points.0": {
+      "t": "Una filtración de la base de datos no filtra claves utilizables, porque solo se guardan los hashes.",
+      "h": "589d233a"
+    },
+    "nodes.a-api-keys.points.1": {
+      "t": "El cliente puede rotar las claves en cualquier momento.",
+      "h": "0ce05b6b"
+    },
+    "nodes.a-api-keys.points.2": {
+      "t": "Una clave encontrada en código público sigue activa hasta que se revoca.",
+      "h": "62a289c9"
+    },
+    "nodes.a-api-keys.summary": {
+      "t": "Las claves son secretos aleatorios que se muestran una sola vez. La API guarda solo un hash y localiza al cliente a partir de él.",
+      "h": "fd53bea6"
+    },
+    "nodes.a-api-keys.title": {
+      "t": "Claves de API",
+      "h": "94fcf3c2"
+    },
+    "nodes.a-api-limits.points.0": {
+      "t": "Los límites protegen el servicio tanto de accidentes como de atacantes.",
+      "h": "50cda94e"
+    },
+    "nodes.a-api-limits.points.1": {
+      "t": "Picos extraños en una clave son una buena señal de alerta.",
+      "h": "1f2cdf9b"
+    },
+    "nodes.a-api-limits.points.2": {
+      "t": "Los clientes reciben errores claros que les dicen cuándo reintentar.",
+      "h": "a777f1e2"
+    },
+    "nodes.a-api-limits.summary": {
+      "t": "Cada clave puede hacer un número limitado de peticiones por minuto, y los endpoints pesados tienen límites más estrictos.",
+      "h": "40e5717a"
+    },
+    "nodes.a-api-limits.title": {
+      "t": "Límites de tasa",
+      "h": "8ba9b8ac"
+    },
+    "nodes.a-api-search.points.0": {
+      "t": "El texto de la búsqueda se pega en la sentencia SQL.",
+      "h": "f6e3e087"
+    },
+    "nodes.a-api-search.points.1": {
+      "t": "Una comilla simple en el texto puede cambiar lo que significa la sentencia.",
+      "h": "835d6d19"
+    },
+    "nodes.a-api-search.points.2": {
+      "t": "En el laboratorio verás el SQL generado y lo que consigue sacar una búsqueda manipulada.",
+      "h": "20f7a00d"
+    },
+    "nodes.a-api-search.summary": {
+      "t": "GET /v1/search?q= encuentra los mapas de un cliente por nombre. La consulta se construye como texto y se envía a la base de datos.",
+      "h": "ae6c0185"
+    },
+    "nodes.a-api-search.title": {
+      "t": "Buscar mapas",
+      "h": "494603b1"
+    },
+    "nodes.a-api.points.0": {
+      "t": "Cada petición lleva una clave de API que identifica a un cliente.",
+      "h": "a9c44a22"
+    },
+    "nodes.a-api.points.1": {
+      "t": "La API lee de la base de datos en cada llamada, así que los errores aquí tocan directamente los datos de los clientes.",
+      "h": "f290d156"
+    },
+    "nodes.a-api.points.2": {
+      "t": "Dos endpoints de abajo esconden fallos clásicos.",
+      "h": "b5f56472"
+    },
+    "nodes.a-api.summary": {
+      "t": "El producto en sí: los clientes la llaman con una clave de API para obtener mapas, buscar lugares y planificar rutas.",
+      "h": "b74a75e9"
+    },
+    "nodes.a-api.title": {
+      "t": "API pública",
+      "h": "6ae22c16"
+    },
+    "nodes.a-ci.points.0": {
+      "t": "Se ejecuta con un disparador que da a pull requests no confiables acceso a secretos.",
+      "h": "3176231e"
+    },
+    "nodes.a-ci.points.1": {
+      "t": "Hace checkout y ejecuta código del pull request, e imprime su título en un shell.",
+      "h": "ce8a9077"
+    },
+    "nodes.a-ci.points.2": {
+      "t": "Encuentra las cinco líneas que juntas dejan a un extraño llegar a las credenciales de producción.",
+      "h": "c86e5bf4"
+    },
+    "nodes.a-ci.summary": {
+      "t": "Un workflow pensado para previsualizar un pull request y desplegarlo. Se escribió deprisa, y se nota.",
+      "h": "057076b3"
+    },
+    "nodes.a-ci.title": {
+      "t": "El workflow de despliegue",
+      "h": "dfa88dbd"
+    },
+    "nodes.a-cloud.points.0": {
+      "t": "La identidad y los permisos deciden lo que puede hacer una carga comprometida.",
+      "h": "64ab232f"
+    },
+    "nodes.a-cloud.points.1": {
+      "t": "Las redes están divididas para que la base de datos no sea alcanzable desde internet.",
+      "h": "3289b354"
+    },
+    "nodes.a-cloud.points.2": {
+      "t": "Los logs de auditoría de cada cuenta van a la cuenta de seguridad.",
+      "h": "ab9b4082"
+    },
+    "nodes.a-cloud.summary": {
+      "t": "Cuentas de nube separadas para producción, preproducción y herramientas de seguridad, gestionadas como código.",
+      "h": "5e83dbc4"
+    },
+    "nodes.a-cloud.title": {
+      "t": "Cuenta de nube",
+      "h": "b4191a2c"
+    },
+    "nodes.a-codeowners.points.0": {
+      "t": "Pone al revisor adecuado delante de los archivos más arriesgados.",
+      "h": "54ee426e"
+    },
+    "nodes.a-codeowners.points.1": {
+      "t": "Los responsables son equipos, para que las revisiones no dependan de una persona.",
+      "h": "bb0ec7d4"
+    },
+    "nodes.a-codeowners.points.2": {
+      "t": "Solo funciona si la protección de rama exige la revisión de los responsables del código.",
+      "h": "e07613db"
+    },
+    "nodes.a-codeowners.summary": {
+      "t": "El equipo de seguridad debe aprobar cualquier cambio en workflows, infraestructura y código de autenticación.",
+      "h": "6a019a33"
+    },
+    "nodes.a-codeowners.title": {
+      "t": "Responsables del código",
+      "h": "1b21f470"
+    },
+    "nodes.a-customer-data.points.0": {
+      "t": "Guárdalos solo mientras lo exija el contrato y luego bórralos.",
+      "h": "a0acfbac"
+    },
+    "nodes.a-customer-data.points.1": {
+      "t": "Cífralos en reposo y limita quién en Atlas puede verlos.",
+      "h": "d1671ae1"
+    },
+    "nodes.a-customer-data.points.2": {
+      "t": "Los clientes pedirán pruebas de cómo se protegen, y ahí entra el cumplimiento.",
+      "h": "45a86143"
+    },
+    "nodes.a-customer-data.summary": {
+      "t": "Las rutas, las paradas de reparto y el uso de la API pertenecen a los clientes que los crean.",
+      "h": "d7a05d93"
+    },
+    "nodes.a-customer-data.title": {
+      "t": "Datos de los clientes",
+      "h": "65e856d1"
+    },
+    "nodes.a-data.points.0": {
+      "t": "Las rutas de los clientes pueden revelar dónde viven y trabajan las personas, así que son sensibles.",
+      "h": "e7128ca0"
+    },
+    "nodes.a-data.points.1": {
+      "t": "Las teselas son públicas por diseño; todo lo demás no.",
+      "h": "8388b9c8"
+    },
+    "nodes.a-data.points.2": {
+      "t": "El acceso a cada almacén se concede a roles concretos, no a todos.",
+      "h": "b28effc0"
+    },
+    "nodes.a-data.summary": {
+      "t": "Una base de datos relacional para clientes, claves y mapas, y almacenamiento de objetos para las teselas.",
+      "h": "9a5ef36e"
+    },
+    "nodes.a-data.title": {
+      "t": "Datos",
+      "h": "e5e429bc"
+    },
+    "nodes.a-db.points.0": {
+      "t": "Los cambios de esquema se ejecutan con un rol de migración distinto.",
+      "h": "c75a9682"
+    },
+    "nodes.a-db.points.1": {
+      "t": "El rol de la app no tiene permiso para borrar tablas ni para leer lo que no necesita.",
+      "h": "6ae765af"
+    },
+    "nodes.a-db.points.2": {
+      "t": "Un error en la app queda limitado por lo que el rol puede hacer.",
+      "h": "8d89b081"
+    },
+    "nodes.a-db.summary": {
+      "t": "La aplicación se conecta con un rol que lee y escribe mapas pero no cambia el esquema.",
+      "h": "79495e56"
+    },
+    "nodes.a-db.title": {
+      "t": "Roles de la base de datos",
+      "h": "5f46fd67"
+    },
+    "nodes.a-govern.points.0": {
+      "t": "Los buenos hábitos de ingeniería son lo que facilita producir las evidencias.",
+      "h": "22c80ede"
+    },
+    "nodes.a-govern.points.1": {
+      "t": "Atlas también depende de proveedores, y sus clientes dependen de Atlas.",
+      "h": "d64fbfdc"
+    },
+    "nodes.a-govern.points.2": {
+      "t": "Los hallazgos de auditorías y pruebas necesitan responsables y fechas.",
+      "h": "55ee95ca"
+    },
+    "nodes.a-govern.summary": {
+      "t": "Los clientes grandes piden a Atlas que demuestre que protege sus datos: cuestionarios de seguridad, auditorías y contratos.",
+      "h": "69c1b5f9"
+    },
+    "nodes.a-govern.title": {
+      "t": "Clientes y cumplimiento",
+      "h": "59cb1761"
+    },
+    "nodes.a-iam.points.0": {
+      "t": "Dos sentencias usan comodines en recursos y acciones.",
+      "h": "a15ea835"
+    },
+    "nodes.a-iam.points.1": {
+      "t": "Un fallo que alcance la API de la nube con este rol podría leer todos los secretos de la cuenta.",
+      "h": "3b7c6106"
+    },
+    "nodes.a-iam.points.2": {
+      "t": "Encuentra las dos sentencias que dan mucho más de lo que la API necesita.",
+      "h": "b9a3924f"
+    },
+    "nodes.a-iam.summary": {
+      "t": "El rol con el que corre la API. Debería solo leer teselas, pero se le dio más.",
+      "h": "1ec35525"
+    },
+    "nodes.a-iam.title": {
+      "t": "El rol de nube de la API",
+      "h": "7db744dc"
+    },
+    "nodes.a-incident.points.0": {
+      "t": "La clave estuvo expuesta unas 34 horas antes de que alguien la usara, y se usó solo unos minutos.",
+      "h": "642594e8"
+    },
+    "nodes.a-incident.points.1": {
+      "t": "La contención fue revocar la clave y rotar los secretos relacionados.",
+      "h": "4aaa6e9f"
+    },
+    "nodes.a-incident.points.2": {
+      "t": "Los logs de acceso mostraron solo listado y descarga de teselas, así que no se alcanzó ningún dato de clientes.",
+      "h": "d96be583"
+    },
+    "nodes.a-incident.summary": {
+      "t": "Reconstruir lo ocurrido, del pull request a la revocación de la clave.",
+      "h": "195e0a97"
+    },
+    "nodes.a-incident.title": {
+      "t": "Línea de tiempo del incidente",
+      "h": "e1981333"
+    },
+    "nodes.a-logging.points.0": {
+      "t": "Los logs van a una cuenta separada que producción no puede editar.",
+      "h": "bea4723a"
+    },
+    "nodes.a-logging.points.1": {
+      "t": "Un escáner de postura revisa las cuentas a diario contra un benchmark.",
+      "h": "04fc3223"
+    },
+    "nodes.a-logging.points.2": {
+      "t": "Esto hizo visible el incidente en horas en lugar de meses.",
+      "h": "c3505e21"
+    },
+    "nodes.a-logging.summary": {
+      "t": "Los logs de auditoría de la nube, del balanceador y de la aplicación se recogen de forma central.",
+      "h": "e1be1082"
+    },
+    "nodes.a-logging.title": {
+      "t": "Logs y postura",
+      "h": "50b3df30"
+    },
+    "nodes.a-network.points.0": {
+      "t": "Solo el balanceador acepta tráfico de internet.",
+      "h": "0c52eb8e"
+    },
+    "nodes.a-network.points.1": {
+      "t": "La base de datos acepta conexiones solo del security group de la API.",
+      "h": "11b1d2b8"
+    },
+    "nodes.a-network.points.2": {
+      "t": "La administración pasa por un servicio gestionado de sesiones, no por SSH abierto.",
+      "h": "0afc9ab4"
+    },
+    "nodes.a-network.summary": {
+      "t": "Un balanceador público delante, subredes privadas para la API y una subred aislada para la base de datos.",
+      "h": "a09bedfb"
+    },
+    "nodes.a-network.title": {
+      "t": "Diseño de red",
+      "h": "69891ece"
+    },
+    "nodes.a-ops.points.0": {
+      "t": "La detección depende de recoger los logs adecuados.",
+      "h": "f9090c06"
+    },
+    "nodes.a-ops.points.1": {
+      "t": "La respuesta depende de pasos claros y decisiones rápidas.",
+      "h": "55bef0c2"
+    },
+    "nodes.a-ops.points.2": {
+      "t": "Abre el incidente para ver cómo se encontró la clave filtrada.",
+      "h": "3b44dcb8"
+    },
+    "nodes.a-ops.summary": {
+      "t": "Un equipo pequeño vigila las alertas, comparte una guardia con ingeniería y mantiene runbooks para casos comunes.",
+      "h": "c1faaf8b"
+    },
+    "nodes.a-ops.title": {
+      "t": "Operaciones de seguridad",
+      "h": "1580faba"
+    },
+    "nodes.a-pentest.points.0": {
+      "t": "Encontró el fallo de propiedad de mapas y la búsqueda inyectable.",
+      "h": "2e17275a"
+    },
+    "nodes.a-pentest.points.1": {
+      "t": "Cada hallazgo tiene severidad, evidencia y recomendación de corrección.",
+      "h": "8a425f96"
+    },
+    "nodes.a-pentest.points.2": {
+      "t": "La clasificación convierte el informe en tickets con responsables y plazos, y se vuelve a probar tras las correcciones.",
+      "h": "7d5f0450"
+    },
+    "nodes.a-pentest.summary": {
+      "t": "Un equipo externo probó la API y el panel y entregó un informe con hallazgos priorizados.",
+      "h": "5870b8ee"
+    },
+    "nodes.a-pentest.title": {
+      "t": "Informe de pentest",
+      "h": "42333497"
+    },
+    "nodes.a-pipeline.points.0": {
+      "t": "El pipeline guarda credenciales poderosas, así que es un objetivo.",
+      "h": "4feb34b0"
+    },
+    "nodes.a-pipeline.points.1": {
+      "t": "Cambiar un archivo de workflow cambia lo que se ejecuta con esas credenciales.",
+      "h": "629729a6"
+    },
+    "nodes.a-pipeline.points.2": {
+      "t": "Un workflow de abajo tiene varios de los errores clásicos.",
+      "h": "a5552400"
+    },
+    "nodes.a-pipeline.summary": {
+      "t": "GitHub Actions prueba el código, construye contenedores, los sube al registry y despliega en la nube.",
+      "h": "911d985f"
+    },
+    "nodes.a-pipeline.title": {
+      "t": "Pipeline de build y despliegue",
+      "h": "4e5fee89"
+    },
+    "nodes.a-repo-protection.points.0": {
+      "t": "Esa regla no se aplicó el día de la filtración, porque un administrador la saltó.",
+      "h": "8df50fda"
+    },
+    "nodes.a-repo-protection.points.1": {
+      "t": "Las reglas que los administradores pueden saltarse son sugerencias, no controles.",
+      "h": "6c8a4a09"
+    },
+    "nodes.a-repo-protection.points.2": {
+      "t": "Las comprobaciones obligatorias incluyen el escaneo de secretos y el escaneo de código.",
+      "h": "996c3cb8"
+    },
+    "nodes.a-repo-protection.summary": {
+      "t": "La rama principal exige pull request, una aprobación y comprobaciones superadas antes de cualquier merge.",
+      "h": "30cb2f18"
+    },
+    "nodes.a-repo-protection.title": {
+      "t": "Protección de rama",
+      "h": "e2cc3e16"
+    },
+    "nodes.a-repo-secret.points.0": {
+      "t": "El archivo contiene una contraseña de base de datos y una clave de acceso a la nube.",
+      "h": "3bea50d3"
+    },
+    "nodes.a-repo-secret.points.1": {
+      "t": "Un espejo público del repositorio copia el commit en minutos.",
+      "h": "e53074a6"
+    },
+    "nodes.a-repo-secret.points.2": {
+      "t": "Un escáner de secretos o la protección de push lo habrían impedido. Señala las líneas de riesgo.",
+      "h": "60b93b9a"
+    },
+    "nodes.a-repo-secret.summary": {
+      "t": "Un desarrollador añade un archivo de configuración local a un pull request. Quien revisa está ocupado y hace el merge.",
+      "h": "0da6c1a2"
+    },
+    "nodes.a-repo-secret.title": {
+      "t": "Un pull request con secretos",
+      "h": "025a44b2"
+    },
+    "nodes.a-repo.points.0": {
+      "t": "Quien puede cambiar el repositorio puede cambiar lo que corre en producción.",
+      "h": "0a5b69a7"
+    },
+    "nodes.a-repo.points.1": {
+      "t": "Personas, bots y pipelines hacen commits aquí.",
+      "h": "85f6ab96"
+    },
+    "nodes.a-repo.points.2": {
+      "t": "Todo en él es permanente: quitar un archivo no lo quita del historial.",
+      "h": "b4be1ad1"
+    },
+    "nodes.a-repo.summary": {
+      "t": "Un monorepo en GitHub guarda la API, el sitio, el código de infraestructura y las definiciones del pipeline.",
+      "h": "c68368f6"
+    },
+    "nodes.a-repo.title": {
+      "t": "Repositorio de GitHub",
+      "h": "c6651994"
+    },
+    "nodes.a-runbook.points.0": {
+      "t": "Revoca primero, investiga después y conserva las evidencias.",
+      "h": "70b136fc"
+    },
+    "nodes.a-runbook.points.1": {
+      "t": "Rota todo lo que la credencial podía alcanzar.",
+      "h": "567c60f8"
+    },
+    "nodes.a-runbook.points.2": {
+      "t": "Revisa los logs de acceso para ver qué se tocó y anótalo para la revisión.",
+      "h": "21f8afc8"
+    },
+    "nodes.a-runbook.summary": {
+      "t": "Pasos que sigue quien está de guardia cuando una credencial puede haberse expuesto.",
+      "h": "35951e3a"
+    },
+    "nodes.a-runbook.title": {
+      "t": "Runbook de credencial filtrada",
+      "h": "77a30d09"
+    },
+    "nodes.a-site-headers.points.0": {
+      "t": "La política de seguridad de contenido limita desde dónde pueden cargarse los scripts.",
+      "h": "66cea7d6"
+    },
+    "nodes.a-site-headers.points.1": {
+      "t": "HSTS mantiene a los visitantes en HTTPS, y nosniff evita adivinar tipos.",
+      "h": "57859b1f"
+    },
+    "nodes.a-site-headers.points.2": {
+      "t": "Estas cabeceras son una segunda línea de defensa, no la corrección de la tarjeta de arriba.",
+      "h": "ab0cc515"
+    },
+    "nodes.a-site-headers.summary": {
+      "t": "El framework añade cabeceras de respuesta que dicen a los navegadores cuán estrictos ser con el sitio.",
+      "h": "40bd5888"
+    },
+    "nodes.a-site-headers.title": {
+      "t": "Cabeceras de seguridad",
+      "h": "96c790be"
+    },
+    "nodes.a-site-login.points.0": {
+      "t": "Las contraseñas se guardan como hashes lentos y los intentos tienen límite de tasa.",
+      "h": "53a318ba"
+    },
+    "nodes.a-site-login.points.1": {
+      "t": "La cookie de sesión es Secure, HttpOnly y SameSite.",
+      "h": "d1d1da47"
+    },
+    "nodes.a-site-login.points.2": {
+      "t": "El soporte usa inicio de sesión único con llaves de hardware, nunca contraseñas compartidas.",
+      "h": "9dd95eb1"
+    },
+    "nodes.a-site-login.summary": {
+      "t": "Los clientes entran con correo y contraseña, más un código de un solo uso, y reciben una cookie de sesión.",
+      "h": "6cda482d"
+    },
+    "nodes.a-site-login.title": {
+      "t": "Inicio de sesión del panel",
+      "h": "65c5e2fa"
+    },
+    "nodes.a-site-xss.points.0": {
+      "t": "El título del mapa viene del cliente y se coloca en la página como HTML.",
+      "h": "2a480e58"
+    },
+    "nodes.a-site-xss.points.1": {
+      "t": "Quien puede poner nombre a un mapa puede ejecutar script en el navegador de quien ve la tarjeta.",
+      "h": "09a25e5c"
+    },
+    "nodes.a-site-xss.points.2": {
+      "t": "Pruébalo de verdad en el laboratorio y luego corrígelo.",
+      "h": "13eb4f14"
+    },
+    "nodes.a-site-xss.summary": {
+      "t": "El panel muestra cada mapa del cliente como una tarjeta, y el soporte ve las mismas tarjetas cuando ayuda a alguien.",
+      "h": "1f336f39"
+    },
+    "nodes.a-site-xss.title": {
+      "t": "Tarjetas de mapa",
+      "h": "a9fc4602"
+    },
+    "nodes.a-site.points.0": {
+      "t": "Está hecho con un framework JavaScript moderno y se sirve a través de una CDN.",
+      "h": "4425b41a"
+    },
+    "nodes.a-site.points.1": {
+      "t": "Los clientes escriben texto en él (nombres de mapas, notas) y otras personas lo leen.",
+      "h": "b148a911"
+    },
+    "nodes.a-site.points.2": {
+      "t": "El navegador es el punto más débil: todo lo que se muestra a partir de entrada del usuario requiere cuidado.",
+      "h": "b0217f47"
+    },
+    "nodes.a-site.summary": {
+      "t": "El sitio público y el panel de clientes, donde las empresas de reparto gestionan sus mapas y claves de API.",
+      "h": "4179adc7"
+    },
+    "nodes.a-site.title": {
+      "t": "Sitio web y panel",
+      "h": "39bb9bb3"
+    },
+    "nodes.a-soc2.points.0": {
+      "t": "Controles como la revisión de accesos, la aprobación de cambios y los logs generan las evidencias.",
+      "h": "7bc46be6"
+    },
+    "nodes.a-soc2.points.1": {
+      "t": "Una excepción, como que un administrador se salte la protección de rama, se convierte en un hallazgo de auditoría.",
+      "h": "b2b98891"
+    },
+    "nodes.a-soc2.points.2": {
+      "t": "Las comprobaciones automatizadas convierten la auditoría en rutina en lugar de una carrera.",
+      "h": "123ee27c"
+    },
+    "nodes.a-soc2.summary": {
+      "t": "Un auditor independiente comprueba que Atlas sigue sus propias políticas de seguridad durante varios meses.",
+      "h": "c26d2b59"
+    },
+    "nodes.a-soc2.title": {
+      "t": "Auditoría SOC 2",
+      "h": "2e12adc5"
+    },
+    "nodes.a-supply.points.0": {
+      "t": "Un bot abre pull requests de actualización cada semana, y un escaneo bloquea paquetes con vulnerabilidades conocidas.",
+      "h": "1b7a88ce"
+    },
+    "nodes.a-supply.points.1": {
+      "t": "Se guarda un SBOM por cada release.",
+      "h": "5af07b7f"
+    },
+    "nodes.a-supply.points.2": {
+      "t": "Las imágenes se firman, y el clúster solo ejecuta imágenes firmadas.",
+      "h": "687d0b82"
+    },
+    "nodes.a-supply.summary": {
+      "t": "La API y el sitio traen cientos de paquetes de código abierto y se construyen sobre imágenes base públicas.",
+      "h": "9b9f9b73"
+    },
+    "nodes.a-supply.title": {
+      "t": "Dependencias e imágenes",
+      "h": "f914bad3"
+    },
+    "nodes.a-tiles.points.0": {
+      "t": "La lectura pública es el diseño previsto para las teselas.",
+      "h": "39e2481a"
+    },
+    "nodes.a-tiles.points.1": {
+      "t": "La escritura o el borrado públicos nunca están previstos.",
+      "h": "132bdd85"
+    },
+    "nodes.a-tiles.points.2": {
+      "t": "Mira qué permite la política, no solo a quién se lo permite.",
+      "h": "e786effb"
+    },
+    "nodes.a-tiles.summary": {
+      "t": "Las teselas se sirven desde almacenamiento de objetos detrás de una CDN. Están pensadas para que cualquiera las lea.",
+      "h": "b6027236"
+    },
+    "nodes.a-tiles.title": {
+      "t": "Bucket de teselas",
+      "h": "752fca34"
+    },
+    "nodes.a-vendors.points.0": {
+      "t": "Clasifica a los proveedores por los datos y accesos que tienen.",
+      "h": "2018b521"
+    },
+    "nodes.a-vendors.points.1": {
+      "t": "Pide sus informes de seguridad y revísalos.",
+      "h": "94978c57"
+    },
+    "nodes.a-vendors.points.2": {
+      "t": "Planifica qué pasa si un proveedor sufre una brecha o se cae.",
+      "h": "f6c14f69"
+    },
+    "nodes.a-vendors.summary": {
+      "t": "La CDN, la nube, el proveedor de correo y el SIEM guardan cada uno parte del riesgo de Atlas.",
+      "h": "a12814b8"
+    },
+    "nodes.a-vendors.title": {
+      "t": "Riesgo de proveedores",
+      "h": "87770a70"
+    },
     "nodes.admission.points.0": {
       "t": "Es la última puerta: funciona incluso si alguien se salta el pipeline.",
       "h": "fc419edd"
@@ -331,6 +1299,26 @@
     "nodes.admission.where": {
       "t": "clúster de Kubernetes, admission controller",
       "h": "bfbe7cfc"
+    },
+    "nodes.atlas.points.0": {
+      "t": "Abre cualquier parte de la empresa para ver sus archivos reales, con los fallos que de verdad tendrían.",
+      "h": "6f6b7059"
+    },
+    "nodes.atlas.points.1": {
+      "t": "Cada fallo lleva a la idea general en los otros mapas, y algunos a un laboratorio práctico.",
+      "h": "28290488"
+    },
+    "nodes.atlas.points.2": {
+      "t": "Empieza por la misión \"Primera semana en Atlas\" o ve directo a \"La clave filtrada\" para seguir un incidente de punta a punta.",
+      "h": "0de046d6"
+    },
+    "nodes.atlas.summary": {
+      "t": "Una empresa inventada que vende teselas de mapa y una API de rutas a apps de reparto: unas 60 personas, tres squads de ingeniería, un sitio público, una API, una base de datos y una cuenta de nube. Todo aquí es inventado, pero los errores son reales.",
+      "h": "af19fac6"
+    },
+    "nodes.atlas.title": {
+      "t": "Atlas Maps Inc.",
+      "h": "ffc99fc6"
     },
     "nodes.branch-protection.points.0": {
       "t": "Exige al menos una revisión y bloquea aprobar tu propio cambio.",
@@ -3060,6 +4048,10 @@
       "t": "Arrastra para mover, usa la rueda o pellizca para hacer zoom, haz clic en un nodo para abrirlo.",
       "h": "e9a2326e"
     },
+    "ui.caseStudy": {
+      "t": "caso de estudio",
+      "h": "198ab1f2"
+    },
     "ui.challengeCheck": {
       "t": "comprobar respuesta",
       "h": "5878a4a1"
@@ -3284,6 +4276,10 @@
       "t": "Buscar lugares…",
       "h": "7dfcd47f"
     },
+    "ui.seeAlso": {
+      "t": "la misma idea, en general",
+      "h": "df01845b"
+    },
     "ui.stageAria": {
       "t": "Mapa",
       "h": "ab478f3e"
@@ -3299,6 +4295,10 @@
     "ui.trailhead": {
       "t": "inicio del sendero",
       "h": "cbb10f25"
+    },
+    "ui.tryLab": {
+      "t": "pruébalo en el laboratorio",
+      "h": "521b6135"
     },
     "ui.visited": {
       "t": "explorado",

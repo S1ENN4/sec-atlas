@@ -41,6 +41,7 @@ function pages(locale: Locale): Item[] {
   out.push(
     page(n.careers, n.careers, "/careers"),
     page(n.learnItems.explore, n.learnItems.exploreDesc, "/explore"),
+    page(n.learnItems.lab, n.learnItems.labDesc, "/lab"),
     page(n.learnItems.journey, n.learnItems.journeyDesc, "/journey"),
     page(n.learnItems.paths, n.learnItems.pathsDesc, "/paths"),
     page(n.learnItems.scenarios, n.learnItems.scenariosDesc, "/scenarios"),

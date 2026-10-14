@@ -21,6 +21,7 @@ export const changelog: ChangelogEntry[] = [
       "Mapa explorável: siga um commit até a produção, abra cada parada (CI, scanners, registry, cluster) e cumpra missões e desafios.",
       "Mais três mapas exploráveis em tela cheia (nuvem, SOC e uma requisição web), com busca, minimapa, 13 desafios e links dos tópicos para o mapa.",
       "Mapa de rede e do modelo OSI: as sete camadas, do cabo à aplicação, com 4 desafios (firewall, varredura, TLS e DNS).",
+      "Atlas Maps, um estudo de caso: uma empresa inventada (site, API, banco, GitHub, nuvem, SOC e conformidade) com os arquivos reais dela, e um laboratório para quebrar, consertar e comprovar três falhas numa simulação segura.",
     ],
   },
   {

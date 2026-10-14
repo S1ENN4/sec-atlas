@@ -10,7 +10,7 @@ import { LOCALES, localePath } from "@/i18n/config";
 export const dynamic = "force-static";
 
 // Every public route, once per locale, each with hreflang alternates.
-const FIXED = ["", "/careers", "/explore", "/journey", "/manifesto", "/about", "/changelog", "/sources", "/paths", "/scenarios", "/glossary", "/security"];
+const FIXED = ["", "/careers", "/explore", "/lab", "/journey", "/manifesto", "/about", "/changelog", "/sources", "/paths", "/scenarios", "/glossary", "/security"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = profile.siteUrl.replace(/\/$/, "");

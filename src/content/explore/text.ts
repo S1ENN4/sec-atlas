@@ -2,6 +2,8 @@
 // (unit "explore", strict: every string must be translated and fresh).
 // Keep ids in sync with ./world.ts (validate-content R12 checks it).
 
+import { atlasChallenges, atlasMissions, atlasNodes } from "./text-atlas";
+import { labText } from "./text-lab";
 import { netChallenges, netMissions, netNodes } from "./text-net";
 import { worldsChallenges, worldsMissions, worldsNodes } from "./text-worlds";
 
@@ -92,6 +94,9 @@ export const exploreText = {
     searchNone: "Nothing matches.",
     overview: "Overview of the map",
     onMap: "see it on the map",
+    seeAlso: "the same idea, in general",
+    tryLab: "try it in the lab",
+    caseStudy: "case study",
   },
 
   nodes: {
@@ -414,6 +419,7 @@ export const exploreText = {
     },
   ...worldsNodes,
   ...netNodes,
+  ...atlasNodes,
   } satisfies Record<string, NodeText>,
 
   missions: {
@@ -435,6 +441,7 @@ export const exploreText = {
     },
     ...worldsMissions,
     ...netMissions,
+    ...atlasMissions,
   },
 
   challenges: {
@@ -465,7 +472,10 @@ export const exploreText = {
     },
     ...worldsChallenges,
     ...netChallenges,
+    ...atlasChallenges,
   } satisfies Record<string, ChallengeText>,
+
+  lab: labText,
 };
 
 export type ExploreText = typeof exploreText;

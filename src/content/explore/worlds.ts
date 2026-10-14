@@ -1,5 +1,6 @@
 // All explorable worlds. A world is a root node plus its missions. Node ids are
 // unique across worlds (validate-content R12), so progress can be shared.
+import { atlasMissions, atlasWorld } from "./atlas";
 import { cloudMissions, cloudWorld } from "./cloud";
 import { netMissions, netWorld } from "./net";
 import { socMissions, socWorld } from "./soc";
@@ -14,6 +15,7 @@ export interface World {
 }
 
 export const worlds: World[] = [
+  { id: atlasWorld.id, root: atlasWorld, missions: atlasMissions },
   { id: pipelineWorld.id, root: pipelineWorld, missions: pipelineMissions },
   { id: cloudWorld.id, root: cloudWorld, missions: cloudMissions },
   { id: socWorld.id, root: socWorld, missions: socMissions },

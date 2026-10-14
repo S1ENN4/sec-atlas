@@ -20,6 +20,10 @@ export interface WorldNode {
   /** 1-based lines of `code` that are the risky ones (turns the code into a challenge). */
   risky?: number[];
   children?: WorldNode[];
+  /** Node ids on other maps that explain the same idea in general terms. */
+  see?: string[];
+  /** Lab exercise id (src/content/explore/text.ts lab.exercises) to try this in practice. */
+  lab?: string;
 }
 
 const SHA = "<40-char-sha>";

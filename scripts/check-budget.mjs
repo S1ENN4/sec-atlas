@@ -227,6 +227,10 @@ import { gzipSync } from "node:zlib";
 // map" back-links on topic pages. Measured: first-load 14,874,902 / rsc 18,471,239 /
 // total 33,346,141 / all locales 95,059,616. Caps ~3% above that.
 
+// Network/OSI map, the Atlas Maps case study (33 places, 7 challenges) and the Atlas lab
+// (client component + simulation). Measured: rsc 19,101,954 / total 34,376,709 / all
+// locales 98,060,134 / JS raw 803,773 / JS gzip 251,460. Caps ~3% above that.
+
 const OUT_DIR = resolve(process.cwd(), "out");
 
 // Phase 3.A3 reconciliation (copy-code button on every <pre>): the new
@@ -241,12 +245,12 @@ const OUT_DIR = resolve(process.cwd(), "out");
 
 const CAPS = [
   { key: "first_load",  label: "first-load assets",     limit: 15_320_000, scope: "first_load" },
-  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 19_030_000, scope: "rsc_prefetch" },
-  { key: "total",       label: "total",                 limit: 34_350_000, scope: "total" },
-  { key: "all_locales", label: "all locales (sanity)", limit: 97_900_000, scope: "all_locales" },
+  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 19_680_000, scope: "rsc_prefetch" },
+  { key: "total",       label: "total",                 limit: 35_400_000, scope: "total" },
+  { key: "all_locales", label: "all locales (sanity)", limit: 101_000_000, scope: "all_locales" },
   { key: "css",         label: "CSS raw",               limit:    98_000, scope: "css" },
-  { key: "js",          label: "JS raw",                limit:   800_000, scope: "js" },
-  { key: "js_gz",       label: "JS gzip",               limit:   249_000, scope: "js_gz" },
+  { key: "js",          label: "JS raw",                limit:   828_000, scope: "js" },
+  { key: "js_gz",       label: "JS gzip",               limit:   259_000, scope: "js_gz" },
   { key: "index",       label: "out/index.html raw",    limit:   130_000, scope: "index" },
 ];
 

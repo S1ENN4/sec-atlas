@@ -1512,6 +1512,14 @@
       "t": "Un mapa guiado de lo básico a lo avanzado, con tu progreso.",
       "h": "100105ba"
     },
+    "nav.learnItems.lab": {
+      "t": "Laboratorio Atlas",
+      "h": "0aa7041c"
+    },
+    "nav.learnItems.labDesc": {
+      "t": "Rompe y arregla fallos reales en una simulación segura de la API y el sitio de una empresa.",
+      "h": "690397fa"
+    },
     "nav.learnItems.paths": {
       "t": "Rutas de estudio",
       "h": "9a6d602b"

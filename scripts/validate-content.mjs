@@ -32,6 +32,7 @@ import { levels } from "@/content/levels";
 import { roles } from "@/content/careers";
 import { flatten } from "@/content/explore/world";
 import { worlds } from "@/content/explore/worlds";
+import { labExercises } from "@/content/explore/lab";
 import { exploreText } from "@/content/explore/text";
 
 // ---------------------------------------------------------------------------
@@ -439,6 +440,17 @@ const liveDomainIds = allDomainIds.filter((id) => domains[id].status === "live")
     } else if (exploreText.challenges[n.id]) broken.push(`${n.id}: challenge text without risky lines`);
   }
   for (const id of Object.keys(exploreText.nodes)) if (!flat[id]) broken.push(`text.nodes.${id}: no such node`);
+  for (const n of Object.values(flat)) {
+    for (const s of n.see ?? []) if (!flat[s]) broken.push(`${n.id}: see "${s}" is not a node`);
+    if (n.lab && !exploreText.lab.exercises[n.lab]) broken.push(`${n.id}: lab "${n.lab}" has no text`);
+  }
+  for (const e of labExercises) {
+    if (!flat[e.node]) broken.push(`lab ${e.id}: unknown node "${e.node}"`);
+    if (!exploreText.lab.exercises[e.id]) broken.push(`lab ${e.id}: no text`);
+    const lines = (code) => code.split(String.fromCharCode(10)).length;
+    if (e.vulnLines.some((l) => l < 1 || l > lines(e.vulnerable))) broken.push(`lab ${e.id}: vulnerable line out of range`);
+    if (e.fixedLines.some((l) => l < 1 || l > lines(e.fixed))) broken.push(`lab ${e.id}: fixed line out of range`);
+  }
   const missionIds = new Set();
   for (const w of worlds) {
     for (const m of w.missions) {

@@ -41,6 +41,7 @@ export function SiteHeader({ locale, t }: { locale: Locale; t: Ui }) {
       label: n.learn,
       items: [
         { href: lp("/explore"), label: n.learnItems.explore, desc: n.learnItems.exploreDesc },
+        { href: lp("/lab"), label: n.learnItems.lab, desc: n.learnItems.labDesc },
         { href: lp("/journey"), label: n.learnItems.journey, desc: n.learnItems.journeyDesc },
         { href: lp("/paths"), label: n.learnItems.paths, desc: n.learnItems.pathsDesc },
         { href: lp("/scenarios"), label: n.learnItems.scenarios, desc: n.learnItems.scenariosDesc },

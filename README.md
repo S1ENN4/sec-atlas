@@ -42,6 +42,7 @@ O vault é saída gerada e somente leitura: edite as fontes e exporte de novo. A
 - Texto (inglês, traduzido para pt/es com a mesma checagem de drift, unidade estrita `explore`): `src/content/explore/text.ts`.
 - Regra R12 do validador confere nós, tópicos, linhas dos desafios e missões.
 - Há 4 mapas (`pipeline`, `cloud`, `soc`, `webapp`), agregados em `src/content/explore/worlds.ts`; os ids de nó são únicos entre mapas. Para criar outro, crie um arquivo de estrutura (como `cloud.ts`), o texto em `text-worlds.ts` e registre em `worlds.ts`; o validador e as traduções cobrem o resto.
+- O mapa `atlas` é um estudo de caso: a empresa inventada Atlas Maps (site, API, dados, GitHub, pipeline, nuvem, SOC, conformidade), com arquivos reais e falhas reais; cada nó liga à ideia geral nos outros mapas. O laboratório `/lab` (`src/components/atlas-lab.tsx`, `src/lib/atlas-lab.ts`) simula de forma segura, no navegador e com dados falsos, três falhas para quebrar, consertar e comprovar. Nada é executado no servidor.
 - Cada tópico mostra "veja no mapa" quando algum nó aponta para ele.
 
 ## Hospedagem

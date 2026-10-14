@@ -50,6 +50,8 @@ export const ui = {
       scenariosDesc: "Follow an incident step by step and see which control stops each move.",
       glossary: "Glossary",
       glossaryDesc: "Acronyms, standards and concepts in one place.",
+      lab: "Atlas lab",
+      labDesc: "Break and fix real flaws in a safe simulation of a company's API and website.",
       explore: "Explorable map",
       exploreDesc: "Living trees you can open: a commit to production, the cloud, a SOC and a web request.",
     },
