@@ -1,0 +1,131 @@
+/* Topic side summary — a vertical list of section headings that stays in view
+ * while the reader scrolls through the article.
+ *
+ * Layout decision: a sticky top strip on every breakpoint (the simpler of the
+ * two options the task offered). On narrow screens it reads as a compact TOC;
+ * on wide screens it sits flush left of the prose without competing with the
+ * hero. `top: 3.5rem` clears the sticky site header (h-14 = 56px).
+ *
+ * Active state is a CSS-only affordance. The component flips
+ * `data-active="true"` on the matching <a> via IntersectionObserver; the rule
+ * below is the entire visual contract. No re-render storms, no client-side
+ * class toggling beyond the single attribute per scroll.
+ *
+ * The smooth-scroll rule scopes `scroll-behavior: smooth` to topic pages that
+ * actually ship a side summary (uses `:has()`) so we do not affect any other
+ * route. The reduced-motion override honours the global globals.css policy
+ * of `scroll-behavior: auto` when the user opted out.
+ */
+
+.topic-side-summary {
+  position: sticky;
+  top: 3.5rem;
+  z-index: 20;
+  margin-block: -0.5rem 1.5rem;
+  padding: 0.625rem 0.875rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: color-mix(in oklab, var(--card) 92%, transparent);
+  backdrop-filter: blur(8px);
+  print: none;
+}
+
+.topic-side-summary-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+  margin-bottom: 0.375rem;
+}
+
+.topic-side-summary-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.topic-side-summary-list-item {
+  display: block;
+  min-width: 0;
+}
+
+.topic-side-summary-list-item--level-3 {
+  padding-left: 0.875rem;
+}
+
+.topic-side-summary-link {
+  display: inline-block;
+  max-width: 100%;
+  padding: 0.125rem 0.25rem;
+  border-radius: calc(var(--radius-md) - 4px);
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  color: var(--muted-foreground);
+  text-decoration: none;
+  transition:
+    color 120ms var(--ease-out-cubic),
+    background-color 120ms var(--ease-out-cubic);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.topic-side-summary-link:hover {
+  color: var(--foreground);
+  background-color: var(--accent);
+}
+
+.topic-side-summary-link:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  color: var(--foreground);
+}
+
+.topic-side-summary-link[data-active="true"] {
+  color: var(--primary);
+  background-color: color-mix(in oklab, var(--primary) 12%, transparent);
+  font-weight: 500;
+}
+
+.topic-side-summary-link[data-active="true"]::before {
+  content: "";
+  display: inline-block;
+  width: 0.375rem;
+  height: 0.375rem;
+  margin-right: 0.375rem;
+  border-radius: 999px;
+  background-color: var(--primary);
+  vertical-align: middle;
+  transform: translateY(-1px);
+}
+
+/* Scope smooth-scroll to pages that actually carry the summary. Falls back
+ * gracefully in browsers without support (instant scroll, same behaviour as
+ * today). The reduced-motion override lives below and matches the global
+ * policy declared in globals.css. */
+:where(html:has(.topic-side-summary)) {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(html:has(.topic-side-summary)) {
+    scroll-behavior: auto;
+    scroll-padding-top: 0;
+  }
+}
+
+/* When the article is narrower than md, drop the sticky backdrop — the strip
+ * becomes a flat block at the top of the prose, easier to read at arm's
+ * length on phones. */
+@media (max-width: 767px) {
+  .topic-side-summary {
+    position: static;
+    margin-block: 0 1.25rem;
+  }
+}

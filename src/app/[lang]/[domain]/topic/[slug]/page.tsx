@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, MoveRight } from "lucide-react";
+import { ArrowLeft, Clock, MoveRight } from "lucide-react";
 
 import { ContentNotice } from "@/components/content-notice";
 import { CopyCodeButton } from "@/components/copy-code-button";
@@ -9,8 +9,10 @@ import { Quiz } from "@/components/quiz";
 import { TopicBridges } from "@/components/topic-bridges";
 import { TopicIcon } from "@/components/topic-icon";
 import { TopicPathNav } from "@/components/topic-path-nav";
+import { TopicSideSummary } from "@/components/topic-side-summary";
 import { TopicSources } from "@/components/topic-sources";
 import { TopicToolbar } from "@/components/topic-toolbar";
+import { TopicVisitRecorder } from "@/components/topic-visit-recorder";
 import { Badge } from "@/components/ui/badge";
 import { domains, domainIdFromRoute, domainRouteSegments } from "@/content/registry";
 import { LOCALES, localePath } from "@/i18n/config";
@@ -18,6 +20,7 @@ import { localizeDomain } from "@/i18n/content";
 import { fmt } from "@/i18n/format";
 import { kindMetaFor } from "@/i18n/labels";
 import { alternatesFor, resolveLocale } from "@/i18n/server";
+import { estimateReadingMinutes, topicBodyText } from "@/lib/reading-time";
 
 export const dynamicParams = false;
 export const generateStaticParams = () =>
@@ -58,6 +61,7 @@ export default async function TopicPage({ params }: { params: Params }) {
   const meta = kindMetaFor(id, t)[topic.kind];
   const rels = domain.relations.filter((r) => r.source.slug === slug || r.target.slug === slug);
   const byslug = new Map(domain.topics.map((x) => [x.slug, x]));
+  const minutes = estimateReadingMinutes(topicBodyText(topic));
 
   return (
     <article data-domain={id} className="animate-page-enter mx-auto max-w-3xl px-4 pb-24 pt-10">
@@ -80,12 +84,17 @@ export default async function TopicPage({ params }: { params: Params }) {
               {fmt(t.topicPage.stageBadge, { stage: topic.stage })}
             </Badge>
           ) : null}
+          <Badge variant="outline" className="gap-1.5 font-mono text-xs font-normal" aria-label={`${minutes} ${t.topicPage.minRead}`}>
+            <Clock className="size-3" aria-hidden />
+            {minutes} {t.topicPage.minRead}
+          </Badge>
         </div>
         <div className="mt-4 flex items-center gap-3">
           <TopicIcon slug={topic.slug} className="size-8 text-primary" />
           <h1 className="text-3xl font-bold tracking-tight md:text-4xl">{topic.title}</h1>
         </div>
         <p className="mt-3 text-lg text-muted-foreground">{topic.tagline}</p>
+        <TopicVisitRecorder locale={locale} domain={id} slug={slug} />
       </header>
 
       <TopicToolbar domain={id} slug={slug} t={t.toolbar} />
@@ -103,9 +112,17 @@ export default async function TopicPage({ params }: { params: Params }) {
       </div>
 
       <div className="topic-prose mt-10 space-y-10">
-        {topic.sections.map((section) => (
+        <TopicSideSummary
+          items={topic.sections.map((s, i) => ({
+            id: `section-${i}`,
+            label: s.heading,
+            level: 2 as const,
+          }))}
+          t={{ summary: t.topicPage.summary }}
+        />
+        {topic.sections.map((section, i) => (
           <section key={section.heading}>
-            <h2>{section.heading}</h2>
+            <h2 id={`section-${i}`}>{section.heading}</h2>
             {section.body ? (
               <div className="t-body">
                 {section.body.map((p, i) => (

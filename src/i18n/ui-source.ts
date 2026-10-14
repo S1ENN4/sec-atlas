@@ -138,8 +138,10 @@ export const ui = {
     back: "back to the map",
     connections: "connections on the map",
     stageBadge: "stage: {stage}",
+    summary: "On this page",
     copy: "Copy",
     copied: "Copied!",
+    minRead: "min read",
   },
 
   toolbar: {
