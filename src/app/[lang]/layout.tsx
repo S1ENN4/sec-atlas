@@ -35,7 +35,20 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 export default async function LocaleLayout({ children, params }: { children: ReactNode; params: Promise<{ lang: string }> }) {
   const { locale, t } = await resolveLocale(params);
   return (
-    <html lang={HTML_LANG[locale]} className={`${inter.variable} ${jetbrains.variable}`}>
+    <html lang={HTML_LANG[locale]} className={`${inter.variable} ${jetbrains.variable}`} suppressHydrationWarning>
+      <head>
+        <script
+          // Inline anti-flash: set [data-theme] on <html> from localStorage["kb-theme"]
+          // before the first paint so users who toggled the theme (P2.5) don't see a
+          // dark → light flash on hard reload. Falls back to prefers-color-scheme.
+          // Wrapped in try/catch because localStorage is unavailable in some
+          // test runners and private-browsing modes. Must stay inline + under 300
+          // chars and must remain in <head> ahead of any stylesheet evaluation.
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem("kb-theme")||(window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.dataset.theme=t}catch(e){}})()`,
+          }}
+        />
+      </head>
       <body className="flex min-h-svh flex-col font-sans antialiased">
         <LocaleProvider locale={locale}>
           <a
