@@ -5,20 +5,20 @@
       "h": "47c9798d"
     },
     "questions.0.options.0": {
-      "t": "Si el pod se reinicia",
-      "h": "bd571986"
+      "t": "Si el pod se reinicia cuando deja de responder",
+      "h": "922861e8"
     },
     "questions.0.options.1": {
       "t": "Si el pod recibe tráfico",
       "h": "678a40ae"
     },
     "questions.0.options.2": {
-      "t": "En qué node corre",
-      "h": "e7898bb9"
+      "t": "En qué nodo del clúster se programa la ejecución del pod",
+      "h": "f5d6797d"
     },
     "questions.0.options.3": {
-      "t": "Cuánta memoria recibe",
-      "h": "062e41c8"
+      "t": "Cuánta memoria puede usar el pod",
+      "h": "38a47374"
     },
     "questions.0.q": {
       "t": "¿Qué decide una readiness probe?",
@@ -29,20 +29,20 @@
       "h": "43c24565"
     },
     "questions.1.options.0": {
-      "t": "Son decorativos",
-      "h": "adb52366"
+      "t": "Son campos decorativos que el planificador ignora",
+      "h": "7ab85678"
     },
     "questions.1.options.1": {
       "t": "El scheduling necesita los requests, y los limits evitan que un pod deje sin recursos a sus vecinos",
       "h": "41778bb3"
     },
     "questions.1.options.2": {
-      "t": "Aceleran las imágenes",
-      "h": "9675cddd"
+      "t": "Aceleran la descarga de imágenes al reservar ancho de banda",
+      "h": "51d4d57c"
     },
     "questions.1.options.3": {
-      "t": "Cifran la memoria",
-      "h": "a55a82c5"
+      "t": "Cifran la memoria que usa el contenedor",
+      "h": "bab23154"
     },
     "questions.1.q": {
       "t": "¿Por qué definir requests y limits de recursos?",
@@ -53,20 +53,20 @@
       "h": "71925425"
     },
     "questions.2.options.0": {
-      "t": "Comandos kubectl edit ad hoc",
-      "h": "90a22fb0"
+      "t": "Con comandos kubectl edit sueltos hechos por quien está de guardia",
+      "h": "86d80afe"
     },
     "questions.2.options.1": {
       "t": "Mediante control de versiones y un pipeline automatizado o un controller GitOps",
       "h": "f542ee42"
     },
     "questions.2.options.2": {
-      "t": "Por SSH a los nodes",
-      "h": "37d2a3a2"
+      "t": "Conectándose a los nodos por SSH y editando los manifiestos allí",
+      "h": "e5863ef4"
     },
     "questions.2.options.3": {
-      "t": "Solo desde el dashboard",
-      "h": "df3740a5"
+      "t": "Solo por el panel web, para que cada cambio quede registrado",
+      "h": "143bbcb9"
     },
     "questions.2.q": {
       "t": "¿Cómo deben llegar normalmente los cambios a un clúster?",

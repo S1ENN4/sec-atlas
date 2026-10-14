@@ -9,16 +9,16 @@
       "h": "f3822e92"
     },
     "questions.0.options.1": {
-      "t": "Cifrar dos veces con la misma clave",
-      "h": "c482a80e"
+      "t": "Cifrar dos veces los mismos datos con la misma clave, para doblar la protección",
+      "h": "0cf1151f"
     },
     "questions.0.options.2": {
-      "t": "Guardar la clave junto al dato en texto plano",
-      "h": "9f1114f4"
+      "t": "Guardar la clave de datos junto al dato, en texto plano, en el mismo bucket",
+      "h": "38765dab"
     },
     "questions.0.options.3": {
-      "t": "Usar solo claves públicas",
-      "h": "22ff8750"
+      "t": "Usar solo claves públicas para cifrar y descifrar todo el contenido",
+      "h": "bfab3d92"
     },
     "questions.0.q": {
       "t": "¿Qué es el cifrado de envelope?",
@@ -33,16 +33,16 @@
       "h": "2574640c"
     },
     "questions.1.options.1": {
-      "t": "Porque las claves expiran en horas",
-      "h": "42b2a257"
+      "t": "Porque las claves de KMS caducan en pocas horas por defecto",
+      "h": "b0cda1db"
     },
     "questions.1.options.2": {
-      "t": "Porque el KMS es lento",
-      "h": "7e2c24d1"
+      "t": "Porque KMS es lento y cualquier acceso extra retrasa la aplicación",
+      "h": "cb3c2939"
     },
     "questions.1.options.3": {
-      "t": "Porque las claves ocupan espacio",
-      "h": "2848f336"
+      "t": "Porque cada clave ocupa espacio y el almacenamiento es limitado",
+      "h": "5a9ca9a4"
     },
     "questions.1.q": {
       "t": "¿Por qué el acceso a la clave en el KMS es tan crítico?",
@@ -57,16 +57,16 @@
       "h": "e3bfedf4"
     },
     "questions.2.options.1": {
-      "t": "Compartir la clave por correo",
-      "h": "23b2618e"
+      "t": "Compartir la clave por correo con quien necesite usarla",
+      "h": "8aa352f7"
     },
     "questions.2.options.2": {
-      "t": "Nunca rotar",
-      "h": "560d63ce"
+      "t": "No rotar nunca, para no invalidar los datos ya cifrados",
+      "h": "cacc8264"
     },
     "questions.2.options.3": {
-      "t": "Usar la misma clave en todos los entornos",
-      "h": "853f5d85"
+      "t": "Usar la misma clave en todos los entornos para simplificar la operación",
+      "h": "b5090792"
     },
     "questions.2.q": {
       "t": "¿Qué práctica se recomienda para las claves?",

@@ -5,20 +5,20 @@
       "h": "04d38e93"
     },
     "questions.0.options.0": {
-      "t": "Permitir a requisição para que os usuários não sejam bloqueados",
-      "h": "007b255a"
+      "t": "Permitir a requisição, para os usuários não serem bloqueados por uma falha do serviço",
+      "h": "a361b963"
     },
     "questions.0.options.1": {
       "t": "Negar e registrar a falha (fail closed)",
       "h": "63664087"
     },
     "questions.0.options.2": {
-      "t": "Tentar de novo para sempre",
-      "h": "27987402"
+      "t": "Tentar de novo para sempre, até o serviço de autorização responder",
+      "h": "241e5f9b"
     },
     "questions.0.options.3": {
-      "t": "Devolver o texto da exceção",
-      "h": "7d39051b"
+      "t": "Devolver o texto da exceção ao chamador para ele decidir",
+      "h": "34ba61d5"
     },
     "questions.0.q": {
       "t": "Um serviço de autorização sofre timeout. O que o código chamador deve fazer?",
@@ -29,20 +29,20 @@
       "h": "abab0efb"
     },
     "questions.1.options.0": {
-      "t": "O stack trace, para ajudar na depuração",
-      "h": "e206def1"
+      "t": "O stack trace completo, para ajudar o usuário a relatar o problema",
+      "h": "c77a5c75"
     },
     "questions.1.options.1": {
       "t": "Uma mensagem genérica e um correlation id, com os detalhes mantidos nos logs",
       "h": "0ca4246e"
     },
     "questions.1.options.2": {
-      "t": "A consulta SQL que falhou",
-      "h": "fc8a7412"
+      "t": "A consulta SQL que falhou, para o time reproduzir",
+      "h": "14d88c17"
     },
     "questions.1.options.3": {
-      "t": "Nada, a conexão é encerrada",
-      "h": "64ec3f2a"
+      "t": "Nada: a conexão é derrubada sem nenhuma mensagem",
+      "h": "59d7b621"
     },
     "questions.1.q": {
       "t": "O que o cliente deve ver quando ocorre um erro inesperado?",
@@ -53,20 +53,20 @@
       "h": "6b470ace"
     },
     "questions.2.options.0": {
-      "t": "Capturar o erro e ignorá-lo",
-      "h": "ec4489de"
+      "t": "Capturar o erro e ignorá-lo, para o usuário não ver nenhuma falha",
+      "h": "6326bd3b"
     },
     "questions.2.options.1": {
       "t": "Executar as duas etapas em uma única transação para que tenham sucesso ou falhem juntas",
       "h": "51412a77"
     },
     "questions.2.options.2": {
-      "t": "Executar o crédito duas vezes",
-      "h": "7ffd397a"
+      "t": "Executar o passo de crédito duas vezes para garantir que foi aplicado",
+      "h": "89fa07a0"
     },
     "questions.2.options.3": {
-      "t": "Adicionar um sleep entre as etapas",
-      "h": "d387de72"
+      "t": "Adicionar uma pequena pausa entre os dois passos",
+      "h": "5ef53a69"
     },
     "questions.2.q": {
       "t": "O débito é concluído, o crédito lança um erro. Como evitar perder dinheiro?",

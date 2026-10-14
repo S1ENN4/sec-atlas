@@ -9,16 +9,16 @@
       "h": "13ac39e2"
     },
     "questions.0.options.1": {
-      "t": "Ejecutar transacciones financieras",
-      "h": "477ea96a"
+      "t": "Ejecutar transacciones financieras con garantías fuertes de consistencia",
+      "h": "260b25da"
     },
     "questions.0.options.2": {
-      "t": "Cifrar mensajes",
-      "h": "f3c22844"
+      "t": "Cifrar mensajes de extremo a extremo entre usuarios",
+      "h": "544ce251"
     },
     "questions.0.options.3": {
-      "t": "Servir páginas estáticas",
-      "h": "a5e2212d"
+      "t": "Servir páginas estáticas con baja latencia",
+      "h": "c569bb8b"
     },
     "questions.0.q": {
       "t": "¿Para qué sirve una base de datos vectorial?",
@@ -33,16 +33,16 @@
       "h": "b300b0ca"
     },
     "questions.1.options.1": {
-      "t": "Buscar solo por palabras exactas",
-      "h": "cb5d84a5"
+      "t": "Buscar solo palabras exactas, sin ninguna aproximación",
+      "h": "7680375e"
     },
     "questions.1.options.2": {
-      "t": "Un error de configuración",
-      "h": "e0e2a3de"
+      "t": "Un error de configuración que hace que la búsqueda devuelva resultados vacíos",
+      "h": "e312ed92"
     },
     "questions.1.options.3": {
-      "t": "Una búsqueda sin índice",
-      "h": "a5de2027"
+      "t": "Una búsqueda hecha sin ningún índice, comparando todo con todo",
+      "h": "92d75a14"
     },
     "questions.1.q": {
       "t": "¿Qué es la búsqueda aproximada (ANN)?",
@@ -57,16 +57,16 @@
       "h": "f8f9ea65"
     },
     "questions.2.options.1": {
-      "t": "Ninguno, los vectores no filtran datos",
-      "h": "d09877c7"
+      "t": "Ninguno, porque los vectores no pueden filtrar datos de los documentos",
+      "h": "278b7a15"
     },
     "questions.2.options.2": {
-      "t": "Dejar la API pública para facilitar",
-      "h": "81b30aeb"
+      "t": "Dejar la API pública para que las aplicaciones la usen con facilidad",
+      "h": "afea6524"
     },
     "questions.2.options.3": {
-      "t": "Guardar la clave en el índice",
-      "h": "9311ca61"
+      "t": "Guardar la clave de acceso dentro del propio índice",
+      "h": "9f46d119"
     },
     "questions.2.q": {
       "t": "¿Qué cuidado de seguridad aplica a la base de datos vectorial?",

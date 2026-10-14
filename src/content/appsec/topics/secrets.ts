@@ -34,7 +34,7 @@ export const secrets: Topic = {
         {
           language: "typescript",
           filename: "src/payments.ts",
-          code: "const stripe = new Stripe(\"sk_live_51H8xQ2eZvKYlo2CxT9mPq3\");\n                              // chave de produção no código",
+          code: "const stripe = new Stripe(\"sk_live_EXAMPLEEXAMPLE0000000\");\n                              // chave de produção no código",
         },
       ],
     },
@@ -47,7 +47,7 @@ export const secrets: Topic = {
         {
           language: "text",
           filename: "gitleaks report",
-          code: "Finding:  stripe-access-token\nSecret:   sk_live_51H8xQ2eZ...\nFile:     src/payments.ts:1\nCommit:   a1b2c3d\nEntropy:  4.71",
+          code: "Finding:  stripe-access-token\nSecret:   sk_live_EXAMPLEEXAM...\nFile:     src/payments.ts:1\nCommit:   a1b2c3d\nEntropy:  4.71",
         },
       ],
     },

@@ -29,8 +29,8 @@
       "h": "62157a53"
     },
     "sections.1.code.1.code": {
-      "t": "apiVersion: v1\nkind: Namespace\nmetadata:\n  name: payments\n---\napiVersion: rbac.authorization.k8s.io/v1\nkind: Role\nmetadata:\n  name: deployer\n  namespace: payments\nrules:\n  - apiGroups: [\"apps\"]\n    resources: [\"deployments\", \"replicasets\"]\n    verbs: [\"get\", \"list\", \"watch\", \"update\", \"patch\"]\n  - apiGroups: [\"\"]\n    resources: [\"pods\", \"pods/log\"]\n    verbs: [\"get\", \"list\", \"watch\"]\n---\napiVersion: rbac.authorization.k8s.io/v1\nkind: RoleBinding\nmetadata:\n  name: ci-deployer\n  namespace: payments\nsubjects:\n  - kind: ServiceAccount\n    name: ci-runner\n    namespace: ci\nroleRef:\n  kind: Role\n    name: deployer\n  apiGroup: rbac.authorization.k8s.io",
-      "h": "842e054e"
+      "t": "apiVersion: v1\nkind: Namespace\nmetadata:\n  name: payments\n---\napiVersion: rbac.authorization.k8s.io/v1\nkind: Role\nmetadata:\n  name: deployer\n  namespace: payments\nrules:\n  - apiGroups: [\"apps\"]\n    resources: [\"deployments\", \"replicasets\"]\n    verbs: [\"get\", \"list\", \"watch\", \"update\", \"patch\"]\n  - apiGroups: [\"\"]\n    resources: [\"pods\", \"pods/log\"]\n    verbs: [\"get\", \"list\", \"watch\"]\n---\napiVersion: rbac.authorization.k8s.io/v1\nkind: RoleBinding\nmetadata:\n  name: ci-deployer\n  namespace: payments\nsubjects:\n  - kind: ServiceAccount\n    name: ci-runner\n    namespace: ci\nroleRef:\n  kind: Role\n  name: deployer\n  apiGroup: rbac.authorization.k8s.io",
+      "h": "67ae2ab1"
     },
     "sections.1.code.1.filename": {
       "t": "rbac-corregido.yaml",
@@ -61,8 +61,8 @@
       "h": "2f3cb1ce"
     },
     "sections.3.body.0": {
-      "t": "Los admission controllers están entre la aceptación del request y la persistencia en etcd. Pueden validar (rechazar) o mutar (reescribir) el manifiesto. Kubernetes trae Pod Security Admission (PSA) integrado desde la 1.23, con profiles privileged, baseline y restricted. Para lógica más fina entran los policy engines:",
-      "h": "26f1b04e"
+      "t": "Los admission controllers están entre la aceptación de la petición y su persistencia en etcd. Pueden validar (rechazar) o mutar (reescribir) el manifiesto. Kubernetes incluye Pod Security Admission (PSA) integrado (beta en la 1.23, estable en la 1.25), con los perfiles privileged, baseline y restricted. Para una lógica más fina entran los motores de políticas:",
+      "h": "c8dfe12f"
     },
     "sections.3.bullets.0": {
       "t": "OPA Gatekeeper: usa Rego, sintaxis de policy as code, ideal para equipos con cultura de ingeniería de políticas",
@@ -77,8 +77,8 @@
       "h": "6a16f88d"
     },
     "sections.3.bullets.3": {
-      "t": "ValidatingAdmissionPolicy (KEP-3485): admission declarativo en CEL, estabilizándose en versiones recientes",
-      "h": "da09be1b"
+      "t": "ValidatingAdmissionPolicy: admisión declarativa escrita en CEL, estable desde Kubernetes 1.30",
+      "h": "9fda405f"
     },
     "sections.3.heading": {
       "t": "Admission control: política antes de que el pod suba",
@@ -93,8 +93,8 @@
       "h": "40580b1d"
     },
     "sections.4.code.0.code": {
-      "t": "apiVersion: apiserver.config.k8s.io/v1\nkind: EncryptionConfiguration\nresources:\n  - resources:\n      - secrets\n    providers:\n      - kms:\n          name: aws-kms\n          endpoint: unix:///var/run/kms-provider/socket\n          cachesize: 100\n          keyid: arn:aws:kms:us-east-1:111122223333:key/abcd-...\n      - identity: {}                  # fallback para leer datos antiguos",
-      "h": "e20940e9"
+      "t": "apiVersion: apiserver.config.k8s.io/v1\nkind: EncryptionConfiguration\nresources:\n  - resources:\n      - secrets\n    providers:\n      - kms:\n          apiVersion: v2\n          name: aws-kms\n          endpoint: unix:///var/run/kms-provider/socket\n          timeout: 3s\n      - identity: {}                  # fallback para leer datos antiguos",
+      "h": "40b892dd"
     },
     "sections.4.code.0.filename": {
       "t": "kube-apiserver --encryption-config",
@@ -105,8 +105,8 @@
       "h": "42ae5314"
     },
     "sections.5.body.0": {
-      "t": "Kubernetes es la frontera entre lo que produjo el pipeline y lo que va a correr en producción. Toda defensa que falló antes (imagen sin escanear, manifiesto sin policy) cae aquí: el admission control rechaza, la NetworkPolicy aísla, el RBAC limita el daño. Por otro lado, es la última oportunidad de corregir lo que pasó: PSP/PSA atrapa un manifiesto laxo, OPA atrapa labels incorrectos, los secrets en KMS neutralizan un dump de etcd.",
-      "h": "ae31f0a7"
+      "t": "Kubernetes es la frontera entre lo que produjo el pipeline y lo que correrá en producción. Toda defensa que falló antes (una imagen sin escanear, un manifiesto sin política) cae aquí: el admission control rechaza, la NetworkPolicy aísla, el RBAC limita el daño. También es la última oportunidad de corregir lo que se coló: el PSA detecta un manifiesto laxo, OPA detecta etiquetas erróneas, los secretos en KMS neutralizan un volcado de etcd.",
+      "h": "77f60964"
     },
     "sections.5.heading": {
       "t": "Dónde aparece",

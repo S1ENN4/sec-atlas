@@ -19,7 +19,7 @@ export const zeroTrust: Topic = {
       ],
     },
     {
-      heading: "Os principios",
+      heading: "Os princípios",
       body: [
         "NIST SP 800-207 define sete princípios que aparecem em toda implementação séria de zero-trust. Não são exclusivos, na prática são combinados, mas servem de régua para saber se a arquitetura em estudo é zero-trust ou apenas 'VPN com MFA'.",
       ],
@@ -34,7 +34,7 @@ export const zeroTrust: Topic = {
       ],
     },
     {
-      heading: "Na pratica",
+      heading: "Na prática",
       body: [
         "Zero-trust se concretiza em quatro frentes técnicas, quase sempre combinadas. O caminho costuma começar em uma frente (acesso de usuário, por exemplo) e expandir com o tempo até cobrir toda a malha de serviço.",
       ],
@@ -42,7 +42,7 @@ export const zeroTrust: Topic = {
         "identidade de workload: cada serviço carrega uma identidade curta (SPIFFE/SPIRE, mTLS automático via service mesh) e a política de autorização fala com a identidade, não com IP ou subnet",
         "acesso de usuário: substitui VPN por proxy de identidade (BeyondCorp, Cloudflare Access, Tailscale, Zscaler ZIA), e cada app publica policy declarativa",
         "segmentação de workload: network policy no cluster (Calico, Cilium), VPC lattice na AWS, ou service mesh garante que east-west traffic tem a política que cabe",
-        "policy engine central: Open Policy Agent, Cedar (AWS Verify Access) ou similar decide cada permissão; policy-as-code sai do PR para produção com revisão e teste",
+        "policy engine central: Open Policy Agent, Cedar (a linguagem de políticas da AWS, usada no Verified Permissions) ou similar decide cada permissão; policy-as-code sai do PR para produção com revisão e teste",
       ],
     },
     {

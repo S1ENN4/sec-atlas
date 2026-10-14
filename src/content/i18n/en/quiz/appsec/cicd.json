@@ -5,20 +5,20 @@
       "h": "6e74fc3b"
     },
     "questions.0.options.0": {
-      "t": "Because the pipeline is slow and needs more steps",
-      "h": "8baa92ac"
+      "t": "Because the pipeline is slow and the security checks need more stages",
+      "h": "6c78e913"
     },
     "questions.0.options.1": {
       "t": "Because every commit goes through it, so the control always runs, and early",
       "h": "08627e1d"
     },
     "questions.0.options.2": {
-      "t": "Because auditors require pipeline logs",
-      "h": "b17885e3"
+      "t": "Because auditors require the pipeline logs for every release",
+      "h": "446e86ca"
     },
     "questions.0.options.3": {
-      "t": "Because security tools only work in CI",
-      "h": "a046f23b"
+      "t": "Because security tools only work inside a CI environment",
+      "h": "e3e7c126"
     },
     "questions.0.q": {
       "t": "Why does security go inside the CI/CD pipeline, and not only at the end?",
@@ -29,20 +29,20 @@
       "h": "34b52587"
     },
     "questions.1.options.0": {
-      "t": "A coverage metrics dashboard",
-      "h": "7ca90ab6"
+      "t": "A dashboard with the test coverage metrics of each repository",
+      "h": "be332a47"
     },
     "questions.1.options.1": {
       "t": "A rule that blocks the pipeline from advancing if a criterion is not met",
       "h": "7fafc0c5"
     },
     "questions.1.options.2": {
-      "t": "A type of load test",
-      "h": "99e1666b"
+      "t": "A type of load test that measures the application's limit",
+      "h": "e0372b86"
     },
     "questions.1.options.3": {
-      "t": "A manual code review at the end of the sprint",
-      "h": "eefda541"
+      "t": "A manual code review done by the team at the end of the sprint",
+      "h": "c5748d77"
     },
     "questions.1.q": {
       "t": "What is a quality gate?",
@@ -53,20 +53,20 @@
       "h": "c9eb4cdb"
     },
     "questions.2.options.0": {
-      "t": "It running too many tests",
-      "h": "d13301b4"
+      "t": "The pipeline running too many tests and delaying the delivery of changes",
+      "h": "20fb60cd"
     },
     "questions.2.options.1": {
       "t": "Runners and tokens with excessive privilege being compromised",
       "h": "1921966f"
     },
     "questions.2.options.2": {
-      "t": "The build taking more than a minute",
-      "h": "d5583a62"
+      "t": "The build taking more than a minute and blocking the deploy queue",
+      "h": "538c72a4"
     },
     "questions.2.options.3": {
-      "t": "Using YAML instead of JSON",
-      "h": "4d10687a"
+      "t": "Using YAML instead of JSON in the configuration files",
+      "h": "ffb0cf4c"
     },
     "questions.2.q": {
       "t": "What is a classic risk of the CI/CD pipeline itself?",

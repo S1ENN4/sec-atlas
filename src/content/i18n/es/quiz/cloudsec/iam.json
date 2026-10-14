@@ -9,16 +9,16 @@
       "h": "29e8b6e5"
     },
     "questions.0.options.1": {
-      "t": "Dar acceso total y revocarlo después",
-      "h": "0abd6243"
+      "t": "Dar acceso total al principio y revocar lo que no se use después",
+      "h": "809107bf"
     },
     "questions.0.options.2": {
-      "t": "Usar una única cuenta compartida",
-      "h": "cbad66b8"
+      "t": "Usar una única cuenta compartida para todo el equipo de infraestructura",
+      "h": "f0da71c4"
     },
     "questions.0.options.3": {
-      "t": "Bloquear todo acceso a la nube",
-      "h": "160a4bee"
+      "t": "Bloquear todo acceso a la nube hasta que termine la auditoría anual",
+      "h": "c1b47f54"
     },
     "questions.0.q": {
       "t": "¿Qué significa mínimo privilegio (least privilege)?",
@@ -33,16 +33,16 @@
       "h": "76e38b17"
     },
     "questions.1.options.1": {
-      "t": "Los roles no necesitan policies",
-      "h": "b921c852"
+      "t": "Los roles no necesitan políticas para conceder acceso",
+      "h": "1843db09"
     },
     "questions.1.options.2": {
-      "t": "Los roles tienen permisos ilimitados",
-      "h": "abb9de7f"
+      "t": "Los roles tienen permisos ilimitados por defecto en cualquier cuenta",
+      "h": "e8f6f445"
     },
     "questions.1.options.3": {
-      "t": "Las claves estáticas son más rápidas",
-      "h": "10f6396f"
+      "t": "Las claves estáticas son más rápidas de usar en las cargas de trabajo",
+      "h": "718dca84"
     },
     "questions.1.q": {
       "t": "¿Por qué los roles son preferibles a los usuarios con clave estática para workloads?",
@@ -57,16 +57,16 @@
       "h": "0977c0ec"
     },
     "questions.2.options.1": {
-      "t": "Una condición de MFA",
-      "h": "df4ad149"
+      "t": "Una condición de MFA exigida antes de asumir el rol",
+      "h": "de7cbf98"
     },
     "questions.2.options.2": {
-      "t": "Una cuenta específica listada",
-      "h": "e1413fe4"
+      "t": "Una cuenta concreta listada como principal de confianza",
+      "h": "166261b6"
     },
     "questions.2.options.3": {
-      "t": "Un servicio de AWS como principal",
-      "h": "1cb95c7c"
+      "t": "Un servicio de AWS listado como principal del rol",
+      "h": "cce739c6"
     },
     "questions.2.q": {
       "t": "En una trust policy, ¿qué es una señal de alerta?",

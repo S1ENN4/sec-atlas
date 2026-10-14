@@ -9,16 +9,16 @@
       "h": "0b1ca2d6"
     },
     "questions.0.options.1": {
-      "t": "Las firmas son siempre estadísticas",
-      "h": "f96b53e3"
+      "t": "Las firmas son siempre estadísticas y las heurísticas siempre exactas",
+      "h": "763bf9af"
     },
     "questions.0.options.2": {
-      "t": "Las heurísticas solo funcionan con IP fija",
-      "h": "889c1afb"
+      "t": "Las heurísticas solo funcionan cuando el atacante usa una IP fija",
+      "h": "3aee32e6"
     },
     "questions.0.options.3": {
-      "t": "No hay diferencia práctica",
-      "h": "89bfcef1"
+      "t": "No hay diferencia práctica entre los dos enfoques",
+      "h": "8a865ae1"
     },
     "questions.0.q": {
       "t": "¿Cuál es la diferencia entre firmas y heurísticas?",
@@ -33,16 +33,16 @@
       "h": "73a87696"
     },
     "questions.1.options.1": {
-      "t": "Es igual a la media",
-      "h": "46de7e96"
+      "t": "Es igual a la media histórica, sin ninguna desviación",
+      "h": "a9164eaf"
     },
     "questions.1.options.2": {
-      "t": "El dato está cifrado",
-      "h": "5505443d"
+      "t": "El dato está cifrado y no se puede comparar",
+      "h": "3816c87d"
     },
     "questions.1.options.3": {
-      "t": "La ventana de tiempo es demasiado corta para analizar",
-      "h": "9161c3a8"
+      "t": "La ventana de tiempo es demasiado corta para analizarla",
+      "h": "e679627b"
     },
     "questions.1.q": {
       "t": "¿Qué significa un z-score alto para el conteo actual?",
@@ -57,16 +57,16 @@
       "h": "911cc6a4"
     },
     "questions.2.options.1": {
-      "t": "Escribirlas todas en un único script sin comentarios",
-      "h": "18c13404"
+      "t": "Escribir todas las detecciones en un único script sin comentarios",
+      "h": "ea5b41e4"
     },
     "questions.2.options.2": {
-      "t": "Editar reglas directamente en la consola de producción",
-      "h": "e0836f75"
+      "t": "Editar las reglas directamente en la consola de producción, sin revisión",
+      "h": "ce821c45"
     },
     "questions.2.options.3": {
-      "t": "Mantenerlas en hojas de cálculo",
-      "h": "4482ab1a"
+      "t": "Mantenerlas en hojas de cálculo en lugar de en un repositorio",
+      "h": "b6513dc9"
     },
     "questions.2.q": {
       "t": "¿Qué es tratar las detecciones como código?",

@@ -9,8 +9,8 @@
       "h": "b99aca3d"
     },
     "sections.0.body.2": {
-      "t": "las observaciones de este tema están fijadas a la revisión 2025-06-18 de la especificación del Model Context Protocol. Releases posteriores pueden introducir capacidades nuevas (sampling, elicitation, roots) y cambiar contratos existentes; verifica la versión de la spec que declara el SDK antes de adoptar.",
-      "h": "9e8932c9"
+      "t": "Este tema describe el modelo con handshake de las revisiones de 2024 y 2025 (como la 2025-06-18), que sigue siendo el más desplegado. La revisión actual, 2026-07-28, es stateless: elimina el handshake initialize y las sesiones, cada petición lleva la versión del protocolo y las capabilities del cliente en _meta, y los servidores exponen server/discover. Sampling, roots y logging están en desuso. Comprueba qué revisión declara tu SDK antes de adoptar.",
+      "h": "7daf8fdc"
     },
     "sections.0.heading": {
       "t": "Qué es",
@@ -29,16 +29,16 @@
       "h": "7e58aa9d"
     },
     "sections.1.body.3": {
-      "t": "server: el proceso que expone tools, resources y prompts. Puede correr localmente vía stdin/stdout, o remotamente vía HTTP con SSE. Es donde vive la lógica de integración.",
-      "h": "82ff8d98"
+      "t": "server: el proceso que expone tools, resources y prompts. Puede ejecutarse en local por stdin/stdout, o en remoto por Streamable HTTP (el antiguo transporte HTTP+SSE está en desuso). Aquí vive la lógica de integración.",
+      "h": "d47e1489"
     },
     "sections.1.body.4": {
-      "t": "El transporte local típico es stdio: el host lanza el server como subproceso y habla JSON-RPC línea a línea. En entornos distribuidos, el transporte es Streamable HTTP, con POST para mensajes y GET con text/event-stream para notificaciones.",
-      "h": "fffcf044"
+      "t": "El transporte local típico es stdio: el host lanza el server como subproceso y habla JSON-RPC línea a línea. En entornos distribuidos el transporte es Streamable HTTP: POST para los mensajes, con respuestas que pueden convertirse en un stream de eventos. La revisión 2026-07-28 sustituyó el GET de notificaciones por un único stream de larga duración abierto con subscriptions/listen.",
+      "h": "8e77bfda"
     },
     "sections.1.code.0.code": {
-      "t": "  Host (Claude Desktop, Cursor, VS Code, app propia)\n  |\n  | 1:N\n  |\n  +-- Client MCP (stdio)   <--> Server MCP local  (ej: filesystem)\n  +-- Client MCP (stdio)   <--> Server MCP local  (ej: postgres)\n  +-- Client MCP (HTTP+SSE)<--> Server MCP remoto (ej: API SaaS)\n\n  El transporte siempre es JSON-RPC 2.0. El estado de sesión es por conexión.",
-      "h": "e32279a8"
+      "t": "  Host (Claude Desktop, Cursor, VS Code, tu propia app)\n  |\n  | 1:N\n  |\n  +-- Cliente MCP (stdio)   <--> Servidor MCP local  (p. ej. filesystem)\n  +-- Cliente MCP (stdio)   <--> Servidor MCP local  (p. ej. postgres)\n  +-- Cliente MCP (Streamable HTTP)<--> Servidor MCP remoto (p. ej. API SaaS)\n\n  El transporte es siempre JSON-RPC 2.0. En las revisiones con handshake, el estado de sesión es por conexión.",
+      "h": "601da597"
     },
     "sections.1.code.0.filename": {
       "t": "topología típica",
@@ -77,8 +77,8 @@
       "h": "1a7f62a3"
     },
     "sections.3.body.0": {
-      "t": "Cuando el host levanta un client MCP, el primer mensaje es initialize, con la versión del protocolo y las capabilities del cliente. El server responde con sus propias capabilities. De ahí en adelante, el host llama a tools/list, resources/list y prompts/list para armar el catálogo disponible.",
-      "h": "b95d6676"
+      "t": "En las revisiones con handshake (hasta la 2025-11-25), el primer mensaje del cliente es initialize, con la versión del protocolo y las capabilities del cliente, y el server responde con las suyas. En la revisión 2026-07-28 no hay handshake: cada petición declara la versión y las capabilities, y el cliente puede llamar a server/discover para saber qué soporta el server. En ambos casos el host llama después a tools/list, resources/list y prompts/list para construir el catálogo disponible.",
+      "h": "38c61f21"
     },
     "sections.3.body.1": {
       "t": "Cada capacidad puede declarar listChanged: true, indicando que el server emitirá notifications/resources/list_changed o notifications/tools/list_changed cuando algo cambie. El host vuelve a listar y actualiza el catálogo sin necesidad de reiniciar.",
@@ -109,8 +109,8 @@
       "h": "55321a7a"
     },
     "sections.4.bullets.3": {
-      "t": "transporte flexible: stdio para local, HTTP+SSE para distribuido; el contrato sobre el cable es el mismo",
-      "h": "840aa893"
+      "t": "transporte flexible: stdio para local, Streamable HTTP para distribuido; el contrato por encima es el mismo",
+      "h": "90fa46a6"
     },
     "sections.4.heading": {
       "t": "Puntos fuertes",
@@ -121,12 +121,12 @@
       "h": "c351bbd4"
     },
     "sections.5.bullets.1": {
-      "t": "la spec evoluciona rápido: 2025-06-18 es la versión fijada de este tema; sampling/elicitation/roots son áreas en expansión",
-      "h": "c22587bf"
+      "t": "la spec evoluciona rápido: la revisión actual (2026-07-28) eliminó el handshake y dejó en desuso sampling, roots y logging; las versiones antiguas siguen en uso, así que comprueba lo que declara el SDK",
+      "h": "7e93ac80"
     },
     "sections.5.bullets.2": {
-      "t": "depurar en remoto es más difícil: HTTP+SSE esconde el ciclo de vida; los logs y los handlers son igual de importantes",
-      "h": "ff79783e"
+      "t": "depurar en remoto es más difícil: el stream HTTP oculta el ciclo de vida; los logs y los handlers son igual de importantes",
+      "h": "4d65b774"
     },
     "sections.5.bullets.3": {
       "t": "trust on first connect: el host necesita confiar en el server; la firma de paquetes y las allowlists siguen siendo responsabilidad del deployment",

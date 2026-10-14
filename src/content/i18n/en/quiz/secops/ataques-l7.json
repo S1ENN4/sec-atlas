@@ -9,16 +9,16 @@
       "h": "4adb201a"
     },
     "questions.0.options.1": {
-      "t": "A single huge request",
-      "h": "7da7eb3f"
+      "t": "A single huge request that uses up the origin's memory",
+      "h": "a78fa60e"
     },
     "questions.0.options.2": {
-      "t": "An increase in requests for static images",
-      "h": "90cd8ab3"
+      "t": "An increase in requests for images and static files",
+      "h": "7e5287a1"
     },
     "questions.0.options.3": {
-      "t": "A sudden drop in traffic",
-      "h": "6c4a801f"
+      "t": "A sudden, general drop in traffic volume",
+      "h": "83508bad"
     },
     "questions.0.q": {
       "t": "What is the typical signature of credential stuffing in the logs?",
@@ -33,16 +33,16 @@
       "h": "76a9f3aa"
     },
     "questions.1.options.1": {
-      "t": "Only 200 responses on a few paths",
-      "h": "0907fca4"
+      "t": "Only 200 responses concentrated on a few paths",
+      "h": "cef7aada"
     },
     "questions.1.options.2": {
-      "t": "TLS failures",
-      "h": "3c51500c"
+      "t": "TLS handshake failures coming from many clients",
+      "h": "9b3f3728"
     },
     "questions.1.options.3": {
-      "t": "Increased origin latency",
-      "h": "06c30646"
+      "t": "An increase in origin latency unrelated to the paths",
+      "h": "691cfc8d"
     },
     "questions.1.q": {
       "t": "What suggests forced browsing?",
@@ -57,16 +57,16 @@
       "h": "6e923dad"
     },
     "questions.2.options.1": {
-      "t": "Missing cache headers",
-      "h": "ab86ef87"
+      "t": "Missing cache headers in the application's responses",
+      "h": "9d50073d"
     },
     "questions.2.options.2": {
-      "t": "Many hits on the home page",
-      "h": "0ae93d3e"
+      "t": "Many repeated visits to the site's home page",
+      "h": "1eb31233"
     },
     "questions.2.options.3": {
-      "t": "Use of HTTP/2",
-      "h": "85817b87"
+      "t": "The use of the HTTP/2 protocol by clients",
+      "h": "d845384f"
     },
     "questions.2.q": {
       "t": "Which signal raises suspicion of SSRF?",

@@ -9,16 +9,16 @@
       "h": "cdf66f48"
     },
     "questions.0.options.1": {
-      "t": "Because silent sources are cheaper",
-      "h": "e450f065"
+      "t": "Because silent sources cost the platform less",
+      "h": "f071b2fe"
     },
     "questions.0.options.2": {
-      "t": "To reduce the number of logs",
-      "h": "2248a69e"
+      "t": "To reduce the number of logs stored in the SIEM",
+      "h": "9eab7069"
     },
     "questions.0.options.3": {
-      "t": "Because Prometheus requires it",
-      "h": "45bd7f9c"
+      "t": "Because Prometheus requires this kind of alert in order to work",
+      "h": "d050dc00"
     },
     "questions.0.q": {
       "t": "Why alert on a source that stopped sending events?",
@@ -33,16 +33,16 @@
       "h": "294b1ab1"
     },
     "questions.1.options.1": {
-      "t": "Encrypting traffic between services",
-      "h": "1a453f1c"
+      "t": "Encrypting the traffic between the platform's services",
+      "h": "d53f862a"
     },
     "questions.1.options.2": {
-      "t": "Replacing metrics",
-      "h": "19b4683c"
+      "t": "Replacing metrics with a more detailed record",
+      "h": "ee1f8030"
     },
     "questions.1.options.3": {
-      "t": "Counting how many users exist",
-      "h": "a89a1e13"
+      "t": "Counting how many users exist in each service",
+      "h": "06573a0c"
     },
     "questions.1.q": {
       "t": "What is the role of tracing in the platform?",
@@ -57,16 +57,16 @@
       "h": "a19cf0ac"
     },
     "questions.2.options.1": {
-      "t": "A generic statement about quality",
-      "h": "b61c6e63"
+      "t": "A generic sentence about quality, with no number or deadline",
+      "h": "c7d300a2"
     },
     "questions.2.options.2": {
-      "t": "Zero alerts per month",
-      "h": "77bce347"
+      "t": "Zero alerts per month, which shows that everything works",
+      "h": "309b2348"
     },
     "questions.2.options.3": {
-      "t": "CPU usage below 5%",
-      "h": "05f8efca"
+      "t": "CPU use below 5% in every service",
+      "h": "79c93037"
     },
     "questions.2.q": {
       "t": "What makes a good security platform SLO?",

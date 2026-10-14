@@ -9,16 +9,16 @@
       "h": "2c6673e8"
     },
     "questions.0.options.1": {
-      "t": "The network speed",
-      "h": "7e6a2b28"
+      "t": "The speed of the network between the edge and the SIEM",
+      "h": "63abd013"
     },
     "questions.0.options.2": {
-      "t": "The retention size in days",
-      "h": "2745e7ae"
+      "t": "The size of the retention, measured in days of history",
+      "h": "0782c2b4"
     },
     "questions.0.options.3": {
-      "t": "The number of WAF rules",
-      "h": "f99ad7b9"
+      "t": "The number of WAF rules active on each endpoint",
+      "h": "6e924f56"
     },
     "questions.0.q": {
       "t": "What is cardinality in telemetry?",
@@ -33,16 +33,16 @@
       "h": "8703250d"
     },
     "questions.1.options.1": {
-      "t": "Always query the entire raw data",
-      "h": "6b706dc6"
+      "t": "Always querying the entire raw data, with no aggregates",
+      "h": "96bdb4a6"
     },
     "questions.1.options.2": {
-      "t": "Disable retention",
-      "h": "9aec4860"
+      "t": "Turning off retention so the query has less data",
+      "h": "60b23df8"
     },
     "questions.1.options.3": {
-      "t": "Store everything in a single file",
-      "h": "194c5d98"
+      "t": "Keeping everything in a single large file to make reading easier",
+      "h": "d328dc84"
     },
     "questions.1.q": {
       "t": "Which technique greatly reduces the cost of detection queries?",
@@ -57,16 +57,16 @@
       "h": "d772d2ec"
     },
     "questions.2.options.1": {
-      "t": "All static image traffic",
-      "h": "09ccb8fb"
+      "t": "All traffic for images and static files",
+      "h": "cd88be13"
     },
     "questions.2.options.2": {
-      "t": "Only requests with status 200",
-      "h": "4e535535"
+      "t": "Only the requests that end with status 200",
+      "h": "d5e7837e"
     },
     "questions.2.options.3": {
-      "t": "None, everything can be sampled",
-      "h": "8e836495"
+      "t": "None: everything can be sampled without harming the detections",
+      "h": "48565b1c"
     },
     "questions.2.q": {
       "t": "Which events should always be kept in full, even with sampling?",

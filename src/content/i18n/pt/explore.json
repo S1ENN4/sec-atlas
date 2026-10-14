@@ -5124,6 +5124,10 @@
       "t": "Um mapa explorável de como o código chega à produção: abra o repositório, o workflow de CI, os scanners e o runtime, e veja onde cada controle de segurança mora.",
       "h": "2a4008fa"
     },
+    "ui.domainMapsTitle": {
+      "t": "Explore isto nos mapas interativos",
+      "h": "3b5d4672"
+    },
     "ui.enter": {
       "t": "abrir",
       "h": "5fc7e38b"

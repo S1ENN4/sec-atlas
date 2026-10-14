@@ -9,16 +9,16 @@
       "h": "f0fe1f7d"
     },
     "questions.0.options.1": {
-      "t": "Compressing the model",
-      "h": "ad80f426"
+      "t": "Compressing the model so it fits on a smaller machine",
+      "h": "ffd272ec"
     },
     "questions.0.options.2": {
-      "t": "Removing stop words from the prompt",
-      "h": "fc39f592"
+      "t": "Removing stop words from the prompt to save tokens",
+      "h": "925b7640"
     },
     "questions.0.options.3": {
-      "t": "Encrypting the corpus",
-      "h": "50875204"
+      "t": "Encrypting the corpus before sending it to the index",
+      "h": "cf591616"
     },
     "questions.0.q": {
       "t": "What is chunking?",
@@ -33,16 +33,16 @@
       "h": "d67e8190"
     },
     "questions.1.options.1": {
-      "t": "Always increase precision",
-      "h": "84dd283b"
+      "t": "Always increase precision, because each piece is more specific",
+      "h": "6d3243ab"
     },
     "questions.1.options.2": {
-      "t": "Eliminate the need for embeddings",
-      "h": "63de573f"
+      "t": "Remove the need to use embeddings in the search",
+      "h": "1a769346"
     },
     "questions.1.options.3": {
-      "t": "Prevent prompt injection",
-      "h": "ef524e88"
+      "t": "Prevent prompt injection, since the text becomes fragmented",
+      "h": "3ad28ae9"
     },
     "questions.1.q": {
       "t": "Chunks that are too small tend to...",
@@ -57,16 +57,16 @@
       "h": "9ddac43f"
     },
     "questions.2.options.1": {
-      "t": "To double the cost",
-      "h": "05112a6b"
+      "t": "Doubling the index cost with no benefit at all",
+      "h": "37ef8dbe"
     },
     "questions.2.options.2": {
-      "t": "To speed up search",
-      "h": "64dbc20b"
+      "t": "Speeding up the search, because there are fewer pieces to compare",
+      "h": "692c2da9"
     },
     "questions.2.options.3": {
-      "t": "To reduce the index size",
-      "h": "a3915b51"
+      "t": "Reducing the index size by sharing the repeated text",
+      "h": "c247a6e2"
     },
     "questions.2.q": {
       "t": "What is overlap between chunks for?",

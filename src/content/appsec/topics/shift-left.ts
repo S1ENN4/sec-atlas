@@ -25,7 +25,7 @@ export const shiftLeft: Topic = {
         {
           language: "yaml",
           filename: ".pre-commit-config.yaml",
-          code: "repos:\n  - repo: https://github.com/gitleaks/gitleaks\n    hooks:\n      - id: gitleaks          # barra a chave antes do commit\n  - repo: https://github.com/semgrep/semgrep\n    hooks:\n      - id: semgrep\n        args: [\"--config\", \"auto\"]   # as mesmas regras do CI",
+          code: "repos:\n  - repo: https://github.com/gitleaks/gitleaks\n    rev: v8.18.4              # fixe a versão\n    hooks:\n      - id: gitleaks          # barra a chave antes do commit\n  - repo: https://github.com/semgrep/semgrep\n    rev: v1.75.0\n    hooks:\n      - id: semgrep\n        args: [\"--config\", \"auto\"]   # as mesmas regras do CI",
         },
       ],
     },

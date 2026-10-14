@@ -9,16 +9,16 @@
       "h": "dd64b711"
     },
     "questions.0.options.1": {
-      "t": "Porque el bloqueo es ilegal",
-      "h": "40b5a4c0"
+      "t": "Porque el bloqueo está prohibido por la ley de protección de datos",
+      "h": "83bccf8a"
     },
     "questions.0.options.2": {
-      "t": "Porque el desafío nunca falla",
-      "h": "a2137131"
+      "t": "Porque el desafío nunca falla y siempre identifica al robot",
+      "h": "6c4c96d6"
     },
     "questions.0.options.3": {
-      "t": "Porque los bloqueos tumban el borde",
-      "h": "e1abae0d"
+      "t": "Porque los bloqueos tumban el borde y dejan el sitio fuera de servicio",
+      "h": "f8bd615e"
     },
     "questions.0.q": {
       "t": "¿Por qué empezar la contención con un desafío en lugar de un bloqueo?",
@@ -33,16 +33,16 @@
       "h": "6de4e46a"
     },
     "questions.1.options.1": {
-      "t": "El nombre del responsable del error",
-      "h": "5c8a5f30"
+      "t": "El nombre de la persona responsable del error, para orientarla",
+      "h": "5af744c5"
     },
     "questions.1.options.2": {
-      "t": "Solo el número de alertas",
-      "h": "cdadbca2"
+      "t": "Solo el número de alertas generadas durante el incidente",
+      "h": "f9501933"
     },
     "questions.1.options.3": {
-      "t": "Solo las lecciones positivas",
-      "h": "f8ce5275"
+      "t": "Solo las lecciones positivas, para mantener la moral del equipo",
+      "h": "103e52c4"
     },
     "questions.1.q": {
       "t": "¿Qué registra un postmortem sin culpa?",
@@ -57,16 +57,16 @@
       "h": "aa1a7653"
     },
     "questions.2.options.1": {
-      "t": "Apagar el WAF después del incidente",
-      "h": "de8607c8"
+      "t": "Apagar el WAF después del incidente para que no bloquee nada más",
+      "h": "aab25c6d"
     },
     "questions.2.options.2": {
-      "t": "Aumentar el TTL de todos los bloqueos",
-      "h": "3f69ca2c"
+      "t": "Aumentar de forma permanente el TTL de todos los bloqueos",
+      "h": "bf87f038"
     },
     "questions.2.options.3": {
-      "t": "Eliminar los logs de error",
-      "h": "656f3bdf"
+      "t": "Quitar los logs de error, que exponen detalles internos",
+      "h": "2b057e6b"
     },
     "questions.2.q": {
       "t": "¿Cuál de estos es un ejemplo de hardening en la aplicación?",

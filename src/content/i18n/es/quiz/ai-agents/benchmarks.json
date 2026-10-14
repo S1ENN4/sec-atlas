@@ -9,16 +9,16 @@
       "h": "a81ebe3d"
     },
     "questions.0.options.1": {
-      "t": "Un tipo de prompt",
-      "h": "892a096a"
+      "t": "Un tipo de prompt reutilizado en varios modelos",
+      "h": "fbf0c701"
     },
     "questions.0.options.2": {
-      "t": "Un log de producción",
-      "h": "bba76ef8"
+      "t": "Un registro de producción usado para auditar costes",
+      "h": "112e4246"
     },
     "questions.0.options.3": {
-      "t": "Una licencia",
-      "h": "86aaaa6a"
+      "t": "Una licencia que define cómo puede usarse el modelo",
+      "h": "68608468"
     },
     "questions.0.q": {
       "t": "¿Qué es un benchmark público?",
@@ -33,16 +33,16 @@
       "h": "d945504f"
     },
     "questions.1.options.1": {
-      "t": "Siempre son falsos",
-      "h": "a1a9a463"
+      "t": "Siempre son falsos, porque los proveedores manipulan los resultados",
+      "h": "c883fedb"
     },
     "questions.1.options.2": {
-      "t": "Son de pago",
-      "h": "35a1a13b"
+      "t": "Son de pago y solo están disponibles para grandes empresas",
+      "h": "1186b0ac"
     },
     "questions.1.options.3": {
-      "t": "No corren en computadoras",
-      "h": "6d2a34d7"
+      "t": "No se ejecutan en ordenadores comunes, solo en servidores dedicados",
+      "h": "117f9bfb"
     },
     "questions.1.q": {
       "t": "¿Cuál es la limitación de confiar solo en benchmarks públicos?",
@@ -57,16 +57,16 @@
       "h": "740ac24e"
     },
     "questions.2.options.1": {
-      "t": "Como prueba final de calidad en producción",
-      "h": "29e237fb"
+      "t": "Como prueba final de la calidad del sistema en producción",
+      "h": "e9e00360"
     },
     "questions.2.options.2": {
-      "t": "Para reemplazar los evals",
-      "h": "3d0f9373"
+      "t": "Para sustituir por completo los evals del proyecto",
+      "h": "fadcef36"
     },
     "questions.2.options.3": {
-      "t": "Para entrenar el modelo",
-      "h": "7428408d"
+      "t": "Para entrenar el modelo con los casos más difíciles",
+      "h": "91b5642a"
     },
     "questions.2.q": {
       "t": "¿Para qué sirven mejor los benchmarks?",

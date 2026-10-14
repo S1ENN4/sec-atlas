@@ -13,8 +13,8 @@
       "h": "e4458178"
     },
     "sections.1.code.0.code": {
-      "t": "repos:\n  - repo: https://github.com/gitleaks/gitleaks\n    hooks:\n      - id: gitleaks          # bloquea la clave antes del commit\n  - repo: https://github.com/semgrep/semgrep\n    hooks:\n      - id: semgrep\n        args: [\"--config\", \"auto\"]   # las mismas reglas del CI",
-      "h": "16c3239d"
+      "t": "repos:\n  - repo: https://github.com/gitleaks/gitleaks\n    rev: v8.18.4              # fija la versión\n    hooks:\n      - id: gitleaks          # bloquea la clave antes del commit\n  - repo: https://github.com/semgrep/semgrep\n    rev: v1.75.0\n    hooks:\n      - id: semgrep\n        args: [\"--config\", \"auto\"]   # las mismas reglas del CI",
+      "h": "fd0e7c5b"
     },
     "sections.1.code.0.filename": {
       "t": ".pre-commit-config.yaml",

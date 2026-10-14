@@ -5,20 +5,20 @@
       "h": "d5a4195f"
     },
     "questions.0.options.0": {
-      "t": "Es una lista de verificación gratuita",
-      "h": "79031506"
+      "t": "Es una lista de comprobación gratuita que cualquier equipo puede autoevaluar y publicar",
+      "h": "ed222c39"
     },
     "questions.0.options.1": {
       "t": "Es un estándar certificable para un sistema de gestión de seguridad de la información, auditado por un tercero",
       "h": "1e86ac35"
     },
     "questions.0.options.2": {
-      "t": "Se aplica solo a pagos",
-      "h": "e8462b78"
+      "t": "Solo se aplica a organizaciones que procesan pagos con tarjeta",
+      "h": "2d80b48b"
     },
     "questions.0.options.3": {
-      "t": "Es una ley",
-      "h": "6353ff68"
+      "t": "Es una regulación que toda empresa del sector debe cumplir por ley",
+      "h": "0377e328"
     },
     "questions.0.q": {
       "t": "¿Qué es cierto sobre la ISO/IEC 27001?",
@@ -29,20 +29,20 @@
       "h": "828d484a"
     },
     "questions.1.options.0": {
-      "t": "Mantener un programa separado para cada uno",
-      "h": "ab726129"
+      "t": "Ejecutar un programa, un equipo y un conjunto de evidencias distintos para cada marco",
+      "h": "8dcf5501"
     },
     "questions.1.options.1": {
       "t": "Usar uno como columna vertebral y mapear los demás a él, de modo que un control satisfaga muchos requisitos",
       "h": "5c76b18a"
     },
     "questions.1.options.2": {
-      "t": "Elegir el más largo",
-      "h": "5832ca37"
+      "t": "Adoptar el marco que tenga la lista más larga de controles",
+      "h": "e8975c97"
     },
     "questions.1.options.3": {
-      "t": "Evitarlos todos",
-      "h": "7f50ffe7"
+      "t": "Evitar los marcos y confiar en la experiencia del equipo",
+      "h": "cb568c75"
     },
     "questions.1.q": {
       "t": "¿Cuál es una forma sensata de usar varios marcos en conjunto?",
@@ -53,20 +53,20 @@
       "h": "67945ec7"
     },
     "questions.2.options.0": {
-      "t": "Las auditorías son ilegales",
-      "h": "31e21e16"
+      "t": "Las auditorías no pueden revisar controles técnicos",
+      "h": "10f57338"
     },
     "questions.2.options.1": {
       "t": "Las auditorías muestrean el pasado dentro de un alcance definido y no conocen sus amenazas específicas",
       "h": "e262ae73"
     },
     "questions.2.options.2": {
-      "t": "Los auditores no son competentes",
-      "h": "c705dcfa"
+      "t": "Los auditores no tienen la habilidad para evaluar cómo funcionan realmente los sistemas",
+      "h": "727e2a6a"
     },
     "questions.2.options.3": {
-      "t": "Los marcos son secretos",
-      "h": "1a587c16"
+      "t": "Los marcos son confidenciales y los auditores no pueden leerlos antes de la auditoría",
+      "h": "c2ac6428"
     },
     "questions.2.q": {
       "t": "¿Por qué aprobar una auditoría no es prueba de seguridad?",

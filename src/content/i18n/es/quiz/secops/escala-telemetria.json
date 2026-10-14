@@ -9,16 +9,16 @@
       "h": "2c6673e8"
     },
     "questions.0.options.1": {
-      "t": "La velocidad de la red",
-      "h": "7e6a2b28"
+      "t": "La velocidad de la red entre el borde y el SIEM",
+      "h": "63abd013"
     },
     "questions.0.options.2": {
-      "t": "El tamaño de la retención en días",
-      "h": "2745e7ae"
+      "t": "El tamaño de la retención, medido en días de historial",
+      "h": "0782c2b4"
     },
     "questions.0.options.3": {
-      "t": "El número de reglas de WAF",
-      "h": "f99ad7b9"
+      "t": "El número de reglas de WAF activas en cada endpoint",
+      "h": "6e924f56"
     },
     "questions.0.q": {
       "t": "¿Qué es la cardinalidad en telemetría?",
@@ -33,16 +33,16 @@
       "h": "8703250d"
     },
     "questions.1.options.1": {
-      "t": "Consultar siempre todo el dato crudo",
-      "h": "6b706dc6"
+      "t": "Consultar siempre todo el dato en bruto, sin ningún agregado",
+      "h": "96bdb4a6"
     },
     "questions.1.options.2": {
-      "t": "Desactivar la retención",
-      "h": "9aec4860"
+      "t": "Desactivar la retención para que la consulta tenga menos datos",
+      "h": "60b23df8"
     },
     "questions.1.options.3": {
-      "t": "Guardar todo en un único archivo",
-      "h": "194c5d98"
+      "t": "Guardar todo en un único archivo grande para facilitar la lectura",
+      "h": "d328dc84"
     },
     "questions.1.q": {
       "t": "¿Qué técnica reduce mucho el costo de las consultas de detección?",
@@ -57,16 +57,16 @@
       "h": "d772d2ec"
     },
     "questions.2.options.1": {
-      "t": "Todo el tráfico de imágenes estáticas",
-      "h": "09ccb8fb"
+      "t": "Todo el tráfico de imágenes y archivos estáticos",
+      "h": "cd88be13"
     },
     "questions.2.options.2": {
-      "t": "Solo las solicitudes con estado 200",
-      "h": "4e535535"
+      "t": "Solo las peticiones que terminan con estado 200",
+      "h": "d5e7837e"
     },
     "questions.2.options.3": {
-      "t": "Ninguno, todo se puede muestrear",
-      "h": "8e836495"
+      "t": "Ninguno: todo puede muestrearse sin perjudicar las detecciones",
+      "h": "48565b1c"
     },
     "questions.2.q": {
       "t": "¿Qué eventos deben guardarse siempre completos, incluso con muestreo?",

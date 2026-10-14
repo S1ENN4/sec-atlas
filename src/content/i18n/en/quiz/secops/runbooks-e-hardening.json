@@ -9,16 +9,16 @@
       "h": "dd64b711"
     },
     "questions.0.options.1": {
-      "t": "Because blocking is illegal",
-      "h": "40b5a4c0"
+      "t": "Because blocking is forbidden by data protection law",
+      "h": "83bccf8a"
     },
     "questions.0.options.2": {
-      "t": "Because the challenge never fails",
-      "h": "a2137131"
+      "t": "Because the challenge never fails and always identifies the bot",
+      "h": "6c4c96d6"
     },
     "questions.0.options.3": {
-      "t": "Because blocks take down the edge",
-      "h": "e1abae0d"
+      "t": "Because blocks bring the edge down and take the site offline",
+      "h": "f8bd615e"
     },
     "questions.0.q": {
       "t": "Why start containment with a challenge instead of a block?",
@@ -33,16 +33,16 @@
       "h": "6de4e46a"
     },
     "questions.1.options.1": {
-      "t": "The name of whoever made the mistake",
-      "h": "5c8a5f30"
+      "t": "The name of the person responsible for the error, so they can be coached",
+      "h": "5af744c5"
     },
     "questions.1.options.2": {
-      "t": "Only the number of alerts",
-      "h": "cdadbca2"
+      "t": "Only the number of alerts generated during the incident",
+      "h": "f9501933"
     },
     "questions.1.options.3": {
-      "t": "Only the positive lessons",
-      "h": "f8ce5275"
+      "t": "Only the positive lessons, to keep the team's morale up",
+      "h": "103e52c4"
     },
     "questions.1.q": {
       "t": "What does a blameless post-mortem record?",
@@ -57,16 +57,16 @@
       "h": "aa1a7653"
     },
     "questions.2.options.1": {
-      "t": "Turning off the WAF after the incident",
-      "h": "de8607c8"
+      "t": "Turning off the WAF after the incident so it blocks nothing more",
+      "h": "aab25c6d"
     },
     "questions.2.options.2": {
-      "t": "Increasing the TTL of all blocks",
-      "h": "3f69ca2c"
+      "t": "Increasing the TTL of all blocks permanently",
+      "h": "bf87f038"
     },
     "questions.2.options.3": {
-      "t": "Removing error logs",
-      "h": "656f3bdf"
+      "t": "Removing the error logs, which expose internal details",
+      "h": "2b057e6b"
     },
     "questions.2.q": {
       "t": "Which of these is an example of hardening in the application?",

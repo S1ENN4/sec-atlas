@@ -5,20 +5,20 @@
       "h": "d2eda410"
     },
     "questions.0.options.0": {
-      "t": "Para assustar os usuários",
-      "h": "71dadb09"
+      "t": "Para assustar os usuários e fazê-los relatar sites suspeitos com mais frequência",
+      "h": "b23c4486"
     },
     "questions.0.options.1": {
       "t": "Para encontrar ativos esquecidos ou sem dono antes de um atacante",
       "h": "b095804c"
     },
     "questions.0.options.2": {
-      "t": "Para aumentar o tráfego",
-      "h": "b8106e82"
+      "t": "Para aumentar o tráfego e medir como a infraestrutura reage à carga",
+      "h": "744746e3"
     },
     "questions.0.options.3": {
-      "t": "Para testar concorrentes",
-      "h": "a956b3c2"
+      "t": "Para testar os sistemas dos concorrentes e comparar a exposição deles com a sua",
+      "h": "0ccaba4c"
     },
     "questions.0.q": {
       "t": "Por que os defensores devem executar a descoberta de ativos contra os próprios domínios?",
@@ -29,20 +29,20 @@
       "h": "052c8ff8"
     },
     "questions.1.options.0": {
-      "t": "Uma queda de DNS",
-      "h": "68b5f90f"
+      "t": "Uma queda de DNS que deixa os serviços de uma empresa inacessíveis por algumas horas",
+      "h": "71dae692"
     },
     "questions.1.options.1": {
       "t": "Um registro DNS que aponta para um recurso de nuvem excluído, que outra pessoa pode reivindicar e servir a partir do seu domínio",
       "h": "02d5fe66"
     },
     "questions.1.options.2": {
-      "t": "Uma renovação de domínio",
-      "h": "294b45ad"
+      "t": "Uma renovação de domínio agendada que o move para outro registrador",
+      "h": "ddac5bc3"
     },
     "questions.1.options.3": {
-      "t": "Um novo TLD",
-      "h": "3487a705"
+      "t": "O lançamento de um novo domínio de topo que se sobrepõe ao seu",
+      "h": "5783cf2f"
     },
     "questions.1.q": {
       "t": "O que é um subdomain takeover?",
@@ -53,20 +53,20 @@
       "h": "4a0105e9"
     },
     "questions.2.options.0": {
-      "t": "Nada, varrer o mais rápido possível",
-      "h": "cc8259f1"
+      "t": "Nada: varrer o mais rápido possível para terminar antes de a janela fechar",
+      "h": "c218e428"
     },
     "questions.2.options.1": {
       "t": "O escopo e a taxa de requisições combinada",
       "h": "5c4a5c17"
     },
     "questions.2.options.2": {
-      "t": "Apenas a janela de tempo",
-      "h": "4434b5fb"
+      "t": "Só a janela de tempo, já que o escopo é uma sugestão",
+      "h": "8ecded1f"
     },
     "questions.2.options.3": {
-      "t": "Apenas a lista de IPs",
-      "h": "1892a89d"
+      "t": "Só a lista de endereços IP, seja qual for a taxa de requisições",
+      "h": "9a2d42ee"
     },
     "questions.2.q": {
       "t": "Em uma varredura autorizada, o que você deve respeitar?",

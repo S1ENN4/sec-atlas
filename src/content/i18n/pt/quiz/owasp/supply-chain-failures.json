@@ -5,20 +5,20 @@
       "h": "f41f6331"
     },
     "questions.0.options.0": {
-      "t": "Os SHAs são mais curtos que as tags",
-      "h": "34ad37d4"
+      "t": "SHAs são mais curtos que tags, então o arquivo de workflow fica mais fácil de ler",
+      "h": "032f29b0"
     },
     "questions.0.options.1": {
       "t": "Uma tag ou branch pode ser movida para outro código, um SHA de commit não",
       "h": "99c310fd"
     },
     "questions.0.options.2": {
-      "t": "Deixa o build mais rápido",
-      "h": "34a60eb1"
+      "t": "Deixa o build mais rápido porque a action é buscada de um cache",
+      "h": "aa3fc478"
     },
     "questions.0.options.3": {
-      "t": "O Git exige",
-      "h": "86211e4d"
+      "t": "O Git exige que toda referência seja um hash de commit completo",
+      "h": "f417dece"
     },
     "questions.0.q": {
       "t": "Por que as actions de CI devem ser fixadas em um SHA de commit completo?",
@@ -29,20 +29,20 @@
       "h": "f5a62790"
     },
     "questions.1.options.0": {
-      "t": "Quão rápido é o build",
-      "h": "8d838785"
+      "t": "Quão rápido é o build e qual etapa demora mais",
+      "h": "174be994"
     },
     "questions.1.options.1": {
       "t": "Se você é afetado quando uma vulnerabilidade em um componente é anunciada",
       "h": "dc01cf9b"
     },
     "questions.1.options.2": {
-      "t": "Quem escreveu cada linha de código",
-      "h": "66b1f998"
+      "t": "Quem escreveu cada linha de código e quando ela foi alterada pela última vez",
+      "h": "f77bb065"
     },
     "questions.1.options.3": {
-      "t": "Qual região de nuvem é mais barata",
-      "h": "80bbbf70"
+      "t": "Qual região da nuvem é a mais barata para rodar as cargas",
+      "h": "afef3eeb"
     },
     "questions.1.q": {
       "t": "A que um SBOM ajuda principalmente a responder?",
@@ -53,20 +53,20 @@
       "h": "a958f686"
     },
     "questions.2.options.0": {
-      "t": "Usar bibliotecas demais",
-      "h": "0da34d26"
+      "t": "Usar bibliotecas demais, a ponto de as atualizações ficarem impossíveis de acompanhar",
+      "h": "80a7cc3e"
     },
     "questions.2.options.1": {
       "t": "Um build baixando um pacote público com o mesmo nome de um interno",
       "h": "a6a2222e"
     },
     "questions.2.options.2": {
-      "t": "Duas bibliotecas com licenças incompatíveis",
-      "h": "324de6f1"
+      "t": "Duas bibliotecas com licenças incompatíveis na mesma aplicação",
+      "h": "f2f41656"
     },
     "questions.2.options.3": {
-      "t": "Um import circular",
-      "h": "dd76389a"
+      "t": "Uma importação circular entre dois módulos do mesmo pacote",
+      "h": "90389921"
     },
     "questions.2.q": {
       "t": "O que é dependency confusion?",

@@ -5,20 +5,20 @@
       "h": "fd661401"
     },
     "questions.0.options.0": {
-      "t": "No necesita monitoreo",
-      "h": "7d392df2"
+      "t": "No necesita monitorización, porque solo unos pocos usuarios ven la nueva versión",
+      "h": "641091bd"
     },
     "questions.0.options.1": {
       "t": "Una versión mala llega solo a una pequeña parte de los usuarios antes de ser detectada",
       "h": "d6749127"
     },
     "questions.0.options.2": {
-      "t": "Duplica la capacidad",
-      "h": "25840fdd"
+      "t": "Duplica la capacidad al ejecutar dos copias completas a la vez",
+      "h": "b7368fd2"
     },
     "questions.0.options.3": {
-      "t": "Evita las bases de datos",
-      "h": "43f3d349"
+      "t": "Evita usar una base de datos durante el lanzamiento",
+      "h": "fba34d0a"
     },
     "questions.0.q": {
       "t": "¿Cuál es la principal ventaja de un canary release?",
@@ -29,20 +29,20 @@
       "h": "1908ee97"
     },
     "questions.1.options.0": {
-      "t": "Para ahorrar espacio en disco",
-      "h": "4c23b341"
+      "t": "Para ahorrar espacio en disco quitando columnas en cuanto dejan de usarse",
+      "h": "656b64e8"
     },
     "questions.1.options.1": {
       "t": "Para que el código antiguo y el nuevo funcionen durante un rollout y un rollback sea posible",
       "h": "200e7b06"
     },
     "questions.1.options.2": {
-      "t": "Para evitar backups",
-      "h": "17e29586"
+      "t": "Para evitar copias de seguridad, ya que los datos antiguos quedan en las tablas nuevas",
+      "h": "4d00e70a"
     },
     "questions.1.options.3": {
-      "t": "Para renombrar tablas con más frecuencia",
-      "h": "1a2838f5"
+      "t": "Para renombrar tablas con más frecuencia sin afectar a la aplicación",
+      "h": "13ad3f4c"
     },
     "questions.1.q": {
       "t": "¿Por qué hacer los cambios de base de datos retrocompatibles (expand, migrate, contract)?",
@@ -53,20 +53,20 @@
       "h": "b949d16e"
     },
     "questions.2.options.0": {
-      "t": "Código y pruebas",
-      "h": "6c09ab6e"
+      "t": "El código y las pruebas, para que las pruebas se ejecuten sin el código",
+      "h": "94895227"
     },
     "questions.2.options.1": {
       "t": "El deploy del código del release de una funcionalidad",
       "h": "4e5a9f39"
     },
     "questions.2.options.2": {
-      "t": "Equipos de dev y ops",
-      "h": "2cea623a"
+      "t": "Los equipos de desarrollo y de operaciones, para que cada uno despliegue por su cuenta",
+      "h": "9099c323"
     },
     "questions.2.options.3": {
-      "t": "Ramas y tags",
-      "h": "589ed1fa"
+      "t": "Las ramas y las etiquetas del sistema de control de versiones",
+      "h": "8101bfe6"
     },
     "questions.2.q": {
       "t": "¿Qué separan las feature flags?",

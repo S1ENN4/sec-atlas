@@ -5,20 +5,20 @@
       "h": "2367b8bb"
     },
     "questions.0.options.0": {
-      "t": "Uma forma mais rápida de fazer prompts",
-      "h": "eeb82b37"
+      "t": "Um jeito mais rápido de escrever prompts com modelos e atalhos",
+      "h": "94d81e6c"
     },
     "questions.0.options.1": {
       "t": "Instruções ocultas em conteúdo que o agent lê, que ele pode seguir como se o usuário as tivesse escrito",
       "h": "6edcc8e1"
     },
     "questions.0.options.2": {
-      "t": "Um erro de sintaxe",
-      "h": "52e22af3"
+      "t": "Um erro de sintaxe que aparece quando um prompt é montado incorretamente",
+      "h": "51a69df8"
     },
     "questions.0.options.3": {
-      "t": "Um tipo de teste unitário",
-      "h": "3f289267"
+      "t": "Um tipo de teste unitário que verifica como o modelo responde",
+      "h": "cef80b90"
     },
     "questions.0.q": {
       "t": "O que é prompt injection contra um agent de código?",
@@ -29,20 +29,20 @@
       "h": "0b54a426"
     },
     "questions.1.options.0": {
-      "t": "Comprimir logs",
-      "h": "45a1d5e0"
+      "t": "Comprimir logs para ocuparem menos espaço no repositório",
+      "h": "dd6153c6"
     },
     "questions.1.options.1": {
       "t": "Registrar um pacote malicioso com um nome que uma IA inventou, para que as instalações desse nome recebam malware",
       "h": "3a9fc88e"
     },
     "questions.1.options.2": {
-      "t": "Uma técnica de rate limiting",
-      "h": "877c08da"
+      "t": "Uma técnica de limite de taxa que desacelera requisições repetidas",
+      "h": "68661551"
     },
     "questions.1.options.3": {
-      "t": "Uma estratégia de merge do git",
-      "h": "38062150"
+      "t": "Uma estratégia de merge do git que reúne muitos commits em um",
+      "h": "4fdd8b00"
     },
     "questions.1.q": {
       "t": "O que é slopsquatting?",
@@ -53,20 +53,20 @@
       "h": "3d66d6a5"
     },
     "questions.2.options.0": {
-      "t": "Credenciais de admin completas para que ele nunca seja bloqueado",
-      "h": "bc4f3b70"
+      "t": "Credenciais de administrador completas, para o agente nunca ser bloqueado e terminar a tarefa",
+      "h": "54f8239b"
     },
     "questions.2.options.1": {
       "t": "Um container com apenas o projeto montado, sem credenciais de nuvem, permissões estreitas de comandos e aprovações para ações arriscadas",
       "h": "190168be"
     },
     "questions.2.options.2": {
-      "t": "Executar como root",
-      "h": "0bbbcdad"
+      "t": "Rodar o agente como root, para ele ter o acesso de que precisa",
+      "h": "af338e90"
     },
     "questions.2.options.3": {
-      "t": "Desativar os logs",
-      "h": "0e79e910"
+      "t": "Desativar os logs, para dados sensíveis nunca chegarem a um arquivo",
+      "h": "75cf0313"
     },
     "questions.2.q": {
       "t": "Qual configuração melhor limita o dano de um agent comprometido ou enganado?",

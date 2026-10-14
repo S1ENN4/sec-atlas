@@ -9,16 +9,16 @@
       "h": "2b263d1d"
     },
     "questions.0.options.1": {
-      "t": "Ejecuta consultas SQL",
-      "h": "21df0f48"
+      "t": "Ejecuta consultas SQL directamente sobre los datos de la empresa",
+      "h": "ebcc4393"
     },
     "questions.0.options.2": {
-      "t": "Verifica hechos automáticamente",
-      "h": "fc02988c"
+      "t": "Comprueba automáticamente si cada hecho de la respuesta es verdadero",
+      "h": "b9060e73"
     },
     "questions.0.options.3": {
-      "t": "Mantiene memoria permanente entre sesiones",
-      "h": "7c319ceb"
+      "t": "Mantiene una memoria permanente de las conversaciones entre sesiones",
+      "h": "0ba24d79"
     },
     "questions.0.q": {
       "t": "¿Qué hace fundamentalmente un LLM?",
@@ -33,16 +33,16 @@
       "h": "4a82936f"
     },
     "questions.1.options.1": {
-      "t": "Un error de sintaxis",
-      "h": "5c2d3316"
+      "t": "Un error de sintaxis que aparece cuando el prompt se construye mal",
+      "h": "485320d7"
     },
     "questions.1.options.2": {
-      "t": "Un tipo de compresión",
-      "h": "1f96a821"
+      "t": "Un tipo de compresión aplicado al contexto del modelo",
+      "h": "88d7b5be"
     },
     "questions.1.options.3": {
-      "t": "Una técnica de entrenamiento",
-      "h": "b34fe9d0"
+      "t": "Una técnica de entrenamiento para mejorar el rendimiento",
+      "h": "a3faa38e"
     },
     "questions.1.q": {
       "t": "¿Qué es la prompt injection?",
@@ -57,16 +57,16 @@
       "h": "f3d432e4"
     },
     "questions.2.options.1": {
-      "t": "Porque siempre miente",
-      "h": "31fa320a"
+      "t": "Porque siempre miente a propósito para engañar al usuario",
+      "h": "4f361d21"
     },
     "questions.2.options.2": {
-      "t": "Porque las respuestas están cifradas",
-      "h": "483e0837"
+      "t": "Porque las respuestas están cifradas y solo él puede leerlas",
+      "h": "adbeca04"
     },
     "questions.2.options.3": {
-      "t": "Porque no entiende portugués",
-      "h": "471b3168"
+      "t": "Porque no entiende bien el idioma portugués",
+      "h": "607add49"
     },
     "questions.2.q": {
       "t": "¿Por qué no se puede confiar ciegamente en la salida del modelo?",

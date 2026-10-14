@@ -9,16 +9,16 @@
       "h": "7d0a1ebd"
     },
     "questions.0.options.1": {
-      "t": "Protects runtime processes inside containers",
-      "h": "092c0bc3"
+      "t": "Protects the processes inside the containers at runtime",
+      "h": "11fd3726"
     },
     "questions.0.options.2": {
-      "t": "Encrypts volumes",
-      "h": "bd88fd6f"
+      "t": "Encrypts the volumes and backups of every account in the organization",
+      "h": "b9ce727a"
     },
     "questions.0.options.3": {
-      "t": "Manages human identities",
-      "h": "9a25b7ca"
+      "t": "Manages human identities and the lifecycle of access",
+      "h": "3ecec73f"
     },
     "questions.0.q": {
       "t": "What does CSPM do?",
@@ -33,16 +33,16 @@
       "h": "97c6893e"
     },
     "questions.1.options.1": {
-      "t": "A suspicious process in a container",
-      "h": "a496126c"
+      "t": "A suspicious process opening a connection inside a container",
+      "h": "071f1cb0"
     },
     "questions.1.options.2": {
-      "t": "A SQL injection",
-      "h": "d407d55a"
+      "t": "A SQL injection in an application endpoint",
+      "h": "990f9486"
     },
     "questions.1.options.3": {
-      "t": "A package with a CVE in the code",
-      "h": "a5a19c47"
+      "t": "A package with a known CVE inside the application code",
+      "h": "2c75a3e7"
     },
     "questions.1.q": {
       "t": "Which finding is typical of CSPM?",
@@ -57,16 +57,16 @@
       "h": "fcf92e48"
     },
     "questions.2.options.1": {
-      "t": "Network latency increasing",
-      "h": "f802cd3d"
+      "t": "Network latency between two regions rising without warning",
+      "h": "d279bca4"
     },
     "questions.2.options.2": {
-      "t": "Cloud cost going down",
-      "h": "cc9294e3"
+      "t": "The monthly cloud cost falling after a capacity adjustment",
+      "h": "cffdf2c8"
     },
     "questions.2.options.3": {
-      "t": "A DNS error",
-      "h": "32b87601"
+      "t": "A DNS resolution error in an internal service",
+      "h": "1e488312"
     },
     "questions.2.q": {
       "t": "What is configuration drift?",

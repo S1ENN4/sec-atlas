@@ -9,16 +9,16 @@
       "h": "b7e63df0"
     },
     "questions.0.options.1": {
-      "t": "Entrenar un modelo desde cero con tus datos",
-      "h": "36525bf0"
+      "t": "Entrenar un modelo desde cero con tus propios datos internos",
+      "h": "cbc270ef"
     },
     "questions.0.options.2": {
-      "t": "Un tipo de base de datos relacional",
-      "h": "7be0c37f"
+      "t": "Un tipo de base de datos relacional optimizada para texto",
+      "h": "0789cc1f"
     },
     "questions.0.options.3": {
-      "t": "Un protocolo de red",
-      "h": "33eef5e2"
+      "t": "Un protocolo de red para que el modelo hable con otros servicios",
+      "h": "3a278dfd"
     },
     "questions.0.q": {
       "t": "¿Qué es RAG?",
@@ -33,16 +33,16 @@
       "h": "77d40b24"
     },
     "questions.1.options.1": {
-      "t": "Que el modelo se quede sin memoria RAM",
-      "h": "a8f37ac3"
+      "t": "Que el modelo se quede sin memoria RAM al cargar los documentos",
+      "h": "711c0f7d"
     },
     "questions.1.options.2": {
-      "t": "Exceso de CPU",
-      "h": "449de5de"
+      "t": "Un exceso de uso de CPU durante la búsqueda en los documentos",
+      "h": "622cd993"
     },
     "questions.1.options.3": {
-      "t": "Falta de HTTPS en el tokenizer",
-      "h": "c25b6e83"
+      "t": "La falta de HTTPS en el tokenizador que prepara el texto",
+      "h": "cd7caed4"
     },
     "questions.1.q": {
       "t": "¿Qué riesgo de seguridad es típico de RAG?",
@@ -57,16 +57,16 @@
       "h": "d2e888b6"
     },
     "questions.2.options.1": {
-      "t": "Porque hace al modelo más grande",
-      "h": "9355b206"
+      "t": "Porque hace el modelo más grande y más capaz de recordar hechos",
+      "h": "5a27e636"
     },
     "questions.2.options.2": {
-      "t": "Porque apaga la generación",
-      "h": "7a519e94"
+      "t": "Porque apaga la generación de texto y solo devuelve documentos",
+      "h": "8e3eda64"
     },
     "questions.2.options.3": {
-      "t": "Porque borra el entrenamiento",
-      "h": "d7e0e265"
+      "t": "Porque borra el entrenamiento original del modelo",
+      "h": "5aa7fc60"
     },
     "questions.2.q": {
       "t": "¿Por qué RAG ayuda a reducir la alucinación?",

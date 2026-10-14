@@ -5,20 +5,20 @@
       "h": "8c1564cb"
     },
     "questions.0.options.0": {
-      "t": "Indicadores como los hashes",
-      "h": "36cf22e3"
+      "t": "Indicadores como hashes de archivos y direcciones IP, que el atacante rara vez cambia",
+      "h": "8973f7c7"
     },
     "questions.0.options.1": {
       "t": "Técnicas y comportamiento, porque son costosos de cambiar para un atacante",
       "h": "6e03ffd1"
     },
     "questions.0.options.2": {
-      "t": "Ambos son igual de duraderos",
-      "h": "ff44e99a"
+      "t": "Ambas son igual de duraderas, ya que los atacantes reutilizan todo lo que construyen",
+      "h": "f11618db"
     },
     "questions.0.options.3": {
-      "t": "Ninguno es útil",
-      "h": "08286ded"
+      "t": "Ninguna: la inteligencia es demasiado lenta para ayudar en las detecciones reales",
+      "h": "4e703ac0"
     },
     "questions.0.q": {
       "t": "¿Contra qué es más duradero defenderse: indicadores o técnicas?",
@@ -29,20 +29,20 @@
       "h": "1ddd1ffe"
     },
     "questions.1.options.0": {
-      "t": "Nada",
-      "h": "44819483"
+      "t": "El logotipo de un proveedor y una captura de pantalla que muestra de dónde vino la afirmación",
+      "h": "273f5986"
     },
     "questions.1.options.1": {
       "t": "Una fuente, una fecha de vigencia y un nivel de confianza declarado",
       "h": "08756720"
     },
     "questions.1.options.2": {
-      "t": "El logo de un proveedor",
-      "h": "7ca2fdd7"
+      "t": "Una larga lista de indicadores de compromiso, para mostrar lo completa que es",
+      "h": "f20d8a87"
     },
     "questions.1.options.3": {
-      "t": "Una larga lista de IOCs",
-      "h": "93ecff24"
+      "t": "Una etiqueta de confidencial, para que nadie ajeno al equipo la cuestione",
+      "h": "f2f748d7"
     },
     "questions.1.q": {
       "t": "¿Qué debe acompañar a una afirmación de inteligencia de amenazas?",
@@ -53,20 +53,20 @@
       "h": "475be450"
     },
     "questions.2.options.0": {
-      "t": "Un SIEM",
-      "h": "68632958"
+      "t": "Un SIEM que recoge y correlaciona eventos de muchas fuentes de logs",
+      "h": "615b429b"
     },
     "questions.2.options.1": {
       "t": "Un lenguaje estándar para describir inteligencia y un protocolo para intercambiarla",
       "h": "dee01efe"
     },
     "questions.2.options.2": {
-      "t": "Un motor antivirus",
-      "h": "fa237650"
+      "t": "Un motor antivirus que analiza archivos y señala malware conocido",
+      "h": "acd4b0c8"
     },
     "questions.2.options.3": {
-      "t": "Un proveedor de nube",
-      "h": "a1d0104d"
+      "t": "Un servicio gestionado de un proveedor de nube para guardar indicadores",
+      "h": "a7a9540e"
     },
     "questions.2.q": {
       "t": "¿Qué proporcionan STIX y TAXII?",

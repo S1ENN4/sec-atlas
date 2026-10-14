@@ -9,16 +9,16 @@
       "h": "c079cefc"
     },
     "questions.0.options.1": {
-      "t": "Delete the user and all logs",
-      "h": "dcf2d849"
+      "t": "Deleting the user and all related logs to clean the environment",
+      "h": "3fb58ef1"
     },
     "questions.0.options.2": {
-      "t": "Ignore it until confirming with the attacker",
-      "h": "2c0cd34b"
+      "t": "Ignoring the alert until the activity is confirmed with the attacker",
+      "h": "2dd6b34e"
     },
     "questions.0.options.3": {
-      "t": "Restart all instances",
-      "h": "d0410dba"
+      "t": "Restarting all the account's instances to stop the access",
+      "h": "b6f3769f"
     },
     "questions.0.q": {
       "t": "On a leaked access key alert, what is a good first step?",
@@ -33,16 +33,16 @@
       "h": "88e227d6"
     },
     "questions.1.options.1": {
-      "t": "Because terminating is more expensive",
-      "h": "ea2b5176"
+      "t": "Because terminating the instance is more expensive than isolating it",
+      "h": "3f608a87"
     },
     "questions.1.options.2": {
-      "t": "Because instances cannot be terminated",
-      "h": "8f7f7bb2"
+      "t": "Because suspicious instances cannot be terminated in the cloud",
+      "h": "3dbd124a"
     },
     "questions.1.options.3": {
-      "t": "Because isolating speeds up the network",
-      "h": "84c18c72"
+      "t": "Because isolating the instance speeds up the other services' network",
+      "h": "2de6791f"
     },
     "questions.1.q": {
       "t": "Why isolate a suspicious instance before terminating it?",
@@ -57,16 +57,16 @@
       "h": "b72dc07b"
     },
     "questions.2.options.1": {
-      "t": "The monthly cloud cost",
-      "h": "e9acd4ad"
+      "t": "The average monthly cloud cost for each team",
+      "h": "5442dd9b"
     },
     "questions.2.options.2": {
-      "t": "The number of alerts per day",
-      "h": "028dfa0c"
+      "t": "The average number of alerts generated per day",
+      "h": "9980e7c1"
     },
     "questions.2.options.3": {
-      "t": "API latency",
-      "h": "362c4efb"
+      "t": "The average latency of the APIs during incidents",
+      "h": "0bafe8ac"
     },
     "questions.2.q": {
       "t": "What does MTTR measure?",

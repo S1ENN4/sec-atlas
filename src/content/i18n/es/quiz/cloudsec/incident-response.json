@@ -9,16 +9,16 @@
       "h": "c079cefc"
     },
     "questions.0.options.1": {
-      "t": "Borrar el usuario y todos los logs",
-      "h": "dcf2d849"
+      "t": "Borrar al usuario y todos los logs relacionados para limpiar el entorno",
+      "h": "3fb58ef1"
     },
     "questions.0.options.2": {
-      "t": "Ignorarla hasta confirmar con el atacante",
-      "h": "2c0cd34b"
+      "t": "Ignorar la alerta hasta confirmar la actividad con el atacante",
+      "h": "2dd6b34e"
     },
     "questions.0.options.3": {
-      "t": "Reiniciar todas las instancias",
-      "h": "d0410dba"
+      "t": "Reiniciar todas las instancias de la cuenta para cortar el acceso",
+      "h": "b6f3769f"
     },
     "questions.0.q": {
       "t": "Ante una alerta de clave de acceso filtrada, ¿cuál es un buen primer paso?",
@@ -33,16 +33,16 @@
       "h": "88e227d6"
     },
     "questions.1.options.1": {
-      "t": "Porque terminarla es más caro",
-      "h": "ea2b5176"
+      "t": "Porque terminar la instancia es más caro que aislarla",
+      "h": "3f608a87"
     },
     "questions.1.options.2": {
-      "t": "Porque las instancias no se pueden terminar",
-      "h": "8f7f7bb2"
+      "t": "Porque las instancias sospechosas no se pueden terminar en la nube",
+      "h": "3dbd124a"
     },
     "questions.1.options.3": {
-      "t": "Porque aislar acelera la red",
-      "h": "84c18c72"
+      "t": "Porque aislar la instancia acelera la red de los otros servicios",
+      "h": "2de6791f"
     },
     "questions.1.q": {
       "t": "¿Por qué aislar una instancia sospechosa antes de terminarla?",
@@ -57,16 +57,16 @@
       "h": "b72dc07b"
     },
     "questions.2.options.1": {
-      "t": "El costo mensual de la nube",
-      "h": "e9acd4ad"
+      "t": "El coste mensual medio de la nube para cada equipo",
+      "h": "5442dd9b"
     },
     "questions.2.options.2": {
-      "t": "El número de alertas por día",
-      "h": "028dfa0c"
+      "t": "El número medio de alertas generadas por día",
+      "h": "9980e7c1"
     },
     "questions.2.options.3": {
-      "t": "La latencia de las APIs",
-      "h": "362c4efb"
+      "t": "La latencia media de las APIs durante los incidentes",
+      "h": "0bafe8ac"
     },
     "questions.2.q": {
       "t": "¿Qué mide el MTTR?",

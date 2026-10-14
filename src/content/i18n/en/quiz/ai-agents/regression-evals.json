@@ -9,16 +9,16 @@
       "h": "6ca2be90"
     },
     "questions.0.options.1": {
-      "t": "Evals that only run once",
-      "h": "3b0eaa09"
+      "t": "Evals that run only once, when the project starts",
+      "h": "48519970"
     },
     "questions.0.options.2": {
-      "t": "A type of linear regression",
-      "h": "3919c74f"
+      "t": "A type of linear regression applied to the answers",
+      "h": "ecca3ffa"
     },
     "questions.0.options.3": {
-      "t": "Interface tests",
-      "h": "3606c994"
+      "t": "Interface tests that check buttons and screens",
+      "h": "64ca95f9"
     },
     "questions.0.q": {
       "t": "What are regression evals?",
@@ -33,16 +33,16 @@
       "h": "25f58440"
     },
     "questions.1.options.1": {
-      "t": "Only after the incident",
-      "h": "a7deac49"
+      "t": "Only after the incident, to investigate what broke",
+      "h": "3e1a6124"
     },
     "questions.1.options.2": {
-      "t": "In model training",
-      "h": "766bbca1"
+      "t": "In the model's training, before it is published",
+      "h": "d5f68ce0"
     },
     "questions.1.options.3": {
-      "t": "Outside the repository",
-      "h": "ed3af232"
+      "t": "Outside the repository, in a team spreadsheet",
+      "h": "61335bd4"
     },
     "questions.1.q": {
       "t": "Where do regression evals fit in the flow?",
@@ -57,16 +57,16 @@
       "h": "d296ec10"
     },
     "questions.2.options.1": {
-      "t": "To increase the execution time",
-      "h": "4294b6f6"
+      "t": "To increase the execution time of the tests",
+      "h": "c9cb0850"
     },
     "questions.2.options.2": {
-      "t": "Because the model requires it",
-      "h": "59d63bf4"
+      "t": "Because the model requires these cases to work",
+      "h": "f8802ebf"
     },
     "questions.2.options.3": {
-      "t": "To hide the history",
-      "h": "fd32f742"
+      "t": "To hide the history of failures from customers",
+      "h": "855e6893"
     },
     "questions.2.q": {
       "t": "Why include cases from past failures?",

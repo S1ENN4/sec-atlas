@@ -5,20 +5,20 @@
       "h": "b0bef0f3"
     },
     "questions.0.options.0": {
-      "t": "Uma CPU mais rápida",
-      "h": "e293db4f"
+      "t": "Uma CPU mais rápida que cada agente pode usar enquanto executa suas tarefas",
+      "h": "fd7c28b8"
     },
     "questions.0.options.1": {
       "t": "Um diretório de trabalho e uma branch separados do mesmo repositório para cada agent",
       "h": "42ef3fa6"
     },
     "questions.0.options.2": {
-      "t": "Merges automáticos",
-      "h": "d5b52863"
+      "t": "Merges automáticos das mudanças dos agentes no branch principal",
+      "h": "a2e6fa50"
     },
     "questions.0.options.3": {
-      "t": "Uma sandbox na nuvem",
-      "h": "f8f106e4"
+      "t": "Um sandbox na nuvem onde os agentes rodam sem tocar na sua máquina",
+      "h": "7f73997d"
     },
     "questions.0.q": {
       "t": "O que um git worktree oferece a agents paralelos?",
@@ -29,20 +29,20 @@
       "h": "11772f45"
     },
     "questions.1.options.0": {
-      "t": "Espaço em disco",
-      "h": "08a9b24f"
+      "t": "Espaço em disco, porque cada agente precisa da sua própria cópia do repositório",
+      "h": "6688c5db"
     },
     "questions.1.options.1": {
       "t": "Sua capacidade de revisar os resultados",
       "h": "eee7f1d4"
     },
     "questions.1.options.2": {
-      "t": "O número de branches git",
-      "h": "8c08db3b"
+      "t": "O número de branches que o repositório consegue guardar",
+      "h": "b3f2c9ba"
     },
     "questions.1.options.3": {
-      "t": "Cores do terminal",
-      "h": "e797102a"
+      "t": "O número de janelas de terminal que a máquina consegue manter abertas",
+      "h": "c1ce5908"
     },
     "questions.1.q": {
       "t": "Qual é o principal limite para rodar muitos agents ao mesmo tempo?",
@@ -53,20 +53,20 @@
       "h": "4d8dcc18"
     },
     "questions.2.options.0": {
-      "t": "Arquivos-fonte",
-      "h": "e660d20b"
+      "t": "Os arquivos-fonte com que cada agente trabalha",
+      "h": "a97b39e5"
     },
     "questions.2.options.1": {
-      "t": "A branch",
-      "h": "a3a7ccaa"
+      "t": "O branch em que cada agente trabalha",
+      "h": "4e8a2be5"
     },
     "questions.2.options.2": {
       "t": "Um banco de dados compartilhado ou uma API externa",
       "h": "55b568d3"
     },
     "questions.2.options.3": {
-      "t": "O diretório de trabalho",
-      "h": "2aea0dad"
+      "t": "O diretório de trabalho que cada agente usa",
+      "h": "b03aca5b"
     },
     "questions.2.q": {
       "t": "O que NÃO é isolado por um worktree?",

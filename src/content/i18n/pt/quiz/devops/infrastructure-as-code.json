@@ -5,20 +5,20 @@
       "h": "8ba4e09a"
     },
     "questions.0.options.0": {
-      "t": "Ele é grande",
-      "h": "3b7dfb19"
+      "t": "Ele é grande demais para ficar no mesmo repositório do código",
+      "h": "b60fd4d3"
     },
     "questions.0.options.1": {
       "t": "Ele pode conter segredos e applies concorrentes podem corrompê-lo",
       "h": "115fbbc3"
     },
     "questions.0.options.2": {
-      "t": "O Git não consegue armazenar JSON",
-      "h": "2dcaedca"
+      "t": "O Git não consegue guardar arquivos JSON, que é o formato do state",
+      "h": "90cced95"
     },
     "questions.0.options.3": {
-      "t": "O state é opcional",
-      "h": "ba8c4a97"
+      "t": "O state é opcional e só usado por times grandes",
+      "h": "5820585d"
     },
     "questions.0.q": {
       "t": "Por que o state do Terraform deve ser armazenado remotamente, com lock e criptografado?",
@@ -29,20 +29,20 @@
       "h": "85b3a884"
     },
     "questions.1.options.0": {
-      "t": "Aplicar as mudanças imediatamente",
-      "h": "383f35ae"
+      "t": "Para aplicar as mudanças em produção imediatamente, sem esperar",
+      "h": "0734c7bb"
     },
     "questions.1.options.1": {
       "t": "Permitir que os revisores vejam exatamente o que será criado, alterado ou destruído",
       "h": "845d89f2"
     },
     "questions.1.options.2": {
-      "t": "Formatar o código",
-      "h": "9d990efe"
+      "t": "Para formatar e validar o código antes do commit",
+      "h": "96db6b78"
     },
     "questions.1.options.3": {
-      "t": "Baixar providers",
-      "h": "30f1f98c"
+      "t": "Para baixar os providers e módulos de que o código precisa",
+      "h": "717f9735"
     },
     "questions.1.q": {
       "t": "Qual é o objetivo de rodar terraform plan em um pull request?",
@@ -53,20 +53,20 @@
       "h": "b41d2880"
     },
     "questions.2.options.0": {
-      "t": "Um erro de sintaxe",
-      "h": "52e22af3"
+      "t": "Um erro de sintaxe nos arquivos de configuração que bloqueia o apply",
+      "h": "d9eb025e"
     },
     "questions.2.options.1": {
       "t": "A infraestrutura real diferir do que o código diz, geralmente por mudanças manuais",
       "h": "8ebbea80"
     },
     "questions.2.options.2": {
-      "t": "Um apply lento",
-      "h": "cc7c5852"
+      "t": "Um apply que demora muito mais que os anteriores",
+      "h": "65017a45"
     },
     "questions.2.options.3": {
-      "t": "Uma atualização de provider",
-      "h": "daaa55cd"
+      "t": "Uma atualização de provider que muda os recursos que ele gerencia",
+      "h": "c1397534"
     },
     "questions.2.q": {
       "t": "O que é drift?",

@@ -9,16 +9,16 @@
       "h": "29e8b6e5"
     },
     "questions.0.options.1": {
-      "t": "Giving full access and revoking it later",
-      "h": "0abd6243"
+      "t": "Give full access at the start and revoke what is not used later",
+      "h": "809107bf"
     },
     "questions.0.options.2": {
-      "t": "Using a single shared account",
-      "h": "cbad66b8"
+      "t": "Use a single shared account for the whole infrastructure team",
+      "h": "f0da71c4"
     },
     "questions.0.options.3": {
-      "t": "Blocking all access to the cloud",
-      "h": "160a4bee"
+      "t": "Block all access to the cloud until the annual audit is over",
+      "h": "c1b47f54"
     },
     "questions.0.q": {
       "t": "What does least privilege mean?",
@@ -33,16 +33,16 @@
       "h": "76e38b17"
     },
     "questions.1.options.1": {
-      "t": "Roles do not need policies",
-      "h": "b921c852"
+      "t": "Roles do not need policies to grant access",
+      "h": "1843db09"
     },
     "questions.1.options.2": {
-      "t": "Roles have unlimited permissions",
-      "h": "abb9de7f"
+      "t": "Roles have unlimited permissions by default in any account",
+      "h": "e8f6f445"
     },
     "questions.1.options.3": {
-      "t": "Static keys are faster",
-      "h": "10f6396f"
+      "t": "Static keys are faster to use in workloads",
+      "h": "718dca84"
     },
     "questions.1.q": {
       "t": "Why are roles preferable to users with static keys for workloads?",
@@ -57,16 +57,16 @@
       "h": "0977c0ec"
     },
     "questions.2.options.1": {
-      "t": "An MFA condition",
-      "h": "df4ad149"
+      "t": "An MFA condition required before assuming the role",
+      "h": "de7cbf98"
     },
     "questions.2.options.2": {
-      "t": "A specific account listed",
-      "h": "e1413fe4"
+      "t": "A specific account listed as a trusted principal",
+      "h": "166261b6"
     },
     "questions.2.options.3": {
-      "t": "An AWS service as principal",
-      "h": "1cb95c7c"
+      "t": "An AWS service listed as the role's principal",
+      "h": "cce739c6"
     },
     "questions.2.q": {
       "t": "In a trust policy, what is a warning sign?",

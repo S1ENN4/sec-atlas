@@ -9,16 +9,16 @@
       "h": "c7b2084a"
     },
     "questions.0.options.1": {
-      "t": "Activarla directamente en bloqueo para ver el efecto",
-      "h": "bf1ab3ff"
+      "t": "Activarla directamente en bloqueo total para ver el efecto en producción",
+      "h": "77456b3a"
     },
     "questions.0.options.2": {
-      "t": "Activarla solo en producción, fuera del horario laboral",
-      "h": "f3f8b440"
+      "t": "Activarla solo en producción, fuera del horario laboral, para que nadie lo note",
+      "h": "9f21fbb4"
     },
     "questions.0.options.3": {
-      "t": "Copiar la regla de otra empresa sin probar",
-      "h": "90c4d4dd"
+      "t": "Copiar la regla de otra empresa y activarla sin probarla con tu tráfico",
+      "h": "a0b5f8e3"
     },
     "questions.0.q": {
       "t": "¿Cuál es el camino seguro para activar una regla nueva de WAF?",
@@ -33,16 +33,16 @@
       "h": "d69ea296"
     },
     "questions.1.options.1": {
-      "t": "Bloquear solo firmas de ataque conocidas",
-      "h": "da8bc3d3"
+      "t": "Bloquear solo las firmas de ataque que ya se conocen",
+      "h": "afe9ef72"
     },
     "questions.1.options.2": {
-      "t": "Permitir todo y registrar en el log",
-      "h": "197652fc"
+      "t": "Dejar pasar todo el tráfico y solo registrarlo en un log para analizarlo",
+      "h": "672d1f0d"
     },
     "questions.1.options.3": {
-      "t": "Usar solo listas de IPs maliciosas",
-      "h": "f1022667"
+      "t": "Usar únicamente listas de direcciones IP clasificadas como maliciosas",
+      "h": "c45dfd58"
     },
     "questions.1.q": {
       "t": "¿Qué caracteriza al modelo positivo de WAF?",
@@ -57,16 +57,16 @@
       "h": "e8c79ab8"
     },
     "questions.2.options.1": {
-      "t": "Sustituir la corrección definitiva de la vulnerabilidad",
-      "h": "f0fffcb9"
+      "t": "Sustituir la corrección definitiva de la vulnerabilidad en el código",
+      "h": "037af3b6"
     },
     "questions.2.options.2": {
-      "t": "Actualizar el sistema operativo del origen",
-      "h": "ee9bbe9b"
+      "t": "Actualizar el sistema operativo del servidor de origen",
+      "h": "fd60c3df"
     },
     "questions.2.options.3": {
-      "t": "Cifrar el tráfico entre el borde y el origen",
-      "h": "ac38d2d0"
+      "t": "Cifrar el tráfico entre el borde y el origen de la aplicación",
+      "h": "50b2171a"
     },
     "questions.2.q": {
       "t": "¿Para qué sirve un parche virtual?",

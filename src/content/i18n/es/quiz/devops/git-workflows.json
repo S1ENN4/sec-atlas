@@ -5,20 +5,20 @@
       "h": "b815aa91"
     },
     "questions.0.options.0": {
-      "t": "Mantener ramas de larga vida para cada funcionalidad",
-      "h": "330e91d7"
+      "t": "Mantener una rama larga para cada funcionalidad y fusionar cada una cuando esté completa",
+      "h": "42717aa2"
     },
     "questions.0.options.1": {
       "t": "Integrar con frecuencia cambios pequeños y de corta vida en main, ocultando el trabajo sin terminar detrás de flags",
       "h": "4121387d"
     },
     "questions.0.options.2": {
-      "t": "No usar nunca ramas",
-      "h": "107fff65"
+      "t": "No usar nunca ramas, para que todos hagan commit directo sobre un único archivo compartido",
+      "h": "0e39a1b4"
     },
     "questions.0.options.3": {
-      "t": "Integrar solo una vez por release",
-      "h": "383ee907"
+      "t": "Fusionar solo una vez por versión, tras un largo periodo de estabilización",
+      "h": "556252b7"
     },
     "questions.0.q": {
       "t": "¿Cuál es la idea central del trunk-based development?",
@@ -29,20 +29,20 @@
       "h": "dfc8767f"
     },
     "questions.1.options.0": {
-      "t": "Cifra el repositorio",
-      "h": "2b1f96dc"
+      "t": "Cifra el repositorio para que solo los propietarios puedan leerlo",
+      "h": "f595d164"
     },
     "questions.1.options.1": {
       "t": "Solicita revisión a las personas o equipos dueños de las rutas que cambia un pull request",
       "h": "23228d9f"
     },
     "questions.1.options.2": {
-      "t": "Borra ramas antiguas",
-      "h": "1d77877d"
+      "t": "Borra las ramas antiguas que se fusionaron hace más de 30 días",
+      "h": "e8599bad"
     },
     "questions.1.options.3": {
-      "t": "Firma commits",
-      "h": "8c3ddb54"
+      "t": "Firma cada commit hecho en las rutas de cada equipo",
+      "h": "e7c8757e"
     },
     "questions.1.q": {
       "t": "¿Qué hace CODEOWNERS?",
@@ -53,20 +53,20 @@
       "h": "4d0fb57a"
     },
     "questions.2.options.0": {
-      "t": "Nada, ya no está",
-      "h": "35123db6"
+      "t": "Nada: una vez borrado el archivo en un commit posterior, el secreto desaparece",
+      "h": "959613b1"
     },
     "questions.2.options.1": {
       "t": "Rotar el secreto, porque sigue en el historial",
       "h": "f6e83af0"
     },
     "questions.2.options.2": {
-      "t": "Renombrar el archivo",
-      "h": "03a73914"
+      "t": "Renombrar el archivo para que los escáneres dejen de reconocer su nombre",
+      "h": "4801d327"
     },
     "questions.2.options.3": {
-      "t": "Hacer force-push y no decirle a nadie",
-      "h": "1b2d97c0"
+      "t": "Hacer force-push de la rama sin el commit y no decírselo a nadie",
+      "h": "0b842942"
     },
     "questions.2.q": {
       "t": "Se commiteó un secreto en el repositorio y luego se borró en el commit siguiente. ¿Qué debes hacer?",

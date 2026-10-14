@@ -317,8 +317,8 @@
       "h": "dd35a816"
     },
     "groups.3.entries.7.meaning": {
-      "t": "Supply-chain Levels for Software Artifacts: a scale from 1 to 4 for build integrity, from 'has documentation' to 'tamper-resistant build with verifiable provenance'.",
-      "h": "ce94df0e"
+      "t": "Supply-chain Levels for Software Artifacts: levels of assurance for build integrity (in version 1.0, L1 to L3), from 'provenance exists' to 'build on a hardened, tamper-resistant platform'.",
+      "h": "2428f383"
     },
     "groups.3.entries.7.term": {
       "t": "SLSA",

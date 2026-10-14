@@ -9,16 +9,16 @@
       "h": "3a7eb041"
     },
     "questions.0.options.1": {
-      "t": "Aumentar la creatividad del modelo",
-      "h": "e40fc21e"
+      "t": "Aumentar la creatividad del modelo en sus respuestas",
+      "h": "6e4855e8"
     },
     "questions.0.options.2": {
-      "t": "Reemplazar el prompt",
-      "h": "8e166ee5"
+      "t": "Sustituir el prompt del sistema por reglas fijas",
+      "h": "fb731769"
     },
     "questions.0.options.3": {
-      "t": "Comprimir el contexto",
-      "h": "7e818a9c"
+      "t": "Comprimir el contexto para que quepa más información",
+      "h": "2c10e1fe"
     },
     "questions.0.q": {
       "t": "¿Cuál es el papel de los guardrails?",
@@ -33,16 +33,16 @@
       "h": "47da92e6"
     },
     "questions.1.options.1": {
-      "t": "Porque siempre son perfectos",
-      "h": "1a8b34b1"
+      "t": "Porque son siempre perfectos y hacen innecesarios otros controles",
+      "h": "352b830e"
     },
     "questions.1.options.2": {
-      "t": "Porque el modelo siempre los ignora",
-      "h": "fd38f7a0"
+      "t": "Porque el modelo siempre los ignora, sin excepción",
+      "h": "e3d4d242"
     },
     "questions.1.options.3": {
-      "t": "Porque vuelven todo más lento",
-      "h": "72bbcafa"
+      "t": "Porque hacen todo más lento y nadie los usa",
+      "h": "f74b77e9"
     },
     "questions.1.q": {
       "t": "¿Por qué los guardrails solos no bastan?",
@@ -57,16 +57,16 @@
       "h": "82314fed"
     },
     "questions.2.options.1": {
-      "t": "Aumentar el tamaño del contexto",
-      "h": "03332f06"
+      "t": "Aumentar el tamaño del contexto disponible para el modelo",
+      "h": "f061b946"
     },
     "questions.2.options.2": {
-      "t": "Cambiar el modelo",
-      "h": "74294219"
+      "t": "Cambiar el modelo por uno más barato",
+      "h": "ae08c919"
     },
     "questions.2.options.3": {
-      "t": "Reindexar los documentos",
-      "h": "16c0839e"
+      "t": "Reindexar los documentos que alimentan la búsqueda",
+      "h": "aff1d809"
     },
     "questions.2.q": {
       "t": "¿Qué ejemplo es un guardrail de salida?",

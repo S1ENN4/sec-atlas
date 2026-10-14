@@ -30,7 +30,7 @@
     },
     "sections.2.body.1": {
       "t": "El antipatrón clásico es abrir 0.0.0.0/0 en los puertos de administración. Aparece en todos los postmortems:",
-      "h": "6ed9ba0e"
+      "h": "d8e0a1b3"
     },
     "sections.2.code.0.code": {
       "t": "{\n  \"GroupName\": \"web-sg\",\n  \"Description\": \"Abierto a internet (NO usar en prod)\",\n  \"IpPermissions\": [\n    {\n      \"IpProtocol\": \"tcp\",\n      \"FromPort\": 22,\n      \"ToPort\": 22,\n      \"IpRanges\": [ { \"CidrIp\": \"0.0.0.0/0\", \"Description\": \"SSH abierto\" } ]\n    },\n    {\n      \"IpProtocol\": \"tcp\",\n      \"FromPort\": 3389,\n      \"ToPort\": 3389,\n      \"IpRanges\": [ { \"CidrIp\": \"0.0.0.0/0\", \"Description\": \"RDP abierto\" } ]\n    }\n  ]\n}",
@@ -65,8 +65,8 @@
       "h": "037ba9ce"
     },
     "sections.4.body.1": {
-      "t": "VPC Flow Logs captura todo el tráfico aceptado o rechazado en las ENIs de la VPC y lo vuelca en CloudWatch o S3. Sin flow logs, investigas un incidente a ciegas. Con un camino mínimo: bloqueo por defecto + log activo + endpoints aprendidos, y el equipo de seguridad puede responder qué entró, por dónde y cuándo.",
-      "h": "ebaef65c"
+      "t": "VPC Flow Logs captura todo el tráfico aceptado o rechazado en las ENI de la VPC y lo vuelca en CloudWatch o S3. Sin flow logs, investigas incidentes a oscuras. Con el mínimo (bloqueo por defecto, flow logs activos y endpoints privados para los servicios de la nube), el equipo de seguridad puede responder qué entró, por dónde y cuándo.",
+      "h": "1fe25042"
     },
     "sections.4.heading": {
       "t": "Network ACLs y VPC Flow Logs",

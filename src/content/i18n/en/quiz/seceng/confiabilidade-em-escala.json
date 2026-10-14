@@ -9,16 +9,16 @@
       "h": "d7a85195"
     },
     "questions.0.options.1": {
-      "t": "To increase the number of attempts",
-      "h": "0c6d5426"
+      "t": "To increase the total number of attempts made by each client",
+      "h": "b323d0f8"
     },
     "questions.0.options.2": {
-      "t": "To eliminate timeouts",
-      "h": "5c81c7f1"
+      "t": "To completely eliminate timeouts in calls",
+      "h": "ba224dca"
     },
     "questions.0.options.3": {
-      "t": "To encrypt the call",
-      "h": "2f99697a"
+      "t": "To encrypt the call during the new attempts",
+      "h": "c34d2abb"
     },
     "questions.0.q": {
       "t": "Why use jitter together with exponential backoff?",
@@ -33,16 +33,16 @@
       "h": "b967dc1b"
     },
     "questions.1.options.1": {
-      "t": "Chase exactly-once in every layer",
-      "h": "42477c70"
+      "t": "Pursuing exactly-once in every layer of the system",
+      "h": "05c12796"
     },
     "questions.1.options.2": {
-      "t": "Disable retries",
-      "h": "128b0bc8"
+      "t": "Turning off retries so no action is ever repeated",
+      "h": "3ee7ed75"
     },
     "questions.1.options.3": {
-      "t": "Discard repeated events without recording them",
-      "h": "c35994d6"
+      "t": "Discarding repeated events without recording that they arrived",
+      "h": "44d6c70c"
     },
     "questions.1.q": {
       "t": "What is the practical approach to avoid acting twice on the same event?",
@@ -57,16 +57,16 @@
       "h": "523c1f35"
     },
     "questions.2.options.1": {
-      "t": "Increasing the consumer's speed",
-      "h": "3e3a6666"
+      "t": "Increasing the consumer's processing speed",
+      "h": "cb45f5bf"
     },
     "questions.2.options.2": {
-      "t": "Encrypting messages",
-      "h": "f3c22844"
+      "t": "Encrypting messages before sending them to the broker",
+      "h": "100b0427"
     },
     "questions.2.options.3": {
-      "t": "Deleting old events",
-      "h": "82e1af96"
+      "t": "Deleting old events from the queue to gain space",
+      "h": "e49785f3"
     },
     "questions.2.q": {
       "t": "What is a DLQ for?",

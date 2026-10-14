@@ -192,7 +192,7 @@ export const glossary: GlossaryGroup[] = [
       {
         term: "SLSA",
         meaning:
-          "Supply-chain Levels for Software Artifacts: escala de 1 a 4 para a integridade do build — do 'tem documentação' até 'build à prova de adulteração com proveniência verificável'.",
+          "Supply-chain Levels for Software Artifacts: níveis de garantia para a integridade do build (na versão 1.0, de L1 a L3) — de 'existe proveniência' até 'build numa plataforma endurecida e à prova de adulteração'.",
       },
       {
         term: "Sigstore / Cosign",

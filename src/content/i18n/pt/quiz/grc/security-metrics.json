@@ -5,20 +5,20 @@
       "h": "e1c337d3"
     },
     "questions.0.options.0": {
-      "t": "Número de varreduras executadas",
-      "h": "6b73dd9f"
+      "t": "Número de varreduras de vulnerabilidades feitas por mês",
+      "h": "2bdba12c"
     },
     "questions.0.options.1": {
       "t": "Tempo para conter incidentes de alta severidade",
       "h": "e99e2927"
     },
     "questions.0.options.2": {
-      "t": "Número de treinamentos enviados",
-      "h": "b9d6e8dc"
+      "t": "Número de treinamentos de phishing enviados aos funcionários",
+      "h": "425d8f79"
     },
     "questions.0.options.3": {
-      "t": "Número de regras de firewall",
-      "h": "20f649bd"
+      "t": "Número de regras de firewall em produção",
+      "h": "b6a74c7c"
     },
     "questions.0.q": {
       "t": "Qual é uma métrica de resultado?",
@@ -29,20 +29,20 @@
       "h": "573ef7bd"
     },
     "questions.1.options.0": {
-      "t": "Com contagens técnicas",
-      "h": "2c3ac849"
+      "t": "Com uma lista detalhada de contagens técnicas e estatísticas de ferramentas",
+      "h": "a522248d"
     },
     "questions.1.options.1": {
       "t": "Com a resposta: estamos ficando mais seguros e o que vocês precisam do conselho",
       "h": "3acdcc10"
     },
     "questions.1.options.2": {
-      "t": "Com uma lista de ferramentas",
-      "h": "0ff63d4b"
+      "t": "Com todo o histórico do programa desde que ele começou",
+      "h": "cec74134"
     },
     "questions.1.options.3": {
-      "t": "Com um longo histórico",
-      "h": "95a3492f"
+      "t": "Com um catálogo das ferramentas compradas este ano",
+      "h": "a269c589"
     },
     "questions.1.q": {
       "t": "Como deve começar um relatório ao conselho?",
@@ -53,20 +53,20 @@
       "h": "51d8234c"
     },
     "questions.2.options.0": {
-      "t": "Nada",
-      "h": "44819483"
+      "t": "Nada: um número acompanhado de perto sempre continua melhorando como pretendido",
+      "h": "f9472cd8"
     },
     "questions.2.options.1": {
       "t": "As pessoas otimizam o número em vez do risco (gaming)",
       "h": "f170b1ff"
     },
     "questions.2.options.2": {
-      "t": "O dashboard quebra",
-      "h": "e707025c"
+      "t": "O painel fica mais lento e mais difícil de ler",
+      "h": "4fd3bb48"
     },
     "questions.2.options.3": {
-      "t": "As auditorias ficam mais baratas",
-      "h": "388608bc"
+      "t": "As auditorias externas ficam mais baratas porque os números parecem melhores",
+      "h": "44b3be38"
     },
     "questions.2.q": {
       "t": "O que dá errado quando uma métrica vira meta individual?",

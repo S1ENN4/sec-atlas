@@ -5,20 +5,20 @@
       "h": "c872c0c2"
     },
     "questions.0.options.0": {
-      "t": "Reinstalar o servidor primeiro",
-      "h": "ed483849"
+      "t": "Reinstalar o servidor primeiro, já que um sistema limpo elimina qualquer causa oculta",
+      "h": "bbd0f17b"
     },
     "questions.0.options.1": {
       "t": "Resolução de nome, acessibilidade da porta, se o serviço escuta, validade do certificado e, por fim, os logs",
       "h": "92b93e09"
     },
     "questions.0.options.2": {
-      "t": "Reiniciar tudo e torcer",
-      "h": "f9e44c3d"
+      "t": "Reiniciar todos os serviços relacionados e ver se o sintoma some",
+      "h": "7e7cf04e"
     },
     "questions.0.options.3": {
-      "t": "Mudar o firewall para permitir tudo",
-      "h": "1c0554b2"
+      "t": "Abrir o firewall para todo o tráfego e depois restringir de novo",
+      "h": "82210d66"
     },
     "questions.0.q": {
       "t": "Um serviço está inacessível. Qual é a ordem sensata de verificações?",
@@ -29,20 +29,20 @@
       "h": "e276cc50"
     },
     "questions.1.options.0": {
-      "t": "Deixa o programa mais rápido",
-      "h": "afe6c35e"
+      "t": "Deixa o programa mais rápido, porque o kernel pula as checagens de permissão",
+      "h": "de5d6101"
     },
     "questions.1.options.1": {
       "t": "Um comprometimento fica então com o acesso apenas desse usuário, não o do root",
       "h": "aac72733"
     },
     "questions.1.options.2": {
-      "t": "O root não consegue abrir portas de rede",
-      "h": "d2c9cfe2"
+      "t": "Só o root pode abrir portas de rede num sistema moderno",
+      "h": "ae26af9e"
     },
     "questions.1.options.3": {
-      "t": "O systemd exige",
-      "h": "b1b8adc8"
+      "t": "O systemd se recusa a iniciar qualquer serviço que rode como root",
+      "h": "449b8e45"
     },
     "questions.1.q": {
       "t": "Por que rodar um serviço como seu próprio usuário sem privilégios?",
@@ -53,20 +53,20 @@
       "h": "d4dab716"
     },
     "questions.2.options.0": {
-      "t": "Excesso de RAM",
-      "h": "ba5fe39e"
+      "t": "Memória RAM demais instalada na máquina, o que confunde o escalonador",
+      "h": "9a83cb21"
     },
     "questions.2.options.1": {
       "t": "Defasagem de relógio entre máquinas",
       "h": "a607934b"
     },
     "questions.2.options.2": {
-      "t": "Arquivos de log demais",
-      "h": "5f2fc19e"
+      "t": "Arquivos de log demais enchendo o disco do servidor de autenticação",
+      "h": "10c425f8"
     },
     "questions.2.options.3": {
-      "t": "Um teclado lento",
-      "h": "1e1849cf"
+      "t": "Um disco lento na máquina que guarda os certificados",
+      "h": "34a8f94a"
     },
     "questions.2.q": {
       "t": "Muitas quedas estranhas com tokens ou certificados vêm de:",

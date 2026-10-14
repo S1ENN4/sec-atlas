@@ -21,8 +21,8 @@
       "h": "15621c70"
     },
     "sections.1.bullets.1": {
-      "t": "eBPF (Tetragon, Cilium Tetragon, Datadog USM): instrumenta el kernel directamente, sin proceso extra, pero las reglas quedan más limitadas a lo que el kernel expone vía hooks",
-      "h": "b30bcc32"
+      "t": "eBPF (Tetragon, Falco con el driver eBPF, Datadog CWS): instrumenta el kernel directamente, sin proceso extra, pero las reglas quedan limitadas a lo que el kernel expone mediante hooks",
+      "h": "df23d205"
     },
     "sections.1.bullets.2": {
       "t": "módulo de kernel: máxima visibilidad, pero compromete la compatibilidad con kernels administrados (GKE, EKS optimizado)",
@@ -93,8 +93,8 @@
       "h": "9330ed3a"
     },
     "sections.5.bullets.2": {
-      "t": "cerrando el ciclo: el snapshot del filesystem posterior a la detección se vuelve evidencia del incidente, no una receta para el próximo atacante",
-      "h": "8b24b3b9"
+      "t": "evidencia preservada: la instantánea del filesystem tomada tras la detección respalda la investigación del incidente",
+      "h": "08a52c4f"
     },
     "sections.5.heading": {
       "t": "Puntos fuertes",
@@ -105,8 +105,8 @@
       "h": "29c18a01"
     },
     "sections.6.bullets.1": {
-      "t": "costo de telemetría a escala: instrumentar mil contenedores con eBPF parece gratis hasta que el log va al SIEM, y la cuenta la cobra el switch del proveedor",
-      "h": "ea4cd2aa"
+      "t": "coste de telemetría a escala: instrumentar mil contenedores con eBPF parece gratis hasta que el volumen de logs llega al SIEM, donde aparece el coste de ingesta",
+      "h": "9bfbbe6b"
     },
     "sections.6.bullets.2": {
       "t": "los falsos positivos de comportamiento rompen la confianza: una regla demasiado buena es una regla que todos silencian; el tuning es trabajo permanente, no un setup de una sola vez",

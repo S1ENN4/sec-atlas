@@ -30,7 +30,7 @@
     },
     "sections.2.body.1": {
       "t": "The classic anti-pattern is opening 0.0.0.0/0 on administration ports. It appears in every postmortem:",
-      "h": "6ed9ba0e"
+      "h": "d8e0a1b3"
     },
     "sections.2.code.0.code": {
       "t": "{\n  \"GroupName\": \"web-sg\",\n  \"Description\": \"Open to the internet (DO NOT use in prod)\",\n  \"IpPermissions\": [\n    {\n      \"IpProtocol\": \"tcp\",\n      \"FromPort\": 22,\n      \"ToPort\": 22,\n      \"IpRanges\": [ { \"CidrIp\": \"0.0.0.0/0\", \"Description\": \"SSH open\" } ]\n    },\n    {\n      \"IpProtocol\": \"tcp\",\n      \"FromPort\": 3389,\n      \"ToPort\": 3389,\n      \"IpRanges\": [ { \"CidrIp\": \"0.0.0.0/0\", \"Description\": \"RDP open\" } ]\n    }\n  ]\n}",
@@ -65,8 +65,8 @@
       "h": "037ba9ce"
     },
     "sections.4.body.1": {
-      "t": "VPC Flow Logs captures all accepted or rejected traffic on the VPC's ENIs and dumps it into CloudWatch or S3. Without flow logs, you are investigating an incident in the dark. With a minimal path: default block + active logging + learned endpoints, and the security team can answer what came in, through where and when.",
-      "h": "ebaef65c"
+      "t": "VPC Flow Logs captures all traffic accepted or rejected on the VPC's ENIs and delivers it to CloudWatch or S3. Without flow logs, you investigate incidents in the dark. With the minimum (block by default, flow logs on and private endpoints for the cloud services), the security team can answer what came in, through where and when.",
+      "h": "1fe25042"
     },
     "sections.4.heading": {
       "t": "Network ACLs and VPC Flow Logs",

@@ -5,20 +5,20 @@
       "h": "fb2c3551"
     },
     "questions.0.options.0": {
-      "t": "Errores de lógica en el código propio",
-      "h": "21e6bb48"
+      "t": "Errores de lógica en el código escrito por el propio equipo",
+      "h": "ba908896"
     },
     "questions.0.options.1": {
       "t": "Dependencias de terceros, sus versiones, CVEs y licencias",
       "h": "ba225558"
     },
     "questions.0.options.2": {
-      "t": "La cobertura de pruebas",
-      "h": "4e0b0f81"
+      "t": "La cobertura de las pruebas automatizadas de cada módulo",
+      "h": "d0220920"
     },
     "questions.0.options.3": {
-      "t": "El consumo de CPU de los contenedores",
-      "h": "16928dcb"
+      "t": "El consumo de CPU y de memoria de los contenedores en producción",
+      "h": "de668dab"
     },
     "questions.0.q": {
       "t": "¿Qué verifica el SCA?",
@@ -29,20 +29,20 @@
       "h": "049a687c"
     },
     "questions.1.options.0": {
-      "t": "Una dependencia opcional de desarrollo",
-      "h": "c0c41b42"
+      "t": "Una dependencia opcional usada solo durante el desarrollo",
+      "h": "8e937495"
     },
     "questions.1.options.1": {
       "t": "Una dependencia traída indirectamente por otra que declaraste",
       "h": "4b2664fc"
     },
     "questions.1.options.2": {
-      "t": "Una dependencia copiada al repositorio",
-      "h": "5131c937"
+      "t": "Una dependencia copiada a mano dentro del repositorio",
+      "h": "2afc04bb"
     },
     "questions.1.options.3": {
-      "t": "Una dependencia sin licencia",
-      "h": "ef793580"
+      "t": "Una dependencia que no declara ninguna licencia de uso",
+      "h": "9f7ca6e8"
     },
     "questions.1.q": {
       "t": "Una dependencia transitiva es...",
@@ -57,16 +57,16 @@
       "h": "c08aee4c"
     },
     "questions.2.options.1": {
-      "t": "Porque el build cambia solo la versión de las dependencias",
-      "h": "b4a68fcd"
+      "t": "Porque el build cambia las versiones de las dependencias por sí solo en cada ejecución",
+      "h": "bf33beda"
     },
     "questions.2.options.2": {
-      "t": "Porque el SCA expira cada 24 horas",
-      "h": "150ff62d"
+      "t": "Porque el resultado del SCA caduca cada 24 horas y hay que renovarlo",
+      "h": "4149e7d3"
     },
     "questions.2.options.3": {
-      "t": "Porque el pipeline borra los resultados",
-      "h": "27d60ae5"
+      "t": "Porque el pipeline borra los resultados anteriores al terminar",
+      "h": "3166ad41"
     },
     "questions.2.q": {
       "t": "¿Por qué el SCA necesita correr de forma continua y no solo en el build?",

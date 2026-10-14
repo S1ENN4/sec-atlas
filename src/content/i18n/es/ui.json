@@ -1484,6 +1484,10 @@
       "t": "Operaciones y respuesta",
       "h": "ef84c756"
     },
+    "nav.lab": {
+      "t": "Lab",
+      "h": "92207301"
+    },
     "nav.learn": {
       "t": "Aprender",
       "h": "b048378e"
@@ -1535,6 +1539,10 @@
     "nav.learnItems.scenariosDesc": {
       "t": "Sigue un incidente paso a paso y mira qué control detiene cada movimiento.",
       "h": "cd619314"
+    },
+    "nav.maps": {
+      "t": "Mapas",
+      "h": "80071cd7"
     },
     "nav.menu": {
       "t": "Menú",

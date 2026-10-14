@@ -9,16 +9,16 @@
       "h": "a81ebe3d"
     },
     "questions.0.options.1": {
-      "t": "A type of prompt",
-      "h": "892a096a"
+      "t": "A type of prompt reused across several models",
+      "h": "fbf0c701"
     },
     "questions.0.options.2": {
-      "t": "A production log",
-      "h": "bba76ef8"
+      "t": "A production log used to audit costs",
+      "h": "112e4246"
     },
     "questions.0.options.3": {
-      "t": "A license",
-      "h": "86aaaa6a"
+      "t": "A license that defines how the model may be used",
+      "h": "68608468"
     },
     "questions.0.q": {
       "t": "What is a public benchmark?",
@@ -33,16 +33,16 @@
       "h": "d945504f"
     },
     "questions.1.options.1": {
-      "t": "They are always fake",
-      "h": "a1a9a463"
+      "t": "They are always fake, because vendors manipulate the results",
+      "h": "c883fedb"
     },
     "questions.1.options.2": {
-      "t": "They are paid",
-      "h": "35a1a13b"
+      "t": "They are paid and only available to large companies",
+      "h": "1186b0ac"
     },
     "questions.1.options.3": {
-      "t": "They do not run on computers",
-      "h": "6d2a34d7"
+      "t": "They do not run on ordinary computers, only on dedicated servers",
+      "h": "117f9bfb"
     },
     "questions.1.q": {
       "t": "What is the limitation of relying only on public benchmarks?",
@@ -57,16 +57,16 @@
       "h": "740ac24e"
     },
     "questions.2.options.1": {
-      "t": "As final proof of quality in production",
-      "h": "29e237fb"
+      "t": "As final proof of the system's quality in production",
+      "h": "e9e00360"
     },
     "questions.2.options.2": {
-      "t": "To replace evals",
-      "h": "3d0f9373"
+      "t": "To fully replace the project's evals",
+      "h": "fadcef36"
     },
     "questions.2.options.3": {
-      "t": "To train the model",
-      "h": "7428408d"
+      "t": "To train the model on the hardest cases",
+      "h": "91b5642a"
     },
     "questions.2.q": {
       "t": "What are benchmarks best used for?",

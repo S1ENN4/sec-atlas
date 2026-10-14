@@ -5,20 +5,20 @@
       "h": "47c9798d"
     },
     "questions.0.options.0": {
-      "t": "Se o pod é reiniciado",
-      "h": "bd571986"
+      "t": "Se o pod é reiniciado quando para de responder",
+      "h": "922861e8"
     },
     "questions.0.options.1": {
       "t": "Se o pod recebe tráfego",
       "h": "678a40ae"
     },
     "questions.0.options.2": {
-      "t": "Em qual node ele roda",
-      "h": "e7898bb9"
+      "t": "Em qual nó do cluster o pod é agendado para rodar",
+      "h": "f5d6797d"
     },
     "questions.0.options.3": {
-      "t": "Quanta memória ele recebe",
-      "h": "062e41c8"
+      "t": "Quanta memória o pod pode usar",
+      "h": "38a47374"
     },
     "questions.0.q": {
       "t": "O que uma readiness probe decide?",
@@ -29,20 +29,20 @@
       "h": "43c24565"
     },
     "questions.1.options.0": {
-      "t": "São decorativos",
-      "h": "adb52366"
+      "t": "São campos decorativos que o escalonador ignora",
+      "h": "7ab85678"
     },
     "questions.1.options.1": {
       "t": "O scheduling precisa dos requests, e os limits impedem que um pod deixe seus vizinhos sem recursos",
       "h": "41778bb3"
     },
     "questions.1.options.2": {
-      "t": "Aceleram as imagens",
-      "h": "9675cddd"
+      "t": "Aceleram o download das imagens ao reservar largura de banda",
+      "h": "51d4d57c"
     },
     "questions.1.options.3": {
-      "t": "Criptografam a memória",
-      "h": "a55a82c5"
+      "t": "Criptografam a memória usada pelo contêiner",
+      "h": "bab23154"
     },
     "questions.1.q": {
       "t": "Por que definir requests e limits de recursos?",
@@ -53,20 +53,20 @@
       "h": "71925425"
     },
     "questions.2.options.0": {
-      "t": "Comandos kubectl edit ad hoc",
-      "h": "90a22fb0"
+      "t": "Com comandos kubectl edit avulsos feitos por quem está de plantão",
+      "h": "86d80afe"
     },
     "questions.2.options.1": {
       "t": "Por controle de versão e um pipeline automatizado ou um controller GitOps",
       "h": "f542ee42"
     },
     "questions.2.options.2": {
-      "t": "Por SSH nos nodes",
-      "h": "37d2a3a2"
+      "t": "Conectando aos nós por SSH e editando os manifestos lá",
+      "h": "e5863ef4"
     },
     "questions.2.options.3": {
-      "t": "Somente pelo dashboard",
-      "h": "df3740a5"
+      "t": "Só pelo dashboard web, para toda mudança ficar registrada",
+      "h": "143bbcb9"
     },
     "questions.2.q": {
       "t": "Como as mudanças devem chegar normalmente a um cluster?",

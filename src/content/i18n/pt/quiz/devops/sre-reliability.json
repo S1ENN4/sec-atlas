@@ -5,20 +5,20 @@
       "h": "c39c29e8"
     },
     "questions.0.options.0": {
-      "t": "Dinheiro reservado para quedas",
-      "h": "761400ea"
+      "t": "Dinheiro reservado para pagar o custo de quedas e reembolsos",
+      "h": "9003b125"
     },
     "questions.0.options.1": {
       "t": "A não confiabilidade permitida, 100% menos o SLO",
       "h": "ecc9c40c"
     },
     "questions.0.options.2": {
-      "t": "Uma lista de bugs conhecidos",
-      "h": "d448ec10"
+      "t": "A lista de bugs conhecidos que o time pretende corrigir",
+      "h": "da961216"
     },
     "questions.0.options.3": {
-      "t": "Um cronograma de QA",
-      "h": "cde88b35"
+      "t": "O cronograma que o time de QA segue antes de cada release",
+      "h": "6aee235a"
     },
     "questions.0.q": {
       "t": "O que é um error budget?",
@@ -29,20 +29,20 @@
       "h": "158e323d"
     },
     "questions.1.options.0": {
-      "t": "Descobrir quem causou",
-      "h": "03f61cb0"
+      "t": "Descobrir quem causou, para a pessoa certa poder corrigir",
+      "h": "3b7ae38e"
     },
     "questions.1.options.1": {
       "t": "Mitigar o impacto (rollback, failover, desligar uma flag) e só depois diagnosticar",
       "h": "76c94fc9"
     },
     "questions.1.options.2": {
-      "t": "Escrever o postmortem",
-      "h": "bbd7627c"
+      "t": "Escrever o postmortem enquanto os detalhes estão frescos",
+      "h": "2514c3c1"
     },
     "questions.1.options.3": {
-      "t": "Esperar por mais dados",
-      "h": "7f886f9a"
+      "t": "Esperar mais dados antes de tomar qualquer ação",
+      "h": "e0e6ac28"
     },
     "questions.1.q": {
       "t": "Em um incidente, o que vem primeiro?",
@@ -53,20 +53,20 @@
       "h": "d1e2fd9d"
     },
     "questions.2.options.0": {
-      "t": "Ninguém é mencionado",
-      "h": "49b56513"
+      "t": "Nenhuma pessoa é citada pelo nome em nenhuma parte do documento",
+      "h": "d86bd187"
     },
     "questions.2.options.1": {
       "t": "Ele pergunta como o sistema permitiu a falha e termina com ações que têm responsável, não com punição",
       "h": "1f84bb62"
     },
     "questions.2.options.2": {
-      "t": "Nunca é escrito",
-      "h": "e98b3063"
+      "t": "Ele nunca é escrito, para ninguém se sentir acusado",
+      "h": "54b8abc9"
     },
     "questions.2.options.3": {
-      "t": "É privado para os gestores",
-      "h": "065cf82d"
+      "t": "Ele é mantido privado e compartilhado só com os gestores",
+      "h": "fb2825fe"
     },
     "questions.2.q": {
       "t": "O que define um postmortem sem culpados?",

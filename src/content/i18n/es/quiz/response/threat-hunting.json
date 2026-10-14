@@ -5,20 +5,20 @@
       "h": "659b4f63"
     },
     "questions.0.options.0": {
-      "t": "Es lo mismo",
-      "h": "4ea1856d"
+      "t": "Es lo mismo, solo que lo hace un analista más sénior",
+      "h": "9372efdd"
     },
     "questions.0.options.1": {
       "t": "Parte de una hipótesis y busca de forma proactiva actividad que ninguna alerta señaló",
       "h": "a83927e9"
     },
     "questions.0.options.2": {
-      "t": "Solo usa antivirus",
-      "h": "250d1ba2"
+      "t": "Solo usa análisis de antivirus sobre un grupo mayor de máquinas",
+      "h": "ac1c1402"
     },
     "questions.0.options.3": {
-      "t": "La hacen los clientes",
-      "h": "3c16ffa3"
+      "t": "Lo hacen los clientes que informan de comportamientos sospechosos",
+      "h": "26ff0eb2"
     },
     "questions.0.q": {
       "t": "¿En qué se diferencia una cacería de revisar alertas?",
@@ -29,20 +29,20 @@
       "h": "731e8dff"
     },
     "questions.1.options.0": {
-      "t": "Olvidarla",
-      "h": "2d5f5b05"
+      "t": "Se olvida, porque la técnica ya se vio una vez",
+      "h": "8397af9f"
     },
     "questions.1.options.1": {
       "t": "Se convierte en un incidente, y la cacería se transforma en una detección automatizada",
       "h": "e5ebb78a"
     },
     "questions.1.options.2": {
-      "t": "Solo se archiva en una wiki",
-      "h": "c48faf7d"
+      "t": "Solo se archiva en la wiki como lección para la próxima búsqueda",
+      "h": "8a88d77d"
     },
     "questions.1.options.3": {
-      "t": "Se repite todos los días a mano",
-      "h": "ab9ca5dc"
+      "t": "Se repite a mano cada día para seguir vigilando",
+      "h": "5a68c424"
     },
     "questions.1.q": {
       "t": "¿Qué debe pasar con una cacería que confirma que se está usando una técnica?",
@@ -53,20 +53,20 @@
       "h": "cc7ac313"
     },
     "questions.2.options.0": {
-      "t": "Sí",
-      "h": "5397e058"
+      "t": "Sí, toda búsqueda que no encuentra a un atacante es esfuerzo perdido",
+      "h": "56db84df"
     },
     "questions.2.options.1": {
       "t": "No: un resultado negativo documentado, más las brechas de datos halladas, es un resultado válido y útil",
       "h": "b2eaecd9"
     },
     "questions.2.options.2": {
-      "t": "Solo si la repites",
-      "h": "5a732d70"
+      "t": "Solo si la repites la semana siguiente para estar seguro",
+      "h": "699d020c"
     },
     "questions.2.options.3": {
-      "t": "Demuestra que no hay atacantes",
-      "h": "2a493d01"
+      "t": "Demuestra que no hay atacantes en el entorno",
+      "h": "7602cf7d"
     },
     "questions.2.q": {
       "t": "Una cacería no encuentra nada. ¿Fue una pérdida de tiempo?",

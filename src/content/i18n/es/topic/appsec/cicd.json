@@ -49,8 +49,8 @@
       "h": "95b7472b"
     },
     "sections.2.code.0.code": {
-      "t": "name: ci\non: [push, pull_request]        # stage source: qué lo dispara\njobs:\n  ci:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - run: npm ci                # build: instala de forma reproducible\n      - run: npm test              # test: la suite de pruebas\n      - run: npx semgrep ci        # la seguridad entra como un paso más\n      - run: docker build -t app . # package: genera el artefacto",
-      "h": "64780187"
+      "t": "name: ci\non: [push, pull_request]        # stage source: qué lo dispara\npermissions:\n  contents: read                # mínimo privilegio para el token del pipeline\njobs:\n  ci:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - run: npm ci                # build: instalación reproducible\n      - run: npm test              # test: la suite de pruebas\n      - run: pipx run semgrep scan --config auto --error   # la seguridad como un paso más\n      - run: docker build -t app . # package: genera el artefacto",
+      "h": "ec71c7e5"
     },
     "sections.2.code.0.filename": {
       "t": ".github/workflows/ci.yml",

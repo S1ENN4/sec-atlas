@@ -9,16 +9,16 @@
       "h": "2b263d1d"
     },
     "questions.0.options.1": {
-      "t": "Executes SQL queries",
-      "h": "21df0f48"
+      "t": "Runs SQL queries directly on the company's data",
+      "h": "ebcc4393"
     },
     "questions.0.options.2": {
-      "t": "Verifies facts automatically",
-      "h": "fc02988c"
+      "t": "Automatically checks whether each fact in the answer is true",
+      "h": "b9060e73"
     },
     "questions.0.options.3": {
-      "t": "Keeps permanent memory between sessions",
-      "h": "7c319ceb"
+      "t": "Keeps a permanent memory of conversations between sessions",
+      "h": "0ba24d79"
     },
     "questions.0.q": {
       "t": "What does an LLM fundamentally do?",
@@ -33,16 +33,16 @@
       "h": "4a82936f"
     },
     "questions.1.options.1": {
-      "t": "A syntax error",
-      "h": "5c2d3316"
+      "t": "A syntax error that appears when the prompt is badly built",
+      "h": "485320d7"
     },
     "questions.1.options.2": {
-      "t": "A type of compression",
-      "h": "1f96a821"
+      "t": "A type of compression applied to the model's context",
+      "h": "88d7b5be"
     },
     "questions.1.options.3": {
-      "t": "A training technique",
-      "h": "b34fe9d0"
+      "t": "A training technique to improve performance",
+      "h": "a3faa38e"
     },
     "questions.1.q": {
       "t": "What is prompt injection?",
@@ -57,16 +57,16 @@
       "h": "f3d432e4"
     },
     "questions.2.options.1": {
-      "t": "Because it always lies",
-      "h": "31fa320a"
+      "t": "Because it always lies on purpose to deceive the user",
+      "h": "4f361d21"
     },
     "questions.2.options.2": {
-      "t": "Because the answers are encrypted",
-      "h": "483e0837"
+      "t": "Because the answers are encrypted and only it can read them",
+      "h": "adbeca04"
     },
     "questions.2.options.3": {
-      "t": "Because it does not understand Portuguese",
-      "h": "471b3168"
+      "t": "Because it does not understand the Portuguese language well",
+      "h": "607add49"
     },
     "questions.2.q": {
       "t": "Why can't you blindly trust the model's output?",

@@ -9,16 +9,16 @@
       "h": "224d04dd"
     },
     "questions.0.options.1": {
-      "t": "Generating the final answer",
-      "h": "6d7e110e"
+      "t": "Generating the final natural-language answer for the user",
+      "h": "f95e8b9b"
     },
     "questions.0.options.2": {
-      "t": "Training the model",
-      "h": "649db890"
+      "t": "Training the model with the most used documents",
+      "h": "b4fb6438"
     },
     "questions.0.options.3": {
-      "t": "Encrypting the index",
-      "h": "167ea171"
+      "t": "Encrypting the index to protect the retrieved content",
+      "h": "04e4c808"
     },
     "questions.0.q": {
       "t": "What is the goal of the retrieval step?",
@@ -33,16 +33,16 @@
       "h": "dcec9489"
     },
     "questions.1.options.1": {
-      "t": "Two language models",
-      "h": "eebf908f"
+      "t": "Two language models, one to generate and another to review",
+      "h": "0e8b02a6"
     },
     "questions.1.options.2": {
-      "t": "Two SQL databases",
-      "h": "6cf9f86a"
+      "t": "Two SQL databases replicated across regions",
+      "h": "b383f651"
     },
     "questions.1.options.3": {
-      "t": "CPU and GPU",
-      "h": "e6eec36a"
+      "t": "CPU and GPU, to speed up the calculation of vectors",
+      "h": "c08d3013"
     },
     "questions.1.q": {
       "t": "What does hybrid search combine?",
@@ -57,16 +57,16 @@
       "h": "179fe3f2"
     },
     "questions.2.options.1": {
-      "t": "Deleting old results",
-      "h": "e189f019"
+      "t": "Deleting old results from the index to save space",
+      "h": "22d95654"
     },
     "questions.2.options.2": {
-      "t": "Increasing the number of chunks",
-      "h": "2c7a1806"
+      "t": "Increasing the number of chunks returned for each query",
+      "h": "541d7ac8"
     },
     "questions.2.options.3": {
-      "t": "Translating the documents",
-      "h": "9603a8ad"
+      "t": "Translating the documents into the language of the question",
+      "h": "86ec6ddd"
     },
     "questions.2.q": {
       "t": "What is re-ranking for?",

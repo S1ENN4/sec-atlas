@@ -9,16 +9,16 @@
       "h": "f0782322"
     },
     "questions.0.options.1": {
-      "t": "To reduce storage cost",
-      "h": "5e3c33da"
+      "t": "To reduce the storage cost of the origin's data",
+      "h": "dac2ea8f"
     },
     "questions.0.options.2": {
-      "t": "To speed up DNS",
-      "h": "15de3272"
+      "t": "To speed up the clients' DNS resolution",
+      "h": "cf3401cc"
     },
     "questions.0.options.3": {
-      "t": "Because the origin does not support HTTPS",
-      "h": "00dee44f"
+      "t": "Because the origin does not support HTTPS connections",
+      "h": "0f8dac08"
     },
     "questions.0.q": {
       "t": "Why lock down the origin to accept traffic only from the edge?",
@@ -33,16 +33,16 @@
       "h": "62dbe66a"
     },
     "questions.1.options.1": {
-      "t": "If the control fails, traffic passes",
-      "h": "97fdda59"
+      "t": "If the control fails, the traffic goes through unchecked",
+      "h": "cec5e1b4"
     },
     "questions.1.options.2": {
-      "t": "The control never fails",
-      "h": "049dab4a"
+      "t": "The control never fails, so there is no defined behavior",
+      "h": "c57fc83d"
     },
     "questions.1.options.3": {
-      "t": "The system restarts itself",
-      "h": "20c7f431"
+      "t": "The system restarts by itself and recovers the control",
+      "h": "3cfb0dc8"
     },
     "questions.1.q": {
       "t": "What does fail-closed mean?",
@@ -57,16 +57,16 @@
       "h": "8f942f16"
     },
     "questions.2.options.1": {
-      "t": "The edge does not read headers",
-      "h": "c3473b48"
+      "t": "The edge cannot read the requests' headers",
+      "h": "7480e220"
     },
     "questions.2.options.2": {
-      "t": "Because the application is faster",
-      "h": "217350ea"
+      "t": "Because the application is always faster than the edge",
+      "h": "4970bdf2"
     },
     "questions.2.options.3": {
-      "t": "Because the edge does not support HTTPS",
-      "h": "dc0ec1eb"
+      "t": "Because the edge does not support HTTPS connections",
+      "h": "f7643945"
     },
     "questions.2.q": {
       "t": "Why can per-object authorization not live only at the edge?",

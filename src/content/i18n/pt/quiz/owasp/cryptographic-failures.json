@@ -5,20 +5,20 @@
       "h": "94f17062"
     },
     "questions.0.options.0": {
-      "t": "MD5 com salt",
-      "h": "f041e53b"
+      "t": "MD5 com sal, porque o sal impede ataques pré-computados",
+      "h": "ee963c0a"
     },
     "questions.0.options.1": {
-      "t": "SHA-256 da senha",
-      "h": "e183c571"
+      "t": "SHA-256 da senha, porque é um hash forte e padrão",
+      "h": "529b0865"
     },
     "questions.0.options.2": {
       "t": "Argon2id, scrypt ou bcrypt por meio de uma biblioteca mantida",
       "h": "a818b0d0"
     },
     "questions.0.options.3": {
-      "t": "Criptografia AES com uma chave compartilhada",
-      "h": "97be3d97"
+      "t": "Criptografia AES com uma chave compartilhada pelos servidores, para as senhas poderem ser recuperadas",
+      "h": "e148f066"
     },
     "questions.0.q": {
       "t": "Qual é a forma correta de armazenar senhas?",
@@ -29,20 +29,20 @@
       "h": "67b26847"
     },
     "questions.1.options.0": {
-      "t": "Math.random()",
-      "h": "0ab0041a"
+      "t": "Math.random(), que é rápido e bem testado em todo runtime",
+      "h": "4e3785d9"
     },
     "questions.1.options.1": {
-      "t": "Um timestamp",
-      "h": "8c56abe5"
+      "t": "Um timestamp com o id do usuário, que é único em cada requisição",
+      "h": "b749d332"
     },
     "questions.1.options.2": {
       "t": "O gerador aleatório criptográfico do sistema operacional",
       "h": "7dacbae5"
     },
     "questions.1.options.3": {
-      "t": "O id do usuário mais um contador",
-      "h": "6b0d6e98"
+      "t": "O id do usuário mais um contador que cresce a cada requisição",
+      "h": "2f2a3c12"
     },
     "questions.1.q": {
       "t": "Qual fonte é aceitável para um token de redefinição de senha?",
@@ -53,20 +53,20 @@
       "h": "358be7cf"
     },
     "questions.2.options.0": {
-      "t": "É a única que funciona com TLS",
-      "h": "7702dafd"
+      "t": "É o único modo que funciona com conexões TLS",
+      "h": "bee36560"
     },
     "questions.2.options.1": {
       "t": "Detecta adulteração do texto cifrado",
       "h": "e1bf6a25"
     },
     "questions.2.options.2": {
-      "t": "Produz uma saída menor",
-      "h": "99530d88"
+      "t": "Produz uma saída menor que a dos outros modos",
+      "h": "028d3109"
     },
     "questions.2.options.3": {
-      "t": "Não precisa de chave",
-      "h": "ac3ce1f7"
+      "t": "Não precisa de chave, então não há nada para proteger",
+      "h": "d19bbfe1"
     },
     "questions.2.q": {
       "t": "Por que preferir criptografia autenticada como AES-GCM em vez de AES-CBC simples?",

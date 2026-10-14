@@ -9,16 +9,16 @@
       "h": "6962a7b7"
     },
     "questions.0.options.1": {
-      "t": "Que el modelo ejecute código por sí solo en la GPU",
-      "h": "611bff0c"
+      "t": "El modelo ejecutando código por sí solo en la GPU del servidor",
+      "h": "146dc28d"
     },
     "questions.0.options.2": {
-      "t": "Un tipo de embedding",
-      "h": "3a0ae017"
+      "t": "Un tipo de embedding usado para encontrar funciones parecidas",
+      "h": "6449eeb5"
     },
     "questions.0.options.3": {
-      "t": "Una llamada telefónica",
-      "h": "72bd27d7"
+      "t": "Una llamada de teléfono que hace el modelo al usuario",
+      "h": "3cfe4ee4"
     },
     "questions.0.q": {
       "t": "¿Qué es el tool calling?",
@@ -33,16 +33,16 @@
       "h": "06a883a6"
     },
     "questions.1.options.1": {
-      "t": "Porque el modelo nunca se equivoca",
-      "h": "ab93a3c2"
+      "t": "Porque el modelo nunca se equivoca al construir los argumentos",
+      "h": "8df5405d"
     },
     "questions.1.options.2": {
-      "t": "Porque la herramienta cobra por argumento",
-      "h": "8178c729"
+      "t": "Porque la herramienta cobra por cada argumento recibido",
+      "h": "aa0e432f"
     },
     "questions.1.options.3": {
-      "t": "Porque JSON está prohibido",
-      "h": "03fc0f8b"
+      "t": "Porque el formato JSON está prohibido en las llamadas a herramientas",
+      "h": "0003c697"
     },
     "questions.1.q": {
       "t": "¿Por qué validar los argumentos que el modelo genera para una herramienta?",
@@ -57,16 +57,16 @@
       "h": "33ad8e03"
     },
     "questions.2.options.1": {
-      "t": "Leer la fecha actual",
-      "h": "0eee2de9"
+      "t": "Leer la fecha actual del sistema para responder al usuario",
+      "h": "ad014904"
     },
     "questions.2.options.2": {
-      "t": "Sumar dos números",
-      "h": "7a54f362"
+      "t": "Sumar dos números dados en la conversación",
+      "h": "d6a01a2a"
     },
     "questions.2.options.3": {
-      "t": "Dar formato a un texto",
-      "h": "997939f9"
+      "t": "Dar formato a un texto según una plantilla",
+      "h": "f6ed642b"
     },
     "questions.2.q": {
       "t": "¿Qué acción debería exigir confirmación humana?",

@@ -70,6 +70,25 @@ test.describe("explorable maps", () => {
   });
 });
 
+test.describe("finding the maps", () => {
+  test("the main navigation and the home page point at them", async ({ page }) => {
+    await page.goto("/en");
+    await expect(page.getByRole("navigation", { name: "Main" }).getByRole("link", { name: "Maps" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Explore Atlas Maps" }).first()).toBeVisible();
+  });
+
+  test("domain pages suggest the maps that go with them", async ({ page }) => {
+    await page.goto("/en/cloudsec");
+    await expect(page.locator('a[href="/en/explore/cloud"]').first()).toBeVisible();
+  });
+
+  test("map nodes are found by the global search index", async ({ request }) => {
+    const res = await request.get("/en/search-index.json");
+    const items = (await res.json()) as { u: string }[];
+    expect(items.some((i) => i.u === "/en/explore/pipeline#sast")).toBe(true);
+  });
+});
+
 test.describe("small screens", () => {
   test.use({ viewport: { width: 375, height: 812 } });
 

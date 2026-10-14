@@ -9,16 +9,16 @@
       "h": "0bc2383e"
     },
     "questions.0.options.1": {
-      "t": "Solo el entrenamiento del modelo",
-      "h": "dd01821a"
+      "t": "Solo el entrenamiento del modelo y el ajuste de sus pesos",
+      "h": "3e40e757"
     },
     "questions.0.options.2": {
-      "t": "La impresión de informes",
-      "h": "cacb1487"
+      "t": "La impresión de informes generados por el agente",
+      "h": "80df462e"
     },
     "questions.0.options.3": {
-      "t": "La compresión de imágenes",
-      "h": "d39507b3"
+      "t": "La compresión de imágenes enviadas al modelo",
+      "h": "921f2e34"
     },
     "questions.0.q": {
       "t": "¿Qué coordina la orquestación?",
@@ -33,16 +33,16 @@
       "h": "aae10c59"
     },
     "questions.1.options.1": {
-      "t": "Falta de tokens",
-      "h": "60c309d5"
+      "t": "La falta de tokens disponibles en el plan contratado",
+      "h": "dabcfcd5"
     },
     "questions.1.options.2": {
-      "t": "Que el flujo sea demasiado rápido",
-      "h": "628f3844"
+      "t": "Que el flujo sea demasiado rápido para que los usuarios lo sigan",
+      "h": "a30a083f"
     },
     "questions.1.options.3": {
-      "t": "Tener muchos comentarios en el código",
-      "h": "7fde5e66"
+      "t": "Tener demasiados comentarios en el código de la orquestación",
+      "h": "86a053a4"
     },
     "questions.1.q": {
       "t": "¿Cuál es un riesgo en los sistemas multiagente?",
@@ -57,16 +57,16 @@
       "h": "26e66abf"
     },
     "questions.2.options.1": {
-      "t": "Para hacer al modelo más creativo",
-      "h": "aea232eb"
+      "t": "Para que el modelo sea más creativo en cada intento",
+      "h": "a555faf8"
     },
     "questions.2.options.2": {
-      "t": "Para aumentar el contexto",
-      "h": "7b23ce51"
+      "t": "Para aumentar el tamaño del contexto disponible",
+      "h": "6bc4b458"
     },
     "questions.2.options.3": {
-      "t": "Para apagar los logs",
-      "h": "f02b0bb8"
+      "t": "Para apagar los logs tras unas cuantas rondas",
+      "h": "f1841ea1"
     },
     "questions.2.q": {
       "t": "¿Por qué limitar el número de iteraciones de un agente?",

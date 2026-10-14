@@ -9,16 +9,16 @@
       "h": "cac648b0"
     },
     "questions.0.options.1": {
-      "t": "Las IPs no aparecen en los logs de HTTP",
-      "h": "13b8339e"
+      "t": "Las direcciones IP no aparecen en los logs de peticiones HTTP",
+      "h": "5d516569"
     },
     "questions.0.options.2": {
-      "t": "El límite por IP es ilegal en algunos países",
-      "h": "ea7642a9"
+      "t": "El límite por IP está prohibido por ley en algunos países",
+      "h": "639d3dae"
     },
     "questions.0.options.3": {
-      "t": "Porque IPv6 no se puede limitar",
-      "h": "9a3cc30e"
+      "t": "IPv6 no se puede limitar con la mayoría de las herramientas",
+      "h": "ad6d1e59"
     },
     "questions.0.q": {
       "t": "¿Por qué limitar solo por IP suele ser insuficiente?",
@@ -33,16 +33,16 @@
       "h": "00b95b75"
     },
     "questions.1.options.1": {
-      "t": "Para ahorrar almacenamiento de logs",
-      "h": "2e0d5f7b"
+      "t": "Para ahorrar almacenamiento de logs de bloqueo",
+      "h": "f89d648f"
     },
     "questions.1.options.2": {
-      "t": "Para evitar el uso de desafíos",
-      "h": "807df607"
+      "t": "Para evitar el uso de desafíos, que molestan a los usuarios",
+      "h": "608e595b"
     },
     "questions.1.options.3": {
-      "t": "Porque los bloqueos sin plazo son técnicamente imposibles",
-      "h": "c9681314"
+      "t": "Porque los bloqueos sin caducidad son técnicamente imposibles de aplicar",
+      "h": "0d9a6b44"
     },
     "questions.1.q": {
       "t": "¿Por qué usar una escalera de respuestas con plazo (TTL)?",
@@ -57,16 +57,16 @@
       "h": "37c4a65e"
     },
     "questions.2.options.1": {
-      "t": "Elimina la necesidad de cualquier límite estático",
-      "h": "fb25140c"
+      "t": "Elimina la necesidad de mantener cualquier límite estático",
+      "h": "63d4227d"
     },
     "questions.2.options.2": {
-      "t": "Prescinde de la telemetría",
-      "h": "cffdad50"
+      "t": "Elimina la necesidad de telemetría, porque se ajusta solo",
+      "h": "82525716"
     },
     "questions.2.options.3": {
-      "t": "Garantiza cero falsos positivos",
-      "h": "df235d86"
+      "t": "Garantiza que nunca habrá falsos positivos",
+      "h": "3dcc8df4"
     },
     "questions.2.q": {
       "t": "¿Cuál es la ventaja de un límite adaptativo?",

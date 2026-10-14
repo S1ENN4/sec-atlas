@@ -5,20 +5,20 @@
       "h": "7e107889"
     },
     "questions.0.options.0": {
-      "t": "Hacer escape de las comillas a mano",
-      "h": "ecf62b9f"
+      "t": "Escapar las comillas a mano antes de construir la consulta",
+      "h": "a639145b"
     },
     "questions.0.options.1": {
       "t": "Consultas parametrizadas, para que los valores nunca pasen a formar parte del texto SQL",
       "h": "4daf7ca0"
     },
     "questions.0.options.2": {
-      "t": "Una contraseña de base de datos más larga",
-      "h": "fd5a7dc5"
+      "t": "Usar una contraseña de base de datos más larga y compleja",
+      "h": "3bc078f2"
     },
     "questions.0.options.3": {
-      "t": "Ocultar los mensajes de error",
-      "h": "134cdac1"
+      "t": "Ocultar los mensajes de error para que los atacantes no aprendan nada",
+      "h": "30863214"
     },
     "questions.0.q": {
       "t": "¿Cuál es la defensa principal contra la SQL injection?",
@@ -29,20 +29,20 @@
       "h": "d11ab3c9"
     },
     "questions.1.options.0": {
-      "t": "Armar una cadena de shell y ejecutarla",
-      "h": "f3ee5f04"
+      "t": "Construir una cadena de shell con el nombre del host y ejecutarla por el shell",
+      "h": "6dad1292"
     },
     "questions.1.options.1": {
       "t": "Pasar un arreglo de argumentos sin shell, después de validar el valor contra una lista de permitidos",
       "h": "46941b02"
     },
     "questions.1.options.2": {
-      "t": "Quitar los puntos y coma de la entrada",
-      "h": "08b11708"
+      "t": "Quitar los puntos y comas de la entrada y ejecutar el comando",
+      "h": "70a39398"
     },
     "questions.1.options.3": {
-      "t": "Ejecutarlo como root para que siempre funcione",
-      "h": "58de96db"
+      "t": "Ejecutar el programa como root para que siempre tenga el acceso que necesita",
+      "h": "e3d7ed17"
     },
     "questions.1.q": {
       "t": "Un servicio debe ejecutar un programa externo con un nombre de host proporcionado por el usuario. ¿Qué es lo más seguro?",
@@ -53,20 +53,20 @@
       "h": "2e61404f"
     },
     "questions.2.options.0": {
-      "t": "El motor SQL",
-      "h": "29bee328"
+      "t": "El motor SQL de la base de datos detrás de la aplicación",
+      "h": "3fd2bb97"
     },
     "questions.2.options.1": {
-      "t": "El shell del sistema operativo",
-      "h": "993524de"
+      "t": "El shell del sistema operativo del servidor web",
+      "h": "94a420a3"
     },
     "questions.2.options.2": {
       "t": "El motor de HTML y JavaScript del navegador",
       "h": "9f5862d6"
     },
     "questions.2.options.3": {
-      "t": "El resolvedor de DNS",
-      "h": "ef77dd33"
+      "t": "El resolvedor DNS que usa el navegador",
+      "h": "a9fa1353"
     },
     "questions.2.q": {
       "t": "¿El XSS es una forma de injection en qué intérprete?",

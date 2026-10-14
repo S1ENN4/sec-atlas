@@ -5,20 +5,20 @@
       "h": "e0dc72c6"
     },
     "questions.0.options.0": {
-      "t": "Una contraseña más larga",
-      "h": "f75cbc11"
+      "t": "Una contraseña más larga y compleja, cambiada cada pocos meses",
+      "h": "7dc9bb5d"
     },
     "questions.0.options.1": {
       "t": "MFA resistente al phishing, como FIDO2 o passkeys, que solo funcionan en el sitio real",
       "h": "ca140bfc"
     },
     "questions.0.options.2": {
-      "t": "Capacitación de seguridad una vez al año",
-      "h": "94212085"
+      "t": "Formación de concienciación una vez al año para todos los empleados",
+      "h": "4d65531c"
     },
     "questions.0.options.3": {
-      "t": "Bloquear todo el correo",
-      "h": "3cb6517d"
+      "t": "Bloquear todo el correo que viene de fuera de la empresa",
+      "h": "cb741b4c"
     },
     "questions.0.q": {
       "t": "¿Qué control derrota mejor las páginas de phishing de credenciales?",
@@ -29,20 +29,20 @@
       "h": "9e43a1c1"
     },
     "questions.1.options.0": {
-      "t": "Solo la tasa de clics",
-      "h": "f1ce8a34"
+      "t": "Solo la tasa de clics, ya que menos clics siempre significa una empresa más segura",
+      "h": "65646b26"
     },
     "questions.1.options.1": {
       "t": "Cuántas personas reportan y con qué rapidez, ya que reportar convierte a los usuarios en detección",
       "h": "f0c1cc66"
     },
     "questions.1.options.2": {
-      "t": "El número de correos enviados",
-      "h": "a84ae69c"
+      "t": "El número de correos simulados enviados en el trimestre",
+      "h": "3bf2f6be"
     },
     "questions.1.options.3": {
-      "t": "El diseño de la simulación",
-      "h": "bf7f70c1"
+      "t": "El diseño y el realismo de la simulación de phishing",
+      "h": "2a385534"
     },
     "questions.1.q": {
       "t": "¿Qué métrica de phishing importa más para la defensa?",
@@ -53,20 +53,20 @@
       "h": "cb8471e5"
     },
     "questions.2.options.0": {
-      "t": "Cifra el correo",
-      "h": "b4a6f1e7"
+      "t": "Cifra el correo para que solo el destinatario pueda leerlo",
+      "h": "14d22aeb"
     },
     "questions.2.options.1": {
       "t": "Indica a los receptores que rechacen los mensajes que fallan la autenticación de tu dominio",
       "h": "774d6b0d"
     },
     "questions.2.options.2": {
-      "t": "Borra tu bandeja de entrada",
-      "h": "1861de40"
+      "t": "Borra el buzón de cualquier cuenta que envíe spam",
+      "h": "c5055005"
     },
     "questions.2.options.3": {
-      "t": "Bloquea el correo saliente",
-      "h": "ea753e11"
+      "t": "Bloquea todo el correo saliente del dominio hasta que se verifique",
+      "h": "5cbb007c"
     },
     "questions.2.q": {
       "t": "¿Qué hace una política DMARC reject?",

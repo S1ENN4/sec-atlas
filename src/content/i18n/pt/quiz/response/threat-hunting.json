@@ -5,20 +5,20 @@
       "h": "659b4f63"
     },
     "questions.0.options.0": {
-      "t": "É a mesma coisa",
-      "h": "4ea1856d"
+      "t": "É a mesma coisa, só que feita por um analista mais sênior",
+      "h": "9372efdd"
     },
     "questions.0.options.1": {
       "t": "Parte de uma hipótese e busca proativamente atividade que nenhum alerta sinalizou",
       "h": "a83927e9"
     },
     "questions.0.options.2": {
-      "t": "Usa apenas antivírus",
-      "h": "250d1ba2"
+      "t": "Só usa varreduras de antivírus sobre um grupo maior de máquinas",
+      "h": "ac1c1402"
     },
     "questions.0.options.3": {
-      "t": "É feita pelos clientes",
-      "h": "3c16ffa3"
+      "t": "É feita pelos clientes que relatam comportamentos suspeitos",
+      "h": "26ff0eb2"
     },
     "questions.0.q": {
       "t": "Como uma caça difere de revisar alertas?",
@@ -29,20 +29,20 @@
       "h": "731e8dff"
     },
     "questions.1.options.0": {
-      "t": "Esquecer",
-      "h": "2d5f5b05"
+      "t": "Ela é esquecida, porque a técnica já foi vista uma vez",
+      "h": "8397af9f"
     },
     "questions.1.options.1": {
       "t": "Vira um incidente, e a caça é convertida em uma detecção automatizada",
       "h": "e5ebb78a"
     },
     "questions.1.options.2": {
-      "t": "É apenas arquivada em uma wiki",
-      "h": "c48faf7d"
+      "t": "Ela só é arquivada na wiki como lição para a próxima caçada",
+      "h": "8a88d77d"
     },
     "questions.1.options.3": {
-      "t": "É repetida todo dia, à mão",
-      "h": "ab9ca5dc"
+      "t": "Ela é repetida à mão todo dia para continuar vigiando",
+      "h": "5a68c424"
     },
     "questions.1.q": {
       "t": "O que deve acontecer com uma caça que confirma que uma técnica está sendo usada?",
@@ -53,20 +53,20 @@
       "h": "cc7ac313"
     },
     "questions.2.options.0": {
-      "t": "Sim",
-      "h": "5397e058"
+      "t": "Sim, toda caçada que não acha um atacante é esforço perdido",
+      "h": "56db84df"
     },
     "questions.2.options.1": {
       "t": "Não: um resultado negativo documentado, mais as lacunas de dados encontradas, é um resultado válido e útil",
       "h": "b2eaecd9"
     },
     "questions.2.options.2": {
-      "t": "Só se você repetir",
-      "h": "5a732d70"
+      "t": "Só se você repetir na semana seguinte para ter certeza",
+      "h": "699d020c"
     },
     "questions.2.options.3": {
-      "t": "Prova que não há atacantes",
-      "h": "2a493d01"
+      "t": "Prova que não há atacantes no ambiente",
+      "h": "7602cf7d"
     },
     "questions.2.q": {
       "t": "Uma caça não encontra nada. Foi um desperdício?",

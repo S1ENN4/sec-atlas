@@ -5,20 +5,20 @@
       "h": "9e8d6bab"
     },
     "questions.0.options.0": {
-      "t": "Contratar mais auditores",
-      "h": "4e5dd36f"
+      "t": "Contratar mais auditores para cada controle ser verificado com mais frequência",
+      "h": "1fe14633"
     },
     "questions.0.options.1": {
       "t": "Controles com responsáveis e evidências produzidas de forma contínua e automática",
       "h": "6204b7fa"
     },
     "questions.0.options.2": {
-      "t": "Adiar a auditoria",
-      "h": "27cbcbd6"
+      "t": "Adiar a auditoria até a coleta de evidências ficar mais fácil",
+      "h": "2cb635f2"
     },
     "questions.0.options.3": {
-      "t": "Reduzir o escopo a nada",
-      "h": "ee34867c"
+      "t": "Reduzir o escopo até poucos sistemas serem cobertos",
+      "h": "4487e680"
     },
     "questions.0.q": {
       "t": "O que torna as auditorias rotineiras em vez de dolorosas?",
@@ -29,20 +29,20 @@
       "h": "6083ca4f"
     },
     "questions.1.options.0": {
-      "t": "Sempre a equipe de compliance",
-      "h": "604934b1"
+      "t": "A equipe de conformidade, para todos os controles da empresa",
+      "h": "aba152e8"
     },
     "questions.1.options.1": {
       "t": "A pessoa que responde pelo funcionamento do controle, normalmente na equipe que o opera",
       "h": "44d5425d"
     },
     "questions.1.options.2": {
-      "t": "O auditor",
-      "h": "14ac7c6e"
+      "t": "O auditor externo, que verifica e opera o controle ao mesmo tempo",
+      "h": "833a2c6d"
     },
     "questions.1.options.3": {
-      "t": "Ninguém",
-      "h": "148ba2d2"
+      "t": "A pessoa mais sênior presente na reunião em que ele foi aprovado",
+      "h": "837890be"
     },
     "questions.1.q": {
       "t": "Quem deve ser o responsável por um controle?",
@@ -53,20 +53,20 @@
       "h": "f03e6f0c"
     },
     "questions.2.options.0": {
-      "t": "Escondê-la",
-      "h": "c002485a"
+      "t": "Mantê-la interna e corrigir em silêncio, para o auditor nunca precisar vê-la",
+      "h": "6b9173bf"
     },
     "questions.2.options.1": {
       "t": "Documentá-la com um plano de ação e um responsável, e contar ao auditor",
       "h": "394d7cef"
     },
     "questions.2.options.2": {
-      "t": "Excluir o controle",
-      "h": "243e38a6"
+      "t": "Remover o controle da lista para ele deixar de contar como lacuna",
+      "h": "c9183344"
     },
     "questions.2.options.3": {
-      "t": "Mudar a data da auditoria",
-      "h": "323e6e1b"
+      "t": "Mover a auditoria para mais tarde, até a lacuna ser fechada",
+      "h": "790c57e5"
     },
     "questions.2.q": {
       "t": "Você encontra uma lacuna antes da auditoria. Qual é a melhor abordagem?",

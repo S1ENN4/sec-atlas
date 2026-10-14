@@ -9,7 +9,7 @@ export const cwpp: Topic = {
     "Cloud Workload Protection Platform vigia o que acontece dentro da VM, container e serverless: syscalls, conexões e processos, em tempo de execução.",
   kind: "pratica",
   stage: "detectar",
-  tools: ["CrowdStrike", "SentinelOne", "Aqua Security", "Trend Micro Cloud One"],
+  tools: ["CrowdStrike", "SentinelOne", "Aqua Security", "Trend Vision One"],
   sections: [
     {
       heading: "O que é",
@@ -25,7 +25,7 @@ export const cwpp: Topic = {
       ],
       bullets: [
         "agent user-space (Falco, Aqua): visibilidade ampla, fácil de atualizar, mas é mais um processo atacável",
-        "eBPF (Tetragon, Cilium Tetragon, Datadog USM): instrumenta o kernel direto, sem processo extra, mas as regras ficam mais limitadas ao que o kernel expõe via hooks",
+        "eBPF (Tetragon, Falco com driver eBPF, Datadog CWS): instrumenta o kernel direto, sem processo extra, mas as regras ficam mais limitadas ao que o kernel expõe via hooks",
         "kernel module: máxima visibilidade, mas compromete compatibilidade com kernels gerenciados (GKE, EKS otimizado)",
         "sidecar por pod: isola o sensor da carga, útil quando a carga não pode ser modificada, mas custa mais recursos",
       ],
@@ -66,14 +66,14 @@ export const cwpp: Topic = {
       bullets: [
         "detecta o que configuração nenhuma pega: zero-day em processo legítimo, exfiltração por canal permitido, persistência em filesystem limpo",
         "regras baseadas em comportamento pegam famílias de ataque, não CVE específica: um reverse shell em qualquer linguagem dispara a mesma regra",
-        "fechando o ciclo: snapshot do filesystem pós-detecção vira evidência para incidente, não vira prescrição para o próximo atacante",
+        "evidência preservada: o snapshot do filesystem feito após a detecção sustenta a investigação do incidente",
       ],
     },
     {
       heading: "Limitações",
       bullets: [
         "agent dentro da carga é superfície nova: bug no sensor vira RCE dentro do nó, e o histórico tem exemplos",
-        "custo de telemetria em escala: instrumentar mil containers em eBPF parece grátis até o log ir para o SIEM, e a casa é o switch do provedor",
+        "custo de telemetria em escala: instrumentar mil containers em eBPF parece grátis até o volume de logs chegar ao SIEM, onde o custo de ingestão aparece",
         "falsos positivos de comportamento quebram a confiança: regra boa demais é regra que todo mundo silencia; o tuning é trabalho permanente, não setup de uma vez",
       ],
     },

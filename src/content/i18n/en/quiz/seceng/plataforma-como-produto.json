@@ -9,16 +9,16 @@
       "h": "c051db50"
     },
     "questions.0.options.1": {
-      "t": "A type of attack",
-      "h": "fd460e08"
+      "t": "A type of attack that exploits paved network paths",
+      "h": "e123815d"
     },
     "questions.0.options.2": {
       "t": "A policy that forbids any exception",
       "h": "e6ee41de"
     },
     "questions.0.options.3": {
-      "t": "A monthly report",
-      "h": "0423bc5a"
+      "t": "A monthly report on the state of the platform",
+      "h": "a7a44819"
     },
     "questions.0.q": {
       "t": "What is a paved path (golden path)?",
@@ -33,16 +33,16 @@
       "h": "2c5bfb47"
     },
     "questions.1.options.1": {
-      "t": "The number of meetings",
-      "h": "c7fd862b"
+      "t": "The number of meetings held with the teams",
+      "h": "a2d92786"
     },
     "questions.1.options.2": {
-      "t": "The size of the repository",
-      "h": "88384c89"
+      "t": "The size of the platform's repository",
+      "h": "7cd09d0e"
     },
     "questions.1.options.3": {
-      "t": "The number of rules written",
-      "h": "a05612b5"
+      "t": "The number of security rules written",
+      "h": "8bbeb2b9"
     },
     "questions.1.q": {
       "t": "Which metric shows the reach of the security platform?",
@@ -57,16 +57,16 @@
       "h": "b3e6aa20"
     },
     "questions.2.options.1": {
-      "t": "The devs are the problem",
-      "h": "776b2faf"
+      "t": "The developers are the problem and need more training",
+      "h": "375d9257"
     },
     "questions.2.options.2": {
-      "t": "The control should be removed without analysis",
-      "h": "2a37d40b"
+      "t": "The control should be removed with no analysis",
+      "h": "fce3456a"
     },
     "questions.2.options.3": {
-      "t": "Penalties should be increased",
-      "h": "9ae7b454"
+      "t": "Penalties for turning off controls should be increased",
+      "h": "872ed76c"
     },
     "questions.2.q": {
       "t": "If devs are turning a control off, what is the correct reading?",

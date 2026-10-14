@@ -9,16 +9,16 @@
       "h": "cfab53ba"
     },
     "questions.0.options.1": {
-      "t": "Ejecutar siempre la acción más amplia posible",
-      "h": "22185fdd"
+      "t": "Ejecutar siempre la acción más amplia posible, para contener rápido",
+      "h": "dbe6896d"
     },
     "questions.0.options.2": {
-      "t": "Eliminar los logs de auditoría",
-      "h": "c5520e01"
+      "t": "Quitar los logs de auditoría de la automatización para ganar velocidad",
+      "h": "982fb581"
     },
     "questions.0.options.3": {
-      "t": "Darle permisos de administrador a la automatización",
-      "h": "218a2aea"
+      "t": "Dar permisos de administrador a la automatización para que nunca falle",
+      "h": "7e41b1bd"
     },
     "questions.0.q": {
       "t": "¿Cuál de estos es un freno esencial de la automatización de respuesta?",
@@ -33,16 +33,16 @@
       "h": "9f9f1b05"
     },
     "questions.1.options.1": {
-      "t": "Acelerar la ejecución",
-      "h": "bf04fdf5"
+      "t": "Acelerar la ejecución del playbook saltándose las comprobaciones",
+      "h": "5a2855a5"
     },
     "questions.1.options.2": {
-      "t": "Cifrar las credenciales",
-      "h": "060c5876"
+      "t": "Cifrar las credenciales que usa el playbook",
+      "h": "aa392a63"
     },
     "questions.1.options.3": {
-      "t": "Reemplazar la auditoría",
-      "h": "220131d0"
+      "t": "Sustituir la auditoría de las acciones ejecutadas",
+      "h": "a579ba4d"
     },
     "questions.1.q": {
       "t": "¿Para qué sirve el dry-run en un playbook?",
@@ -57,16 +57,16 @@
       "h": "0cbb4b7a"
     },
     "questions.2.options.1": {
-      "t": "Para ahorrar almacenamiento",
-      "h": "66816c05"
+      "t": "Para ahorrar almacenamiento de la lista de bloqueos",
+      "h": "5d64e2c0"
     },
     "questions.2.options.2": {
-      "t": "Porque los bloqueos sin plazo son imposibles",
-      "h": "1102f859"
+      "t": "Porque los bloqueos sin plazo son técnicamente imposibles",
+      "h": "c9681314"
     },
     "questions.2.options.3": {
-      "t": "Para aumentar el lag",
-      "h": "be617218"
+      "t": "Para aumentar el retraso entre la detección y la respuesta",
+      "h": "9fbaaff3"
     },
     "questions.2.q": {
       "t": "¿Por qué ponerle plazo (TTL) a los bloqueos automáticos?",

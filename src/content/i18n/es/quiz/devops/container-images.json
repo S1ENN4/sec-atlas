@@ -5,20 +5,20 @@
       "h": "3eba7e0c"
     },
     "questions.0.options.0": {
-      "t": "Internet más rápido",
-      "h": "eae0a56b"
+      "t": "Descargas más rápidas del registry, porque las capas se obtienen en paralelo",
+      "h": "d399a0d6"
     },
     "questions.0.options.1": {
       "t": "Una imagen de runtime más pequeña, sin compiladores ni dependencias de desarrollo",
       "h": "cf817821"
     },
     "questions.0.options.2": {
-      "t": "Capas cifradas",
-      "h": "baa24855"
+      "t": "Capas cifradas, para que la imagen no pueda ser inspeccionada por otros usuarios",
+      "h": "99ceb702"
     },
     "questions.0.options.3": {
-      "t": "Escalado automático",
-      "h": "b50838b2"
+      "t": "Escalado automático de los contenedores según la carga",
+      "h": "9323c346"
     },
     "questions.0.q": {
       "t": "¿Qué logra un build Docker multi-stage?",
@@ -29,20 +29,20 @@
       "h": "501077f2"
     },
     "questions.1.options.0": {
-      "t": "Los digests son más cortos",
-      "h": "14691e1a"
+      "t": "Los digests son más cortos y fáciles de leer que una etiqueta de versión",
+      "h": "95e9f01d"
     },
     "questions.1.options.1": {
       "t": "Un tag puede pasar a apuntar a otro contenido, un digest identifica el contenido exacto",
       "h": "2b0b0ee6"
     },
     "questions.1.options.2": {
-      "t": "Los registries exigen digests",
-      "h": "a2fa1ae8"
+      "t": "Los registries se niegan a servir etiquetas con más de un año",
+      "h": "86e8f2a1"
     },
     "questions.1.options.3": {
-      "t": "Los tags no son compatibles con Kubernetes",
-      "h": "78d7750d"
+      "t": "Kubernetes no admite etiquetas en los manifiestos de despliegue",
+      "h": "b4b8f768"
     },
     "questions.1.q": {
       "t": "¿Por qué desplegar por digest de imagen en lugar de por tag?",
@@ -53,20 +53,20 @@
       "h": "9e047d28"
     },
     "questions.2.options.0": {
-      "t": "En la capa escribible del contenedor",
-      "h": "7537f3ae"
+      "t": "En la capa escribible del contenedor, que se conserva entre reinicios",
+      "h": "90cef08d"
     },
     "questions.2.options.1": {
       "t": "En volúmenes, bases de datos u object storage fuera del contenedor",
       "h": "48fc5f8e"
     },
     "questions.2.options.2": {
-      "t": "En la imagen",
-      "h": "d0b680fc"
+      "t": "Dentro de la imagen, para que cada instancia arranque con los mismos datos",
+      "h": "ceb5f3c6"
     },
     "questions.2.options.3": {
-      "t": "En variables de entorno",
-      "h": "e1d07a2c"
+      "t": "En variables de entorno que se cargan al iniciar el contenedor",
+      "h": "609018ae"
     },
     "questions.2.q": {
       "t": "¿Dónde debe vivir el estado persistente de una aplicación?",

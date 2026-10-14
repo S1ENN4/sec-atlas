@@ -5,20 +5,20 @@
       "h": "94f17062"
     },
     "questions.0.options.0": {
-      "t": "MD5 con salt",
-      "h": "f041e53b"
+      "t": "MD5 con sal, porque la sal impide los ataques precalculados",
+      "h": "ee963c0a"
     },
     "questions.0.options.1": {
-      "t": "SHA-256 de la contraseña",
-      "h": "e183c571"
+      "t": "SHA-256 de la contraseña, porque es un hash fuerte y estándar",
+      "h": "529b0865"
     },
     "questions.0.options.2": {
       "t": "Argon2id, scrypt o bcrypt mediante una biblioteca mantenida",
       "h": "a818b0d0"
     },
     "questions.0.options.3": {
-      "t": "Cifrado AES con una clave compartida",
-      "h": "97be3d97"
+      "t": "Cifrado AES con una clave compartida por los servidores, para poder recuperar las contraseñas",
+      "h": "e148f066"
     },
     "questions.0.q": {
       "t": "¿Cuál es la forma correcta de almacenar contraseñas?",
@@ -29,20 +29,20 @@
       "h": "67b26847"
     },
     "questions.1.options.0": {
-      "t": "Math.random()",
-      "h": "0ab0041a"
+      "t": "Math.random(), que es rápido y está bien probado en todos los runtimes",
+      "h": "4e3785d9"
     },
     "questions.1.options.1": {
-      "t": "Un timestamp",
-      "h": "8c56abe5"
+      "t": "Una marca de tiempo con el id del usuario, que es único en cada petición",
+      "h": "b749d332"
     },
     "questions.1.options.2": {
       "t": "El generador aleatorio criptográfico del sistema operativo",
       "h": "7dacbae5"
     },
     "questions.1.options.3": {
-      "t": "El id del usuario más un contador",
-      "h": "6b0d6e98"
+      "t": "El id del usuario más un contador que crece con cada petición",
+      "h": "2f2a3c12"
     },
     "questions.1.q": {
       "t": "¿Qué fuente es aceptable para un token de restablecimiento de contraseña?",
@@ -53,20 +53,20 @@
       "h": "358be7cf"
     },
     "questions.2.options.0": {
-      "t": "Es el único que funciona con TLS",
-      "h": "7702dafd"
+      "t": "Es el único modo que funciona con conexiones TLS",
+      "h": "bee36560"
     },
     "questions.2.options.1": {
       "t": "Detecta la manipulación del texto cifrado",
       "h": "e1bf6a25"
     },
     "questions.2.options.2": {
-      "t": "Produce una salida más pequeña",
-      "h": "99530d88"
+      "t": "Produce una salida más pequeña que la de los otros modos",
+      "h": "028d3109"
     },
     "questions.2.options.3": {
-      "t": "No necesita clave",
-      "h": "ac3ce1f7"
+      "t": "No necesita clave, así que no hay nada que proteger",
+      "h": "d19bbfe1"
     },
     "questions.2.q": {
       "t": "¿Por qué preferir el cifrado autenticado como AES-GCM frente a AES-CBC simple?",

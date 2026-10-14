@@ -5,20 +5,20 @@
       "h": "3d044bdd"
     },
     "questions.0.options.0": {
-      "t": "Em cada causa, como a CPU de um pod",
-      "h": "748cd0cb"
+      "t": "Toda causa possível, como o uso de CPU de cada pod",
+      "h": "5a63ebe5"
     },
     "questions.0.options.1": {
       "t": "Em sintomas que os usuários sentem, como erros e latência",
       "h": "c5951c87"
     },
     "questions.0.options.2": {
-      "t": "No volume de logs",
-      "h": "15c92ea9"
+      "t": "O volume de logs produzido por cada serviço",
+      "h": "e9ebfeac"
     },
     "questions.0.options.3": {
-      "t": "Na cor do disco",
-      "h": "cd785eac"
+      "t": "O espaço livre em cada disco do cluster",
+      "h": "240e94d5"
     },
     "questions.0.q": {
       "t": "Em que a maioria dos alertas deve se basear?",
@@ -29,20 +29,20 @@
       "h": "f6cb816b"
     },
     "questions.1.options.0": {
-      "t": "Métricas",
-      "h": "ddf6a1f0"
+      "t": "Métricas, que mostram como a latência média muda ao longo do tempo",
+      "h": "3fd09f84"
     },
     "questions.1.options.1": {
       "t": "Traces distribuídos",
       "h": "748f590f"
     },
     "questions.1.options.2": {
-      "t": "Relatórios de cobrança",
-      "h": "cb5978c8"
+      "t": "Relatórios de cobrança, que mostram qual serviço custa mais",
+      "h": "ec219a43"
     },
     "questions.1.options.3": {
-      "t": "Histórico do Git",
-      "h": "d3bb58de"
+      "t": "O histórico do Git, que mostra qual commit mudou o código por último",
+      "h": "6f0a4504"
     },
     "questions.1.q": {
       "t": "Qual sinal é a melhor ferramenta para \"onde esta requisição está lenta?\"",
@@ -53,20 +53,20 @@
       "h": "b757ff4b"
     },
     "questions.2.options.0": {
-      "t": "É privado",
-      "h": "2e397971"
+      "t": "É dado pessoal, e sistemas de métricas não podem armazená-lo",
+      "h": "01253c7e"
     },
     "questions.2.options.1": {
       "t": "A cardinalidade ilimitada pode sobrecarregar o sistema de métricas",
       "h": "024920ea"
     },
     "questions.2.options.2": {
-      "t": "Labels precisam ser números",
-      "h": "84499d65"
+      "t": "Labels precisam ser números, e um id é uma string",
+      "h": "93d06813"
     },
     "questions.2.options.3": {
-      "t": "O Prometheus proíbe strings",
-      "h": "3607c944"
+      "t": "O Prometheus proíbe labels que contenham strings",
+      "h": "36c6fb04"
     },
     "questions.2.q": {
       "t": "Por que evitar um label de métrica como o id de usuário?",

@@ -5,20 +5,20 @@
       "h": "5844fbac"
     },
     "questions.0.options.0": {
-      "t": "Saída de ferramentas",
-      "h": "363f4fd0"
+      "t": "A saída bruta das ferramentas, para os engenheiros acharem cada detalhe rápido",
+      "h": "3d4a6c52"
     },
     "questions.0.options.1": {
       "t": "O que foi testado, o risco geral em linguagem simples e as ações mais importantes",
       "h": "459d4d59"
     },
     "questions.0.options.2": {
-      "t": "A lista completa de requisições",
-      "h": "279d148f"
+      "t": "A lista completa de requisições e respostas capturadas durante o teste",
+      "h": "495c0967"
     },
     "questions.0.options.3": {
-      "t": "Apenas as contagens por severidade",
-      "h": "a172226c"
+      "t": "Apenas a contagem de achados por severidade",
+      "h": "053b6485"
     },
     "questions.0.q": {
       "t": "O que o resumo executivo de um relatório deve conter?",
@@ -29,20 +29,20 @@
       "h": "77b4fc89"
     },
     "questions.1.options.0": {
-      "t": "Para deixar o relatório mais longo",
-      "h": "d69aefd3"
+      "t": "Para deixar o relatório mais longo e mostrar quanto trabalho foi feito",
+      "h": "aa82a6d1"
     },
     "questions.1.options.1": {
       "t": "Para que os engenheiros do cliente confirmem e corrijam sem adivinhar, e verifiquem a correção depois",
       "h": "6c8ce964"
     },
     "questions.1.options.2": {
-      "t": "Para exibir ferramentas",
-      "h": "2aa6bf2c"
+      "t": "Para exibir as ferramentas e técnicas usadas pelo testador",
+      "h": "0d0056b3"
     },
     "questions.1.options.3": {
-      "t": "Porque o CVSS exige",
-      "h": "200e4399"
+      "t": "Porque o padrão de pontuação exige passos para cada nota",
+      "h": "5bc1d0a0"
     },
     "questions.1.q": {
       "t": "Por que um achado deve incluir passos reproduzíveis?",
@@ -53,20 +53,20 @@
       "h": "a079ed8f"
     },
     "questions.2.options.0": {
-      "t": "Para cobrar de novo",
-      "h": "c7ccdeaf"
+      "t": "Para cobrar o cliente de novo por um trabalho que já estava coberto",
+      "h": "0a5e2603"
     },
     "questions.2.options.1": {
       "t": "As correções muitas vezes só bloqueiam o caso de teste exato, então é preciso verificar se o problema de fundo foi fechado",
       "h": "1b7b1910"
     },
     "questions.2.options.2": {
-      "t": "Retestar é ilegal",
-      "h": "eb7f4b1c"
+      "t": "Reteste não é permitido depois de o contrato ser encerrado",
+      "h": "dbcd6691"
     },
     "questions.2.options.3": {
-      "t": "Para encontrar novos clientes",
-      "h": "839ed7aa"
+      "t": "Para achar novos clientes entre os times que fizeram as correções",
+      "h": "e866a462"
     },
     "questions.2.q": {
       "t": "Por que retestar após as correções?",

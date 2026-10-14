@@ -5,20 +5,20 @@
       "h": "6b653d60"
     },
     "questions.0.options.0": {
-      "t": "Después del pentest",
-      "h": "ba04968b"
+      "t": "Después del pentest, cuando los problemas ya se han encontrado en la práctica",
+      "h": "b74c9e24"
     },
     "questions.0.options.1": {
       "t": "En el diseño, antes o durante la implementación",
       "h": "87166e56"
     },
     "questions.0.options.2": {
-      "t": "Solo después de un incidente",
-      "h": "96e9e0c2"
+      "t": "Solo después de un incidente, cuando el equipo sabe qué salió mal",
+      "h": "41556cb7"
     },
     "questions.0.options.3": {
-      "t": "Solo en producción",
-      "h": "506eea5d"
+      "t": "Solo en producción, donde se puede observar el sistema real",
+      "h": "e15b94e8"
     },
     "questions.0.q": {
       "t": "¿Cuándo aporta más valor el threat modeling?",
@@ -29,20 +29,20 @@
       "h": "3c63c138"
     },
     "questions.1.options.0": {
-      "t": "Scanning",
-      "h": "e230f66c"
+      "t": "Scanning, el barrido de los puertos y servicios de un sistema",
+      "h": "f5dab0f1"
     },
     "questions.1.options.1": {
       "t": "Spoofing (suplantación de identidad)",
       "h": "51aa5bb7"
     },
     "questions.1.options.2": {
-      "t": "Secrets",
-      "h": "1e3732ae"
+      "t": "Secrets, la exposición de credenciales en el código y la configuración",
+      "h": "a72384a9"
     },
     "questions.1.options.3": {
-      "t": "Sandboxing",
-      "h": "8f9ad8b0"
+      "t": "Sandboxing, el aislamiento de código no confiable",
+      "h": "a05ae1a0"
     },
     "questions.1.q": {
       "t": "En STRIDE, ¿qué representa la letra S?",
@@ -53,20 +53,20 @@
       "h": "50fc21f0"
     },
     "questions.2.options.0": {
-      "t": "En cualquier caja, por igual",
-      "h": "a5f0f899"
+      "t": "En cualquier caja del diagrama, por igual",
+      "h": "84eaf67c"
     },
     "questions.2.options.1": {
       "t": "En los flujos que cruzan fronteras de confianza",
       "h": "469e8187"
     },
     "questions.2.options.2": {
-      "t": "Solo en la base de datos",
-      "h": "8783eee5"
+      "t": "Solo en la base de datos, donde se guardan los datos",
+      "h": "6ed5ea7a"
     },
     "questions.2.options.3": {
-      "t": "En las etiquetas del diagrama",
-      "h": "7fc57e08"
+      "t": "En las etiquetas del diagrama, que exponen detalles internos",
+      "h": "74e67334"
     },
     "questions.2.q": {
       "t": "¿Dónde tienden a concentrarse las amenazas en un diagrama de flujo de datos?",

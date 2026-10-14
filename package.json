@@ -40,7 +40,8 @@
     "i18n": "node --import ./scripts/content-alias-loader.mjs scripts/i18n.mjs",
     "test:learning": "node --import ./scripts/content-alias-loader.mjs scripts/learning-test.mjs",
     "test:i18n": "node --import ./scripts/content-alias-loader.mjs scripts/i18n-test.mjs",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "audit": "node --import ./scripts/content-alias-loader.mjs scripts/content-audit.mjs"
   },
   "dependencies": {
     "@radix-ui/react-slot": "1.4.0",

@@ -9,16 +9,16 @@
       "h": "cd24a231"
     },
     "questions.0.options.1": {
-      "t": "Porque son demasiado grandes",
-      "h": "59580dfa"
+      "t": "Porque son demasiado grandes para caber en el contexto del modelo",
+      "h": "ac873a55"
     },
     "questions.0.options.2": {
-      "t": "Porque el modelo no lee texto",
-      "h": "ac277ea8"
+      "t": "Porque el modelo no puede leer texto de logs",
+      "h": "b83b1724"
     },
     "questions.0.options.3": {
-      "t": "Porque siempre están cifrados",
-      "h": "21d2b2a9"
+      "t": "Porque siempre están cifrados antes de llegar al modelo",
+      "h": "f95855a5"
     },
     "questions.0.q": {
       "t": "¿Por qué los logs y los user agents son un riesgo al alimentar un LLM?",
@@ -33,16 +33,16 @@
       "h": "9a164d82"
     },
     "questions.1.options.1": {
-      "t": "El modelo deja de equivocarse",
-      "h": "ccb4fdcf"
+      "t": "El modelo deja de equivocarse en el formato de sus respuestas",
+      "h": "70dcf127"
     },
     "questions.1.options.2": {
-      "t": "Elimina la necesidad de evaluación",
-      "h": "a9b0b5e9"
+      "t": "Elimina la necesidad de evaluar la calidad de las respuestas",
+      "h": "6efce214"
     },
     "questions.1.options.3": {
-      "t": "Reduce la latencia a cero",
-      "h": "ace0bc83"
+      "t": "Reduce la latencia del modelo a prácticamente cero",
+      "h": "79ff39dd"
     },
     "questions.1.q": {
       "t": "¿Cuál es la ventaja de exigir una salida estructurada validada por un esquema?",
@@ -58,15 +58,15 @@
     },
     "questions.2.options.1": {
       "t": "La salida del modelo activa directamente la acción destructiva",
-      "h": "2953d78d"
+      "h": "a701a1e8"
     },
     "questions.2.options.2": {
-      "t": "La IA aprueba sus propias acciones",
-      "h": "c1d22adc"
+      "t": "La IA aprueba sus propias acciones para ganar velocidad",
+      "h": "ed7ec2e4"
     },
     "questions.2.options.3": {
-      "t": "Eliminar la revisión humana",
-      "h": "e75fa975"
+      "t": "Quitar la revisión humana para no retrasar la respuesta",
+      "h": "f919ca04"
     },
     "questions.2.q": {
       "t": "¿Cuál es el patrón seguro para la IA en un playbook?",

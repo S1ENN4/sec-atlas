@@ -9,16 +9,16 @@
       "h": "0b1ca2d6"
     },
     "questions.0.options.1": {
-      "t": "Signatures are always statistical",
-      "h": "f96b53e3"
+      "t": "Signatures are always statistical and heuristics are always exact",
+      "h": "763bf9af"
     },
     "questions.0.options.2": {
-      "t": "Heuristics only work with a fixed IP",
-      "h": "889c1afb"
+      "t": "Heuristics only work when the attacker uses a fixed IP",
+      "h": "3aee32e6"
     },
     "questions.0.options.3": {
-      "t": "There is no practical difference",
-      "h": "89bfcef1"
+      "t": "There is no practical difference between the two approaches",
+      "h": "8a865ae1"
     },
     "questions.0.q": {
       "t": "What is the difference between signatures and heuristics?",
@@ -33,16 +33,16 @@
       "h": "73a87696"
     },
     "questions.1.options.1": {
-      "t": "It is equal to the mean",
-      "h": "46de7e96"
+      "t": "It is equal to the historical average, with no deviation",
+      "h": "a9164eaf"
     },
     "questions.1.options.2": {
-      "t": "The data is encrypted",
-      "h": "5505443d"
+      "t": "The data is encrypted and cannot be compared",
+      "h": "3816c87d"
     },
     "questions.1.options.3": {
-      "t": "The time window is too short to analyze",
-      "h": "9161c3a8"
+      "t": "The time window is too short to be analyzed",
+      "h": "e679627b"
     },
     "questions.1.q": {
       "t": "What does a high z-score for the current count mean?",
@@ -57,16 +57,16 @@
       "h": "911cc6a4"
     },
     "questions.2.options.1": {
-      "t": "Writing them all in a single script without comments",
-      "h": "18c13404"
+      "t": "Writing all the detections in a single script with no comments",
+      "h": "ea5b41e4"
     },
     "questions.2.options.2": {
-      "t": "Editing rules directly in the production console",
-      "h": "e0836f75"
+      "t": "Editing the rules directly in the production console, without review",
+      "h": "ce821c45"
     },
     "questions.2.options.3": {
-      "t": "Keeping them in spreadsheets",
-      "h": "4482ab1a"
+      "t": "Keeping them in spreadsheets instead of in a repository",
+      "h": "b6513dc9"
     },
     "questions.2.q": {
       "t": "What does treating detections as code mean?",

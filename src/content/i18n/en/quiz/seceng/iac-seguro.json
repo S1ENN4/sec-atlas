@@ -9,16 +9,16 @@
       "h": "f011a53a"
     },
     "questions.0.options.1": {
-      "t": "Because the file is too large",
-      "h": "426e05ad"
+      "t": "Because the file is too large to keep in the repository",
+      "h": "fed2b54c"
     },
     "questions.0.options.2": {
-      "t": "Because Git does not accept JSON",
-      "h": "e9e344f6"
+      "t": "Because Git cannot store files in JSON format",
+      "h": "38fce392"
     },
     "questions.0.options.3": {
-      "t": "Because the state is regenerated on every commit",
-      "h": "2ce18a05"
+      "t": "Because the state is regenerated on every commit and would cause conflicts",
+      "h": "55edb19b"
     },
     "questions.0.q": {
       "t": "Why should Terraform state not go into the repository?",
@@ -33,16 +33,16 @@
       "h": "57c6a33d"
     },
     "questions.1.options.1": {
-      "t": "A syntax error in Terraform",
-      "h": "cdfb89b3"
+      "t": "A syntax error in the Terraform code that blocks the plan",
+      "h": "342ee181"
     },
     "questions.1.options.2": {
-      "t": "Latency between regions",
-      "h": "e52e10a3"
+      "t": "The network latency between two cloud regions",
+      "h": "20c9a80c"
     },
     "questions.1.options.3": {
-      "t": "A type of backup",
-      "h": "f1e7969c"
+      "t": "A type of backup of the infrastructure state",
+      "h": "a5e16f0c"
     },
     "questions.1.q": {
       "t": "What is infrastructure drift?",
@@ -57,16 +57,16 @@
       "h": "68bd2aea"
     },
     "questions.2.options.1": {
-      "t": "Reducing the cloud provider bill",
-      "h": "4534f166"
+      "t": "Reducing the monthly cost charged by the cloud provider",
+      "h": "a30fff43"
     },
     "questions.2.options.2": {
-      "t": "Dispensing with peer review",
-      "h": "67c5b09d"
+      "t": "Removing the peer review of infrastructure changes",
+      "h": "7ec5c628"
     },
     "questions.2.options.3": {
-      "t": "Avoiding the use of modules",
-      "h": "2b1d9920"
+      "t": "Avoiding the use of modules shared between teams",
+      "h": "63e04464"
     },
     "questions.2.q": {
       "t": "What is the advantage of scanning IaC before apply?",

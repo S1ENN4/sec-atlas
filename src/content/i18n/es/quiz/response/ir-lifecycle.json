@@ -5,20 +5,20 @@
       "h": "1a3f98a6"
     },
     "questions.0.options.0": {
-      "t": "Para impresionar a los auditores",
-      "h": "be269955"
+      "t": "Para satisfacer a los auditores, que esperan una escala de severidad en el papel",
+      "h": "c0fa89e7"
     },
     "questions.0.options.1": {
       "t": "Para que nadie discuta la severidad durante el evento y las alertas y la respuesta sigan de forma automática",
       "h": "f4dc1473"
     },
     "questions.0.options.2": {
-      "t": "Porque las herramientas lo exigen",
-      "h": "685fe1fc"
+      "t": "Porque las herramientas de tickets no abren un incidente sin ella",
+      "h": "9a6c5b87"
     },
     "questions.0.options.3": {
-      "t": "Para reducir el número de incidentes",
-      "h": "f99ba4ae"
+      "t": "Para reducir el número de incidentes clasificándolos con más rigor",
+      "h": "60edc27a"
     },
     "questions.0.q": {
       "t": "¿Por qué acordar los niveles de severidad antes de un incidente?",
@@ -29,20 +29,20 @@
       "h": "9447a2bd"
     },
     "questions.1.options.0": {
-      "t": "Hacer el análisis técnico más profundo",
-      "h": "f9179d07"
+      "t": "Hacer el análisis técnico más profundo de los sistemas comprometidos",
+      "h": "2e7237dc"
     },
     "questions.1.options.1": {
       "t": "Ser responsable de la respuesta y tomar decisiones mientras otros hacen el trabajo técnico",
       "h": "944dedea"
     },
     "questions.1.options.2": {
-      "t": "Escribir solo el informe final",
-      "h": "b58fa6ff"
+      "t": "Escribir solo el informe final, para que tenga una única voz",
+      "h": "7b18111e"
     },
     "questions.1.options.3": {
-      "t": "Hablar con la prensa",
-      "h": "16c02d23"
+      "t": "Ser la única voz que habla con la prensa y con los clientes",
+      "h": "f17ea10a"
     },
     "questions.1.q": {
       "t": "¿Cuál es el trabajo del comandante del incidente?",
@@ -53,20 +53,20 @@
       "h": "c4a54420"
     },
     "questions.2.options.0": {
-      "t": "Es más rápido",
-      "h": "8cf0c2a9"
+      "t": "Es más rápido que el canal principal, así que los primeros minutos no se pierden",
+      "h": "e9eaec0a"
     },
     "questions.2.options.1": {
       "t": "El canal principal puede estar comprometido o no disponible, y el atacante puede estar leyéndolo",
       "h": "cd721131"
     },
     "questions.2.options.2": {
-      "t": "Los auditores exigen dos canales",
-      "h": "53b3302e"
+      "t": "Los auditores exigen dos canales separados para todo proceso crítico",
+      "h": "d1b74037"
     },
     "questions.2.options.3": {
-      "t": "Ahorra dinero",
-      "h": "7d83f41d"
+      "t": "Ahorra dinero frente a pagar las licencias del chat de la empresa",
+      "h": "d96e879b"
     },
     "questions.2.q": {
       "t": "¿Por qué mantener un canal de comunicación fuera de banda?",

@@ -5,20 +5,20 @@
       "h": "67b45090"
     },
     "questions.0.options.0": {
-      "t": "Nada",
-      "h": "44819483"
+      "t": "Deixar o que não se sabe de fora e publicar só o que já foi confirmado",
+      "h": "9fb5ebf6"
     },
     "questions.0.options.1": {
       "t": "Declarar claramente o que ainda não se sabe e quando haverá atualização",
       "h": "bbe65513"
     },
     "questions.0.options.2": {
-      "t": "Chutar para tranquilizar",
-      "h": "fd9de141"
+      "t": "Dar um palpite fundamentado para tranquilizar clientes e imprensa",
+      "h": "e3a51c1b"
     },
     "questions.0.options.3": {
-      "t": "Negar o incidente",
-      "h": "bd32c06b"
+      "t": "Negar o incidente até a investigação terminar",
+      "h": "690e6492"
     },
     "questions.0.q": {
       "t": "O que uma mensagem externa sobre um incidente deve dizer sobre o que você ainda não sabe?",
@@ -29,20 +29,20 @@
       "h": "6df56e0d"
     },
     "questions.1.options.0": {
-      "t": "Evita a responsabilização",
-      "h": "cb6fbe93"
+      "t": "Permite que a organização evite responsabilidade pelos erros cometidos",
+      "h": "328426d1"
     },
     "questions.1.options.1": {
       "t": "As pessoas reportam erros rapidamente quando não são punidas, e relatos precoces limitam o dano",
       "h": "b6fcdb3c"
     },
     "questions.1.options.2": {
-      "t": "É exigido por lei",
-      "h": "4ec3bf9e"
+      "t": "É exigido pelas leis de proteção de dados na maioria dos países",
+      "h": "90130132"
     },
     "questions.1.options.3": {
-      "t": "Reduz custos de treinamento",
-      "h": "362f02c9"
+      "t": "Reduz o custo de treinamento de novos funcionários",
+      "h": "780f2640"
     },
     "questions.1.q": {
       "t": "Por que o relato sem culpa importa?",
@@ -53,20 +53,20 @@
       "h": "a546a1c7"
     },
     "questions.2.options.0": {
-      "t": "Quando um incidente ocorre",
-      "h": "b23e1243"
+      "t": "Quando um incidente já está em andamento e os advogados estão na chamada",
+      "h": "c2a6a16f"
     },
     "questions.2.options.1": {
       "t": "Antes de um incidente, para que as decisões não sejam improvisadas sob pressão",
       "h": "a4108ddc"
     },
     "questions.2.options.2": {
-      "t": "Depois da investigação",
-      "h": "df5ebf14"
+      "t": "Depois de a investigação terminar e os fatos serem conhecidos",
+      "h": "2fb748d8"
     },
     "questions.2.options.3": {
-      "t": "Nunca",
-      "h": "80c3052d"
+      "t": "Quando um regulador envia um pedido formal de informações",
+      "h": "209d4fea"
     },
     "questions.2.q": {
       "t": "Quando você deve conhecer seus prazos regulatórios de notificação?",

@@ -5,20 +5,20 @@
       "h": "77a5ccff"
     },
     "questions.0.options.0": {
-      "t": "É lento",
-      "h": "89b0144b"
+      "t": "É lento, então deixa a aplicação inteira mais lenta",
+      "h": "c8133a88"
     },
     "questions.0.options.1": {
       "t": "Bytes forjados podem executar código arbitrário durante a desserialização",
       "h": "e62c1846"
     },
     "questions.0.options.2": {
-      "t": "Não consegue ler strings",
-      "h": "b231884d"
+      "t": "Não consegue ler strings, então os dados sempre ficam corrompidos",
+      "h": "d8b3583a"
     },
     "questions.0.options.3": {
-      "t": "Só funciona no Windows",
-      "h": "016c876a"
+      "t": "Só funciona no Windows, então falha em outros servidores",
+      "h": "bbf4a7ab"
     },
     "questions.0.q": {
       "t": "Por que pickle.loads em dados de um cookie é perigoso?",
@@ -29,20 +29,20 @@
       "h": "69b8dbc6"
     },
     "questions.1.options.0": {
-      "t": "Redes lentas",
-      "h": "0884ef4c"
+      "t": "Redes lentas que atrasam o carregamento de scripts de terceiros",
+      "h": "ea118c58"
     },
     "questions.1.options.1": {
       "t": "Um script de terceiros ser substituído por um arquivo modificado",
       "h": "ca9214af"
     },
     "questions.1.options.2": {
-      "t": "Cross-site request forgery",
-      "h": "9f699a27"
+      "t": "Cross-site request forgery contra as páginas que carregam o script",
+      "h": "6c1850ea"
     },
     "questions.1.options.3": {
-      "t": "Certificados expirados",
-      "h": "c4195bd5"
+      "t": "Certificados expirados no servidor que hospeda o script",
+      "h": "19953c7d"
     },
     "questions.1.q": {
       "t": "Contra o que o Subresource Integrity protege?",
@@ -53,20 +53,20 @@
       "h": "00dead7c"
     },
     "questions.2.options.0": {
-      "t": "Comprimido",
-      "h": "1238ea63"
+      "t": "Comprimido, para o cliente não conseguir ler nem alterar",
+      "h": "5ac5d5b6"
     },
     "questions.2.options.1": {
       "t": "Assinado e verificado no servidor, ou mantido no servidor",
       "h": "2c8015eb"
     },
     "questions.2.options.2": {
-      "t": "Codificado em Base64",
-      "h": "cc561139"
+      "t": "Codificado em Base64, para ser difícil de editar à mão",
+      "h": "fbfe1aee"
     },
     "questions.2.options.3": {
-      "t": "Colocado em um campo oculto",
-      "h": "2d31b90b"
+      "t": "Colocado num campo oculto do formulário, para os usuários não verem",
+      "h": "7b2e5ac1"
     },
     "questions.2.q": {
       "t": "O estado que precisa viajar pelo cliente, como um blob de preferências, deve ser:",

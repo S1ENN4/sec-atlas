@@ -9,16 +9,16 @@
       "h": "94ecc695"
     },
     "questions.0.options.1": {
-      "t": "Blocking malicious traffic",
-      "h": "334c0ee5"
+      "t": "Blocking malicious traffic before it reaches the application",
+      "h": "65ce6b3e"
     },
     "questions.0.options.2": {
-      "t": "Encrypting data at rest",
-      "h": "03e8ed45"
+      "t": "Encrypting data at rest in the storage services",
+      "h": "2482e87a"
     },
     "questions.0.options.3": {
-      "t": "Scaling the infrastructure",
-      "h": "ef50cb4b"
+      "t": "Scaling the infrastructure according to the applications' load",
+      "h": "26affc8e"
     },
     "questions.0.q": {
       "t": "What is the role of CloudTrail (or similar)?",
@@ -33,16 +33,16 @@
       "h": "585253c5"
     },
     "questions.1.options.1": {
-      "t": "To save storage",
-      "h": "66816c05"
+      "t": "To save storage in the production accounts",
+      "h": "1e36ddbe"
     },
     "questions.1.options.2": {
-      "t": "To speed up queries",
-      "h": "df870761"
+      "t": "To speed up the queries made by the security team",
+      "h": "7339ed3a"
     },
     "questions.1.options.3": {
-      "t": "Because the law requires two accounts",
-      "h": "a95842d0"
+      "t": "Because the law requires logs to be kept in two different accounts",
+      "h": "2462eca6"
     },
     "questions.1.q": {
       "t": "Why send logs to a separate, immutable account?",
@@ -57,16 +57,16 @@
       "h": "0966ac9a"
     },
     "questions.2.options.1": {
-      "t": "Firing on every event",
-      "h": "4517c556"
+      "t": "Firing on every event, so that no occurrence goes unnoticed",
+      "h": "642d9ed4"
     },
     "questions.2.options.2": {
-      "t": "Being sent only by weekly email",
-      "h": "76ae1f29"
+      "t": "Being sent in a weekly email that summarizes all the events",
+      "h": "4b7fbf63"
     },
     "questions.2.options.3": {
-      "t": "Having no owner",
-      "h": "fce9e00d"
+      "t": "Having no defined owner, so that anyone can act",
+      "h": "60f85f89"
     },
     "questions.2.q": {
       "t": "What makes an alert good?",

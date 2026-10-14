@@ -9,16 +9,16 @@
       "h": "a14aa80b"
     },
     "questions.0.options.1": {
-      "t": "A new language model",
-      "h": "dd7f314c"
+      "t": "A new language model trained for agent tasks",
+      "h": "b5a7ba7c"
     },
     "questions.0.options.2": {
-      "t": "A database",
-      "h": "b49261d0"
+      "t": "A database optimized for storing the agent's state",
+      "h": "35d51bbe"
     },
     "questions.0.options.3": {
-      "t": "A firewall",
-      "h": "966d5102"
+      "t": "A firewall that filters the calls made by the agent",
+      "h": "eb117c33"
     },
     "questions.0.q": {
       "t": "What does an agent framework provide?",
@@ -33,16 +33,16 @@
       "h": "af3df741"
     },
     "questions.1.options.1": {
-      "t": "The prompt getting short",
-      "h": "d5c1815f"
+      "t": "The prompt becoming too short for the model to understand the task",
+      "h": "29f862a7"
     },
     "questions.1.options.2": {
-      "t": "Latency dropping",
-      "h": "f7ec1170"
+      "t": "The latency of the answers dropping with each new decision by the agent",
+      "h": "8ae1d314"
     },
     "questions.1.options.3": {
-      "t": "The model forgetting the alphabet",
-      "h": "3e70a982"
+      "t": "The model forgetting parts of the alphabet when writing long answers",
+      "h": "0c84ce23"
     },
     "questions.1.q": {
       "t": "Which risk grows when the agent has more autonomy?",
@@ -57,16 +57,16 @@
       "h": "e75e8a46"
     },
     "questions.2.options.1": {
-      "t": "Giving it admin access to avoid errors",
-      "h": "6cf5b767"
+      "t": "Giving administrator access so the agent does not make mistakes",
+      "h": "27555f99"
     },
     "questions.2.options.2": {
-      "t": "Running without logs",
-      "h": "c408b417"
+      "t": "Running the agent without logs, so sensitive data is not recorded",
+      "h": "661f297f"
     },
     "questions.2.options.3": {
-      "t": "Letting the agent approve its own actions",
-      "h": "dcc06b72"
+      "t": "Letting the agent approve its own risky actions",
+      "h": "0d9041b9"
     },
     "questions.2.q": {
       "t": "Which good practice helps contain an agent?",

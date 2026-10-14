@@ -9,16 +9,16 @@
       "h": "d7a85195"
     },
     "questions.0.options.1": {
-      "t": "Para aumentar el número de intentos",
-      "h": "0c6d5426"
+      "t": "Para aumentar el número total de intentos que hace cada cliente",
+      "h": "b323d0f8"
     },
     "questions.0.options.2": {
-      "t": "Para eliminar los timeouts",
-      "h": "5c81c7f1"
+      "t": "Para eliminar por completo los timeouts en las llamadas",
+      "h": "ba224dca"
     },
     "questions.0.options.3": {
-      "t": "Para cifrar la llamada",
-      "h": "2f99697a"
+      "t": "Para cifrar la llamada durante los nuevos intentos",
+      "h": "c34d2abb"
     },
     "questions.0.q": {
       "t": "¿Por qué usar jitter junto con el backoff exponencial?",
@@ -33,16 +33,16 @@
       "h": "b967dc1b"
     },
     "questions.1.options.1": {
-      "t": "Perseguir exactly-once en todas las capas",
-      "h": "42477c70"
+      "t": "Buscar exactly-once en todas las capas del sistema",
+      "h": "05c12796"
     },
     "questions.1.options.2": {
-      "t": "Desactivar los reintentos",
-      "h": "128b0bc8"
+      "t": "Desactivar los reintentos para no repetir nunca una acción",
+      "h": "3ee7ed75"
     },
     "questions.1.options.3": {
-      "t": "Descartar los eventos repetidos sin registrarlos",
-      "h": "c35994d6"
+      "t": "Descartar los eventos repetidos sin registrar que llegaron",
+      "h": "44d6c70c"
     },
     "questions.1.q": {
       "t": "¿Cuál es el enfoque práctico para evitar actuar dos veces sobre el mismo evento?",
@@ -57,16 +57,16 @@
       "h": "523c1f35"
     },
     "questions.2.options.1": {
-      "t": "Aumentar la velocidad del consumidor",
-      "h": "3e3a6666"
+      "t": "Aumentar la velocidad de procesamiento del consumidor",
+      "h": "cb45f5bf"
     },
     "questions.2.options.2": {
-      "t": "Cifrar mensajes",
-      "h": "f3c22844"
+      "t": "Cifrar los mensajes antes de enviarlos al broker",
+      "h": "100b0427"
     },
     "questions.2.options.3": {
-      "t": "Borrar eventos antiguos",
-      "h": "82e1af96"
+      "t": "Borrar los eventos antiguos de la cola para ganar espacio",
+      "h": "e49785f3"
     },
     "questions.2.q": {
       "t": "¿Para qué sirve una DLQ?",

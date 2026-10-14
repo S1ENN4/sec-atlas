@@ -9,16 +9,16 @@
       "h": "c051db50"
     },
     "questions.0.options.1": {
-      "t": "Un tipo de ataque",
-      "h": "fd460e08"
+      "t": "Un tipo de ataque que explota caminos de red pavimentados",
+      "h": "e123815d"
     },
     "questions.0.options.2": {
       "t": "Una política que prohíbe cualquier excepción",
       "h": "e6ee41de"
     },
     "questions.0.options.3": {
-      "t": "Un reporte mensual",
-      "h": "0423bc5a"
+      "t": "Un informe mensual sobre el estado de la plataforma",
+      "h": "a7a44819"
     },
     "questions.0.q": {
       "t": "¿Qué es un camino pavimentado (golden path)?",
@@ -33,16 +33,16 @@
       "h": "2c5bfb47"
     },
     "questions.1.options.1": {
-      "t": "El número de reuniones",
-      "h": "c7fd862b"
+      "t": "El número de reuniones celebradas con los equipos",
+      "h": "a2d92786"
     },
     "questions.1.options.2": {
-      "t": "El tamaño del repositorio",
-      "h": "88384c89"
+      "t": "El tamaño del repositorio de la plataforma",
+      "h": "7cd09d0e"
     },
     "questions.1.options.3": {
-      "t": "La cantidad de reglas escritas",
-      "h": "a05612b5"
+      "t": "La cantidad de reglas de seguridad escritas",
+      "h": "8bbeb2b9"
     },
     "questions.1.q": {
       "t": "¿Qué métrica muestra el alcance de la plataforma de seguridad?",
@@ -57,16 +57,16 @@
       "h": "b3e6aa20"
     },
     "questions.2.options.1": {
-      "t": "Los devs son el problema",
-      "h": "776b2faf"
+      "t": "Los desarrolladores son el problema y necesitan más formación",
+      "h": "375d9257"
     },
     "questions.2.options.2": {
-      "t": "El control debe eliminarse sin análisis",
-      "h": "2a37d40b"
+      "t": "El control debe quitarse sin ningún análisis",
+      "h": "fce3456a"
     },
     "questions.2.options.3": {
-      "t": "Hay que aumentar las sanciones",
-      "h": "9ae7b454"
+      "t": "Hay que aumentar las sanciones a quien desactive controles",
+      "h": "872ed76c"
     },
     "questions.2.q": {
       "t": "Si los devs están desactivando un control, ¿cuál es la lectura correcta?",

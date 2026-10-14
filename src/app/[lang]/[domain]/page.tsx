@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Map as MapIcon } from "lucide-react";
 
 import { ContentNotice } from "@/components/content-notice";
 import { DomainGraph } from "@/components/domain-graph";
@@ -9,9 +9,11 @@ import { PipelineRail } from "@/components/pipeline-rail";
 import { TopicIcon } from "@/components/topic-icon";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { domainMaps } from "@/content/explore/domain-maps";
 import { domainIdFromRoute, domainRouteSegments } from "@/content/registry";
 import { LOCALES, localePath } from "@/i18n/config";
 import { localizeDomain } from "@/i18n/content";
+import { localizedExplore } from "@/i18n/globals";
 import { fmt } from "@/i18n/format";
 import { kindMetaFor } from "@/i18n/labels";
 import { alternatesFor, resolveLocale } from "@/i18n/server";
@@ -46,6 +48,9 @@ export default async function DomainHome({ params }: { params: Params }) {
   const copy = t.domains[id];
   const kindMeta = kindMetaFor(id, t);
   const anim = (ms: number) => ({ animationDelay: `${ms}ms` });
+  const mapsUi = localizedExplore(locale).value.ui;
+  const mapTitles = localizedExplore(locale).value.nodes as Record<string, { title: string }>;
+  const mapLinks = (domainMaps[id] ?? []).map((w) => ({ id: w, title: mapTitles[w].title, href: localePath(locale, `/explore/${w}`) }));
 
   return (
     <div data-domain={id} className="animate-page-enter">
@@ -67,6 +72,26 @@ export default async function DomainHome({ params }: { params: Params }) {
       <div className="px-4">
         <ContentNotice fallback={fallback} sourceLang={sourceLang} t={t} />
       </div>
+
+      {mapLinks.length > 0 ? (
+        <section className="mx-auto max-w-6xl px-4 pb-10">
+          <div className="flex flex-wrap items-center gap-3 rounded-xl border border-primary/40 bg-primary/5 px-4 py-3">
+            <MapIcon className="size-4 text-primary" aria-hidden />
+            <p className="text-sm font-medium">{mapsUi.domainMapsTitle}</p>
+            <div className="flex flex-wrap gap-2">
+              {mapLinks.map((m) => (
+                <Link
+                  key={m.id}
+                  href={m.href}
+                  className="rounded-md border border-border bg-background/70 px-2.5 py-1 text-sm transition-colors hover:border-primary/60 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  {m.title}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       <section id="map" className="mx-auto max-w-6xl scroll-mt-20 px-4 pb-16">
         <h2 className="reveal font-mono text-sm uppercase tracking-wider text-muted-foreground">{t.domainPage.mapTitle}</h2>

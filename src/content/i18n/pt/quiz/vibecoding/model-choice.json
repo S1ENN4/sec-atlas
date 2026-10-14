@@ -5,20 +5,20 @@
       "h": "e884e46b"
     },
     "questions.0.options.0": {
-      "t": "Escolher o que está no topo de um leaderboard público",
-      "h": "219f37d0"
+      "t": "Escolher o do topo de um ranking público, já que é testado de forma independente",
+      "h": "75e21386"
     },
     "questions.0.options.1": {
       "t": "Executar tarefas reais do seu repositório com testes e comparar o custo por tarefa resolvida",
       "h": "c4989018"
     },
     "questions.0.options.2": {
-      "t": "Escolher o menor preço por token",
-      "h": "c228ed1d"
+      "t": "Escolher o de menor preço por token",
+      "h": "477a154f"
     },
     "questions.0.options.3": {
-      "t": "Escolher o mais novo",
-      "h": "f2ffaf03"
+      "t": "Escolher o lançamento mais novo, porque normalmente é o melhor",
+      "h": "da3e9ba0"
     },
     "questions.0.q": {
       "t": "Qual é a forma certa de comparar dois modelos para o seu trabalho?",
@@ -29,20 +29,20 @@
       "h": "4b799796"
     },
     "questions.1.options.0": {
-      "t": "Quão bonito é o site",
-      "h": "96353dcd"
+      "t": "Quão atraente e fácil de usar é o site do fornecedor",
+      "h": "8f548867"
     },
     "questions.1.options.1": {
       "t": "Onde seu código e seus prompts são processados, sob quais termos, e se sua empresa permite",
       "h": "6b3910d9"
     },
     "questions.1.options.2": {
-      "t": "Se ele suporta modo escuro",
-      "h": "2367fc94"
+      "t": "Se o serviço tem modo escuro e atalhos de teclado",
+      "h": "c01caf49"
     },
     "questions.1.options.3": {
-      "t": "Quantos usuários ele tem",
-      "h": "47689db3"
+      "t": "Quantos usuários o serviço tem e há quanto tempo existe",
+      "h": "16df60ac"
     },
     "questions.1.q": {
       "t": "Qual é a principal questão de privacidade ao usar um serviço de modelo hospedado?",
@@ -53,20 +53,20 @@
       "h": "c94531d6"
     },
     "questions.2.options.0": {
-      "t": "Usar um modelo para todas as etapas",
-      "h": "2872427b"
+      "t": "Usar um único modelo forte em todas as etapas, para os resultados ficarem consistentes",
+      "h": "ba72b40d"
     },
     "questions.2.options.1": {
       "t": "Usar um modelo forte para planejar e revisar e um mais barato para edições bem especificadas, com testes como juiz",
       "h": "50a224b6"
     },
     "questions.2.options.2": {
-      "t": "Usar sempre o modelo mais barato",
-      "h": "737dfc11"
+      "t": "Usar sempre o modelo mais barato e corrigir os erros dele à mão",
+      "h": "80619d52"
     },
     "questions.2.options.3": {
-      "t": "Trocar de modelo aleatoriamente",
-      "h": "322093b1"
+      "t": "Trocar de modelo aleatoriamente, para não depender de um só fornecedor",
+      "h": "4c53d021"
     },
     "questions.2.q": {
       "t": "Uma política de roteamento sensata é:",

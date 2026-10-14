@@ -5,20 +5,20 @@
       "h": "bc287c0a"
     },
     "questions.0.options.0": {
-      "t": "A rede neural que prevê tokens",
-      "h": "2b6d4f20"
+      "t": "A rede neural que prevê o próximo token a partir do contexto",
+      "h": "ec6e3ee8"
     },
     "questions.0.options.1": {
       "t": "O programa que dá ao modelo ferramentas, contexto e permissões e executa o loop",
       "h": "8560e8b0"
     },
     "questions.0.options.2": {
-      "t": "Uma região de nuvem",
-      "h": "217a30d9"
+      "t": "Uma região de nuvem onde os pesos do modelo são guardados e servidos",
+      "h": "310c53cf"
     },
     "questions.0.options.3": {
-      "t": "Um tipo de GPU",
-      "h": "3aa8e4a3"
+      "t": "Um tipo de GPU projetado para rodar modelos de linguagem",
+      "h": "a1da0417"
     },
     "questions.0.q": {
       "t": "O que é um harness no contexto de agents de código?",
@@ -29,20 +29,20 @@
       "h": "3f519aad"
     },
     "questions.1.options.0": {
-      "t": "Modelos mudam aleatoriamente",
-      "h": "00b91d4e"
+      "t": "Os modelos mudam aleatoriamente entre sessões, então a experiência varia",
+      "h": "63b4e481"
     },
     "questions.1.options.1": {
       "t": "O harness controla o método de edição, o contexto carregado, as ferramentas e a recuperação de erros",
       "h": "7aeb0e54"
     },
     "questions.1.options.2": {
-      "t": "Por causa do tema de cores",
-      "h": "87782259"
+      "t": "O tema de cores e a fonte usados na interface da ferramenta",
+      "h": "fab13c0a"
     },
     "questions.1.options.3": {
-      "t": "Só o preço difere",
-      "h": "831889aa"
+      "t": "Só o preço muda, já que toda ferramenta usa os mesmos prompts",
+      "h": "ef628e7c"
     },
     "questions.1.q": {
       "t": "Por que o mesmo modelo pode parecer melhor em uma ferramenta do que em outra?",
@@ -53,20 +53,20 @@
       "h": "9f920f4f"
     },
     "questions.2.options.0": {
-      "t": "Um agent de código",
-      "h": "4f213d04"
+      "t": "Um agente de código que edita arquivos no seu repositório",
+      "h": "8c65da51"
     },
     "questions.2.options.1": {
       "t": "Uma camada de provider que roteia requisições para muitos modelos",
       "h": "e74c124d"
     },
     "questions.2.options.2": {
-      "t": "Um editor de texto",
-      "h": "f6634b8a"
+      "t": "Um editor de texto com autocompletar de IA embutido",
+      "h": "6ed409af"
     },
     "questions.2.options.3": {
-      "t": "Um host de git",
-      "h": "fe9c05ae"
+      "t": "Um host de git que guarda repositórios e roda pipelines",
+      "h": "305afb93"
     },
     "questions.2.q": {
       "t": "O OpenRouter é melhor descrito como:",

@@ -9,16 +9,16 @@
       "h": "cac648b0"
     },
     "questions.0.options.1": {
-      "t": "IPs do not appear in HTTP logs",
-      "h": "13b8339e"
+      "t": "IP addresses do not appear in the HTTP request logs",
+      "h": "5d516569"
     },
     "questions.0.options.2": {
-      "t": "A per-IP limit is illegal in some countries",
-      "h": "ea7642a9"
+      "t": "A per-IP limit is banned by law in some countries",
+      "h": "639d3dae"
     },
     "questions.0.options.3": {
-      "t": "Because IPv6 cannot be limited",
-      "h": "9a3cc30e"
+      "t": "IPv6 cannot be limited by most tools",
+      "h": "ad6d1e59"
     },
     "questions.0.q": {
       "t": "Why is limiting only by IP often insufficient?",
@@ -33,16 +33,16 @@
       "h": "00b95b75"
     },
     "questions.1.options.1": {
-      "t": "To save log storage",
-      "h": "2e0d5f7b"
+      "t": "To save storage for block logs",
+      "h": "f89d648f"
     },
     "questions.1.options.2": {
-      "t": "To avoid using challenges",
-      "h": "807df607"
+      "t": "To avoid using challenges, which annoy users",
+      "h": "608e595b"
     },
     "questions.1.options.3": {
-      "t": "Because blocks without an expiry are technically impossible",
-      "h": "c9681314"
+      "t": "Because blocks with no expiry are technically impossible to apply",
+      "h": "0d9a6b44"
     },
     "questions.1.q": {
       "t": "Why use a response ladder with an expiry (TTL)?",
@@ -57,16 +57,16 @@
       "h": "37c4a65e"
     },
     "questions.2.options.1": {
-      "t": "It eliminates the need for any static limit",
-      "h": "fb25140c"
+      "t": "It removes the need to keep any static limit",
+      "h": "63d4227d"
     },
     "questions.2.options.2": {
-      "t": "It removes the need for telemetry",
-      "h": "cffdad50"
+      "t": "It removes the need for telemetry, because it adjusts by itself",
+      "h": "82525716"
     },
     "questions.2.options.3": {
-      "t": "It guarantees zero false positives",
-      "h": "df235d86"
+      "t": "It guarantees there will never be a false positive",
+      "h": "3dcc8df4"
     },
     "questions.2.q": {
       "t": "What is the advantage of an adaptive limit?",

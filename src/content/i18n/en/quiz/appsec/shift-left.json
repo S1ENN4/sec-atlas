@@ -5,20 +5,20 @@
       "h": "7adba55e"
     },
     "questions.0.options.0": {
-      "t": "Moving the security team to another department",
-      "h": "2118f4c2"
+      "t": "Moving the security team to another department of the company",
+      "h": "3ee4fce1"
     },
     "questions.0.options.1": {
       "t": "Moving security checks to the start of the development lifecycle",
       "h": "d0eb429e"
     },
     "questions.0.options.2": {
-      "t": "Running all tests only in production",
-      "h": "2dbe0a2e"
+      "t": "Running all tests only in production, after the deploy",
+      "h": "01df7367"
     },
     "questions.0.options.3": {
-      "t": "Removing QA from the process",
-      "h": "4844ee03"
+      "t": "Removing the QA team from the delivery process",
+      "h": "95c4d51f"
     },
     "questions.0.q": {
       "t": "What does shift-left mean?",
@@ -29,20 +29,20 @@
       "h": "4a9bb35f"
     },
     "questions.1.options.0": {
-      "t": "Annual pentest",
-      "h": "d4dccb56"
+      "t": "An annual pentest done by an outside company",
+      "h": "e88b1705"
     },
     "questions.1.options.1": {
       "t": "Pre-commit hooks and PR checks",
       "h": "59e298b2"
     },
     "questions.1.options.2": {
-      "t": "Production monitoring",
-      "h": "a8dd1b36"
+      "t": "Continuous monitoring of the production environment",
+      "h": "45196454"
     },
     "questions.1.options.3": {
-      "t": "Incident response",
-      "h": "eaa01473"
+      "t": "Incident response by the on-call team",
+      "h": "2ab87106"
     },
     "questions.1.q": {
       "t": "Which practice is shift-left?",
@@ -53,20 +53,20 @@
       "h": "77daa800"
     },
     "questions.2.options.0": {
-      "t": "Having no coverage in production",
-      "h": "861e113e"
+      "t": "Being left without coverage in production once the checks leave it",
+      "h": "8da52cc8"
     },
     "questions.2.options.1": {
       "t": "Overloading devs with noisy alerts and losing trust in the tools",
       "h": "f6ad01cf"
     },
     "questions.2.options.2": {
-      "t": "Increasing the repository size",
-      "h": "0ba739a6"
+      "t": "Growing the repository with the tools' files",
+      "h": "3306d6c1"
     },
     "questions.2.options.3": {
-      "t": "Preventing the use of CI",
-      "h": "f30db368"
+      "t": "Preventing the use of CI, because the checks now run locally",
+      "h": "f8a8ff85"
     },
     "questions.2.q": {
       "t": "What is the risk of applying shift-left carelessly?",

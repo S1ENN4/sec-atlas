@@ -9,16 +9,16 @@
       "h": "de07dabb"
     },
     "questions.0.options.1": {
-      "t": "Balancing load across pods",
-      "h": "b384988e"
+      "t": "Balancing the load of requests between the pods of a service",
+      "h": "d1bc4635"
     },
     "questions.0.options.2": {
-      "t": "Encrypting images",
-      "h": "3e7b84de"
+      "t": "Encrypting the container images stored in the registry",
+      "h": "e1ab89d4"
     },
     "questions.0.options.3": {
-      "t": "Automatically scaling nodes",
-      "h": "1f0f27c7"
+      "t": "Scaling the cluster nodes automatically according to demand",
+      "h": "07671899"
     },
     "questions.0.q": {
       "t": "What is RBAC used for in Kubernetes?",
@@ -33,16 +33,16 @@
       "h": "9ac76d4a"
     },
     "questions.1.options.1": {
-      "t": "Restart failed pods",
-      "h": "a4ed078d"
+      "t": "Automatically restart the pods that fail their health checks",
+      "h": "348c42eb"
     },
     "questions.1.options.2": {
-      "t": "Back up etcd",
-      "h": "564f5ec2"
+      "t": "Periodically back up etcd to object storage",
+      "h": "e9111244"
     },
     "questions.1.options.3": {
-      "t": "Manage DNS",
-      "h": "52bf721f"
+      "t": "Manage the internal DNS records of the cluster's services",
+      "h": "4a87f9c5"
     },
     "questions.1.q": {
       "t": "What do admission controllers do?",

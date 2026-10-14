@@ -5,20 +5,20 @@
       "h": "f688a886"
     },
     "questions.0.options.0": {
-      "t": "Ninguém o menciona",
-      "h": "8ef3b318"
+      "t": "A equipe de segurança registra no cadastro de riscos e fecha o ticket",
+      "h": "1ad60f5d"
     },
     "questions.0.options.1": {
       "t": "Um executivo identificado é responsável por ele por um período definido, com data de revisão",
       "h": "dbb16abc"
     },
     "questions.0.options.2": {
-      "t": "Ele é removido do registro",
-      "h": "8c661f8b"
+      "t": "É empurrado para o próximo ciclo de auditoria e revisado se der tempo",
+      "h": "c82f62e4"
     },
     "questions.0.options.3": {
-      "t": "A equipe de segurança assina",
-      "h": "bbeb669f"
+      "t": "O jurídico aprova a redação do risco antes de arquivá-lo",
+      "h": "55a1f301"
     },
     "questions.0.q": {
       "t": "Um risco é formalmente aceito. O que faz disso uma decisão e não negligência?",
@@ -29,20 +29,20 @@
       "h": "85237636"
     },
     "questions.1.options.0": {
-      "t": "O risco antes de quaisquer controles",
-      "h": "32f50d11"
+      "t": "O risco que existia antes de qualquer controle ser aplicado",
+      "h": "d687d0fc"
     },
     "questions.1.options.1": {
       "t": "O risco que permanece depois de aplicados os controles",
       "h": "e509f367"
     },
     "questions.1.options.2": {
-      "t": "O risco de sistemas antigos",
-      "h": "d0a3f3a8"
+      "t": "O risco que o negócio escolheu não acompanhar no cadastro",
+      "h": "3d5ceef3"
     },
     "questions.1.options.3": {
-      "t": "O custo do seguro",
-      "h": "72632cab"
+      "t": "O risco criado por sistemas legados que não podem ser atualizados",
+      "h": "86e34368"
     },
     "questions.1.q": {
       "t": "O que significa risco residual?",
@@ -53,20 +53,20 @@
       "h": "2046a521"
     },
     "questions.2.options.0": {
-      "t": "Reduzir",
-      "h": "0f62a19e"
+      "t": "Reduzi-lo com um controle",
+      "h": "e9a9cb2d"
     },
     "questions.2.options.1": {
-      "t": "Transferir",
-      "h": "cbb4cc49"
+      "t": "Transferi-lo por seguro ou contrato",
+      "h": "2a1a59cd"
     },
     "questions.2.options.2": {
       "t": "Ignorar em silêncio",
       "h": "c9fefb5b"
     },
     "questions.2.options.3": {
-      "t": "Evitar",
-      "h": "33fc27cf"
+      "t": "Evitá-lo parando a atividade",
+      "h": "052e7f63"
     },
     "questions.2.q": {
       "t": "Qual NÃO é uma das quatro formas de tratar um risco?",

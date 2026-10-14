@@ -5,20 +5,20 @@
       "h": "8a37985e"
     },
     "questions.0.options.0": {
-      "t": "Contiene el cuerpo completo de la solicitud",
-      "h": "693a635a"
+      "t": "Contiene el cuerpo completo de la petición, incluidos todos los campos escritos por el usuario",
+      "h": "f8cb38cc"
     },
     "questions.0.options.1": {
       "t": "Eventos estructurados con quién, qué, desde dónde y resultado, enviados rápidamente fuera del host",
       "h": "ad4c66da"
     },
     "questions.0.options.2": {
-      "t": "Se almacena solo en el servidor de la aplicación",
-      "h": "80a78a39"
+      "t": "Se guarda solo en el servidor de la aplicación, donde es fácil de leer",
+      "h": "5a364f7a"
     },
     "questions.0.options.3": {
-      "t": "Se rota cada hora",
-      "h": "ddb381db"
+      "t": "Se rota cada hora, para que los datos antiguos nunca se acumulen",
+      "h": "23ca3240"
     },
     "questions.0.q": {
       "t": "¿Qué hace útil un log para la seguridad?",
@@ -29,20 +29,20 @@
       "h": "60f10720"
     },
     "questions.1.options.0": {
-      "t": "Request id",
-      "h": "9ad53f95"
+      "t": "El id de la petición, porque sirve para identificar a un usuario",
+      "h": "31c61c0f"
     },
     "questions.1.options.1": {
       "t": "Contraseñas y tokens",
       "h": "3728d9ac"
     },
     "questions.1.options.2": {
-      "t": "Código de estado HTTP",
-      "h": "2f229ba9"
+      "t": "El código de estado HTTP, porque revela qué páginas existen",
+      "h": "7043b973"
     },
     "questions.1.options.3": {
-      "t": "Timestamp",
-      "h": "19eabc96"
+      "t": "La marca de tiempo, porque muestra cuándo estuvo activo el usuario",
+      "h": "5b48b1d3"
     },
     "questions.1.q": {
       "t": "¿Qué nunca debe escribirse en los logs?",
@@ -53,20 +53,20 @@
       "h": "b4f71b82"
     },
     "questions.2.options.0": {
-      "t": "Porque los logs son caros",
-      "h": "e8e3d258"
+      "t": "Porque los logs son caros y los equipos deberían guardar menos",
+      "h": "65360d2a"
     },
     "questions.2.options.1": {
       "t": "Porque un log por el que nadie recibe notificación no detiene un ataque a tiempo",
       "h": "90c35caf"
     },
     "questions.2.options.2": {
-      "t": "Porque las alertas reemplazan a los logs",
-      "h": "8893236a"
+      "t": "Porque las alertas sustituyen a los logs, que ya no hacen falta",
+      "h": "b483beee"
     },
     "questions.2.options.3": {
-      "t": "Porque lo exigen los auditores",
-      "h": "ed7fc973"
+      "t": "Porque los auditores exigen un sistema de alertas en toda aplicación",
+      "h": "d64dbb05"
     },
     "questions.2.q": {
       "t": "¿Por qué el nombre de la categoría de 2025 incluye alerting?",

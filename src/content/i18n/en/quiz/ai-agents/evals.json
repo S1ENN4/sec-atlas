@@ -9,16 +9,16 @@
       "h": "024662d5"
     },
     "questions.0.options.1": {
-      "t": "Training the model",
-      "h": "649db890"
+      "t": "Training the model with the test cases that failed",
+      "h": "23499deb"
     },
     "questions.0.options.2": {
-      "t": "Encrypting prompts",
-      "h": "6de25a11"
+      "t": "Encrypting the prompts sent to the model",
+      "h": "c99e7acb"
     },
     "questions.0.options.3": {
-      "t": "Reducing the context",
-      "h": "1bff36bb"
+      "t": "Reducing the context size on each round",
+      "h": "92637f97"
     },
     "questions.0.q": {
       "t": "What are evals for?",
@@ -33,16 +33,16 @@
       "h": "b9743fca"
     },
     "questions.1.options.1": {
-      "t": "Because they are cheaper",
-      "h": "66e8c762"
+      "t": "Because they are cheaper than creating synthetic test cases",
+      "h": "ab0b6ef6"
     },
     "questions.1.options.2": {
-      "t": "Because they need no review",
-      "h": "0dedf33d"
+      "t": "Because they remove any human review of the results",
+      "h": "d81ce5c9"
     },
     "questions.1.options.3": {
-      "t": "Because the model requires it",
-      "h": "59d63bf4"
+      "t": "Because the model requires real data to work",
+      "h": "3821a3ba"
     },
     "questions.1.q": {
       "t": "Why use real production data in evals?",
@@ -57,16 +57,16 @@
       "h": "07c9c42f"
     },
     "questions.2.options.1": {
-      "t": "It gets too expensive",
-      "h": "f218b5ba"
+      "t": "It becomes too expensive to run on every change",
+      "h": "82ca3614"
     },
     "questions.2.options.2": {
-      "t": "The final answer does not exist",
-      "h": "d82b685a"
+      "t": "The final answer may simply not exist",
+      "h": "90e8b667"
     },
     "questions.2.options.3": {
-      "t": "It is not possible to measure anything",
-      "h": "70fc41e9"
+      "t": "It is not possible to measure anything without looking at the internal steps",
+      "h": "651441c5"
     },
     "questions.2.q": {
       "t": "What is the problem with evaluating only the final answer?",

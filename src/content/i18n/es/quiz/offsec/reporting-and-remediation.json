@@ -5,20 +5,20 @@
       "h": "5844fbac"
     },
     "questions.0.options.0": {
-      "t": "Salida de herramientas",
-      "h": "363f4fd0"
+      "t": "La salida en bruto de las herramientas, para que los ingenieros encuentren cada detalle rápido",
+      "h": "3d4a6c52"
     },
     "questions.0.options.1": {
       "t": "Qué se probó, el riesgo general en lenguaje claro y las acciones más importantes",
       "h": "459d4d59"
     },
     "questions.0.options.2": {
-      "t": "La lista completa de solicitudes",
-      "h": "279d148f"
+      "t": "La lista completa de peticiones y respuestas capturadas durante la prueba",
+      "h": "495c0967"
     },
     "questions.0.options.3": {
-      "t": "Solo los conteos por severidad",
-      "h": "a172226c"
+      "t": "Solo el recuento de hallazgos por severidad",
+      "h": "053b6485"
     },
     "questions.0.q": {
       "t": "¿Qué debe contener el resumen ejecutivo de un informe?",
@@ -29,20 +29,20 @@
       "h": "77b4fc89"
     },
     "questions.1.options.0": {
-      "t": "Para alargar el informe",
-      "h": "d69aefd3"
+      "t": "Para alargar el informe y mostrar cuánto trabajo se hizo",
+      "h": "aa82a6d1"
     },
     "questions.1.options.1": {
       "t": "Para que los ingenieros del cliente lo confirmen y corrijan sin adivinar, y verifiquen la corrección después",
       "h": "6c8ce964"
     },
     "questions.1.options.2": {
-      "t": "Para presumir herramientas",
-      "h": "2aa6bf2c"
+      "t": "Para lucir las herramientas y técnicas usadas por el probador",
+      "h": "0d0056b3"
     },
     "questions.1.options.3": {
-      "t": "Porque CVSS lo exige",
-      "h": "200e4399"
+      "t": "Porque el estándar de puntuación exige pasos para cada nota",
+      "h": "5bc1d0a0"
     },
     "questions.1.q": {
       "t": "¿Por qué un hallazgo debe incluir pasos reproducibles?",
@@ -53,20 +53,20 @@
       "h": "a079ed8f"
     },
     "questions.2.options.0": {
-      "t": "Para cobrar otra vez",
-      "h": "c7ccdeaf"
+      "t": "Para volver a facturar al cliente un trabajo que ya estaba cubierto",
+      "h": "0a5e2603"
     },
     "questions.2.options.1": {
       "t": "Las correcciones a menudo solo bloquean el caso de prueba exacto, así que hay que verificar que el problema de fondo esté cerrado",
       "h": "1b7b1910"
     },
     "questions.2.options.2": {
-      "t": "Hacer reteste es ilegal",
-      "h": "eb7f4b1c"
+      "t": "No se permite volver a probar una vez cerrado el contrato",
+      "h": "dbcd6691"
     },
     "questions.2.options.3": {
-      "t": "Para encontrar nuevos clientes",
-      "h": "839ed7aa"
+      "t": "Para encontrar nuevos clientes entre los equipos que hicieron las correcciones",
+      "h": "e866a462"
     },
     "questions.2.q": {
       "t": "¿Por qué hacer reteste después de las correcciones?",

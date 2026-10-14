@@ -9,16 +9,16 @@
       "h": "3cf8a7a9"
     },
     "questions.0.options.1": {
-      "t": "Only the accounts' configuration",
-      "h": "8452dc4e"
+      "t": "Only the configuration of the accounts and managed services",
+      "h": "453f89ea"
     },
     "questions.0.options.2": {
-      "t": "The source code in the repository",
-      "h": "50d8f3a1"
+      "t": "The source code stored in the organization's repositories",
+      "h": "b29b82df"
     },
     "questions.0.options.3": {
-      "t": "Public DNS",
-      "h": "d6031a2a"
+      "t": "The public DNS and the company's domain records",
+      "h": "d0acd0c6"
     },
     "questions.0.q": {
       "t": "What does CWPP protect?",
@@ -33,16 +33,16 @@
       "h": "630ff485"
     },
     "questions.1.options.1": {
-      "t": "A bucket with a restrictive policy",
-      "h": "86aca081"
+      "t": "A bucket with a restrictive policy and private access",
+      "h": "8647b79f"
     },
     "questions.1.options.2": {
-      "t": "A signed image",
-      "h": "5f3a4b01"
+      "t": "An image that is signed and verified before it runs",
+      "h": "b71a10da"
     },
     "questions.1.options.3": {
-      "t": "A role with MFA",
-      "h": "87b34ed5"
+      "t": "A role that requires MFA to be assumed by people",
+      "h": "8143f8d8"
     },
     "questions.1.q": {
       "t": "Which signal is typical of runtime detection?",
@@ -57,16 +57,16 @@
       "h": "740cce06"
     },
     "questions.2.options.1": {
-      "t": "Because it removes the need for logs",
-      "h": "b8e89bb7"
+      "t": "Because it removes the need to keep workload logs",
+      "h": "564585a3"
     },
     "questions.2.options.2": {
-      "t": "Because it encrypts traffic",
-      "h": "3f383e79"
+      "t": "Because it automatically encrypts the traffic between containers",
+      "h": "eb4c02e5"
     },
     "questions.2.options.3": {
-      "t": "Because it replaces IAM",
-      "h": "0b0e19d2"
+      "t": "Because it replaces IAM in deciding who accesses what",
+      "h": "1a35a717"
     },
     "questions.2.q": {
       "t": "Why does a behavior baseline help?",

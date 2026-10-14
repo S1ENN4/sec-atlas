@@ -41,8 +41,8 @@
       "h": "a3145c32"
     },
     "sections.2.code.0.code": {
-      "t": "USER=svc-deploy\nKEY=AKIAIOSFODNN7EXAMPLE\n\n# 1. deactivates the key (does not delete: preserves for forensics)\naws iam update-access-key --user-name \"$USER\" \\\n  --access-key-id \"$KEY\" --status Inactive\n\n# 2. denies everything for sessions already issued before now\naws iam put-user-policy --user-name \"$USER\" \\\n  --policy-name quarantine \\\n  --policy-document file://deny-all.json",
-      "h": "215f56f6"
+      "t": "USER=svc-deploy\nKEY=AKIAIOSFODNN7EXAMPLE\n\n# 1. deactivates the key (does not delete: preserves for forensics)\naws iam update-access-key --user-name \"$USER\" \\\n  --access-key-id \"$KEY\" --status Inactive\n\n# 2. denies everything for the user while the investigation runs\naws iam put-user-policy --user-name \"$USER\" \\\n  --policy-name quarantine \\\n  --policy-document file://deny-all.json",
+      "h": "5e9c8543"
     },
     "sections.2.code.0.filename": {
       "t": "contain-key.sh - deactivate compromised key",

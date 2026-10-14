@@ -9,16 +9,16 @@
       "h": "cbec25a8"
     },
     "questions.0.options.1": {
-      "t": "Un nuevo modelo de lenguaje",
-      "h": "dd7f314c"
+      "t": "Un nuevo modelo de lenguaje entrenado para usar herramientas",
+      "h": "22372e99"
     },
     "questions.0.options.2": {
-      "t": "Un formato de imagen",
-      "h": "d5e970ee"
+      "t": "Un formato de imagen para enviar capturas de pantalla al modelo",
+      "h": "f99fe220"
     },
     "questions.0.options.3": {
-      "t": "Un tipo de GPU",
-      "h": "9f7a3713"
+      "t": "Un tipo de GPU hecho para ejecutar agentes",
+      "h": "23055404"
     },
     "questions.0.q": {
       "t": "¿Qué es MCP (Model Context Protocol)?",
@@ -33,16 +33,16 @@
       "h": "638600e6"
     },
     "questions.1.options.1": {
-      "t": "Ninguno, siempre son seguros",
-      "h": "2790ff7b"
+      "t": "Ninguno, porque los servidores de terceros son siempre seguros",
+      "h": "d759e530"
     },
     "questions.1.options.2": {
-      "t": "Aumenta el tamaño del modelo",
-      "h": "feb8d411"
+      "t": "Aumentar el tamaño del modelo en uso",
+      "h": "c4a66066"
     },
     "questions.1.options.3": {
-      "t": "Impide el uso de HTTPS",
-      "h": "29d201fb"
+      "t": "Impedir el uso de HTTPS en las demás conexiones del agente",
+      "h": "4621f29d"
     },
     "questions.1.q": {
       "t": "¿Cuál es un riesgo al instalar un servidor MCP de terceros?",
@@ -57,16 +57,16 @@
       "h": "9bff0c58"
     },
     "questions.2.options.1": {
-      "t": "Siempre son inofensivas",
-      "h": "4d84dc51"
+      "t": "Son siempre inofensivas, porque solo describen la herramienta",
+      "h": "59558276"
     },
     "questions.2.options.2": {
-      "t": "El modelo no las lee",
-      "h": "bd306d7b"
+      "t": "No las lee el modelo, solo la interfaz de usuario",
+      "h": "02d1c4ea"
     },
     "questions.2.options.3": {
-      "t": "Están cifradas",
-      "h": "3a320a06"
+      "t": "Están cifradas y solo el servidor puede leerlas",
+      "h": "cad1d695"
     },
     "questions.2.q": {
       "t": "¿Qué cuidado aplica a las descripciones de herramientas MCP?",

@@ -9,16 +9,16 @@
       "h": "024662d5"
     },
     "questions.0.options.1": {
-      "t": "Entrenar el modelo",
-      "h": "649db890"
+      "t": "Entrenar el modelo con los casos de prueba que fallaron",
+      "h": "23499deb"
     },
     "questions.0.options.2": {
-      "t": "Cifrar prompts",
-      "h": "6de25a11"
+      "t": "Cifrar los prompts enviados al modelo",
+      "h": "c99e7acb"
     },
     "questions.0.options.3": {
-      "t": "Reducir el contexto",
-      "h": "1bff36bb"
+      "t": "Reducir el tamaño del contexto en cada ronda",
+      "h": "92637f97"
     },
     "questions.0.q": {
       "t": "¿Para qué sirven los evals?",
@@ -33,16 +33,16 @@
       "h": "b9743fca"
     },
     "questions.1.options.1": {
-      "t": "Porque son más baratos",
-      "h": "66e8c762"
+      "t": "Porque son más baratos que crear casos de prueba sintéticos",
+      "h": "ab0b6ef6"
     },
     "questions.1.options.2": {
-      "t": "Porque no requieren revisión",
-      "h": "0dedf33d"
+      "t": "Porque eliminan cualquier revisión humana de los resultados",
+      "h": "d81ce5c9"
     },
     "questions.1.options.3": {
-      "t": "Porque el modelo lo exige",
-      "h": "59d63bf4"
+      "t": "Porque el modelo exige datos reales para funcionar",
+      "h": "3821a3ba"
     },
     "questions.1.q": {
       "t": "¿Por qué usar datos reales de producción en los evals?",
@@ -57,16 +57,16 @@
       "h": "07c9c42f"
     },
     "questions.2.options.1": {
-      "t": "Resulta demasiado caro",
-      "h": "f218b5ba"
+      "t": "Resulta demasiado caro ejecutarlo en cada cambio",
+      "h": "82ca3614"
     },
     "questions.2.options.2": {
-      "t": "La respuesta final no existe",
-      "h": "d82b685a"
+      "t": "Puede que la respuesta final simplemente no exista",
+      "h": "90e8b667"
     },
     "questions.2.options.3": {
-      "t": "No es posible medir nada",
-      "h": "70fc41e9"
+      "t": "No se puede medir nada sin mirar los pasos internos",
+      "h": "651441c5"
     },
     "questions.2.q": {
       "t": "¿Cuál es el problema de evaluar solo la respuesta final?",

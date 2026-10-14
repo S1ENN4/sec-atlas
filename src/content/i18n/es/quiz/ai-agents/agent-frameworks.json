@@ -9,16 +9,16 @@
       "h": "a14aa80b"
     },
     "questions.0.options.1": {
-      "t": "Un nuevo modelo de lenguaje",
-      "h": "dd7f314c"
+      "t": "Un nuevo modelo de lenguaje entrenado para tareas de agente",
+      "h": "b5a7ba7c"
     },
     "questions.0.options.2": {
-      "t": "Una base de datos",
-      "h": "b49261d0"
+      "t": "Una base de datos optimizada para guardar el estado del agente",
+      "h": "35d51bbe"
     },
     "questions.0.options.3": {
-      "t": "Un firewall",
-      "h": "966d5102"
+      "t": "Un firewall que filtra las llamadas que hace el agente",
+      "h": "eb117c33"
     },
     "questions.0.q": {
       "t": "¿Qué ofrece un framework de agentes?",
@@ -33,16 +33,16 @@
       "h": "af3df741"
     },
     "questions.1.options.1": {
-      "t": "Que el prompt quede corto",
-      "h": "d5c1815f"
+      "t": "Que el prompt quede demasiado corto para que el modelo entienda la tarea",
+      "h": "29f862a7"
     },
     "questions.1.options.2": {
-      "t": "Que la latencia baje",
-      "h": "f7ec1170"
+      "t": "Que la latencia de las respuestas baje con cada nueva decisión del agente",
+      "h": "8ae1d314"
     },
     "questions.1.options.3": {
-      "t": "Que el modelo olvide el alfabeto",
-      "h": "3e70a982"
+      "t": "Que el modelo olvide partes del alfabeto al escribir respuestas largas",
+      "h": "0c84ce23"
     },
     "questions.1.q": {
       "t": "¿Qué riesgo crece cuando el agente tiene más autonomía?",
@@ -57,16 +57,16 @@
       "h": "e75e8a46"
     },
     "questions.2.options.1": {
-      "t": "Darle acceso de admin para evitar errores",
-      "h": "6cf5b767"
+      "t": "Dar acceso de administrador para que el agente no se equivoque",
+      "h": "27555f99"
     },
     "questions.2.options.2": {
-      "t": "Ejecutar sin logs",
-      "h": "c408b417"
+      "t": "Ejecutar el agente sin logs, para no registrar datos sensibles",
+      "h": "661f297f"
     },
     "questions.2.options.3": {
-      "t": "Dejar que el agente apruebe sus propias acciones",
-      "h": "dcc06b72"
+      "t": "Dejar que el agente apruebe sus propias acciones arriesgadas",
+      "h": "0d9041b9"
     },
     "questions.2.q": {
       "t": "¿Qué buena práctica ayuda a contener a un agente?",

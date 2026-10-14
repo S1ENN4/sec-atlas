@@ -41,7 +41,7 @@ export const cicd: Topic = {
         {
           filename: ".github/workflows/ci.yml",
           language: "yaml",
-          code: "name: ci\non: [push, pull_request]        # stage source: o que dispara\njobs:\n  ci:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - run: npm ci                # build: instala de forma reprodutível\n      - run: npm test              # test: a suíte de testes\n      - run: npx semgrep ci        # segurança entra como mais um passo\n      - run: docker build -t app . # package: gera o artefato",
+          code: "name: ci\non: [push, pull_request]        # stage source: o que dispara\npermissions:\n  contents: read                # privilégio mínimo para o token da esteira\njobs:\n  ci:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - run: npm ci                # build: instala de forma reprodutível\n      - run: npm test              # test: a suíte de testes\n      - run: pipx run semgrep scan --config auto --error   # segurança como mais um passo\n      - run: docker build -t app . # package: gera o artefato",
         },
       ],
     },

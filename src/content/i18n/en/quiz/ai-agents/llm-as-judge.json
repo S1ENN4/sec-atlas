@@ -9,16 +9,16 @@
       "h": "8aa93a32"
     },
     "questions.0.options.1": {
-      "t": "A court for models",
-      "h": "f90c5da1"
+      "t": "A court made up of models that decide legal disputes",
+      "h": "5119c2e0"
     },
     "questions.0.options.2": {
-      "t": "Training a model to be a human judge",
-      "h": "afb62abf"
+      "t": "Training a model to imitate a human judge in a contest",
+      "h": "4914b11e"
     },
     "questions.0.options.3": {
-      "t": "A law benchmark",
-      "h": "a5ac91fb"
+      "t": "A benchmark built from law questions",
+      "h": "ae011910"
     },
     "questions.0.q": {
       "t": "What is LLM-as-judge?",
@@ -33,16 +33,16 @@
       "h": "f59f72e2"
     },
     "questions.1.options.1": {
-      "t": "Always preferring short answers",
-      "h": "657e7b65"
+      "t": "Always preferring the shortest answers, because they are objective",
+      "h": "02274808"
     },
     "questions.1.options.2": {
-      "t": "Always giving a zero score",
-      "h": "ba84d66b"
+      "t": "Always giving a zero score to answers from other models",
+      "h": "11330cb3"
     },
     "questions.1.options.3": {
-      "t": "Ignoring the rubric entirely",
-      "h": "6328725b"
+      "t": "Completely ignoring the rubric it receives",
+      "h": "b997ba64"
     },
     "questions.1.q": {
       "t": "Which bias is common in LLM-based judges?",
@@ -57,16 +57,16 @@
       "h": "38c8bf08"
     },
     "questions.2.options.1": {
-      "t": "Use the same model to generate and evaluate without review",
-      "h": "34e53e01"
+      "t": "Using the same model to generate and to evaluate, with no review",
+      "h": "f206133c"
     },
     "questions.2.options.2": {
-      "t": "Disable the rubric",
-      "h": "34e9b572"
+      "t": "Turning off the rubric so the judge has more freedom",
+      "h": "4743883c"
     },
     "questions.2.options.3": {
-      "t": "Increase the temperature",
-      "h": "aa90eea7"
+      "t": "Raising the temperature to make the scores more varied",
+      "h": "f1640af8"
     },
     "questions.2.q": {
       "t": "How do you increase confidence in an automatic judge?",

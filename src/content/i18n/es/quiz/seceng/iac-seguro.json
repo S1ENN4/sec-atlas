@@ -9,16 +9,16 @@
       "h": "f011a53a"
     },
     "questions.0.options.1": {
-      "t": "Porque el archivo es demasiado grande",
-      "h": "426e05ad"
+      "t": "Porque el archivo es demasiado grande para guardarlo en el repositorio",
+      "h": "fed2b54c"
     },
     "questions.0.options.2": {
-      "t": "Porque Git no acepta JSON",
-      "h": "e9e344f6"
+      "t": "Porque Git no puede almacenar archivos en formato JSON",
+      "h": "38fce392"
     },
     "questions.0.options.3": {
-      "t": "Porque el estado se regenera en cada commit",
-      "h": "2ce18a05"
+      "t": "Porque el estado se regenera en cada commit y causaría conflictos",
+      "h": "55edb19b"
     },
     "questions.0.q": {
       "t": "¿Por qué el estado de Terraform no debe ir al repositorio?",
@@ -33,16 +33,16 @@
       "h": "57c6a33d"
     },
     "questions.1.options.1": {
-      "t": "Un error de sintaxis en Terraform",
-      "h": "cdfb89b3"
+      "t": "Un error de sintaxis en el código de Terraform que bloquea el plan",
+      "h": "342ee181"
     },
     "questions.1.options.2": {
-      "t": "La latencia entre regiones",
-      "h": "e52e10a3"
+      "t": "La latencia de red entre dos regiones de la nube",
+      "h": "20c9a80c"
     },
     "questions.1.options.3": {
-      "t": "Un tipo de respaldo",
-      "h": "f1e7969c"
+      "t": "Un tipo de copia de seguridad del estado de la infraestructura",
+      "h": "a5e16f0c"
     },
     "questions.1.q": {
       "t": "¿Qué es el drift de infraestructura?",
@@ -57,16 +57,16 @@
       "h": "68bd2aea"
     },
     "questions.2.options.1": {
-      "t": "Reducir el costo del proveedor de nube",
-      "h": "4534f166"
+      "t": "Reducir el coste mensual que cobra el proveedor de nube",
+      "h": "a30fff43"
     },
     "questions.2.options.2": {
-      "t": "Prescindir de la revisión por pares",
-      "h": "67c5b09d"
+      "t": "Eliminar la revisión por pares de los cambios de infraestructura",
+      "h": "7ec5c628"
     },
     "questions.2.options.3": {
-      "t": "Evitar el uso de módulos",
-      "h": "2b1d9920"
+      "t": "Evitar el uso de módulos compartidos entre equipos",
+      "h": "63e04464"
     },
     "questions.2.q": {
       "t": "¿Cuál es la ventaja de escanear el IaC antes del apply?",

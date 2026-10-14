@@ -9,16 +9,16 @@
       "h": "643c0239"
     },
     "questions.0.options.1": {
-      "t": "Un manual de políticas en PDF versionado",
-      "h": "6693968c"
+      "t": "Un manual de políticas en PDF mantenido bajo control de versiones",
+      "h": "4beb6fd1"
     },
     "questions.0.options.2": {
-      "t": "Un comentario en el código sobre seguridad",
-      "h": "ed2d7114"
+      "t": "Un comentario en el código que explica las reglas de seguridad",
+      "h": "9e5e72e6"
     },
     "questions.0.options.3": {
-      "t": "Un tipo de licencia",
-      "h": "8bd27f35"
+      "t": "Un tipo de licencia de código abierto para herramientas de seguridad",
+      "h": "4fbd25a9"
     },
     "questions.0.q": {
       "t": "¿Qué es policy as code?",
@@ -33,16 +33,16 @@
       "h": "fddad9e3"
     },
     "questions.1.options.1": {
-      "t": "Porque Rego no compila sin pruebas",
-      "h": "ea863788"
+      "t": "Porque Rego no compila si no existen pruebas",
+      "h": "add1a0b9"
     },
     "questions.1.options.2": {
-      "t": "Para reducir el tamaño del archivo",
-      "h": "07d48657"
+      "t": "Para reducir el tamaño de los archivos de política",
+      "h": "dde28148"
     },
     "questions.1.options.3": {
-      "t": "Porque OPA lo exige",
-      "h": "fc6a89f7"
+      "t": "Porque OPA exige pruebas para cargar las políticas",
+      "h": "684604a0"
     },
     "questions.1.q": {
       "t": "¿Por qué probar las políticas escritas en Rego?",
@@ -57,16 +57,16 @@
       "h": "933d71e5"
     },
     "questions.2.options.1": {
-      "t": "Bloquear de inmediato en producción",
-      "h": "8c8ce179"
+      "t": "Bloquear de inmediato en producción, para que nadie incumpla la regla",
+      "h": "86cc93be"
     },
     "questions.2.options.2": {
-      "t": "Aplicarla solo en entornos de prueba para siempre",
-      "h": "b6437ba4"
+      "t": "Aplicar solo en entornos de prueba, para siempre",
+      "h": "eaf8f0e6"
     },
     "questions.2.options.3": {
-      "t": "Crear excepciones sin plazo",
-      "h": "bd7b57a0"
+      "t": "Crear excepciones sin plazo para cada equipo que proteste",
+      "h": "5a278500"
     },
     "questions.2.q": {
       "t": "¿Cuál es la forma sana de adoptar una política nueva sin bloquear a todos?",

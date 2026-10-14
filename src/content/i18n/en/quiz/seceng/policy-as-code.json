@@ -9,16 +9,16 @@
       "h": "643c0239"
     },
     "questions.0.options.1": {
-      "t": "A versioned policy manual in PDF",
-      "h": "6693968c"
+      "t": "A policy manual in a PDF kept under version control",
+      "h": "4beb6fd1"
     },
     "questions.0.options.2": {
-      "t": "A comment in the code about security",
-      "h": "ed2d7114"
+      "t": "A comment in the code explaining the security rules",
+      "h": "9e5e72e6"
     },
     "questions.0.options.3": {
-      "t": "A type of license",
-      "h": "8bd27f35"
+      "t": "A type of open source license for security tools",
+      "h": "4fbd25a9"
     },
     "questions.0.q": {
       "t": "What is policy as code?",
@@ -33,16 +33,16 @@
       "h": "fddad9e3"
     },
     "questions.1.options.1": {
-      "t": "Because Rego does not compile without tests",
-      "h": "ea863788"
+      "t": "Because Rego does not compile unless tests exist",
+      "h": "add1a0b9"
     },
     "questions.1.options.2": {
-      "t": "To reduce the file size",
-      "h": "07d48657"
+      "t": "To reduce the size of the policy files",
+      "h": "dde28148"
     },
     "questions.1.options.3": {
-      "t": "Because OPA requires it",
-      "h": "fc6a89f7"
+      "t": "Because OPA requires tests in order to load the policies",
+      "h": "684604a0"
     },
     "questions.1.q": {
       "t": "Why test policies written in Rego?",
@@ -57,16 +57,16 @@
       "h": "933d71e5"
     },
     "questions.2.options.1": {
-      "t": "Block immediately in production",
-      "h": "8c8ce179"
+      "t": "Blocking immediately in production, so nobody breaks the rule",
+      "h": "86cc93be"
     },
     "questions.2.options.2": {
-      "t": "Apply it only in test environments forever",
-      "h": "b6437ba4"
+      "t": "Applying only in test environments, forever",
+      "h": "eaf8f0e6"
     },
     "questions.2.options.3": {
-      "t": "Create exceptions with no expiry",
-      "h": "bd7b57a0"
+      "t": "Creating exceptions with no expiry for every team that complains",
+      "h": "5a278500"
     },
     "questions.2.q": {
       "t": "What is the healthy way to adopt a new policy without blocking everyone?",

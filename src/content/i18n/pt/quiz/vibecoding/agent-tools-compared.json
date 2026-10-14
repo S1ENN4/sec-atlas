@@ -5,20 +5,20 @@
       "h": "97ea3f4a"
     },
     "questions.0.options.0": {
-      "t": "Um agent de código independente em Rust",
-      "h": "55f036c1"
+      "t": "Um agente de código independente escrito em Rust que roda no terminal",
+      "h": "8365e997"
     },
     "questions.0.options.1": {
       "t": "Um plugin do OpenCode que adiciona agents especializados e orquestração multiagente",
       "h": "b48086c6"
     },
     "questions.0.options.2": {
-      "t": "Um multiplexador de terminal",
-      "h": "117340d1"
+      "t": "Um multiplexador de terminal que mantém várias sessões abertas",
+      "h": "5bb146f8"
     },
     "questions.0.options.3": {
-      "t": "Um modelo de um laboratório chinês",
-      "h": "57013043"
+      "t": "Um modelo de linguagem lançado por um laboratório de pesquisa",
+      "h": "9f34fca8"
     },
     "questions.0.q": {
       "t": "O que é o Oh My OpenAgent (OMO)?",
@@ -29,20 +29,20 @@
       "h": "b4384377"
     },
     "questions.1.options.0": {
-      "t": "Treina modelos de código",
-      "h": "f9b6f613"
+      "t": "Treina e ajusta modelos de código sobre o seu repositório",
+      "h": "1e85b2a2"
     },
     "questions.1.options.1": {
       "t": "Organiza vários agents em painéis de terminal persistentes e mostra o estado de cada um",
       "h": "8bec6ec7"
     },
     "questions.1.options.2": {
-      "t": "Substitui o git",
-      "h": "748a50b3"
+      "t": "Substitui o git por um sistema feito para agentes",
+      "h": "e01892aa"
     },
     "questions.1.options.3": {
-      "t": "Escaneia dependências",
-      "h": "c69cca72"
+      "t": "Varre dependências em busca de vulnerabilidades conhecidas",
+      "h": "c37c641e"
     },
     "questions.1.q": {
       "t": "O que o herdr faz?",

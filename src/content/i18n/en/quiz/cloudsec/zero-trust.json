@@ -9,16 +9,16 @@
       "h": "48a4f142"
     },
     "questions.0.options.1": {
-      "t": "Trusting everything inside the VPN",
-      "h": "f0528e1d"
+      "t": "Trusting everything that is inside the company VPN",
+      "h": "d332db41"
     },
     "questions.0.options.2": {
-      "t": "Blocking the entire internet",
-      "h": "b1b717b4"
+      "t": "Blocking the whole internet and opening only what is requested",
+      "h": "31488fbb"
     },
     "questions.0.options.3": {
-      "t": "Using only strong passwords",
-      "h": "2ededee7"
+      "t": "Using only strong passwords and changing them often",
+      "h": "725d4fde"
     },
     "questions.0.q": {
       "t": "What is the core principle of Zero Trust?",
@@ -33,16 +33,16 @@
       "h": "6105c8da"
     },
     "questions.1.options.1": {
-      "t": "Authentication is removed",
-      "h": "25a72444"
+      "t": "Authentication stops existing, since the network is trusted",
+      "h": "d206927b"
     },
     "questions.1.options.2": {
-      "t": "Everything becomes public",
-      "h": "073d247e"
+      "t": "Everything becomes public and protection stays only on the data",
+      "h": "88c2c676"
     },
     "questions.1.options.3": {
-      "t": "Logging is eliminated",
-      "h": "6e5c796c"
+      "t": "Logging is no longer needed, because access is verified",
+      "h": "1e070007"
     },
     "questions.1.q": {
       "t": "What changes from the perimeter model to Zero Trust?",
@@ -57,16 +57,16 @@
       "h": "d7955257"
     },
     "questions.2.options.1": {
-      "t": "VPN with full access to the internal network",
-      "h": "83963351"
+      "t": "A VPN with full access to the internal network after login",
+      "h": "b9955c4b"
     },
     "questions.2.options.2": {
-      "t": "A shared password",
-      "h": "33966dec"
+      "t": "A password shared by the team and changed every quarter",
+      "h": "9e4a0c12"
     },
     "questions.2.options.3": {
-      "t": "Opening all internal ports",
-      "h": "4354b74d"
+      "t": "Opening all internal ports between services",
+      "h": "9041de1b"
     },
     "questions.2.q": {
       "t": "Which practice represents Zero Trust?",

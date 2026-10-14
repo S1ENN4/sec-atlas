@@ -5,20 +5,20 @@
       "h": "8d6ab5d5"
     },
     "questions.0.options.0": {
-      "t": "HSTS habilitado",
-      "h": "4a58ac5d"
+      "t": "HSTS activado, para que el navegador use siempre HTTPS en el dominio",
+      "h": "3f3133f2"
     },
     "questions.0.options.1": {
       "t": "Modo debug dejado activado, exponiendo stack traces y una consola",
       "h": "bde75db9"
     },
     "questions.0.options.2": {
-      "t": "Secretos en un gestor de secretos",
-      "h": "374c7a0e"
+      "t": "Secretos guardados en un gestor de secretos y leídos al arrancar el servicio",
+      "h": "c2483450"
     },
     "questions.0.options.3": {
-      "t": "Roles con privilegio mínimo",
-      "h": "3449cbad"
+      "t": "Roles con mínimo privilegio revisados cada trimestre",
+      "h": "2ad89665"
     },
     "questions.0.q": {
       "t": "¿Qué ajuste es una mala configuración típica en producción?",
@@ -29,20 +29,20 @@
       "h": "6078f39c"
     },
     "questions.1.options.0": {
-      "t": "Leer la configuración una vez al año",
-      "h": "67d23989"
+      "t": "Leer la configuración manualmente una vez al año, durante la auditoría",
+      "h": "4dea9e51"
     },
     "questions.1.options.1": {
       "t": "Escanear el código de infraestructura y las imágenes en el CI y romper el build",
       "h": "3f96bb81"
     },
     "questions.1.options.2": {
-      "t": "Pedir a los desarrolladores que tengan cuidado",
-      "h": "068117f6"
+      "t": "Pedir a los desarrolladores que tengan cuidado cada vez que toquen la configuración",
+      "h": "e379ab1a"
     },
     "questions.1.options.3": {
-      "t": "Desactivar los scanners que hacen mucho ruido",
-      "h": "421ca3f7"
+      "t": "Desactivar los escáneres ruidosos para que el pipeline siga en verde",
+      "h": "10383296"
     },
     "questions.1.q": {
       "t": "¿Cómo detectas con mayor fiabilidad una regresión a un valor inseguro por defecto?",
@@ -53,20 +53,20 @@
       "h": "06c8b89d"
     },
     "questions.2.options.0": {
-      "t": "Hace más lento el sitio",
-      "h": "7c850489"
+      "t": "Ralentiza el sitio porque cada respuesta lleva cabeceras extra",
+      "h": "e393ba1a"
     },
     "questions.2.options.1": {
       "t": "Cualquier sitio web puede hacer solicitudes autenticadas como el visitante y leer las respuestas",
       "h": "a1443295"
     },
     "questions.2.options.2": {
-      "t": "Rompe HTTPS",
-      "h": "4138efa7"
+      "t": "Rompe el HTTPS para cualquier visitante con un navegador más antiguo",
+      "h": "b41c082f"
     },
     "questions.2.options.3": {
-      "t": "Desactiva las cookies",
-      "h": "1d3d5248"
+      "t": "Desactiva las cookies de todos los demás sitios que el visitante tiene abiertos",
+      "h": "55a5a8de"
     },
     "questions.2.q": {
       "t": "¿Por qué es peligroso un origen CORS comodín con credenciales?",

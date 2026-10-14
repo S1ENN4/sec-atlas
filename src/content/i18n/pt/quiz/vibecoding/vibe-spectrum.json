@@ -5,20 +5,20 @@
       "h": "2b424ff7"
     },
     "questions.0.options.0": {
-      "t": "Sempre o máximo, para ir mais rápido",
-      "h": "ccd61040"
+      "t": "Sempre o máximo, porque cada pausa para revisão atrasa o trabalho",
+      "h": "70bdd79e"
     },
     "questions.0.options.1": {
       "t": "Ajustar a autonomia ao raio de impacto e à sua capacidade de verificar o resultado",
       "h": "e35e03bd"
     },
     "questions.0.options.2": {
-      "t": "Nunca mais do que autocomplete",
-      "h": "94c87c8b"
+      "t": "Nunca mais que autocompletar, porque qualquer coisa além disso é arriscada demais",
+      "h": "a09abc7e"
     },
     "questions.0.options.3": {
-      "t": "O que a ferramenta trouxer por padrão",
-      "h": "1fa77db7"
+      "t": "A autonomia que a ferramenta oferece por padrão, já que o fornecedor a testou",
+      "h": "bb639204"
     },
     "questions.0.q": {
       "t": "Qual regra orienta melhor quanta autonomia dar a uma ferramenta de código com IA?",
@@ -29,20 +29,20 @@
       "h": "de9c0b68"
     },
     "questions.1.options.0": {
-      "t": "O fluxo de login",
-      "h": "58e1b7c8"
+      "t": "O fluxo de login do produto, que é pequeno e bem compreendido",
+      "h": "ccd7319e"
     },
     "questions.1.options.1": {
-      "t": "Um webhook de pagamento",
-      "h": "24a5b07e"
+      "t": "Um webhook de pagamento, porque o fornecedor documenta o formato em detalhes",
+      "h": "4cefbac9"
     },
     "questions.1.options.2": {
       "t": "Um script descartável que renomeia arquivos no seu notebook",
       "h": "b2b8a543"
     },
     "questions.1.options.3": {
-      "t": "Uma mudança em permissões da nuvem",
-      "h": "f0b60c4d"
+      "t": "Uma mudança nas permissões de nuvem da conta de produção",
+      "h": "27b1b175"
     },
     "questions.1.q": {
       "t": "Qual tarefa é a mais adequada para vibecoding puro, sem ler o código?",
@@ -53,20 +53,20 @@
       "h": "88604cd9"
     },
     "questions.2.options.0": {
-      "t": "Velocidade de digitação",
-      "h": "597a67a7"
+      "t": "Velocidade de digitação, porque o agente precisa de instruções rápidas e precisas",
+      "h": "7fb2227a"
     },
     "questions.2.options.1": {
       "t": "Especificar problemas com precisão, revisar diffs com senso crítico e escrever testes que provem o resultado",
       "h": "c98f78b5"
     },
     "questions.2.options.2": {
-      "t": "Decorar sintaxe",
-      "h": "5327b266"
+      "t": "Memorizar sintaxe, para poder escrever código sem a ferramenta",
+      "h": "c1ed5aed"
     },
     "questions.2.options.3": {
-      "t": "Escolher o prompt mais longo",
-      "h": "2edeea85"
+      "t": "Escolher o prompt mais longo, já que mais palavras dão melhores resultados",
+      "h": "574e2d6b"
     },
     "questions.2.q": {
       "t": "Conforme a geração de código fica barata, qual habilidade se torna mais valiosa?",

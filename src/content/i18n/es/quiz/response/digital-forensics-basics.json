@@ -5,20 +5,20 @@
       "h": "30c624e8"
     },
     "questions.0.options.0": {
-      "t": "La imagen de disco",
-      "h": "fdc3ea03"
+      "t": "La imagen del disco, porque guarda el historial más largo de la máquina",
+      "h": "81bf8a35"
     },
     "questions.0.options.1": {
       "t": "Datos volátiles como la memoria y los procesos en ejecución",
       "h": "9ba4d3cd"
     },
     "questions.0.options.2": {
-      "t": "Los respaldos",
-      "h": "530cc25b"
+      "t": "Las copias de seguridad, porque pueden sobrescribirse primero",
+      "h": "8c697adc"
     },
     "questions.0.options.3": {
-      "t": "Los documentos en papel",
-      "h": "ae8533a8"
+      "t": "Los documentos en papel encontrados cerca de la máquina",
+      "h": "d1b4e705"
     },
     "questions.0.q": {
       "t": "¿Qué evidencia debe recolectarse primero?",
@@ -29,20 +29,20 @@
       "h": "7b6d5e70"
     },
     "questions.1.options.0": {
-      "t": "Para comprimirla",
-      "h": "36757132"
+      "t": "Para comprimirla y que ocupe menos espacio en el almacén de evidencias",
+      "h": "aca41c18"
     },
     "questions.1.options.1": {
       "t": "Para demostrar después que la evidencia no ha cambiado",
       "h": "2dfbd8fb"
     },
     "questions.1.options.2": {
-      "t": "Para cifrarla",
-      "h": "b446ddaa"
+      "t": "Para cifrarla y que nadie más pueda abrirla",
+      "h": "37484492"
     },
     "questions.1.options.3": {
-      "t": "Para acelerar el análisis",
-      "h": "60c41b7b"
+      "t": "Para acelerar el análisis indexando su contenido",
+      "h": "ecee535d"
     },
     "questions.1.q": {
       "t": "¿Por qué calcular el hash de una imagen en la adquisición?",
@@ -53,20 +53,20 @@
       "h": "3970a3c8"
     },
     "questions.2.options.0": {
-      "t": "La estructura del sistema de archivos",
-      "h": "6b284df3"
+      "t": "La disposición del sistema de archivos hallada en la imagen adquirida",
+      "h": "5c2360af"
     },
     "questions.2.options.1": {
       "t": "Quién tuvo la evidencia, cuándo y qué se hizo con ella",
       "h": "4123965c"
     },
     "questions.2.options.2": {
-      "t": "El nombre del atacante",
-      "h": "fb606db8"
+      "t": "El nombre y el móvil del presunto atacante",
+      "h": "339aae10"
     },
     "questions.2.options.3": {
-      "t": "El costo de la investigación",
-      "h": "4988a04f"
+      "t": "El coste de la investigación y de las herramientas usadas",
+      "h": "bf884baa"
     },
     "questions.2.q": {
       "t": "¿Qué registra la cadena de custodia?",

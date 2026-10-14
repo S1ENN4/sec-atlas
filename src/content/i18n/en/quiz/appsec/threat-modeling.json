@@ -5,20 +5,20 @@
       "h": "6b653d60"
     },
     "questions.0.options.0": {
-      "t": "After the pentest",
-      "h": "ba04968b"
+      "t": "After the pentest, when the problems have already been found in practice",
+      "h": "b74c9e24"
     },
     "questions.0.options.1": {
       "t": "At design time, before or during implementation",
       "h": "87166e56"
     },
     "questions.0.options.2": {
-      "t": "Only after an incident",
-      "h": "96e9e0c2"
+      "t": "Only after an incident, when the team knows what went wrong",
+      "h": "41556cb7"
     },
     "questions.0.options.3": {
-      "t": "Only in production",
-      "h": "506eea5d"
+      "t": "Only in production, where the real system can be observed",
+      "h": "e15b94e8"
     },
     "questions.0.q": {
       "t": "When does threat modeling deliver the most value?",
@@ -29,20 +29,20 @@
       "h": "3c63c138"
     },
     "questions.1.options.0": {
-      "t": "Scanning",
-      "h": "e230f66c"
+      "t": "Scanning, the sweep of a system's ports and services",
+      "h": "f5dab0f1"
     },
     "questions.1.options.1": {
       "t": "Spoofing (identity forgery)",
       "h": "51aa5bb7"
     },
     "questions.1.options.2": {
-      "t": "Secrets",
-      "h": "1e3732ae"
+      "t": "Secrets, the exposure of credentials in code and configuration",
+      "h": "a72384a9"
     },
     "questions.1.options.3": {
-      "t": "Sandboxing",
-      "h": "8f9ad8b0"
+      "t": "Sandboxing, the isolation of untrusted code",
+      "h": "a05ae1a0"
     },
     "questions.1.q": {
       "t": "In STRIDE, what does the letter S stand for?",
@@ -53,20 +53,20 @@
       "h": "50fc21f0"
     },
     "questions.2.options.0": {
-      "t": "In any box, equally",
-      "h": "a5f0f899"
+      "t": "In any box of the diagram, equally",
+      "h": "84eaf67c"
     },
     "questions.2.options.1": {
       "t": "In the flows that cross trust boundaries",
       "h": "469e8187"
     },
     "questions.2.options.2": {
-      "t": "Only in the database",
-      "h": "8783eee5"
+      "t": "Only in the database, where the data is stored",
+      "h": "6ed5ea7a"
     },
     "questions.2.options.3": {
-      "t": "In the diagram labels",
-      "h": "7fc57e08"
+      "t": "In the labels of the diagram, which expose internal details",
+      "h": "74e67334"
     },
     "questions.2.q": {
       "t": "Where do threats tend to concentrate in a data flow diagram?",

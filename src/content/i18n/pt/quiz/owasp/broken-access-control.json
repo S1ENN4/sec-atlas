@@ -5,20 +5,20 @@
       "h": "eca2269b"
     },
     "questions.0.options.0": {
-      "t": "Esconder os links das faturas na interface do usuário",
-      "h": "029e9634"
+      "t": "Esconder os links das faturas na interface para os usuários não acharem outros ids",
+      "h": "30d964d5"
     },
     "questions.0.options.1": {
       "t": "Fazer a consulta filtrar pelo dono obtido da sessão e devolver o mesmo 404 para inexistente e não pertencente",
       "h": "a8ea6c92"
     },
     "questions.0.options.2": {
-      "t": "Usar um id aleatório mais longo e manter a mesma consulta",
-      "h": "6623cc13"
+      "t": "Trocar os ids sequenciais por outros aleatórios mais longos e manter a mesma consulta",
+      "h": "4fea3073"
     },
     "questions.0.options.3": {
-      "t": "Bloquear o endereço IP do usuário",
-      "h": "4e5dc703"
+      "t": "Bloquear o endereço IP de qualquer usuário que peça uma fatura que não é dele",
+      "h": "965513e3"
     },
     "questions.0.q": {
       "t": "Um usuário logado troca /api/invoices/1041 por /api/invoices/1042 e vê a fatura de outro cliente. Qual é a melhor correção?",
@@ -29,20 +29,20 @@
       "h": "17f6a4bf"
     },
     "questions.1.options.0": {
-      "t": "Permitir por padrão",
-      "h": "7aaefb85"
+      "t": "Permitir por padrão e bloquear as rotas conhecidas como sensíveis",
+      "h": "fabcc724"
     },
     "questions.1.options.1": {
       "t": "Negar por padrão",
       "h": "88262657"
     },
     "questions.1.options.2": {
-      "t": "Registrar em log por padrão",
-      "h": "12f69a66"
+      "t": "Registrar por padrão, para toda requisição deixar rastro para revisão posterior",
+      "h": "80d50445"
     },
     "questions.1.options.3": {
-      "t": "Fazer cache por padrão",
-      "h": "b394a39d"
+      "t": "Guardar em cache por padrão, para requisições repetidas nunca chegarem à aplicação",
+      "h": "b1d1d128"
     },
     "questions.1.q": {
       "t": "Qual padrão torna segura uma rota esquecida?",
@@ -53,20 +53,20 @@
       "h": "304c0072"
     },
     "questions.2.options.0": {
-      "t": "Porque botões são lentos",
-      "h": "b98d3072"
+      "t": "Porque botões demoram para renderizar e os usuários notariam o atraso",
+      "h": "97c4bc61"
     },
     "questions.2.options.1": {
       "t": "Porque os atacantes chamam o endpoint diretamente, então o servidor precisa verificar o papel",
       "h": "730e6b00"
     },
     "questions.2.options.2": {
-      "t": "Porque os navegadores fazem cache de botões",
-      "h": "8e626c9e"
+      "t": "Porque os navegadores guardam botões em cache e os mostram para os usuários errados",
+      "h": "5f8ba0a7"
     },
     "questions.2.options.3": {
-      "t": "Porque prejudica a acessibilidade",
-      "h": "76a94b38"
+      "t": "Porque esconder elementos quebra as ferramentas de acessibilidade de algumas pessoas",
+      "h": "31373b70"
     },
     "questions.2.q": {
       "t": "Por que esconder o botão de admin na UI não é controle de acesso?",

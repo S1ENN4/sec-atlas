@@ -5,20 +5,20 @@
       "h": "3d26e62e"
     },
     "questions.0.options.0": {
-      "t": "Para dobrar o tráfego",
-      "h": "4ad92a8b"
+      "t": "Para dobrar o tráfego e ver como a aplicação se comporta sob carga",
+      "h": "08eafb1b"
     },
     "questions.0.options.1": {
       "t": "Para compará-las e encontrar bugs de autorização em que um usuário alcança os dados do outro",
       "h": "fad1193b"
     },
     "questions.0.options.2": {
-      "t": "Porque o proxy exige",
-      "h": "d4602fc8"
+      "t": "Porque a ferramenta de proxy exige duas sessões para registrar um fluxo",
+      "h": "8766d8a7"
     },
     "questions.0.options.3": {
-      "t": "Para testar a velocidade do login",
-      "h": "9baaece6"
+      "t": "Para medir a velocidade do login com contas diferentes",
+      "h": "03c684f1"
     },
     "questions.0.q": {
       "t": "Por que criar duas contas de teste no mesmo nível de privilégio?",
@@ -29,20 +29,20 @@
       "h": "300e96ce"
     },
     "questions.1.options.0": {
-      "t": "Criação de usuários em massa",
-      "h": "f55311d9"
+      "t": "Criar muitas contas de usuário em lote para preparar um teste de carga",
+      "h": "50abb56d"
     },
     "questions.1.options.1": {
       "t": "Uma API associando campos enviados pelo cliente (como role) a um objeto, permitindo que quem chama defina o que não deveria",
       "h": "6cc7da43"
     },
     "questions.1.options.2": {
-      "t": "Um teste de carga",
-      "h": "8bb31e90"
+      "t": "Um teste de carga que envia muitas requisições paralelas a um endpoint",
+      "h": "1115202d"
     },
     "questions.1.options.3": {
-      "t": "Um modo de cache",
-      "h": "25cce3cf"
+      "t": "Um modo de cache que guarda várias respostas sob uma só chave",
+      "h": "8fdf4341"
     },
     "questions.1.q": {
       "t": "O que é mass assignment?",
@@ -53,20 +53,20 @@
       "h": "7f904b12"
     },
     "questions.2.options.0": {
-      "t": "Ler e baixar muitos registros de clientes",
-      "h": "830a4651"
+      "t": "Ler e baixar registros de muitos clientes para mostrar o tamanho do problema",
+      "h": "fe16cb9e"
     },
     "questions.2.options.1": {
       "t": "Ler um registro de teste pertencente à sua própria segunda conta",
       "h": "9df1ef89"
     },
     "questions.2.options.2": {
-      "t": "Apagar dados para mostrar o impacto",
-      "h": "21c6c75d"
+      "t": "Apagar dados da aplicação para mostrar o impacto real",
+      "h": "00ba3eb8"
     },
     "questions.2.options.3": {
-      "t": "Postar os dados em um canal público",
-      "h": "7f8aa75e"
+      "t": "Publicar os dados num canal público para o cliente reagir rápido",
+      "h": "462334b0"
     },
     "questions.2.q": {
       "t": "Qual é a forma mais segura de provar um bug de controle de acesso?",

@@ -35,7 +35,7 @@ export const devsecops: Topic = {
         {
           language: "rego",
           filename: "policy/imagens.rego",
-          code: "package deploy\n\ndeny[msg] {\n  input.image.vulns.critical > 0\n  msg := sprintf(\"imagem %s tem %d vulnerabilidades críticas\",\n                 [input.image.name, input.image.vulns.critical])\n}",
+          code: "package deploy\n\ndeny contains msg if {\n  input.image.vulns.critical > 0\n  msg := sprintf(\"imagem %s tem %d vulnerabilidades críticas\",\n                 [input.image.name, input.image.vulns.critical])\n}",
         },
       ],
     },

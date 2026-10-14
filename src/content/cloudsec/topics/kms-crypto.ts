@@ -35,7 +35,7 @@ export const kmsCrypto: Topic = {
         {
           language: "python",
           filename: "envelope.py - exemplo conceitual",
-          code: "import boto3\nfrom cryptography.hazmat.primitives.ciphers.aead import AESGCM\n\nkms = boto3.client(\"kms\")\nKEY_ID = \"arn:aws:kms:us-east-1:111122223333:key/abcd1234-...\"\n\ndef envelope_encrypt(plaintext: bytes, kms_key_id: str = KEY_ID):\n    # 1. KMS devolve uma data key em plaintext + a mesma chave cifrada\n    resp = kms.generate_data_key(KeyId=kms_key_id, KeySpec=\"AES_256\")\n    plaintext_key = resp[\"Plaintext\"]\n    encrypted_key = resp[\"CiphertextBlob\"]\n\n    # 2. cifra o payload localmente, sem nunca mandar ao KMS\n    nonce = b\"\\x00\" * 12\n    ciphertext_body = AESGCM(plaintext_key).encrypt(nonce, plaintext, None)\n\n    # 3. descarta o plaintext da data key, só ciphertext segue com o arquivo\n    del plaintext_key\n    return {\"encrypted_key\": encrypted_key, \"ciphertext_body\": ciphertext_body, \"nonce\": nonce}",
+          code: "import os\nimport boto3\nfrom cryptography.hazmat.primitives.ciphers.aead import AESGCM\n\nkms = boto3.client(\"kms\")\nKEY_ID = \"arn:aws:kms:us-east-1:111122223333:key/abcd1234-...\"\n\ndef envelope_encrypt(plaintext: bytes, kms_key_id: str = KEY_ID):\n    # 1. KMS devolve uma data key em plaintext + a mesma chave cifrada\n    resp = kms.generate_data_key(KeyId=kms_key_id, KeySpec=\"AES_256\")\n    plaintext_key = resp[\"Plaintext\"]\n    encrypted_key = resp[\"CiphertextBlob\"]\n\n    # 2. cifra o payload localmente, sem nunca mandar ao KMS\n    nonce = os.urandom(12)\n    ciphertext_body = AESGCM(plaintext_key).encrypt(nonce, plaintext, None)\n\n    # 3. descarta o plaintext da data key, só ciphertext segue com o arquivo\n    del plaintext_key\n    return {\"encrypted_key\": encrypted_key, \"ciphertext_body\": ciphertext_body, \"nonce\": nonce}",
         },
       ],
     },
@@ -56,7 +56,7 @@ export const kmsCrypto: Topic = {
     {
       heading: "Rotação e revogação",
       body: [
-        "Rotação automática anual está habilitada por padrão em chaves KMS e custa quase nada para usar: a chave antiga continua válida para decifrar dados antigos, e a nova cifra os próximos. Quando você precisa, força rotação manual após suspeita de uso indevido.",
+        "Nas chaves gerenciadas pelo cliente a rotação automática é opcional e precisa ser habilitada (o período é configurável); as chaves gerenciadas pela AWS rotacionam sozinhas. Ligar a rotação custa quase nada: a chave antiga continua válida para decifrar dados antigos, e a nova cifra os próximos. Quando você precisa, força a rotação manual após suspeita de uso indevido.",
         "Revogação é diferente: ou você desabilita a chave (bloqueia decifragem) ou agenda a deleção. Bloquear a chave quebra aplicações legítimas que tentam ler dados antigos. Por isso a regra prática: monitorar uso, separar chaves por sensibilidade, e nunca misturar chave de produção com chave de teste no mesmo recurso.",
       ],
     },

@@ -77,8 +77,8 @@
       "h": "faabe4c6"
     },
     "sections.4.code.0.code": {
-      "t": "Description: \"Forwards critical GuardDuty findings to the SOAR queue\"\nState: ENABLED\nEventBusName: default\nEventPattern: |\n  {\n    \"source\": [\"aws.guardduty\"],\n    \"detail-type\": [\"GuardDuty Finding\"],\n    \"detail\": {\n      \"severity\": [{ \"numeric\": [\">=\", 7] }],\n      \"type\": [\n        \"Recon:EC2/PortProbeUnprotectedPort\",\n        \"Recon:EC2/PortProbeOpenPort\",\n        \"UnauthorizedAccess:IAMUser/InstanceCredentialExfiltration\",\n        \"CredentialAccess:IAMUser/AnomalousBehaviors\",\n        \"Policy:IAMUser/RootCredentialUsage\",\n        \"Persistence:IAMUser/NetworkPermissions\",\n        \"PrivilegeEscalation:IAMUser/AdministrativePermissions\",\n        \"Exfiltration:S3/MaliciousIPCaller\"\n      ]\n    }\n  }\nTargets:\n  - Id: SOARIngestTarget\n    Arn: arn:aws:sqs:us-east-1:111122223333:soar-ingest",
-      "h": "2cd51967"
+      "t": "Description: \"Forwards critical GuardDuty findings to the SOAR queue\"\nState: ENABLED\nEventBusName: default\nEventPattern: |\n  {\n    \"source\": [\"aws.guardduty\"],\n    \"detail-type\": [\"GuardDuty Finding\"],\n    \"detail\": {\n      \"severity\": [{ \"numeric\": [\">=\", 7] }],\n      \"type\": [\n        \"CryptoCurrency:EC2/BitcoinTool.B\",\n        \"Backdoor:EC2/C&CActivity.B!DNS\",\n        \"UnauthorizedAccess:IAMUser/InstanceCredentialExfiltration.OutsideAWS\",\n        \"CredentialAccess:IAMUser/AnomalousBehaviors\",\n        \"Policy:IAMUser/RootCredentialUsage\",\n        \"Persistence:IAMUser/NetworkPermissions\",\n        \"PrivilegeEscalation:IAMUser/AdministrativePermissions\",\n        \"Exfiltration:S3/MaliciousIPCaller\"\n      ]\n    }\n  }\nTargets:\n  - Id: SOARIngestTarget\n    Arn: arn:aws:sqs:us-east-1:111122223333:soar-ingest",
+      "h": "53d21253"
     },
     "sections.4.code.0.filename": {
       "t": "EventBridge rule (AWS::Events::Rule) - critical GuardDuty alert",

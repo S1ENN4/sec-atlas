@@ -5,20 +5,20 @@
       "h": "8ba4e09a"
     },
     "questions.0.options.0": {
-      "t": "Es grande",
-      "h": "3b7dfb19"
+      "t": "Es demasiado grande para guardarlo en el mismo repositorio que el código",
+      "h": "b60fd4d3"
     },
     "questions.0.options.1": {
       "t": "Puede contener secretos y applies concurrentes pueden corromperlo",
       "h": "115fbbc3"
     },
     "questions.0.options.2": {
-      "t": "Git no puede almacenar JSON",
-      "h": "2dcaedca"
+      "t": "Git no puede almacenar archivos JSON, que es el formato del state",
+      "h": "90cced95"
     },
     "questions.0.options.3": {
-      "t": "El state es opcional",
-      "h": "ba8c4a97"
+      "t": "El state es opcional y solo lo usan los equipos grandes",
+      "h": "5820585d"
     },
     "questions.0.q": {
       "t": "¿Por qué el state de Terraform debe almacenarse de forma remota, con lock y cifrado?",
@@ -29,20 +29,20 @@
       "h": "85b3a884"
     },
     "questions.1.options.0": {
-      "t": "Aplicar los cambios de inmediato",
-      "h": "383f35ae"
+      "t": "Para aplicar los cambios en producción de inmediato, sin esperar",
+      "h": "0734c7bb"
     },
     "questions.1.options.1": {
       "t": "Permitir que los revisores vean exactamente qué se creará, cambiará o destruirá",
       "h": "845d89f2"
     },
     "questions.1.options.2": {
-      "t": "Formatear el código",
-      "h": "9d990efe"
+      "t": "Para dar formato y validar el código antes del commit",
+      "h": "96db6b78"
     },
     "questions.1.options.3": {
-      "t": "Descargar providers",
-      "h": "30f1f98c"
+      "t": "Para descargar los providers y módulos que necesita el código",
+      "h": "717f9735"
     },
     "questions.1.q": {
       "t": "¿Cuál es el propósito de ejecutar terraform plan en un pull request?",
@@ -53,20 +53,20 @@
       "h": "b41d2880"
     },
     "questions.2.options.0": {
-      "t": "Un error de sintaxis",
-      "h": "52e22af3"
+      "t": "Un error de sintaxis en los archivos de configuración que bloquea el apply",
+      "h": "d9eb025e"
     },
     "questions.2.options.1": {
       "t": "Que la infraestructura real difiera de lo que dice el código, normalmente por cambios manuales",
       "h": "8ebbea80"
     },
     "questions.2.options.2": {
-      "t": "Un apply lento",
-      "h": "cc7c5852"
+      "t": "Un apply que tarda mucho más que los anteriores",
+      "h": "65017a45"
     },
     "questions.2.options.3": {
-      "t": "Una actualización de provider",
-      "h": "daaa55cd"
+      "t": "Una actualización de provider que cambia los recursos que gestiona",
+      "h": "c1397534"
     },
     "questions.2.q": {
       "t": "¿Qué es el drift?",

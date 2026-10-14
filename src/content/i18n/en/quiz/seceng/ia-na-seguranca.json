@@ -9,16 +9,16 @@
       "h": "cd24a231"
     },
     "questions.0.options.1": {
-      "t": "Because they are too large",
-      "h": "59580dfa"
+      "t": "Because they are too large to fit in the model's context",
+      "h": "ac873a55"
     },
     "questions.0.options.2": {
-      "t": "Because the model does not read text",
-      "h": "ac277ea8"
+      "t": "Because the model cannot read log text",
+      "h": "b83b1724"
     },
     "questions.0.options.3": {
-      "t": "Because they are always encrypted",
-      "h": "21d2b2a9"
+      "t": "Because they are always encrypted before reaching the model",
+      "h": "f95855a5"
     },
     "questions.0.q": {
       "t": "Why are logs and user agents a risk when feeding an LLM?",
@@ -33,16 +33,16 @@
       "h": "9a164d82"
     },
     "questions.1.options.1": {
-      "t": "The model never makes mistakes again",
-      "h": "ccb4fdcf"
+      "t": "The model never makes mistakes in the format of its answers",
+      "h": "70dcf127"
     },
     "questions.1.options.2": {
-      "t": "It removes the need for evaluation",
-      "h": "a9b0b5e9"
+      "t": "It removes the need to evaluate the quality of the answers",
+      "h": "6efce214"
     },
     "questions.1.options.3": {
-      "t": "It reduces latency to zero",
-      "h": "ace0bc83"
+      "t": "It reduces the model's latency to practically zero",
+      "h": "79ff39dd"
     },
     "questions.1.q": {
       "t": "What is the advantage of requiring structured output validated by a schema?",
@@ -58,15 +58,15 @@
     },
     "questions.2.options.1": {
       "t": "The model's output directly triggers the destructive action",
-      "h": "2953d78d"
+      "h": "a701a1e8"
     },
     "questions.2.options.2": {
-      "t": "AI approves its own actions",
-      "h": "c1d22adc"
+      "t": "The AI approves its own actions to gain speed",
+      "h": "ed7ec2e4"
     },
     "questions.2.options.3": {
-      "t": "Remove human review",
-      "h": "e75fa975"
+      "t": "Removing the human review so the response is not delayed",
+      "h": "f919ca04"
     },
     "questions.2.q": {
       "t": "What is the safe pattern for AI in a playbook?",

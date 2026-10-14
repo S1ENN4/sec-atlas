@@ -49,8 +49,8 @@
       "h": "95b7472b"
     },
     "sections.2.code.0.code": {
-      "t": "name: ci\non: [push, pull_request]        # source stage: what triggers it\njobs:\n  ci:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - run: npm ci                # build: reproducible install\n      - run: npm test              # test: the test suite\n      - run: npx semgrep ci        # security enters as just another step\n      - run: docker build -t app . # package: produces the artifact",
-      "h": "64780187"
+      "t": "name: ci\non: [push, pull_request]        # source stage: what triggers it\npermissions:\n  contents: read                # least privilege for the pipeline token\njobs:\n  ci:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - run: npm ci                # build: reproducible install\n      - run: npm test              # test: the test suite\n      - run: pipx run semgrep scan --config auto --error   # security as one more step\n      - run: docker build -t app . # package: produces the artifact",
+      "h": "ec71c7e5"
     },
     "sections.2.code.0.filename": {
       "t": ".github/workflows/ci.yml",

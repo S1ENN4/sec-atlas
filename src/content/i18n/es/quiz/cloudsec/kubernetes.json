@@ -9,16 +9,16 @@
       "h": "de07dabb"
     },
     "questions.0.options.1": {
-      "t": "Balancear carga entre pods",
-      "h": "b384988e"
+      "t": "Balancear la carga de peticiones entre los pods de un servicio",
+      "h": "d1bc4635"
     },
     "questions.0.options.2": {
-      "t": "Cifrar imágenes",
-      "h": "3e7b84de"
+      "t": "Cifrar las imágenes de contenedor guardadas en el registry",
+      "h": "e1ab89d4"
     },
     "questions.0.options.3": {
-      "t": "Escalar nodos automáticamente",
-      "h": "1f0f27c7"
+      "t": "Escalar los nodos del clúster automáticamente según la demanda",
+      "h": "07671899"
     },
     "questions.0.q": {
       "t": "¿Para qué sirve RBAC en Kubernetes?",
@@ -33,16 +33,16 @@
       "h": "9ac76d4a"
     },
     "questions.1.options.1": {
-      "t": "Reinician pods con fallas",
-      "h": "a4ed078d"
+      "t": "Reinician automáticamente los pods que fallan en las comprobaciones de salud",
+      "h": "348c42eb"
     },
     "questions.1.options.2": {
-      "t": "Hacen backup de etcd",
-      "h": "564f5ec2"
+      "t": "Hacen copia de seguridad periódica de etcd en el almacenamiento de objetos",
+      "h": "e9111244"
     },
     "questions.1.options.3": {
-      "t": "Gestionan el DNS",
-      "h": "52bf721f"
+      "t": "Gestionan los registros DNS internos de los servicios del clúster",
+      "h": "4a87f9c5"
     },
     "questions.1.q": {
       "t": "¿Qué hacen los admission controllers?",

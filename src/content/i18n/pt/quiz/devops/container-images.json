@@ -5,20 +5,20 @@
       "h": "3eba7e0c"
     },
     "questions.0.options.0": {
-      "t": "Internet mais rápida",
-      "h": "eae0a56b"
+      "t": "Downloads mais rápidos do registry, porque as camadas são baixadas em paralelo",
+      "h": "d399a0d6"
     },
     "questions.0.options.1": {
       "t": "Uma imagem de runtime menor, sem compiladores nem dependências de desenvolvimento",
       "h": "cf817821"
     },
     "questions.0.options.2": {
-      "t": "Camadas criptografadas",
-      "h": "baa24855"
+      "t": "Camadas criptografadas, para a imagem não poder ser inspecionada por outros usuários",
+      "h": "99ceb702"
     },
     "questions.0.options.3": {
-      "t": "Escalonamento automático",
-      "h": "b50838b2"
+      "t": "Escalonamento automático dos contêineres conforme a carga",
+      "h": "9323c346"
     },
     "questions.0.q": {
       "t": "O que um build Docker multi-stage proporciona?",
@@ -29,20 +29,20 @@
       "h": "501077f2"
     },
     "questions.1.options.0": {
-      "t": "Digests são mais curtos",
-      "h": "14691e1a"
+      "t": "Digests são mais curtos e mais fáceis de ler que uma tag de versão",
+      "h": "95e9f01d"
     },
     "questions.1.options.1": {
       "t": "Uma tag pode passar a apontar para outro conteúdo, um digest identifica o conteúdo exato",
       "h": "2b0b0ee6"
     },
     "questions.1.options.2": {
-      "t": "Registries exigem digests",
-      "h": "a2fa1ae8"
+      "t": "Os registries se recusam a servir tags com mais de um ano",
+      "h": "86e8f2a1"
     },
     "questions.1.options.3": {
-      "t": "Tags não são suportadas no Kubernetes",
-      "h": "78d7750d"
+      "t": "O Kubernetes não suporta tags nos manifestos de deployment",
+      "h": "b4b8f768"
     },
     "questions.1.q": {
       "t": "Por que fazer deploy pelo digest da imagem em vez de uma tag?",
@@ -53,20 +53,20 @@
       "h": "9e047d28"
     },
     "questions.2.options.0": {
-      "t": "Na camada gravável do contêiner",
-      "h": "7537f3ae"
+      "t": "Na camada gravável do contêiner, que é mantida entre reinícios",
+      "h": "90cef08d"
     },
     "questions.2.options.1": {
       "t": "Em volumes, bancos de dados ou object storage fora do contêiner",
       "h": "48fc5f8e"
     },
     "questions.2.options.2": {
-      "t": "Na imagem",
-      "h": "d0b680fc"
+      "t": "Dentro da imagem, para toda instância começar com os mesmos dados",
+      "h": "ceb5f3c6"
     },
     "questions.2.options.3": {
-      "t": "Em variáveis de ambiente",
-      "h": "e1d07a2c"
+      "t": "Em variáveis de ambiente carregadas quando o contêiner inicia",
+      "h": "609018ae"
     },
     "questions.2.q": {
       "t": "Onde deve ficar o estado persistente de uma aplicação?",

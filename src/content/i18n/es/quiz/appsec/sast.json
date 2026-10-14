@@ -5,20 +5,20 @@
       "h": "5edf9faa"
     },
     "questions.0.options.0": {
-      "t": "La aplicación en ejecución, mediante solicitudes HTTP",
-      "h": "36c87fff"
+      "t": "La aplicación en ejecución, enviando peticiones HTTP como lo haría un atacante",
+      "h": "1118209a"
     },
     "questions.0.options.1": {
       "t": "El código fuente (o bytecode) sin ejecutarlo",
       "h": "d8c00b51"
     },
     "questions.0.options.2": {
-      "t": "Las dependencias de terceros y sus CVEs",
-      "h": "7b4da8d1"
+      "t": "Las dependencias de terceros y las CVE conocidas de cada versión",
+      "h": "e33fd184"
     },
     "questions.0.options.3": {
-      "t": "El tráfico de red entre servicios",
-      "h": "09638459"
+      "t": "El tráfico de red entre los servicios de la aplicación en producción",
+      "h": "c14f92a5"
     },
     "questions.0.q": {
       "t": "¿Qué analiza el SAST?",
@@ -29,20 +29,20 @@
       "h": "4e2a65b0"
     },
     "questions.1.options.0": {
-      "t": "Solo funciona después del deploy",
-      "h": "07c0ec44"
+      "t": "Solo funciona después del despliegue, cuando la aplicación ya está en marcha",
+      "h": "fa258638"
     },
     "questions.1.options.1": {
       "t": "Genera falsos positivos y no ve problemas de configuración en runtime",
       "h": "f4449529"
     },
     "questions.1.options.2": {
-      "t": "No puede analizar código Python",
-      "h": "086a61f7"
+      "t": "No puede analizar código escrito en Python ni en JavaScript",
+      "h": "a0998065"
     },
     "questions.1.options.3": {
-      "t": "Exige acceso a producción",
-      "h": "74a13eb3"
+      "t": "Necesita acceso al entorno de producción para leer la configuración",
+      "h": "b63e4c96"
     },
     "questions.1.q": {
       "t": "¿Cuál es una limitación típica del SAST?",
@@ -53,20 +53,20 @@
       "h": "ea8d5654"
     },
     "questions.2.options.0": {
-      "t": "Apagar las reglas que más alertan",
-      "h": "559c0df7"
+      "t": "Apagar las reglas que más alertas generan para que el equipo no se canse",
+      "h": "b09cb03b"
     },
     "questions.2.options.1": {
       "t": "Ajustar las reglas al proyecto, bloquear solo severidad alta y tratar el resto como backlog",
       "h": "98d2adbf"
     },
     "questions.2.options.2": {
-      "t": "Ejecutarlo solo una vez por trimestre",
-      "h": "ee73356e"
+      "t": "Ejecutar el análisis solo una vez por trimestre, antes de la auditoría",
+      "h": "69eb7b51"
     },
     "questions.2.options.3": {
-      "t": "Ignorar el resultado y confiar en el DAST",
-      "h": "07fabdaa"
+      "t": "Ignorar el resultado y confiar solo en el DAST para encontrar los problemas",
+      "h": "735b50a7"
     },
     "questions.2.q": {
       "t": "¿Cuál es la mejor forma de reducir el ruido del SAST sin perder cobertura?",

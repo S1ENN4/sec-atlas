@@ -10,15 +10,15 @@
     },
     "questions.0.options.1": {
       "t": "Un bloqueo automático de todo el tráfico automatizado",
-      "h": "7719bdc3"
+      "h": "18ea00ed"
     },
     "questions.0.options.2": {
-      "t": "Una lista fija de IPs de robots",
-      "h": "af297d0e"
+      "t": "Una lista fija de direcciones IP de bots conocidos",
+      "h": "6ebc0efb"
     },
     "questions.0.options.3": {
-      "t": "Un sustituto del rate limiting",
-      "h": "90c0b348"
+      "t": "Un sustituto completo del rate limiting",
+      "h": "d3cf67a5"
     },
     "questions.0.q": {
       "t": "¿Qué entrega el bot management a la política de seguridad?",
@@ -33,16 +33,16 @@
       "h": "0092eb3b"
     },
     "questions.1.options.1": {
-      "t": "Porque nunca generan tráfico relevante",
-      "h": "aac4741e"
+      "t": "Porque nunca generan tráfico relevante para el negocio",
+      "h": "7c8a6472"
     },
     "questions.1.options.2": {
       "t": "Porque son más difíciles de identificar que los humanos",
-      "h": "f84bf0da"
+      "h": "ea067f47"
     },
     "questions.1.options.3": {
-      "t": "Porque pagan por el acceso",
-      "h": "8b17dfcc"
+      "t": "Porque pagan por el acceso y por eso tienen una excepción",
+      "h": "0a052632"
     },
     "questions.1.q": {
       "t": "¿Por qué tratar aparte a los bots verificados?",
@@ -57,16 +57,16 @@
       "h": "fd3d0c58"
     },
     "questions.2.options.1": {
-      "t": "Es imposible de eludir",
-      "h": "6b5d7016"
+      "t": "Es imposible de eludir para un atacante decidido",
+      "h": "69179b3a"
     },
     "questions.2.options.2": {
-      "t": "No requiere JavaScript en el navegador",
-      "h": "e0e9d0c0"
+      "t": "Elimina la necesidad de JavaScript en el navegador del usuario",
+      "h": "9f8a1d25"
     },
     "questions.2.options.3": {
-      "t": "No genera ningún costo para el atacante",
-      "h": "afc9a5f8"
+      "t": "No genera ningún coste para quien opera el ataque",
+      "h": "1355b57c"
     },
     "questions.2.q": {
       "t": "¿Cuál es la ventaja de un desafío administrado sobre un CAPTCHA clásico?",

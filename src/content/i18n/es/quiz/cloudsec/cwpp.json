@@ -9,16 +9,16 @@
       "h": "3cf8a7a9"
     },
     "questions.0.options.1": {
-      "t": "Solo la configuración de las cuentas",
-      "h": "8452dc4e"
+      "t": "Solo la configuración de las cuentas y de los servicios gestionados",
+      "h": "453f89ea"
     },
     "questions.0.options.2": {
-      "t": "El código fuente en el repositorio",
-      "h": "50d8f3a1"
+      "t": "El código fuente guardado en los repositorios de la organización",
+      "h": "b29b82df"
     },
     "questions.0.options.3": {
-      "t": "El DNS público",
-      "h": "d6031a2a"
+      "t": "El DNS público y los registros de dominio de la empresa",
+      "h": "d0acd0c6"
     },
     "questions.0.q": {
       "t": "¿Qué protege el CWPP?",
@@ -33,16 +33,16 @@
       "h": "630ff485"
     },
     "questions.1.options.1": {
-      "t": "Un bucket con política restrictiva",
-      "h": "86aca081"
+      "t": "Un bucket con política restrictiva y acceso privado",
+      "h": "8647b79f"
     },
     "questions.1.options.2": {
-      "t": "Una imagen firmada",
-      "h": "5f3a4b01"
+      "t": "Una imagen firmada y verificada antes de ejecutarse",
+      "h": "b71a10da"
     },
     "questions.1.options.3": {
-      "t": "Un rol con MFA",
-      "h": "87b34ed5"
+      "t": "Un rol que exige MFA para que lo asuman las personas",
+      "h": "8143f8d8"
     },
     "questions.1.q": {
       "t": "¿Qué señal es típica de la detección en runtime?",
@@ -57,16 +57,16 @@
       "h": "740cce06"
     },
     "questions.2.options.1": {
-      "t": "Porque elimina la necesidad de logs",
-      "h": "b8e89bb7"
+      "t": "Porque elimina la necesidad de guardar logs de las cargas",
+      "h": "564585a3"
     },
     "questions.2.options.2": {
-      "t": "Porque cifra el tráfico",
-      "h": "3f383e79"
+      "t": "Porque cifra automáticamente el tráfico entre contenedores",
+      "h": "eb4c02e5"
     },
     "questions.2.options.3": {
-      "t": "Porque reemplaza al IAM",
-      "h": "0b0e19d2"
+      "t": "Porque sustituye a IAM al decidir quién accede a qué",
+      "h": "1a35a717"
     },
     "questions.2.q": {
       "t": "¿Por qué ayuda un baseline de comportamiento?",

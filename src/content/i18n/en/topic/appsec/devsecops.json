@@ -37,8 +37,8 @@
       "h": "56672056"
     },
     "sections.2.code.0.code": {
-      "t": "package deploy\n\ndeny[msg] {\n  input.image.vulns.critical > 0\n  msg := sprintf(\"image %s has %d critical vulnerabilities\",\n                 [input.image.name, input.image.vulns.critical])\n}",
-      "h": "fbff4186"
+      "t": "package deploy\n\ndeny contains msg if {\n  input.image.vulns.critical > 0\n  msg := sprintf(\"image %s has %d critical vulnerabilities\",\n                 [input.image.name, input.image.vulns.critical])\n}",
+      "h": "f97f6cff"
     },
     "sections.2.code.0.filename": {
       "t": "policy/images.rego",

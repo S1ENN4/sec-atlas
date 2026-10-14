@@ -9,16 +9,16 @@
       "h": "94ecc695"
     },
     "questions.0.options.1": {
-      "t": "Bloquear tráfico malicioso",
-      "h": "334c0ee5"
+      "t": "Bloquear el tráfico malicioso antes de que llegue a la aplicación",
+      "h": "65ce6b3e"
     },
     "questions.0.options.2": {
-      "t": "Cifrar datos en reposo",
-      "h": "03e8ed45"
+      "t": "Cifrar los datos en reposo en los servicios de almacenamiento",
+      "h": "2482e87a"
     },
     "questions.0.options.3": {
-      "t": "Escalar la infraestructura",
-      "h": "ef50cb4b"
+      "t": "Escalar la infraestructura según la carga de las aplicaciones",
+      "h": "26affc8e"
     },
     "questions.0.q": {
       "t": "¿Cuál es el papel de CloudTrail (o similar)?",
@@ -33,16 +33,16 @@
       "h": "585253c5"
     },
     "questions.1.options.1": {
-      "t": "Para ahorrar almacenamiento",
-      "h": "66816c05"
+      "t": "Para ahorrar almacenamiento en las cuentas de producción",
+      "h": "1e36ddbe"
     },
     "questions.1.options.2": {
-      "t": "Para acelerar las consultas",
-      "h": "df870761"
+      "t": "Para acelerar las consultas del equipo de seguridad",
+      "h": "7339ed3a"
     },
     "questions.1.options.3": {
-      "t": "Porque la ley exige dos cuentas",
-      "h": "a95842d0"
+      "t": "Porque la ley exige que los logs estén en dos cuentas distintas",
+      "h": "2462eca6"
     },
     "questions.1.q": {
       "t": "¿Por qué enviar los logs a una cuenta separada e inmutable?",
@@ -57,16 +57,16 @@
       "h": "0966ac9a"
     },
     "questions.2.options.1": {
-      "t": "Dispararse en cada evento",
-      "h": "4517c556"
+      "t": "Dispararse con cada evento, para que ningún suceso pase inadvertido",
+      "h": "642d9ed4"
     },
     "questions.2.options.2": {
-      "t": "Enviarse solo por correo semanal",
-      "h": "76ae1f29"
+      "t": "Enviarse en un correo semanal que resume todos los eventos",
+      "h": "4b7fbf63"
     },
     "questions.2.options.3": {
-      "t": "No tener dueño",
-      "h": "fce9e00d"
+      "t": "No tener un responsable definido, para que cualquiera pueda actuar",
+      "h": "60f85f89"
     },
     "questions.2.q": {
       "t": "¿Qué hace buena a una alerta?",

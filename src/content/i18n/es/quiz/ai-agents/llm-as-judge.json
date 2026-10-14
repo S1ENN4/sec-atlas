@@ -9,16 +9,16 @@
       "h": "8aa93a32"
     },
     "questions.0.options.1": {
-      "t": "Un tribunal para modelos",
-      "h": "f90c5da1"
+      "t": "Un tribunal formado por modelos que resuelven disputas jurídicas",
+      "h": "5119c2e0"
     },
     "questions.0.options.2": {
-      "t": "Entrenar un modelo para ser juez humano",
-      "h": "afb62abf"
+      "t": "Entrenar un modelo para imitar a un juez humano de un concurso",
+      "h": "4914b11e"
     },
     "questions.0.options.3": {
-      "t": "Un benchmark de derecho",
-      "h": "a5ac91fb"
+      "t": "Un benchmark creado con preguntas de derecho",
+      "h": "ae011910"
     },
     "questions.0.q": {
       "t": "¿Qué es LLM-as-judge?",
@@ -33,16 +33,16 @@
       "h": "f59f72e2"
     },
     "questions.1.options.1": {
-      "t": "Preferir siempre respuestas cortas",
-      "h": "657e7b65"
+      "t": "Preferir siempre las respuestas más cortas, por ser objetivas",
+      "h": "02274808"
     },
     "questions.1.options.2": {
-      "t": "Dar siempre nota cero",
-      "h": "ba84d66b"
+      "t": "Dar siempre nota cero a las respuestas de otros modelos",
+      "h": "11330cb3"
     },
     "questions.1.options.3": {
-      "t": "Ignorar la rúbrica por completo",
-      "h": "6328725b"
+      "t": "Ignorar por completo la rúbrica recibida",
+      "h": "b997ba64"
     },
     "questions.1.q": {
       "t": "¿Qué sesgo es común en los jueces basados en LLM?",
@@ -57,16 +57,16 @@
       "h": "38c8bf08"
     },
     "questions.2.options.1": {
-      "t": "Usar el mismo modelo para generar y evaluar sin revisión",
-      "h": "34e53e01"
+      "t": "Usar el mismo modelo para generar y evaluar, sin ninguna revisión",
+      "h": "f206133c"
     },
     "questions.2.options.2": {
-      "t": "Desactivar la rúbrica",
-      "h": "34e9b572"
+      "t": "Desactivar la rúbrica para que el juez tenga más libertad",
+      "h": "4743883c"
     },
     "questions.2.options.3": {
-      "t": "Aumentar la temperatura",
-      "h": "aa90eea7"
+      "t": "Subir la temperatura para que las notas sean más variadas",
+      "h": "f1640af8"
     },
     "questions.2.q": {
       "t": "¿Cómo aumentar la confianza en un juez automático?",

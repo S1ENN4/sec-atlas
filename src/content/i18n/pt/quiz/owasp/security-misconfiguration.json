@@ -5,20 +5,20 @@
       "h": "8d6ab5d5"
     },
     "questions.0.options.0": {
-      "t": "HSTS habilitado",
-      "h": "4a58ac5d"
+      "t": "HSTS ativado, para o navegador sempre usar HTTPS no domínio",
+      "h": "3f3133f2"
     },
     "questions.0.options.1": {
       "t": "Modo debug deixado ligado, expondo stack traces e um console",
       "h": "bde75db9"
     },
     "questions.0.options.2": {
-      "t": "Segredos em um gerenciador de segredos",
-      "h": "374c7a0e"
+      "t": "Segredos guardados num gerenciador de segredos e lidos quando o serviço inicia",
+      "h": "c2483450"
     },
     "questions.0.options.3": {
-      "t": "Papéis com privilégio mínimo",
-      "h": "3449cbad"
+      "t": "Papéis com privilégio mínimo revisados a cada trimestre",
+      "h": "2ad89665"
     },
     "questions.0.q": {
       "t": "Qual configuração é uma má configuração típica em produção?",
@@ -29,20 +29,20 @@
       "h": "6078f39c"
     },
     "questions.1.options.0": {
-      "t": "Ler a configuração uma vez por ano",
-      "h": "67d23989"
+      "t": "Ler a configuração manualmente uma vez por ano, durante a auditoria",
+      "h": "4dea9e51"
     },
     "questions.1.options.1": {
       "t": "Escanear o código de infraestrutura e as imagens no CI e quebrar o build",
       "h": "3f96bb81"
     },
     "questions.1.options.2": {
-      "t": "Pedir aos desenvolvedores que tenham cuidado",
-      "h": "068117f6"
+      "t": "Pedir aos desenvolvedores que tenham cuidado sempre que mexerem na configuração",
+      "h": "e379ab1a"
     },
     "questions.1.options.3": {
-      "t": "Desativar os scanners que fazem muito ruído",
-      "h": "421ca3f7"
+      "t": "Desativar os scanners barulhentos para o pipeline continuar verde",
+      "h": "10383296"
     },
     "questions.1.q": {
       "t": "Como detectar com mais confiabilidade uma regressão para um padrão inseguro?",
@@ -53,20 +53,20 @@
       "h": "06c8b89d"
     },
     "questions.2.options.0": {
-      "t": "Deixa o site lento",
-      "h": "7c850489"
+      "t": "Deixa o site lento porque toda resposta carrega cabeçalhos extras",
+      "h": "e393ba1a"
     },
     "questions.2.options.1": {
       "t": "Qualquer site pode fazer requisições autenticadas como o visitante e ler as respostas",
       "h": "a1443295"
     },
     "questions.2.options.2": {
-      "t": "Quebra o HTTPS",
-      "h": "4138efa7"
+      "t": "Quebra o HTTPS para qualquer visitante com um navegador mais antigo",
+      "h": "b41c082f"
     },
     "questions.2.options.3": {
-      "t": "Desativa os cookies",
-      "h": "1d3d5248"
+      "t": "Desativa os cookies de todos os outros sites que o visitante tem abertos",
+      "h": "55a5a8de"
     },
     "questions.2.q": {
       "t": "Por que uma origem CORS curinga com credenciais é perigosa?",

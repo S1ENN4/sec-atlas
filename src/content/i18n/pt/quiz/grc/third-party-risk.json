@@ -5,20 +5,20 @@
       "h": "1d942ae3"
     },
     "questions.0.options.0": {
-      "t": "Todo fornecedor recebe a mesma revisão completa",
-      "h": "db5ac9ce"
+      "t": "Todo fornecedor recebe o mesmo questionário completo, seja qual for o acesso",
+      "h": "7469e8a8"
     },
     "questions.0.options.1": {
       "t": "Por criticidade: dados tratados, acesso detido e a dificuldade de substituir o fornecedor",
       "h": "62c3beeb"
     },
     "questions.0.options.2": {
-      "t": "Pelo porte do fornecedor",
-      "h": "733119e5"
+      "t": "Pelo tamanho do fornecedor e pelo reconhecimento da marca no mercado",
+      "h": "b0dfd2cb"
     },
     "questions.0.options.3": {
-      "t": "Pelo preço",
-      "h": "6427dab4"
+      "t": "Pelo preço pago no contrato, então fornecedores caros recebem mais escrutínio",
+      "h": "28eeea5e"
     },
     "questions.0.q": {
       "t": "Como deve ser decidida a profundidade da revisão de um fornecedor?",
@@ -29,20 +29,20 @@
       "h": "4b56c39c"
     },
     "questions.1.options.0": {
-      "t": "Para reduzir o preço",
-      "h": "80e253d7"
+      "t": "Para dar ao time de compras poder de barganha e baixar o preço do contrato",
+      "h": "c103480b"
     },
     "questions.1.options.1": {
       "t": "Para que você saiba de um incidente a tempo de responder e cumprir suas próprias obrigações",
       "h": "1b840c4e"
     },
     "questions.1.options.2": {
-      "t": "Porque auditores gostam de contratos",
-      "h": "8cb3ee0f"
+      "t": "Para os advogados do fornecedor revisarem o seu processo de incidentes antes da assinatura",
+      "h": "8ae74ef8"
     },
     "questions.1.options.3": {
-      "t": "Para evitar os patches do fornecedor",
-      "h": "250afe07"
+      "t": "Porque o calendário de auditoria exige um anexo de segurança em todo contrato",
+      "h": "df334ede"
     },
     "questions.1.q": {
       "t": "Por que incluir termos de notificação de violação em um contrato com fornecedor?",
@@ -53,20 +53,20 @@
       "h": "c755fdf2"
     },
     "questions.2.options.0": {
-      "t": "Fornecedores demais",
-      "h": "e5857c26"
+      "t": "Ter mais fornecedores do que o time consegue revisar em um ano",
+      "h": "b1ce504b"
     },
     "questions.2.options.1": {
       "t": "Dependência de um único fornecedor ou provedor, de modo que a falha dele se torna a sua",
       "h": "81ae6e31"
     },
     "questions.2.options.2": {
-      "t": "Um preço alto",
-      "h": "c410c2f0"
+      "t": "Pagar a um fornecedor muito acima do valor de mercado pelo mesmo serviço",
+      "h": "d5085083"
     },
     "questions.2.options.3": {
-      "t": "Um desenho de rede",
-      "h": "bf0dce6a"
+      "t": "Rodar o serviço de um fornecedor numa arquitetura de rede diferente da sua",
+      "h": "ccffb6cf"
     },
     "questions.2.q": {
       "t": "O que é risco de concentração?",

@@ -25,6 +25,8 @@ export const ui = {
   nav: {
     explore: "Explore",
     careers: "Careers",
+    maps: "Maps",
+    lab: "Lab",
     learn: "Learn",
     project: "Project",
     menu: "Menu",

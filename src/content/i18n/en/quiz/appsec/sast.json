@@ -5,20 +5,20 @@
       "h": "5edf9faa"
     },
     "questions.0.options.0": {
-      "t": "The running application, via HTTP requests",
-      "h": "36c87fff"
+      "t": "The running application, sending HTTP requests the way an attacker would",
+      "h": "1118209a"
     },
     "questions.0.options.1": {
       "t": "The source code (or bytecode) without executing it",
       "h": "d8c00b51"
     },
     "questions.0.options.2": {
-      "t": "Third-party dependencies and their CVEs",
-      "h": "7b4da8d1"
+      "t": "Third-party dependencies and the known CVEs of each version",
+      "h": "e33fd184"
     },
     "questions.0.options.3": {
-      "t": "Network traffic between services",
-      "h": "09638459"
+      "t": "The network traffic between the application's services in production",
+      "h": "c14f92a5"
     },
     "questions.0.q": {
       "t": "What does SAST analyze?",
@@ -29,20 +29,20 @@
       "h": "4e2a65b0"
     },
     "questions.1.options.0": {
-      "t": "It only works after deploy",
-      "h": "07c0ec44"
+      "t": "It only works after the deploy, when the application is already running",
+      "h": "fa258638"
     },
     "questions.1.options.1": {
       "t": "It produces false positives and does not see runtime configuration problems",
       "h": "f4449529"
     },
     "questions.1.options.2": {
-      "t": "It cannot analyze Python code",
-      "h": "086a61f7"
+      "t": "It cannot analyze code written in Python or JavaScript",
+      "h": "a0998065"
     },
     "questions.1.options.3": {
-      "t": "It requires access to production",
-      "h": "74a13eb3"
+      "t": "It needs access to the production environment to read the configuration",
+      "h": "b63e4c96"
     },
     "questions.1.q": {
       "t": "What is a typical limitation of SAST?",
@@ -53,20 +53,20 @@
       "h": "ea8d5654"
     },
     "questions.2.options.0": {
-      "t": "Turn off the rules that alert the most",
-      "h": "559c0df7"
+      "t": "Turning off the rules that raise the most alerts so the team does not get tired",
+      "h": "b09cb03b"
     },
     "questions.2.options.1": {
       "t": "Tune rules to the project, block only high severity and treat the rest as backlog",
       "h": "98d2adbf"
     },
     "questions.2.options.2": {
-      "t": "Run it only once a quarter",
-      "h": "ee73356e"
+      "t": "Running the analysis only once a quarter, before the audit",
+      "h": "69eb7b51"
     },
     "questions.2.options.3": {
-      "t": "Ignore the result and rely on DAST",
-      "h": "07fabdaa"
+      "t": "Ignoring the result and relying only on DAST to find the problems",
+      "h": "735b50a7"
     },
     "questions.2.q": {
       "t": "What is the best way to reduce SAST noise without losing coverage?",

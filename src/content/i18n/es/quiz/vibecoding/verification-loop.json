@@ -5,20 +5,20 @@
       "h": "86b0a05d"
     },
     "questions.0.options.0": {
-      "t": "Hacer merge",
-      "h": "ea8f0d02"
+      "t": "Fusionar, ya que el agente ejecutó toda la suite e informó de éxito",
+      "h": "45b1d966"
     },
     "questions.0.options.1": {
       "t": "Ejecutar las pruebas tú mismo y leer el diff, incluidos los cambios en archivos de prueba",
       "h": "429b566f"
     },
     "questions.0.options.2": {
-      "t": "Preguntarle de nuevo",
-      "h": "39348299"
+      "t": "Preguntarle otra vez, para estar seguro de que la respuesta es coherente",
+      "h": "ed9f0904"
     },
     "questions.0.options.3": {
-      "t": "Borrar las pruebas",
-      "h": "af0c02e9"
+      "t": "Borrar las pruebas que tardan más, para que la próxima ejecución sea más rápida",
+      "h": "1a45ab4e"
     },
     "questions.0.q": {
       "t": "Un agent dice que todas las pruebas pasan. ¿Qué debes hacer?",
@@ -29,20 +29,20 @@
       "h": "3262d8e5"
     },
     "questions.1.options.0": {
-      "t": "Son demasiado rápidas",
-      "h": "a7355945"
+      "t": "Son demasiado rápidas para fiarse, así que pasan por alto problemas lentos",
+      "h": "378c7fe2"
     },
     "questions.1.options.1": {
       "t": "Hacen aserciones sobre mocks, actualizan snapshots para coincidir con un bug o se eliminan para poner el build en verde",
       "h": "2568d52b"
     },
     "questions.1.options.2": {
-      "t": "Usan muy pocos comentarios",
-      "h": "8c589311"
+      "t": "Usan pocos comentarios, lo que las hace difíciles de mantener",
+      "h": "46345f01"
     },
     "questions.1.options.3": {
-      "t": "Corren en paralelo",
-      "h": "58ddb1ea"
+      "t": "Se ejecutan en paralelo, lo que oculta fallos entre pruebas",
+      "h": "63b11341"
     },
     "questions.1.q": {
       "t": "¿Cuál es una falla típica de las pruebas generadas?",
@@ -53,20 +53,20 @@
       "h": "5eba1b91"
     },
     "questions.2.options.0": {
-      "t": "Para frenar a todos",
-      "h": "25cb0405"
+      "t": "Para ralentizar a todos y asegurar que cada cambio reciba el mismo retraso",
+      "h": "040bf21f"
     },
     "questions.2.options.1": {
       "t": "Las verificaciones protegen el código base sin importar quién escribió el cambio, y los agents producen más cambios con errores plausibles",
       "h": "bf91d48f"
     },
     "questions.2.options.2": {
-      "t": "Los agents siempre tienen razón",
-      "h": "c6a7d934"
+      "t": "Porque los agentes siempre aciertan, así que las comprobaciones confirman lo que ya se sabe",
+      "h": "2b1d4596"
     },
     "questions.2.options.3": {
-      "t": "Los humanos siempre se equivocan",
-      "h": "23b3e594"
+      "t": "Porque los humanos siempre se equivocan y necesitan comprobaciones más estrictas que los agentes",
+      "h": "fc51a1ed"
     },
     "questions.2.q": {
       "t": "¿Por qué correr los mismos gates de CI en cambios escritos por agents y por humanos?",

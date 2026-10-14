@@ -5,20 +5,20 @@
       "h": "8740e297"
     },
     "questions.0.options.0": {
-      "t": "Os designs inseguros estão sempre no banco de dados",
-      "h": "d8a00678"
+      "t": "Designs inseguros sempre estão na camada do banco de dados",
+      "h": "8654f7b5"
     },
     "questions.0.options.1": {
       "t": "O código faz exatamente o que o design diz, e o próprio design permite o abuso",
       "h": "cecfe947"
     },
     "questions.0.options.2": {
-      "t": "Os designs inseguros só afetam apps móveis",
-      "h": "ca1f9cda"
+      "t": "Designs inseguros só afetam aplicativos móveis",
+      "h": "0204b8a5"
     },
     "questions.0.options.3": {
-      "t": "Os bugs são mais graves",
-      "h": "f4515c69"
+      "t": "Bugs de implementação são sempre mais graves que falhas de design",
+      "h": "168ce6c8"
     },
     "questions.0.q": {
       "t": "O que distingue um design inseguro de um bug de implementação?",
@@ -29,20 +29,20 @@
       "h": "f50412f3"
     },
     "questions.1.options.0": {
-      "t": "Uma reclamação de usuário",
-      "h": "1f72cbb1"
+      "t": "Uma reclamação que o usuário envia para o suporte",
+      "h": "c4f0df75"
     },
     "questions.1.options.1": {
       "t": "Uma user story escrita do ponto de vista do atacante, que gera um requisito e um teste",
       "h": "fc8fe1a5"
     },
     "questions.1.options.2": {
-      "t": "Um relatório de teste de penetração",
-      "h": "b0e10b67"
+      "t": "O relatório que um teste de intrusão entrega no final",
+      "h": "4e697725"
     },
     "questions.1.options.3": {
-      "t": "Um tipo de regra de firewall",
-      "h": "5bd3d7e7"
+      "t": "Um tipo de regra de firewall que bloqueia requisições suspeitas",
+      "h": "a6992132"
     },
     "questions.1.q": {
       "t": "O que é um caso de abuso?",
@@ -53,20 +53,20 @@
       "h": "3d6e02fa"
     },
     "questions.2.options.0": {
-      "t": "No navegador",
-      "h": "03e4d011"
+      "t": "No navegador, para o usuário ver o total imediatamente",
+      "h": "7a29cf50"
     },
     "questions.2.options.1": {
-      "t": "Em um campo oculto de formulário",
-      "h": "8006919a"
+      "t": "Num campo oculto do formulário, preenchido pela página",
+      "h": "74b2b0ab"
     },
     "questions.2.options.2": {
       "t": "No servidor, a partir de dados confiáveis do catálogo",
       "h": "accc7ffd"
     },
     "questions.2.options.3": {
-      "t": "No app móvel",
-      "h": "39d9b7ed"
+      "t": "No aplicativo móvel, que pode calcular offline",
+      "h": "0680fd93"
     },
     "questions.2.q": {
       "t": "Onde deve ser calculado o preço de um pedido?",

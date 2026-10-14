@@ -40,7 +40,7 @@ export const containers: Topic = {
         {
           language: "bash",
           filename: "verificar imagem no deploy",
-          code: "# assina no push\ncosign sign --key cosign.key ghcr.io/loja/checkout@sha256:abc123\n\n# verifica antes de subir (admission controller ou job de pré-deploy)\ncosign verify \\\n  --key cosign.pub \\\n  --certificate-identity-regexp 'https://github.com/loja/checkout/.github/workflows/release.yml@refs/tags/.*' \\\n  ghcr.io/loja/checkout@sha256:abc123",
+          code: "# assina no push (sem chave: identidade OIDC do CI)\ncosign sign ghcr.io/loja/checkout@sha256:abc123\n\n# verifica antes de subir (admission controller ou job de pré-deploy)\ncosign verify \\\n  --certificate-oidc-issuer https://token.actions.githubusercontent.com \\\n  --certificate-identity-regexp 'https://github.com/loja/checkout/.github/workflows/release.yml@refs/tags/.*' \\\n  ghcr.io/loja/checkout@sha256:abc123",
         },
       ],
     },
@@ -50,7 +50,7 @@ export const containers: Topic = {
         "Scanners comparam a SBOM da imagem (ou cada layer) com bases de vulnerabilidades (NVD, GHSA, OSV). A saída é a lista de pacotes e CVEs, com severidade e versão corrigida. Roda em três momentos: no build (bloqueia PR com CVE crítico), no registry (acha CVE novo contra imagem já publicada) e no admission (rejeita pod com imagem não escaneada).",
       ],
       bullets: [
-        "Trivy: scanner único (FS, image, IaC, SBOM), roda offline, sem banco central",
+        "Trivy: scanner único (sistema de arquivos, imagem, IaC, SBOM), de código aberto; baixa a base de vulnerabilidades e pode rodar offline com ela em cache",
         "Grype (Anchore): foco em imagem e SBOM CycloneDX",
         "Docker Scout: integrado ao Docker Hub, usa a SBOM que o Docker constrói nativamente",
         "Snyk Container: comercial, bom para times que já usam Snyk para SCA",
@@ -70,7 +70,7 @@ export const containers: Topic = {
         {
           language: "dockerfile",
           filename: "Dockerfile corrigido",
-          code: "# base mínima, sem shell, multi-stage para não herdar dev deps\nFROM python:3.12-slim AS builder\nWORKDIR /build\nRUN pip install --no-cache-dir -r requirements.txt\n\nFROM gcr.io/distroless/python3-debian12\nWORKDIR /app\nCOPY --from=builder /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages\nCOPY . /app\nUSER 65532                       # UID não-root fixo\nEXPOSE 8080\nENTRYPOINT [\"python\", \"/app/app.py\"]",
+          code: "# base mínima, sem shell, multi-stage para não herdar dev deps\nFROM python:3.12-slim AS builder\nWORKDIR /build\nCOPY requirements.txt .\nRUN pip install --no-cache-dir --target=/deps -r requirements.txt\n\nFROM gcr.io/distroless/python3-debian12\nWORKDIR /app\nCOPY --from=builder /deps /deps\nCOPY . /app\nENV PYTHONPATH=/deps\nUSER 65532                       # UID não-root fixo\nEXPOSE 8080\nENTRYPOINT [\"python\", \"/app/app.py\"]",
         },
       ],
     },
@@ -84,7 +84,7 @@ export const containers: Topic = {
       heading: "Pontos fortes",
       bullets: [
         "imutabilidade: a mesma imagem que foi testada é a que sobe, sem 'funciona na minha máquina'",
-        "imagens mínimas reduzem CVE em uma ordem de grandeza: distroless Python tem ~20 pacotes, Debian tem ~600",
+        "imagens mínimas reduzem CVE em uma ordem de grandeza: uma imagem distroless de Python traz algumas dezenas de pacotes, enquanto uma base Debian completa traz centenas",
         "assinatura e SBOM dão rastreabilidade real, peça por peça, até o pacote instalado",
       ],
     },

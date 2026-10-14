@@ -5,20 +5,20 @@
       "h": "7cffc6e4"
     },
     "questions.0.options.0": {
-      "t": "Es más barato",
-      "h": "75dd6b86"
+      "t": "Es más barato que el contrato de soporte que cubre apagar hosts",
+      "h": "e0ff2118"
     },
     "questions.0.options.1": {
       "t": "La memoria y el estado en ejecución se conservan para el análisis, y el host sigue accesible para tus herramientas",
       "h": "243a268c"
     },
     "questions.0.options.2": {
-      "t": "Apagarlo es ilegal",
-      "h": "8bd4d984"
+      "t": "Apagar una máquina infectada no lo permite la mayoría de las políticas",
+      "h": "34375f4d"
     },
     "questions.0.options.3": {
-      "t": "El EDR no puede apagar hosts",
-      "h": "2c4686e5"
+      "t": "Los agentes de EDR no pueden apagar hosts",
+      "h": "d8bfb587"
     },
     "questions.0.q": {
       "t": "¿Por qué aislar un host infectado mediante el EDR en lugar de apagarlo?",
@@ -29,20 +29,20 @@
       "h": "1341faad"
     },
     "questions.1.options.0": {
-      "t": "Borrarla de inmediato y olvidarla",
-      "h": "40da988a"
+      "t": "Borrarla de inmediato y actualizar el inventario para olvidarla",
+      "h": "854418aa"
     },
     "questions.1.options.1": {
       "t": "Desactivarla y conservarla como evidencia mientras investigas qué hizo",
       "h": "6d17530c"
     },
     "questions.1.options.2": {
-      "t": "Publicarla en el chat del equipo",
-      "h": "d46750c3"
+      "t": "Compartirla en el chat del equipo para que todos prueben si aún funciona",
+      "h": "b8072c71"
     },
     "questions.1.options.3": {
-      "t": "Dejarla activa para observar al atacante",
-      "h": "dcb0c1ad"
+      "t": "Dejarla activa para observar qué hace el atacante con ella",
+      "h": "37b7129f"
     },
     "questions.1.q": {
       "t": "Se encuentra una clave de acceso de nube filtrada. ¿Qué debes hacer con la clave?",
@@ -53,20 +53,20 @@
       "h": "74ef8487"
     },
     "questions.2.options.0": {
-      "t": "Acotar el alcance antes de actuar",
-      "h": "66a6bb59"
+      "t": "Definir el alcance del incidente antes de tomar cualquier acción",
+      "h": "460d0e8f"
     },
     "questions.2.options.1": {
       "t": "Restablecer una contraseña pero dejar activas las sesiones, tokens y reglas de buzón",
       "h": "425903d9"
     },
     "questions.2.options.2": {
-      "t": "Registrar las acciones con marcas de tiempo",
-      "h": "31edda7a"
+      "t": "Registrar cada acción con fecha y hora y quién la hizo",
+      "h": "5eabbea5"
     },
     "questions.2.options.3": {
-      "t": "Coordinar las acciones en una sola ventana",
-      "h": "2c565205"
+      "t": "Coordinar las acciones en una sola ventana para que entren en vigor juntas",
+      "h": "2081f9f9"
     },
     "questions.2.q": {
       "t": "¿Cuál es un error común de contención?",

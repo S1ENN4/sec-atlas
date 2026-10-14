@@ -5,20 +5,20 @@
       "h": "c872c0c2"
     },
     "questions.0.options.0": {
-      "t": "Reinstalar primero el servidor",
-      "h": "ed483849"
+      "t": "Reinstalar primero el servidor, ya que un sistema limpio elimina cualquier causa oculta",
+      "h": "bbd0f17b"
     },
     "questions.0.options.1": {
       "t": "Resolución de nombres, alcanzabilidad del puerto, si el servicio escucha, validez del certificado y, por último, los logs",
       "h": "92b93e09"
     },
     "questions.0.options.2": {
-      "t": "Reiniciar todo y esperar lo mejor",
-      "h": "f9e44c3d"
+      "t": "Reiniciar todos los servicios relacionados y ver si desaparece el síntoma",
+      "h": "7e7cf04e"
     },
     "questions.0.options.3": {
-      "t": "Cambiar el firewall para permitir todo",
-      "h": "1c0554b2"
+      "t": "Abrir el firewall a todo el tráfico y luego volver a acotarlo",
+      "h": "82210d66"
     },
     "questions.0.q": {
       "t": "Un servicio es inalcanzable. ¿Cuál es el orden sensato de verificaciones?",
@@ -29,20 +29,20 @@
       "h": "e276cc50"
     },
     "questions.1.options.0": {
-      "t": "Hace el programa más rápido",
-      "h": "afe6c35e"
+      "t": "Hace el programa más rápido, porque el kernel se salta las comprobaciones de permisos",
+      "h": "de5d6101"
     },
     "questions.1.options.1": {
       "t": "Un compromiso solo tendría el acceso de ese usuario, no el de root",
       "h": "aac72733"
     },
     "questions.1.options.2": {
-      "t": "Root no puede abrir puertos de red",
-      "h": "d2c9cfe2"
+      "t": "Solo root puede abrir puertos de red en un sistema moderno",
+      "h": "ae26af9e"
     },
     "questions.1.options.3": {
-      "t": "systemd lo exige",
-      "h": "b1b8adc8"
+      "t": "Systemd se niega a iniciar cualquier servicio que se ejecute como root",
+      "h": "449b8e45"
     },
     "questions.1.q": {
       "t": "¿Por qué correr un servicio como su propio usuario sin privilegios?",
@@ -53,20 +53,20 @@
       "h": "d4dab716"
     },
     "questions.2.options.0": {
-      "t": "Demasiada RAM",
-      "h": "ba5fe39e"
+      "t": "Demasiada RAM instalada en la máquina, lo que confunde al planificador",
+      "h": "9a83cb21"
     },
     "questions.2.options.1": {
       "t": "Desfase de reloj entre máquinas",
       "h": "a607934b"
     },
     "questions.2.options.2": {
-      "t": "Demasiados archivos de log",
-      "h": "5f2fc19e"
+      "t": "Demasiados archivos de log llenando el disco del servidor de autenticación",
+      "h": "10c425f8"
     },
     "questions.2.options.3": {
-      "t": "Un teclado lento",
-      "h": "1e1849cf"
+      "t": "Un disco lento en la máquina que guarda los certificados",
+      "h": "34a8f94a"
     },
     "questions.2.q": {
       "t": "Muchas caídas extrañas con tokens o certificados provienen de:",

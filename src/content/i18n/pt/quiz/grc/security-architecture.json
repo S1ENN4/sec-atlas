@@ -5,20 +5,20 @@
       "h": "222f0591"
     },
     "questions.0.options.0": {
-      "t": "Não confiar em ninguém da empresa",
-      "h": "37b45b43"
+      "t": "Não confiar em ninguém da empresa, nem no time de segurança",
+      "h": "63874e42"
     },
     "questions.0.options.1": {
       "t": "Não conceder confiança pela localização na rede: autenticar e autorizar cada requisição com identidade, dispositivo e contexto",
       "h": "20b9c210"
     },
     "questions.0.options.2": {
-      "t": "Remover todos os firewalls",
-      "h": "bb184c7d"
+      "t": "Remover todos os firewalls e depender só da aplicação",
+      "h": "25c0e7b4"
     },
     "questions.0.options.3": {
-      "t": "Usar apenas código aberto",
-      "h": "356fb2e6"
+      "t": "Usar só componentes de código aberto para que nada fique escondido",
+      "h": "488ec1bd"
     },
     "questions.0.q": {
       "t": "O que significa zero trust?",
@@ -29,20 +29,20 @@
       "h": "d2e48def"
     },
     "questions.1.options.0": {
-      "t": "Aprovando pessoalmente cada mudança",
-      "h": "1a319d97"
+      "t": "Aprovar pessoalmente cada mudança antes de ela chegar à produção",
+      "h": "a21923ef"
     },
     "questions.1.options.1": {
       "t": "Fornecendo padrões reutilizáveis e guardrails (landing zones, serviços de identidade, pipelines pavimentados)",
       "h": "4992f265"
     },
     "questions.1.options.2": {
-      "t": "Escrevendo políticas longas",
-      "h": "003970c1"
+      "t": "Escrever políticas longas e esperar que cada time as interprete corretamente",
+      "h": "7447a543"
     },
     "questions.1.options.3": {
-      "t": "Bloqueando deploys",
-      "h": "80757458"
+      "t": "Bloquear os deploys até cada time passar por um treinamento anual",
+      "h": "46512aa4"
     },
     "questions.1.q": {
       "t": "Como um arquiteto escala a segurança entre muitas equipes?",
@@ -53,20 +53,20 @@
       "h": "79f1207d"
     },
     "questions.2.options.0": {
-      "t": "Para aumentar a burocracia",
-      "h": "53914e08"
+      "t": "Documentar decisões gera a papelada que faz o time parecer maduro",
+      "h": "20c32f96"
     },
     "questions.2.options.1": {
       "t": "O raciocínio e os trade-offs continuam fáceis de encontrar depois que a equipe muda",
       "h": "a83d571f"
     },
     "questions.2.options.2": {
-      "t": "Os auditores exigem ADRs",
-      "h": "30072d5e"
+      "t": "Os auditores exigem um ADR para cada mudança no sistema",
+      "h": "7c86ac09"
     },
     "questions.2.options.3": {
-      "t": "Para evitar reuniões",
-      "h": "5c0259f7"
+      "t": "Substitui as reuniões, já que ninguém precisa discutir a decisão de novo",
+      "h": "b4e28ee7"
     },
     "questions.2.q": {
       "t": "Por que registrar decisões em ADRs?",

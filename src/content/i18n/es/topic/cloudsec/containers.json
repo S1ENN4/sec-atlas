@@ -45,8 +45,8 @@
       "h": "9e3083fa"
     },
     "sections.2.code.0.code": {
-      "t": "# firma en el push\ncosign sign --key cosign.key ghcr.io/loja/checkout@sha256:abc123\n\n# verifica antes de subir (admission controller o job de pre-deploy)\ncosign verify \\\n  --key cosign.pub \\\n  --certificate-identity-regexp 'https://github.com/loja/checkout/.github/workflows/release.yml@refs/tags/.*' \\\n  ghcr.io/loja/checkout@sha256:abc123",
-      "h": "055404cb"
+      "t": "# firma en el push (sin clave: identidad OIDC del CI)\ncosign sign ghcr.io/loja/checkout@sha256:abc123\n\n# verifica antes de subir (admission controller o job de pre-deploy)\ncosign verify \\\n  --certificate-oidc-issuer https://token.actions.githubusercontent.com \\\n  --certificate-identity-regexp 'https://github.com/loja/checkout/.github/workflows/release.yml@refs/tags/.*' \\\n  ghcr.io/loja/checkout@sha256:abc123",
+      "h": "919996ab"
     },
     "sections.2.code.0.filename": {
       "t": "verificar imagen en el deploy",
@@ -61,8 +61,8 @@
       "h": "36990979"
     },
     "sections.3.bullets.0": {
-      "t": "Trivy: scanner único (FS, imagen, IaC, SBOM), corre offline, sin base central",
-      "h": "86df5c2e"
+      "t": "Trivy: un único escáner (sistema de archivos, imagen, IaC, SBOM), de código abierto; descarga la base de vulnerabilidades y puede ejecutarse sin conexión con ella en caché",
+      "h": "a0376b19"
     },
     "sections.3.bullets.1": {
       "t": "Grype (Anchore): foco en imagen y SBOM CycloneDX",
@@ -93,8 +93,8 @@
       "h": "68b0c303"
     },
     "sections.4.code.1.code": {
-      "t": "# base mínima, sin shell, multi-stage para no heredar dev deps\nFROM python:3.12-slim AS builder\nWORKDIR /build\nRUN pip install --no-cache-dir -r requirements.txt\n\nFROM gcr.io/distroless/python3-debian12\nWORKDIR /app\nCOPY --from=builder /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages\nCOPY . /app\nUSER 65532                       # UID no-root fijo\nEXPOSE 8080\nENTRYPOINT [\"python\", \"/app/app.py\"]",
-      "h": "0059e7f7"
+      "t": "# base mínima, sin shell, multi-stage para no heredar dev deps\nFROM python:3.12-slim AS builder\nWORKDIR /build\nCOPY requirements.txt .\nRUN pip install --no-cache-dir --target=/deps -r requirements.txt\n\nFROM gcr.io/distroless/python3-debian12\nWORKDIR /app\nCOPY --from=builder /deps /deps\nCOPY . /app\nENV PYTHONPATH=/deps\nUSER 65532                       # UID no-root fijo\nEXPOSE 8080\nENTRYPOINT [\"python\", \"/app/app.py\"]",
+      "h": "37d55cf2"
     },
     "sections.4.code.1.filename": {
       "t": "Dockerfile corregido",
@@ -117,8 +117,8 @@
       "h": "8e80af0f"
     },
     "sections.6.bullets.1": {
-      "t": "las imágenes mínimas reducen los CVEs en un orden de magnitud: Python distroless tiene ~20 paquetes, Debian tiene ~600",
-      "h": "ce06a8fa"
+      "t": "las imágenes mínimas reducen las CVE en un orden de magnitud: una imagen distroless de Python trae unas pocas decenas de paquetes, mientras que una base Debian completa trae cientos",
+      "h": "d2b2ff59"
     },
     "sections.6.bullets.2": {
       "t": "la firma y la SBOM dan trazabilidad real, pieza por pieza, hasta el paquete instalado",

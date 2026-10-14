@@ -5,20 +5,20 @@
       "h": "9524a13e"
     },
     "questions.0.options.0": {
-      "t": "Un agent editando el mismo directorio de trabajo",
-      "h": "d0b91b3a"
+      "t": "Dejar que todos los agentes editen el mismo directorio de trabajo y fusionar los cambios al final",
+      "h": "34638fa4"
     },
     "questions.0.options.1": {
       "t": "Git worktrees separados, uno por agent, con revisión humana de cada branch",
       "h": "45f131a2"
     },
     "questions.0.options.2": {
-      "t": "Dar a cada agent acceso a producción",
-      "h": "1dede8fb"
+      "t": "Dar acceso de producción a todos los agentes, para que ninguno quede bloqueado",
+      "h": "b3625356"
     },
     "questions.0.options.3": {
-      "t": "Desactivar las aprobaciones",
-      "h": "a3484e83"
+      "t": "Desactivar las aprobaciones, para que los agentes trabajen sin interrupciones",
+      "h": "3d39ab37"
     },
     "questions.0.q": {
       "t": "Hay que hacer muchas tareas independientes a la vez. ¿Cuál es la configuración más segura?",
@@ -29,20 +29,20 @@
       "h": "69f56581"
     },
     "questions.1.options.0": {
-      "t": "Autonomía total sin revisión",
-      "h": "eb9bf251"
+      "t": "Autonomía total sin revisión, ya que las pruebas detectarán cualquier problema",
+      "h": "83d1cdcf"
     },
     "questions.1.options.1": {
       "t": "Para un borrador y para las pruebas, seguido de revisión línea por línea por alguien que conozca el área",
       "h": "30494662"
     },
     "questions.1.options.2": {
-      "t": "Para nada, nunca",
-      "h": "2e08e033"
+      "t": "Ninguna, nunca, porque no se puede confiar en los agentes para esto",
+      "h": "f32618bb"
     },
     "questions.1.options.3": {
-      "t": "Solo con el modelo más barato",
-      "h": "77da379b"
+      "t": "Solo con el modelo más barato, para mantener bajo el coste de los errores",
+      "h": "39ac4388"
     },
     "questions.1.q": {
       "t": "Para código que maneja autenticación, ¿cómo se debe usar un agent?",
@@ -53,20 +53,20 @@
       "h": "90ec841d"
     },
     "questions.2.options.0": {
-      "t": "Dejarlo en loop más tiempo",
-      "h": "0cfbce69"
+      "t": "Dejar que siga en bucle más tiempo, ya que cada intento aprende del anterior",
+      "h": "8ef304bb"
     },
     "questions.2.options.1": {
       "t": "Reducir la tarea, reiniciar el contexto o cambiar de modelo",
       "h": "4a069abf"
     },
     "questions.2.options.2": {
-      "t": "Apagar las pruebas",
-      "h": "c087d1ab"
+      "t": "Desactivar las pruebas que siguen fallando para que pueda continuar",
+      "h": "5753c98c"
     },
     "questions.2.options.3": {
-      "t": "Darle más permisos",
-      "h": "6bb44da7"
+      "t": "Darle más permisos para que pruebe otros enfoques",
+      "h": "7b886fc0"
     },
     "questions.2.q": {
       "t": "El agent sigue repitiendo la misma corrección fallida. ¿Cuál es la mejor respuesta?",

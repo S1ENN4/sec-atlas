@@ -46,7 +46,7 @@
     },
     "sections.1.heading": {
       "t": "The principles",
-      "h": "1e36c935"
+      "h": "a8e516ad"
     },
     "sections.2.body.0": {
       "t": "Zero-trust materializes on four technical fronts, almost always combined. The path usually starts on one front (user access, for example) and expands over time until it covers the entire service mesh.",
@@ -65,12 +65,12 @@
       "h": "37c4c5d9"
     },
     "sections.2.bullets.3": {
-      "t": "central policy engine: Open Policy Agent, Cedar (AWS Verified Access) or similar decides each permission; policy-as-code goes from PR to production with review and testing",
-      "h": "0fb6a34d"
+      "t": "central policy engine: Open Policy Agent, Cedar (AWS's policy language, used in Verified Permissions) or similar decides every permission; policy-as-code goes from the PR to production with review and testing",
+      "h": "90cba53b"
     },
     "sections.2.heading": {
       "t": "In practice",
-      "h": "99392984"
+      "h": "213dc06e"
     },
     "sections.3.body.0": {
       "t": "The most common limit is confusing zero-trust with 'putting MFA on the VPN'. MFA is a layer; zero-trust is an architecture that presupposes MFA on every call, identity on every workload and policy per service. A team that calls anything 'zero-trust' because it turned on MFA ends up with a marketing project, not a security one.",

@@ -21,8 +21,8 @@
       "h": "15621c70"
     },
     "sections.1.bullets.1": {
-      "t": "eBPF (Tetragon, Cilium Tetragon, Datadog USM): instruments the kernel directly, no extra process, but rules are more limited to what the kernel exposes via hooks",
-      "h": "b30bcc32"
+      "t": "eBPF (Tetragon, Falco with the eBPF driver, Datadog CWS): instruments the kernel directly, no extra process, but the rules end up limited to what the kernel exposes through hooks",
+      "h": "df23d205"
     },
     "sections.1.bullets.2": {
       "t": "kernel module: maximum visibility, but compromises compatibility with managed kernels (GKE, optimized EKS)",
@@ -93,8 +93,8 @@
       "h": "9330ed3a"
     },
     "sections.5.bullets.2": {
-      "t": "closing the loop: a filesystem snapshot after detection becomes evidence for the incident, not a prescription for the next attacker",
-      "h": "8b24b3b9"
+      "t": "preserved evidence: the filesystem snapshot taken after detection supports the incident investigation",
+      "h": "08a52c4f"
     },
     "sections.5.heading": {
       "t": "Strengths",
@@ -105,8 +105,8 @@
       "h": "29c18a01"
     },
     "sections.6.bullets.1": {
-      "t": "telemetry cost at scale: instrumenting a thousand containers with eBPF seems free until the log goes to the SIEM, and the bill comes from the provider's switch",
-      "h": "ea4cd2aa"
+      "t": "telemetry cost at scale: instrumenting a thousand containers with eBPF looks free until the log volume reaches the SIEM, where the ingestion cost shows up",
+      "h": "9bfbbe6b"
     },
     "sections.6.bullets.2": {
       "t": "behavioral false positives break trust: a rule that is too good is a rule everyone silences; tuning is permanent work, not a one-time setup",

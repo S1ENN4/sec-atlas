@@ -3,6 +3,7 @@ import { domains, getTopic } from "@/content/registry";
 import type { DomainId } from "@/content/types";
 import { LOCALES, isLocale, localePath, type Locale } from "@/i18n/config";
 import { localizeDomain } from "@/i18n/content";
+import { flatten } from "@/content/explore/world";
 import { worlds } from "@/content/explore/worlds";
 import { localizedExplore, localizedRoles } from "@/i18n/globals";
 import { getUi } from "@/i18n/ui";
@@ -61,6 +62,14 @@ export async function GET(_req: Request, ctx: { params: Promise<{ lang: string }
   const items: Item[] = pages(lang);
   const ex = localizedExplore(lang).value.nodes as Record<string, { title: string; summary: string }>;
   for (const w of worlds) items.push({ k: "p", d: "", t: ex[w.id].title, s: clip(ex[w.id].summary), u: localePath(lang, `/explore/${w.id}`) });
+  // Every place on the explorable maps is searchable, and opens that node.
+  for (const w of worlds) {
+    for (const id of Object.keys(flatten(w.root))) {
+      if (id === w.id) continue;
+      const nt = (localizedExplore(lang).value.nodes as Record<string, { title: string; summary: string; points: string[] }>)[id];
+      items.push({ k: "p", d: "", t: nt.title, s: clip(nt.summary), u: `${localePath(lang, `/explore/${w.id}`)}#${id}`, x: nt.points.join(" ") });
+    }
+  }
   for (const r of localizedRoles(lang).value) {
     items.push({ k: "p", d: "", t: r.title, s: clip(r.tagline), u: localePath(lang, `/careers/${r.id}`), x: r.summary });
   }

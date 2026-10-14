@@ -5,20 +5,20 @@
       "h": "eca2269b"
     },
     "questions.0.options.0": {
-      "t": "Ocultar los enlaces de las facturas en la interfaz de usuario",
-      "h": "029e9634"
+      "t": "Ocultar los enlaces de las facturas en la interfaz para que los usuarios no encuentren otros ids",
+      "h": "30d964d5"
     },
     "questions.0.options.1": {
       "t": "Hacer que la consulta filtre por el dueño tomado de la sesión y devolver el mismo 404 para inexistente y ajena",
       "h": "a8ea6c92"
     },
     "questions.0.options.2": {
-      "t": "Usar un id aleatorio más largo y mantener la misma consulta",
-      "h": "6623cc13"
+      "t": "Sustituir los ids secuenciales por otros aleatorios más largos y mantener la misma consulta",
+      "h": "4fea3073"
     },
     "questions.0.options.3": {
-      "t": "Bloquear la dirección IP del usuario",
-      "h": "4e5dc703"
+      "t": "Bloquear la dirección IP de cualquier usuario que pida una factura que no es suya",
+      "h": "965513e3"
     },
     "questions.0.q": {
       "t": "Un usuario autenticado cambia /api/invoices/1041 por /api/invoices/1042 y ve la factura de otro cliente. ¿Cuál es la mejor corrección?",
@@ -29,20 +29,20 @@
       "h": "17f6a4bf"
     },
     "questions.1.options.0": {
-      "t": "Permitir por defecto",
-      "h": "7aaefb85"
+      "t": "Permitir por defecto y bloquear las rutas conocidas como sensibles",
+      "h": "fabcc724"
     },
     "questions.1.options.1": {
       "t": "Denegar por defecto",
       "h": "88262657"
     },
     "questions.1.options.2": {
-      "t": "Registrar en log por defecto",
-      "h": "12f69a66"
+      "t": "Registrar por defecto, para que cada petición deje rastro para revisarla después",
+      "h": "80d50445"
     },
     "questions.1.options.3": {
-      "t": "Usar caché por defecto",
-      "h": "b394a39d"
+      "t": "Guardar en caché por defecto, para que las peticiones repetidas nunca lleguen a la aplicación",
+      "h": "b1d1d128"
     },
     "questions.1.q": {
       "t": "¿Qué valor por defecto hace segura una ruta olvidada?",
@@ -53,20 +53,20 @@
       "h": "304c0072"
     },
     "questions.2.options.0": {
-      "t": "Porque los botones son lentos",
-      "h": "b98d3072"
+      "t": "Porque los botones tardan en renderizarse y los usuarios notarían el retraso",
+      "h": "97c4bc61"
     },
     "questions.2.options.1": {
       "t": "Porque los atacantes llaman al endpoint directamente, así que el servidor debe verificar el rol",
       "h": "730e6b00"
     },
     "questions.2.options.2": {
-      "t": "Porque los navegadores guardan en caché los botones",
-      "h": "8e626c9e"
+      "t": "Porque los navegadores guardan los botones en caché y los muestran a los usuarios equivocados",
+      "h": "5f8ba0a7"
     },
     "questions.2.options.3": {
-      "t": "Porque rompe la accesibilidad",
-      "h": "76a94b38"
+      "t": "Porque ocultar elementos rompe las herramientas de accesibilidad de algunas personas",
+      "h": "31373b70"
     },
     "questions.2.q": {
       "t": "¿Por qué ocultar el botón de admin en la UI no es control de acceso?",

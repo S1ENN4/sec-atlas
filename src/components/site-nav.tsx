@@ -32,6 +32,8 @@ export interface NavLink {
 }
 export interface NavData {
   explore: { label: string; allDomains: string; groups: { id: string; label: string; domains: NavDomain[] }[] };
+  maps: NavLink;
+  lab: NavLink;
   careers: NavLink;
   learn: { label: string; items: NavLink[] };
   project: { label: string; items: NavLink[] };
@@ -174,6 +176,8 @@ export function SiteNav({ data }: { data: NavData }) {
   const studiedIn = (id: DomainId) => Object.keys(state.seen).filter((k) => k.startsWith(`${id}/`)).length;
   const section = pathname.split("/")[2] ?? "";
   const careersActive = section === "careers";
+  const mapsActive = section === "explore";
+  const labActive = section === "lab";
   // Which route segments belong to Explore: derived from the groups, so a new domain lights it up.
   const exploreSections = data.explore.groups.flatMap((g) => g.domains.map((d) => d.href.split("/")[2] ?? ""));
 
@@ -203,6 +207,25 @@ export function SiteNav({ data }: { data: NavData }) {
       {/* desktop */}
       <nav aria-label={data.labels.mainNav} className="hidden items-center gap-1 md:flex">
         {trigger("explore", data.explore.label, exploreSections.includes(section))}
+        <Link
+          href={data.maps.href}
+          className={cn(
+            "inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 font-mono text-[13px] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
+            mapsActive ? "text-foreground" : "text-primary hover:text-foreground",
+          )}
+        >
+          <span aria-hidden className="size-1.5 rounded-full bg-primary" />
+          {data.maps.label}
+        </Link>
+        <Link
+          href={data.lab.href}
+          className={cn(
+            "rounded-md px-3 py-1.5 font-mono text-[13px] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
+            labActive ? "text-foreground" : "text-muted-foreground hover:text-foreground",
+          )}
+        >
+          {data.lab.label}
+        </Link>
         <Link
           href={data.careers.href}
           className={cn(
@@ -291,7 +314,9 @@ export function SiteNav({ data }: { data: NavData }) {
                 </div>
               ))}
             </section>
-            <section>
+            <section className="space-y-1">
+              <LinkItem l={data.maps} onNavigate={close} />
+              <LinkItem l={data.lab} onNavigate={close} />
               <LinkItem l={data.careers} onNavigate={close} />
             </section>
             {[data.learn, data.project].map((g) => (

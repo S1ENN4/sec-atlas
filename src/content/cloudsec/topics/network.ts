@@ -29,7 +29,7 @@ export const network: Topic = {
       heading: "Security groups: stateful, no nível da ENI",
       body: [
         "Security group é a primeira linha em cloud. Ele é stateful: a resposta de um request autorizado volta sem precisar de regra de entrada. Anexado à interface de rede (ENI), funciona como um firewall por instância, e várias instâncias podem compartilhar o mesmo grupo quando fazem o mesmo papel.",
-        "O anti-padrão clássico é abrir 0.0.0.0/0 nas portas de administração. Aparece em toda pós-mortes:",
+        "O anti-padrão clássico é abrir 0.0.0.0/0 nas portas de administração. Aparece em todo post-mortem:",
       ],
       code: [
         {
@@ -56,7 +56,7 @@ export const network: Topic = {
       heading: "Network ACLs e VPC Flow Logs",
       body: [
         "NACL é o complemento stateless da subnet. Atua antes do security group e serve para regras amplas (bloquear um range inteiro conhecido como malicioso, por exemplo). É stateless, então a resposta precisa de regra de entrada específica, e raramente precisa mexer depois que a topologia está madura.",
-        "VPC Flow Logs captura todo tráfego aceito ou rejeitado nas ENIs da VPC e despeja em CloudWatch ou S3. Sem flow log, você está investigando incidente no escuro. Com path mínimo: block padrão + log ativo + aprendi endpoint, e o time de segurança consegue responder o que entrou, por onde e quando.",
+        "VPC Flow Logs captura todo tráfego aceito ou rejeitado nas ENIs da VPC e despeja em CloudWatch ou S3. Sem flow log, você está investigando incidente no escuro. Com o mínimo (bloqueio por padrão, flow logs ativos e endpoints privados para os serviços da nuvem), o time de segurança consegue responder o que entrou, por onde e quando.",
       ],
     },
     {

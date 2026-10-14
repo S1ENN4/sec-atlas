@@ -9,16 +9,16 @@
       "h": "25768b67"
     },
     "questions.0.options.1": {
-      "t": "Divide el disco en particiones",
-      "h": "db10bb15"
+      "t": "Divide el disco en particiones para separar los datos de cada carga",
+      "h": "f387902d"
     },
     "questions.0.options.2": {
-      "t": "Comprime el tráfico",
-      "h": "47b7100f"
+      "t": "Comprime el tráfico entre subredes para reducir la latencia",
+      "h": "2780fd1f"
     },
     "questions.0.options.3": {
-      "t": "Reemplaza al IAM",
-      "h": "9afb2a55"
+      "t": "Sustituye a IAM en el control de quién puede usar cada recurso",
+      "h": "cd66c39d"
     },
     "questions.0.q": {
       "t": "¿Qué hace la microsegmentación?",
@@ -33,16 +33,16 @@
       "h": "449bd2de"
     },
     "questions.1.options.1": {
-      "t": "Son idénticos",
-      "h": "63141248"
+      "t": "Son idénticos, y elegir entre ellos es solo cuestión de estilo",
+      "h": "2fb68259"
     },
     "questions.1.options.2": {
-      "t": "La NACL es stateful y el security group es stateless",
-      "h": "da2f78f1"
+      "t": "NACL es stateful y por instancia; el security group es stateless y por subred",
+      "h": "2f43e9fd"
     },
     "questions.1.options.3": {
-      "t": "Los security groups solo valen para S3",
-      "h": "6b67ba6f"
+      "t": "Los security groups solo valen para S3 y las NACL solo para EC2",
+      "h": "4e691949"
     },
     "questions.1.q": {
       "t": "¿Cuál es la diferencia típica entre un security group y una NACL en AWS?",

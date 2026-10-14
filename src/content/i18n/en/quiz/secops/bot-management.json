@@ -10,15 +10,15 @@
     },
     "questions.0.options.1": {
       "t": "An automatic block of all automated traffic",
-      "h": "7719bdc3"
+      "h": "18ea00ed"
     },
     "questions.0.options.2": {
-      "t": "A fixed list of robot IPs",
-      "h": "af297d0e"
+      "t": "A fixed list of IP addresses of known bots",
+      "h": "6ebc0efb"
     },
     "questions.0.options.3": {
-      "t": "A replacement for rate limiting",
-      "h": "90c0b348"
+      "t": "A complete replacement for rate limiting",
+      "h": "d3cf67a5"
     },
     "questions.0.q": {
       "t": "What does bot management deliver to the security policy?",
@@ -33,16 +33,16 @@
       "h": "0092eb3b"
     },
     "questions.1.options.1": {
-      "t": "Because they never generate relevant traffic",
-      "h": "aac4741e"
+      "t": "Because they never generate relevant traffic for the business",
+      "h": "7c8a6472"
     },
     "questions.1.options.2": {
       "t": "Because they are harder to identify than humans",
-      "h": "f84bf0da"
+      "h": "ea067f47"
     },
     "questions.1.options.3": {
-      "t": "Because they pay for access",
-      "h": "8b17dfcc"
+      "t": "Because they pay for access and so get an exception",
+      "h": "0a052632"
     },
     "questions.1.q": {
       "t": "Why handle verified bots separately?",
@@ -57,16 +57,16 @@
       "h": "fd3d0c58"
     },
     "questions.2.options.1": {
-      "t": "It is impossible to bypass",
-      "h": "6b5d7016"
+      "t": "It is impossible for a determined attacker to bypass",
+      "h": "69179b3a"
     },
     "questions.2.options.2": {
-      "t": "It does not require JavaScript in the browser",
-      "h": "e0e9d0c0"
+      "t": "It removes the need for JavaScript in the user's browser",
+      "h": "9f8a1d25"
     },
     "questions.2.options.3": {
-      "t": "It creates no cost for the attacker",
-      "h": "afc9a5f8"
+      "t": "It generates no cost for whoever runs the attack",
+      "h": "1355b57c"
     },
     "questions.2.q": {
       "t": "What is the advantage of a managed challenge over a classic CAPTCHA?",

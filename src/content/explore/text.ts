@@ -98,6 +98,7 @@ export const exploreText = {
     seeAlso: "the same idea, in general",
     tryLab: "try it in the lab",
     caseStudy: "case study",
+    domainMapsTitle: "Explore this on the interactive maps",
     viewList: "View as a list",
     viewMap: "View as a map",
     startTitle: "New here? Start with a company.",

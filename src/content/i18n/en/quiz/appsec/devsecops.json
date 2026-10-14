@@ -5,20 +5,20 @@
       "h": "c83faecd"
     },
     "questions.0.options.0": {
-      "t": "Having a separate team that approves everything at the end",
-      "h": "b8a1c845"
+      "t": "Having a separate security team that approves everything at the end of the cycle",
+      "h": "fbc728bb"
     },
     "questions.0.options.1": {
       "t": "Security as a shared, automated responsibility throughout the lifecycle",
       "h": "9777580e"
     },
     "questions.0.options.2": {
-      "t": "Replacing tests with scanners",
-      "h": "f9a0285f"
+      "t": "Replacing the tests with automatic vulnerability scanners",
+      "h": "4ffd2bfc"
     },
     "questions.0.options.3": {
-      "t": "Giving admin access to everyone",
-      "h": "98fb67a2"
+      "t": "Giving everyone administrator access so that nobody blocks delivery",
+      "h": "db645a7b"
     },
     "questions.0.q": {
       "t": "The central idea of DevSecOps is...",
@@ -29,20 +29,20 @@
       "h": "b1a3beb6"
     },
     "questions.1.options.0": {
-      "t": "Writing policies in a versioned PDF",
-      "h": "999566ad"
+      "t": "Writing policies in versioned PDFs inside the repository",
+      "h": "53df9e0e"
     },
     "questions.1.options.1": {
       "t": "Expressing security rules in executable files that the pipeline applies on its own",
       "h": "9ad5ea80"
     },
     "questions.1.options.2": {
-      "t": "A type of open source license",
-      "h": "cd6f4f48"
+      "t": "A type of open source license for security tools",
+      "h": "4fbd25a9"
     },
     "questions.1.options.3": {
-      "t": "Code comments about security",
-      "h": "60f6fd37"
+      "t": "Code comments that explain the security rules",
+      "h": "1d3bd212"
     },
     "questions.1.q": {
       "t": "What is \"policy as code\"?",
@@ -53,20 +53,20 @@
       "h": "19bf6b88"
     },
     "questions.2.options.0": {
-      "t": "Lines of code per day",
-      "h": "e55f34bc"
+      "t": "Lines of code written per day by each team",
+      "h": "b520198c"
     },
     "questions.2.options.1": {
       "t": "Time to fix vulnerabilities and the share of findings blocked before production",
       "h": "7f1996f5"
     },
     "questions.2.options.2": {
-      "t": "Number of security meetings",
-      "h": "1cfcb7af"
+      "t": "The number of security meetings held in the quarter",
+      "h": "7dec5bd5"
     },
     "questions.2.options.3": {
-      "t": "Number of tools installed",
-      "h": "bc76f4d0"
+      "t": "The number of security tools installed in the pipeline",
+      "h": "2313d0bb"
     },
     "questions.2.q": {
       "t": "Which metric helps measure whether DevSecOps is working?",

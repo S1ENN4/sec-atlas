@@ -5,20 +5,20 @@
       "h": "952b4a91"
     },
     "questions.0.options.0": {
-      "t": "Ordenar alfabeticamente",
-      "h": "cdce2555"
+      "t": "Ordenar todos os eventos alfabeticamente pelo nome da fonte",
+      "h": "bcffb181"
     },
     "questions.0.options.1": {
       "t": "Normalizar todo timestamp para UTC e verificar o desvio de relógio",
       "h": "03d99752"
     },
     "questions.0.options.2": {
-      "t": "Excluir duplicatas",
-      "h": "6bb05c34"
+      "t": "Apagar os eventos duplicados para os logs ficarem menores",
+      "h": "36a01c90"
     },
     "questions.0.options.3": {
-      "t": "Converter para CSV",
-      "h": "b957d386"
+      "t": "Converter todos os logs para CSV para uma só ferramenta lê-los",
+      "h": "a274ec35"
     },
     "questions.0.q": {
       "t": "Qual é o primeiro passo antes de comparar eventos de várias fontes?",
@@ -29,20 +29,20 @@
       "h": "b5ddcba0"
     },
     "questions.1.options.0": {
-      "t": "Mudar de emprego",
-      "h": "a7030731"
+      "t": "Mover um atacante de uma conta para outra dentro da rede",
+      "h": "b3679f23"
     },
     "questions.1.options.1": {
       "t": "Pegar um fato conhecido e buscar tudo o mais que o compartilha",
       "h": "b7eecdee"
     },
     "questions.1.options.2": {
-      "t": "Criptografar logs",
-      "h": "fa09bbe9"
+      "t": "Criptografar os logs para não poderem ser alterados depois",
+      "h": "b7e4c16b"
     },
     "questions.1.options.3": {
-      "t": "Rotacionar arquivos de log",
-      "h": "f748c00a"
+      "t": "Rotacionar os arquivos de log quando chegam a um limite de tamanho",
+      "h": "5ab643e7"
     },
     "questions.1.q": {
       "t": "O que é pivoteamento?",
@@ -53,20 +53,20 @@
       "h": "fa3f5d69"
     },
     "questions.2.options.0": {
-      "t": "Não importa",
-      "h": "450c103c"
+      "t": "Não importa, porque logs ausentes não têm valor para a investigação",
+      "h": "7e4e1071"
     },
     "questions.2.options.1": {
       "t": "Pode ser a limpeza do atacante ou um ponto cego que você precisa corrigir",
       "h": "1b48f295"
     },
     "questions.2.options.2": {
-      "t": "Economiza armazenamento",
-      "h": "7b6bb293"
+      "t": "Economiza armazenamento, então deve ser tratada como um evento normal",
+      "h": "6400e775"
     },
     "questions.2.options.3": {
-      "t": "Significa que nenhum ataque aconteceu",
-      "h": "83d61fa0"
+      "t": "Significa que nenhum ataque aconteceu nesse período",
+      "h": "bcfa24d2"
     },
     "questions.2.q": {
       "t": "Por que uma lacuna nos logs importa?",

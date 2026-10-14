@@ -9,16 +9,16 @@
       "h": "cdf66f48"
     },
     "questions.0.options.1": {
-      "t": "Porque las fuentes silenciosas son más baratas",
-      "h": "e450f065"
+      "t": "Porque las fuentes silenciosas cuestan menos a la plataforma",
+      "h": "f071b2fe"
     },
     "questions.0.options.2": {
-      "t": "Para reducir el número de logs",
-      "h": "2248a69e"
+      "t": "Para reducir el número de logs guardados en el SIEM",
+      "h": "9eab7069"
     },
     "questions.0.options.3": {
-      "t": "Porque Prometheus lo exige",
-      "h": "45bd7f9c"
+      "t": "Porque Prometheus exige este tipo de alerta para funcionar",
+      "h": "d050dc00"
     },
     "questions.0.q": {
       "t": "¿Por qué alertar sobre una fuente que dejó de enviar eventos?",
@@ -33,16 +33,16 @@
       "h": "294b1ab1"
     },
     "questions.1.options.1": {
-      "t": "Cifrar el tráfico entre servicios",
-      "h": "1a453f1c"
+      "t": "Cifrar el tráfico entre los servicios de la plataforma",
+      "h": "d53f862a"
     },
     "questions.1.options.2": {
-      "t": "Reemplazar las métricas",
-      "h": "19b4683c"
+      "t": "Sustituir las métricas por un registro más detallado",
+      "h": "ee1f8030"
     },
     "questions.1.options.3": {
-      "t": "Contar cuántos usuarios existen",
-      "h": "a89a1e13"
+      "t": "Contar cuántos usuarios existen en cada servicio",
+      "h": "06573a0c"
     },
     "questions.1.q": {
       "t": "¿Cuál es el papel del tracing en la plataforma?",
@@ -57,16 +57,16 @@
       "h": "a19cf0ac"
     },
     "questions.2.options.1": {
-      "t": "Una frase genérica sobre calidad",
-      "h": "b61c6e63"
+      "t": "Una frase genérica sobre calidad, sin número ni plazo",
+      "h": "c7d300a2"
     },
     "questions.2.options.2": {
-      "t": "Cero alertas por mes",
-      "h": "77bce347"
+      "t": "Cero alertas al mes, lo que demuestra que todo funciona",
+      "h": "309b2348"
     },
     "questions.2.options.3": {
-      "t": "Uso de CPU por debajo del 5%",
-      "h": "05f8efca"
+      "t": "Uso de CPU por debajo del 5% en todos los servicios",
+      "h": "79c93037"
     },
     "questions.2.q": {
       "t": "¿Qué es un buen SLO de plataforma de seguridad?",

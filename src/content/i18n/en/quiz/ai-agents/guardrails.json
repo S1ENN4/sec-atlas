@@ -9,16 +9,16 @@
       "h": "3a7eb041"
     },
     "questions.0.options.1": {
-      "t": "Increasing the model's creativity",
-      "h": "e40fc21e"
+      "t": "Increasing the model's creativity in its answers",
+      "h": "6e4855e8"
     },
     "questions.0.options.2": {
-      "t": "Replacing the prompt",
-      "h": "8e166ee5"
+      "t": "Replacing the system prompt with fixed rules",
+      "h": "fb731769"
     },
     "questions.0.options.3": {
-      "t": "Compressing the context",
-      "h": "7e818a9c"
+      "t": "Compressing the context to fit more information",
+      "h": "2c10e1fe"
     },
     "questions.0.q": {
       "t": "What is the role of guardrails?",
@@ -33,16 +33,16 @@
       "h": "47da92e6"
     },
     "questions.1.options.1": {
-      "t": "Because they are always perfect",
-      "h": "1a8b34b1"
+      "t": "Because they are always perfect and make other controls unnecessary",
+      "h": "352b830e"
     },
     "questions.1.options.2": {
-      "t": "Because the model always ignores them",
-      "h": "fd38f7a0"
+      "t": "Because the model always ignores them, without exception",
+      "h": "e3d4d242"
     },
     "questions.1.options.3": {
-      "t": "Because they slow everything down",
-      "h": "72bbcafa"
+      "t": "Because they make everything slower and nobody uses them",
+      "h": "f74b77e9"
     },
     "questions.1.q": {
       "t": "Why are guardrails alone not enough?",
@@ -57,16 +57,16 @@
       "h": "82314fed"
     },
     "questions.2.options.1": {
-      "t": "Increasing the context size",
-      "h": "03332f06"
+      "t": "Increasing the size of the context available to the model",
+      "h": "f061b946"
     },
     "questions.2.options.2": {
-      "t": "Switching the model",
-      "h": "74294219"
+      "t": "Switching the model for a cheaper one",
+      "h": "ae08c919"
     },
     "questions.2.options.3": {
-      "t": "Reindexing the documents",
-      "h": "16c0839e"
+      "t": "Reindexing the documents that feed the search",
+      "h": "aff1d809"
     },
     "questions.2.q": {
       "t": "Which example is an output guardrail?",

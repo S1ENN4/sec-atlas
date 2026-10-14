@@ -5,20 +5,20 @@
       "h": "d085c94a"
     },
     "questions.0.options.0": {
-      "t": "Os testes mais lentos primeiro",
-      "h": "bba25793"
+      "t": "Os testes mais lentos primeiro, para as falhas mais importantes aparecerem cedo",
+      "h": "eabc66e3"
     },
     "questions.0.options.1": {
       "t": "Verificações baratas (lint, testes unitários) primeiro, depois as mais lentas",
       "h": "e0166ec6"
     },
     "questions.0.options.2": {
-      "t": "Fazer deploy primeiro, testar depois",
-      "h": "17c35e84"
+      "t": "Fazer o deploy primeiro e testar depois, já que o pipeline é automatizado",
+      "h": "00c9cada"
     },
     "questions.0.options.3": {
-      "t": "Ordem aleatória",
-      "h": "87adf222"
+      "t": "Ordem aleatória, para nenhuma verificação sempre se beneficiar de rodar primeiro",
+      "h": "d052ba07"
     },
     "questions.0.q": {
       "t": "Qual ordenação dá o feedback útil mais rápido?",
@@ -29,20 +29,20 @@
       "h": "f0504cb3"
     },
     "questions.1.options.0": {
-      "t": "Adicionar retentativas automáticas e seguir em frente",
-      "h": "8f873cd8"
+      "t": "Adicionar tentativas automáticas e seguir em frente, já que o teste passa na maioria das vezes",
+      "h": "0f8596b6"
     },
     "questions.1.options.1": {
       "t": "Pôr em quarentena e corrigir, porque testes instáveis ensinam as pessoas a ignorar falhas",
       "h": "582a0dd4"
     },
     "questions.1.options.2": {
-      "t": "Apagar o CI",
-      "h": "97677ae4"
+      "t": "Apagar o teste, porque ninguém lembra por que foi escrito",
+      "h": "7786577e"
     },
     "questions.1.options.3": {
-      "t": "Rodá-lo dez vezes",
-      "h": "dad2fedf"
+      "t": "Rodá-lo dez vezes seguidas e aceitar o resultado da maioria",
+      "h": "e49d3a9e"
     },
     "questions.1.q": {
       "t": "Um teste falha uma vez a cada dez execuções. Qual é a resposta certa?",
@@ -53,20 +53,20 @@
       "h": "bdbcabde"
     },
     "questions.2.options.0": {
-      "t": "A data",
-      "h": "f3488c72"
+      "t": "A data da execução, para o cache se renovar todo dia",
+      "h": "1a12dcdf"
     },
     "questions.2.options.1": {
       "t": "O conteúdo do lockfile",
       "h": "9f2f686e"
     },
     "questions.2.options.2": {
-      "t": "Apenas o nome do branch",
-      "h": "230dc349"
+      "t": "Só o nome do branch, já que cada branch tem as suas dependências",
+      "h": "601988a7"
     },
     "questions.2.options.3": {
-      "t": "O nome do runner",
-      "h": "9657f2ee"
+      "t": "O nome do runner que executa o job",
+      "h": "f7543895"
     },
     "questions.2.q": {
       "t": "Qual deve ser a chave do cache de dependências?",

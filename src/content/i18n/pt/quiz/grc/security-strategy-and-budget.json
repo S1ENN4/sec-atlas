@@ -5,20 +5,20 @@
       "h": "1ff0cde8"
     },
     "questions.0.options.0": {
-      "t": "Pelas ferramentas mais novas",
-      "h": "a6b683b4"
+      "t": "Pelas ferramentas mais novas de que concorrentes e analistas estão falando",
+      "h": "cbd5ef7a"
     },
     "questions.0.options.1": {
       "t": "Pelos objetivos de negócio, joias da coroa, obrigações e apetite a risco",
       "h": "3ded1aff"
     },
     "questions.0.options.2": {
-      "t": "Pelo calendário de auditorias",
-      "h": "83dc8ae3"
+      "t": "Pelo calendário de auditorias e pelas evidências que cada uma vai pedir",
+      "h": "2808d40d"
     },
     "questions.0.options.3": {
-      "t": "Pelo orçamento",
-      "h": "b21fa1ef"
+      "t": "Pelo orçamento que a área financeira já aprovou",
+      "h": "261fe476"
     },
     "questions.0.q": {
       "t": "Por onde deve começar uma estratégia de segurança?",
@@ -29,20 +29,20 @@
       "h": "8bcb3de9"
     },
     "questions.1.options.0": {
-      "t": "Para parecer humilde",
-      "h": "c926b192"
+      "t": "Para mostrar humildade e deixar o plano mais realista para a diretoria",
+      "h": "41b583c8"
     },
     "questions.1.options.1": {
       "t": "Prioridades são escolhas, e os riscos não tratados devem ser explícitos, ter responsável e ser revisados",
       "h": "094b3f8a"
     },
     "questions.1.options.2": {
-      "t": "É uma regra legal",
-      "h": "6347e628"
+      "t": "Uma regulamentação exige que todo roadmap liste as suas omissões",
+      "h": "302c056e"
     },
     "questions.1.options.3": {
-      "t": "Para encurtar o roadmap",
-      "h": "8c3322e6"
+      "t": "Para deixar o roadmap mais curto e mais fácil de apresentar",
+      "h": "d1fe78dd"
     },
     "questions.1.q": {
       "t": "Por que um roadmap deve declarar o que é aceito por enquanto?",
@@ -53,20 +53,20 @@
       "h": "0ad554b2"
     },
     "questions.2.options.0": {
-      "t": "Outra ferramenta sobreposta",
-      "h": "02200ce3"
+      "t": "Mais uma ferramenta que se sobrepõe às que o time já opera",
+      "h": "141cdc78"
     },
     "questions.2.options.1": {
       "t": "Bases e pessoas: inventário, identidade, logging, backups, treinamento e retenção",
       "h": "1c223e10"
     },
     "questions.2.options.2": {
-      "t": "Um logotipo maior",
-      "h": "e82c050c"
+      "t": "Uma marca maior para o time de segurança e para as campanhas de conscientização",
+      "h": "e046f8c3"
     },
     "questions.2.options.3": {
-      "t": "Mais dashboards",
-      "h": "47fa37fb"
+      "t": "Mais painéis que resumem os mesmos dados de formas novas",
+      "h": "9cd456d4"
     },
     "questions.2.q": {
       "t": "Qual gasto costuma dar o melhor retorno em uma equipe pequena?",

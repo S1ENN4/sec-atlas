@@ -9,16 +9,16 @@
       "h": "224d04dd"
     },
     "questions.0.options.1": {
-      "t": "Generar la respuesta final",
-      "h": "6d7e110e"
+      "t": "Generar la respuesta final en lenguaje natural para el usuario",
+      "h": "f95e8b9b"
     },
     "questions.0.options.2": {
-      "t": "Entrenar el modelo",
-      "h": "649db890"
+      "t": "Entrenar el modelo con los documentos más usados",
+      "h": "b4fb6438"
     },
     "questions.0.options.3": {
-      "t": "Cifrar el índice",
-      "h": "167ea171"
+      "t": "Cifrar el índice para proteger el contenido recuperado",
+      "h": "04e4c808"
     },
     "questions.0.q": {
       "t": "¿Cuál es el objetivo de la etapa de retrieval?",
@@ -33,16 +33,16 @@
       "h": "dcec9489"
     },
     "questions.1.options.1": {
-      "t": "Dos modelos de lenguaje",
-      "h": "eebf908f"
+      "t": "Dos modelos de lenguaje, uno para generar y otro para revisar",
+      "h": "0e8b02a6"
     },
     "questions.1.options.2": {
-      "t": "Dos bases de datos SQL",
-      "h": "6cf9f86a"
+      "t": "Dos bases de datos SQL replicadas entre regiones",
+      "h": "b383f651"
     },
     "questions.1.options.3": {
-      "t": "CPU y GPU",
-      "h": "e6eec36a"
+      "t": "CPU y GPU, para acelerar el cálculo de los vectores",
+      "h": "c08d3013"
     },
     "questions.1.q": {
       "t": "¿Qué combina la búsqueda híbrida?",
@@ -57,16 +57,16 @@
       "h": "179fe3f2"
     },
     "questions.2.options.1": {
-      "t": "Borrar resultados antiguos",
-      "h": "e189f019"
+      "t": "Borrar los resultados antiguos del índice para ahorrar espacio",
+      "h": "22d95654"
     },
     "questions.2.options.2": {
-      "t": "Aumentar el número de chunks",
-      "h": "2c7a1806"
+      "t": "Aumentar el número de chunks devueltos en cada consulta",
+      "h": "541d7ac8"
     },
     "questions.2.options.3": {
-      "t": "Traducir los documentos",
-      "h": "9603a8ad"
+      "t": "Traducir los documentos al idioma de la pregunta",
+      "h": "86ec6ddd"
     },
     "questions.2.q": {
       "t": "¿Para qué sirve el re-ranking?",

@@ -9,16 +9,16 @@
       "h": "4adb201a"
     },
     "questions.0.options.1": {
-      "t": "Una única solicitud enorme",
-      "h": "7da7eb3f"
+      "t": "Una única petición enorme que consume la memoria del origen",
+      "h": "a78fa60e"
     },
     "questions.0.options.2": {
-      "t": "Aumento de solicitudes a imágenes estáticas",
-      "h": "90cd8ab3"
+      "t": "Un aumento de peticiones a imágenes y archivos estáticos",
+      "h": "7e5287a1"
     },
     "questions.0.options.3": {
-      "t": "Caída repentina del tráfico",
-      "h": "6c4a801f"
+      "t": "Una caída repentina y general del volumen de tráfico",
+      "h": "83508bad"
     },
     "questions.0.q": {
       "t": "¿Cuál es la firma típica del credential stuffing en los logs?",
@@ -33,16 +33,16 @@
       "h": "76a9f3aa"
     },
     "questions.1.options.1": {
-      "t": "Solo respuestas 200 en pocas rutas",
-      "h": "0907fca4"
+      "t": "Solo respuestas 200 concentradas en pocas rutas",
+      "h": "cef7aada"
     },
     "questions.1.options.2": {
-      "t": "Fallos de TLS",
-      "h": "3c51500c"
+      "t": "Fallos de handshake TLS procedentes de muchos clientes",
+      "h": "9b3f3728"
     },
     "questions.1.options.3": {
-      "t": "Aumento de la latencia del origen",
-      "h": "06c30646"
+      "t": "Un aumento de la latencia del origen sin relación con las rutas",
+      "h": "691cfc8d"
     },
     "questions.1.q": {
       "t": "¿Qué sugiere forced browsing?",
@@ -57,16 +57,16 @@
       "h": "6e923dad"
     },
     "questions.2.options.1": {
-      "t": "Cabeceras de caché ausentes",
-      "h": "ab86ef87"
+      "t": "Cabeceras de caché ausentes en las respuestas de la aplicación",
+      "h": "9d50073d"
     },
     "questions.2.options.2": {
-      "t": "Muchos accesos a la página de inicio",
-      "h": "0ae93d3e"
+      "t": "Muchas visitas repetidas a la página de inicio del sitio",
+      "h": "1eb31233"
     },
     "questions.2.options.3": {
-      "t": "Uso de HTTP/2",
-      "h": "85817b87"
+      "t": "El uso del protocolo HTTP/2 por parte de los clientes",
+      "h": "d845384f"
     },
     "questions.2.q": {
       "t": "¿Qué señal levanta sospecha de SSRF?",

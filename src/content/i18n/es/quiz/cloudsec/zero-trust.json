@@ -9,16 +9,16 @@
       "h": "48a4f142"
     },
     "questions.0.options.1": {
-      "t": "Confiar en todo lo que esté dentro de la VPN",
-      "h": "f0528e1d"
+      "t": "Confiar en todo lo que esté dentro de la VPN de la empresa",
+      "h": "d332db41"
     },
     "questions.0.options.2": {
-      "t": "Bloquear toda internet",
-      "h": "b1b717b4"
+      "t": "Bloquear todo internet y abrir solo lo que se solicite",
+      "h": "31488fbb"
     },
     "questions.0.options.3": {
-      "t": "Usar solo contraseñas fuertes",
-      "h": "2ededee7"
+      "t": "Usar solo contraseñas fuertes y cambiarlas con frecuencia",
+      "h": "725d4fde"
     },
     "questions.0.q": {
       "t": "¿Cuál es el principio central de Zero Trust?",
@@ -33,16 +33,16 @@
       "h": "6105c8da"
     },
     "questions.1.options.1": {
-      "t": "Se elimina la autenticación",
-      "h": "25a72444"
+      "t": "La autenticación deja de existir, ya que la red es de confianza",
+      "h": "d206927b"
     },
     "questions.1.options.2": {
-      "t": "Todo se vuelve público",
-      "h": "073d247e"
+      "t": "Todo pasa a ser público y la protección queda solo en los datos",
+      "h": "88c2c676"
     },
     "questions.1.options.3": {
-      "t": "Se elimina el log",
-      "h": "6e5c796c"
+      "t": "El log deja de ser necesario, porque se verifica el acceso",
+      "h": "1e070007"
     },
     "questions.1.q": {
       "t": "¿Qué cambia del modelo de perímetro a Zero Trust?",
@@ -57,16 +57,16 @@
       "h": "d7955257"
     },
     "questions.2.options.1": {
-      "t": "VPN con acceso total a la red interna",
-      "h": "83963351"
+      "t": "Una VPN con acceso total a la red interna tras iniciar sesión",
+      "h": "b9955c4b"
     },
     "questions.2.options.2": {
-      "t": "Una contraseña compartida",
-      "h": "33966dec"
+      "t": "Una contraseña compartida por el equipo y cambiada cada trimestre",
+      "h": "9e4a0c12"
     },
     "questions.2.options.3": {
-      "t": "Liberar todos los puertos internos",
-      "h": "4354b74d"
+      "t": "Abrir todos los puertos internos entre servicios",
+      "h": "9041de1b"
     },
     "questions.2.q": {
       "t": "¿Qué práctica representa Zero Trust?",

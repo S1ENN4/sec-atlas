@@ -33,8 +33,8 @@
       "h": "2381ef53"
     },
     "sections.2.code.0.code": {
-      "t": "import boto3\nfrom cryptography.hazmat.primitives.ciphers.aead import AESGCM\n\nkms = boto3.client(\"kms\")\nKEY_ID = \"arn:aws:kms:us-east-1:111122223333:key/abcd1234-...\"\n\ndef envelope_encrypt(plaintext: bytes, kms_key_id: str = KEY_ID):\n    # 1. KMS returns a plaintext data key + the same key encrypted\n    resp = kms.generate_data_key(KeyId=kms_key_id, KeySpec=\"AES_256\")\n    plaintext_key = resp[\"Plaintext\"]\n    encrypted_key = resp[\"CiphertextBlob\"]\n\n    # 2. encrypts the payload locally, never sending it to the KMS\n    nonce = b\"\\x00\" * 12\n    ciphertext_body = AESGCM(plaintext_key).encrypt(nonce, plaintext, None)\n\n    # 3. discards the data key plaintext, only ciphertext travels with the file\n    del plaintext_key\n    return {\"encrypted_key\": encrypted_key, \"ciphertext_body\": ciphertext_body, \"nonce\": nonce}",
-      "h": "23cee5fa"
+      "t": "import os\nimport boto3\nfrom cryptography.hazmat.primitives.ciphers.aead import AESGCM\n\nkms = boto3.client(\"kms\")\nKEY_ID = \"arn:aws:kms:us-east-1:111122223333:key/abcd1234-...\"\n\ndef envelope_encrypt(plaintext: bytes, kms_key_id: str = KEY_ID):\n    # 1. KMS returns a plaintext data key + the same key encrypted\n    resp = kms.generate_data_key(KeyId=kms_key_id, KeySpec=\"AES_256\")\n    plaintext_key = resp[\"Plaintext\"]\n    encrypted_key = resp[\"CiphertextBlob\"]\n\n    # 2. encrypts the payload locally, never sending it to the KMS\n    nonce = os.urandom(12)\n    ciphertext_body = AESGCM(plaintext_key).encrypt(nonce, plaintext, None)\n\n    # 3. discards the data key plaintext, only ciphertext travels with the file\n    del plaintext_key\n    return {\"encrypted_key\": encrypted_key, \"ciphertext_body\": ciphertext_body, \"nonce\": nonce}",
+      "h": "65cad3aa"
     },
     "sections.2.code.0.filename": {
       "t": "envelope.py - conceptual example",
@@ -65,8 +65,8 @@
       "h": "416b7e51"
     },
     "sections.4.body.0": {
-      "t": "Automatic annual rotation is enabled by default on KMS keys and costs almost nothing to use: the old key remains valid for decrypting old data, and the new one encrypts the next. When you need to, you force manual rotation after suspected misuse.",
-      "h": "e8a9b878"
+      "t": "For customer-managed keys, automatic rotation is optional and has to be enabled (the period is configurable); AWS-managed keys rotate by themselves. Turning rotation on costs almost nothing: the old key stays valid for decrypting old data, and the new one encrypts what comes next. When you need to, you force manual rotation after suspected misuse.",
+      "h": "b648e735"
     },
     "sections.4.body.1": {
       "t": "Revocation is different: you either disable the key (blocks decryption) or schedule its deletion. Blocking the key breaks legitimate applications that try to read old data. Hence the practical rule: monitor usage, separate keys by sensitivity, and never mix a production key with a test key on the same resource.",

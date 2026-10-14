@@ -5,20 +5,20 @@
       "h": "87af3951"
     },
     "questions.0.options.0": {
-      "t": "Compilar separadamente para cada ambiente",
-      "h": "2c18585e"
+      "t": "Compilar o código de novo para cada ambiente, para cada um ter o seu próprio build",
+      "h": "93196234"
     },
     "questions.0.options.1": {
       "t": "O mesmo artefato é promovido por todos os ambientes, e só a configuração muda",
       "h": "7f52a06a"
     },
     "questions.0.options.2": {
-      "t": "Fazer deploy em várias regiões ao mesmo tempo",
-      "h": "f13ed357"
+      "t": "Fazer deploy em muitas regiões ao mesmo tempo com o mesmo pipeline",
+      "h": "697524c5"
     },
     "questions.0.options.3": {
-      "t": "Fazer build apenas às sextas-feiras",
-      "h": "bfca3755"
+      "t": "Rodar o build só às sextas, quando o time tem tempo de revisar",
+      "h": "e1e79917"
     },
     "questions.0.q": {
       "t": "O que significa \"build once, deploy many\"?",
@@ -29,20 +29,20 @@
       "h": "6a70c737"
     },
     "questions.1.options.0": {
-      "t": "Nenhuma",
-      "h": "6eef6648"
+      "t": "Nenhuma: os dois termos descrevem a mesma prática em ferramentas diferentes",
+      "h": "dbacca60"
     },
     "questions.1.options.1": {
       "t": "A entrega mantém toda mudança pronta para deploy; a implantação libera automaticamente cada mudança aprovada",
       "h": "715627f3"
     },
     "questions.1.options.2": {
-      "t": "A entrega é para bancos de dados",
-      "h": "b553a85a"
+      "t": "A entrega é para bancos de dados e o deployment é para código de aplicação",
+      "h": "d4743e9c"
     },
     "questions.1.options.3": {
-      "t": "A implantação exige aprovação manual a cada etapa",
-      "h": "563b1a6a"
+      "t": "O deployment exige aprovação manual a cada etapa, e a entrega não",
+      "h": "36128539"
     },
     "questions.1.q": {
       "t": "Qual é a diferença entre entrega contínua e implantação contínua?",
@@ -53,20 +53,20 @@
       "h": "e7dff7ff"
     },
     "questions.2.options.0": {
-      "t": "Como metas para ranquear desenvolvedores individuais",
-      "h": "0b4375f7"
+      "t": "Como metas usadas para ranquear e premiar desenvolvedores individuais",
+      "h": "c214c484"
     },
     "questions.2.options.1": {
       "t": "Como sinais para conversas sobre o sistema de entrega",
       "h": "714bf3cd"
     },
     "questions.2.options.2": {
-      "t": "Somente por auditores",
-      "h": "ec643296"
+      "t": "Só por auditores, que os comparam com padrões do setor",
+      "h": "02f8e22e"
     },
     "questions.2.options.3": {
-      "t": "Devem ser ignoradas",
-      "h": "0920bf1d"
+      "t": "Devem ser ignoradas, porque a entrega não pode ser medida",
+      "h": "885e29ad"
     },
     "questions.2.q": {
       "t": "Como as medidas DORA devem ser usadas?",

@@ -5,20 +5,20 @@
       "h": "36fe4ae2"
     },
     "questions.0.options.0": {
-      "t": "By reading the source code",
-      "h": "19ed6042"
+      "t": "Reading the application's source code line by line, looking for insecure patterns",
+      "h": "c3f002d7"
     },
     "questions.0.options.1": {
       "t": "By attacking the running application from the outside, like a malicious user",
       "h": "f6a0115d"
     },
     "questions.0.options.2": {
-      "t": "By comparing library versions against a CVE database",
-      "h": "3a5b6fed"
+      "t": "Comparing library versions with a database of known CVEs",
+      "h": "d6206b21"
     },
     "questions.0.options.3": {
-      "t": "By reviewing the architecture diagram",
-      "h": "a3016cdf"
+      "t": "Reviewing the architecture diagram to find dangerous flows",
+      "h": "ca6b3e8e"
     },
     "questions.0.q": {
       "t": "How does DAST find vulnerabilities?",
@@ -29,20 +29,20 @@
       "h": "00ace03e"
     },
     "questions.1.options.0": {
-      "t": "Because it only works with empty test databases",
-      "h": "a89ee948"
+      "t": "Because it only works with test databases that are empty",
+      "h": "1e0cb175"
     },
     "questions.1.options.1": {
       "t": "Because the tests can create data, cause slowness or side effects",
       "h": "f05e8050"
     },
     "questions.1.options.2": {
-      "t": "Because production has no HTTP",
-      "h": "cce6d332"
+      "t": "Because production does not accept HTTP requests from external tools",
+      "h": "bb51657d"
     },
     "questions.1.options.3": {
-      "t": "Because DAST does not support HTTPS",
-      "h": "d6edb9ce"
+      "t": "Because DAST cannot test applications that use HTTPS",
+      "h": "05e19414"
     },
     "questions.1.q": {
       "t": "Why does DAST usually run in staging and not directly in production?",
@@ -53,20 +53,20 @@
       "h": "bf50cbb8"
     },
     "questions.2.options.0": {
-      "t": "Unused variables",
-      "h": "e82a933b"
+      "t": "Variables declared and never used in the code",
+      "h": "09c385cc"
     },
     "questions.2.options.1": {
       "t": "Configuration problems and runtime behavior (headers, TLS, authentication)",
       "h": "277bcada"
     },
     "questions.2.options.2": {
-      "t": "Technical debt",
-      "h": "f79372c3"
+      "t": "The technical debt built up in the codebase over the years",
+      "h": "f8ee594a"
     },
     "questions.2.options.3": {
-      "t": "Dependency licenses",
-      "h": "50b0eeaa"
+      "t": "The licenses of the dependencies used by the application",
+      "h": "53ef3539"
     },
     "questions.2.q": {
       "t": "What does DAST see that SAST normally does not?",

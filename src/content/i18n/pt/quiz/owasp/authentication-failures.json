@@ -5,20 +5,20 @@
       "h": "46812e4e"
     },
     "questions.0.options.0": {
-      "t": "Para economizar memória",
-      "h": "92e93d21"
+      "t": "Para economizar memória no servidor descartando os dados da sessão antiga",
+      "h": "b1dff16c"
     },
     "questions.0.options.1": {
       "t": "Para evitar a session fixation, em que um atacante plantou o id antigo",
       "h": "1acf749e"
     },
     "questions.0.options.2": {
-      "t": "Para desconectar o usuário de outros dispositivos",
-      "h": "5206d2c4"
+      "t": "Para desconectar o usuário dos outros dispositivos como efeito colateral",
+      "h": "bd7363e9"
     },
     "questions.0.options.3": {
-      "t": "Porque os cookies expiram no login",
-      "h": "1ef55009"
+      "t": "Porque os cookies expiram no momento do login",
+      "h": "c752e60c"
     },
     "questions.0.q": {
       "t": "Por que o id de sessão precisa mudar após um login bem-sucedido?",
@@ -29,20 +29,20 @@
       "h": "3c877b55"
     },
     "questions.1.options.0": {
-      "t": "Decodificá-lo e ler o payload",
-      "h": "e71bc659"
+      "t": "Decodificá-lo e ler o conteúdo para descobrir quem é o usuário",
+      "h": "5525c2d7"
     },
     "questions.1.options.1": {
       "t": "Verificar a assinatura com um algoritmo fixado e checar emissor, audiência e expiração",
       "h": "8f7171f7"
     },
     "questions.1.options.2": {
-      "t": "Verificar se está em Base64",
-      "h": "659dd721"
+      "t": "Conferir que o valor é um Base64 válido e bem formado",
+      "h": "8a6bcc9e"
     },
     "questions.1.options.3": {
-      "t": "Guardá-lo no localStorage",
-      "h": "bfe7a187"
+      "t": "Guardá-lo no localStorage para a página reutilizá-lo",
+      "h": "a94d26a5"
     },
     "questions.1.q": {
       "t": "O que um serviço deve fazer com um JWT antes de confiar nas suas claims?",
@@ -53,20 +53,20 @@
       "h": "8dbc99dc"
     },
     "questions.2.options.0": {
-      "t": "Regras de senha complexa",
-      "h": "e6016ace"
+      "t": "Regras complexas de senha, com símbolos e números",
+      "h": "12aecce1"
     },
     "questions.2.options.1": {
       "t": "Throttling, verificação de senhas vazadas e autenticação multifator",
       "h": "025d25ff"
     },
     "questions.2.options.2": {
-      "t": "Renomear a URL de login",
-      "h": "990603f8"
+      "t": "Renomear a URL de login para os bots não a encontrarem",
+      "h": "a6c87678"
     },
     "questions.2.options.3": {
-      "t": "Maior duração do cookie",
-      "h": "86d868f7"
+      "t": "Uma vida mais longa para o cookie, para os usuários fazerem login menos vezes",
+      "h": "4c346ea4"
     },
     "questions.2.q": {
       "t": "Qual controle reduz melhor o impacto do credential stuffing?",

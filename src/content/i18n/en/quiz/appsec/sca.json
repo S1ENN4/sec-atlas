@@ -5,20 +5,20 @@
       "h": "fb2c3551"
     },
     "questions.0.options.0": {
-      "t": "Logic errors in your own code",
-      "h": "21e6bb48"
+      "t": "Logic errors in the code written by the team itself",
+      "h": "ba908896"
     },
     "questions.0.options.1": {
       "t": "Third-party dependencies, their versions, CVEs and licenses",
       "h": "ba225558"
     },
     "questions.0.options.2": {
-      "t": "Test coverage",
-      "h": "4e0b0f81"
+      "t": "The coverage of the automated tests of each module",
+      "h": "d0220920"
     },
     "questions.0.options.3": {
-      "t": "Container CPU usage",
-      "h": "16928dcb"
+      "t": "The CPU and memory use of the containers in production",
+      "h": "de668dab"
     },
     "questions.0.q": {
       "t": "What does SCA check?",
@@ -29,20 +29,20 @@
       "h": "049a687c"
     },
     "questions.1.options.0": {
-      "t": "An optional development dependency",
-      "h": "c0c41b42"
+      "t": "An optional dependency used only during development",
+      "h": "8e937495"
     },
     "questions.1.options.1": {
       "t": "A dependency brought in indirectly by another one you declared",
       "h": "4b2664fc"
     },
     "questions.1.options.2": {
-      "t": "A dependency copied into the repository",
-      "h": "5131c937"
+      "t": "A dependency copied by hand into the repository",
+      "h": "2afc04bb"
     },
     "questions.1.options.3": {
-      "t": "A dependency without a license",
-      "h": "ef793580"
+      "t": "A dependency that declares no usage license",
+      "h": "9f7ca6e8"
     },
     "questions.1.q": {
       "t": "A transitive dependency is...",
@@ -57,16 +57,16 @@
       "h": "c08aee4c"
     },
     "questions.2.options.1": {
-      "t": "Because the build changes dependency versions on its own",
-      "h": "b4a68fcd"
+      "t": "Because the build changes the dependency versions by itself on every run",
+      "h": "bf33beda"
     },
     "questions.2.options.2": {
-      "t": "Because SCA expires every 24 hours",
-      "h": "150ff62d"
+      "t": "Because the SCA result expires every 24 hours and has to be renewed",
+      "h": "4149e7d3"
     },
     "questions.2.options.3": {
-      "t": "Because the pipeline deletes the results",
-      "h": "27d60ae5"
+      "t": "Because the pipeline deletes the previous results when it finishes",
+      "h": "3166ad41"
     },
     "questions.2.q": {
       "t": "Why does SCA need to run continuously and not only at build?",

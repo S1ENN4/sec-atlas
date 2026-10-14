@@ -36,6 +36,8 @@ export function SiteHeader({ locale, t }: { locale: Locale; t: Ui }) {
         })),
       })),
     },
+    maps: { href: lp("/explore"), label: n.maps },
+    lab: { href: lp("/lab"), label: n.lab },
     careers: { href: lp("/careers"), label: n.careers },
     learn: {
       label: n.learn,

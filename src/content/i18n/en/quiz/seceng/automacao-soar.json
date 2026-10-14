@@ -9,16 +9,16 @@
       "h": "cfab53ba"
     },
     "questions.0.options.1": {
-      "t": "Always running the broadest possible action",
-      "h": "22185fdd"
+      "t": "Always running the broadest possible action, to contain quickly",
+      "h": "dbe6896d"
     },
     "questions.0.options.2": {
-      "t": "Removing the audit logs",
-      "h": "c5520e01"
+      "t": "Removing the automation's audit logs to gain speed",
+      "h": "982fb581"
     },
     "questions.0.options.3": {
-      "t": "Giving administrator permissions to the automation",
-      "h": "218a2aea"
+      "t": "Giving the automation administrator permissions so it never fails",
+      "h": "7e41b1bd"
     },
     "questions.0.q": {
       "t": "Which of these is an essential brake for response automation?",
@@ -33,16 +33,16 @@
       "h": "9f9f1b05"
     },
     "questions.1.options.1": {
-      "t": "Speeding up execution",
-      "h": "bf04fdf5"
+      "t": "Speeding up the playbook's execution by skipping the checks",
+      "h": "5a2855a5"
     },
     "questions.1.options.2": {
-      "t": "Encrypting credentials",
-      "h": "060c5876"
+      "t": "Encrypting the credentials used by the playbook",
+      "h": "aa392a63"
     },
     "questions.1.options.3": {
-      "t": "Replacing auditing",
-      "h": "220131d0"
+      "t": "Replacing the audit of the actions that were executed",
+      "h": "a579ba4d"
     },
     "questions.1.q": {
       "t": "What is dry-run for in a playbook?",
@@ -57,16 +57,16 @@
       "h": "0cbb4b7a"
     },
     "questions.2.options.1": {
-      "t": "To save storage",
-      "h": "66816c05"
+      "t": "To save storage for the block list",
+      "h": "5d64e2c0"
     },
     "questions.2.options.2": {
-      "t": "Because blocks without expiry are impossible",
-      "h": "1102f859"
+      "t": "Because blocks with no expiry are technically impossible",
+      "h": "c9681314"
     },
     "questions.2.options.3": {
-      "t": "To increase lag",
-      "h": "be617218"
+      "t": "To increase the delay between detection and response",
+      "h": "9fbaaff3"
     },
     "questions.2.q": {
       "t": "Why give automatic blocks an expiry (TTL)?",

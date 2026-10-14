@@ -9,16 +9,16 @@
       "h": "4dc09cba"
     },
     "questions.0.options.1": {
-      "t": "Un tipo de prompt",
-      "h": "892a096a"
+      "t": "Un tipo especial de prompt que guía el estilo de la respuesta",
+      "h": "cb252a45"
     },
     "questions.0.options.2": {
-      "t": "Un log de conversación",
-      "h": "d9903040"
+      "t": "El registro de una conversación guardado para analizarlo después",
+      "h": "c6fad5f0"
     },
     "questions.0.options.3": {
-      "t": "Una clave de API",
-      "h": "3e896eba"
+      "t": "Una clave de API usada para acceder al modelo",
+      "h": "59ea11d6"
     },
     "questions.0.q": {
       "t": "¿Qué es un embedding?",
@@ -33,16 +33,16 @@
       "h": "99799a48"
     },
     "questions.1.options.1": {
-      "t": "Contando letras iguales",
-      "h": "6b3d9503"
+      "t": "Contando cuántas letras iguales tienen en común los dos textos",
+      "h": "da3356b6"
     },
     "questions.1.options.2": {
-      "t": "Comparando el tamaño de los textos",
-      "h": "00292976"
+      "t": "Comparando la longitud de los dos textos en caracteres",
+      "h": "53054bac"
     },
     "questions.1.options.3": {
-      "t": "Con un hash SHA-256",
-      "h": "780f1b36"
+      "t": "Calculando el hash SHA-256 de cada texto y comparándolos",
+      "h": "4177f449"
     },
     "questions.1.q": {
       "t": "¿Cómo se mide la semejanza entre dos embeddings?",
@@ -57,16 +57,16 @@
       "h": "75dce405"
     },
     "questions.2.options.1": {
-      "t": "Se vuelve más lento por defecto",
-      "h": "af52b7ae"
+      "t": "Se vuelve más lento por defecto, porque cada consulta usa dos modelos",
+      "h": "c621159d"
     },
     "questions.2.options.2": {
-      "t": "Aumenta el costo de red",
-      "h": "c6faf279"
+      "t": "Aumenta el coste de red al mover vectores más grandes",
+      "h": "659bd7ec"
     },
     "questions.2.options.3": {
-      "t": "Impide el uso de chunks",
-      "h": "92b6c6e6"
+      "t": "Impide usar chunks de tamaños distintos",
+      "h": "dfeef42b"
     },
     "questions.2.q": {
       "t": "¿Por qué es un problema mezclar modelos de embedding distintos en el mismo índice?",

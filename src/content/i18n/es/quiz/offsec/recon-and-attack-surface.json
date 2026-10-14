@@ -5,20 +5,20 @@
       "h": "d2eda410"
     },
     "questions.0.options.0": {
-      "t": "Para asustar a los usuarios",
-      "h": "71dadb09"
+      "t": "Para asustar a los usuarios y que informen de sitios sospechosos con más frecuencia",
+      "h": "b23c4486"
     },
     "questions.0.options.1": {
       "t": "Para encontrar activos olvidados o sin dueño antes que un atacante",
       "h": "b095804c"
     },
     "questions.0.options.2": {
-      "t": "Para aumentar el tráfico",
-      "h": "b8106e82"
+      "t": "Para aumentar el tráfico y medir cómo reacciona la infraestructura a la carga",
+      "h": "744746e3"
     },
     "questions.0.options.3": {
-      "t": "Para probar a la competencia",
-      "h": "a956b3c2"
+      "t": "Para probar los sistemas de los competidores y comparar su exposición con la tuya",
+      "h": "0ccaba4c"
     },
     "questions.0.q": {
       "t": "¿Por qué los defensores deben ejecutar el descubrimiento de activos contra sus propios dominios?",
@@ -29,20 +29,20 @@
       "h": "052c8ff8"
     },
     "questions.1.options.0": {
-      "t": "Una caída de DNS",
-      "h": "68b5f90f"
+      "t": "Una caída de DNS que deja inaccesibles los servicios de una empresa durante unas horas",
+      "h": "71dae692"
     },
     "questions.1.options.1": {
       "t": "Un registro DNS que apunta a un recurso de nube eliminado, que otra persona puede reclamar y servir desde tu dominio",
       "h": "02d5fe66"
     },
     "questions.1.options.2": {
-      "t": "Una renovación de dominio",
-      "h": "294b45ad"
+      "t": "Una renovación de dominio programada que lo traslada a otro registrador",
+      "h": "ddac5bc3"
     },
     "questions.1.options.3": {
-      "t": "Un nuevo TLD",
-      "h": "3487a705"
+      "t": "El lanzamiento de un nuevo dominio de nivel superior que se solapa con el tuyo",
+      "h": "5783cf2f"
     },
     "questions.1.q": {
       "t": "¿Qué es un subdomain takeover?",
@@ -53,20 +53,20 @@
       "h": "4a0105e9"
     },
     "questions.2.options.0": {
-      "t": "Nada, escanear lo más rápido posible",
-      "h": "cc8259f1"
+      "t": "Nada: escanear lo más rápido posible para acabar antes de que cierre la ventana",
+      "h": "c218e428"
     },
     "questions.2.options.1": {
       "t": "El alcance y la tasa de solicitudes acordada",
       "h": "5c4a5c17"
     },
     "questions.2.options.2": {
-      "t": "Solo la ventana de tiempo",
-      "h": "4434b5fb"
+      "t": "Solo la ventana de tiempo, ya que el alcance es una sugerencia",
+      "h": "8ecded1f"
     },
     "questions.2.options.3": {
-      "t": "Solo la lista de IPs",
-      "h": "1892a89d"
+      "t": "Solo la lista de direcciones IP, sea cual sea la tasa de peticiones",
+      "h": "9a2d42ee"
     },
     "questions.2.q": {
       "t": "En un escaneo autorizado, ¿qué debes respetar?",

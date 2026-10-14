@@ -5,20 +5,20 @@
       "h": "04d38e93"
     },
     "questions.0.options.0": {
-      "t": "Permitir la solicitud para que los usuarios no queden bloqueados",
-      "h": "007b255a"
+      "t": "Permitir la petición, para que los usuarios no queden bloqueados por un fallo del servicio",
+      "h": "a361b963"
     },
     "questions.0.options.1": {
       "t": "Denegar y registrar el fallo (fail closed)",
       "h": "63664087"
     },
     "questions.0.options.2": {
-      "t": "Reintentar para siempre",
-      "h": "27987402"
+      "t": "Reintentar para siempre, hasta que el servicio de autorización responda",
+      "h": "241e5f9b"
     },
     "questions.0.options.3": {
-      "t": "Devolver el texto de la excepción",
-      "h": "7d39051b"
+      "t": "Devolver el texto de la excepción al llamador para que decida",
+      "h": "34ba61d5"
     },
     "questions.0.q": {
       "t": "Un servicio de autorización agota el tiempo de espera. ¿Qué debe hacer el código que lo llama?",
@@ -29,20 +29,20 @@
       "h": "abab0efb"
     },
     "questions.1.options.0": {
-      "t": "El stack trace, para ayudar a depurar",
-      "h": "e206def1"
+      "t": "La traza de pila completa, para ayudar al usuario a informar del problema",
+      "h": "c77a5c75"
     },
     "questions.1.options.1": {
       "t": "Un mensaje genérico y un correlation id, con los detalles guardados en los logs",
       "h": "0ca4246e"
     },
     "questions.1.options.2": {
-      "t": "La consulta SQL que falló",
-      "h": "fc8a7412"
+      "t": "La consulta SQL que falló, para que el equipo pueda reproducirla",
+      "h": "14d88c17"
     },
     "questions.1.options.3": {
-      "t": "Nada, se corta la conexión",
-      "h": "64ec3f2a"
+      "t": "Nada: la conexión se corta sin ningún mensaje",
+      "h": "59d7b621"
     },
     "questions.1.q": {
       "t": "¿Qué debe ver el cliente cuando ocurre un error inesperado?",
@@ -53,20 +53,20 @@
       "h": "6b470ace"
     },
     "questions.2.options.0": {
-      "t": "Capturar el error e ignorarlo",
-      "h": "ec4489de"
+      "t": "Capturar el error e ignorarlo, para que el usuario no vea ningún fallo",
+      "h": "6326bd3b"
     },
     "questions.2.options.1": {
       "t": "Ejecutar ambos pasos en una sola transacción para que tengan éxito o fallen juntos",
       "h": "51412a77"
     },
     "questions.2.options.2": {
-      "t": "Ejecutar el crédito dos veces",
-      "h": "7ffd397a"
+      "t": "Ejecutar el paso de crédito dos veces para asegurarse de que se aplica",
+      "h": "89fa07a0"
     },
     "questions.2.options.3": {
-      "t": "Agregar un sleep entre los pasos",
-      "h": "d387de72"
+      "t": "Añadir una breve pausa entre los dos pasos",
+      "h": "5ef53a69"
     },
     "questions.2.q": {
       "t": "El débito se completa, el crédito lanza un error. ¿Cómo evitas perder dinero?",

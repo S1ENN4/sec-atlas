@@ -9,16 +9,16 @@
       "h": "ed349654"
     },
     "questions.0.options.1": {
-      "t": "El costo mensual de la herramienta",
-      "h": "9c092e28"
+      "t": "El coste mensual de la herramienta de detección",
+      "h": "cb990c09"
     },
     "questions.0.options.2": {
-      "t": "La latencia media del sitio",
-      "h": "2da35faa"
+      "t": "La latencia media del sitio durante el ataque",
+      "h": "dac9bc94"
     },
     "questions.0.options.3": {
-      "t": "El número de reglas activas",
-      "h": "7a5a789c"
+      "t": "El número de reglas de detección activas en el SIEM",
+      "h": "250e15a5"
     },
     "questions.0.q": {
       "t": "¿Qué mide el MTTC?",
@@ -33,16 +33,16 @@
       "h": "3ef29c30"
     },
     "questions.1.options.1": {
-      "t": "Ambos suben siempre",
-      "h": "1c74ab85"
+      "t": "Ambos suben siempre, porque la detección se vuelve más precisa",
+      "h": "e104e414"
     },
     "questions.1.options.2": {
-      "t": "No cambia nada",
-      "h": "9eb7c031"
+      "t": "No cambia nada, porque la sensibilidad no afecta a la precisión",
+      "h": "90e2a0a5"
     },
     "questions.1.options.3": {
-      "t": "La detección deja de funcionar",
-      "h": "9064e568"
+      "t": "La detección deja de funcionar por exceso de alertas",
+      "h": "471242f7"
     },
     "questions.1.q": {
       "t": "¿Qué pasa con la precisión cuando se aumenta mucho la sensibilidad de una detección?",
@@ -57,16 +57,16 @@
       "h": "e6ee8bfc"
     },
     "questions.2.options.1": {
-      "t": "Apagar las reglas ruidosas",
-      "h": "d80e3f92"
+      "t": "Apagar las reglas ruidosas en cuanto molestan",
+      "h": "d182368a"
     },
     "questions.2.options.2": {
-      "t": "Aumentar el número de alertas",
-      "h": "83ac153e"
+      "t": "Aumentar el número de alertas para que el equipo tenga más trabajo",
+      "h": "227d2b62"
     },
     "questions.2.options.3": {
-      "t": "Eliminar el recall",
-      "h": "4ae8112e"
+      "t": "Eliminar el recall, que solo estorba el análisis",
+      "h": "1476096b"
     },
     "questions.2.q": {
       "t": "¿Cuál es el objetivo declarado del tuning semanal?",

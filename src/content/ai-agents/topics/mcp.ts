@@ -16,7 +16,7 @@ export const mcp: Topic = {
       body: [
         "MCP (Model Context Protocol) é um protocolo aberto que padroniza a conversa entre um cliente LLM (o host, geralmente um IDE ou app de chat) e servidores externos que expõem capacidades. Em vez de cada provedor de ferramenta inventar sua própria API, todo servidor MCP fala o mesmo JSON-RPC e todo cliente MCP descobre tudo igual.",
         "Pense em USB-C para agentes. A peça física mudou uma vez; o ecossistema ganhou. A mesma ideia aqui: o protocolo muda uma vez, e um servidor escrito para o Claude Desktop funciona no Cursor, no Continue e em qualquer host que reenvie a mensagem.",
-        "as observações deste tópico valem o pino P da especificação: revisão 2025-06-18 da Model Context Protocol. Releases posteriores podem introduzir capacidades novas (sampling, elicitation, roots) e mudar contratos existentes; confira a versão da spec que o SDK declara antes de adotar.",
+        "Este tópico descreve o modelo com handshake das revisões de 2024 e 2025 (como a 2025-06-18), que ainda é o mais implantado. A revisão atual, 2026-07-28, é stateless: remove o handshake initialize e as sessões, e cada requisição leva a versão do protocolo e as capabilities do cliente em _meta; os servidores passam a expor server/discover. Sampling, roots e logging estão deprecados. Confira a revisão que o seu SDK declara antes de adotar.",
       ],
     },
     {
@@ -25,14 +25,14 @@ export const mcp: Topic = {
         "Três papéis coexistem na especificação. Confundi-los é o erro mais comum ao ler documentação.",
         "host: o aplicativo onde o usuário está (IDE, chat, agente). Ele hospeda os clientes e coordena permissões. Em geral um host roda muitos clientes.",
         "client: vive dentro do host, fala com um único servidor via JSON-RPC. É o objeto que serializa as chamadas e negocia capabilities.",
-        "server: o processo que expõe tools, resources e prompts. Pode rodar localmente via stdin/stdout, ou remotamente via HTTP com SSE. É onde vive a lógica de integração.",
-        "O transporte típico local é stdio: o host spawna o server como subprocesso e fala JSON-RPC linha a linha. Em ambientes distribuídos, o transporte é Streamable HTTP, com POST para mensagens e GET com text/event-stream para notificações.",
+        "server: o processo que expõe tools, resources e prompts. Pode rodar localmente via stdin/stdout, ou remotamente via Streamable HTTP (o transporte antigo HTTP+SSE está deprecado). É onde vive a lógica de integração.",
+        "O transporte típico local é stdio: o host spawna o server como subprocesso e fala JSON-RPC linha a linha. Em ambientes distribuídos, o transporte é Streamable HTTP: POST para as mensagens, com respostas que podem virar um stream de eventos. A revisão 2026-07-28 trocou o GET de notificações por um stream único aberto com subscriptions/listen.",
       ],
       code: [
         {
           language: "text",
           filename: "topologia típica",
-          code: "  Host (Claude Desktop, Cursor, VS Code, app própria)\n  |\n  | 1:N\n  |\n  +-- Client MCP (stdio)   <--> Server MCP local  (ex: filesystem)\n  +-- Client MCP (stdio)   <--> Server MCP local  (ex: postgres)\n  +-- Client MCP (HTTP+SSE)<--> Server MCP remoto (ex: API SaaS)\n\n  Transporte sempre é JSON-RPC 2.0. Estado de sessão é por connection.",
+          code: "  Host (Claude Desktop, Cursor, VS Code, app própria)\n  |\n  | 1:N\n  |\n  +-- Client MCP (stdio)   <--> Server MCP local  (ex: filesystem)\n  +-- Client MCP (stdio)   <--> Server MCP local  (ex: postgres)\n  +-- Client MCP (Streamable HTTP)<--> Server MCP remoto (ex: API SaaS)\n\n  Transporte sempre é JSON-RPC 2.0. Nas revisões com handshake, o estado da sessão é por conexão.",
         },
       ],
     },
@@ -55,7 +55,7 @@ export const mcp: Topic = {
     {
       heading: "Como o cliente descobre capacidades",
       body: [
-        "Quando o host sobe um client MCP, a primeira mensagem é initialize, com a versão do protocolo e as capabilities do cliente. O server responde com suas próprias capabilities. Daí em diante, o host chama tools/list, resources/list e prompts/list para montar o catálogo disponível.",
+        "Nas revisões com handshake (até a 2025-11-25), a primeira mensagem do client é initialize, com a versão do protocolo e as capabilities do cliente, e o server responde com as suas. Na revisão 2026-07-28 não há handshake: cada requisição declara a versão e as capabilities, e o client pode chamar server/discover para saber o que o server suporta. Em ambos os casos, o host chama tools/list, resources/list e prompts/list para montar o catálogo disponível.",
         "Cada capacidade pode declarar listChanged: true, indicando que o server vai emitir notifications/resources/list_changed ou notifications/tools/list_changed quando algo mudar. O host re-lista e atualiza o catálogo sem precisar reiniciar.",
       ],
       code: [
@@ -72,15 +72,15 @@ export const mcp: Topic = {
         "interoperabilidade: um server MCP serve vários hosts sem reescrita; trocar de IDE não é reescrever integração",
         "descoberta dinâmica: tools e resources aparecem em tempo de conexão, sem reiniciar o host",
         "separação clara de papéis: tools são ações, resources são dados, prompts são templates — sem ambiguidade",
-        "transporte flexível: stdio para local, HTTP+SSE para distribuído; o contrato sobre o token é o mesmo",
+        "transporte flexível: stdio para local, Streamable HTTP para distribuído; o contrato sobre o token é o mesmo",
       ],
     },
     {
       heading: "Limitações",
       bullets: [
         "tools ainda são ação do modelo: o server pode chamar APIs perigosas — autorização e sandboxing ficam por conta do host",
-        "spec evolui rápido: 2025-06-18 é o pino deste tópico; sampling/elicitation/roots são áreas em expansão",
-        "debug remoto é mais difícil: HTTP+SSE esconde o ciclo de vida; logs e handlers são equivalentes em importância",
+        "spec evolui rápido: a revisão atual (2026-07-28) removeu o handshake e deprecou sampling, roots e logging; versões antigas continuam em uso, então confira o que o SDK declara",
+        "debug remoto é mais difícil: o stream HTTP esconde o ciclo de vida; logs e handlers são equivalentes em importância",
         "trust on first connect: o host precisa confiar no server; assinatura de pacotes e allowlist ainda são responsabilidade de deployment",
       ],
     },

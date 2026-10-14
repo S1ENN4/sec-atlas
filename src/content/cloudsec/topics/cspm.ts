@@ -9,7 +9,7 @@ export const cspm: Topic = {
     "Cloud Security Posture Management vasculha a configuração de cada conta contra baselines (CIS, PCI, NIST) e aponta drift antes que vire incidente.",
   kind: "pratica",
   stage: "detectar",
-  tools: ["Wiz", "Lacework", "Prisma Cloud", "Orca Security"],
+  tools: ["Wiz", "Prisma Cloud", "Orca Security", "Microsoft Defender for Cloud"],
   sections: [
     {
       heading: "O que é",

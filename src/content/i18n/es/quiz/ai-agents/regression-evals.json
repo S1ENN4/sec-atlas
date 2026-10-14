@@ -9,16 +9,16 @@
       "h": "6ca2be90"
     },
     "questions.0.options.1": {
-      "t": "Evals que solo corren una vez",
-      "h": "3b0eaa09"
+      "t": "Evals que se ejecutan solo una vez, cuando empieza el proyecto",
+      "h": "48519970"
     },
     "questions.0.options.2": {
-      "t": "Un tipo de regresión lineal",
-      "h": "3919c74f"
+      "t": "Un tipo de regresión lineal aplicada a las respuestas",
+      "h": "ecca3ffa"
     },
     "questions.0.options.3": {
-      "t": "Pruebas de interfaz",
-      "h": "3606c994"
+      "t": "Pruebas de interfaz que comprueban botones y pantallas",
+      "h": "64ca95f9"
     },
     "questions.0.q": {
       "t": "¿Qué son los regression evals?",
@@ -33,16 +33,16 @@
       "h": "25f58440"
     },
     "questions.1.options.1": {
-      "t": "Solo después del incidente",
-      "h": "a7deac49"
+      "t": "Solo después del incidente, para investigar qué se rompió",
+      "h": "3e1a6124"
     },
     "questions.1.options.2": {
-      "t": "En el entrenamiento del modelo",
-      "h": "766bbca1"
+      "t": "En el entrenamiento del modelo, antes de publicarlo",
+      "h": "d5f68ce0"
     },
     "questions.1.options.3": {
-      "t": "Fuera del repositorio",
-      "h": "ed3af232"
+      "t": "Fuera del repositorio, en una hoja de cálculo del equipo",
+      "h": "61335bd4"
     },
     "questions.1.q": {
       "t": "¿Dónde encajan los regression evals en el flujo?",
@@ -57,16 +57,16 @@
       "h": "d296ec10"
     },
     "questions.2.options.1": {
-      "t": "Para aumentar el tiempo de ejecución",
-      "h": "4294b6f6"
+      "t": "Para aumentar el tiempo de ejecución de las pruebas",
+      "h": "c9cb0850"
     },
     "questions.2.options.2": {
-      "t": "Porque el modelo lo exige",
-      "h": "59d63bf4"
+      "t": "Porque el modelo exige estos casos para funcionar",
+      "h": "f8802ebf"
     },
     "questions.2.options.3": {
-      "t": "Para esconder el historial",
-      "h": "fd32f742"
+      "t": "Para ocultar el historial de fallos a los clientes",
+      "h": "855e6893"
     },
     "questions.2.q": {
       "t": "¿Por qué incluir casos de fallas pasadas?",

@@ -9,16 +9,16 @@
       "h": "f3822e92"
     },
     "questions.0.options.1": {
-      "t": "Encrypting twice with the same key",
-      "h": "c482a80e"
+      "t": "Encrypting the same data twice with the same key, to double the protection",
+      "h": "0cf1151f"
     },
     "questions.0.options.2": {
-      "t": "Storing the key next to the data in plain text",
-      "h": "9f1114f4"
+      "t": "Keeping the data key next to the data, in plain text, in the same bucket",
+      "h": "38765dab"
     },
     "questions.0.options.3": {
-      "t": "Using only public keys",
-      "h": "22ff8750"
+      "t": "Using only public keys to encrypt and decrypt all the content",
+      "h": "bfab3d92"
     },
     "questions.0.q": {
       "t": "What is envelope encryption?",
@@ -33,16 +33,16 @@
       "h": "2574640c"
     },
     "questions.1.options.1": {
-      "t": "Because keys expire in hours",
-      "h": "42b2a257"
+      "t": "Because KMS keys expire after a few hours by default",
+      "h": "b0cda1db"
     },
     "questions.1.options.2": {
-      "t": "Because the KMS is slow",
-      "h": "7e2c24d1"
+      "t": "Because KMS is slow and any extra access delays the application",
+      "h": "cb3c2939"
     },
     "questions.1.options.3": {
-      "t": "Because keys take up space",
-      "h": "2848f336"
+      "t": "Because each key takes up space and storage is limited",
+      "h": "5a9ca9a4"
     },
     "questions.1.q": {
       "t": "Why is access to the key in the KMS so critical?",
@@ -57,16 +57,16 @@
       "h": "e3bfedf4"
     },
     "questions.2.options.1": {
-      "t": "Sharing the key by email",
-      "h": "23b2618e"
+      "t": "Sharing the key by email with whoever needs to use it",
+      "h": "8aa352f7"
     },
     "questions.2.options.2": {
-      "t": "Never rotating",
-      "h": "560d63ce"
+      "t": "Never rotating, so as not to invalidate data that is already encrypted",
+      "h": "cacc8264"
     },
     "questions.2.options.3": {
-      "t": "Using the same key in all environments",
-      "h": "853f5d85"
+      "t": "Using the same key in all environments to simplify operations",
+      "h": "b5090792"
     },
     "questions.2.q": {
       "t": "Which practice is recommended for keys?",

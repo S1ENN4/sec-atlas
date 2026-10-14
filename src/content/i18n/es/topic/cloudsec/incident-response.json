@@ -41,8 +41,8 @@
       "h": "a3145c32"
     },
     "sections.2.code.0.code": {
-      "t": "USER=svc-deploy\nKEY=AKIAIOSFODNN7EXAMPLE\n\n# 1. desactiva la clave (no la borra: se preserva para forense)\naws iam update-access-key --user-name \"$USER\" \\\n  --access-key-id \"$KEY\" --status Inactive\n\n# 2. deniega todo a las sesiones ya emitidas antes de ahora\naws iam put-user-policy --user-name \"$USER\" \\\n  --policy-name quarantine \\\n  --policy-document file://deny-all.json",
-      "h": "215f56f6"
+      "t": "USER=svc-deploy\nKEY=AKIAIOSFODNN7EXAMPLE\n\n# 1. desactiva la clave (no la borra: se preserva para forense)\naws iam update-access-key --user-name \"$USER\" \\\n  --access-key-id \"$KEY\" --status Inactive\n\n# 2. deniega todo al usuario mientras dura la investigación\naws iam put-user-policy --user-name \"$USER\" \\\n  --policy-name quarantine \\\n  --policy-document file://deny-all.json",
+      "h": "5e9c8543"
     },
     "sections.2.code.0.filename": {
       "t": "contain-key.sh - desactivar clave comprometida",

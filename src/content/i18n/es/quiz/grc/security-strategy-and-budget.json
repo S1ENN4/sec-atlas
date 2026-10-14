@@ -5,20 +5,20 @@
       "h": "1ff0cde8"
     },
     "questions.0.options.0": {
-      "t": "Por las herramientas más nuevas",
-      "h": "a6b683b4"
+      "t": "Por las herramientas más nuevas de las que hablan competidores y analistas",
+      "h": "cbd5ef7a"
     },
     "questions.0.options.1": {
       "t": "Por los objetivos del negocio, las joyas de la corona, las obligaciones y el apetito de riesgo",
       "h": "3ded1aff"
     },
     "questions.0.options.2": {
-      "t": "Por el calendario de auditorías",
-      "h": "83dc8ae3"
+      "t": "Por el calendario de auditorías y las evidencias que pedirá cada una",
+      "h": "2808d40d"
     },
     "questions.0.options.3": {
-      "t": "Por el presupuesto",
-      "h": "b21fa1ef"
+      "t": "Por el presupuesto que ya aprobó el área financiera",
+      "h": "261fe476"
     },
     "questions.0.q": {
       "t": "¿Por dónde debe comenzar una estrategia de seguridad?",
@@ -29,20 +29,20 @@
       "h": "8bcb3de9"
     },
     "questions.1.options.0": {
-      "t": "Para parecer humilde",
-      "h": "c926b192"
+      "t": "Para mostrar humildad y hacer que el plan parezca más realista a la dirección",
+      "h": "41b583c8"
     },
     "questions.1.options.1": {
       "t": "Las prioridades son elecciones, y los riesgos no abordados deben ser explícitos, tener responsable y revisarse",
       "h": "094b3f8a"
     },
     "questions.1.options.2": {
-      "t": "Es una regla legal",
-      "h": "6347e628"
+      "t": "Una regulación exige que todo roadmap enumere sus omisiones",
+      "h": "302c056e"
     },
     "questions.1.options.3": {
-      "t": "Para acortar la hoja de ruta",
-      "h": "8c3322e6"
+      "t": "Para que el roadmap sea más corto y fácil de presentar",
+      "h": "d1fe78dd"
     },
     "questions.1.q": {
       "t": "¿Por qué una hoja de ruta debe declarar lo que se acepta por ahora?",
@@ -53,20 +53,20 @@
       "h": "0ad554b2"
     },
     "questions.2.options.0": {
-      "t": "Otra herramienta que se superpone",
-      "h": "02200ce3"
+      "t": "Otra herramienta que se solapa con las que el equipo ya opera",
+      "h": "141cdc78"
     },
     "questions.2.options.1": {
       "t": "Bases y personas: inventario, identidad, logging, respaldos, capacitación y retención",
       "h": "1c223e10"
     },
     "questions.2.options.2": {
-      "t": "Un logotipo más grande",
-      "h": "e82c050c"
+      "t": "Una marca más grande para el equipo de seguridad y sus campañas de concienciación",
+      "h": "e046f8c3"
     },
     "questions.2.options.3": {
-      "t": "Más dashboards",
-      "h": "47fa37fb"
+      "t": "Más paneles que resumen los mismos datos de formas nuevas",
+      "h": "9cd456d4"
     },
     "questions.2.q": {
       "t": "¿Qué gasto suele dar el mejor retorno en un equipo pequeño?",

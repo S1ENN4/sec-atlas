@@ -9,16 +9,16 @@
       "h": "de149375"
     },
     "questions.0.options.1": {
-      "t": "To reduce the number of fields to zero",
-      "h": "8b65b5fe"
+      "t": "To reduce the number of fields in each event to zero",
+      "h": "8361287e"
     },
     "questions.0.options.2": {
-      "t": "To skip enrichment",
-      "h": "5da3807b"
+      "t": "To remove any later enrichment of the events",
+      "h": "765db662"
     },
     "questions.0.options.3": {
-      "t": "To encrypt the logs",
-      "h": "91504140"
+      "t": "To encrypt the logs while they travel to the SIEM",
+      "h": "f1407da9"
     },
     "questions.0.q": {
       "t": "Why normalize events into a single schema?",
@@ -33,16 +33,16 @@
       "h": "e60bbd74"
     },
     "questions.1.options.1": {
-      "t": "Deleting the user agent",
-      "h": "60dab416"
+      "t": "Deleting the user agent to save space",
+      "h": "82a2ceeb"
     },
     "questions.1.options.2": {
-      "t": "Converting the timestamp to free text",
-      "h": "d0a86f90"
+      "t": "Converting the timestamp to free text, which is easier to read",
+      "h": "3f844871"
     },
     "questions.1.options.3": {
-      "t": "Removing the request path",
-      "h": "0217bd09"
+      "t": "Removing the request path to protect privacy",
+      "h": "d0528dd1"
     },
     "questions.1.q": {
       "t": "Which is an example of useful enrichment?",
@@ -57,16 +57,16 @@
       "h": "560d19aa"
     },
     "questions.2.options.1": {
-      "t": "None, the lost volume does not matter",
-      "h": "4efaad54"
+      "t": "None, because the lost volume does not matter for detection",
+      "h": "7c781b17"
     },
     "questions.2.options.2": {
-      "t": "The WAF stops working immediately",
-      "h": "28740af2"
+      "t": "The WAF immediately stops working at the edge",
+      "h": "5560845a"
     },
     "questions.2.options.3": {
-      "t": "The logs become more secure",
-      "h": "c4f77c78"
+      "t": "The logs become safer because they are smaller",
+      "h": "687e34f6"
     },
     "questions.2.q": {
       "t": "What risk appears when the pipeline drops events under load?",

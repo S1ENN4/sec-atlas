@@ -9,16 +9,16 @@
       "h": "6962a7b7"
     },
     "questions.0.options.1": {
-      "t": "The model executing code on its own on the GPU",
-      "h": "611bff0c"
+      "t": "The model running code by itself on the server's GPU",
+      "h": "146dc28d"
     },
     "questions.0.options.2": {
-      "t": "A type of embedding",
-      "h": "3a0ae017"
+      "t": "A type of embedding used to find similar functions",
+      "h": "6449eeb5"
     },
     "questions.0.options.3": {
-      "t": "A phone call",
-      "h": "72bd27d7"
+      "t": "A phone call made by the model to the user",
+      "h": "3cfe4ee4"
     },
     "questions.0.q": {
       "t": "What is tool calling?",
@@ -33,16 +33,16 @@
       "h": "06a883a6"
     },
     "questions.1.options.1": {
-      "t": "Because the model never makes mistakes",
-      "h": "ab93a3c2"
+      "t": "Because the model never makes mistakes when building the arguments",
+      "h": "8df5405d"
     },
     "questions.1.options.2": {
-      "t": "Because the tool charges per argument",
-      "h": "8178c729"
+      "t": "Because the tool charges for each argument received",
+      "h": "aa0e432f"
     },
     "questions.1.options.3": {
-      "t": "Because JSON is forbidden",
-      "h": "03fc0f8b"
+      "t": "Because the JSON format is forbidden in tool calls",
+      "h": "0003c697"
     },
     "questions.1.q": {
       "t": "Why validate the arguments the model generates for a tool?",
@@ -57,16 +57,16 @@
       "h": "33ad8e03"
     },
     "questions.2.options.1": {
-      "t": "Reading the current date",
-      "h": "0eee2de9"
+      "t": "Reading the current date from the system to answer the user",
+      "h": "ad014904"
     },
     "questions.2.options.2": {
-      "t": "Adding two numbers",
-      "h": "7a54f362"
+      "t": "Adding two numbers given in the conversation",
+      "h": "d6a01a2a"
     },
     "questions.2.options.3": {
-      "t": "Formatting a text",
-      "h": "997939f9"
+      "t": "Formatting a text according to a template",
+      "h": "f6ed642b"
     },
     "questions.2.q": {
       "t": "Which action should require human confirmation?",

@@ -5,20 +5,20 @@
       "h": "b815aa91"
     },
     "questions.0.options.0": {
-      "t": "Manter branches de longa duração para cada funcionalidade",
-      "h": "330e91d7"
+      "t": "Manter um branch longo para cada funcionalidade e mesclar cada um quando ficar completo",
+      "h": "42717aa2"
     },
     "questions.0.options.1": {
       "t": "Integrar mudanças pequenas e de vida curta à main com frequência, escondendo o trabalho inacabado atrás de flags",
       "h": "4121387d"
     },
     "questions.0.options.2": {
-      "t": "Nunca usar branches",
-      "h": "107fff65"
+      "t": "Nunca usar branches, para todos fazerem commit direto num único arquivo compartilhado",
+      "h": "0e39a1b4"
     },
     "questions.0.options.3": {
-      "t": "Integrar só uma vez por release",
-      "h": "383ee907"
+      "t": "Mesclar só uma vez por release, depois de um longo período de estabilização",
+      "h": "556252b7"
     },
     "questions.0.q": {
       "t": "Qual é a ideia central do trunk-based development?",
@@ -29,20 +29,20 @@
       "h": "dfc8767f"
     },
     "questions.1.options.0": {
-      "t": "Criptografa o repositório",
-      "h": "2b1f96dc"
+      "t": "Criptografa o repositório para só os donos poderem lê-lo",
+      "h": "f595d164"
     },
     "questions.1.options.1": {
       "t": "Solicita revisão das pessoas ou equipes donas dos caminhos que um pull request altera",
       "h": "23228d9f"
     },
     "questions.1.options.2": {
-      "t": "Apaga branches antigos",
-      "h": "1d77877d"
+      "t": "Apaga branches antigos que foram mesclados há mais de 30 dias",
+      "h": "e8599bad"
     },
     "questions.1.options.3": {
-      "t": "Assina commits",
-      "h": "8c3ddb54"
+      "t": "Assina todo commit feito nos caminhos de cada time",
+      "h": "e7c8757e"
     },
     "questions.1.q": {
       "t": "O que faz o CODEOWNERS?",
@@ -53,20 +53,20 @@
       "h": "4d0fb57a"
     },
     "questions.2.options.0": {
-      "t": "Nada, ele sumiu",
-      "h": "35123db6"
+      "t": "Nada: depois de o arquivo ser apagado num commit posterior, o segredo se foi",
+      "h": "959613b1"
     },
     "questions.2.options.1": {
       "t": "Rotacionar o segredo, porque ele continua no histórico",
       "h": "f6e83af0"
     },
     "questions.2.options.2": {
-      "t": "Renomear o arquivo",
-      "h": "03a73914"
+      "t": "Renomear o arquivo para os scanners deixarem de reconhecer o nome",
+      "h": "4801d327"
     },
     "questions.2.options.3": {
-      "t": "Fazer force-push e não contar a ninguém",
-      "h": "1b2d97c0"
+      "t": "Fazer force-push do branch sem o commit e não contar a ninguém",
+      "h": "0b842942"
     },
     "questions.2.q": {
       "t": "Um segredo foi commitado no repositório e depois apagado no commit seguinte. O que você deve fazer?",

@@ -9,16 +9,16 @@
       "h": "ed349654"
     },
     "questions.0.options.1": {
-      "t": "The monthly cost of the tool",
-      "h": "9c092e28"
+      "t": "The monthly cost of the detection tool",
+      "h": "cb990c09"
     },
     "questions.0.options.2": {
-      "t": "The average latency of the site",
-      "h": "2da35faa"
+      "t": "The average latency of the site during the attack",
+      "h": "dac9bc94"
     },
     "questions.0.options.3": {
-      "t": "The number of active rules",
-      "h": "7a5a789c"
+      "t": "The number of detection rules active in the SIEM",
+      "h": "250e15a5"
     },
     "questions.0.q": {
       "t": "What does MTTC measure?",
@@ -33,16 +33,16 @@
       "h": "3ef29c30"
     },
     "questions.1.options.1": {
-      "t": "Both always rise",
-      "h": "1c74ab85"
+      "t": "Both always rise, because the detection becomes more precise",
+      "h": "e104e414"
     },
     "questions.1.options.2": {
-      "t": "Nothing changes",
-      "h": "9eb7c031"
+      "t": "Nothing changes, because sensitivity does not affect precision",
+      "h": "90e2a0a5"
     },
     "questions.1.options.3": {
-      "t": "The detection stops working",
-      "h": "9064e568"
+      "t": "The detection stops working because of too many alerts",
+      "h": "471242f7"
     },
     "questions.1.q": {
       "t": "What happens to precision when a detection's sensitivity is greatly increased?",
@@ -57,16 +57,16 @@
       "h": "e6ee8bfc"
     },
     "questions.2.options.1": {
-      "t": "Turn off noisy rules",
-      "h": "d80e3f92"
+      "t": "Turning off the noisy rules as soon as they become a nuisance",
+      "h": "d182368a"
     },
     "questions.2.options.2": {
-      "t": "Increase the number of alerts",
-      "h": "83ac153e"
+      "t": "Increasing the number of alerts so the team has more work",
+      "h": "227d2b62"
     },
     "questions.2.options.3": {
-      "t": "Eliminate recall",
-      "h": "4ae8112e"
+      "t": "Eliminating recall, which only gets in the way of the analysis",
+      "h": "1476096b"
     },
     "questions.2.q": {
       "t": "What is the stated goal of weekly tuning?",

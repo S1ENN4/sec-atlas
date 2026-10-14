@@ -9,16 +9,16 @@
       "h": "f0782322"
     },
     "questions.0.options.1": {
-      "t": "Para reducir el costo de almacenamiento",
-      "h": "5e3c33da"
+      "t": "Para reducir el coste de almacenamiento de los datos del origen",
+      "h": "dac2ea8f"
     },
     "questions.0.options.2": {
-      "t": "Para acelerar el DNS",
-      "h": "15de3272"
+      "t": "Para acelerar la resolución DNS de los clientes",
+      "h": "cf3401cc"
     },
     "questions.0.options.3": {
-      "t": "Porque el origen no soporta HTTPS",
-      "h": "00dee44f"
+      "t": "Porque el origen no admite conexiones HTTPS",
+      "h": "0f8dac08"
     },
     "questions.0.q": {
       "t": "¿Por qué cerrar el origen para aceptar tráfico solo del borde?",
@@ -33,16 +33,16 @@
       "h": "62dbe66a"
     },
     "questions.1.options.1": {
-      "t": "Si el control falla, el tráfico pasa",
-      "h": "97fdda59"
+      "t": "Si el control falla, el tráfico pasa sin comprobarse",
+      "h": "cec5e1b4"
     },
     "questions.1.options.2": {
-      "t": "El control nunca falla",
-      "h": "049dab4a"
+      "t": "El control nunca falla, así que no hay un comportamiento definido",
+      "h": "c57fc83d"
     },
     "questions.1.options.3": {
-      "t": "El sistema se reinicia solo",
-      "h": "20c7f431"
+      "t": "El sistema se reinicia solo y recupera el control",
+      "h": "3cfb0dc8"
     },
     "questions.1.q": {
       "t": "¿Qué significa fail-closed?",
@@ -57,16 +57,16 @@
       "h": "8f942f16"
     },
     "questions.2.options.1": {
-      "t": "El borde no lee cabeceras",
-      "h": "c3473b48"
+      "t": "El borde no puede leer las cabeceras de las peticiones",
+      "h": "7480e220"
     },
     "questions.2.options.2": {
-      "t": "Porque la aplicación es más rápida",
-      "h": "217350ea"
+      "t": "Porque la aplicación es siempre más rápida que el borde",
+      "h": "4970bdf2"
     },
     "questions.2.options.3": {
-      "t": "Porque el borde no soporta HTTPS",
-      "h": "dc0ec1eb"
+      "t": "Porque el borde no admite conexiones HTTPS",
+      "h": "f7643945"
     },
     "questions.2.q": {
       "t": "¿Por qué la autorización por objeto no puede quedarse solo en el borde?",

@@ -5,20 +5,20 @@
       "h": "d5a4195f"
     },
     "questions.0.options.0": {
-      "t": "É um checklist gratuito",
-      "h": "79031506"
+      "t": "É uma lista de verificação gratuita que qualquer time pode autoavaliar e publicar",
+      "h": "ed222c39"
     },
     "questions.0.options.1": {
       "t": "É um padrão certificável para um sistema de gestão de segurança da informação, auditado por terceiros",
       "h": "1e86ac35"
     },
     "questions.0.options.2": {
-      "t": "Aplica-se apenas a pagamentos",
-      "h": "e8462b78"
+      "t": "Aplica-se apenas a organizações que processam pagamentos com cartão",
+      "h": "2d80b48b"
     },
     "questions.0.options.3": {
-      "t": "É uma lei",
-      "h": "6353ff68"
+      "t": "É uma regulamentação que toda empresa do setor deve seguir por lei",
+      "h": "0377e328"
     },
     "questions.0.q": {
       "t": "O que é verdade sobre a ISO/IEC 27001?",
@@ -29,20 +29,20 @@
       "h": "828d484a"
     },
     "questions.1.options.0": {
-      "t": "Manter um programa separado para cada um",
-      "h": "ab726129"
+      "t": "Rodar um programa, um time e um conjunto de evidências separados para cada framework",
+      "h": "8dcf5501"
     },
     "questions.1.options.1": {
       "t": "Usar um como espinha dorsal e mapear os demais a ele, de modo que um controle atenda a muitos requisitos",
       "h": "5c76b18a"
     },
     "questions.1.options.2": {
-      "t": "Escolher o mais longo",
-      "h": "5832ca37"
+      "t": "Adotar o framework que tiver a lista mais longa de controles",
+      "h": "e8975c97"
     },
     "questions.1.options.3": {
-      "t": "Evitar todos",
-      "h": "7f50ffe7"
+      "t": "Evitar frameworks e confiar na experiência do time",
+      "h": "cb568c75"
     },
     "questions.1.q": {
       "t": "Qual é uma forma sensata de usar vários frameworks em conjunto?",
@@ -53,20 +53,20 @@
       "h": "67945ec7"
     },
     "questions.2.options.0": {
-      "t": "Auditorias são ilegais",
-      "h": "31e21e16"
+      "t": "Auditorias não podem olhar controles técnicos",
+      "h": "10f57338"
     },
     "questions.2.options.1": {
       "t": "Auditorias amostram o passado dentro de um escopo definido e não conhecem suas ameaças específicas",
       "h": "e262ae73"
     },
     "questions.2.options.2": {
-      "t": "Auditores não são qualificados",
-      "h": "c705dcfa"
+      "t": "Os auditores não têm habilidade para avaliar como os sistemas realmente funcionam",
+      "h": "727e2a6a"
     },
     "questions.2.options.3": {
-      "t": "Frameworks são secretos",
-      "h": "1a587c16"
+      "t": "Os frameworks são confidenciais e os auditores não podem lê-los antes da auditoria",
+      "h": "c2ac6428"
     },
     "questions.2.q": {
       "t": "Por que passar em uma auditoria não é prova de segurança?",

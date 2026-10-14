@@ -15,7 +15,7 @@ export const secretsCloud: Topic = {
       heading: "O que é",
       body: [
         "Segredo em cloud é qualquer coisa que dá acesso: chave de API, senha de banco, token de serviço, certificado privado. O ponto crítico não é guardar o valor, é controlar quem consegue ler, em que momento, e com qual rastro.",
-        "Três práticas se repetem em qualquer arquitetura madura: o segredo vive num cofre (Vault, Secrets Manager, Parameter Store), a aplicação lê em tempo de execução (não em build), e o tempo de vida é curto. Credencial que dura um ano dá para revogar em até 365 dias depois do vazamento, e isso é onde mora o risco real.",
+        "Três práticas se repetem em qualquer arquitetura madura: o segredo vive num cofre (Vault, Secrets Manager, Parameter Store), a aplicação lê em tempo de execução (não em build), e o tempo de vida é curto. Uma credencial que vale por um ano continua útil ao atacante por até 365 dias depois do vazamento, se ninguém a revogar, e é aí que mora o risco real.",
       ],
     },
     {
@@ -40,7 +40,7 @@ export const secretsCloud: Topic = {
         {
           language: "yaml",
           filename: ".env - o que NÃO fazer",
-          code: "AWS_ACCESS_KEY_ID=AKIA...         # NUNCA faça isso\nAWS_SECRET_ACCESS_KEY=wJalr...       # sai do código do espaço da build",
+          code: "AWS_ACCESS_KEY_ID=AKIA...         # NUNCA faça isso\nAWS_SECRET_ACCESS_KEY=wJalr...       # nunca em arquivo versionado",
         },
       ],
     },
@@ -54,7 +54,7 @@ export const secretsCloud: Topic = {
     {
       heading: "Rotação: por que a chave de 5 anos é um risco",
       body: [
-        "Rotação é o exercício de substituir um segredo antes que ele expire sozinho ou que alguém o tenha comprometido. Cofres modernos tratam isso como cidadão de primeira: Secrets Manager tem rotação automática via Lambda, Vault tem dynamic secrets que expiram em minutos, Parameter Store suporta rotação por evento.",
+        "Rotação é o exercício de substituir um segredo antes que ele expire sozinho ou que alguém o tenha comprometido. Cofres modernos tratam isso como cidadão de primeira: Secrets Manager tem rotação automática via Lambda, Vault tem dynamic secrets que expiram em minutos, o Parameter Store guarda valores, mas não rotaciona sozinho (para isso, use o Secrets Manager).",
         "A regra prática: se você não consegue rotacionar a chave sem downtime, você não consegue revogar a chave sob pressão. E sob pressão é quando a revogação precisa acontecer.",
       ],
     },

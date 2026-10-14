@@ -9,16 +9,16 @@
       "h": "de149375"
     },
     "questions.0.options.1": {
-      "t": "Para reducir el número de campos a cero",
-      "h": "8b65b5fe"
+      "t": "Para reducir a cero el número de campos de cada evento",
+      "h": "8361287e"
     },
     "questions.0.options.2": {
-      "t": "Para prescindir del enriquecimiento",
-      "h": "5da3807b"
+      "t": "Para eliminar cualquier enriquecimiento posterior de los eventos",
+      "h": "765db662"
     },
     "questions.0.options.3": {
-      "t": "Para cifrar los logs",
-      "h": "91504140"
+      "t": "Para cifrar los logs durante el transporte hasta el SIEM",
+      "h": "f1407da9"
     },
     "questions.0.q": {
       "t": "¿Por qué normalizar los eventos en un esquema único?",
@@ -33,16 +33,16 @@
       "h": "e60bbd74"
     },
     "questions.1.options.1": {
-      "t": "Borrar el user agent",
-      "h": "60dab416"
+      "t": "Borrar el user agent para ahorrar espacio",
+      "h": "82a2ceeb"
     },
     "questions.1.options.2": {
-      "t": "Convertir el timestamp a texto libre",
-      "h": "d0a86f90"
+      "t": "Convertir la marca de tiempo a texto libre, más fácil de leer",
+      "h": "3f844871"
     },
     "questions.1.options.3": {
-      "t": "Quitar la ruta de la solicitud",
-      "h": "0217bd09"
+      "t": "Quitar la ruta de la petición para proteger la privacidad",
+      "h": "d0528dd1"
     },
     "questions.1.q": {
       "t": "¿Cuál es un ejemplo de enriquecimiento útil?",
@@ -57,16 +57,16 @@
       "h": "560d19aa"
     },
     "questions.2.options.1": {
-      "t": "Ninguno, el volumen perdido no importa",
-      "h": "4efaad54"
+      "t": "Ninguno, porque el volumen perdido no importa para la detección",
+      "h": "7c781b17"
     },
     "questions.2.options.2": {
-      "t": "El WAF deja de funcionar de inmediato",
-      "h": "28740af2"
+      "t": "El WAF deja de funcionar inmediatamente en el borde",
+      "h": "5560845a"
     },
     "questions.2.options.3": {
-      "t": "Los logs quedan más seguros",
-      "h": "c4f77c78"
+      "t": "Los logs son más seguros por ser más pequeños",
+      "h": "687e34f6"
     },
     "questions.2.q": {
       "t": "¿Qué riesgo aparece cuando el pipeline descarta eventos bajo carga?",

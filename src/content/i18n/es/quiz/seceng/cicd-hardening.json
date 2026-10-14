@@ -9,16 +9,16 @@
       "h": "ba953d29"
     },
     "questions.0.options.1": {
-      "t": "Es más rápido de configurar",
-      "h": "a1520c0c"
+      "t": "Es más rápido de configurar que guardar una clave como secreto",
+      "h": "ae584f58"
     },
     "questions.0.options.2": {
-      "t": "Prescinde de IAM",
-      "h": "81142616"
+      "t": "Elimina la necesidad de IAM para controlar los permisos en la nube",
+      "h": "f4ec2976"
     },
     "questions.0.options.3": {
-      "t": "Funciona sin internet",
-      "h": "d5238b4d"
+      "t": "Funciona incluso sin acceso a internet en el pipeline",
+      "h": "5a08611a"
     },
     "questions.0.q": {
       "t": "¿Cuál es la ventaja de OIDC frente a las claves de nube guardadas como secretos del pipeline?",
@@ -33,16 +33,16 @@
       "h": "aed2bf07"
     },
     "questions.1.options.1": {
-      "t": "Para reducir el tamaño de la imagen",
-      "h": "4a089e73"
+      "t": "Para reducir el tamaño de la imagen que descarga el pipeline",
+      "h": "a518d3f8"
     },
     "questions.1.options.2": {
-      "t": "Porque el SHA es más fácil de leer",
-      "h": "65cc15c4"
+      "t": "Porque el SHA es más fácil de leer que una etiqueta de versión",
+      "h": "0e05b4db"
     },
     "questions.1.options.3": {
-      "t": "Porque las etiquetas están prohibidas",
-      "h": "64dbe120"
+      "t": "Porque GitHub prohíbe las etiquetas",
+      "h": "689c9854"
     },
     "questions.1.q": {
       "t": "¿Por qué fijar acciones e imágenes por SHA o digest?",
@@ -57,16 +57,16 @@
       "h": "c16c37a3"
     },
     "questions.2.options.1": {
-      "t": "No funcionan con Git",
-      "h": "6d9a627a"
+      "t": "No funcionan con repositorios Git comunes",
+      "h": "84cc1eb5"
     },
     "questions.2.options.2": {
-      "t": "Solo se ejecutan en producción",
-      "h": "63f792c7"
+      "t": "Se ejecutan solo en el entorno de producción",
+      "h": "2e6d11b8"
     },
     "questions.2.options.3": {
-      "t": "Cifran el repositorio",
-      "h": "1fdb6a4e"
+      "t": "Cifran el repositorio e impiden leer el código",
+      "h": "6db38490"
     },
     "questions.2.q": {
       "t": "¿Qué tienen de riesgoso los disparadores como pull_request_target?",

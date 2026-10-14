@@ -5,20 +5,20 @@
       "h": "7cffc6e4"
     },
     "questions.0.options.0": {
-      "t": "É mais barato",
-      "h": "75dd6b86"
+      "t": "É mais barato do que o contrato de suporte que cobre desligar hosts",
+      "h": "e0ff2118"
     },
     "questions.0.options.1": {
       "t": "A memória e o estado em execução são preservados para análise, e o host continua acessível às suas ferramentas",
       "h": "243a268c"
     },
     "questions.0.options.2": {
-      "t": "Desligar é ilegal",
-      "h": "8bd4d984"
+      "t": "Desligar uma máquina infectada não é permitido pela maioria das políticas",
+      "h": "34375f4d"
     },
     "questions.0.options.3": {
-      "t": "O EDR não consegue desligar hosts",
-      "h": "2c4686e5"
+      "t": "Agentes de EDR não conseguem desligar hosts",
+      "h": "d8bfb587"
     },
     "questions.0.q": {
       "t": "Por que isolar um host infectado pelo EDR em vez de desligá-lo?",
@@ -29,20 +29,20 @@
       "h": "1341faad"
     },
     "questions.1.options.0": {
-      "t": "Excluí-la imediatamente e esquecer",
-      "h": "40da988a"
+      "t": "Apagá-la imediatamente e atualizar o inventário para ser esquecida",
+      "h": "854418aa"
     },
     "questions.1.options.1": {
       "t": "Desativá-la e guardá-la como evidência enquanto você investiga o que ela fez",
       "h": "6d17530c"
     },
     "questions.1.options.2": {
-      "t": "Postá-la no chat da equipe",
-      "h": "d46750c3"
+      "t": "Compartilhá-la no chat do time para todos testarem se ainda funciona",
+      "h": "b8072c71"
     },
     "questions.1.options.3": {
-      "t": "Deixá-la ativa para observar o atacante",
-      "h": "dcb0c1ad"
+      "t": "Deixá-la ativa para observar o que o atacante faz com ela",
+      "h": "37b7129f"
     },
     "questions.1.q": {
       "t": "Uma chave de acesso de nuvem vazada foi encontrada. O que fazer com a própria chave?",
@@ -53,20 +53,20 @@
       "h": "74ef8487"
     },
     "questions.2.options.0": {
-      "t": "Delimitar o escopo antes de agir",
-      "h": "66a6bb59"
+      "t": "Definir o escopo do incidente antes de tomar qualquer ação",
+      "h": "460d0e8f"
     },
     "questions.2.options.1": {
       "t": "Redefinir uma senha mas deixar sessões, tokens e regras de caixa de correio ativos",
       "h": "425903d9"
     },
     "questions.2.options.2": {
-      "t": "Registrar as ações com timestamps",
-      "h": "31edda7a"
+      "t": "Registrar cada ação com data e hora e quem a fez",
+      "h": "5eabbea5"
     },
     "questions.2.options.3": {
-      "t": "Coordenar as ações em uma única janela",
-      "h": "2c565205"
+      "t": "Coordenar as ações numa só janela para entrarem em vigor juntas",
+      "h": "2081f9f9"
     },
     "questions.2.q": {
       "t": "Qual é um erro comum de contenção?",

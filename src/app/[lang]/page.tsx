@@ -1,3 +1,4 @@
+import { MapPreview } from "@/components/map-preview";
 import { ProgressLine } from "@/components/explore-progress-line";
 import { atlasWorld } from "@/content/explore/atlas";
 import { allExercises } from "@/content/explore/lab-more";
@@ -40,6 +41,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
   ];
   const nav = t.nav as unknown as Record<string, string>;
   const startUi = localizedExplore(locale).value.ui;
+  const atlasText = localizedExplore(locale).value.nodes as Record<string, { title: string }>;
   const atlasIds = Object.keys(flatten(atlasWorld)).filter((id) => id !== atlasWorld.id);
   const labIds = allExercises.map((e) => e.id);
 
@@ -110,7 +112,8 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         />
       </div>
 
-      <section className="mt-10 rounded-2xl border border-primary/40 bg-primary/5 p-6">
+      <section className="mt-10 grid items-center gap-6 rounded-2xl border border-primary/40 bg-primary/5 p-6 md:grid-cols-[1.2fr_1fr]">
+        <div>
         <h2 className="text-xl font-bold tracking-tight">{startUi.startTitle}</h2>
         <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">{startUi.startBody}</p>
         <div className="mt-4 flex flex-wrap gap-3">
@@ -134,6 +137,10 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
           </Link>
         </div>
         <ProgressLine ids={atlasIds} labIds={labIds} labels={{ explored: startUi.explored, lab: startUi.labProgress }} />
+        </div>
+        <Link href={lp("/explore/atlas")} aria-label={startUi.startAtlas} className="block rounded-xl border border-border bg-background/60 p-3 transition-colors hover:border-primary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+          <MapPreview center={atlasText.atlas.title} items={["a-site", "a-api", "a-data", "a-repo", "a-pipeline", "a-cloud"].map((id) => atlasText[id].title)} />
+        </Link>
       </section>
 
       <section className="mt-10">

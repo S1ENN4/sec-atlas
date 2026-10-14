@@ -9,16 +9,16 @@
       "h": "b7e63df0"
     },
     "questions.0.options.1": {
-      "t": "Training a model from scratch on your data",
-      "h": "36525bf0"
+      "t": "Training a model from scratch with your own internal data",
+      "h": "cbc270ef"
     },
     "questions.0.options.2": {
-      "t": "A type of relational database",
-      "h": "7be0c37f"
+      "t": "A type of relational database optimized for text",
+      "h": "0789cc1f"
     },
     "questions.0.options.3": {
-      "t": "A network protocol",
-      "h": "33eef5e2"
+      "t": "A network protocol for the model to talk to other services",
+      "h": "3a278dfd"
     },
     "questions.0.q": {
       "t": "What is RAG?",
@@ -33,16 +33,16 @@
       "h": "77d40b24"
     },
     "questions.1.options.1": {
-      "t": "The model running out of RAM",
-      "h": "a8f37ac3"
+      "t": "The model running out of RAM while loading the documents",
+      "h": "711c0f7d"
     },
     "questions.1.options.2": {
-      "t": "Excess CPU",
-      "h": "449de5de"
+      "t": "Excess CPU use during the search through the documents",
+      "h": "622cd993"
     },
     "questions.1.options.3": {
-      "t": "Lack of HTTPS in the tokenizer",
-      "h": "c25b6e83"
+      "t": "The lack of HTTPS in the tokenizer that prepares the text",
+      "h": "cd7caed4"
     },
     "questions.1.q": {
       "t": "Which security risk is typical of RAG?",
@@ -57,16 +57,16 @@
       "h": "d2e888b6"
     },
     "questions.2.options.1": {
-      "t": "Because it makes the model bigger",
-      "h": "9355b206"
+      "t": "Because it makes the model larger and better at remembering facts",
+      "h": "5a27e636"
     },
     "questions.2.options.2": {
-      "t": "Because it turns off generation",
-      "h": "7a519e94"
+      "t": "Because it turns off text generation and only returns documents",
+      "h": "8e3eda64"
     },
     "questions.2.options.3": {
-      "t": "Because it erases the training",
-      "h": "d7e0e265"
+      "t": "Because it erases the model's original training",
+      "h": "5aa7fc60"
     },
     "questions.2.q": {
       "t": "Why does RAG help reduce hallucination?",

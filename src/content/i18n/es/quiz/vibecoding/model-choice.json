@@ -5,20 +5,20 @@
       "h": "e884e46b"
     },
     "questions.0.options.0": {
-      "t": "Elegir el que está en la cima de un leaderboard público",
-      "h": "219f37d0"
+      "t": "Elegir el que está arriba en un ranking público, ya que se prueba de forma independiente",
+      "h": "75e21386"
     },
     "questions.0.options.1": {
       "t": "Ejecutar tareas reales de tu repositorio con pruebas y comparar el costo por tarea resuelta",
       "h": "c4989018"
     },
     "questions.0.options.2": {
-      "t": "Elegir el menor precio por token",
-      "h": "c228ed1d"
+      "t": "Elegir el de menor precio por token",
+      "h": "477a154f"
     },
     "questions.0.options.3": {
-      "t": "Elegir el más nuevo",
-      "h": "f2ffaf03"
+      "t": "Elegir el lanzamiento más nuevo, porque normalmente es el mejor",
+      "h": "da3e9ba0"
     },
     "questions.0.q": {
       "t": "¿Cuál es la forma correcta de comparar dos modelos para tu trabajo?",
@@ -29,20 +29,20 @@
       "h": "4b799796"
     },
     "questions.1.options.0": {
-      "t": "Qué tan bonito es el sitio web",
-      "h": "96353dcd"
+      "t": "Qué tan atractivo y fácil de usar es el sitio del proveedor",
+      "h": "8f548867"
     },
     "questions.1.options.1": {
       "t": "Dónde se procesan tu código y tus prompts, bajo qué términos, y si tu empresa lo permite",
       "h": "6b3910d9"
     },
     "questions.1.options.2": {
-      "t": "Si soporta modo oscuro",
-      "h": "2367fc94"
+      "t": "Si el servicio tiene modo oscuro y atajos de teclado",
+      "h": "c01caf49"
     },
     "questions.1.options.3": {
-      "t": "Cuántos usuarios tiene",
-      "h": "47689db3"
+      "t": "Cuántos usuarios tiene el servicio y desde hace cuánto existe",
+      "h": "16df60ac"
     },
     "questions.1.q": {
       "t": "¿Cuál es la principal cuestión de privacidad al usar un servicio de modelo alojado?",
@@ -53,20 +53,20 @@
       "h": "c94531d6"
     },
     "questions.2.options.0": {
-      "t": "Usar un modelo para cada paso",
-      "h": "2872427b"
+      "t": "Usar un único modelo fuerte en todos los pasos, para que los resultados sean coherentes",
+      "h": "ba72b40d"
     },
     "questions.2.options.1": {
       "t": "Usar un modelo potente para planificar y revisar y uno más barato para ediciones bien especificadas, con pruebas como juez",
       "h": "50a224b6"
     },
     "questions.2.options.2": {
-      "t": "Usar siempre el modelo más barato",
-      "h": "737dfc11"
+      "t": "Usar siempre el modelo más barato y corregir sus errores a mano",
+      "h": "80619d52"
     },
     "questions.2.options.3": {
-      "t": "Cambiar de modelo al azar",
-      "h": "322093b1"
+      "t": "Cambiar de modelo al azar, para no depender de un solo proveedor",
+      "h": "4c53d021"
     },
     "questions.2.q": {
       "t": "Una política de enrutamiento sensata es:",

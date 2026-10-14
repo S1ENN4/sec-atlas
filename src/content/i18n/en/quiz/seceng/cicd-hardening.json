@@ -9,16 +9,16 @@
       "h": "ba953d29"
     },
     "questions.0.options.1": {
-      "t": "It is faster to set up",
-      "h": "a1520c0c"
+      "t": "It is faster to set up than storing a key as a secret",
+      "h": "ae584f58"
     },
     "questions.0.options.2": {
-      "t": "It dispenses with IAM",
-      "h": "81142616"
+      "t": "It removes the need for IAM to control permissions in the cloud",
+      "h": "f4ec2976"
     },
     "questions.0.options.3": {
-      "t": "It works without internet",
-      "h": "d5238b4d"
+      "t": "It works even without internet access in the pipeline",
+      "h": "5a08611a"
     },
     "questions.0.q": {
       "t": "What is the advantage of OIDC over cloud keys stored as pipeline secrets?",
@@ -33,16 +33,16 @@
       "h": "aed2bf07"
     },
     "questions.1.options.1": {
-      "t": "To reduce the image size",
-      "h": "4a089e73"
+      "t": "To reduce the size of the image downloaded by the pipeline",
+      "h": "a518d3f8"
     },
     "questions.1.options.2": {
-      "t": "Because the SHA is easier to read",
-      "h": "65cc15c4"
+      "t": "Because the SHA is easier to read than a version tag",
+      "h": "0e05b4db"
     },
     "questions.1.options.3": {
-      "t": "Because tags are forbidden",
-      "h": "64dbe120"
+      "t": "Because tags are forbidden by GitHub",
+      "h": "689c9854"
     },
     "questions.1.q": {
       "t": "Why pin actions and images by SHA or digest?",
@@ -57,16 +57,16 @@
       "h": "c16c37a3"
     },
     "questions.2.options.1": {
-      "t": "They do not work with Git",
-      "h": "6d9a627a"
+      "t": "They do not work with ordinary Git repositories",
+      "h": "84cc1eb5"
     },
     "questions.2.options.2": {
-      "t": "They only run in production",
-      "h": "63f792c7"
+      "t": "They run only in the production environment",
+      "h": "2e6d11b8"
     },
     "questions.2.options.3": {
-      "t": "They encrypt the repository",
-      "h": "1fdb6a4e"
+      "t": "They encrypt the repository and prevent the code from being read",
+      "h": "6db38490"
     },
     "questions.2.q": {
       "t": "What is risky about triggers like pull_request_target?",

@@ -235,6 +235,9 @@ import { gzipSync } from "node:zlib";
 // labs and the list view. Measured: first-load 15,514,426 / index.html 131,357.
 // Caps ~3% above that.
 
+// Hub: static mind-map preview, top-level Maps and Lab links in the navigation data.
+// Measured: out/index.html 141,010. Cap ~3% above that.
+
 const OUT_DIR = resolve(process.cwd(), "out");
 
 // Phase 3.A3 reconciliation (copy-code button on every <pre>): the new
@@ -255,7 +258,7 @@ const CAPS = [
   { key: "css",         label: "CSS raw",               limit:    98_000, scope: "css" },
   { key: "js",          label: "JS raw",                limit:   828_000, scope: "js" },
   { key: "js_gz",       label: "JS gzip",               limit:   259_000, scope: "js_gz" },
-  { key: "index",       label: "out/index.html raw",    limit:   135_500, scope: "index" },
+  { key: "index",       label: "out/index.html raw",    limit:   145_500, scope: "index" },
 ];
 
 function walk(dir) {

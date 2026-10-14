@@ -5,20 +5,20 @@
       "h": "7adba55e"
     },
     "questions.0.options.0": {
-      "t": "Mover al equipo de seguridad a otro departamento",
-      "h": "2118f4c2"
+      "t": "Mover al equipo de seguridad a otro departamento de la empresa",
+      "h": "3ee4fce1"
     },
     "questions.0.options.1": {
       "t": "Anticipar las verificaciones de seguridad al inicio del ciclo de desarrollo",
       "h": "d0eb429e"
     },
     "questions.0.options.2": {
-      "t": "Ejecutar todas las pruebas solo en producción",
-      "h": "2dbe0a2e"
+      "t": "Ejecutar todas las pruebas solo en producción, después del despliegue",
+      "h": "01df7367"
     },
     "questions.0.options.3": {
-      "t": "Quitar el QA del proceso",
-      "h": "4844ee03"
+      "t": "Quitar al equipo de QA del proceso de entrega",
+      "h": "95c4d51f"
     },
     "questions.0.q": {
       "t": "¿Qué significa shift-left?",
@@ -29,20 +29,20 @@
       "h": "4a9bb35f"
     },
     "questions.1.options.0": {
-      "t": "Pentest anual",
-      "h": "d4dccb56"
+      "t": "Un pentest anual hecho por una empresa externa",
+      "h": "e88b1705"
     },
     "questions.1.options.1": {
       "t": "Pre-commit hooks y checks en el PR",
       "h": "59e298b2"
     },
     "questions.1.options.2": {
-      "t": "Monitoreo de producción",
-      "h": "a8dd1b36"
+      "t": "La monitorización continua del entorno de producción",
+      "h": "45196454"
     },
     "questions.1.options.3": {
-      "t": "Respuesta a incidentes",
-      "h": "eaa01473"
+      "t": "La respuesta a incidentes que hace el equipo de guardia",
+      "h": "2ab87106"
     },
     "questions.1.q": {
       "t": "¿Qué práctica es shift-left?",
@@ -53,20 +53,20 @@
       "h": "77daa800"
     },
     "questions.2.options.0": {
-      "t": "Quedarse sin cobertura en producción",
-      "h": "861e113e"
+      "t": "Quedarse sin cobertura en producción cuando las comprobaciones se van de allí",
+      "h": "8da52cc8"
     },
     "questions.2.options.1": {
       "t": "Sobrecargar a los devs con alertas ruidosas y perder la confianza en las herramientas",
       "h": "f6ad01cf"
     },
     "questions.2.options.2": {
-      "t": "Aumentar el tamaño del repositorio",
-      "h": "0ba739a6"
+      "t": "Aumentar el tamaño del repositorio con los archivos de las herramientas",
+      "h": "3306d6c1"
     },
     "questions.2.options.3": {
-      "t": "Impedir el uso de CI",
-      "h": "f30db368"
+      "t": "Impedir el uso de CI, porque las comprobaciones pasan a ejecutarse en local",
+      "h": "f8a8ff85"
     },
     "questions.2.q": {
       "t": "¿Cuál es el riesgo de aplicar shift-left sin cuidado?",

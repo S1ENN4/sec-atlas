@@ -9,16 +9,16 @@
       "h": "c5b85888"
     },
     "questions.0.options.1": {
-      "t": "To reduce the image size",
-      "h": "4a089e73"
+      "t": "To reduce the image size and save space in the registry",
+      "h": "42f4693d"
     },
     "questions.0.options.2": {
-      "t": "To speed up the pull",
-      "h": "d4052922"
+      "t": "To speed up the image download on each node of the cluster",
+      "h": "add827bf"
     },
     "questions.0.options.3": {
-      "t": "To do away with scanners",
-      "h": "51f037f5"
+      "t": "To remove the need for vulnerability scanners in the pipeline",
+      "h": "1271084e"
     },
     "questions.0.q": {
       "t": "Why should images be immutable and signed?",
@@ -33,16 +33,16 @@
       "h": "5b19e335"
     },
     "questions.1.options.1": {
-      "t": "Installing a full shell and debug utilities",
-      "h": "365f7ba2"
+      "t": "Installing a full shell and debug utilities to make support easier",
+      "h": "e0aa6259"
     },
     "questions.1.options.2": {
-      "t": "Running as root",
-      "h": "2f7d1810"
+      "t": "Running the process as root to avoid permission problems",
+      "h": "b8c528e1"
     },
     "questions.1.options.3": {
-      "t": "Using the latest tag",
-      "h": "891d84e8"
+      "t": "Using the latest tag to always get the newest base",
+      "h": "044cd9f9"
     },
     "questions.1.q": {
       "t": "Which practice reduces an image's attack surface?",
@@ -57,16 +57,16 @@
       "h": "3b33503e"
     },
     "questions.2.options.1": {
-      "t": "The registry running out of space",
-      "h": "5f3bf61f"
+      "t": "The registry running out of space and blocking new deploys",
+      "h": "a71f520d"
     },
     "questions.2.options.2": {
-      "t": "The node's CPU running out",
-      "h": "3ec867b0"
+      "t": "The node's CPU running out during the image build",
+      "h": "1bc30b5d"
     },
     "questions.2.options.3": {
-      "t": "Docker changing versions",
-      "h": "270c8575"
+      "t": "Docker changing version and breaking compatibility",
+      "h": "7a7cffb4"
     },
     "questions.2.q": {
       "t": "What is the container supply chain risk?",

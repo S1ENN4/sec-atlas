@@ -9,16 +9,16 @@
       "h": "c7b2084a"
     },
     "questions.0.options.1": {
-      "t": "Switch straight to blocking to see the effect",
-      "h": "bf1ab3ff"
+      "t": "Turn it straight on in full blocking mode to see the effect in production",
+      "h": "77456b3a"
     },
     "questions.0.options.2": {
-      "t": "Enable only in production, outside business hours",
-      "h": "f3f8b440"
+      "t": "Enable it only in production, outside business hours, so nobody notices",
+      "h": "9f21fbb4"
     },
     "questions.0.options.3": {
-      "t": "Copy another company's rule without testing",
-      "h": "90c4d4dd"
+      "t": "Copy the rule from another company and enable it without testing it on your traffic",
+      "h": "a0b5f8e3"
     },
     "questions.0.q": {
       "t": "What is the safe path to enable a new WAF rule?",
@@ -33,16 +33,16 @@
       "h": "d69ea296"
     },
     "questions.1.options.1": {
-      "t": "Blocking only known attack signatures",
-      "h": "da8bc3d3"
+      "t": "Blocking only the attack signatures that are already known",
+      "h": "afe9ef72"
     },
     "questions.1.options.2": {
-      "t": "Allowing everything and logging",
-      "h": "197652fc"
+      "t": "Letting all the traffic through and just logging it for analysis",
+      "h": "672d1f0d"
     },
     "questions.1.options.3": {
-      "t": "Using only lists of malicious IPs",
-      "h": "f1022667"
+      "t": "Using only lists of IP addresses classified as malicious",
+      "h": "c45dfd58"
     },
     "questions.1.q": {
       "t": "What characterizes the positive WAF model?",
@@ -57,16 +57,16 @@
       "h": "e8c79ab8"
     },
     "questions.2.options.1": {
-      "t": "Replacing the definitive fix for the vulnerability",
-      "h": "f0fffcb9"
+      "t": "Replacing the final fix of the vulnerability in the code",
+      "h": "037af3b6"
     },
     "questions.2.options.2": {
-      "t": "Updating the origin's operating system",
-      "h": "ee9bbe9b"
+      "t": "Updating the operating system of the origin server",
+      "h": "fd60c3df"
     },
     "questions.2.options.3": {
-      "t": "Encrypting traffic between the edge and the origin",
-      "h": "ac38d2d0"
+      "t": "Encrypting the traffic between the edge and the application's origin",
+      "h": "50b2171a"
     },
     "questions.2.q": {
       "t": "What is a virtual patch for?",

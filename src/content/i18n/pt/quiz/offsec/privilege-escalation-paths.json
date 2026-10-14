@@ -5,20 +5,20 @@
       "h": "812e6726"
     },
     "questions.0.options.0": {
-      "t": "Nenhuma",
-      "h": "04bdaaf2"
+      "t": "Nenhuma: os atacantes sempre conhecem o ambiente melhor que os defensores",
+      "h": "961c0710"
     },
     "questions.0.options.1": {
       "t": "Pode mapear os caminhos com as mesmas ferramentas e cortar primeiro os mais curtos",
       "h": "f043cd2b"
     },
     "questions.0.options.2": {
-      "t": "Caminhos não existem na nuvem",
-      "h": "37972509"
+      "t": "Caminhos de ataque não existem em ambientes de nuvem, só em ambientes locais",
+      "h": "524650cd"
     },
     "questions.0.options.3": {
-      "t": "Os caminhos são sempre longos",
-      "h": "19184f88"
+      "t": "Os caminhos são sempre longos, então os defensores têm bastante tempo para reagir",
+      "h": "b851a4d5"
     },
     "questions.0.q": {
       "t": "Qual é a vantagem do defensor em relação aos caminhos de ataque?",
@@ -29,20 +29,20 @@
       "h": "93665b49"
     },
     "questions.1.options.0": {
-      "t": "Deixa os deploys lentos",
-      "h": "cbcd41f4"
+      "t": "Atrasa os deploys porque todo papel precisa ser conferido a cada release",
+      "h": "95e40b8d"
     },
     "questions.1.options.1": {
       "t": "Pode permitir que um usuário execute algo com um papel mais privilegiado",
       "h": "3298838f"
     },
     "questions.1.options.2": {
-      "t": "Desativa o registro de logs",
-      "h": "c011169a"
+      "t": "Desativa os logs dos serviços que usam o papel",
+      "h": "e894dc8f"
     },
     "questions.1.options.3": {
-      "t": "Quebra a cobrança",
-      "h": "c97f4917"
+      "t": "Quebra a cobrança ao deixar qualquer carga criar recursos pagos",
+      "h": "37567576"
     },
     "questions.1.q": {
       "t": "Por que iam:PassRole em todos os recursos é arriscado?",
@@ -53,20 +53,20 @@
       "h": "b3f683c6"
     },
     "questions.2.options.0": {
-      "t": "Admins trabalham em faixas salariais",
-      "h": "8e94efa6"
+      "t": "Os administradores são agrupados em camadas de acordo com o salário",
+      "h": "2ccffa14"
     },
     "questions.2.options.1": {
       "t": "Contas privilegiadas só fazem login em sistemas da mesma camada, nunca em estações de trabalho ou camadas inferiores",
       "h": "6239a5cd"
     },
     "questions.2.options.2": {
-      "t": "Três admins por servidor",
-      "h": "6ed38e18"
+      "t": "Cada servidor deve ter três administradores, um por camada",
+      "h": "fa6280ea"
     },
     "questions.2.options.3": {
-      "t": "Usar três senhas",
-      "h": "dd004462"
+      "t": "Usuários privilegiados devem manter três senhas diferentes, uma por camada",
+      "h": "00e9044f"
     },
     "questions.2.q": {
       "t": "O que significa administração em camadas?",
