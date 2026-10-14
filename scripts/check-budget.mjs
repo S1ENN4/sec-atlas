@@ -182,6 +182,16 @@
 // Phases 2+3+4; recalibrate again at the end of Phase 4 if a later wave
 // (off-plan) needs more.
 //
+// Phase 3 reconciliation: A1+A2+A3+A4 added the topic side summary (P3.2),
+// copy-code button (P3.3), reading-time on hero + hub (P3.1), study-before/
+// unlocks/next-topic/end-of-path (P3.4+P3.5), j/k + g h + c keyboard
+// shortcuts (P3.6), and the hub continue-card (P3.7). The continue-card
+// itself lives on the hub HTML (the +12% on out/index.html), and the rest
+// of the growth is the per-topic-page RSC payload. After Phase 3 the caps
+// are stable until Phase 4 deletes the React Flow graph and the inline-SVG
+// panel replaces it (slightly smaller). Recalibrate again at the end of
+// Phase 4 if a later wave (off-plan) needs more.
+//
 // Exit 0 when every row is within its cap; exit 1 with a clear per-cap
 // message otherwise.
 
@@ -214,14 +224,14 @@ const OUT_DIR = resolve(process.cwd(), "out");
 // headroom-to-content ratio as the live floor.
 
 const CAPS = [
-  { key: "first_load",  label: "first-load assets",     limit: 13_350_000, scope: "first_load" },
-  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 16_350_000, scope: "rsc_prefetch" },
-  { key: "total",       label: "total",                 limit: 29_600_000, scope: "total" },
-  { key: "all_locales", label: "all locales (sanity)", limit: 83_900_000, scope: "all_locales" },
+  { key: "first_load",  label: "first-load assets",     limit: 14_200_000, scope: "first_load" },
+  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 17_500_000, scope: "rsc_prefetch" },
+  { key: "total",       label: "total",                 limit: 31_500_000, scope: "total" },
+  { key: "all_locales", label: "all locales (sanity)", limit: 89_000_000, scope: "all_locales" },
   { key: "css",         label: "CSS raw",               limit:    98_000, scope: "css" },
   { key: "js",          label: "JS raw",                limit:   945_000, scope: "js" },
   { key: "js_gz",       label: "JS gzip",               limit:   297_000, scope: "js_gz" },
-  { key: "index",       label: "out/index.html raw",    limit:   109_300, scope: "index" },
+  { key: "index",       label: "out/index.html raw",    limit:   130_000, scope: "index" },
 ];
 
 function walk(dir) {
