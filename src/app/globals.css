@@ -35,6 +35,8 @@
   --animate-page-enter: page-enter 240ms var(--ease-out-quart) backwards;
   --animate-hero-enter: hero-enter 400ms var(--ease-out-quart) backwards;
   --animate-chip-in: chip-in 150ms var(--ease-out-cubic) backwards;
+  --animate-pop-in: pop-in 160ms var(--ease-out-quart) backwards;
+  --animate-celebrate: celebrate 600ms var(--ease-out-quart) both;
 
   @keyframes page-enter {
     from {
@@ -55,6 +57,29 @@
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  @keyframes pop-in {
+    from {
+      opacity: 0;
+      transform: translateY(-4px) scale(0.985);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes celebrate {
+    0% {
+      transform: scale(0.9);
+    }
+    55% {
+      transform: scale(1.08);
+    }
+    100% {
+      transform: scale(1);
     }
   }
 
@@ -383,4 +408,78 @@ body {
 .topic-prose .t-code pre:focus-visible {
   outline: 2px solid var(--ring);
   outline-offset: -2px;
+}
+
+/* Cross-document view transitions: a soft fade and rise between pages, with no
+ * JavaScript. The header keeps its own name so it stays put while the page
+ * content changes. Browsers without support navigate normally, and the route
+ * wrapper's own enter animation (animate-page-enter) covers them. */
+@view-transition {
+  navigation: auto;
+}
+.site-header {
+  view-transition-name: site-header;
+}
+@keyframes vt-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes vt-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+::view-transition-old(root) {
+  animation: 120ms ease-out both vt-out;
+}
+::view-transition-new(root) {
+  animation: 220ms var(--ease-out-quart) both vt-in;
+}
+@supports (view-transition-name: none) {
+  .animate-page-enter {
+    animation: none;
+  }
+}
+
+/* Reading progress on topic pages, driven by the page scroll (no JS). */
+.reading-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 45;
+  height: 2px;
+  background: var(--primary);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+}
+@supports (animation-timeline: scroll()) {
+  .reading-progress {
+    animation: reading-progress linear both;
+    animation-timeline: scroll(root);
+  }
+}
+@keyframes reading-progress {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* One focus treatment for controls that had none. */
+@utility focus-ring {
+  &:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+  .reading-progress {
+    display: none;
+  }
 }

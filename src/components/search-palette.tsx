@@ -229,7 +229,7 @@ export function SearchPalette({ t }: { t: PaletteStrings }) {
         role="dialog"
         aria-modal="true"
         aria-label={t.dialog}
-        className="animate-page-enter w-full max-w-xl overflow-hidden rounded-xl border border-border bg-card shadow-2xl"
+        className="animate-pop-in w-full max-w-xl overflow-hidden rounded-xl border border-border bg-card shadow-2xl"
       >
         <div className="flex items-center gap-3 border-b border-border px-4">
           <Search className="size-4 shrink-0 text-muted-foreground" aria-hidden />
@@ -293,7 +293,7 @@ export function SearchPalette({ t }: { t: PaletteStrings }) {
                       go(item, true);
                     }}
                     aria-label={fmt(t.viewOnMap, { title: item.t })}
-                    className="shrink-0 rounded-md border border-border p-1.5 text-muted-foreground transition-colors hover:border-primary/60 hover:text-primary"
+                    className="focus-ring shrink-0 rounded-md border border-border p-1.5 text-muted-foreground transition-colors hover:border-primary/60 hover:text-primary"
                   >
                     <MapIcon className="size-3.5" aria-hidden />
                   </button>

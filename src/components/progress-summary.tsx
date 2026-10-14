@@ -95,16 +95,16 @@ export function ProgressSummary({ domains, t }: { domains: DomainTotals[]; t: Pr
                   reset();
                   setConfirming(false);
                 }}
-                className="rounded border border-red-500/60 px-2 py-0.5 text-red-400 hover:bg-red-500/10"
+                className="focus-ring rounded border border-red-500/60 px-2 py-0.5 text-red-400 hover:bg-red-500/10"
               >
                 {t.yes}
               </button>
-              <button type="button" onClick={() => setConfirming(false)} className="rounded border border-border px-2 py-0.5 hover:text-foreground">
+              <button type="button" onClick={() => setConfirming(false)} className="focus-ring rounded border border-border px-2 py-0.5 hover:text-foreground">
                 {t.no}
               </button>
             </span>
           ) : (
-            <button type="button" onClick={() => setConfirming(true)} className="inline-flex items-center gap-1 hover:text-foreground">
+            <button type="button" onClick={() => setConfirming(true)} className="focus-ring inline-flex items-center gap-1 rounded-sm hover:text-foreground">
               <RotateCcw className="size-3" aria-hidden /> {t.reset}
             </button>
           )

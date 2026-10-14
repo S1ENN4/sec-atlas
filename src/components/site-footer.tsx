@@ -12,7 +12,7 @@ export function SiteFooter({ locale, t }: { locale: Locale; t: Ui }) {
   const counts = Object.values(domains)
     .map((d) => `${t.domains[d.id].name.toLowerCase()} ${d.topics.length}`)
     .join(" · ");
-  const link = "hover:text-foreground";
+  const link = "rounded-sm transition-colors hover:text-foreground focus-ring";
 
   return (
     <footer className="border-t border-border/60 print:hidden">

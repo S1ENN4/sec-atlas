@@ -90,7 +90,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
               key={d.id}
               href={lp(d.route)}
               className="animate-hero-enter group block rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              style={{ animationDelay: `${120 + i * 80}ms` }}
+              style={{ animationDelay: `${120 + Math.min(i, 6) * 80}ms` }}
             >
               <div data-domain={d.id} className="h-full">
                 <Card className="relative h-full overflow-hidden transition-[transform,border-color,box-shadow] duration-200 ease-out group-hover:-translate-y-1 group-hover:border-primary/60 group-hover:shadow-[0_8px_30px_-12px_var(--primary)]">

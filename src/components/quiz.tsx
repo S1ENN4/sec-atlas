@@ -179,7 +179,7 @@ export function Quiz({ domain, slug, t }: { domain: DomainId; slug: string; t: Q
           <p className="text-sm text-muted-foreground">{t.none}</p>
         ) : done ? (
           <div ref={resultRef} tabIndex={-1} className="text-center focus:outline-none">
-            <p className="font-mono text-3xl font-bold text-primary">
+            <p className={cn("inline-block font-mono text-3xl font-bold text-primary", score === prepared.length && "animate-celebrate")}>
               {score}/{prepared.length}
             </p>
             <p className="mt-2 text-sm text-muted-foreground">
@@ -242,7 +242,7 @@ export function Quiz({ domain, slug, t }: { domain: DomainId; slug: string; t: Q
               })}
             </ul>
             {/* Persistent live region: it exists before the answer so the feedback is announced. */}
-            <div role="status" aria-live="polite" className={picked !== null ? "animate-page-enter mt-4" : ""}>
+            <div role="status" aria-live="polite" className={picked !== null ? "animate-pop-in mt-4" : ""}>
               {picked !== null ? (
                 <p className="text-sm leading-relaxed text-foreground/85">
                   <span className="font-semibold">{picked === cur.answer ? t.right : t.wrong}</span>

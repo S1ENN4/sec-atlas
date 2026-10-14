@@ -397,7 +397,7 @@ export function JourneyMap({
         <aside
           data-domain={selected.domain}
           aria-label={selected.title}
-          className="animate-page-enter fixed inset-x-3 bottom-3 z-30 mx-auto max-w-xl rounded-xl border border-border bg-background p-4 shadow-2xl"
+          className="animate-pop-in fixed inset-x-3 bottom-3 z-30 mx-auto max-w-xl rounded-xl border border-border bg-background p-4 shadow-2xl"
         >
           <button
             type="button"

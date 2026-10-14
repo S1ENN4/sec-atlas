@@ -60,7 +60,7 @@ export function LanguageSwitcher({ label }: { label: string }) {
         {locale}
       </button>
       {open ? (
-        <ul className="animate-page-enter absolute right-0 top-full z-50 mt-2 min-w-36 rounded-lg border border-border bg-card p-1 shadow-xl">
+        <ul className="animate-pop-in absolute right-0 top-full z-50 mt-2 min-w-36 rounded-lg border border-border bg-card p-1 shadow-xl">
           {LOCALES.map((l) => (
             <li key={l}>
               <Link

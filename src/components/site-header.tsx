@@ -59,7 +59,7 @@ export function SiteHeader({ locale, t }: { locale: Locale; t: Ui }) {
   };
 
   return (
-    <header className="sticky top-0 z-40 print:hidden">
+    <header className="site-header sticky top-0 z-40 print:hidden">
       {/* The blur lives on a sibling layer: a backdrop-filter on the header itself would
           make it the containing block of the fixed menu veil and sheet inside it. */}
       <div aria-hidden className="absolute inset-0 -z-10 border-b border-border/60 bg-background/80 backdrop-blur" />

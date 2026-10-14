@@ -196,7 +196,7 @@ export function SiteNav({ data }: { data: NavData }) {
     </button>
   );
 
-  const panel = "animate-page-enter absolute inset-x-0 top-full z-50 border-b border-border bg-background shadow-2xl";
+  const panel = "animate-pop-in absolute inset-x-0 top-full z-50 border-b border-border bg-background shadow-2xl";
 
   return (
     <div ref={rootRef} className="flex min-w-0 flex-1 items-center">

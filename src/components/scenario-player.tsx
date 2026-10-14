@@ -115,7 +115,7 @@ export function ScenarioPlayer({ scenarios, t }: { scenarios: ScenarioData[]; t:
 
       <div className="mt-6 rounded-xl border border-border bg-card p-5">
         {finished ? (
-          <div className="animate-page-enter">
+          <div className="animate-pop-in">
             <p className="flex items-center gap-2 font-mono text-sm text-primary">
               <ShieldCheck className="size-4" aria-hidden /> {t.end}
             </p>
@@ -142,7 +142,7 @@ export function ScenarioPlayer({ scenarios, t }: { scenarios: ScenarioData[]; t:
             </button>
           </div>
         ) : (
-          <div key={`${sc.id}-${step}`} className="animate-page-enter">
+          <div key={`${sc.id}-${step}`} className="animate-pop-in">
             <p className="font-mono text-[11px] text-muted-foreground">
               {fmt(t.step, { n: step + 1, total: sc.steps.length })}
             </p>
@@ -152,7 +152,7 @@ export function ScenarioPlayer({ scenarios, t }: { scenarios: ScenarioData[]; t:
             </p>
 
             {revealed ? (
-              <div className="animate-page-enter mt-5 rounded-lg border border-primary/40 bg-primary/5 p-4" role="status">
+              <div className="animate-pop-in mt-5 rounded-lg border border-primary/40 bg-primary/5 p-4" role="status">
                 <p className="flex items-center gap-2 text-sm font-semibold">
                   <ShieldCheck className="size-4 text-primary" aria-hidden />
                   <Link href={cur.controlHref} className="hover:text-primary">

@@ -60,9 +60,10 @@ export default async function TopicPage({ params }: { params: Params }) {
 
   return (
     <article data-domain={id} className="animate-page-enter mx-auto max-w-3xl px-4 pb-24 pt-10">
+      <div className="reading-progress print:hidden" aria-hidden />
       <Link
         href={`${base}#map`}
-        className="inline-flex items-center gap-2 font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"
+        className="focus-ring inline-flex items-center gap-2 rounded-sm font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"
       >
         <ArrowLeft className="size-3.5" aria-hidden /> {t.topicPage.back}
       </Link>
@@ -146,7 +147,7 @@ export default async function TopicPage({ params }: { params: Params }) {
                 x.slug === slug ? (
                   <span className="font-medium text-foreground">{x.title}</span>
                 ) : (
-                  <Link href={`${base}/topic/${x.slug}`} className="font-medium text-foreground transition-colors hover:text-primary">
+                  <Link href={`${base}/topic/${x.slug}`} className="focus-ring rounded-sm font-medium text-foreground transition-colors hover:text-primary">
                     {x.title}
                   </Link>
                 );
