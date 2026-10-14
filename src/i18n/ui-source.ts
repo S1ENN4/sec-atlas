@@ -72,6 +72,15 @@ export const ui = {
     switchTo: "Switch language",
   },
 
+  // Theme toggle (dark <-> light). Added 2026-10-14 with phase 2.
+  theme: {
+    toggle: {
+      light: "Light theme",
+      dark: "Dark theme",
+      aria: "Toggle color theme",
+    },
+  },
+
   search: {
     button: "Search",
     buttonAria: "Search (Ctrl+K)",

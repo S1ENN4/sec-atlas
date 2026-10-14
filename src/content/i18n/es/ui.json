@@ -1968,6 +1968,18 @@
       "t": "fuentes",
       "h": "bce16dd0"
     },
+    "theme.toggle.aria": {
+      "t": "Alternar tema de color",
+      "h": "e4c72aa6"
+    },
+    "theme.toggle.dark": {
+      "t": "Tema oscuro",
+      "h": "d51c5960"
+    },
+    "theme.toggle.light": {
+      "t": "Tema claro",
+      "h": "9e5ba0f0"
+    },
     "toolbar.copyLink": {
       "t": "copiar enlace",
       "h": "31c15aab"

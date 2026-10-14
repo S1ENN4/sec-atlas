@@ -4,6 +4,7 @@ import { ShieldCheck } from "lucide-react";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { SearchButton } from "@/components/search-button";
 import { SiteNav, type NavData } from "@/components/site-nav";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { exploreGroups } from "@/content/nav";
 import { profile } from "@/content/profile";
 import { domains } from "@/content/registry";
@@ -74,6 +75,7 @@ export function SiteHeader({ locale, t }: { locale: Locale; t: Ui }) {
         <SiteNav data={nav} />
         <div className="ml-auto flex shrink-0 items-center gap-2 md:ml-0">
           <SearchButton label={t.search.button} aria={t.search.buttonAria} />
+          <ThemeToggle labels={{ dark: t.theme.toggle.dark, light: t.theme.toggle.light, aria: t.theme.toggle.aria }} />
           <LanguageSwitcher label={t.lang.switchTo} />
         </div>
       </div>
