@@ -1,33 +1,35 @@
 "use client";
 
-// Explorable map: a world of nested places (repository, CI workflow, scanners,
-// registry, cluster, runtime). Opening a node makes it the focus and shows its
-// children beside it; "back" climbs one level. The current node lives in the URL
-// hash (#sast), so the browser back button, deep links and reloads all work.
-// Missions are guided trails, challenges are "find the risky lines" exercises.
+// Explorable map as a living tree: a full-screen canvas where the trail
+// (commit to production) grows outwards from the centre. Click a node to open
+// its details and grow its branch; drag to pan, wheel or pinch to zoom. The
+// selected node lives in the URL hash (#sast), so the browser back button and
+// deep links work. Missions guide a route; challenges are "find the risky lines".
 
-import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useMemo, useReducer, useRef, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import {
   ArrowLeft,
   ArrowRight,
   Check,
   ChevronRight,
+  ChevronsDownUp,
+  ChevronsUpDown,
   Copy,
   FileCode2,
-  Flag,
   Lightbulb,
   MapPin,
-  MoveDown,
-  MoveLeft,
-  MoveRight,
+  Maximize2,
+  Minus,
   Package,
+  Plus,
   RotateCcw,
   ShieldCheck,
   Swords,
   Target,
   Trophy,
   Wrench,
+  X,
   type LucideIcon,
 } from "lucide-react";
 
@@ -87,53 +89,394 @@ const getHash = () => {
   }
 };
 
+// --- layout ---------------------------------------------------------------------
+
+const NODE_H = 32;
+const HUES = [152, 200, 250, 300, 12, 52, 95, 175];
+
+interface Pt {
+  x: number;
+  y: number;
+  /** 1 = visible, 0 = hidden inside a collapsed branch. */
+  o: number;
+}
+
+const pillWidth = (title: string, isRoot: boolean) => Math.max(isRoot ? 150 : 84, title.length * (isRoot ? 8.6 : 7.1) + 50);
+
+const ROW = 48;
+const GAP = 64;
+
+/**
+ * Two-sided mind-map: the root sits in the middle, its stops split between the
+ * right and the left, and an opened node stacks its children in a column further
+ * out. Subtrees get vertical room by size, so labels never collide.
+ */
+function layoutTree(nodes: Record<string, ExploreNodeData>, rootId: string, expanded: Set<string>) {
+  const target: Record<string, Pt> = {};
+  const visible = new Set<string>();
+  const side: Record<string, 1 | -1> = {};
+  const isOpen = (id: string) => id === rootId || expanded.has(id);
+
+  const stations = nodes[rootId].children;
+  const rightCount = Math.ceil(stations.length / 2);
+  stations.forEach((id, i) => {
+    const mark = (n: string) => {
+      side[n] = i < rightCount ? 1 : -1;
+      nodes[n].children.forEach(mark);
+    };
+    mark(id);
+  });
+
+  const height = (id: string): number => {
+    const n = nodes[id];
+    if (!isOpen(id) || n.children.length === 0) return ROW;
+    return n.children.reduce((sum, c) => sum + height(c), 0);
+  };
+
+  // width of each column (per side and depth), so a column lines up
+  const colW: Record<string, number> = {};
+  const measure = (id: string) => {
+    visible.add(id);
+    const n = nodes[id];
+    if (id !== rootId) {
+      const key = `${side[id]}:${n.depth}`;
+      colW[key] = Math.max(colW[key] ?? 0, pillWidth(n.title, false));
+    }
+    if (isOpen(id)) n.children.forEach(measure);
+  };
+  measure(rootId);
+
+  const rootHalf = pillWidth(nodes[rootId].title, true) / 2;
+  const colStart = (sd: 1 | -1, depth: number) => {
+    let x = rootHalf + GAP;
+    for (let d = 1; d < depth; d++) x += (colW[`${sd}:${d}`] ?? 0) + GAP;
+    return x;
+  };
+
+  const place = (id: string, top: number, anchor: Pt) => {
+    const n = nodes[id];
+    const h = height(id);
+    const sd = side[id];
+    const w = pillWidth(n.title, false);
+    const x = sd * (colStart(sd, n.depth) + w / 2);
+    const y = top + h / 2;
+    const here: Pt = { x, y, o: 1 };
+    target[id] = here;
+    if (isOpen(id)) {
+      let t = top;
+      for (const c of n.children) {
+        place(c, t, here);
+        t += height(c);
+      }
+    } else {
+      const hide = (c: string) => {
+        target[c] = { x, y, o: 0 };
+        nodes[c].children.forEach(hide);
+      };
+      n.children.forEach(hide);
+    }
+    void anchor;
+  };
+
+  target[rootId] = { x: 0, y: 0, o: 1 };
+  const sideTop = (ids: string[]) => -ids.reduce((sum, c) => sum + height(c), 0) / 2;
+  for (const group of [stations.slice(0, rightCount), stations.slice(rightCount)]) {
+    let t = sideTop(group);
+    for (const id of group) {
+      place(id, t, target[rootId]);
+      t += height(id);
+    }
+  }
+  return { target, visible, side };
+}
+
+interface View {
+  x: number;
+  y: number;
+  k: number;
+}
+
+const clamp = (v: number, a: number, b: number) => Math.min(b, Math.max(a, v));
+/** Round for rendering, so server and client markup match to the last digit. */
+const f1 = (n: number) => Math.round(n * 10) / 10;
+
+// --- main component ---------------------------------------------------------------
+
 export interface ExploreMapProps {
   nodes: Record<string, ExploreNodeData>;
   rootId: string;
   missions: ExploreMissionData[];
   ui: ExploreUi;
+  eyebrow: string;
+  heading: string;
+  intro: string;
 }
 
-export function ExploreMap({ nodes, rootId, missions, ui }: ExploreMapProps) {
+export function ExploreMap({ nodes, rootId, missions, ui, eyebrow, heading, intro }: ExploreMapProps) {
   const hash = useSyncExternalStore(subscribeHash, getHash, () => "");
-  const curId = nodes[hash] ? hash : rootId;
-  const cur = nodes[curId];
+  const selId = nodes[hash] && hash !== rootId ? hash : null;
+  const sel = selId ? nodes[selId] : null;
   const { state, visit, solve, setMission, reset } = useExploreProgress();
 
+  const [expanded, setExpanded] = useState<Set<string>>(() => new Set());
+  const { target, visible, side } = useMemo(() => layoutTree(nodes, rootId, expanded), [nodes, rootId, expanded]);
+
   const go = useCallback(
-    (id: string) => {
-      window.location.hash = id === rootId ? "" : id;
+    (id: string | null) => {
+      window.location.hash = id && id !== rootId ? id : "";
     },
     [rootId],
   );
 
-  // Direction of the last move decides which way the stage slides in. Derived
-  // during render (not in an effect) so the first frame already uses it.
-  const [prev, setPrev] = useState<{ id: string; dir: "in" | "out" | "side" }>({ id: curId, dir: "side" });
-  if (prev.id !== curId) {
-    const a = nodes[prev.id]?.depth ?? 0;
-    setPrev({ id: curId, dir: cur.depth > a ? "in" : cur.depth < a ? "out" : "side" });
-  }
+  // viewport size
+  const boxRef = useRef<HTMLDivElement>(null);
+  const [size, setSize] = useState({ w: 0, h: 0 });
+  useEffect(() => {
+    const el = boxRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver(() => setSize({ w: el.clientWidth, h: el.clientHeight }));
+    ro.observe(el);
+    setSize({ w: el.clientWidth, h: el.clientHeight });
+    return () => ro.disconnect();
+  }, []);
+  const wide = size.w >= 640;
 
-  const stageRef = useRef<HTMLDivElement>(null);
-  const headingRef = useRef<HTMLHeadingElement>(null);
-  const first = useRef(true);
+  // --- animation: node positions and camera ease towards their targets ---------------
+  const pos = useRef<Record<string, Pt>>({});
+  const view = useRef<View>({ x: 0, y: 0, k: 1 });
+  const goal = useRef<View | null>(null);
+  const raf = useRef(0);
+  const [, tick] = useReducer((n: number) => n + 1, 0);
+  const reduce = useRef(false);
+  useEffect(() => {
+    reduce.current = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }, []);
+
+  for (const id of Object.keys(nodes)) if (!pos.current[id]) pos.current[id] = { ...(target[id] ?? { x: 0, y: 0, o: 0 }) };
+
+  const run = useCallback(() => {
+    if (raf.current) return;
+    let last = performance.now();
+    const step = (now: number) => {
+      const dt = Math.min(64, now - last);
+      last = now;
+      const f = reduce.current ? 1 : 1 - Math.exp(-dt / 120);
+      let moving = false;
+      for (const [id, t] of Object.entries(targetRef.current)) {
+        const p = pos.current[id];
+        if (!p) continue;
+        const dx = t.x - p.x;
+        const dy = t.y - p.y;
+        const dox = t.o - p.o;
+        if (Math.abs(dx) > 0.2 || Math.abs(dy) > 0.2 || Math.abs(dox) > 0.01) {
+          p.x += dx * f;
+          p.y += dy * f;
+          p.o += dox * f;
+          moving = true;
+        } else {
+          p.x = t.x;
+          p.y = t.y;
+          p.o = t.o;
+        }
+      }
+      const g = goal.current;
+      if (g) {
+        const v = view.current;
+        const fv = reduce.current ? 1 : 1 - Math.exp(-dt / 140);
+        v.x += (g.x - v.x) * fv;
+        v.y += (g.y - v.y) * fv;
+        v.k += (g.k - v.k) * fv;
+        if (Math.abs(g.x - v.x) < 0.3 && Math.abs(g.y - v.y) < 0.3 && Math.abs(g.k - v.k) < 0.001) {
+          view.current = { ...g };
+          goal.current = null;
+        } else moving = true;
+      }
+      tick();
+      if (moving) raf.current = requestAnimationFrame(step);
+      else raf.current = 0;
+    };
+    raf.current = requestAnimationFrame(step);
+  }, []);
+  const targetRef = useRef(target);
+  useEffect(() => {
+    targetRef.current = target;
+    run();
+  }, [target, run]);
+  useEffect(
+    () => () => {
+      cancelAnimationFrame(raf.current);
+      raf.current = 0;
+    },
+    [],
+  );
+
+  // --- camera ----------------------------------------------------------------------
+  const [focusReq, setFocusReq] = useState<{ ids: string[]; n: number } | null>(null);
+  const requestFocus = useCallback((ids: string[]) => setFocusReq((r) => ({ ids, n: (r?.n ?? 0) + 1 })), []);
+
+  const fit = useCallback(
+    (ids: string[], instant = false) => {
+      if (!size.w) return;
+      const pts = ids.map((id) => targetRef.current[id]).filter(Boolean);
+      if (!pts.length) return;
+      let x0 = Infinity,
+        x1 = -Infinity,
+        y0 = Infinity,
+        y1 = -Infinity;
+      for (const id of ids) {
+        const p = targetRef.current[id];
+        if (!p) continue;
+        const w = pillWidth(nodes[id].title, id === rootId) / 2 + 24;
+        x0 = Math.min(x0, p.x - w);
+        x1 = Math.max(x1, p.x + w);
+        y0 = Math.min(y0, p.y - 40);
+        y1 = Math.max(y1, p.y + 40);
+      }
+      // Frame inside the part of the screen the info card (left) and details (right) leave free.
+      const left = wide && (infoRef.current || missionRef.current) ? 370 : 0;
+      const availW = size.w - left - (selId && wide ? 420 : 0);
+      const availH = size.h * (selId && !wide ? 0.38 : 1);
+      const k = clamp(Math.min(availW / (x1 - x0 + 60), availH / (y1 - y0 + 60)), 0.3, 1);
+      const next = { k, x: left + availW / 2 - ((x0 + x1) / 2) * k, y: availH / 2 - ((y0 + y1) / 2) * k };
+      if (instant) {
+        view.current = next;
+        goal.current = null;
+        tick();
+      } else {
+        goal.current = next;
+        run();
+      }
+    },
+    [size.w, size.h, selId, wide, nodes, rootId, run],
+  );
+
+  const infoRef = useRef(true);
+  const missionRef = useRef(false);
+  const firstFit = useRef(true);
+  useEffect(() => {
+    if (!size.w) return;
+    if (firstFit.current) {
+      firstFit.current = false;
+      fit([...visible], true);
+    }
+  }, [size.w, visible, fit]);
 
   useEffect(() => {
-    visit(curId);
-    if (first.current) {
-      first.current = false;
+    if (!focusReq) return;
+    fit(focusReq.ids);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [focusReq]);
+
+  // Selecting (or deep-linking to) a node opens its ancestors, grows its own branch, and frames it.
+  useEffect(() => {
+    if (!selId) {
+      requestFocus([...visible]);
       return;
     }
-    headingRef.current?.focus({ preventScroll: true });
-    const top = stageRef.current?.getBoundingClientRect().top ?? 0;
-    if (top < 0) stageRef.current?.scrollIntoView({ block: "start" });
-  }, [curId, visit]);
+    const n = nodes[selId];
+    const open = new Set<string>();
+    for (let p = n.parent ? nodes[n.parent] : null; p; p = p.parent ? nodes[p.parent] : null) open.add(p.id);
+    if (n.children.length) open.add(n.id);
+    setExpanded((cur) => {
+      const nextSet = new Set(cur);
+      open.forEach((i) => nextSet.add(i));
+      return nextSet.size === cur.size ? cur : nextSet;
+    });
+    visit(selId);
+    setInfoOpen(false);
+    requestFocus([selId, ...(n.parent && n.parent !== rootId ? [n.parent] : []), ...n.children]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selId]);
 
+  const toggle = useCallback(
+    (id: string) => {
+      setExpanded((cur) => {
+        const s = new Set(cur);
+        if (s.has(id)) {
+          // closing a branch also closes everything inside it
+          const drop = (i: string) => {
+            s.delete(i);
+            nodes[i].children.forEach(drop);
+          };
+          drop(id);
+        } else s.add(id);
+        return s;
+      });
+      requestFocus([id, ...nodes[id].children]);
+    },
+    [nodes, requestFocus],
+  );
+
+  const allIds = useMemo(() => Object.keys(nodes).filter((i) => nodes[i].children.length > 0 && i !== rootId), [nodes, rootId]);
+  const expandAll = () => {
+    setExpanded(new Set(allIds));
+    requestFocus(Object.keys(nodes));
+  };
+  const collapseAll = () => {
+    setExpanded(new Set());
+    go(null);
+    requestFocus([rootId, ...nodes[rootId].children]);
+  };
+
+  // --- pan / zoom ---------------------------------------------------------------------
+  const svgRef = useRef<SVGSVGElement>(null);
+  const pointers = useRef(new Map<number, { x: number; y: number }>());
+  const pinch = useRef<{ d: number; k: number } | null>(null);
+
+  const zoomAt = useCallback((cx: number, cy: number, factor: number) => {
+    const v = view.current;
+    const k = clamp(v.k * factor, 0.25, 2.2);
+    const f = k / v.k;
+    view.current = { k, x: cx - (cx - v.x) * f, y: cy - (cy - v.y) * f };
+    goal.current = null;
+    tick();
+  }, []);
+
+  useEffect(() => {
+    const el = svgRef.current;
+    if (!el) return;
+    const onWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      const r = el.getBoundingClientRect();
+      zoomAt(e.clientX - r.left, e.clientY - r.top, Math.exp(-e.deltaY * (e.ctrlKey ? 0.01 : 0.0015)));
+    };
+    el.addEventListener("wheel", onWheel, { passive: false });
+    return () => el.removeEventListener("wheel", onWheel);
+  }, [zoomAt]);
+
+  const onPointerDown = (e: React.PointerEvent) => {
+    (e.currentTarget as Element).setPointerCapture?.(e.pointerId);
+    pointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    goal.current = null;
+    if (pointers.current.size === 2) {
+      const [a, b] = [...pointers.current.values()];
+      pinch.current = { d: Math.hypot(a.x - b.x, a.y - b.y), k: view.current.k };
+    }
+  };
+  const onPointerMove = (e: React.PointerEvent) => {
+    const prev = pointers.current.get(e.pointerId);
+    if (!prev) return;
+    const cur = { x: e.clientX, y: e.clientY };
+    pointers.current.set(e.pointerId, cur);
+    if (pointers.current.size === 2 && pinch.current) {
+      const [a, b] = [...pointers.current.values()];
+      const d = Math.hypot(a.x - b.x, a.y - b.y);
+      const r = svgRef.current!.getBoundingClientRect();
+      zoomAt((a.x + b.x) / 2 - r.left, (a.y + b.y) / 2 - r.top, (pinch.current.k * (d / pinch.current.d)) / view.current.k);
+    } else if (pointers.current.size === 1) {
+      view.current = { ...view.current, x: view.current.x + cur.x - prev.x, y: view.current.y + cur.y - prev.y };
+      tick();
+    }
+  };
+  const onPointerUp = (e: React.PointerEvent) => {
+    pointers.current.delete(e.pointerId);
+    if (pointers.current.size < 2) pinch.current = null;
+  };
+
+  // --- keyboard -----------------------------------------------------------------------
   const up = useCallback(() => {
-    if (cur.parent) go(cur.parent);
-  }, [cur.parent, go]);
-
+    if (sel) go(sel.parent === rootId ? null : sel.parent);
+  }, [sel, go, rootId]);
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key !== "Escape" && e.key !== "Backspace") return;
@@ -141,202 +484,304 @@ export function ExploreMap({ nodes, rootId, missions, ui }: ExploreMapProps) {
       const t = e.target as HTMLElement | null;
       if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
       if (document.querySelector("dialog[open]")) return;
-      if (cur.parent) {
+      if (sel) {
         e.preventDefault();
         up();
       }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [cur.parent, up]);
+  }, [sel, up]);
 
-  // --- missions ---------------------------------------------------------------
+  // --- missions -----------------------------------------------------------------------
   const stepDone = (id: string) => (nodes[id]?.challenge ? !!state.solved[id] : !!state.visited[id]);
   const mission = missions.find((m) => m.id === state.mission) ?? null;
   const stepIdx = mission ? mission.steps.findIndex((s) => !stepDone(s)) : -1;
-  const target = mission && stepIdx >= 0 ? mission.steps[stepIdx] : null;
+  const targetId = mission && stepIdx >= 0 ? mission.steps[stepIdx] : null;
   const complete = !!mission && stepIdx === -1;
-
-  const isAncestorOrSelf = (a: string, b: string) => {
-    for (let n: ExploreNodeData | undefined = nodes[b]; n; n = n.parent ? nodes[n.parent] : undefined) if (n.id === a) return true;
-    return false;
-  };
-  const onWay = (id: string) => !!target && isAncestorOrSelf(id, target);
+  // The node to pulse: the target, or the nearest visible ancestor when it is hidden in a collapsed branch.
+  let pulseId: string | null = targetId;
+  while (pulseId && !visible.has(pulseId)) pulseId = nodes[pulseId].parent;
 
   const total = Object.keys(nodes).length - 1;
   const explored = Object.keys(state.visited).filter((id) => id !== rootId && nodes[id]).length;
 
-  const crumbs: ExploreNodeData[] = [];
-  for (let n = cur.parent ? nodes[cur.parent] : undefined; n; n = n.parent ? nodes[n.parent] : undefined) crumbs.unshift(n);
-  const parent = cur.parent ? nodes[cur.parent] : null;
-  const label = (n: ExploreNodeData) => (n.id === rootId ? ui.trailhead : n.title);
-  const stageAnim = prev.dir === "in" ? "explore-stage-in" : prev.dir === "out" ? "explore-stage-out" : "explore-stage-side";
+  const [infoOpen, setInfoOpen] = useState(true);
+  useEffect(() => {
+    if (window.innerWidth < 640) setInfoOpen(false);
+  }, []);
+
+  infoRef.current = infoOpen;
+  missionRef.current = !!mission;
+
+  const activate = (id: string) => {
+    if (selId === id) {
+      if (nodes[id].children.length) toggle(id);
+    } else go(id);
+  };
 
   const bar = (
     <MissionBar
-        ui={ui}
-        missions={missions}
-        nodes={nodes}
-        mission={mission}
-        stepIdx={stepIdx}
-        target={target}
-        complete={complete}
-        stepDone={stepDone}
-        curId={curId}
-        onStart={setMission}
-        onGo={go}
-      />
+      ui={ui}
+      missions={missions}
+      nodes={nodes}
+      mission={mission}
+      stepIdx={stepIdx}
+      target={targetId}
+      complete={complete}
+      stepDone={stepDone}
+      curId={selId ?? rootId}
+      onStart={setMission}
+      onGo={go}
+    />
   );
 
+  const v = view.current;
+  const onPath = new Set<string>();
+  for (let n = sel; n; n = n.parent ? nodes[n.parent] : null) onPath.add(n.id);
+  const hueOf = (id: string) => {
+    let n = nodes[id];
+    while (n.parent && n.parent !== rootId) n = nodes[n.parent];
+    const i = nodes[rootId].children.indexOf(n.id);
+    return i < 0 ? 152 : HUES[i % HUES.length];
+  };
+
+  const btn =
+    "grid size-9 place-items-center rounded-lg border border-border bg-background/85 text-foreground/90 backdrop-blur transition-colors hover:border-primary/60 hover:text-primary";
+
   return (
-    <div className="space-y-8">
-      {mission ? bar : null}
-
-      <div ref={stageRef} role="region" aria-label={ui.stageAria} className="scroll-mt-20">
-        <div className="mb-4 flex min-h-9 flex-wrap items-center gap-x-3 gap-y-2">
-          {parent ? (
-            <button
-              type="button"
-              onClick={up}
-              className={cn(
-                "inline-flex items-center gap-1.5 rounded-md border border-border bg-muted/40 px-3 py-1.5 font-mono text-xs text-foreground/90 transition-colors hover:border-primary/60 hover:text-primary",
-                focusRing,
-                target && !onWay(curId) && "explore-target border-primary/60",
-              )}
-            >
-              <ArrowLeft className="size-3.5" aria-hidden />
-              <span className="sr-only">{fmt(ui.backTo, { name: label(parent) })}</span>
-              <span aria-hidden>{ui.back}</span>
-            </button>
-          ) : null}
-          <nav aria-label={ui.pathAria} className="min-w-0 lg:hidden">
-            <ol className="flex flex-wrap items-center gap-1 font-mono text-xs text-muted-foreground">
-              {crumbs.map((c) => (
-                <li key={c.id} className="flex items-center gap-1">
-                  <button type="button" onClick={() => go(c.id)} className={cn("rounded px-1 hover:text-foreground", focusRing)}>
-                    {label(c)}
-                  </button>
-                  <ChevronRight className="size-3" aria-hidden />
-                </li>
-              ))}
-              <li aria-current="page" className="text-foreground">
-                {label(cur)}
-              </li>
-            </ol>
-          </nav>
-          {cur.parent ? <p className="ml-auto hidden font-mono text-[11px] text-muted-foreground lg:block">{ui.keys}</p> : null}
-        </div>
-
-        <div key={curId} className={stageAnim}>
-          {curId === rootId ? (
-            <Trailhead
-              node={cur}
-              nodes={nodes}
-              ui={ui}
-              state={state}
-              onOpen={go}
-              onWay={onWay}
-              target={target}
-            />
-          ) : (
-            <div
-              className={cn(
-                "grid gap-8",
-                cur.children.length > 0
-                  ? "lg:grid-cols-[10rem_minmax(0,1.1fr)_minmax(0,0.9fr)]"
-                  : "lg:grid-cols-[10rem_minmax(0,1fr)]",
-              )}
-            >
-              <nav aria-label={ui.pathAria} className="hidden lg:block">
-                <ol className="relative space-y-2 pb-2">
-                  {crumbs.map((c) => (
-                    <li key={c.id}>
-                      <button
-                        type="button"
-                        onClick={() => go(c.id)}
-                        className={cn(
-                          "flex w-full items-center gap-2 rounded-lg border border-border bg-card/60 px-2.5 py-2 text-left text-xs text-muted-foreground transition-colors hover:border-primary/60 hover:text-foreground",
-                          focusRing,
-                        )}
-                      >
-                        {(() => {
-                          const I = KIND_ICON[c.kind];
-                          return <I className="size-3.5 shrink-0" aria-hidden />;
-                        })()}
-                        <span className="truncate">{label(c)}</span>
-                      </button>
-                      <span aria-hidden className="ml-4 block h-2 border-l border-dashed border-border" />
-                    </li>
-                  ))}
-                </ol>
-              </nav>
-
-              <FocusCard
-                node={cur}
-                nodes={nodes}
-                ui={ui}
-                headingRef={headingRef}
-                solved={!!state.solved[cur.id]}
-                onSolve={() => solve(cur.id)}
-                onOpen={go}
-                targetIsHere={target === cur.id}
+    <div ref={boxRef} className="explore-canvas relative h-[calc(100svh-3.5rem)] min-h-[30rem] w-full overflow-hidden bg-background">
+      <svg
+        ref={svgRef}
+        role="group"
+        aria-label={ui.stageAria}
+        className="absolute inset-0 size-full cursor-grab touch-none select-none active:cursor-grabbing"
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={onPointerUp}
+        onPointerCancel={onPointerUp}
+      >
+        <defs>
+          <pattern id="explore-dots" width="28" height="28" patternUnits="userSpaceOnUse" patternTransform={`translate(${f1(v.x)} ${f1(v.y)}) scale(${Math.round(v.k * 1000) / 1000})`}>
+            <circle cx="1.5" cy="1.5" r="1.1" className="fill-border" />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#explore-dots)" aria-hidden />
+        <g transform={`translate(${f1(v.x)} ${f1(v.y)}) scale(${Math.round(v.k * 1000) / 1000})`}>
+          {/* links first, so nodes sit on top */}
+          {Object.values(nodes).map((n) => {
+            if (!n.parent) return null;
+            const a = pos.current[n.parent];
+            const b = pos.current[n.id];
+            const o = Math.min(a.o, b.o);
+            if (o < 0.02) return null;
+            const sd = side[n.id];
+            const wp = n.parent === rootId ? pillWidth(nodes[rootId].title, true) : pillWidth(nodes[n.parent].title, false);
+            const wc = pillWidth(n.title, false);
+            const badge = n.parent !== rootId && nodes[n.parent].children.length > 0 ? 24 : 0;
+            const x1 = a.x + sd * (wp / 2 + badge);
+            const x2 = b.x - sd * (wc / 2);
+            const xm = (x1 + x2) / 2;
+            const hot = onPath.has(n.id) || (pulseId === n.id);
+            return (
+              <path
+                key={n.id}
+                d={`M${f1(x1)},${f1(a.y)} C${f1(xm)},${f1(a.y)} ${f1(xm)},${f1(b.y)} ${f1(x2)},${f1(b.y)}`}
+                fill="none"
+                strokeLinecap="round"
+                style={{ stroke: `oklch(var(--nl) var(--nc) ${hueOf(n.id)})`, strokeWidth: hot ? 3 : n.depth === 1 ? 2.2 : 1.5, opacity: Math.round(o * (hot ? 1 : 0.5) * 100) / 100 }}
               />
+            );
+          })}
+          {Object.values(nodes).map((n) => {
+            const p = pos.current[n.id];
+            if (p.o < 0.02) return null;
+            const isRoot = n.id === rootId;
+            const w = pillWidth(n.title, isRoot);
+            const h = isRoot ? 40 : NODE_H;
+            const Icon = KIND_ICON[n.kind];
+            const open = isRoot || expanded.has(n.id);
+            const seen = !!state.visited[n.id];
+            const isSel = selId === n.id;
+            const pulse = pulseId === n.id;
+            return (
+              <g
+                key={n.id}
+                className="explore-node"
+                transform={`translate(${f1(p.x)} ${f1(p.y)})`}
+                style={{ opacity: Math.round(p.o * 100) / 100, ["--hue" as string]: hueOf(n.id) }}
+                role="button"
+                tabIndex={p.o > 0.5 ? 0 : -1}
+                aria-label={`${n.title}, ${ui.kinds[n.kind]}${seen ? `, ${ui.visited}` : ""}`}
+                aria-expanded={n.children.length ? open : undefined}
+                aria-current={isSel ? "true" : undefined}
+                onPointerDown={(e) => e.stopPropagation()}
+                onClick={() => (isRoot ? go(null) : activate(n.id))}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    if (isRoot) go(null);
+                    else activate(n.id);
+                  }
+                }}
+              >
+                {pulse ? <rect x={-w / 2 - 6} y={-h / 2 - 6} width={w + 12} height={h + 12} rx={(h + 12) / 2} className="explore-ring" style={{ stroke: `oklch(var(--nl) var(--nc) var(--hue))` }} fill="none" /> : null}
+                <rect
+                  className="explore-pill"
+                  x={-w / 2}
+                  y={-h / 2}
+                  width={w}
+                  height={h}
+                  rx={h / 2}
+                  style={{
+                    fill: isSel ? `oklch(var(--nl) var(--nc) var(--hue) / 0.2)` : "var(--card)",
+                    stroke: `oklch(var(--nl) var(--nc) var(--hue))`,
+                    strokeWidth: isSel ? 2.6 : isRoot ? 2.4 : 1.6,
+                  }}
+                />
+                <Icon x={-w / 2 + 11} y={-7} width={14} height={14} style={{ stroke: `oklch(var(--nl) var(--nc) var(--hue))` }} aria-hidden />
+                <text x={-w / 2 + 31} y={0} dominantBaseline="central" className="fill-foreground" fontSize={isRoot ? 14.5 : 13} fontWeight={isRoot || n.depth === 1 ? 600 : 500}>
+                  {n.title}
+                </text>
+                {seen && !isRoot ? (
+                  <g transform={`translate(${w / 2 - 12} ${-h / 2 + 2})`} aria-hidden>
+                    <circle r={7} className="fill-emerald-400" />
+                    <path d="M-3.2 0.2 L-1 2.4 L3.4 -2.2" fill="none" stroke="var(--background)" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" />
+                  </g>
+                ) : null}
+                {n.challenge && !state.solved[n.id] ? (
+                  <circle cx={w / 2 - 12} cy={h / 2 - 2} r={4.5} className="fill-amber-400" aria-hidden />
+                ) : null}
+                {n.children.length > 0 && !isRoot ? (
+                  <g
+                    transform={`translate(${(side[n.id] ?? 1) * (w / 2 + 2)} 0)`}
+                    className="explore-badge"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggle(n.id);
+                    }}
+                  >
+                    <circle r={11} style={{ fill: "var(--background)", stroke: `oklch(var(--nl) var(--nc) var(--hue))`, strokeWidth: 1.4 }} />
+                    <text textAnchor="middle" dominantBaseline="central" fontSize={open ? 15 : 11} className="fill-foreground" fontWeight={600}>
+                      {open ? "−" : `+${n.children.length}`}
+                    </text>
+                  </g>
+                ) : null}
+              </g>
+            );
+          })}
+        </g>
+      </svg>
 
-              {cur.children.length > 0 ? (
-                <section aria-labelledby="explore-inside">
-                  <h3 id="explore-inside" className="font-mono text-xs uppercase tracking-wider text-primary">
-                    {fmt(ui.childrenTitle, { name: cur.title })}
-                  </h3>
-                  <p className="mt-1 text-sm text-muted-foreground">{ui.childrenHint}</p>
-                  <ul className="relative mt-4 space-y-3 border-l border-border pl-5">
-                    {cur.children.map((id, i) => (
-                      <li key={id} className="explore-rise relative" style={{ animationDelay: `${Math.min(i, 8) * 45}ms` }}>
-                        <span aria-hidden className="absolute -left-5 top-1/2 h-px w-5 bg-border" />
-                        <ChildCard
-                          node={nodes[id]}
-                          ui={ui}
-                          seen={!!state.visited[id]}
-                          solved={!!state.solved[id]}
-                          way={onWay(id)}
-                          onOpen={go}
-                        />
-                      </li>
-                    ))}
-                  </ul>
-                </section>
-              ) : null}
+      {/* info + missions */}
+      <div className={cn("pointer-events-none absolute left-3 top-3 flex max-h-[calc(100%-1.5rem)] w-[min(22rem,calc(100%-1.5rem))] flex-col gap-3 overflow-y-auto sm:left-4 sm:top-4", sel && "max-sm:hidden")}>
+        <div className="pointer-events-auto rounded-2xl border border-border bg-background/85 p-4 backdrop-blur">
+          <button
+            type="button"
+            onClick={() => setInfoOpen((o) => !o)}
+            aria-expanded={infoOpen}
+            className={cn("flex w-full items-start justify-between gap-3 text-left", focusRing)}
+          >
+            <span>
+              <span className="block font-mono text-[10px] uppercase tracking-wider text-primary">{eyebrow}</span>
+              <h1 className="mt-0.5 text-lg font-bold tracking-tight">{heading}</h1>
+            </span>
+            <ChevronRight className={cn("mt-1 size-4 shrink-0 text-muted-foreground transition-transform", infoOpen && "rotate-90")} aria-hidden />
+          </button>
+          {infoOpen ? (
+            <div className="mt-2">
+              <p className="text-xs leading-relaxed text-muted-foreground">{intro}</p>
+              <p className="mt-2 font-mono text-[11px] text-muted-foreground">{ui.canvasHint}</p>
+              <div className="mt-3 flex items-center gap-3 font-mono text-[11px] text-muted-foreground">
+                <div
+                  role="progressbar"
+                  aria-valuemin={0}
+                  aria-valuemax={total}
+                  aria-valuenow={explored}
+                  aria-label={fmt(ui.explored, { done: explored, total })}
+                  className="h-1.5 w-24 shrink-0 overflow-hidden rounded-full bg-muted"
+                >
+                  <div className="h-full bg-primary transition-[width] duration-300" style={{ width: `${(explored / total) * 100}%` }} />
+                </div>
+                <span>{fmt(ui.explored, { done: explored, total })}</span>
+              </div>
+              {mission ? null : <div className="mt-4">{bar}</div>}
+              <button type="button" onClick={reset} className={cn("mt-3 inline-flex items-center gap-1.5 rounded px-1 font-mono text-[11px] text-muted-foreground hover:text-foreground", focusRing)}>
+                <RotateCcw className="size-3" aria-hidden /> {ui.reset}
+              </button>
             </div>
-          )}
+          ) : null}
         </div>
-        <p className="sr-only" aria-live="polite">
-          {cur.title}
-        </p>
+        {mission ? <div className="pointer-events-auto">{bar}</div> : null}
       </div>
 
-      {mission ? null : bar}
-
-      <footer className="flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-border pt-4 font-mono text-xs text-muted-foreground">
-        <div className="flex items-center gap-3">
-          <div
-            role="progressbar"
-            aria-valuemin={0}
-            aria-valuemax={total}
-            aria-valuenow={explored}
-            aria-label={fmt(ui.explored, { done: explored, total })}
-            className="h-1.5 w-32 overflow-hidden rounded-full bg-muted"
-          >
-            <div className="h-full bg-primary transition-[width] duration-300" style={{ width: `${(explored / total) * 100}%` }} />
-          </div>
-          <span>{fmt(ui.explored, { done: explored, total })}</span>
-        </div>
-        <button
-          type="button"
-          onClick={reset}
-          className={cn("inline-flex items-center gap-1.5 rounded px-1 hover:text-foreground", focusRing)}
-        >
-          <RotateCcw className="size-3" aria-hidden /> {ui.reset}
+      {/* camera controls */}
+      <div className={cn("absolute bottom-4 flex flex-col gap-2", sel && wide ? "right-[27rem]" : "right-4", sel && "max-sm:hidden")}>
+        <button type="button" className={cn(btn, focusRing)} aria-label={ui.zoomIn} title={ui.zoomIn} onClick={() => zoomAt(size.w / 2, size.h / 2, 1.3)}>
+          <Plus className="size-4" aria-hidden />
         </button>
-      </footer>
+        <button type="button" className={cn(btn, focusRing)} aria-label={ui.zoomOut} title={ui.zoomOut} onClick={() => zoomAt(size.w / 2, size.h / 2, 1 / 1.3)}>
+          <Minus className="size-4" aria-hidden />
+        </button>
+        <button type="button" className={cn(btn, focusRing)} aria-label={ui.fit} title={ui.fit} onClick={() => fit([...visible])}>
+          <Maximize2 className="size-4" aria-hidden />
+        </button>
+        <button type="button" className={cn(btn, focusRing)} aria-label={ui.expandAll} title={ui.expandAll} onClick={expandAll}>
+          <ChevronsUpDown className="size-4" aria-hidden />
+        </button>
+        <button type="button" className={cn(btn, focusRing)} aria-label={ui.collapseAll} title={ui.collapseAll} onClick={collapseAll}>
+          <ChevronsDownUp className="size-4" aria-hidden />
+        </button>
+      </div>
+
+      {/* details */}
+      {sel ? (
+        <aside
+          aria-label={sel.title}
+          className="absolute inset-x-0 bottom-0 z-10 flex max-h-[58%] flex-col rounded-t-2xl border-t border-border bg-background/95 shadow-2xl backdrop-blur sm:inset-y-0 sm:left-auto sm:right-0 sm:max-h-none sm:w-[26rem] sm:rounded-none sm:border-l sm:border-t-0"
+        >
+          <div className="flex items-center gap-2 border-b border-border px-3 py-2">
+            <button type="button" onClick={up} className={cn("inline-flex items-center gap-1.5 rounded-md border border-border bg-muted/40 px-2.5 py-1.5 font-mono text-xs hover:border-primary/60 hover:text-primary", focusRing)}>
+              <ArrowLeft className="size-3.5" aria-hidden />
+              <span className="sr-only">{fmt(ui.backTo, { name: sel.parent === rootId ? ui.trailhead : nodes[sel.parent!].title })}</span>
+              <span aria-hidden>{ui.back}</span>
+            </button>
+            <p className="min-w-0 flex-1 truncate font-mono text-[11px] text-muted-foreground">{sel.parent === rootId ? ui.trailhead : nodes[sel.parent!].title}</p>
+            <button type="button" onClick={() => go(null)} aria-label={ui.close} title={ui.close} className={cn("grid size-8 place-items-center rounded-md text-muted-foreground hover:text-foreground", focusRing)}>
+              <X className="size-4" aria-hidden />
+            </button>
+          </div>
+          <div className="min-h-0 flex-1 overflow-y-auto p-4">
+            <FocusCard
+              key={sel.id}
+              node={sel}
+              nodes={nodes}
+              ui={ui}
+              solved={!!state.solved[sel.id]}
+              onSolve={() => solve(sel.id)}
+              onOpen={go}
+              targetIsHere={targetId === sel.id}
+            />
+            {sel.children.length > 0 ? (
+              <section className="mt-5" aria-labelledby="explore-inside">
+                <h3 id="explore-inside" className="font-mono text-xs uppercase tracking-wider text-primary">
+                  {fmt(ui.childrenTitle, { name: sel.title })}
+                </h3>
+                <ul className="mt-3 space-y-2.5">
+                  {sel.children.map((id) => (
+                    <li key={id}>
+                      <ChildCard node={nodes[id]} ui={ui} seen={!!state.visited[id]} solved={!!state.solved[id]} way={pulseId === id} onOpen={go} />
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ) : null}
+          </div>
+        </aside>
+      ) : null}
+      <p className="sr-only" aria-live="polite">
+        {sel?.title ?? heading}
+      </p>
     </div>
   );
 }
@@ -399,100 +844,10 @@ function ChildCard({
   );
 }
 
-function Trailhead({
-  node,
-  nodes,
-  ui,
-  state,
-  onOpen,
-  onWay,
-  target,
-}: {
-  node: ExploreNodeData;
-  nodes: Record<string, ExploreNodeData>;
-  ui: ExploreUi;
-  state: { visited: Record<string, 1>; solved: Record<string, 1> };
-  onOpen: (id: string) => void;
-  onWay: (id: string) => boolean;
-  target: string | null;
-}) {
-  const COLS = 4;
-  const stations = node.children;
-  return (
-    <div>
-      <div className="max-w-3xl">
-        <p className="text-lg text-muted-foreground">{node.summary}</p>
-        <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-muted-foreground">
-          {node.points.map((p) => (
-            <li key={p}>{p}</li>
-          ))}
-        </ul>
-      </div>
-      <ol className="mt-8 flex flex-col gap-10 lg:grid lg:grid-cols-4 lg:gap-x-10 lg:gap-y-14">
-        {stations.map((id, i) => {
-          const n = nodes[id];
-          const row = Math.floor(i / COLS);
-          const col = row % 2 === 0 ? i % COLS : COLS - 1 - (i % COLS);
-          const hasNext = i < stations.length - 1;
-          const nextInRow = hasNext && Math.floor((i + 1) / COLS) === row;
-          const leftToRight = row % 2 === 0;
-          const Icon = KIND_ICON[n.kind];
-          const seen = !!state.visited[id];
-          return (
-            <li key={id} className="explore-rise relative" style={{ gridColumn: col + 1, gridRow: row + 1, animationDelay: `${i * 50}ms` }}>
-              <button
-                type="button"
-                onClick={() => onOpen(id)}
-                className={cn(
-                  "group flex h-full w-full flex-col rounded-2xl border bg-card p-4 text-left transition-[border-color,transform,background-color] duration-150 hover:-translate-y-0.5 hover:border-primary/60 hover:bg-primary/5",
-                  onWay(id) && target ? "explore-target border-primary/70" : "border-border",
-                  focusRing,
-                )}
-              >
-                <div className="flex items-center justify-between gap-2">
-                  <span className="flex items-center gap-2 font-mono text-xs text-primary/90">
-                    <span className="grid size-6 place-items-center rounded-full border border-primary/40 bg-primary/10">{i + 1}</span>
-                    <Icon className="size-3.5" aria-hidden />
-                  </span>
-                  {seen ? (
-                    <span className="inline-flex items-center gap-1 font-mono text-[10px] text-emerald-400">
-                      <Check className="size-3" aria-hidden /> {ui.visited}
-                    </span>
-                  ) : i === 0 ? (
-                    <span className="inline-flex items-center gap-1 font-mono text-[10px] text-primary">
-                      <Flag className="size-3" aria-hidden /> {ui.start}
-                    </span>
-                  ) : null}
-                </div>
-                <p className="mt-3 text-base font-semibold">{n.title}</p>
-                <p className="mt-1 line-clamp-3 text-xs leading-snug text-muted-foreground">{n.summary}</p>
-                <span className="mt-auto inline-flex items-center gap-1 pt-3 font-mono text-[11px] text-primary">
-                  {ui.enter} <ArrowRight className="size-3 transition-transform group-hover:translate-x-0.5" aria-hidden />
-                </span>
-              </button>
-              {hasNext ? <MoveDown className="absolute -bottom-8 left-1/2 size-4 -translate-x-1/2 text-primary/50 lg:hidden" aria-hidden /> : null}
-              {nextInRow && leftToRight ? (
-                <MoveRight className="absolute -right-7 top-1/2 hidden size-4 -translate-y-1/2 text-primary/50 lg:block" aria-hidden />
-              ) : null}
-              {nextInRow && !leftToRight ? (
-                <MoveLeft className="absolute -left-7 top-1/2 hidden size-4 -translate-y-1/2 text-primary/50 lg:block" aria-hidden />
-              ) : null}
-              {hasNext && !nextInRow ? (
-                <MoveDown className="absolute -bottom-9 left-1/2 hidden size-4 -translate-x-1/2 text-primary/50 lg:block" aria-hidden />
-              ) : null}
-            </li>
-          );
-        })}
-      </ol>
-    </div>
-  );
-}
-
 function FocusCard({
   node,
   nodes,
   ui,
-  headingRef,
   solved,
   onSolve,
   onOpen,
@@ -501,7 +856,6 @@ function FocusCard({
   node: ExploreNodeData;
   nodes: Record<string, ExploreNodeData>;
   ui: ExploreUi;
-  headingRef: React.RefObject<HTMLHeadingElement | null>;
   solved: boolean;
   onSolve: () => void;
   onOpen: (id: string) => void;
@@ -511,7 +865,7 @@ function FocusCard({
   const nextId = siblings[siblings.indexOf(node.id) + 1];
   const next = nextId ? nodes[nextId] : null;
   return (
-    <article className={cn("min-w-0 rounded-2xl border bg-card p-5 sm:p-6", targetIsHere ? "explore-target border-primary/70" : "border-border")}>
+    <article className={cn("min-w-0 rounded-2xl border bg-card p-4", targetIsHere ? "explore-target border-primary/70" : "border-border")}>
       <div className="flex flex-wrap items-center gap-2">
         <KindChip kind={node.kind} ui={ui} />
         {node.challenge ? (
@@ -520,7 +874,7 @@ function FocusCard({
           </span>
         ) : null}
       </div>
-      <h2 ref={headingRef} tabIndex={-1} className="mt-3 text-2xl font-bold tracking-tight outline-none">
+      <h2 className="mt-3 text-2xl font-bold tracking-tight">
         {node.title}
       </h2>
       {node.path || node.where ? (
@@ -851,7 +1205,7 @@ function MissionBar({
         {ui.missionsTitle}
       </h2>
       <p className="mt-1 text-sm text-muted-foreground">{ui.missionsHint}</p>
-      <ul className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <ul className="mt-3 grid gap-2">
         {missions.map((m) => {
           const done = m.steps.filter(stepDone).length;
           return (

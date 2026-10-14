@@ -36,7 +36,7 @@ O vault é saída gerada e somente leitura: edite as fontes e exporte de novo. A
 
 ## Mapa explorável
 
-`/[lang]/explore` é um mapa para aprofundar e voltar: começa no caminho do código (máquina de quem desenvolve, repositório, workflow de CI, build, deploy, runtime) e cada lugar abre por dentro (o `.yaml`, os scanners ao lado, o trecho de código, o desafio). O nó atual vive no hash da URL (`#sast`), então o botão voltar do navegador e os links profundos funcionam. Missões guiam uma trilha e os desafios pedem para achar as linhas de risco; o progresso fica só no navegador (`kb:explore:v1`).
+`/[lang]/explore` é um mapa em tela cheia, uma árvore que cresce ao clicar (arraste para mover, role ou use pinça para dar zoom), para aprofundar e voltar: começa no caminho do código (máquina de quem desenvolve, repositório, workflow de CI, build, deploy, runtime) e cada lugar abre por dentro (o `.yaml`, os scanners ao lado, o trecho de código, o desafio). O nó atual vive no hash da URL (`#sast`), então o botão voltar do navegador e os links profundos funcionam. Missões guiam uma trilha e os desafios pedem para achar as linhas de risco; o progresso fica só no navegador (`kb:explore:v1`).
 
 - Estrutura (ids, aninhamento, arquivos, código, linhas de risco): `src/content/explore/world.ts`.
 - Texto (inglês, traduzido para pt/es com a mesma checagem de drift, unidade estrita `explore`): `src/content/explore/text.ts`.

@@ -60,16 +60,14 @@ export default async function ExplorePage({ params }: { params: Promise<{ lang: 
   }));
 
   return (
-    <div className="animate-page-enter mx-auto max-w-7xl px-4 pb-24 pt-10">
-      <header>
-        <p className="font-mono text-xs uppercase tracking-wider text-primary">{text.ui.eyebrow}</p>
-        <h1 className="mt-2 text-3xl font-bold tracking-tight md:text-4xl">{text.ui.heading}</h1>
-        <p className="mt-3 max-w-2xl text-lg text-muted-foreground">{text.ui.intro}</p>
-      </header>
-
-      <div className="mt-8">
-        <ExploreMap nodes={nodes} rootId={world.id} missions={missionData} ui={text.ui as unknown as ExploreUi} />
-      </div>
-    </div>
+    <ExploreMap
+      nodes={nodes}
+      rootId={world.id}
+      missions={missionData}
+      ui={text.ui as unknown as ExploreUi}
+      eyebrow={text.ui.eyebrow}
+      heading={text.ui.heading}
+      intro={text.ui.intro}
+    />
   );
 }

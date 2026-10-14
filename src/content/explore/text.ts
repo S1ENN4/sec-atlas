@@ -73,6 +73,13 @@ export const exploreText = {
     lineAria: "Line {n}",
     reset: "reset exploration",
     keys: "Esc or Backspace goes back one level.",
+    canvasHint: "Drag to move, scroll or pinch to zoom, click a node to open it.",
+    zoomIn: "Zoom in",
+    zoomOut: "Zoom out",
+    fit: "Fit the map to the screen",
+    expandAll: "Open every branch",
+    collapseAll: "Close every branch",
+    close: "Close",
   },
 
   nodes: {

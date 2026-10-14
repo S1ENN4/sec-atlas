@@ -816,6 +816,10 @@
       "t": "Voltar para {name}",
       "h": "5233d9d9"
     },
+    "ui.canvasHint": {
+      "t": "Arraste para mover, role ou use pinça para dar zoom, clique num nó para abrir.",
+      "h": "e9a2326e"
+    },
     "ui.challengeCheck": {
       "t": "conferir resposta",
       "h": "5878a4a1"
@@ -856,9 +860,17 @@
       "t": "Dentro de {name}",
       "h": "e273d412"
     },
+    "ui.close": {
+      "t": "Fechar",
+      "h": "bbfa773e"
+    },
     "ui.codeTitle": {
       "t": "exemplo",
       "h": "c3499c27"
+    },
+    "ui.collapseAll": {
+      "t": "Fechar todos os ramos",
+      "h": "f82c0211"
     },
     "ui.copied": {
       "t": "copiado",
@@ -876,6 +888,10 @@
       "t": "abrir",
       "h": "5fc7e38b"
     },
+    "ui.expandAll": {
+      "t": "Abrir todos os ramos",
+      "h": "a5769c25"
+    },
     "ui.explored": {
       "t": "{done} de {total} lugares explorados",
       "h": "9949a5f2"
@@ -883,6 +899,10 @@
     "ui.eyebrow": {
       "t": "mapa explorável",
       "h": "886caedb"
+    },
+    "ui.fit": {
+      "t": "Ajustar o mapa à tela",
+      "h": "40995523"
     },
     "ui.heading": {
       "t": "Do commit à produção",
@@ -1015,6 +1035,14 @@
     "ui.whereTitle": {
       "t": "onde mora",
       "h": "7f22ac17"
+    },
+    "ui.zoomIn": {
+      "t": "Aproximar",
+      "h": "4fc05f27"
+    },
+    "ui.zoomOut": {
+      "t": "Afastar",
+      "h": "a4ae4b24"
     }
   }
 }
