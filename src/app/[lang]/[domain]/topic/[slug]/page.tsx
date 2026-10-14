@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, MoveRight } from "lucide-react";
 
 import { ContentNotice } from "@/components/content-notice";
+import { CopyCodeButton } from "@/components/copy-code-button";
 import { Quiz } from "@/components/quiz";
 import { TopicBridges } from "@/components/topic-bridges";
 import { TopicIcon } from "@/components/topic-icon";
@@ -125,9 +126,17 @@ export default async function TopicPage({ params }: { params: Params }) {
                   <span>{sample.filename ?? ""}</span>
                   <span className="uppercase tracking-wider">{sample.language}</span>
                 </figcaption>
-                <pre tabIndex={0} aria-label={sample.filename ?? sample.language}>
-                  <code>{sample.code}</code>
-                </pre>
+                <div className="relative">
+                  <pre tabIndex={0} aria-label={sample.filename ?? sample.language}>
+                    <code>{sample.code}</code>
+                  </pre>
+                  <CopyCodeButton
+                    code={sample.code}
+                    filename={sample.filename}
+                    t={{ topicPage: { copy: t.topicPage.copy, copied: t.topicPage.copied } }}
+                    className="absolute top-2 right-2 z-10"
+                  />
+                </div>
               </figure>
             ))}
           </section>

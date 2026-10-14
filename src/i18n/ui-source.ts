@@ -138,6 +138,8 @@ export const ui = {
     back: "back to the map",
     connections: "connections on the map",
     stageBadge: "stage: {stage}",
+    copy: "Copy",
+    copied: "Copied!",
   },
 
   toolbar: {

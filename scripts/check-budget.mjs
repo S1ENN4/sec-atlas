@@ -203,11 +203,21 @@ import { gzipSync } from "node:zlib";
 
 const OUT_DIR = resolve(process.cwd(), "out");
 
+// Phase 3.A3 reconciliation (copy-code button on every <pre>): the new
+// CopyCodeButton is a client component rendered once per code sample. Each
+// instance ships the code text in its serialized `code` prop (kept narrow
+// via `t={{topicPage:{copy,copied}}}` so only those two strings travel,
+// not the full Ui dictionary), plus ~580 bytes of HTML and ~50 bytes of
+// RSC markup overhead. Measured on the post-change floor: first-load
+// 12,958,010 (+636K), rsc 15,865,463 (+637K), total 28,823,473 (+1.27M),
+// all locales 81,565,824 (+3.77M). Caps nudged to keep the same ~3%
+// headroom-to-content ratio as the live floor.
+
 const CAPS = [
-  { key: "first_load",  label: "first-load assets",     limit: 12_750_000, scope: "first_load" },
-  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 15_650_000, scope: "rsc_prefetch" },
-  { key: "total",       label: "total",                 limit: 28_400_000, scope: "total" },
-  { key: "all_locales", label: "all locales (sanity)", limit: 79_900_000, scope: "all_locales" },
+  { key: "first_load",  label: "first-load assets",     limit: 13_350_000, scope: "first_load" },
+  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 16_350_000, scope: "rsc_prefetch" },
+  { key: "total",       label: "total",                 limit: 29_600_000, scope: "total" },
+  { key: "all_locales", label: "all locales (sanity)", limit: 83_900_000, scope: "all_locales" },
   { key: "css",         label: "CSS raw",               limit:    98_000, scope: "css" },
   { key: "js",          label: "JS raw",                limit:   945_000, scope: "js" },
   { key: "js_gz",       label: "JS gzip",               limit:   297_000, scope: "js_gz" },

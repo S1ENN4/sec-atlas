@@ -2008,6 +2008,14 @@
       "t": "conexões no mapa",
       "h": "9f7ba532"
     },
+    "topicPage.copy": {
+      "t": "Copiar",
+      "h": "af74f7c5"
+    },
+    "topicPage.copied": {
+      "t": "Copiado!",
+      "h": "b7c3ca0e"
+    },
     "topicPage.stageBadge": {
       "t": "etapa: {stage}",
       "h": "61970ed7"
