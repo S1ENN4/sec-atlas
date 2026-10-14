@@ -3,6 +3,8 @@
 // the knowledge base with the same guardrails a human contributor has.
 //
 // Zero dependencies. Speaks MCP over stdio (newline-delimited JSON-RPC 2.0).
+// Dual-era: the stateless 2026-07-28 revision (per-request _meta, server/discover) and the
+// handshake revisions (initialize) share the same tools.
 // stdout carries protocol messages ONLY; diagnostics go to stderr.
 //
 // Run from the repository root:
@@ -33,7 +35,10 @@ const topicsOf = (d, locale) => (locale ? localizeDomain(d.id, locale).domain.to
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const pkg = JSON.parse(readFileSync(resolve(ROOT, "package.json"), "utf8"));
 
-const SUPPORTED = ["2025-06-18", "2025-03-26", "2024-11-05"];
+const SUPPORTED = ["2025-11-25", "2025-06-18", "2025-03-26", "2024-11-05"]; // legacy: initialize handshake
+const MODERN = ["2026-07-28"]; // stateless: version and capabilities travel in every request's _meta
+const META_VERSION = "io.modelcontextprotocol/protocolVersion";
+const META_SERVER = "io.modelcontextprotocol/serverInfo";
 const KINDS = ["tecnica", "pratica", "conceito"];
 const SLUG_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 
@@ -269,11 +274,42 @@ const byName = new Map(tools.map((t) => [t.name, t]));
 // ---------------------------------------------------------------------------
 const send = (msg) => process.stdout.write(JSON.stringify(msg) + "\n");
 const reply = (id, result) => send({ jsonrpc: "2.0", id, result });
-const replyError = (id, code, message) => send({ jsonrpc: "2.0", id, error: { code, message } });
+const replyError = (id, code, message, data) => send({ jsonrpc: "2.0", id, error: { code, message, ...(data ? { data } : {}) } });
+
+// Results of the stateless revision carry resultType and the server identity.
+const modern = (result, cache) => ({ resultType: "complete", _meta: { [META_SERVER]: { name: "sec-atlas", version: pkg.version } }, ...cache, ...result });
+const STATIC = { ttlMs: 60000, cacheScope: "public" };
+
+function handleModern(msg) {
+  const { id, method, params } = msg;
+  const requested = params?._meta?.[META_VERSION];
+  if (method === "server/discover") {
+    return reply(id, modern({ supportedVersions: [...MODERN, ...SUPPORTED], capabilities: { tools: {} }, instructions: INSTRUCTIONS }, STATIC));
+  }
+  if (!MODERN.includes(requested)) {
+    return replyError(id, -32022, "Unsupported protocol version", { supported: [...MODERN, ...SUPPORTED], requested });
+  }
+  if (method === "tools/list") {
+    return reply(id, modern({ tools: tools.map(({ name, description, inputSchema }) => ({ name, description, inputSchema })) }, STATIC));
+  }
+  if (method === "tools/call") {
+    const tool = byName.get(params?.name);
+    if (!tool) return replyError(id, -32602, `Unknown tool: ${params?.name}`);
+    try {
+      return reply(id, modern(tool.run(params?.arguments ?? {})));
+    } catch (e) {
+      return reply(id, modern(fail(`Tool error: ${e instanceof Error ? e.message : String(e)}`)));
+    }
+  }
+  return replyError(id, -32601, `Method not found: ${method}`);
+}
 
 function handle(msg) {
   const { id, method, params } = msg;
   const isRequest = id !== undefined && id !== null;
+
+  // A request with per-request metadata (or server/discover) is the stateless revision.
+  if (isRequest && (method === "server/discover" || params?._meta?.[META_VERSION] !== undefined)) return handleModern(msg);
 
   if (method === "initialize") {
     const asked = params?.protocolVersion;

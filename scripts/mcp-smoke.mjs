@@ -54,6 +54,18 @@ try {
   check("initialize ships instructions", (init.result?.instructions ?? "").includes("validate_content"));
   child.stdin.write(JSON.stringify({ jsonrpc: "2.0", method: "notifications/initialized" }) + "\n");
 
+  // stateless revision (2026-07-28): no handshake, version and capabilities travel in _meta
+  const meta = (v = "2026-07-28") => ({ _meta: { "io.modelcontextprotocol/protocolVersion": v, "io.modelcontextprotocol/clientCapabilities": {} } });
+  const disc = await rpc("server/discover", {});
+  check("server/discover lists both eras", disc.result?.supportedVersions?.includes("2026-07-28") && disc.result?.supportedVersions?.includes("2025-06-18"), JSON.stringify(disc));
+  check("server/discover result is a complete, cacheable result", disc.result?.resultType === "complete" && typeof disc.result?.ttlMs === "number" && disc.result?.cacheScope === "public");
+  const mlist = await rpc("tools/list", meta());
+  check("stateless tools/list works without initialize", mlist.result?.tools?.length === 7 && mlist.result?.resultType === "complete");
+  const mcall = await rpc("tools/call", { name: "list_domains", arguments: {}, ...meta() });
+  check("stateless tools/call returns tool content", (mcall.result?.content?.[0]?.text ?? "").includes("owasp") && mcall.result?.resultType === "complete");
+  const bad = await rpc("tools/list", meta("1900-01-01"));
+  check("unsupported version returns -32022 with the supported list", bad.error?.code === -32022 && bad.error?.data?.supported?.includes("2026-07-28"), JSON.stringify(bad));
+
   const list = await rpc("tools/list", {});
   const names = (list.result?.tools ?? []).map((t) => t.name).sort();
   const expected = ["get_authoring_guide", "get_topic", "list_domains", "list_topics", "scaffold_topic", "search", "validate_content"];
