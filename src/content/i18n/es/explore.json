@@ -276,6 +276,126 @@
       "t": "La línea 4 aún acepta TLS 1.0 y 1.1, que son obsoletos y tienen debilidades conocidas. La línea 5 permite todos los cifrados salvo los anónimos, incluidos los débiles y heredados. Permite solo TLS 1.2 y 1.3 y una lista explícita de cifrados modernos.",
       "h": "21d2f5ef"
     },
+    "challenges.o-a01.hint": {
+      "t": "Mira qué protege la ruta.",
+      "h": "c522e7ed"
+    },
+    "challenges.o-a01.prompt": {
+      "t": "Cualquier usuario con sesión puede llamar a este endpoint. ¿Qué línea es el problema?",
+      "h": "7dff5b69"
+    },
+    "challenges.o-a01.why": {
+      "t": "La línea 1 solo exige iniciar sesión. No hay verificación de que quien llama sea admin, así que cualquier usuario puede ascenderse. Agrega una comprobación de rol (por ejemplo requireRole('admin')) en el servidor.",
+      "h": "3921ddde"
+    },
+    "challenges.o-a02.hint": {
+      "t": "Tres líneas son cómodas en desarrollo y peligrosas en producción.",
+      "h": "60725579"
+    },
+    "challenges.o-a02.prompt": {
+      "t": "¿Qué ajustes nunca deberían llegar a producción?",
+      "h": "1e7be498"
+    },
+    "challenges.o-a02.why": {
+      "t": "El modo debug (línea 2) filtra stack traces e internos, un origen CORS comodín (línea 3) deja que cualquier sitio llame a la API desde un navegador, y una contraseña de admin por defecto (línea 4) es lo primero que prueba un atacante. Apaga el debug, lista los orígenes exactos y usa un secreto fuerte y único.",
+      "h": "338bba78"
+    },
+    "challenges.o-a03.hint": {
+      "t": "Una es un rango de versión, la otra ejecuta una descarga.",
+      "h": "6aacf03b"
+    },
+    "challenges.o-a03.prompt": {
+      "t": "¿Qué dos líneas ponen en riesgo la cadena de suministro?",
+      "h": "4fdf32b9"
+    },
+    "challenges.o-a03.why": {
+      "t": "Un paquete interno con versión '*' (línea 4) puede ser reemplazado por un paquete público del mismo nombre y versión mayor, lo que es dependency confusion. El script postinstall (línea 7) descarga y ejecuta código de internet en cada instalación. Fija versiones, usa un scope de registro privado y evita pasar descargas a un shell.",
+      "h": "da455819"
+    },
+    "challenges.o-a04.hint": {
+      "t": "Un hash débil, una fuente de aleatoriedad débil y un transporte débil.",
+      "h": "9713328b"
+    },
+    "challenges.o-a04.prompt": {
+      "t": "¿Qué líneas son fallos criptográficos?",
+      "h": "66e6c8cf"
+    },
+    "challenges.o-a04.why": {
+      "t": "MD5 (línea 4) es rápido y sin sal, así que las contraseñas se descifran rápido; usa Argon2, scrypt o bcrypt. random (línea 7) es predecible, así que los tokens de reinicio pueden adivinarse; usa el módulo secrets. La URL http (línea 9) envía credenciales en texto claro; usa https.",
+      "h": "1f204914"
+    },
+    "challenges.o-a05.hint": {
+      "t": "¿Dónde se encuentra la entrada del usuario con el shell?",
+      "h": "6d1aae40"
+    },
+    "challenges.o-a05.prompt": {
+      "t": "¿Qué línea deja que un atacante ejecute sus propios comandos?",
+      "h": "d6a1d6c3"
+    },
+    "challenges.o-a05.why": {
+      "t": "La línea 4 arma un comando de shell con el valor de host, así que una entrada como '8.8.8.8; cat /etc/passwd' ejecuta un segundo comando. Llama al programa sin shell, pasando el argumento como lista, y valida que el host parezca un host.",
+      "h": "982385de"
+    },
+    "challenges.o-a06.hint": {
+      "t": "Piensa en cuántos intentos tiene el atacante.",
+      "h": "ff8d3cb4"
+    },
+    "challenges.o-a06.prompt": {
+      "t": "El código funciona como está escrito. ¿Qué líneas debilitan el diseño?",
+      "h": "9f5bb05b"
+    },
+    "challenges.o-a06.why": {
+      "t": "Un código de 4 dígitos (línea 2) tiene solo 10.000 posibilidades, y la comparación (línea 3) no tiene límite de intentos ni vencimiento, así que un atacante puede probarlas todas. Usa un token aleatorio más largo, hazlo vencer rápido y bloquea tras pocos fallos.",
+      "h": "8da1daf7"
+    },
+    "challenges.o-a07.hint": {
+      "t": "Mira qué entrega cada respuesta y cómo se verifica la contraseña.",
+      "h": "02605be5"
+    },
+    "challenges.o-a07.prompt": {
+      "t": "¿Qué líneas debilitan este login?",
+      "h": "d49aee49"
+    },
+    "challenges.o-a07.why": {
+      "t": "Los mensajes distintos (línea 3) revelan qué correos existen, comparar texto plano (línea 4) significa que las contraseñas no tienen hash y se comparan de forma insegura, y reutilizar la sesión (línea 5) permite session fixation. Devuelve un mensaje genérico, compara hashes y regenera la sesión tras el login. Agrega también rate limiting.",
+      "h": "97951e8d"
+    },
+    "challenges.o-a08.hint": {
+      "t": "Una deserializa datos del usuario, la otra ejecuta una descarga.",
+      "h": "98d8093e"
+    },
+    "challenges.o-a08.prompt": {
+      "t": "¿Qué líneas confían en datos o código que nunca se verificaron?",
+      "h": "310ba51e"
+    },
+    "challenges.o-a08.why": {
+      "t": "pickle.loads sobre el valor de una cookie (línea 4) deja que quien controla la cookie ejecute código en el servidor, y exec sobre un archivo descargado (línea 8) corre lo que devuelva la URL. Usa un formato seguro como JSON con cookie firmada y verifica firmas antes de ejecutar cualquier cosa.",
+      "h": "f382f1e6"
+    },
+    "challenges.o-a09.hint": {
+      "t": "Falta algo en el log, y algo no debería estar en él.",
+      "h": "15b328b8"
+    },
+    "challenges.o-a09.prompt": {
+      "t": "¿Qué líneas son errores de logging?",
+      "h": "498d7875"
+    },
+    "challenges.o-a09.why": {
+      "t": "Un login fallido retorna sin ningún log (línea 3), así que un ataque de adivinación de contraseñas queda invisible. El log de éxito (línea 4) escribe la contraseña en el archivo de log. Registra los fallos con el usuario y el origen, y nunca registres secretos.",
+      "h": "ca5db5bd"
+    },
+    "challenges.o-a10.hint": {
+      "t": "Lee lo que ocurre dentro del except.",
+      "h": "4754bf14"
+    },
+    "challenges.o-a10.prompt": {
+      "t": "¿Qué pasa cuando el servicio de políticas está caído? ¿Qué líneas son el problema?",
+      "h": "4d9c49af"
+    },
+    "challenges.o-a10.why": {
+      "t": "El bloque except (línea 4) captura todo y devuelve True (línea 5), así que cualquier error concede acceso. Falla cerrado: registra el error y niega. Captura solo los errores que esperas.",
+      "h": "bebb949c"
+    },
     "challenges.s-runbooks.hint": {
       "t": "Tres pasos: uno pierde la memoria, uno borra evidencia, uno mantiene el host en uso.",
       "h": "7c447e69"
@@ -1123,6 +1243,22 @@
     "missions.owasp-walk.title": {
       "t": "Recorre la petición",
       "h": "0e33de99"
+    },
+    "missions.owasp10-login.intro": {
+      "t": "Cuatro estaciones que se juntan alrededor de un login: la contraseña, el token, el log y el camino de error.",
+      "h": "2a9cf67d"
+    },
+    "missions.owasp10-login.title": {
+      "t": "Rompe el login",
+      "h": "b8eac7d4"
+    },
+    "missions.owasp10-walk.intro": {
+      "t": "Recorre las diez estaciones en orden y resuelve un desafío por cada categoría.",
+      "h": "1f59adb2"
+    },
+    "missions.owasp10-walk.title": {
+      "t": "El Top 10 completo",
+      "h": "eafc7167"
     },
     "missions.read-the-wire.intro": {
       "t": "Entiende el handshake, detecta un escaneo y mira cómo funciona la amplificación.",
@@ -3687,6 +3823,226 @@
     "nodes.net.title": {
       "t": "Un mensaje bajando por la pila",
       "h": "5114cbba"
+    },
+    "nodes.o-a01.points.0": {
+      "t": "Iniciar sesión responde quién eres, no qué puedes hacer.",
+      "h": "ac4fffc7"
+    },
+    "nodes.o-a01.points.1": {
+      "t": "Verifica el rol o la propiedad en el servidor, en cada acción sensible.",
+      "h": "9b9f33fa"
+    },
+    "nodes.o-a01.points.2": {
+      "t": "Ocultar un botón en la interfaz no protege nada.",
+      "h": "53f41b01"
+    },
+    "nodes.o-a01.summary": {
+      "t": "El usuario inició sesión, pero nadie verifica si puede hacer justamente esto.",
+      "h": "16385cdc"
+    },
+    "nodes.o-a01.title": {
+      "t": "A01 Control de acceso roto",
+      "h": "e5ece5bf"
+    },
+    "nodes.o-a02.points.0": {
+      "t": "Producción necesita sus propios ajustes, no los valores por defecto del desarrollo.",
+      "h": "ed6076d6"
+    },
+    "nodes.o-a02.points.1": {
+      "t": "Los valores totalmente abiertos, como '*', son cómodos y peligrosos.",
+      "h": "5fd9b319"
+    },
+    "nodes.o-a02.points.2": {
+      "t": "Escanea la configuración automáticamente, porque las personas olvidan.",
+      "h": "9b893394"
+    },
+    "nodes.o-a02.summary": {
+      "t": "El software está bien, los ajustes no: debug activado, CORS abierto y contraseña por defecto.",
+      "h": "7af0af09"
+    },
+    "nodes.o-a02.title": {
+      "t": "A02 Configuración de seguridad incorrecta",
+      "h": "61f23992"
+    },
+    "nodes.o-a03.points.0": {
+      "t": "Fija versiones y usa un lockfile para que una actualización sorpresa no se cuele.",
+      "h": "14efab27"
+    },
+    "nodes.o-a03.points.1": {
+      "t": "Un nombre de paquete privado sin origen fijado puede ser secuestrado desde el registro público.",
+      "h": "a07f6f8f"
+    },
+    "nodes.o-a03.points.2": {
+      "t": "Nunca pases una descarga directo a un shell.",
+      "h": "44198029"
+    },
+    "nodes.o-a03.summary": {
+      "t": "Ejecutas código que no escribiste: las dependencias, los scripts de instalación y las herramientas de build pueden ser una puerta de entrada.",
+      "h": "50559a5d"
+    },
+    "nodes.o-a03.title": {
+      "t": "A03 Fallos en la cadena de suministro de software",
+      "h": "ad76a818"
+    },
+    "nodes.o-a04.points.0": {
+      "t": "Aplica hash a las contraseñas con una función lenta y con sal, como Argon2, scrypt o bcrypt.",
+      "h": "42745b72"
+    },
+    "nodes.o-a04.points.1": {
+      "t": "Usa una fuente de aleatoriedad criptográficamente segura para los tokens.",
+      "h": "26822b6a"
+    },
+    "nodes.o-a04.points.2": {
+      "t": "Envía todo por TLS, y nada sensible por HTTP plano.",
+      "h": "92dfa846"
+    },
+    "nodes.o-a04.summary": {
+      "t": "Algoritmos débiles, aleatoriedad predecible o HTTP plano exponen datos que debían estar protegidos.",
+      "h": "c76be7c8"
+    },
+    "nodes.o-a04.title": {
+      "t": "A04 Fallos criptográficos",
+      "h": "1e8e8264"
+    },
+    "nodes.o-a05.points.0": {
+      "t": "El mismo patrón aparece en SQL, shell, LDAP, plantillas y más.",
+      "h": "54e32c13"
+    },
+    "nodes.o-a05.points.1": {
+      "t": "Usa APIs parametrizadas que mantengan separados datos y comandos.",
+      "h": "1d723349"
+    },
+    "nodes.o-a05.points.2": {
+      "t": "Valida la entrada, pero no dependas solo de eso.",
+      "h": "c3a4c846"
+    },
+    "nodes.o-a05.summary": {
+      "t": "La entrada no confiable se pega en un comando o consulta, y los datos se vuelven instrucciones.",
+      "h": "669f7247"
+    },
+    "nodes.o-a05.title": {
+      "t": "A05 Inyección",
+      "h": "9b12c5aa"
+    },
+    "nodes.o-a06.points.0": {
+      "t": "Pregunta '¿cómo podría abusarse de esto?' antes de construir, con modelado de amenazas.",
+      "h": "8600aeda"
+    },
+    "nodes.o-a06.points.1": {
+      "t": "Todo secreto adivinable necesita límite de intentos y vencimiento.",
+      "h": "48227920"
+    },
+    "nodes.o-a06.points.2": {
+      "t": "Algunas fallas no se arreglan con un parche, porque el problema es el diseño.",
+      "h": "9b427415"
+    },
+    "nodes.o-a06.summary": {
+      "t": "El código hace exactamente lo diseñado, y el diseño nunca imaginó a un atacante.",
+      "h": "7ab2156f"
+    },
+    "nodes.o-a06.title": {
+      "t": "A06 Diseño inseguro",
+      "h": "142dff20"
+    },
+    "nodes.o-a07.points.0": {
+      "t": "Devuelve el mismo mensaje cuando el usuario o la contraseña sean incorrectos.",
+      "h": "56c7ead1"
+    },
+    "nodes.o-a07.points.1": {
+      "t": "Guarda solo hashes de contraseña y compáralos de forma segura.",
+      "h": "525adcfa"
+    },
+    "nodes.o-a07.points.2": {
+      "t": "Inicia una sesión nueva tras el login y limita los intentos repetidos.",
+      "h": "dcdfa0da"
+    },
+    "nodes.o-a07.summary": {
+      "t": "El propio login es débil: revela qué cuentas existen, guarda mal las contraseñas o reutiliza sesiones.",
+      "h": "4f4693e3"
+    },
+    "nodes.o-a07.title": {
+      "t": "A07 Fallos de autenticación",
+      "h": "b83a1cb9"
+    },
+    "nodes.o-a08.points.0": {
+      "t": "Deserializar datos no confiables puede ejecutar código elegido por el atacante.",
+      "h": "d85f1ea9"
+    },
+    "nodes.o-a08.points.1": {
+      "t": "Ejecutar código descargado sin comprobar una firma entrega el control.",
+      "h": "ad730054"
+    },
+    "nodes.o-a08.points.2": {
+      "t": "Prefiere formatos de datos simples y verifica firmas en todo lo que ejecutes.",
+      "h": "043ff1a7"
+    },
+    "nodes.o-a08.summary": {
+      "t": "La app confía en datos o código que nunca verificó, como objetos serializados o scripts descargados.",
+      "h": "41c05b4c"
+    },
+    "nodes.o-a08.title": {
+      "t": "A08 Fallos de integridad de software o datos",
+      "h": "310f6643"
+    },
+    "nodes.o-a09.points.0": {
+      "t": "Registra los logins fallidos y otros eventos de seguridad, con contexto suficiente para investigar.",
+      "h": "b5e588c4"
+    },
+    "nodes.o-a09.points.1": {
+      "t": "Nunca escribas contraseñas, tokens o datos personales en el log.",
+      "h": "b4ae0d5a"
+    },
+    "nodes.o-a09.points.2": {
+      "t": "Un log que nadie mira no es detección: agrega alertas.",
+      "h": "2ffe6d6d"
+    },
+    "nodes.o-a09.summary": {
+      "t": "Cuando algo sale mal nadie se entera, o los propios logs filtran lo que deberían proteger.",
+      "h": "19968aa9"
+    },
+    "nodes.o-a09.title": {
+      "t": "A09 Fallos de registro y alertas de seguridad",
+      "h": "213117d0"
+    },
+    "nodes.o-a10.points.0": {
+      "t": "Ante un error, niega por defecto en lugar de permitir.",
+      "h": "a9291254"
+    },
+    "nodes.o-a10.points.1": {
+      "t": "No tragues excepciones en silencio: manéjalas y regístralas.",
+      "h": "ad468323"
+    },
+    "nodes.o-a10.points.2": {
+      "t": "Prueba los caminos de falla, porque los atacantes los provocarán.",
+      "h": "6d1bf241"
+    },
+    "nodes.o-a10.summary": {
+      "t": "Lo que hace el código cuando algo se rompe: debe fallar de forma segura, no abierta.",
+      "h": "1e91ab62"
+    },
+    "nodes.o-a10.title": {
+      "t": "A10 Manejo incorrecto de condiciones excepcionales",
+      "h": "59f2ce6b"
+    },
+    "nodes.owasp10.points.0": {
+      "t": "Abre una estación, lee el código y selecciona las líneas que creas incorrectas.",
+      "h": "31bd21d2"
+    },
+    "nodes.owasp10.points.1": {
+      "t": "Después de responder, la explicación muestra qué cambiar y lleva al tema completo.",
+      "h": "66776c4a"
+    },
+    "nodes.owasp10.points.2": {
+      "t": "Las mismas fallas aparecen una y otra vez en incidentes reales, así que conviene reconocerlas de inmediato.",
+      "h": "9b5732cc"
+    },
+    "nodes.owasp10.summary": {
+      "t": "Un desafío para cada categoría del OWASP Top 10 (2025). Cada estación muestra unas líneas de código realista: encuentra las que causan el problema.",
+      "h": "0519f656"
+    },
+    "nodes.owasp10.title": {
+      "t": "OWASP Top 10, en la práctica",
+      "h": "83143f6a"
     },
     "nodes.pipeline.points.0": {
       "t": "Los controles van en capas: un error que se escapa en una parada debe atraparse en la siguiente.",

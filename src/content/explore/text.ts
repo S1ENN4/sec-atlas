@@ -6,6 +6,7 @@ import { agentsChallenges, agentsMissions, agentsNodes } from "./text-agents";
 import { atlasChallenges, atlasMissions, atlasNodes } from "./text-atlas";
 import { labText } from "./text-lab";
 import { netChallenges, netMissions, netNodes } from "./text-net";
+import { owasp10Challenges, owasp10Missions, owasp10Nodes } from "./text-owasp10";
 import { worldsChallenges, worldsMissions, worldsNodes } from "./text-worlds";
 
 export interface NodeText {
@@ -432,6 +433,7 @@ export const exploreText = {
   ...netNodes,
   ...atlasNodes,
   ...agentsNodes,
+  ...owasp10Nodes,
   } satisfies Record<string, NodeText>,
 
   missions: {
@@ -455,6 +457,7 @@ export const exploreText = {
     ...netMissions,
     ...atlasMissions,
     ...agentsMissions,
+    ...owasp10Missions,
   },
 
   challenges: {
@@ -487,6 +490,7 @@ export const exploreText = {
     ...netChallenges,
     ...atlasChallenges,
     ...agentsChallenges,
+    ...owasp10Challenges,
   } satisfies Record<string, ChallengeText>,
 
   lab: labText,

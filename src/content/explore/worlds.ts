@@ -3,6 +3,7 @@
 import { agentsMissions, agentsWorld } from "./agents";
 import { atlasMissions, atlasWorld } from "./atlas";
 import { cloudMissions, cloudWorld } from "./cloud";
+import { owasp10Missions, owasp10World } from "./owasp10";
 import { netMissions, netWorld } from "./net";
 import { socMissions, socWorld } from "./soc";
 import { webappMissions, webappWorld } from "./webapp";
@@ -23,6 +24,7 @@ export const worlds: World[] = [
   { id: webappWorld.id, root: webappWorld, missions: webappMissions },
   { id: netWorld.id, root: netWorld, missions: netMissions },
   { id: agentsWorld.id, root: agentsWorld, missions: agentsMissions },
+  { id: owasp10World.id, root: owasp10World, missions: owasp10Missions },
 ];
 
 export const worldById = (id: string) => worlds.find((w) => w.id === id);

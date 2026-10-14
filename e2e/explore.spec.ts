@@ -10,7 +10,7 @@ test.describe("explorable maps", () => {
   test("the index lists every map and the lab", async ({ page }) => {
     await page.goto("/en/explore");
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
-    for (const id of ["atlas", "pipeline", "cloud", "soc", "webapp", "net", "agents"]) {
+    for (const id of ["atlas", "pipeline", "cloud", "soc", "webapp", "net", "agents", "owasp10"]) {
       await expect(page.locator(`a[href="/en/explore/${id}"]`)).toBeVisible();
     }
     await expect(page.locator('a[href="/en/lab"]').first()).toBeVisible();

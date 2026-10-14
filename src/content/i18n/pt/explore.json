@@ -276,6 +276,126 @@
       "t": "A linha 4 ainda aceita TLS 1.0 e 1.1, que são obsoletos e têm fraquezas conhecidas. A linha 5 permite todas as cifras exceto as anônimas, inclusive as fracas e legadas. Permita só TLS 1.2 e 1.3 e uma lista explícita de cifras modernas.",
       "h": "21d2f5ef"
     },
+    "challenges.o-a01.hint": {
+      "t": "Olhe o que protege a rota.",
+      "h": "c522e7ed"
+    },
+    "challenges.o-a01.prompt": {
+      "t": "Qualquer usuário logado pode chamar este endpoint. Qual linha é o problema?",
+      "h": "7dff5b69"
+    },
+    "challenges.o-a01.why": {
+      "t": "A linha 1 exige apenas login. Não há verificação de que quem chama é admin, então qualquer usuário pode se promover. Adicione uma checagem de papel (por exemplo requireRole('admin')) no servidor.",
+      "h": "3921ddde"
+    },
+    "challenges.o-a02.hint": {
+      "t": "Três linhas são cômodas no desenvolvimento e perigosas em produção.",
+      "h": "60725579"
+    },
+    "challenges.o-a02.prompt": {
+      "t": "Quais configurações nunca deveriam chegar à produção?",
+      "h": "1e7be498"
+    },
+    "challenges.o-a02.why": {
+      "t": "O modo debug (linha 2) vaza stack traces e detalhes internos, uma origem CORS curinga (linha 3) deixa qualquer site chamar a API a partir de um navegador, e uma senha de admin padrão (linha 4) é a primeira coisa que o atacante tenta. Desligue o debug, liste as origens exatas e use um segredo forte e único.",
+      "h": "338bba78"
+    },
+    "challenges.o-a03.hint": {
+      "t": "Uma é um intervalo de versão, a outra executa um download.",
+      "h": "6aacf03b"
+    },
+    "challenges.o-a03.prompt": {
+      "t": "Quais duas linhas colocam a cadeia de suprimentos em risco?",
+      "h": "4fdf32b9"
+    },
+    "challenges.o-a03.why": {
+      "t": "Um pacote interno com versão '*' (linha 4) pode ser substituído por um pacote público de mesmo nome e versão maior, o que é dependency confusion. O script postinstall (linha 7) baixa e executa código da internet a cada instalação. Fixe versões, use escopo em registro privado e evite passar downloads para um shell.",
+      "h": "da455819"
+    },
+    "challenges.o-a04.hint": {
+      "t": "Um hash fraco, uma fonte de aleatoriedade fraca e um transporte fraco.",
+      "h": "9713328b"
+    },
+    "challenges.o-a04.prompt": {
+      "t": "Quais linhas são falhas criptográficas?",
+      "h": "66e6c8cf"
+    },
+    "challenges.o-a04.why": {
+      "t": "MD5 (linha 4) é rápido e sem sal, então senhas são quebradas rápido; use Argon2, scrypt ou bcrypt. O random (linha 7) é previsível, então tokens de reset podem ser adivinhados; use o módulo secrets. A URL http (linha 9) envia credenciais em texto claro; use https.",
+      "h": "1f204914"
+    },
+    "challenges.o-a05.hint": {
+      "t": "Onde a entrada do usuário encontra o shell?",
+      "h": "6d1aae40"
+    },
+    "challenges.o-a05.prompt": {
+      "t": "Qual linha deixa o atacante executar os próprios comandos?",
+      "h": "d6a1d6c3"
+    },
+    "challenges.o-a05.why": {
+      "t": "A linha 4 monta um comando de shell com o valor de host, então uma entrada como '8.8.8.8; cat /etc/passwd' executa um segundo comando. Chame o programa sem shell, passando o argumento como lista, e valide que o host parece um host.",
+      "h": "982385de"
+    },
+    "challenges.o-a06.hint": {
+      "t": "Pense em quantas tentativas o atacante tem.",
+      "h": "ff8d3cb4"
+    },
+    "challenges.o-a06.prompt": {
+      "t": "O código funciona como escrito. Quais linhas deixam o design fraco?",
+      "h": "9f5bb05b"
+    },
+    "challenges.o-a06.why": {
+      "t": "Um código de 4 dígitos (linha 2) tem só 10.000 possibilidades, e a comparação (linha 3) não tem limite de tentativas nem expiração, então o atacante pode tentar todas. Use um token aleatório mais longo, expire-o rápido e bloqueie após poucas falhas.",
+      "h": "8da1daf7"
+    },
+    "challenges.o-a07.hint": {
+      "t": "Veja o que cada resposta entrega e como a senha é verificada.",
+      "h": "02605be5"
+    },
+    "challenges.o-a07.prompt": {
+      "t": "Quais linhas enfraquecem este login?",
+      "h": "d49aee49"
+    },
+    "challenges.o-a07.why": {
+      "t": "As mensagens diferentes (linha 3) revelam quais e-mails existem, comparar texto puro (linha 4) significa que as senhas estão sem hash e são comparadas de forma insegura, e reaproveitar a sessão (linha 5) permite session fixation. Devolva uma mensagem genérica, compare hashes e regenere a sessão após o login. Adicione também rate limiting.",
+      "h": "97951e8d"
+    },
+    "challenges.o-a08.hint": {
+      "t": "Uma desserializa dados do usuário, a outra executa um download.",
+      "h": "98d8093e"
+    },
+    "challenges.o-a08.prompt": {
+      "t": "Quais linhas confiam em dados ou código que nunca foram verificados?",
+      "h": "310ba51e"
+    },
+    "challenges.o-a08.why": {
+      "t": "pickle.loads sobre o valor de um cookie (linha 4) deixa quem controla o cookie executar código no servidor, e exec sobre um arquivo baixado (linha 8) roda o que a URL devolver. Use um formato seguro como JSON com cookie assinado e verifique assinaturas antes de executar qualquer coisa.",
+      "h": "f382f1e6"
+    },
+    "challenges.o-a09.hint": {
+      "t": "Algo falta no log, e algo não deveria estar nele.",
+      "h": "15b328b8"
+    },
+    "challenges.o-a09.prompt": {
+      "t": "Quais linhas são erros de logging?",
+      "h": "498d7875"
+    },
+    "challenges.o-a09.why": {
+      "t": "Um login que falha retorna sem nenhum log (linha 3), então um ataque de adivinhação de senha fica invisível. O log de sucesso (linha 4) grava a senha no arquivo de log. Registre as falhas com o usuário e a origem, e nunca registre segredos.",
+      "h": "ca5db5bd"
+    },
+    "challenges.o-a10.hint": {
+      "t": "Leia o que acontece dentro do except.",
+      "h": "4754bf14"
+    },
+    "challenges.o-a10.prompt": {
+      "t": "O que acontece quando o serviço de políticas está fora do ar? Quais linhas são o problema?",
+      "h": "4d9c49af"
+    },
+    "challenges.o-a10.why": {
+      "t": "O bloco except (linha 4) captura tudo e devolve True (linha 5), então qualquer erro concede acesso. Falhe fechado: registre o erro e negue. Capture apenas os erros que você espera.",
+      "h": "bebb949c"
+    },
     "challenges.s-runbooks.hint": {
       "t": "Três passos: um perde a memória, um apaga evidência, um mantém o host em uso.",
       "h": "7c447e69"
@@ -1123,6 +1243,22 @@
     "missions.owasp-walk.title": {
       "t": "Percorra a requisição",
       "h": "0e33de99"
+    },
+    "missions.owasp10-login.intro": {
+      "t": "Quatro estações que se juntam em torno de um login: a senha, o token, o log e o caminho de erro.",
+      "h": "2a9cf67d"
+    },
+    "missions.owasp10-login.title": {
+      "t": "Quebre o login",
+      "h": "b8eac7d4"
+    },
+    "missions.owasp10-walk.intro": {
+      "t": "Percorra as dez estações em ordem e resolva um desafio para cada categoria.",
+      "h": "1f59adb2"
+    },
+    "missions.owasp10-walk.title": {
+      "t": "O Top 10 completo",
+      "h": "eafc7167"
     },
     "missions.read-the-wire.intro": {
       "t": "Entenda o handshake, perceba uma varredura e veja como a amplificação funciona.",
@@ -3687,6 +3823,226 @@
     "nodes.net.title": {
       "t": "Uma mensagem descendo a pilha",
       "h": "5114cbba"
+    },
+    "nodes.o-a01.points.0": {
+      "t": "Fazer login responde quem você é, não o que você pode fazer.",
+      "h": "ac4fffc7"
+    },
+    "nodes.o-a01.points.1": {
+      "t": "Verifique o papel ou a propriedade no servidor, em toda ação sensível.",
+      "h": "9b9f33fa"
+    },
+    "nodes.o-a01.points.2": {
+      "t": "Esconder um botão na interface não protege nada.",
+      "h": "53f41b01"
+    },
+    "nodes.o-a01.summary": {
+      "t": "O usuário está logado, mas ninguém verifica se ele pode fazer justamente isto.",
+      "h": "16385cdc"
+    },
+    "nodes.o-a01.title": {
+      "t": "A01 Controle de acesso quebrado",
+      "h": "e5ece5bf"
+    },
+    "nodes.o-a02.points.0": {
+      "t": "Produção precisa de configurações próprias, não dos padrões do desenvolvimento.",
+      "h": "ed6076d6"
+    },
+    "nodes.o-a02.points.1": {
+      "t": "Valores totalmente abertos, como '*', são cômodos e perigosos.",
+      "h": "5fd9b319"
+    },
+    "nodes.o-a02.points.2": {
+      "t": "Escaneie a configuração automaticamente, porque as pessoas esquecem.",
+      "h": "9b893394"
+    },
+    "nodes.o-a02.summary": {
+      "t": "O software está certo, as configurações não: debug ligado, CORS aberto e senha padrão.",
+      "h": "7af0af09"
+    },
+    "nodes.o-a02.title": {
+      "t": "A02 Configuração incorreta de segurança",
+      "h": "61f23992"
+    },
+    "nodes.o-a03.points.0": {
+      "t": "Fixe versões e use um lockfile para que uma atualização surpresa não passe.",
+      "h": "14efab27"
+    },
+    "nodes.o-a03.points.1": {
+      "t": "Um nome de pacote privado sem origem fixada pode ser sequestrado a partir do registro público.",
+      "h": "a07f6f8f"
+    },
+    "nodes.o-a03.points.2": {
+      "t": "Nunca passe um download direto para um shell.",
+      "h": "44198029"
+    },
+    "nodes.o-a03.summary": {
+      "t": "Você executa código que não escreveu: dependências, scripts de instalação e ferramentas de build podem ser uma porta de entrada.",
+      "h": "50559a5d"
+    },
+    "nodes.o-a03.title": {
+      "t": "A03 Falhas na cadeia de suprimentos de software",
+      "h": "ad76a818"
+    },
+    "nodes.o-a04.points.0": {
+      "t": "Faça hash de senhas com uma função lenta e com sal, como Argon2, scrypt ou bcrypt.",
+      "h": "42745b72"
+    },
+    "nodes.o-a04.points.1": {
+      "t": "Use uma fonte de aleatoriedade criptograficamente segura para tokens.",
+      "h": "26822b6a"
+    },
+    "nodes.o-a04.points.2": {
+      "t": "Envie tudo por TLS, e nada sensível por HTTP puro.",
+      "h": "92dfa846"
+    },
+    "nodes.o-a04.summary": {
+      "t": "Algoritmos fracos, aleatoriedade previsível ou HTTP puro expõem dados que deveriam estar protegidos.",
+      "h": "c76be7c8"
+    },
+    "nodes.o-a04.title": {
+      "t": "A04 Falhas criptográficas",
+      "h": "1e8e8264"
+    },
+    "nodes.o-a05.points.0": {
+      "t": "O mesmo padrão aparece em SQL, shell, LDAP, templates e mais.",
+      "h": "54e32c13"
+    },
+    "nodes.o-a05.points.1": {
+      "t": "Use APIs parametrizadas que mantêm dados e comandos separados.",
+      "h": "1d723349"
+    },
+    "nodes.o-a05.points.2": {
+      "t": "Valide a entrada, mas não dependa só disso.",
+      "h": "c3a4c846"
+    },
+    "nodes.o-a05.summary": {
+      "t": "Entrada não confiável é colada em um comando ou consulta, e os dados viram instruções.",
+      "h": "669f7247"
+    },
+    "nodes.o-a05.title": {
+      "t": "A05 Injeção",
+      "h": "9b12c5aa"
+    },
+    "nodes.o-a06.points.0": {
+      "t": "Pergunte 'como isso poderia ser abusado?' antes de construir, com modelagem de ameaças.",
+      "h": "8600aeda"
+    },
+    "nodes.o-a06.points.1": {
+      "t": "Todo segredo adivinhável precisa de limite de tentativas e de expiração.",
+      "h": "48227920"
+    },
+    "nodes.o-a06.points.2": {
+      "t": "Algumas falhas não se corrigem com um patch, porque o problema é o design.",
+      "h": "9b427415"
+    },
+    "nodes.o-a06.summary": {
+      "t": "O código faz exatamente o que foi projetado, e o projeto nunca imaginou um atacante.",
+      "h": "7ab2156f"
+    },
+    "nodes.o-a06.title": {
+      "t": "A06 Design inseguro",
+      "h": "142dff20"
+    },
+    "nodes.o-a07.points.0": {
+      "t": "Devolva a mesma mensagem quando o usuário ou a senha estiver errado.",
+      "h": "56c7ead1"
+    },
+    "nodes.o-a07.points.1": {
+      "t": "Guarde apenas hashes de senha e compare de forma segura.",
+      "h": "525adcfa"
+    },
+    "nodes.o-a07.points.2": {
+      "t": "Inicie uma sessão nova após o login e limite tentativas repetidas.",
+      "h": "dcdfa0da"
+    },
+    "nodes.o-a07.summary": {
+      "t": "O próprio login é fraco: revela quais contas existem, guarda senhas mal ou reaproveita sessões.",
+      "h": "4f4693e3"
+    },
+    "nodes.o-a07.title": {
+      "t": "A07 Falhas de autenticação",
+      "h": "b83a1cb9"
+    },
+    "nodes.o-a08.points.0": {
+      "t": "Desserializar dados não confiáveis pode executar código escolhido pelo atacante.",
+      "h": "d85f1ea9"
+    },
+    "nodes.o-a08.points.1": {
+      "t": "Executar código baixado sem checar uma assinatura entrega o controle.",
+      "h": "ad730054"
+    },
+    "nodes.o-a08.points.2": {
+      "t": "Prefira formatos de dados simples e verifique assinaturas em tudo que executar.",
+      "h": "043ff1a7"
+    },
+    "nodes.o-a08.summary": {
+      "t": "O app confia em dados ou código que nunca verificou, como objetos serializados ou scripts baixados.",
+      "h": "41c05b4c"
+    },
+    "nodes.o-a08.title": {
+      "t": "A08 Falhas de integridade de software ou dados",
+      "h": "310f6643"
+    },
+    "nodes.o-a09.points.0": {
+      "t": "Registre logins que falharam e outros eventos de segurança, com contexto suficiente para investigar.",
+      "h": "b5e588c4"
+    },
+    "nodes.o-a09.points.1": {
+      "t": "Nunca grave senhas, tokens ou dados pessoais no log.",
+      "h": "b4ae0d5a"
+    },
+    "nodes.o-a09.points.2": {
+      "t": "Um log que ninguém olha não é detecção: adicione alertas.",
+      "h": "2ffe6d6d"
+    },
+    "nodes.o-a09.summary": {
+      "t": "Quando algo dá errado ninguém percebe, ou os próprios logs vazam o que deveriam proteger.",
+      "h": "19968aa9"
+    },
+    "nodes.o-a09.title": {
+      "t": "A09 Falhas de log e alertas de segurança",
+      "h": "213117d0"
+    },
+    "nodes.o-a10.points.0": {
+      "t": "Em caso de erro, negue por padrão em vez de permitir.",
+      "h": "a9291254"
+    },
+    "nodes.o-a10.points.1": {
+      "t": "Não engula exceções em silêncio: trate e registre.",
+      "h": "ad468323"
+    },
+    "nodes.o-a10.points.2": {
+      "t": "Teste os caminhos de falha, porque atacantes vão provocá-los.",
+      "h": "6d1bf241"
+    },
+    "nodes.o-a10.summary": {
+      "t": "O que o código faz quando algo quebra: deve falhar de forma segura, não aberta.",
+      "h": "1e91ab62"
+    },
+    "nodes.o-a10.title": {
+      "t": "A10 Tratamento incorreto de condições excepcionais",
+      "h": "59f2ce6b"
+    },
+    "nodes.owasp10.points.0": {
+      "t": "Abra uma estação, leia o código e selecione as linhas que você acha erradas.",
+      "h": "31bd21d2"
+    },
+    "nodes.owasp10.points.1": {
+      "t": "Depois de responder, a explicação mostra o que mudar e leva ao tópico completo.",
+      "h": "66776c4a"
+    },
+    "nodes.owasp10.points.2": {
+      "t": "As mesmas falhas aparecem de novo e de novo em incidentes reais, então vale reconhecê-las de cara.",
+      "h": "9b5732cc"
+    },
+    "nodes.owasp10.summary": {
+      "t": "Um desafio para cada categoria do OWASP Top 10 (2025). Cada estação mostra algumas linhas de código realista: ache as que causam o problema.",
+      "h": "0519f656"
+    },
+    "nodes.owasp10.title": {
+      "t": "OWASP Top 10, na prática",
+      "h": "83143f6a"
     },
     "nodes.pipeline.points.0": {
       "t": "Os controles são em camadas: um erro que passa em uma parada deve ser pego na próxima.",

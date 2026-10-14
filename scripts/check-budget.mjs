@@ -238,6 +238,9 @@ import { gzipSync } from "node:zlib";
 // Hub: static mind-map preview, top-level Maps and Lab links in the navigation data.
 // Measured: out/index.html 141,010. Cap ~3% above that.
 
+// OWASP Top 10 map (10 code challenges, 3 languages). Measured: first-load 15,888,634 /
+// rsc 19,708,364 / total 35,596,998 / all locales 101,472,201. Caps ~3% above that.
+
 const OUT_DIR = resolve(process.cwd(), "out");
 
 // Phase 3.A3 reconciliation (copy-code button on every <pre>): the new
@@ -251,10 +254,10 @@ const OUT_DIR = resolve(process.cwd(), "out");
 // headroom-to-content ratio as the live floor.
 
 const CAPS = [
-  { key: "first_load",  label: "first-load assets",     limit: 16_000_000, scope: "first_load" },
-  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 19_680_000, scope: "rsc_prefetch" },
-  { key: "total",       label: "total",                 limit: 35_400_000, scope: "total" },
-  { key: "all_locales", label: "all locales (sanity)", limit: 101_000_000, scope: "all_locales" },
+  { key: "first_load",  label: "first-load assets",     limit: 16_300_000, scope: "first_load" },
+  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 20_300_000, scope: "rsc_prefetch" },
+  { key: "total",       label: "total",                 limit: 36_500_000, scope: "total" },
+  { key: "all_locales", label: "all locales (sanity)", limit: 104_000_000, scope: "all_locales" },
   { key: "css",         label: "CSS raw",               limit:    98_000, scope: "css" },
   { key: "js",          label: "JS raw",                limit:   828_000, scope: "js" },
   { key: "js_gz",       label: "JS gzip",               limit:   259_000, scope: "js_gz" },

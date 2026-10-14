@@ -4,7 +4,7 @@ import type { DomainId } from "@/content/types";
 
 export const domainMaps: Record<DomainId, string[]> = {
   appsec: ["pipeline", "atlas"],
-  owasp: ["webapp", "atlas"],
+  owasp: ["owasp10", "webapp"],
   seceng: ["pipeline", "atlas"],
   devops: ["pipeline", "net"],
   cloudsec: ["cloud", "atlas"],
