@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MoveDown, MoveRight } from "lucide-react";
+import { MoveDown, MoveLeft, MoveRight } from "lucide-react";
 
 import type { PipelineStage } from "@/content/types";
 import { localePath, type Locale } from "@/i18n/config";
@@ -17,13 +17,24 @@ export interface PipelineRailProps {
   loop?: string;
 }
 
+const COLS = 3;
+
 export function PipelineRail({ stages: pipelineStages, route, locale, gateLabel, loop }: PipelineRailProps) {
   return (
     <div>
       <div className="overflow-x-auto pb-2 lg:overflow-visible">
         <ol className="flex min-w-max snap-x gap-10 lg:grid lg:min-w-0 lg:grid-cols-3 lg:gap-y-14">
-          {pipelineStages.map((stage, i) => (
-            <li key={stage.id} className="relative w-[240px] shrink-0 snap-start lg:w-auto">
+          {pipelineStages.map((stage, i) => {
+            // Snake layout on wide screens: row 0 runs left to right, row 1 right to left,
+            // and so on, so the arrow that wraps to the next row always points straight down
+            // at the next stage. Arrows are derived from the stage count, not hard-coded.
+            const row = Math.floor(i / COLS);
+            const col = row % 2 === 0 ? i % COLS : COLS - 1 - (i % COLS);
+            const hasNext = i < pipelineStages.length - 1;
+            const nextInRow = hasNext && Math.floor((i + 1) / COLS) === row;
+            const leftToRight = row % 2 === 0;
+            return (
+            <li key={stage.id} className="relative w-[240px] shrink-0 snap-start lg:w-auto" style={{ gridColumn: col + 1, gridRow: row + 1 }}>
               <div className="reveal flex h-full flex-col rounded-xl border border-border bg-card p-4">
                 <div className="flex items-baseline gap-2">
                   <span className="font-mono text-xs text-primary/90">{stage.index}</span>
@@ -56,26 +67,19 @@ export function PipelineRail({ stages: pipelineStages, route, locale, gateLabel,
                   {fmt(gateLabel, { gate: stage.gate })}
                 </p>
               </div>
-              {i < pipelineStages.length - 1 ? (
-                <MoveRight
-                  className="absolute -right-7 top-8 size-4 text-primary/50 lg:hidden"
-                  aria-hidden
-                />
+              {hasNext ? <MoveRight className="absolute -right-7 top-8 size-4 text-primary/50 lg:hidden" aria-hidden /> : null}
+              {nextInRow && leftToRight ? (
+                <MoveRight className="absolute -right-7 top-1/2 hidden size-4 -translate-y-1/2 text-primary/50 lg:block" aria-hidden />
               ) : null}
-              {[0, 1, 3, 4].includes(i) ? (
-                <MoveRight
-                  className="absolute -right-7 top-1/2 hidden size-4 -translate-y-1/2 text-primary/50 lg:block"
-                  aria-hidden
-                />
+              {nextInRow && !leftToRight ? (
+                <MoveLeft className="absolute -left-7 top-1/2 hidden size-4 -translate-y-1/2 text-primary/50 lg:block" aria-hidden />
               ) : null}
-              {i === 2 ? (
-                <MoveDown
-                  className="absolute -bottom-9 right-16 hidden size-4 text-primary/50 lg:block"
-                  aria-hidden
-                />
+              {hasNext && !nextInRow ? (
+                <MoveDown className="absolute -bottom-9 left-1/2 hidden size-4 -translate-x-1/2 text-primary/50 lg:block" aria-hidden />
               ) : null}
             </li>
-          ))}
+            );
+          })}
         </ol>
       </div>
       {loop ? (
