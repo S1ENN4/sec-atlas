@@ -1,0 +1,152 @@
+{
+  "entries": {
+    "groups.0.entries.0.aka": {
+      "t": "web application firewall",
+      "h": "c523a677"
+    },
+    "groups.0.entries.0.meaning": {
+      "t": "Layer 7 HTTP traffic filter that decides, per request, whether it proceeds, is challenged, is limited or is blocked. It reduces the exposed surface and enables virtual patching; it does not replace fixing the application.",
+      "h": "724a1be2"
+    },
+    "groups.0.entries.0.term": {
+      "t": "WAF",
+      "h": "47f21a59"
+    },
+    "groups.0.entries.1.aka": {
+      "t": "allowlist",
+      "h": "22e784a2"
+    },
+    "groups.0.entries.1.meaning": {
+      "t": "Define what is valid for an endpoint (methods, paths, formats, sizes) and block everything else. More precise than signatures, but requires knowing the application.",
+      "h": "4b5a2be1"
+    },
+    "groups.0.entries.1.term": {
+      "t": "Positive model",
+      "h": "0e85a1a5"
+    },
+    "groups.0.entries.2.meaning": {
+      "t": "Phase in which a rule runs in parallel without acting, and the simulated decision is compared with reality to measure false positives before enforcement.",
+      "h": "9bbdbcd0"
+    },
+    "groups.0.entries.2.term": {
+      "t": "Shadow mode",
+      "h": "993d615a"
+    },
+    "groups.0.entries.3.aka": {
+      "t": "virtual patching",
+      "h": "fdd457cd"
+    },
+    "groups.0.entries.3.meaning": {
+      "t": "WAF rule that blocks exploitation of a known vulnerability while the real fix has not yet reached the application. It buys time, it does not eliminate the flaw.",
+      "h": "a10c4453"
+    },
+    "groups.0.entries.3.term": {
+      "t": "Virtual patch",
+      "h": "fe696151"
+    },
+    "groups.0.entries.4.meaning": {
+      "t": "Limit on requests per entity and time window. The choice of key (IP, account, token, ASN) matters as much as the limit value.",
+      "h": "ed6e5308"
+    },
+    "groups.0.entries.4.term": {
+      "t": "Rate limiting",
+      "h": "e663f74e"
+    },
+    "groups.0.entries.5.aka": {
+      "t": "challenge",
+      "h": "37ab5038"
+    },
+    "groups.0.entries.5.meaning": {
+      "t": "Check that tries to prove the client is a real browser, without asking the user for anything in most cases. It is the step before blocking.",
+      "h": "c6a0d8ff"
+    },
+    "groups.0.entries.5.term": {
+      "t": "Challenge",
+      "h": "bb9d653f"
+    },
+    "groups.0.entries.6.meaning": {
+      "t": "What the system does when a security control fails: fail-open lets traffic through (available, unprotected), fail-closed blocks it (safe, unavailable). The choice should be conscious, per endpoint.",
+      "h": "3f20fb38"
+    },
+    "groups.0.entries.6.term": {
+      "t": "Fail-open / fail-closed",
+      "h": "4ae56de4"
+    },
+    "groups.0.title": {
+      "t": "edge defense",
+      "h": "f3ffc3e3"
+    },
+    "groups.1.entries.0.meaning": {
+      "t": "Attack that tests leaked username/password pairs from other services at scale. Signature: many login failures spread across many IPs, with few attempts per account.",
+      "h": "7b4ecfa5"
+    },
+    "groups.1.entries.0.term": {
+      "t": "Credential stuffing",
+      "h": "4e7c0cba"
+    },
+    "groups.1.entries.1.meaning": {
+      "t": "Distance of a value from the mean, measured in standard deviations. In detection, values far above the recent history of the same key suggest an anomaly.",
+      "h": "56ae78c2"
+    },
+    "groups.1.entries.1.term": {
+      "t": "Z-score",
+      "h": "cbedcf02"
+    },
+    "groups.1.entries.2.aka": {
+      "t": "exponentially weighted moving average",
+      "h": "85ca05ca"
+    },
+    "groups.1.entries.2.meaning": {
+      "t": "Average that gives more weight to recent data. Used as an adaptive baseline: it follows changes in normal traffic without getting stuck in the past.",
+      "h": "6e57ef0d"
+    },
+    "groups.1.entries.2.term": {
+      "t": "EWMA",
+      "h": "0b3570fd"
+    },
+    "groups.1.entries.3.meaning": {
+      "t": "Number of distinct values in a field (IPs, user agents). High cardinality makes aggregations expensive and takes down metrics systems; aggregate at the coarsest level that still separates the attack from normal traffic.",
+      "h": "13d42303"
+    },
+    "groups.1.entries.3.term": {
+      "t": "Cardinality",
+      "h": "fea0e8f3"
+    },
+    "groups.1.entries.4.aka": {
+      "t": "mean time to triage",
+      "h": "63cb993b"
+    },
+    "groups.1.entries.4.meaning": {
+      "t": "Average time between the alert and its classification as real or false.",
+      "h": "91a52137"
+    },
+    "groups.1.entries.4.term": {
+      "t": "MTTT",
+      "h": "2c4dac2f"
+    },
+    "groups.1.entries.5.aka": {
+      "t": "mean time to contain",
+      "h": "3899fa1e"
+    },
+    "groups.1.entries.5.meaning": {
+      "t": "Average time between confirming an attack and containing it.",
+      "h": "91aff920"
+    },
+    "groups.1.entries.5.term": {
+      "t": "MTTC",
+      "h": "1bc4e60e"
+    },
+    "groups.1.entries.6.meaning": {
+      "t": "Precision: of the alerts issued, how many were real attacks. Recall: of the attacks that exist, how many were detected. Raising one tends to lower the other.",
+      "h": "e33d7aee"
+    },
+    "groups.1.entries.6.term": {
+      "t": "Precision and recall",
+      "h": "d7349f17"
+    },
+    "groups.1.title": {
+      "t": "detection and metrics",
+      "h": "5768e78b"
+    }
+  }
+}

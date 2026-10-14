@@ -1,0 +1,196 @@
+{
+  "entries": {
+    "graph.0.label": {
+      "t": "reveals",
+      "h": "688c8b01"
+    },
+    "graph.1.label": {
+      "t": "keeps viable",
+      "h": "82448bda"
+    },
+    "graph.2.label": {
+      "t": "becomes detection",
+      "h": "0c53cd29"
+    },
+    "graph.3.label": {
+      "t": "generates rules",
+      "h": "be9c4131"
+    },
+    "graph.4.label": {
+      "t": "generates limits",
+      "h": "aa2c438e"
+    },
+    "graph.5.label": {
+      "t": "scores automation",
+      "h": "070fb214"
+    },
+    "graph.6.label": {
+      "t": "triggers",
+      "h": "6d6a8bee"
+    },
+    "graph.7.label": {
+      "t": "measures precision",
+      "h": "792075b4"
+    },
+    "graph.8.label": {
+      "t": "defines where it lives",
+      "h": "650dd2ab"
+    },
+    "pipeline.0.description": {
+      "t": "see all traffic, at scale and with context",
+      "h": "a5dc94f6"
+    },
+    "pipeline.0.gate": {
+      "t": "every relevant request becomes a normalized event",
+      "h": "4854ffad"
+    },
+    "pipeline.0.items.0.label": {
+      "t": "edge telemetry",
+      "h": "995397bd"
+    },
+    "pipeline.0.items.1.label": {
+      "t": "scale, cardinality and cost",
+      "h": "6e392dfa"
+    },
+    "pipeline.0.items.2.label": {
+      "t": "baseline of legitimate traffic",
+      "h": "c528e1f6"
+    },
+    "pipeline.0.name": {
+      "t": "observe",
+      "h": "8ddf011e"
+    },
+    "pipeline.1.description": {
+      "t": "signals become decisions",
+      "h": "14b69a90"
+    },
+    "pipeline.1.gate": {
+      "t": "every detection has an owner, a severity and a planned action",
+      "h": "df603787"
+    },
+    "pipeline.1.items.0.label": {
+      "t": "L7 attack taxonomy",
+      "h": "79635f13"
+    },
+    "pipeline.1.items.1.label": {
+      "t": "detection library",
+      "h": "4a3b53dd"
+    },
+    "pipeline.1.items.2.label": {
+      "t": "behavioral baselines",
+      "h": "9678804e"
+    },
+    "pipeline.1.name": {
+      "t": "detect",
+      "h": "6d98ec7e"
+    },
+    "pipeline.2.description": {
+      "t": "block, challenge or limit, with care",
+      "h": "e6104744"
+    },
+    "pipeline.2.gate": {
+      "t": "every new action goes through shadow before enforcement",
+      "h": "f1f33614"
+    },
+    "pipeline.2.items.0.label": {
+      "t": "WAF: observation, shadow, enforcement",
+      "h": "a0fee15b"
+    },
+    "pipeline.2.items.1.label": {
+      "t": "adaptive rate limiting",
+      "h": "1c14786f"
+    },
+    "pipeline.2.items.2.label": {
+      "t": "bot management",
+      "h": "bae4aaf9"
+    },
+    "pipeline.2.items.3.label": {
+      "t": "runbooks and hardening",
+      "h": "5b3120b6"
+    },
+    "pipeline.2.name": {
+      "t": "act",
+      "h": "93b536d8"
+    },
+    "pipeline.3.description": {
+      "t": "prove it works and adjust",
+      "h": "28486ae4"
+    },
+    "pipeline.3.gate": {
+      "t": "precision and recall tracked · false positives drop every cycle",
+      "h": "cc406f62"
+    },
+    "pipeline.3.items.0.label": {
+      "t": "SOC SLOs",
+      "h": "b3b1568d"
+    },
+    "pipeline.3.items.1.label": {
+      "t": "weekly tuning",
+      "h": "b39f781d"
+    },
+    "pipeline.3.items.2.label": {
+      "t": "executive indicators",
+      "h": "58e6f920"
+    },
+    "pipeline.3.name": {
+      "t": "measure",
+      "h": "33f9fe52"
+    },
+    "relations.0.label": {
+      "t": "reveals",
+      "h": "688c8b01"
+    },
+    "relations.1.label": {
+      "t": "feeds",
+      "h": "3abef3f7"
+    },
+    "relations.2.label": {
+      "t": "sustains",
+      "h": "144e310a"
+    },
+    "relations.3.label": {
+      "t": "keeps viable",
+      "h": "82448bda"
+    },
+    "relations.4.label": {
+      "t": "becomes detection",
+      "h": "0c53cd29"
+    },
+    "relations.5.label": {
+      "t": "generates rules",
+      "h": "be9c4131"
+    },
+    "relations.6.label": {
+      "t": "generates limits",
+      "h": "aa2c438e"
+    },
+    "relations.7.label": {
+      "t": "scores automation",
+      "h": "070fb214"
+    },
+    "relations.8.label": {
+      "t": "triggers",
+      "h": "6d6a8bee"
+    },
+    "relations.9.label": {
+      "t": "executes",
+      "h": "fb05e5de"
+    },
+    "relations.10.label": {
+      "t": "measures precision",
+      "h": "792075b4"
+    },
+    "relations.11.label": {
+      "t": "guides tuning",
+      "h": "d80531ca"
+    },
+    "relations.12.label": {
+      "t": "defines where it lives",
+      "h": "650dd2ab"
+    },
+    "relations.13.label": {
+      "t": "positions",
+      "h": "251a9b51"
+    }
+  }
+}

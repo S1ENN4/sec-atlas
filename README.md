@@ -23,6 +23,17 @@
 
 Onze mapas prontos. Os domínios novos (owasp, devops, response, offsec, grc, vibecoding) são escritos em inglês (idioma-fonte) e traduzidos por camadas; os cinco primeiros ainda estão em português e são migrados em lotes (veja a seção de i18n).
 
+## Obsidian (e qualquer leitor de Markdown)
+
+O conteúdo continua em TypeScript (tipos, validação, detecção de drift de tradução), mas pode ser exportado como um **vault de notas `.md`**: uma nota por tópico, com frontmatter YAML, wikilinks para relações, pré-requisitos e pontes entre domínios, quizzes como callouts e notas de carreiras, trilhas e glossário.
+
+```bash
+npm run export:obsidian                      # vault/<en|pt|es>/
+npm run export:obsidian -- --locale pt --out ~/Notas/appsec-kb
+```
+
+O vault é saída gerada e somente leitura: edite as fontes e exporte de novo. Aponte o Obsidian para a pasta do idioma que quiser.
+
 ## Contribua
 
 O projeto é aberto e **a ajuda mais valiosa é achar e corrigir erros**: segurança com informação imprecisa é pior que segurança ausente.
