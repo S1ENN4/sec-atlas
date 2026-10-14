@@ -130,6 +130,12 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
             <FlaskConical className="size-4" aria-hidden /> {startUi.startLab}
           </Link>
           <Link
+            href={lp("/explore/owasp10")}
+            className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-4 py-2 text-sm font-medium transition-colors hover:border-primary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            {atlasText.owasp10.title}
+          </Link>
+          <Link
             href={lp("/explore")}
             className="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
