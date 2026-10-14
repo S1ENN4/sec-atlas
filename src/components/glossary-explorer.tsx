@@ -125,7 +125,7 @@ export function GlossaryExplorer({
                       <dd className="mt-1 text-sm leading-relaxed text-foreground/85">
                         {entry.meaning}
                         {topic ? (
-                          <span className="ml-2 inline-flex flex-wrap items-center gap-2 whitespace-nowrap align-baseline">
+                          <span className="ml-2 inline-flex flex-wrap items-center gap-2 align-baseline">
                             {isCrossDomain ? (
                               <span
                                 data-cross-domain={topic.domain}

@@ -182,14 +182,19 @@ import { gzipSync } from "node:zlib";
 // Measured: first-load 13,035,544 / rsc 16,209,194 / total 29,244,738 / all locales
 // 82,647,284 / css 77,247 / hub html 106,135. Caps ~3% above measured.
 
+// Payload diet: topic body styled through structural CSS (.topic-prose) instead of
+// per-element utility classes. Measured: first-load 12,371,731 / rsc 15,186,607 /
+// total 27,558,338 / all locales 77,605,112 (-5% vs 29,060,761) / css 80,405 (+3 KB).
+// Caps tightened to ~3% above these numbers.
+
 const OUT_DIR = resolve(process.cwd(), "out");
 
 const CAPS = [
-  { key: "first_load",  label: "first-load assets",     limit: 13_430_000, scope: "first_load" },
-  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 16_700_000, scope: "rsc_prefetch" },
-  { key: "total",       label: "total",                 limit: 30_100_000, scope: "total" },
-  { key: "all_locales", label: "all locales (sanity)", limit: 85_100_000, scope: "all_locales" },
-  { key: "css",         label: "CSS raw",               limit:    79_500, scope: "css" },
+  { key: "first_load",  label: "first-load assets",     limit: 12_750_000, scope: "first_load" },
+  { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 15_650_000, scope: "rsc_prefetch" },
+  { key: "total",       label: "total",                 limit: 28_400_000, scope: "total" },
+  { key: "all_locales", label: "all locales (sanity)", limit: 79_900_000, scope: "all_locales" },
+  { key: "css",         label: "CSS raw",               limit:    82_800, scope: "css" },
   { key: "js",          label: "JS raw",                limit: 1_070_000, scope: "js" },
   { key: "js_gz",       label: "JS gzip",               limit:   330_000, scope: "js_gz" },
   { key: "index",       label: "out/index.html raw",    limit:   109_300, scope: "index" },

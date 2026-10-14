@@ -344,3 +344,36 @@ body {
     stroke-dashoffset: 0;
   }
 }
+
+/* Topic body. Styled by structure instead of per-element utility classes: the
+ * page is rendered into the HTML and into several RSC payload copies, and
+ * repeating long class strings on every section and bullet inflated each one. */
+.topic-prose h2 {
+  @apply text-xl font-semibold tracking-tight text-primary/90;
+}
+.topic-prose .t-body {
+  @apply mt-3 space-y-3 leading-relaxed text-foreground/85;
+}
+.topic-prose .t-list {
+  @apply mt-3 space-y-2;
+}
+.topic-prose .t-list > li {
+  @apply flex gap-3 leading-relaxed text-foreground/85;
+}
+.topic-prose .t-list > li::before {
+  content: "";
+  @apply mt-2.5 size-1.5 shrink-0 rounded-full bg-primary;
+}
+.topic-prose .t-code {
+  @apply mt-4 overflow-hidden rounded-lg border border-border;
+}
+.topic-prose .t-code figcaption {
+  @apply flex items-center justify-between gap-3 border-b border-border bg-muted/40 px-3 py-1.5 font-mono text-[11px] text-muted-foreground;
+}
+.topic-prose .t-code pre {
+  @apply overflow-x-auto bg-card p-4 font-mono text-xs leading-relaxed text-foreground/90;
+}
+.topic-prose .t-code pre:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: -2px;
+}

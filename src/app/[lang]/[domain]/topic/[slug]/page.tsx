@@ -100,32 +100,31 @@ export default async function TopicPage({ params }: { params: Params }) {
         <ContentNotice fallback={fallback} sourceLang={sourceLang} t={t} />
       </div>
 
-      <div className="mt-10 space-y-10">
+      <div className="topic-prose mt-10 space-y-10">
         {topic.sections.map((section) => (
           <section key={section.heading}>
-            <h2 className="text-xl font-semibold tracking-tight text-primary/90">{section.heading}</h2>
-            <div className="mt-3 space-y-3 leading-relaxed text-foreground/85">
-              {section.body?.map((p, i) => (
-                <p key={i}>{p}</p>
-              ))}
-            </div>
+            <h2>{section.heading}</h2>
+            {section.body ? (
+              <div className="t-body">
+                {section.body.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+              </div>
+            ) : null}
             {section.bullets ? (
-              <ul className="mt-3 space-y-2">
+              <ul className="t-list">
                 {section.bullets.map((b, i) => (
-                  <li key={i} className="flex gap-3 leading-relaxed text-foreground/85">
-                    <span className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary" />
-                    <span>{b}</span>
-                  </li>
+                  <li key={i}>{b}</li>
                 ))}
               </ul>
             ) : null}
             {section.code?.map((sample, i) => (
-              <figure key={i} className="mt-4 overflow-hidden rounded-lg border border-border">
-                <figcaption className="flex items-center justify-between gap-3 border-b border-border bg-muted/40 px-3 py-1.5 font-mono text-[11px] text-muted-foreground">
+              <figure key={i} className="t-code">
+                <figcaption>
                   <span>{sample.filename ?? ""}</span>
                   <span className="uppercase tracking-wider">{sample.language}</span>
                 </figcaption>
-                <pre className="overflow-x-auto bg-card p-4 font-mono text-xs leading-relaxed text-foreground/90">
+                <pre tabIndex={0} aria-label={sample.filename ?? sample.language}>
                   <code>{sample.code}</code>
                 </pre>
               </figure>
