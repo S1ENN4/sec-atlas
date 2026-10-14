@@ -34,6 +34,16 @@ npm run export:obsidian -- --locale pt --out ~/Notas/sec-atlas
 
 O vault é saída gerada e somente leitura: edite as fontes e exporte de novo. Aponte o Obsidian para a pasta do idioma que quiser.
 
+## Hospedagem
+
+É um site 100% estático (`output: "export"`). Qualquer host de arquivos serve; o repositório já traz o necessário para três formatos:
+
+- **Docker / Coolify** (`Dockerfile` + `nginx.conf`): build com validação de conteúdo e orçamento de tamanho, servido por nginx sem root na porta **8080**, com os mesmos headers e redirecionamentos de idioma e de URLs antigas. Passe o endereço público como build arg: `NEXT_PUBLIC_SITE_URL=https://seu.dominio` (usado no sitemap, no robots e no Open Graph).
+- **Netlify / Cloudflare Pages**: `public/_headers` e `public/_redirects`.
+- **Local**: `npm run build` gera `out/`.
+
+O `nginx.conf` não envia `upgrade-insecure-requests` no CSP de propósito (quebraria um host só HTTP, como uma tailnet). Se servir apenas por HTTPS, acrescente a diretiva.
+
 ## Contribua
 
 O projeto é aberto e **a ajuda mais valiosa é achar e corrigir erros**: segurança com informação imprecisa é pior que segurança ausente.

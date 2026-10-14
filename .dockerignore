@@ -1,0 +1,11 @@
+node_modules
+.next
+.next.locked
+out
+vault
+.git
+.claude
+.github
+*.log
+Dockerfile
+.dockerignore
