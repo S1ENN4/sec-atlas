@@ -301,8 +301,8 @@
       "h": "d2778be0"
     },
     "roles.2.summary": {
-      "t": "Um engenheiro DevOps ou de plataforma constrói e opera os sistemas que os times usam para entregar e operar software: pipelines, ambientes, clusters, observabilidade e as ferramentas em volta. Segurança faz parte do trabalho, mas não é tudo. Esta base cobre a fatia de segurança do cargo; o núcleo operacional aparece como fora dela.",
-      "h": "a422323a"
+      "t": "Um engenheiro DevOps ou de plataforma constrói e opera os sistemas que os times usam para entregar e operar software: pipelines, ambientes, clusters, observabilidade e as ferramentas em volta. Segurança faz parte do trabalho, mas não é tudo. Esta base cobre os fundamentos de entrega e a fatia de segurança do cargo; operação e plataforma em maior profundidade aparecem como fora dela.",
+      "h": "2d178030"
     },
     "roles.2.tagline": {
       "t": "Faça a entrega de software ser rápida, repetível e segura, para todos os times da empresa.",
@@ -627,6 +627,762 @@
     "roles.5.title": {
       "t": "AI Security Engineer",
       "h": "4ad6a4fc"
+    },
+    "roles.6.dayToDay.0": {
+      "t": "Revisar o design de sistemas novos e de grandes mudanças, e fazer threat modeling com o time.",
+      "h": "7436c60f"
+    },
+    "roles.6.dayToDay.1": {
+      "t": "Definir padrões reutilizáveis: landing zones, serviços de identidade e autorização, pipelines pavimentados.",
+      "h": "406e693c"
+    },
+    "roles.6.dayToDay.2": {
+      "t": "Registrar decisões e seus trade-offs para que o raciocínio sobreviva à reunião.",
+      "h": "7988c0a9"
+    },
+    "roles.6.dayToDay.3": {
+      "t": "Tratar exceções com dono e prazo, e devolver as recorrentes para dentro do padrão.",
+      "h": "230eb02b"
+    },
+    "roles.6.portfolio.0": {
+      "t": "Uma arquitetura de referência para uma configuração de nuvem com várias contas, com o raciocínio por trás de cada controle.",
+      "h": "36e690eb"
+    },
+    "roles.6.portfolio.1": {
+      "t": "Três registros de decisão de arquitetura que mostrem trade-offs reais e uma alternativa rejeitada.",
+      "h": "48bc0403"
+    },
+    "roles.6.stages.0.goal": {
+      "t": "Aprender os princípios, o vocabulário e os blocos de construção.",
+      "h": "a071f27c"
+    },
+    "roles.6.stages.0.outside.0": {
+      "t": "Fundamentos de redes: TCP/IP, DNS, TLS, roteamento",
+      "h": "76948b5f"
+    },
+    "roles.6.stages.0.outside.1": {
+      "t": "Sistemas operacionais e como as plataformas de nuvem são construídas",
+      "h": "ed45c382"
+    },
+    "roles.6.stages.0.project": {
+      "t": "Desenhe a arquitetura de um sistema pequeno e liste suas fronteiras de confiança, fluxos de dados e os controles em cada uma.",
+      "h": "30f047e5"
+    },
+    "roles.6.stages.1.goal": {
+      "t": "Desenhar padrões reutilizáveis e verificá-los com threat modeling.",
+      "h": "d75f49c5"
+    },
+    "roles.6.stages.1.outside.0": {
+      "t": "Pelo menos a orientação de arquitetura de um provedor de nuvem",
+      "h": "18ae1c15"
+    },
+    "roles.6.stages.1.outside.1": {
+      "t": "Protocolos de identidade: OAuth 2.0, OpenID Connect, SAML",
+      "h": "8f1b7b5e"
+    },
+    "roles.6.stages.1.project": {
+      "t": "Escreva um registro de decisão de arquitetura para a autenticação entre serviços, com alternativas e consequências.",
+      "h": "a865b918"
+    },
+    "roles.6.stages.2.goal": {
+      "t": "Governar a arquitetura em escala e ligá-la ao negócio.",
+      "h": "7048a990"
+    },
+    "roles.6.stages.2.outside.0": {
+      "t": "Frameworks de arquitetura corporativa e como as decisões são tomadas",
+      "h": "922261ce"
+    },
+    "roles.6.stages.2.outside.1": {
+      "t": "Comunicar trade-offs para executivos",
+      "h": "22ebf916"
+    },
+    "roles.6.stages.2.project": {
+      "t": "Publique uma referência de landing zone com guardrails como código e meça quantos times a adotam.",
+      "h": "4c9c853e"
+    },
+    "roles.6.summary": {
+      "t": "Um arquiteto de segurança define como identidade, redes, nuvem e dados se encaixam sem criar brechas. O trabalho é pensamento sistêmico: princípios como zero trust e privilégio mínimo transformados em arquiteturas de referência, guardrails e decisões que os times de engenharia conseguem seguir sem fila.",
+      "h": "26e15faf"
+    },
+    "roles.6.tagline": {
+      "t": "Desenhe a segurança uma vez, como padrões que centenas de times possam reutilizar.",
+      "h": "57ebe42f"
+    },
+    "roles.6.title": {
+      "t": "Security Architect",
+      "h": "2c1f6426"
+    },
+    "roles.7.dayToDay.0": {
+      "t": "Fazer a triagem de alertas e decidir rápido se algo é um incidente real e quão sério é.",
+      "h": "c73ec311"
+    },
+    "roles.7.dayToDay.1": {
+      "t": "Conter contas, hosts e recursos de nuvem comprometidos preservando a evidência.",
+      "h": "fe8bc9dd"
+    },
+    "roles.7.dayToDay.2": {
+      "t": "Montar a linha do tempo a partir dos logs e coordenar com jurídico, comunicação e engenharia.",
+      "h": "bbdb7b59"
+    },
+    "roles.7.dayToDay.3": {
+      "t": "Conduzir a revisão pós-incidente e transformar o aprendizado em detecções, playbooks e correções.",
+      "h": "ed3c3d25"
+    },
+    "roles.7.portfolio.0": {
+      "t": "Uma revisão pós-incidente anonimizada, com linha do tempo, causa raiz, o que funcionou e as mudanças que vieram depois.",
+      "h": "be6580c8"
+    },
+    "roles.7.portfolio.1": {
+      "t": "Um playbook de ransomware adaptado a uma empresa fictícia, com pontos de decisão e responsáveis.",
+      "h": "29e9a2d2"
+    },
+    "roles.7.stages.0.goal": {
+      "t": "Aprender o ciclo de vida, os papéis e como os atacantes são descritos.",
+      "h": "0ff221ce"
+    },
+    "roles.7.stages.0.outside.0": {
+      "t": "Fundamentos de sistemas operacionais e redes",
+      "h": "bc223e8c"
+    },
+    "roles.7.stages.0.outside.1": {
+      "t": "Um SIEM ou ferramenta de busca em logs",
+      "h": "fe3f1c4d"
+    },
+    "roles.7.stages.0.project": {
+      "t": "Escreva um modelo de registro de incidente e uma escala de severidade, e conduza um exercício de mesa sobre um cenário de phishing.",
+      "h": "9254f033"
+    },
+    "roles.7.stages.1.goal": {
+      "t": "Fazer triagem, dimensionar e conter com proporção.",
+      "h": "97d523da"
+    },
+    "roles.7.stages.1.outside.0": {
+      "t": "Ferramentas de detecção e resposta em endpoints",
+      "h": "e7842c90"
+    },
+    "roles.7.stages.1.outside.1": {
+      "t": "Scripting para análise de logs (Python, jq, SQL)",
+      "h": "245c71cf"
+    },
+    "roles.7.stages.1.project": {
+      "t": "Investigue uma chave de nuvem vazada simulada só pelos logs e depois escreva os passos de contenção e a linha do tempo.",
+      "h": "529122e7"
+    },
+    "roles.7.stages.2.goal": {
+      "t": "Preservar e analisar evidência, e automatizar o que se repete.",
+      "h": "e4d83783"
+    },
+    "roles.7.stages.2.outside.0": {
+      "t": "Ferramentas de forense de memória e disco",
+      "h": "3784ffe5"
+    },
+    "roles.7.stages.2.outside.1": {
+      "t": "Noções jurídicas: tratamento de evidência e deveres de notificação de vazamento",
+      "h": "6258aec1"
+    },
+    "roles.7.stages.2.project": {
+      "t": "Automatize uma ação de contenção com etapa de aprovação e trilha de auditoria, e teste em laboratório.",
+      "h": "5d6bc9b9"
+    },
+    "roles.7.summary": {
+      "t": "Um responsável por resposta a incidentes é a primeira ligação quando algo dá errado: uma conta comprometida, um surto de malware, ransomware. O trabalho combina decisões calmas sob pressão com boa base técnica em logs, endpoints e nuvem, e o hábito de anotar tudo.",
+      "h": "feb34a8c"
+    },
+    "roles.7.tagline": {
+      "t": "Pare o dano, preserve a evidência e traga o negócio de volta.",
+      "h": "d2fbe8f5"
+    },
+    "roles.7.title": {
+      "t": "Incident Responder",
+      "h": "5521f639"
+    },
+    "roles.8.dayToDay.0": {
+      "t": "Formular hipóteses a partir de threat intelligence, incidentes recentes e lacunas na cobertura de detecção.",
+      "h": "7447a1fe"
+    },
+    "roles.8.dayToDay.1": {
+      "t": "Consultar grandes volumes de telemetria e estabelecer o que é normal antes de sinalizar o que é raro.",
+      "h": "059caf62"
+    },
+    "roles.8.dayToDay.2": {
+      "t": "Escalar achados confirmados para a resposta a incidentes com a evidência coletada.",
+      "h": "dbaa7cb4"
+    },
+    "roles.8.dayToDay.3": {
+      "t": "Transformar cada caçada em uma detecção automática e medir seus falsos positivos.",
+      "h": "239d2e35"
+    },
+    "roles.8.portfolio.0": {
+      "t": "Um relatório de caçada: hipótese, dados, consultas, resultados e a detecção que você entregou.",
+      "h": "7d2d3fe0"
+    },
+    "roles.8.portfolio.1": {
+      "t": "Um mapa de cobertura de técnicas versus detecções, com as lacunas ordenadas.",
+      "h": "6b7b7eb9"
+    },
+    "roles.8.stages.0.goal": {
+      "t": "Entender o comportamento dos adversários e o processo de resposta que as caçadas alimentam.",
+      "h": "221bf465"
+    },
+    "roles.8.stages.0.outside.0": {
+      "t": "Como sistemas operacionais e redes se comportam normalmente",
+      "h": "4eaf4966"
+    },
+    "roles.8.stages.0.outside.1": {
+      "t": "O framework MITRE ATT&CK em profundidade",
+      "h": "da9a419e"
+    },
+    "roles.8.stages.0.project": {
+      "t": "Mapeie cinco técnicas do ATT&CK para as fontes de log que as revelariam no seu ambiente e marque as lacunas.",
+      "h": "213f1fdb"
+    },
+    "roles.8.stages.1.goal": {
+      "t": "Montar linhas do tempo e fazer pivôs entre fontes de dados.",
+      "h": "847969a0"
+    },
+    "roles.8.stages.1.outside.0": {
+      "t": "SQL e a linguagem de consulta do seu SIEM",
+      "h": "6335221c"
+    },
+    "roles.8.stages.1.outside.1": {
+      "t": "Estatística básica: baselines e outliers",
+      "h": "56db3a33"
+    },
+    "roles.8.stages.1.project": {
+      "t": "Escreva três consultas que revelem comportamento suspeito em um conjunto de dados de exemplo e documente os falsos positivos.",
+      "h": "02bf62e5"
+    },
+    "roles.8.stages.2.goal": {
+      "t": "Conduzir caçadas de ponta a ponta e medir o programa.",
+      "h": "741ba392"
+    },
+    "roles.8.stages.2.outside.0": {
+      "t": "Engenharia de dados para telemetria em escala",
+      "h": "ac26abf6"
+    },
+    "roles.8.stages.2.outside.1": {
+      "t": "Notebooks e automação para caçadas repetíveis",
+      "h": "b1da8471"
+    },
+    "roles.8.stages.2.project": {
+      "t": "Faça uma caçada contra uma técnica emulada, escreva a detecção que ela gerou e reporte a cobertura ganha.",
+      "h": "975e88b0"
+    },
+    "roles.8.summary": {
+      "t": "Um threat hunter vasculha a telemetria atrás de atividade de atacantes que as detecções automáticas não pegaram. Cada caçada parte de uma hipótese, usa dados e consultas para testá-la e termina com um achado ou uma lacuna documentada, e com uma nova detecção. É um trabalho investigativo e analítico.",
+      "h": "d566785b"
+    },
+    "roles.8.tagline": {
+      "t": "Assuma que já estão dentro e vá achar a evidência.",
+      "h": "3c201b2d"
+    },
+    "roles.8.title": {
+      "t": "Threat Hunter",
+      "h": "5eea84ac"
+    },
+    "roles.9.dayToDay.0": {
+      "t": "Adquirir evidência na ordem certa e provar que ela não foi alterada.",
+      "h": "b387388a"
+    },
+    "roles.9.dayToDay.1": {
+      "t": "Analisar artefatos de memória e disco e reconstruir a linha do tempo de uma intrusão.",
+      "h": "bfe8eefc"
+    },
+    "roles.9.dayToDay.2": {
+      "t": "Fazer a triagem de arquivos suspeitos em um laboratório isolado e escrever detecções para o que encontrar.",
+      "h": "867a8202"
+    },
+    "roles.9.dayToDay.3": {
+      "t": "Escrever relatórios que separam observação de interpretação e declaram os limites com honestidade.",
+      "h": "56eb1603"
+    },
+    "roles.9.portfolio.0": {
+      "t": "Um relatório forense sobre uma imagem de caso público, com método, achados e limites.",
+      "h": "618f058a"
+    },
+    "roles.9.portfolio.1": {
+      "t": "Um texto de análise de malware com achados estáticos e dinâmicos e as detecções que saíram dele.",
+      "h": "4400f566"
+    },
+    "roles.9.stages.0.goal": {
+      "t": "Aprender o processo de incidente e de onde vem a evidência.",
+      "h": "e1367468"
+    },
+    "roles.9.stages.0.outside.0": {
+      "t": "Internos de sistemas operacionais: Windows e Linux",
+      "h": "354e0eb3"
+    },
+    "roles.9.stages.0.outside.1": {
+      "t": "Sistemas de arquivos e como os dados são guardados e apagados",
+      "h": "1e3e469d"
+    },
+    "roles.9.stages.0.project": {
+      "t": "Monte um laboratório isolado com snapshots e pratique tirar e verificar a imagem de disco de uma máquina de teste sua.",
+      "h": "f4aafcdd"
+    },
+    "roles.9.stages.1.goal": {
+      "t": "Trabalhar a partir de logs e dimensionar uma intrusão antes da análise profunda.",
+      "h": "11c82129"
+    },
+    "roles.9.stages.1.outside.0": {
+      "t": "Logs de eventos do Windows e locais comuns de persistência",
+      "h": "3621d220"
+    },
+    "roles.9.stages.1.outside.1": {
+      "t": "Scripting para parsing e automação",
+      "h": "cd89b18d"
+    },
+    "roles.9.stages.1.project": {
+      "t": "Monte uma linha do tempo combinada a partir de três fontes de log de uma intrusão simulada e marque cada evento com a sua evidência.",
+      "h": "ec35b9d6"
+    },
+    "roles.9.stages.2.goal": {
+      "t": "Analisar evidências e amostras e produzir detecções.",
+      "h": "1c84bae3"
+    },
+    "roles.9.stages.2.outside.0": {
+      "t": "Engenharia reversa com um disassembler",
+      "h": "73475679"
+    },
+    "roles.9.stages.2.outside.1": {
+      "t": "Ferramentas de forense de memória",
+      "h": "c2a7d68c"
+    },
+    "roles.9.stages.2.project": {
+      "t": "Analise uma amostra pública no seu laboratório e publique um relatório curto com indicadores e uma regra YARA.",
+      "h": "bcac6591"
+    },
+    "roles.9.summary": {
+      "t": "Um analista forense coleta e examina evidência de memória, discos, logs e serviços de nuvem para reconstruir um ataque, seguindo regras rígidas de manuseio para que ela se sustente numa disputa. Um analista de malware estuda arquivos suspeitos para entender o que fazem e como detectá-los. Os dois papéis costumam trabalhar juntos.",
+      "h": "ad3e7a35"
+    },
+    "roles.9.tagline": {
+      "t": "Reconstrua o que aconteceu a partir da evidência e explique o que o código faz.",
+      "h": "9ba4bdf5"
+    },
+    "roles.9.title": {
+      "t": "Forensics and Malware Analyst",
+      "h": "c24938a0"
+    },
+    "roles.10.dayToDay.0": {
+      "t": "Combinar escopo e regras de engajamento antes de tocar em qualquer coisa.",
+      "h": "092dbf23"
+    },
+    "roles.10.dayToDay.1": {
+      "t": "Mapear a superfície de ataque e testar autenticação, autorização e tratamento de entrada.",
+      "h": "77cc3c16"
+    },
+    "roles.10.dayToDay.2": {
+      "t": "Demonstrar o impacto com segurança e registrar evidência reproduzível.",
+      "h": "1b96e111"
+    },
+    "roles.10.dayToDay.3": {
+      "t": "Escrever achados com remediação clara e verificar as correções em um reteste.",
+      "h": "aaad6416"
+    },
+    "roles.10.portfolio.0": {
+      "t": "Dois relatórios anonimizados ou de laboratório, usando um modelo de achado claro, com evidência e remediação.",
+      "h": "6014478c"
+    },
+    "roles.10.portfolio.1": {
+      "t": "Textos sobre desafios de laboratório ou CTF que expliquem o método, e não só a resposta.",
+      "h": "ba118295"
+    },
+    "roles.10.stages.0.goal": {
+      "t": "Aprender a ética, o método e as fraquezas web mais comuns.",
+      "h": "b4ed5900"
+    },
+    "roles.10.stages.0.outside.0": {
+      "t": "Como a web funciona: HTTP, sessões, cookies, APIs",
+      "h": "b158f193"
+    },
+    "roles.10.stages.0.outside.1": {
+      "t": "Linha de comando Linux e uma linguagem de script",
+      "h": "a3a3fb6b"
+    },
+    "roles.10.stages.0.project": {
+      "t": "Monte um laboratório propositalmente vulnerável que seja seu, escreva as regras de engajamento dele e encontre dois problemas.",
+      "h": "ee3e6a75"
+    },
+    "roles.10.stages.1.goal": {
+      "t": "Testar aplicações e APIs com método e reportar bem.",
+      "h": "84ed63a4"
+    },
+    "roles.10.stages.1.outside.0": {
+      "t": "Um proxy de interceptação como Burp Suite ou ZAP",
+      "h": "d706a37c"
+    },
+    "roles.10.stages.1.outside.1": {
+      "t": "Varredura de rede e enumeração de serviços",
+      "h": "d3fa1bea"
+    },
+    "roles.10.stages.1.project": {
+      "t": "Teste uma API vulnerável com duas contas, escreva três achados no modelo e refaça o teste depois de corrigi-los.",
+      "h": "a7042932"
+    },
+    "roles.10.stages.2.goal": {
+      "t": "Encadear fraquezas e entender a visão de quem defende.",
+      "h": "d0764164"
+    },
+    "roles.10.stages.2.outside.0": {
+      "t": "Caminhos de ataque em Active Directory e na nuvem em laboratório",
+      "h": "ddeae542"
+    },
+    "roles.10.stages.2.outside.1": {
+      "t": "Ler código-fonte em busca de falhas de segurança",
+      "h": "921499e3"
+    },
+    "roles.10.stages.2.project": {
+      "t": "Mapeie um caminho de ataque em um ambiente de laboratório, escreva como ele seria detectado e proponha a correção.",
+      "h": "9e92eaca"
+    },
+    "roles.10.summary": {
+      "t": "Um pentester faz testes autorizados e com escopo para encontrar e demonstrar fraquezas em aplicações, redes e ambientes de nuvem. O ofício é método mais julgamento: saber o que testar, provar o impacto com o mínimo de acesso necessário e escrever um relatório que seja corrigido.",
+      "h": "5009d831"
+    },
+    "roles.10.tagline": {
+      "t": "Quebre coisas de propósito, com permissão, e deixe-as mais fortes.",
+      "h": "44d8c6c3"
+    },
+    "roles.10.title": {
+      "t": "Penetration Tester",
+      "h": "e217d515"
+    },
+    "roles.11.dayToDay.0": {
+      "t": "Planejar um exercício a partir de inteligência sobre os adversários relevantes para a organização.",
+      "h": "564e2f57"
+    },
+    "roles.11.dayToDay.1": {
+      "t": "Emular técnicas de forma controlada e autorizada, com paradas de segurança e deconfliction.",
+      "h": "18c45d53"
+    },
+    "roles.11.dayToDay.2": {
+      "t": "Registrar cada técnica, o horário e a telemetria que ela deveria gerar.",
+      "h": "ddb16db5"
+    },
+    "roles.11.dayToDay.3": {
+      "t": "Conduzir o debrief com os defensores e transformar as lacunas em detecções e correções.",
+      "h": "14888e72"
+    },
+    "roles.11.portfolio.0": {
+      "t": "Um relatório de purple team com o registro das técnicas, os resultados de detecção e as melhorias feitas.",
+      "h": "df55a932"
+    },
+    "roles.11.portfolio.1": {
+      "t": "Um plano de emulação de um grupo de ameaça público, com mapeamento ao ATT&CK e a telemetria esperada.",
+      "h": "0fafcafc"
+    },
+    "roles.11.stages.0.goal": {
+      "t": "Aprender as regras, a ética e a estrutura de um engajamento.",
+      "h": "d31768e0"
+    },
+    "roles.11.stages.0.outside.0": {
+      "t": "Fundamentos de redes e sistemas operacionais",
+      "h": "83542029"
+    },
+    "roles.11.stages.0.outside.1": {
+      "t": "Programação e scripting para ferramentas",
+      "h": "f2b79984"
+    },
+    "roles.11.stages.0.project": {
+      "t": "Escreva as regras de engajamento e um processo de deconfliction para um exercício fictício.",
+      "h": "d33b7c76"
+    },
+    "roles.11.stages.1.goal": {
+      "t": "Entender reconhecimento, a superfície humana e o comportamento do adversário.",
+      "h": "3fbc14d7"
+    },
+    "roles.11.stages.1.outside.0": {
+      "t": "MITRE ATT&CK em profundidade",
+      "h": "c67ad5da"
+    },
+    "roles.11.stages.1.outside.1": {
+      "t": "Noções de Active Directory e identidade na nuvem",
+      "h": "cc6a61c2"
+    },
+    "roles.11.stages.1.project": {
+      "t": "Escolha um relatório público sobre um grupo de ameaça e transforme-o em um plano ordenado de técnicas com a telemetria esperada.",
+      "h": "54910a47"
+    },
+    "roles.11.stages.2.goal": {
+      "t": "Conduzir exercícios de emulação e melhorar a detecção junto com os defensores.",
+      "h": "52835ef3"
+    },
+    "roles.11.stages.2.outside.0": {
+      "t": "Ferramentas seguras de emulação de adversário e infraestrutura de laboratório",
+      "h": "4fe7f7e1"
+    },
+    "roles.11.stages.2.outside.1": {
+      "t": "Conceitos de evasão do ponto de vista do defensor",
+      "h": "e1c4e242"
+    },
+    "roles.11.stages.2.project": {
+      "t": "Faça uma sessão de purple team em laboratório, registre quais técnicas foram detectadas e escreva as detecções para as lacunas.",
+      "h": "76a2edb2"
+    },
+    "roles.11.summary": {
+      "t": "Um operador de red team conduz simulações autorizadas e orientadas a objetivo de adversários realistas, testando pessoas, processo e detecção tanto quanto a tecnologia. Os melhores red teams trabalham por um blue team mais forte: compartilham técnicas, medem o que foi detectado e ajudam a fechar as lacunas.",
+      "h": "1e6f6e7e"
+    },
+    "roles.11.tagline": {
+      "t": "Simule um adversário de verdade para descobrir se a defesa notaria.",
+      "h": "9726b6f8"
+    },
+    "roles.11.title": {
+      "t": "Red Team Operator",
+      "h": "97580c39"
+    },
+    "roles.12.dayToDay.0": {
+      "t": "Manter um inventário de fornecedores e classificá-los por criticidade.",
+      "h": "fb991e83"
+    },
+    "roles.12.dayToDay.1": {
+      "t": "Revisar questionários, relatórios de auditoria e evidências técnicas dos fornecedores críticos.",
+      "h": "562e5450"
+    },
+    "roles.12.dayToDay.2": {
+      "t": "Negociar cláusulas de segurança com jurídico e compras, como notificação de vazamento e direito de auditoria.",
+      "h": "ef4c9643"
+    },
+    "roles.12.dayToDay.3": {
+      "t": "Acompanhar achados e reavaliar fornecedores periodicamente ou após um incidente.",
+      "h": "4fc534bc"
+    },
+    "roles.12.portfolio.0": {
+      "t": "Um modelo de classificação e uma checklist de revisão de fornecedores, com a justificativa de cada nível.",
+      "h": "18d91dee"
+    },
+    "roles.12.portfolio.1": {
+      "t": "Um exemplo de avaliação de fornecedor com achados, ações solicitadas e uma classificação de risco residual.",
+      "h": "7f16be21"
+    },
+    "roles.12.stages.0.goal": {
+      "t": "Aprender a pensar em risco e os padrões pelos quais os fornecedores são medidos.",
+      "h": "1a4f58c2"
+    },
+    "roles.12.stages.0.outside.0": {
+      "t": "Conceitos básicos de contratos e compras",
+      "h": "caa99f6f"
+    },
+    "roles.12.stages.0.outside.1": {
+      "t": "Noções de lei de privacidade nas suas jurisdições",
+      "h": "4b516aa5"
+    },
+    "roles.12.stages.0.project": {
+      "t": "Classifique dez fornecedores fictícios por criticidade e escreva a profundidade de revisão que cada um receberia.",
+      "h": "1019bd0d"
+    },
+    "roles.12.stages.1.goal": {
+      "t": "Avaliar fornecedores e a cadeia de suprimentos de software.",
+      "h": "fe94233e"
+    },
+    "roles.12.stages.1.outside.0": {
+      "t": "Ler relatórios SOC 2 e ISO 27001 com senso crítico",
+      "h": "53948a70"
+    },
+    "roles.12.stages.1.outside.1": {
+      "t": "Questionários de segurança e como questionar respostas vagas",
+      "h": "fce5e4d4"
+    },
+    "roles.12.stages.1.project": {
+      "t": "Revise um relatório público no estilo SOC 2 e escreva um resumo de risco de uma página com perguntas de acompanhamento.",
+      "h": "408b26c0"
+    },
+    "roles.12.stages.2.goal": {
+      "t": "Usar inventários de software e métricas para monitorar fornecedores continuamente.",
+      "h": "2fdebf73"
+    },
+    "roles.12.stages.2.outside.0": {
+      "t": "Serviços de rating de segurança e seus limites",
+      "h": "c3da3174"
+    },
+    "roles.12.stages.2.outside.1": {
+      "t": "Tratamento de incidente quando um fornecedor é violado",
+      "h": "206dd395"
+    },
+    "roles.12.stages.2.project": {
+      "t": "Defina um painel de risco de fornecedores com poucas métricas e a decisão que cada uma informa.",
+      "h": "95969f63"
+    },
+    "roles.12.summary": {
+      "t": "Um analista de risco de terceiros avalia a segurança de fornecedores, parceiros e softwares dos quais a empresa depende, porque as fraquezas deles viram as suas. O trabalho mistura conhecimento de segurança, contratos e processo: classificar fornecedores, revisar evidências e acompanhar até o risco ser aceito ou reduzido.",
+      "h": "b20658d1"
+    },
+    "roles.12.tagline": {
+      "t": "Julgue o quanto confiar nos fornecedores de que a sua empresa depende.",
+      "h": "22f87ae1"
+    },
+    "roles.12.title": {
+      "t": "Third-Party Risk Analyst",
+      "h": "8d013049"
+    },
+    "roles.13.dayToDay.0": {
+      "t": "Manter o registro de riscos e conduzir decisões de tratamento com os donos dos riscos.",
+      "h": "fc526257"
+    },
+    "roles.13.dayToDay.1": {
+      "t": "Mapear controles para frameworks como ISO 27001, NIST CSF e PCI DSS.",
+      "h": "61dadf2d"
+    },
+    "roles.13.dayToDay.2": {
+      "t": "Planejar e conduzir auditorias, com evidência coletada continuamente.",
+      "h": "5fd531c5"
+    },
+    "roles.13.dayToDay.3": {
+      "t": "Reportar risco e métricas do programa para executivos em termos de negócio.",
+      "h": "51e2337d"
+    },
+    "roles.13.portfolio.0": {
+      "t": "Um mapeamento de controles entre frameworks, com donos e fontes de evidência.",
+      "h": "eb2f08d2"
+    },
+    "roles.13.portfolio.1": {
+      "t": "Um exemplo de relatório trimestral de risco para executivos, com tendências e decisões solicitadas.",
+      "h": "853f6301"
+    },
+    "roles.13.stages.0.goal": {
+      "t": "Aprender gestão de riscos e os principais frameworks.",
+      "h": "df005c46"
+    },
+    "roles.13.stages.0.outside.0": {
+      "t": "As regulações que se aplicam ao seu setor e aos seus países",
+      "h": "b1bc9630"
+    },
+    "roles.13.stages.0.outside.1": {
+      "t": "Conceitos básicos de auditoria",
+      "h": "92df49e1"
+    },
+    "roles.13.stages.0.project": {
+      "t": "Monte um registro de riscos pequeno com dez riscos, cada um com dono, classificação e tratamento.",
+      "h": "83c80417"
+    },
+    "roles.13.stages.1.goal": {
+      "t": "Fazer os controles operarem e gerarem evidência.",
+      "h": "aa17b05c"
+    },
+    "roles.13.stages.1.outside.0": {
+      "t": "Uma plataforma de GRC ou ferramentas de evidência",
+      "h": "ee7b4438"
+    },
+    "roles.13.stages.1.outside.1": {
+      "t": "Entrevistar donos de controles e testar controles",
+      "h": "41c4bdb6"
+    },
+    "roles.13.stages.1.project": {
+      "t": "Mapeie um controle para três frameworks e defina como a evidência dele é produzida automaticamente.",
+      "h": "0126c7c9"
+    },
+    "roles.13.stages.2.goal": {
+      "t": "Conectar a conformidade à engenharia e à estratégia.",
+      "h": "4b2fcd18"
+    },
+    "roles.13.stages.2.outside.0": {
+      "t": "Escrita de business case e ciclos de orçamento",
+      "h": "02bd990c"
+    },
+    "roles.13.stages.2.outside.1": {
+      "t": "Prática de auditoria interna e de asseguração",
+      "h": "81def940"
+    },
+    "roles.13.stages.2.project": {
+      "t": "Escreva um resumo de uma página sobre a postura de risco para o conselho, com três decisões que você precisa da liderança.",
+      "h": "38bf6c4a"
+    },
+    "roles.13.summary": {
+      "t": "Um gerente de governança, risco e conformidade mapeia os riscos de tecnologia da empresa, alinha o programa a frameworks e regulação e garante que os controles tenham dono e evidência. O objetivo é redução real de risco que também satisfaça auditores, traduzida em relatórios que a liderança consiga usar.",
+      "h": "da89dd64"
+    },
+    "roles.13.tagline": {
+      "t": "Transforme requisitos e riscos em controles que funcionam e que podem ser provados.",
+      "h": "30623cd1"
+    },
+    "roles.13.title": {
+      "t": "GRC and Compliance Manager",
+      "h": "fac3f013"
+    },
+    "roles.14.dayToDay.0": {
+      "t": "Definir a estratégia e o roadmap a partir dos objetivos do negócio e dos principais riscos.",
+      "h": "babad4cc"
+    },
+    "roles.14.dayToDay.1": {
+      "t": "Decidir e defender o orçamento, e reportar os resultados do programa para executivos e conselho.",
+      "h": "0bb6278f"
+    },
+    "roles.14.dayToDay.2": {
+      "t": "Tornar a aceitação de risco explícita e de responsabilidade do executivo certo.",
+      "h": "e6918a39"
+    },
+    "roles.14.dayToDay.3": {
+      "t": "Liderar a organização durante um incidente sério, inclusive na comunicação.",
+      "h": "a475bb9e"
+    },
+    "roles.14.portfolio.0": {
+      "t": "Um documento de estratégia e roadmap com prioridades, trade-offs e medidas de sucesso.",
+      "h": "32157620"
+    },
+    "roles.14.portfolio.1": {
+      "t": "Um plano de comunicação de crise com modelos e um relatório de exercício de mesa.",
+      "h": "5848d452"
+    },
+    "roles.14.stages.0.goal": {
+      "t": "Construir as bases de risco, frameworks e tratamento de incidentes.",
+      "h": "de453c98"
+    },
+    "roles.14.stages.0.outside.0": {
+      "t": "Profundidade técnica prática em pelo menos um domínio de segurança",
+      "h": "e25c6051"
+    },
+    "roles.14.stages.0.outside.1": {
+      "t": "Finanças básicas: orçamentos, custo do risco, retorno do gasto",
+      "h": "801490a1"
+    },
+    "roles.14.stages.0.project": {
+      "t": "Escreva uma visão de segurança de uma página para uma empresa fictícia: seus ativos mais críticos, principais riscos e três prioridades.",
+      "h": "fd0ddc52"
+    },
+    "roles.14.stages.1.goal": {
+      "t": "Desenhar o programa e aprender a medi-lo e explicá-lo.",
+      "h": "bbd25a15"
+    },
+    "roles.14.stages.1.outside.0": {
+      "t": "Comunicação executiva e narrativa com dados",
+      "h": "3f16de35"
+    },
+    "roles.14.stages.1.outside.1": {
+      "t": "O panorama legal e regulatório do seu negócio",
+      "h": "1834dab2"
+    },
+    "roles.14.stages.1.project": {
+      "t": "Defina dez métricas ligadas a decisões e esboce o primeiro painel para o conselho.",
+      "h": "794a7604"
+    },
+    "roles.14.stages.2.goal": {
+      "t": "Liderar: estratégia, orçamento, crise e cultura.",
+      "h": "9ef3f970"
+    },
+    "roles.14.stages.2.outside.0": {
+      "t": "Liderança de pessoas: contratar, reter, gerenciar gestores",
+      "h": "db9afe22"
+    },
+    "roles.14.stages.2.outside.1": {
+      "t": "Negociação e influência junto ao time executivo",
+      "h": "c150f13f"
+    },
+    "roles.14.stages.2.project": {
+      "t": "Esboce um roadmap de dois anos com orçamento e a lista dos riscos aceitos por enquanto, e conduza um exercício de mesa de crise com os executivos.",
+      "h": "6850ad47"
+    },
+    "roles.14.summary": {
+      "t": "O diretor de segurança da informação lidera a função de segurança e responde ao time executivo e ao conselho. O trabalho tem menos a ver com ferramentas e mais com decisões: onde colocar pessoas e dinheiro limitados, quais riscos o negócio aceita e como conduzir a empresa numa crise. Exige credibilidade técnica e fluência em negócios.",
+      "h": "b7d9e2b2"
+    },
+    "roles.14.tagline": {
+      "t": "Seja dono da estratégia de segurança, do orçamento e da resposta à pergunta: estamos seguros?",
+      "h": "b4b083df"
+    },
+    "roles.14.title": {
+      "t": "CISO",
+      "h": "c812345a"
     }
   }
 }

@@ -124,7 +124,7 @@ export const roles: Role[] = [
     title: "DevOps / Platform Engineer",
     tagline: "Make shipping software fast, repeatable and safe, for every team in the company.",
     summary:
-      "A DevOps or platform engineer builds and runs the systems teams use to ship and operate software: pipelines, environments, clusters, observability and the tooling around them. Security is part of the job but not all of it. This knowledge base covers the security slice of the role; the operational core is listed as outside it.",
+      "A DevOps or platform engineer builds and runs the systems teams use to ship and operate software: pipelines, environments, clusters, observability and the tooling around them. Security is part of the job but not all of it. This knowledge base covers the delivery foundations and the security slice of the role; deeper operations and platform work is listed as outside it.",
     dayToDay: [
       "Build and maintain CI/CD, environments and the infrastructure behind them.",
       "Keep platforms reliable: monitoring, capacity, upgrades, on-call.",
@@ -295,6 +295,384 @@ export const roles: Role[] = [
     certs: [],
     certsNote: "There is no mature, widely recognized certification yet: prefer public work such as OWASP LLM Top 10 exercises, written reviews and open evaluation suites.",
     adjacent: ["appsec-engineer", "detection-soc-engineer"],
+  },
+  {
+    id: "security-architect",
+    title: "Security Architect",
+    tagline: "Design security once, as patterns that hundreds of teams can reuse.",
+    summary:
+      "A security architect defines how identity, networks, cloud and data fit together without creating gaps. The work is systems thinking: principles such as zero trust and least privilege turned into reference architectures, guardrails and decisions that engineering teams can follow without a queue.",
+    dayToDay: [
+      "Review the design of new systems and major changes, and threat-model them with the team.",
+      "Define reusable patterns: landing zones, identity and authorization services, paved pipelines.",
+      "Write down decisions and their trade-offs so the reasoning outlives the meeting.",
+      "Handle exceptions with owners and expiry dates, and fold recurring ones back into the pattern.",
+    ],
+    stages: [
+      {
+        level: 1,
+        goal: "Learn the principles, the vocabulary and the building blocks.",
+        topics: ["grc/security-frameworks", "grc/risk-management", "cloudsec/iam", "cloudsec/network"],
+        outside: ["Networking fundamentals: TCP/IP, DNS, TLS, routing", "Operating systems and how cloud platforms are built"],
+        project: "Draw the architecture of a small system and list its trust boundaries, data flows and the controls at each one.",
+      },
+      {
+        level: 2,
+        goal: "Design reusable patterns and verify them with threat modeling.",
+        topics: ["grc/security-architecture", "cloudsec/zero-trust", "appsec/threat-modeling", "cloudsec/kms-crypto"],
+        outside: ["At least one cloud provider's architecture guidance", "Identity protocols: OAuth 2.0, OpenID Connect, SAML"],
+        project: "Write an architecture decision record for service-to-service authentication, with alternatives and consequences.",
+      },
+      {
+        level: 3,
+        goal: "Govern architecture at scale and tie it to the business.",
+        topics: ["seceng/plataforma-como-produto", "grc/security-strategy-and-budget", "seceng/policy-as-code"],
+        outside: ["Enterprise architecture frameworks and how decisions get made", "Communicating trade-offs to executives"],
+        project: "Publish a landing-zone reference with guardrails as code, and measure how many teams adopt it.",
+      },
+    ],
+    portfolio: [
+      "A reference architecture for a multi-account cloud setup, with the reasoning behind each control.",
+      "Three architecture decision records that show real trade-offs and a rejected alternative.",
+    ],
+    certs: ["CISSP (ISC2)", "SABSA", "AWS Certified Security – Specialty"],
+    adjacent: ["cloud-security-engineer", "ciso"],
+  },
+  {
+    id: "incident-responder",
+    title: "Incident Responder",
+    tagline: "Stop the damage, keep the evidence, and bring the business back.",
+    summary:
+      "An incident responder is the first call when something goes wrong: a compromised account, a malware outbreak, ransomware. The work combines calm decision-making under pressure with solid technical skills in logs, endpoints and cloud, and a habit of writing everything down.",
+    dayToDay: [
+      "Triage alerts and decide quickly whether something is a real incident and how serious it is.",
+      "Contain compromised accounts, hosts and cloud resources while preserving evidence.",
+      "Build the timeline from logs and coordinate with legal, communications and engineering.",
+      "Run the post-incident review and turn lessons into detections, playbooks and fixes.",
+    ],
+    stages: [
+      {
+        level: 1,
+        goal: "Learn the lifecycle, the roles and how attackers are described.",
+        topics: ["response/ir-lifecycle", "response/threat-intelligence"],
+        outside: ["Operating system and network fundamentals", "A SIEM or log search tool"],
+        project: "Write an incident record template and a severity scale, and run a tabletop exercise on a phishing scenario.",
+      },
+      {
+        level: 2,
+        goal: "Triage, scope and contain with proportion.",
+        topics: ["response/triage-and-containment", "response/log-and-timeline-analysis", "response/ransomware-playbook", "cloudsec/logging-detection"],
+        outside: ["Endpoint detection and response tooling", "Scripting for log analysis (Python, jq, SQL)"],
+        project: "Investigate a simulated leaked cloud key from logs only, then write the containment steps and timeline.",
+      },
+      {
+        level: 3,
+        goal: "Preserve and analyze evidence, and automate the repeatable.",
+        topics: ["response/digital-forensics-basics", "cloudsec/incident-response", "seceng/automacao-soar"],
+        outside: ["Memory and disk forensics tools", "Legal basics: evidence handling, breach notification duties"],
+        project: "Automate one containment action with an approval step and an audit trail, and test it in a lab.",
+      },
+    ],
+    portfolio: [
+      "A redacted post-incident review with timeline, root cause, what worked and the changes that followed.",
+      "A ransomware playbook adapted to a fictional company, with decision points and owners.",
+    ],
+    certs: ["GCIH (GIAC)", "BTL1 (Security Blue Team)", "CompTIA CySA+"],
+    adjacent: ["threat-hunter", "forensics-malware-analyst"],
+  },
+  {
+    id: "threat-hunter",
+    title: "Threat Hunter",
+    tagline: "Assume they are already inside, and go find the evidence.",
+    summary:
+      "A threat hunter searches telemetry for attacker activity that automated detections missed. Each hunt starts from a hypothesis, uses data and queries to test it, and ends with a finding or a documented gap, and with a new detection. It is investigative, analytical work.",
+    dayToDay: [
+      "Form hypotheses from threat intelligence, recent incidents and gaps in detection coverage.",
+      "Query large volumes of telemetry and baseline what is normal before flagging what is rare.",
+      "Escalate confirmed findings to incident response with the evidence collected.",
+      "Turn each hunt into an automated detection and measure its false positives.",
+    ],
+    stages: [
+      {
+        level: 1,
+        goal: "Understand adversary behavior and the response process hunts feed.",
+        topics: ["response/threat-intelligence", "response/ir-lifecycle", "cloudsec/logging-detection"],
+        outside: ["How operating systems and networks behave normally", "The MITRE ATT&CK framework in depth"],
+        project: "Map five ATT&CK techniques to the log sources that would reveal them in your environment, and mark the gaps.",
+      },
+      {
+        level: 2,
+        goal: "Build timelines and pivot across data sources.",
+        topics: ["response/log-and-timeline-analysis", "response/triage-and-containment"],
+        outside: ["SQL and the query language of your SIEM", "Basic statistics: baselines and outliers"],
+        project: "Write three queries that surface suspicious behavior in a sample dataset and document the false positives.",
+      },
+      {
+        level: 3,
+        goal: "Run hunts end to end and measure the program.",
+        topics: ["response/threat-hunting", "offsec/red-team-and-adversary-emulation"],
+        outside: ["Data engineering for telemetry at scale", "Notebooks and automation for repeatable hunts"],
+        project: "Run a hunt against an emulated technique, write the detection it produced and report the coverage gained.",
+      },
+    ],
+    portfolio: [
+      "A hunt report: hypothesis, data, queries, results and the detection you shipped.",
+      "A coverage map of techniques versus detections, with the gaps ranked.",
+    ],
+    certs: ["GCTI (GIAC)", "GCFA (GIAC)", "eCTHP (INE)"],
+    adjacent: ["incident-responder", "detection-soc-engineer"],
+  },
+  {
+    id: "forensics-malware-analyst",
+    title: "Forensics and Malware Analyst",
+    tagline: "Reconstruct what happened from the evidence, and explain what the code does.",
+    summary:
+      "A forensics analyst collects and examines evidence from memory, disks, logs and cloud services to rebuild an attack, following strict handling rules so it can stand up in a dispute. A malware analyst studies suspicious files to learn what they do and how to detect them. The two roles often work together.",
+    dayToDay: [
+      "Acquire evidence in the right order and prove it was not altered.",
+      "Analyze memory and disk artifacts and rebuild the timeline of an intrusion.",
+      "Triage suspicious files in an isolated lab and write detections for what you find.",
+      "Write reports that separate observation from interpretation and state the limits honestly.",
+    ],
+    stages: [
+      {
+        level: 1,
+        goal: "Learn the incident process and where evidence comes from.",
+        topics: ["response/ir-lifecycle"],
+        outside: ["Operating system internals: Windows and Linux", "File systems and how data is stored and deleted"],
+        project: "Set up an isolated lab with snapshots and practice taking and verifying a disk image of your own test machine.",
+      },
+      {
+        level: 2,
+        goal: "Work from logs and scope an intrusion before deep analysis.",
+        topics: ["response/log-and-timeline-analysis", "response/triage-and-containment"],
+        outside: ["Windows event logs and common persistence locations", "Scripting for parsing and automation"],
+        project: "Build a combined timeline from three log sources of a simulated intrusion and mark each event with its evidence.",
+      },
+      {
+        level: 3,
+        goal: "Analyze evidence and samples, and produce detections.",
+        topics: ["response/digital-forensics-basics", "response/malware-analysis-basics"],
+        outside: ["Reverse engineering with a disassembler", "Memory forensics tooling"],
+        project: "Analyze a public sample in your lab and publish a short report with indicators and a YARA rule.",
+      },
+    ],
+    portfolio: [
+      "A forensic report on a public case image, with method, findings and limits.",
+      "A malware analysis write-up with static and dynamic findings and the detections that came out of it.",
+    ],
+    certs: ["GCFE / GCFA (GIAC)", "GREM (GIAC)", "EnCE (OpenText)"],
+    adjacent: ["incident-responder", "threat-hunter"],
+  },
+  {
+    id: "pentester",
+    title: "Penetration Tester",
+    tagline: "Break things on purpose, with permission, and leave them stronger.",
+    summary:
+      "A penetration tester performs authorized, scoped tests to find and demonstrate weaknesses in applications, networks and cloud environments. The craft is method plus judgment: knowing what to test, proving impact with the least access needed, and writing a report that gets fixed.",
+    dayToDay: [
+      "Agree on scope and rules of engagement before touching anything.",
+      "Map the attack surface and test authentication, authorization and input handling.",
+      "Demonstrate impact safely and record reproducible evidence.",
+      "Write findings with clear remediation and verify fixes in a retest.",
+    ],
+    stages: [
+      {
+        level: 1,
+        goal: "Learn the ethics, the method and the most common web weaknesses.",
+        topics: ["offsec/engagement-scoping-and-ethics", "offsec/pentest-methodology", "owasp/broken-access-control", "owasp/injection"],
+        outside: ["How the web works: HTTP, sessions, cookies, APIs", "Linux command line and one scripting language"],
+        project: "Set up a deliberately vulnerable lab you own, write a rules-of-engagement document for it and find two issues.",
+      },
+      {
+        level: 2,
+        goal: "Test applications and APIs methodically and report well.",
+        topics: ["offsec/recon-and-attack-surface", "offsec/web-and-api-testing", "offsec/reporting-and-remediation", "owasp/authentication-failures", "owasp/security-misconfiguration"],
+        outside: ["An intercepting proxy such as Burp Suite or ZAP", "Network scanning and service enumeration"],
+        project: "Test a vulnerable API with two accounts, write three findings in the template and retest after fixing them.",
+      },
+      {
+        level: 3,
+        goal: "Chain weaknesses and understand the defender's view.",
+        topics: ["offsec/privilege-escalation-paths", "owasp/insecure-design"],
+        outside: ["Active Directory and cloud attack paths in a lab", "Reading source code for security flaws"],
+        project: "Map an attack path in a lab environment, write how it would be detected, and propose the fix.",
+      },
+    ],
+    portfolio: [
+      "Two redacted or lab-based reports using a clear finding template with evidence and remediation.",
+      "Write-ups of lab or CTF challenges that explain the method, not only the answer.",
+    ],
+    certs: ["OSCP (OffSec)", "PNPT (TCM Security)", "GPEN (GIAC)", "eJPT (INE)"],
+    adjacent: ["appsec-engineer", "red-teamer"],
+  },
+  {
+    id: "red-teamer",
+    title: "Red Team Operator",
+    tagline: "Simulate a real adversary to find out whether the defense would notice.",
+    summary:
+      "A red team operator runs goal-driven, authorized simulations of realistic adversaries, testing people, process and detection as much as technology. The best red teams work toward a stronger blue team: they share techniques, measure what was detected and help close the gaps.",
+    dayToDay: [
+      "Plan an exercise from threat intelligence about adversaries relevant to the organization.",
+      "Emulate techniques in a controlled, authorized way with safety stops and deconfliction.",
+      "Record each technique, its time and the telemetry it should create.",
+      "Run the debrief with defenders and turn the gaps into detections and fixes.",
+    ],
+    stages: [
+      {
+        level: 1,
+        goal: "Learn the rules, the ethics and the structure of an engagement.",
+        topics: ["offsec/engagement-scoping-and-ethics", "offsec/pentest-methodology"],
+        outside: ["Networking and operating system fundamentals", "Programming and scripting for tooling"],
+        project: "Write rules of engagement and a deconfliction process for a fictional exercise.",
+      },
+      {
+        level: 2,
+        goal: "Understand reconnaissance, the human surface and adversary behavior.",
+        topics: ["offsec/recon-and-attack-surface", "offsec/social-engineering-and-phishing", "response/threat-intelligence"],
+        outside: ["MITRE ATT&CK in depth", "Active Directory and cloud identity basics"],
+        project: "Choose a public threat actor report and turn it into an ordered technique plan with expected telemetry.",
+      },
+      {
+        level: 3,
+        goal: "Run emulation exercises and improve detection together with the defenders.",
+        topics: ["offsec/privilege-escalation-paths", "offsec/red-team-and-adversary-emulation"],
+        outside: ["Safe adversary emulation tooling and lab infrastructure", "Evasion concepts from the defender's perspective"],
+        project: "Run a purple-team session in a lab, log which techniques were detected and write the detections for the gaps.",
+      },
+    ],
+    portfolio: [
+      "A purple-team report with the technique log, detection results and the improvements made.",
+      "An emulation plan for a public threat actor, with ATT&CK mappings and expected telemetry.",
+    ],
+    certs: ["CRTO (Zero-Point Security)", "OSEP (OffSec)", "GPEN (GIAC)"],
+    adjacent: ["pentester", "threat-hunter"],
+  },
+  {
+    id: "third-party-risk-analyst",
+    title: "Third-Party Risk Analyst",
+    tagline: "Judge how much to trust the suppliers your company depends on.",
+    summary:
+      "A third-party risk analyst assesses the security of vendors, partners and software the company relies on, because their weaknesses become yours. The work blends security knowledge, contracts and process: tiering suppliers, reviewing evidence, and following up until the risk is accepted or reduced.",
+    dayToDay: [
+      "Keep an inventory of vendors and tier them by criticality.",
+      "Review questionnaires, audit reports and technical evidence for critical suppliers.",
+      "Negotiate security terms with legal and procurement, such as breach notification and audit rights.",
+      "Track findings and reassess suppliers on a schedule or after an incident.",
+    ],
+    stages: [
+      {
+        level: 1,
+        goal: "Learn risk thinking and the standards suppliers are measured against.",
+        topics: ["grc/risk-management", "grc/security-frameworks"],
+        outside: ["Basic contract and procurement concepts", "Privacy law basics for your jurisdictions"],
+        project: "Tier ten fictional vendors by criticality and write the review depth each one would receive.",
+      },
+      {
+        level: 2,
+        goal: "Assess suppliers and the software supply chain.",
+        topics: ["grc/third-party-risk", "grc/compliance-in-practice", "owasp/supply-chain-failures", "appsec/sca"],
+        outside: ["Reading SOC 2 and ISO 27001 reports critically", "Security questionnaires and how to challenge vague answers"],
+        project: "Review a public SOC 2 style report and write a one-page risk summary with follow-up questions.",
+      },
+      {
+        level: 3,
+        goal: "Use software inventories and metrics to monitor suppliers continuously.",
+        topics: ["appsec/sbom", "grc/security-metrics"],
+        outside: ["Security ratings services and their limits", "Incident handling when a supplier is breached"],
+        project: "Define a supplier risk dashboard with a handful of metrics and the decision each one informs.",
+      },
+    ],
+    portfolio: [
+      "A tiering model and review checklist for suppliers, with the reasoning for each tier.",
+      "A sample supplier assessment with findings, requested actions and a residual risk rating.",
+    ],
+    certs: ["CTPRP (Shared Assessments)", "ISO 27001 Lead Auditor", "CISA (ISACA)"],
+    adjacent: ["grc-compliance-manager", "security-architect"],
+  },
+  {
+    id: "grc-compliance-manager",
+    title: "GRC and Compliance Manager",
+    tagline: "Turn requirements and risks into controls that work and can be proven.",
+    summary:
+      "A governance, risk and compliance manager maps the company's technology risks, aligns the program with frameworks and regulation, and makes sure controls have owners and evidence. The goal is real risk reduction that also satisfies auditors, translated into reports that leadership can use.",
+    dayToDay: [
+      "Maintain the risk register and drive treatment decisions with risk owners.",
+      "Map controls to frameworks such as ISO 27001, NIST CSF and PCI DSS.",
+      "Plan and run audits, with evidence collected continuously.",
+      "Report risk and program metrics to executives in business terms.",
+    ],
+    stages: [
+      {
+        level: 1,
+        goal: "Learn risk management and the main frameworks.",
+        topics: ["grc/risk-management", "grc/security-frameworks"],
+        outside: ["The regulations that apply to your sector and countries", "Basic auditing concepts"],
+        project: "Build a small risk register with ten risks, each with an owner, a rating and a treatment.",
+      },
+      {
+        level: 2,
+        goal: "Make controls operate and produce evidence.",
+        topics: ["grc/compliance-in-practice", "grc/security-metrics", "grc/third-party-risk"],
+        outside: ["A GRC platform or evidence tooling", "Interviewing control owners and testing controls"],
+        project: "Map one control to three frameworks and define how its evidence is produced automatically.",
+      },
+      {
+        level: 3,
+        goal: "Connect compliance to engineering and to strategy.",
+        topics: ["seceng/policy-as-code", "grc/security-strategy-and-budget"],
+        outside: ["Business case writing and budget cycles", "Internal audit and assurance practice"],
+        project: "Write a one-page board summary of the risk posture with three decisions you need from leadership.",
+      },
+    ],
+    portfolio: [
+      "A control mapping across frameworks, with owners and evidence sources.",
+      "A sample quarterly risk report for executives, with trends and requested decisions.",
+    ],
+    certs: ["CISA (ISACA)", "CRISC (ISACA)", "ISO 27001 Lead Implementer"],
+    adjacent: ["ciso", "third-party-risk-analyst"],
+  },
+  {
+    id: "ciso",
+    title: "CISO",
+    tagline: "Own the security strategy, the budget and the answer to the question: are we safe?",
+    summary:
+      "The chief information security officer leads the security function and answers to the executive team and the board. The job is less about tools and more about decisions: where to put limited people and money, which risks the business accepts, and how to lead the company through a crisis. It requires technical credibility and business fluency.",
+    dayToDay: [
+      "Set the strategy and roadmap from the business goals and the main risks.",
+      "Decide and defend the budget, and report the program's results to executives and the board.",
+      "Make risk acceptance explicit and owned by the right executive.",
+      "Lead the organization during a serious incident, including communication.",
+    ],
+    stages: [
+      {
+        level: 1,
+        goal: "Build the foundations of risk, frameworks and incident handling.",
+        topics: ["grc/risk-management", "grc/security-frameworks", "response/ir-lifecycle"],
+        outside: ["Hands-on technical depth in at least one security domain", "Basic finance: budgets, cost of risk, return on spend"],
+        project: "Write a one-page security vision for a fictional company: its crown jewels, top risks and three priorities.",
+      },
+      {
+        level: 2,
+        goal: "Design the program and learn to measure and explain it.",
+        topics: ["grc/security-architecture", "grc/security-metrics", "grc/third-party-risk"],
+        outside: ["Executive communication and storytelling with data", "The legal and regulatory landscape for your business"],
+        project: "Define ten metrics that tie to decisions and draft the first board dashboard.",
+      },
+      {
+        level: 3,
+        goal: "Lead: strategy, budget, crisis and culture.",
+        topics: ["grc/security-strategy-and-budget", "grc/crisis-communication-and-culture"],
+        outside: ["People leadership: hiring, retention, managing managers", "Negotiation and influence across the executive team"],
+        project: "Draft a two-year roadmap with a budget and a list of the risks accepted for now, and run a crisis tabletop with executives.",
+      },
+    ],
+    portfolio: [
+      "A strategy and roadmap document with priorities, trade-offs and measures of success.",
+      "A crisis communication plan with templates and a tabletop exercise report.",
+    ],
+    certs: ["CISM (ISACA)", "CISSP (ISC2)", "executive programs such as an MBA or a security leadership course"],
+    adjacent: ["grc-compliance-manager", "security-architect"],
   },
 ];
 
