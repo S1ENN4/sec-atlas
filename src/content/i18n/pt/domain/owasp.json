@@ -1,33 +1,5 @@
 {
   "entries": {
-    "graph.0.label": {
-      "t": "define as regras de",
-      "h": "65278aba"
-    },
-    "graph.1.label": {
-      "t": "pode contornar",
-      "h": "40e256d9"
-    },
-    "graph.2.label": {
-      "t": "protege as credenciais de",
-      "h": "c745fca1"
-    },
-    "graph.3.label": {
-      "t": "fornece identidade a",
-      "h": "3a1553d3"
-    },
-    "graph.4.label": {
-      "t": "é barrado ao verificar",
-      "h": "002a3f8f"
-    },
-    "graph.5.label": {
-      "t": "depende de configurações seguras",
-      "h": "18b5a555"
-    },
-    "graph.6.label": {
-      "t": "registra",
-      "h": "86761b63"
-    },
     "pipeline.0.description": {
       "t": "decida o que precisa ser impossível",
       "h": "ca342602"

@@ -12,7 +12,6 @@ import { whenToUseWhat } from "./topics/when-to-use-what";
 import { relations } from "./relations";
 import { pipeline } from "./pipeline";
 import { glossary } from "./glossary";
-import { graphLayout } from "./graph-layout";
 
 const kindMeta: Record<TopicKind, { label: string; dot: string; text: string }> = {
   tecnica: { label: "technique", dot: "bg-emerald-400", text: "text-emerald-400" },
@@ -43,5 +42,4 @@ export const vibecoding: Domain = {
   relations,
   pipeline,
   glossary,
-  graphLayout,
 };

@@ -252,8 +252,7 @@ const tools = [
       return text(
         `Criado: src/content/${a.domain}/topics/${a.slug}.ts\n\nPróximos passos (o validador vai falhar até concluir):\n` +
           `1. Escrever o conteúdo real e verificar cada afirmação (substituir todos os TODO).\n` +
-          `2. src/content/${a.domain}/index.ts: importar { ${ident} } de "./topics/${a.slug}" e adicionar a topics: [...].\n` +
-          `3. src/content/${a.domain}/graph-layout.ts: posição em conceptPositions (e conceptAttachments se houver etapa).\n` +
+          `2. src/content/${a.domain}/index.ts: importar { ${ident} } de "./topics/${a.slug}" e adicionar a topics: [...].\n` + 
           `4. src/content/${a.domain}/relations.ts e pipeline.ts: relações e item da esteira.\n` +
           `5. src/content/quiz/${a.domain}.ts: >= 3 perguntas com 4 opções distintas e explain.\n` +
           `6. Opcional: ícone em src/components/topic-icon.tsx, pontes, trilha, glossário.\n` +

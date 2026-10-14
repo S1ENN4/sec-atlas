@@ -70,7 +70,7 @@ export default async function DomainHome({ params }: { params: Params }) {
 
       <section id="map" className="mx-auto max-w-6xl scroll-mt-20 px-4 pb-16">
         <h2 className="reveal font-mono text-sm uppercase tracking-wider text-muted-foreground">{t.domainPage.mapTitle}</h2>
-        <p className="mt-2 max-w-2xl text-sm text-muted-foreground">{copy.mapIntro}</p>
+        <p className="mt-2 max-w-2xl text-sm text-muted-foreground">{t.domainPage.mapIntro}</p>
         <div className="mt-6">
           <DomainGraph domainId={id} locale={locale} t={t} />
         </div>

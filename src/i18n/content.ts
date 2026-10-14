@@ -47,7 +47,6 @@ export function localizedTopic(id: DomainId, slug: string, locale: Locale): Topi
 export const domainUnitSource = (d: Domain) => ({
   pipeline: d.pipeline,
   relations: d.relations.map((r) => ({ label: r.label })),
-  graph: (d.graphLayout?.crossRelations ?? []).map((r) => ({ label: r.label })),
 });
 export const glossaryUnitSource = (d: Domain) => ({ groups: d.glossary });
 export const quizUnitSource = (id: DomainId, slug: string) => ({ questions: getQuiz(id, slug) });
@@ -77,10 +76,6 @@ export function localizeDomain(id: DomainId, locale: Locale): LocalizedDomain {
   note(meta);
   note(gloss);
 
-  const graphLayout = d.graphLayout && {
-    ...d.graphLayout,
-    crossRelations: d.graphLayout.crossRelations.map((r, i) => ({ ...r, label: meta.value.graph[i]?.label ?? r.label })),
-  };
   return {
     sourceLang: lang,
     fallback,
@@ -90,7 +85,6 @@ export function localizeDomain(id: DomainId, locale: Locale): LocalizedDomain {
       pipeline: meta.value.pipeline,
       relations: d.relations.map((r, i) => ({ ...r, label: meta.value.relations[i]?.label ?? r.label })),
       glossary: gloss.value.groups,
-      graphLayout,
     },
   };
 }

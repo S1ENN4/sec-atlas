@@ -14,7 +14,6 @@ import { incidentResponse } from "./topics/incident-response";
 import { relations } from "./relations";
 import { pipeline } from "./pipeline";
 import { glossary } from "./glossary";
-import { graphLayout } from "./graph-layout";
 
 // Per-domain kind metadata. CloudSec drops the "de teste" qualifier from
 // AppSec's `tecnica` label (CloudSec techniques aren't tests; they're
@@ -49,5 +48,4 @@ export const cloudsec: Domain = {
   relations,
   pipeline,
   glossary,
-  graphLayout,
 };

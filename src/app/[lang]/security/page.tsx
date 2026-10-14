@@ -184,10 +184,10 @@ upgrade-insecure-requests`}
           <li className="flex gap-3 leading-relaxed text-foreground/85">
             <span className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary" />
             <span>
-              <strong className="font-semibold">R5 posições completas</strong>: todo
-              tópico de um domínio com{" "}
-              <code className="font-mono text-xs">graphLayout</code> tem posição, sem
-              órfãos no layout.
+              <strong className="font-semibold">R5 etapas existentes</strong>: a etapa
+              de cada tópico é uma etapa da esteira do seu domínio (o mapa de
+              aprendizado posiciona os tópicos por nível e pré-requisitos, sem
+              coordenadas manuais).
             </span>
           </li>
           <li className="flex gap-3 leading-relaxed text-foreground/85">

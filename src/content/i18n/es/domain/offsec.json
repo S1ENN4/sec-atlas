@@ -1,33 +1,5 @@
 {
   "entries": {
-    "graph.0.label": {
-      "t": "delimita",
-      "h": "94ae97ff"
-    },
-    "graph.1.label": {
-      "t": "comienza con",
-      "h": "2e2ec9b5"
-    },
-    "graph.2.label": {
-      "t": "alimenta",
-      "h": "56222773"
-    },
-    "graph.3.label": {
-      "t": "puede llevar a",
-      "h": "19e7b37d"
-    },
-    "graph.4.label": {
-      "t": "es una etapa de",
-      "h": "67c80d31"
-    },
-    "graph.5.label": {
-      "t": "es una puerta de entrada a",
-      "h": "c525197e"
-    },
-    "graph.6.label": {
-      "t": "se reporta en",
-      "h": "ac7ed873"
-    },
     "pipeline.0.description": {
       "t": "permiso, límites y método",
       "h": "b1392cf1"

@@ -1,49 +1,5 @@
 {
   "entries": {
-    "graph.0.label": {
-      "t": "dispara la respuesta",
-      "h": "fe184c0e"
-    },
-    "graph.1.label": {
-      "t": "guía el modelo",
-      "h": "705c0274"
-    },
-    "graph.2.label": {
-      "t": "segmenta por identidad",
-      "h": "fb0efb59"
-    },
-    "graph.3.label": {
-      "t": "audita la postura",
-      "h": "ce4ce4aa"
-    },
-    "graph.4.label": {
-      "t": "monitorea el runtime",
-      "h": "03946931"
-    },
-    "graph.5.label": {
-      "t": "detecta comportamiento",
-      "h": "2249c68d"
-    },
-    "graph.6.label": {
-      "t": "alimenta la postura",
-      "h": "e9a4f23d"
-    },
-    "graph.7.label": {
-      "t": "provee el rastro",
-      "h": "42ec8726"
-    },
-    "graph.8.label": {
-      "t": "autoriza el acceso a claves",
-      "h": "8897eacf"
-    },
-    "graph.9.label": {
-      "t": "cifra los secretos",
-      "h": "f28d3a50"
-    },
-    "graph.10.label": {
-      "t": "aísla la red",
-      "h": "3b871d99"
-    },
     "pipeline.0.description": {
       "t": "activos y responsables mapeados",
       "h": "218a2d08"

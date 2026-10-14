@@ -129,7 +129,8 @@ export const ui = {
 
   domainPage: {
     hint: "$ click a card for details · ctrl+k to search",
-    mapTitle: "concept map",
+    mapTitle: "learning map",
+    mapIntro: "Topics are laid out by level, from foundations to advanced. Arrows point from a prerequisite to what builds on it. Select a topic to preview it, or follow the highlighted next step.",
     topicsTitle: "topics",
     stageLabel: "stage: {stage}",
   },
@@ -201,27 +202,21 @@ export const ui = {
   },
 
   graph: {
-    viewMode: "View mode",
-    viewMap: "map",
-    viewList: "list",
-    allRelations: "all relations",
-    kindShow: "show this type",
-    kindHide: "hide this type",
-    legend: "animated lines = pipeline flow · hover or click a card to see its relations",
-    nodeDetails: "{name} (details)",
-    stageEyebrow: "stage {index}",
-    stageAria: "Stage {name}",
-    detailsAria: "Details: {title}",
-    closeDetails: "Close details",
-    alsoInStage: "also appears in another stage",
+    allPrereqs: "all prerequisites",
+    hint: "Select a topic to see what it needs and what it unlocks.",
+    legend: "arrows go from a prerequisite to what builds on it",
+    selected: "{title} selected",
+    details: "Topic details",
+    keyPoints: "key points",
+    startHere: "start here",
+    needsElsewhere: "also needs, in another domain",
     relations: "relations",
     openTopic: "open topic",
     mark: "mark",
     studied: "studied",
     copyLink: "link",
     copied: "copied",
-    also: "also: {items}",
-    crossCutting: "cross-cutting layers",
+    stageEyebrow: "stage {index}",
     gate: "gate: {gate}",
   },
 
@@ -569,8 +564,6 @@ export const ui = {
       lead: "An interactive map of the concepts that protect a pipeline: SAST, DAST, SCA, secrets scanning, SBOM and CI/CD: what each one does, where it fits and how they connect.",
       pitch:
         "SAST, DAST, SCA, secrets, SBOM and the pipeline: the interactive map that shows each check and where it enters the delivery flow.",
-      mapIntro:
-        "Organized by the pipeline: each check sits in the column of its stage. Animated lines are the CI/CD flow; dashed ones are relations between concepts.",
       pipelineTitle: "end-to-end pipeline",
       pipelineIntro:
         "The path of a commit to production, and the check that lives at each step. Each chip opens the matching topic.",
@@ -584,8 +577,6 @@ export const ui = {
       lead: "An interactive map of cloud security: identity, network, workloads, posture, cryptography and detection: what each piece does, where it lives and how it connects.",
       pitch:
         "Cloud posture, IAM, segmentation and supply chain: its own graph, in the same style as AppSec.",
-      mapIntro:
-        "Each control sits in the column of the phase it acts in. Animated lines are the cloud security cycle; dashed ones are relations between concepts.",
       pipelineTitle: "cloud security cycle",
       pipelineIntro:
         "From asset inventory to incident response: the control lives in every phase. Each chip opens the matching topic.",
@@ -599,8 +590,6 @@ export const ui = {
       lead: "From chunking to guardrails: how a modern agent is built, with the data pipeline (RAG), the action loop (frameworks, tool calling, MCP) and the evaluation mesh that decides whether it can ship.",
       pitch:
         "Security for agents and AI workloads: RAG, tool calling, MCP, guardrails. A complete map.",
-      mapIntro:
-        "Each concept sits in the column of the phase it acts in. Animated lines are the AI pipeline flow; dashed ones are layers that inform several phases (RAG, LLM, MCP, guardrails).",
       pipelineTitle: "AI pipeline",
       pipelineIntro:
         "From the raw document to the guardrail metric: the path of data and quality. Each chip opens the matching topic.",
@@ -614,8 +603,6 @@ export const ui = {
       lead: "An interactive map of edge security operations: telemetry, detection, WAF, rate limiting, bots and the metrics that prove it works, from log to block.",
       pitch:
         "L7 edge defense in practice: WAF, rate limiting, bots, detection and SLOs, from log to block, and the metric that proves it works.",
-      mapIntro:
-        "Each control sits in the column of the phase it acts in. Animated lines are the defense cycle; dashed ones are relations between concepts.",
       pipelineTitle: "defense cycle",
       pipelineIntro:
         "From raw data to the metric: the control lives in every phase. Each chip opens the matching topic.",
@@ -629,8 +616,6 @@ export const ui = {
       lead: "An interactive map of the engineering behind security: IaC, policy as code, hardened pipelines, reliability at scale, automation and AI, from code to platform.",
       pitch:
         "Building the security platform: IaC and policy as code, hardened CI/CD, reliability at scale, automation and AI with their feet on the ground.",
-      mapIntro:
-        "Each control sits in the column of the phase it acts in. Animated lines are the engineering cycle; dashed ones are relations between concepts.",
       pipelineTitle: "engineering cycle",
       pipelineIntro:
         "From definition as code to automation: the control lives in every phase. Each chip opens the matching topic.",
@@ -644,8 +629,6 @@ export const ui = {
       lead: "What Claude Code, OpenCode, OMP, OMO, herdr and the models behind them really are, how they differ, when to use each, and how to keep the result safe.",
       pitch:
         "AI-assisted coding without the hype: the layers (model, harness, provider), the tools compared, context engineering, parallel agents, verification and agent security.",
-      mapIntro:
-        "Each topic sits in the column of the phase it belongs to. Hover a card to see where it attaches; dashed lines are relations between topics.",
       pipelineTitle: "from understanding to trusting",
       pipelineIntro:
         "Understand the tools, choose by task, drive them with good context, and verify everything. Each chip opens the matching topic.",
@@ -659,8 +642,6 @@ export const ui = {
       lead: "Each of the ten web risks explained, with vulnerable and fixed code in several languages, and the test that proves the fix.",
       pitch:
         "The ten risks that matter most in web applications: what they are, how they are attacked, the code that fails, the code that holds, and how to verify it.",
-      mapIntro:
-        "Each risk sits in the column of the phase where its fix is cheapest. Hover a card to see where it attaches; dashed lines are relations between risks.",
       pipelineTitle: "where each risk is decided",
       pipelineIntro:
         "From design to operations: every risk has a phase where prevention is cheap. Each chip opens the matching topic.",
@@ -673,7 +654,6 @@ export const ui = {
       titleAccent: "mapped.",
       lead: "The ground DevOps and DevSecOps stand on: Linux, Git, containers, pipelines, releases, infrastructure as code, Kubernetes, observability and reliability.",
       pitch: "From commit to production and back: the delivery loop, how to build it fast and safe, and how to keep it healthy once it runs.",
-      mapIntro: "Each topic sits in the column of the phase it belongs to. Hover a card to see where it attaches; dashed lines are relations between topics.",
       pipelineTitle: "from commit to healthy production",
       pipelineIntro: "Foundations, delivery, provisioning and operations: every piece has a place in the loop. Each chip opens the matching topic.",
       loop: "",
@@ -685,7 +665,6 @@ export const ui = {
       titleAccent: "from alert to evidence.",
       lead: "How to prepare for, detect, contain and investigate an intrusion: the lifecycle, threat hunting and intelligence, ransomware, forensics and malware triage.",
       pitch: "The defender's side of an attack: a rehearsed response, hunts that become detections, careful containment, and evidence that stands up.",
-      mapIntro: "Each topic sits in the column of the phase it belongs to. Hover a card to see where it attaches; dashed lines are relations between topics.",
       pipelineTitle: "from preparation to evidence",
       pipelineIntro: "Prepare, detect, respond, investigate: each phase feeds the next and the last one improves the first. Each chip opens the matching topic.",
       loop: "",
@@ -697,7 +676,6 @@ export const ui = {
       titleAccent: "with authorization.",
       lead: "The method, the ethics and the lessons of testing systems on purpose: scope, recon, web and API testing, attack paths, phishing, red and purple teams, and reporting that gets fixed.",
       pitch: "Think like an attacker to defend better: authorized testing, repeatable method, honest reports and detection that improves after every exercise.",
-      mapIntro: "Each topic sits in the column of the phase it belongs to. Hover a card to see where it attaches; dashed lines are relations between topics.",
       pipelineTitle: "from permission to fixed",
       pipelineIntro: "Scope, discover, attack safely, report: every engagement follows this path. Each chip opens the matching topic.",
       loop: "",
@@ -709,7 +687,6 @@ export const ui = {
       titleAccent: "made practical.",
       lead: "Risk, frameworks, third parties, architecture principles, compliance evidence, metrics, strategy and crisis communication: the business side of security.",
       pitch: "How security is run as a business function: decisions on risk, controls that can be proven, numbers that matter and leadership that people trust.",
-      mapIntro: "Each topic sits in the column of the phase it belongs to. Hover a card to see where it attaches; dashed lines are relations between topics.",
       pipelineTitle: "from risk to leadership",
       pipelineIntro: "Identify, design, prove, lead: each phase turns risk into decisions. Each chip opens the matching topic.",
       loop: "",

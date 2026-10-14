@@ -37,11 +37,11 @@
     "test:mcp": "node scripts/mcp-smoke.mjs",
     "export:obsidian": "node --import ./scripts/content-alias-loader.mjs scripts/export-obsidian.mjs",
     "i18n": "node --import ./scripts/content-alias-loader.mjs scripts/i18n.mjs",
+    "test:learning": "node --import ./scripts/content-alias-loader.mjs scripts/learning-test.mjs",
     "test:i18n": "node --import ./scripts/content-alias-loader.mjs scripts/i18n-test.mjs"
   },
   "dependencies": {
     "@radix-ui/react-slot": "1.4.0",
-    "@xyflow/react": "12.12.0",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
     "lucide-react": "1.54.0",

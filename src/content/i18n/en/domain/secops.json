@@ -1,41 +1,5 @@
 {
   "entries": {
-    "graph.0.label": {
-      "t": "reveals",
-      "h": "688c8b01"
-    },
-    "graph.1.label": {
-      "t": "keeps viable",
-      "h": "82448bda"
-    },
-    "graph.2.label": {
-      "t": "becomes detection",
-      "h": "0c53cd29"
-    },
-    "graph.3.label": {
-      "t": "generates rules",
-      "h": "be9c4131"
-    },
-    "graph.4.label": {
-      "t": "generates limits",
-      "h": "aa2c438e"
-    },
-    "graph.5.label": {
-      "t": "scores automation",
-      "h": "070fb214"
-    },
-    "graph.6.label": {
-      "t": "triggers",
-      "h": "6d6a8bee"
-    },
-    "graph.7.label": {
-      "t": "measures precision",
-      "h": "792075b4"
-    },
-    "graph.8.label": {
-      "t": "defines where it lives",
-      "h": "650dd2ab"
-    },
     "pipeline.0.description": {
       "t": "see all traffic, at scale and with context",
       "h": "a5dc94f6"

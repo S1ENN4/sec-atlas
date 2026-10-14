@@ -108,3 +108,49 @@ export function summariseGraph(g: LevelGraph): GraphSummary {
   }
   return { total: g.nodes.length, perLevel };
 }
+
+// ---------------------------------------------------------------------------
+// Learner state on top of the level graph. One definition of "ready" and
+// "next" for the domain map, the Journey and any future "continue" surface.
+// A topic is READY when every prerequisite that exists is done; nothing is ever
+// locked out, the state only orders the recommendation.
+// ---------------------------------------------------------------------------
+
+export type TopicState = "done" | "ready" | "locked";
+
+export interface StateNode {
+  id: string; // "<domain>/<slug>"
+  level: number;
+  requires: string[];
+}
+
+export type IsDone = (id: string) => boolean;
+
+/** Prerequisites (that exist in `byId`) the learner has not finished yet. */
+export function missingPrereqs(node: StateNode, byId: ReadonlyMap<string, StateNode>, isDone: IsDone): string[] {
+  return node.requires.filter((r) => byId.has(r) && !isDone(r));
+}
+
+export function topicState(node: StateNode, byId: ReadonlyMap<string, StateNode>, isDone: IsDone): TopicState {
+  if (isDone(node.id)) return "done";
+  return missingPrereqs(node, byId, isDone).length === 0 ? "ready" : "locked";
+}
+
+/**
+ * The recommended next topic: the first ready, unfinished one, scanning by
+ * level and then in the given order. Returns null when everything in scope is
+ * done (or nothing is ready, which cannot happen in an acyclic graph).
+ */
+export function pickNext<T extends StateNode>(nodes: readonly T[], isDone: IsDone, inScope: (n: T) => boolean = () => true): T | null {
+  const byId = new Map(nodes.map((n) => [n.id, n as StateNode]));
+  const ordered = nodes.map((n, i) => ({ n, i })).sort((a, b) => a.n.level - b.n.level || a.i - b.i);
+  for (const { n } of ordered) {
+    if (inScope(n) && !isDone(n.id) && missingPrereqs(n, byId, isDone).length === 0) return n;
+  }
+  return null;
+}
+
+/** Topics that list `id` as a prerequisite, in input order. */
+export function unlocksOf<T extends StateNode>(id: string, nodes: readonly T[]): T[] {
+  return nodes.filter((n) => n.requires.includes(id));
+}

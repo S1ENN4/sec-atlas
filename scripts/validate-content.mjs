@@ -11,7 +11,7 @@
 //   R2 every Relation.source/target resolves to an existing topic
 //   R3 every pipelineStages[].items[].slug resolves
 //   R4 every glossary entry's `topic` ref resolves (cross-domain allowed)
-//   R5 every topic in a domain with a graphLayout has a position, no orphans
+//   R5 every topic's `stage` is a stage id of its domain's pipeline (or null)
 //   R6 status-aware content floor:
 //        status: "draft" → rules R1–R5 only
 //        status: "live"  → also enforce, per topic:
@@ -157,45 +157,25 @@ const liveDomainIds = allDomainIds.filter((id) => domains[id].status === "live")
 }
 
 // ---------------------------------------------------------------------------
-// R5: every topic in a domain with a graphLayout has a position; no orphan
-// positions for missing topics. (Draft domains without a graphLayout skip.)
+// R5: every topic's `stage` names a stage of its domain's pipeline (or is null
+// for a cross-cutting topic). The learning map shows the stage as a chip on
+// each card, so a typo would silently drop it.
 // ---------------------------------------------------------------------------
 {
   let total = 0;
   const broken = [];
   for (const id of allDomainIds) {
-    const layout = domains[id].graphLayout;
-    if (!layout) continue;
-    const topicSlugs = new Set(domains[id].topics.map((t) => t.slug));
-    const layerSlugs = new Set(layout.layerSlugs);
-    const positioned = new Set([
-      ...Object.keys(layout.layerPositions),
-      ...Object.keys(layout.conceptPositions),
-    ]);
-    // Every topic must be positioned exactly once.
+    // appsec is legacy: its `stage` is a free-text label ("source → prod"), not a stage id.
+    if (id === "appsec") continue;
+    const stageIds = new Set(domains[id].pipeline.map((p) => p.id));
     for (const t of domains[id].topics) {
       total++;
-      if (!positioned.has(t.slug)) {
-        broken.push(`${id} topic "${t.slug}" has no position in graphLayout`);
-      } else if (layerSlugs.has(t.slug) && !layout.layerPositions[t.slug]) {
-        broken.push(`${id} layer topic "${t.slug}" is in layerSlugs but missing layerPositions entry`);
-      } else if (!layerSlugs.has(t.slug) && !layout.conceptPositions[t.slug]) {
-        broken.push(`${id} concept topic "${t.slug}" has no entry in conceptPositions`);
-      }
-    }
-    // No orphan positions.
-    for (const slug of positioned) {
-      if (!topicSlugs.has(slug)) {
-        broken.push(`${id} graphLayout has orphan position for unknown topic "${slug}"`);
+      if (t.stage !== null && !stageIds.has(t.stage)) {
+        broken.push(`${id}/${t.slug}: stage "${t.stage}" is not a pipeline stage (${[...stageIds].join(", ")})`);
       }
     }
   }
-  record(
-    "R5 graphLayout positions complete",
-    broken.length === 0,
-    `${total - broken.length}/${total} topics positioned`,
-    broken,
-  );
+  record("R5 topic stages exist in the pipeline", broken.length === 0, `${total - broken.length}/${total} topics`, broken);
 }
 
 // ---------------------------------------------------------------------------

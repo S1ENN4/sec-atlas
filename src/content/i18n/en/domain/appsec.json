@@ -1,21 +1,5 @@
 {
   "entries": {
-    "graph.0.label": {
-      "t": "produces",
-      "h": "fdeca153"
-    },
-    "graph.1.label": {
-      "t": "complements",
-      "h": "c603f5f8"
-    },
-    "graph.2.label": {
-      "t": "anticipates",
-      "h": "811eebc0"
-    },
-    "graph.3.label": {
-      "t": "gates & policies",
-      "h": "cf47235f"
-    },
     "pipeline.0.description": {
       "t": "a push or PR triggers the pipeline",
       "h": "db5f8475"

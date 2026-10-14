@@ -12,7 +12,6 @@ import { threatModeling } from "./topics/threat-modeling";
 import { relations } from "./relations";
 import { pipeline } from "./pipeline";
 import { glossary } from "./glossary";
-import { graphLayout } from "./graph-layout";
 
 // Per-domain kind metadata. AppSec keeps the original Portuguese labels
 // ("técnica de teste" / "prática" / "conceito") so that consumer badges and
@@ -34,5 +33,4 @@ export const appsec: Domain = {
   relations,
   pipeline,
   glossary,
-  graphLayout,
 };

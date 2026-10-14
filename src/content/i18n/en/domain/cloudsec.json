@@ -1,49 +1,5 @@
 {
   "entries": {
-    "graph.0.label": {
-      "t": "triggers the response",
-      "h": "fe184c0e"
-    },
-    "graph.1.label": {
-      "t": "guides the model",
-      "h": "705c0274"
-    },
-    "graph.2.label": {
-      "t": "segments by identity",
-      "h": "fb0efb59"
-    },
-    "graph.3.label": {
-      "t": "audits posture",
-      "h": "ce4ce4aa"
-    },
-    "graph.4.label": {
-      "t": "monitors the runtime",
-      "h": "03946931"
-    },
-    "graph.5.label": {
-      "t": "detects behavior",
-      "h": "2249c68d"
-    },
-    "graph.6.label": {
-      "t": "feeds posture",
-      "h": "e9a4f23d"
-    },
-    "graph.7.label": {
-      "t": "provides the trail",
-      "h": "42ec8726"
-    },
-    "graph.8.label": {
-      "t": "authorizes key access",
-      "h": "8897eacf"
-    },
-    "graph.9.label": {
-      "t": "encrypts the secrets",
-      "h": "f28d3a50"
-    },
-    "graph.10.label": {
-      "t": "isolates the network",
-      "h": "3b871d99"
-    },
     "pipeline.0.description": {
       "t": "assets and owners mapped",
       "h": "218a2d08"

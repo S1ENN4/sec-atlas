@@ -1,33 +1,5 @@
 {
   "entries": {
-    "graph.0.label": {
-      "t": "aporta hipótesis a",
-      "h": "2ebfb9ae"
-    },
-    "graph.1.label": {
-      "t": "depende de",
-      "h": "045ed874"
-    },
-    "graph.2.label": {
-      "t": "acota el alcance de",
-      "h": "e9b64ee9"
-    },
-    "graph.3.label": {
-      "t": "se especializa para",
-      "h": "98b97122"
-    },
-    "graph.4.label": {
-      "t": "preserva evidencia para",
-      "h": "173f456a"
-    },
-    "graph.5.label": {
-      "t": "entrega muestras a",
-      "h": "83af806f"
-    },
-    "graph.6.label": {
-      "t": "se nutre de",
-      "h": "b23ea947"
-    },
     "pipeline.0.description": {
       "t": "decidir antes de la crisis",
       "h": "fbdd2ce4"

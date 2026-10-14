@@ -1,57 +1,5 @@
 {
   "entries": {
-    "graph.0.label": {
-      "t": "genera vectores",
-      "h": "87fa1a84"
-    },
-    "graph.1.label": {
-      "t": "almacena",
-      "h": "c36713a6"
-    },
-    "graph.2.label": {
-      "t": "consulta",
-      "h": "b71deb9f"
-    },
-    "graph.3.label": {
-      "t": "alimenta el contexto",
-      "h": "b9a2d0aa"
-    },
-    "graph.4.label": {
-      "t": "inyecta contexto",
-      "h": "3e757511"
-    },
-    "graph.5.label": {
-      "t": "es el núcleo",
-      "h": "60450018"
-    },
-    "graph.6.label": {
-      "t": "habilita",
-      "h": "4c1aa745"
-    },
-    "graph.7.label": {
-      "t": "se coordina con",
-      "h": "158af862"
-    },
-    "graph.8.label": {
-      "t": "habla el protocolo",
-      "h": "1523bc67"
-    },
-    "graph.9.label": {
-      "t": "provee datos",
-      "h": "3fb8a6a0"
-    },
-    "graph.10.label": {
-      "t": "automatiza la calificación",
-      "h": "f5930a20"
-    },
-    "graph.11.label": {
-      "t": "protege el baseline",
-      "h": "c695bd47"
-    },
-    "graph.12.label": {
-      "t": "filtra entrada/salida",
-      "h": "e49b0cf3"
-    },
     "pipeline.0.description": {
       "t": "los documentos se convierten en fragmentos recuperables",
       "h": "58ac3234"

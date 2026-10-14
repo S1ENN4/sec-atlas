@@ -4,7 +4,7 @@
 Usage: python scripts/wire-domain.py spec.json
 
 The domain's own files (src/content/<dir>/index.ts, topics, pipeline, relations,
-graph-layout, glossary and src/content/quiz/<dir>.ts) must already exist. This
+glossary and src/content/quiz/<dir>.ts) must already exist. This
 script only adds the registrations that make the domain appear everywhere:
 DomainId, registry, quiz index, nav group, accent colour, icons, search route,
 sources, journey levels and the English UI strings (pt/es overlays are applied

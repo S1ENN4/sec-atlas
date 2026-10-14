@@ -1,37 +1,5 @@
 {
   "entries": {
-    "graph.0.label": {
-      "t": "se construye a partir de",
-      "h": "b5755e07"
-    },
-    "graph.1.label": {
-      "t": "clasifica",
-      "h": "a71d61e1"
-    },
-    "graph.2.label": {
-      "t": "separa el modelo en",
-      "h": "9c91aa47"
-    },
-    "graph.3.label": {
-      "t": "alimenta",
-      "h": "56222773"
-    },
-    "graph.4.label": {
-      "t": "es seguido por",
-      "h": "3b5b771a"
-    },
-    "graph.5.label": {
-      "t": "escala hacia",
-      "h": "c4123266"
-    },
-    "graph.6.label": {
-      "t": "produce trabajo para",
-      "h": "896c9814"
-    },
-    "graph.7.label": {
-      "t": "incluye",
-      "h": "01c7ed68"
-    },
     "pipeline.0.description": {
       "t": "qué son realmente estas herramientas",
       "h": "1de3e977"

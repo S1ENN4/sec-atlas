@@ -13,7 +13,6 @@ import { waf } from "./topics/waf";
 import { relations } from "./relations";
 import { pipeline } from "./pipeline";
 import { glossary } from "./glossary";
-import { graphLayout } from "./graph-layout";
 
 // SecOps keeps the "técnica / prática / conceito" vocabulary; badge colors
 // match the other domains so the kinds read the same everywhere.
@@ -45,5 +44,4 @@ export const secops: Domain = {
   relations,
   pipeline,
   glossary,
-  graphLayout,
 };

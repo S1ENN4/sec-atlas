@@ -1,33 +1,5 @@
 {
   "entries": {
-    "graph.0.label": {
-      "t": "is validated by",
-      "h": "ff6257b5"
-    },
-    "graph.1.label": {
-      "t": "goes through",
-      "h": "01da61f3"
-    },
-    "graph.2.label": {
-      "t": "becomes a gate",
-      "h": "078b920e"
-    },
-    "graph.3.label": {
-      "t": "is measured by",
-      "h": "bc93526a"
-    },
-    "graph.4.label": {
-      "t": "depends on",
-      "h": "6f80dc82"
-    },
-    "graph.5.label": {
-      "t": "can use",
-      "h": "e6580a19"
-    },
-    "graph.6.label": {
-      "t": "defines the SLO",
-      "h": "f5c55522"
-    },
     "pipeline.0.description": {
       "t": "controls described as code",
       "h": "d6949dbf"

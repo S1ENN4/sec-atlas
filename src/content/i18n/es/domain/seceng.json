@@ -1,33 +1,5 @@
 {
   "entries": {
-    "graph.0.label": {
-      "t": "es validado por",
-      "h": "ff6257b5"
-    },
-    "graph.1.label": {
-      "t": "pasa por",
-      "h": "01da61f3"
-    },
-    "graph.2.label": {
-      "t": "se vuelve un gate",
-      "h": "078b920e"
-    },
-    "graph.3.label": {
-      "t": "se mide con",
-      "h": "bc93526a"
-    },
-    "graph.4.label": {
-      "t": "depende de",
-      "h": "6f80dc82"
-    },
-    "graph.5.label": {
-      "t": "puede usar",
-      "h": "e6580a19"
-    },
-    "graph.6.label": {
-      "t": "define el SLO",
-      "h": "f5c55522"
-    },
     "pipeline.0.description": {
       "t": "controles descritos como código",
       "h": "d6949dbf"

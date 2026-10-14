@@ -1,57 +1,5 @@
 {
   "entries": {
-    "graph.0.label": {
-      "t": "generates vectors",
-      "h": "87fa1a84"
-    },
-    "graph.1.label": {
-      "t": "stores",
-      "h": "c36713a6"
-    },
-    "graph.2.label": {
-      "t": "queries",
-      "h": "b71deb9f"
-    },
-    "graph.3.label": {
-      "t": "feeds context",
-      "h": "b9a2d0aa"
-    },
-    "graph.4.label": {
-      "t": "injects context",
-      "h": "3e757511"
-    },
-    "graph.5.label": {
-      "t": "is the core",
-      "h": "60450018"
-    },
-    "graph.6.label": {
-      "t": "enables",
-      "h": "4c1aa745"
-    },
-    "graph.7.label": {
-      "t": "coordinates with",
-      "h": "158af862"
-    },
-    "graph.8.label": {
-      "t": "speaks the protocol",
-      "h": "1523bc67"
-    },
-    "graph.9.label": {
-      "t": "supplies data",
-      "h": "3fb8a6a0"
-    },
-    "graph.10.label": {
-      "t": "automates grading",
-      "h": "f5930a20"
-    },
-    "graph.11.label": {
-      "t": "protects the baseline",
-      "h": "c695bd47"
-    },
-    "graph.12.label": {
-      "t": "filters input/output",
-      "h": "e49b0cf3"
-    },
     "pipeline.0.description": {
       "t": "documents become retrievable pieces",
       "h": "58ac3234"

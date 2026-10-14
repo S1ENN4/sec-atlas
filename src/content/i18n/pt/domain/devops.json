@@ -1,37 +1,5 @@
 {
   "entries": {
-    "graph.0.label": {
-      "t": "é o que um contêiner isola",
-      "h": "dd047ba1"
-    },
-    "graph.1.label": {
-      "t": "dispara",
-      "h": "0d850d1f"
-    },
-    "graph.2.label": {
-      "t": "é automatizado por",
-      "h": "d4e3d939"
-    },
-    "graph.3.label": {
-      "t": "entrega artefatos para",
-      "h": "63282556"
-    },
-    "graph.4.label": {
-      "t": "roda sobre",
-      "h": "ca26d3a8"
-    },
-    "graph.5.label": {
-      "t": "provisiona",
-      "h": "adbe7660"
-    },
-    "graph.6.label": {
-      "t": "é observado por",
-      "h": "bb669d84"
-    },
-    "graph.7.label": {
-      "t": "alimenta os SLOs de",
-      "h": "9969c55c"
-    },
     "pipeline.0.description": {
       "t": "o chão sobre o qual tudo se apoia",
       "h": "cc2a6d03"

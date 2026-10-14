@@ -1,41 +1,5 @@
 {
   "entries": {
-    "graph.0.label": {
-      "t": "revela",
-      "h": "688c8b01"
-    },
-    "graph.1.label": {
-      "t": "mantiene viable",
-      "h": "82448bda"
-    },
-    "graph.2.label": {
-      "t": "se vuelve detección",
-      "h": "0c53cd29"
-    },
-    "graph.3.label": {
-      "t": "genera reglas",
-      "h": "be9c4131"
-    },
-    "graph.4.label": {
-      "t": "genera límites",
-      "h": "aa2c438e"
-    },
-    "graph.5.label": {
-      "t": "puntúa la automatización",
-      "h": "070fb214"
-    },
-    "graph.6.label": {
-      "t": "activa",
-      "h": "6d6a8bee"
-    },
-    "graph.7.label": {
-      "t": "mide la precisión",
-      "h": "792075b4"
-    },
-    "graph.8.label": {
-      "t": "define dónde vive",
-      "h": "650dd2ab"
-    },
     "pipeline.0.description": {
       "t": "ver todo el tráfico, a escala y con contexto",
       "h": "a5dc94f6"

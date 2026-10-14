@@ -1,33 +1,5 @@
 {
   "entries": {
-    "graph.0.label": {
-      "t": "fornece hipóteses para",
-      "h": "2ebfb9ae"
-    },
-    "graph.1.label": {
-      "t": "depende de",
-      "h": "045ed874"
-    },
-    "graph.2.label": {
-      "t": "delimita o escopo de",
-      "h": "e9b64ee9"
-    },
-    "graph.3.label": {
-      "t": "é especializado para",
-      "h": "98b97122"
-    },
-    "graph.4.label": {
-      "t": "preserva evidências para",
-      "h": "173f456a"
-    },
-    "graph.5.label": {
-      "t": "entrega amostras para",
-      "h": "83af806f"
-    },
-    "graph.6.label": {
-      "t": "é informado por",
-      "h": "b23ea947"
-    },
     "pipeline.0.description": {
       "t": "decidir antes da crise",
       "h": "fbdd2ce4"

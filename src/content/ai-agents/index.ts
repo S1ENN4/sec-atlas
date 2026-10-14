@@ -19,7 +19,6 @@ import { guardrails } from "./topics/guardrails";
 import { relations } from "./relations";
 import { pipeline } from "./pipeline";
 import { glossary } from "./glossary";
-import { graphLayout } from "./graph-layout";
 
 // Per-domain kind metadata. AI-Agents renames the pratica kind to "componente"
 // (an agent pattern that ships in a library is a component, not a runbook
@@ -66,5 +65,4 @@ export const aiAgents: Domain = {
   relations,
   pipeline,
   glossary,
-  graphLayout,
 };

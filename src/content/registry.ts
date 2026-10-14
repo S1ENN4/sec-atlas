@@ -5,7 +5,6 @@
 
 import type {
   Domain,
-  DomainGraphLayout,
   DomainId,
   DomainMeta,
   PipelineStage,
@@ -25,7 +24,6 @@ import type { GlossaryGroup } from "./types";
 // a single import path through the registry.
 export type {
   Domain,
-  DomainGraphLayout,
   DomainId,
   DomainMeta,
   PipelineItem,
@@ -130,6 +128,3 @@ export function domainIdFromRoute(segment: string): DomainId | undefined {
   return (Object.values(domains) as Domain[]).find((d) => d.route === "/" + segment)?.id;
 }
 
-export function getGraphLayout(domainId: DomainId): DomainGraphLayout | undefined {
-  return domains[domainId]?.graphLayout;
-}

@@ -248,9 +248,13 @@
       "t": "$ clique num card para ver os detalhes · ctrl+k para buscar",
       "h": "e97f92e2"
     },
+    "domainPage.mapIntro": {
+      "t": "Os tópicos estão organizados por nível, dos fundamentos ao avançado. As setas vão do pré-requisito para o que se apoia nele. Selecione um tópico para ver uma prévia ou siga o próximo passo destacado.",
+      "h": "d78d8108"
+    },
     "domainPage.mapTitle": {
-      "t": "mapa de conceitos",
-      "h": "9874fa92"
+      "t": "mapa de aprendizado",
+      "h": "89fc12ef"
     },
     "domainPage.stageLabel": {
       "t": "etapa: {stage}",
@@ -267,10 +271,6 @@
     "domains.ai-agents.lead": {
       "t": "Do chunking ao guardrail: como um agente moderno é montado — o pipeline de dados (RAG), o loop de ação (frameworks, tool calling, MCP), e a malha de avaliação que decide se ele pode ser enviado.",
       "h": "9686d02d"
-    },
-    "domains.ai-agents.mapIntro": {
-      "t": "Cada conceito fica na coluna da fase em que atua. Linhas animadas são o fluxo do pipeline de IA; tracejados são camadas que informam várias fases (RAG, LLM, MCP, guardrails).",
-      "h": "5e820947"
     },
     "domains.ai-agents.name": {
       "t": "Agents",
@@ -308,10 +308,6 @@
       "t": "CVE novo em dependência já usada → SCA contínuo abre PR → a esteira recomeça em 01",
       "h": "f60c3e93"
     },
-    "domains.appsec.mapIntro": {
-      "t": "Organizado pela esteira: cada verificação fica na coluna do seu estágio. Linhas animadas são o fluxo da CI/CD; tracejados são relações entre conceitos.",
-      "h": "7c79ca48"
-    },
     "domains.appsec.name": {
       "t": "AppSec",
       "h": "45e941a5"
@@ -343,10 +339,6 @@
     "domains.cloudsec.lead": {
       "t": "Um mapa interativo da segurança em cloud: identidade, rede, workloads, postura, criptografia e detecção — o que cada peça faz, onde mora e como se conecta.",
       "h": "b86d2554"
-    },
-    "domains.cloudsec.mapIntro": {
-      "t": "Cada controle fica na coluna da fase em que atua. Linhas animadas são o fluxo do ciclo cloudsec; tracejados são relações entre conceitos.",
-      "h": "a754a92c"
     },
     "domains.cloudsec.name": {
       "t": "CloudSec",
@@ -380,10 +372,6 @@
       "t": "O chão onde DevOps e DevSecOps se apoiam: Linux, Git, containers, pipelines, releases, infraestrutura como código, Kubernetes, observabilidade e confiabilidade.",
       "h": "0b4baf60"
     },
-    "domains.devops.mapIntro": {
-      "t": "Cada tópico fica na coluna da fase a que pertence. Passe o mouse sobre um card para ver onde ele se liga; linhas tracejadas são relações entre tópicos.",
-      "h": "67e2e8d9"
-    },
     "domains.devops.name": {
       "t": "DevOps",
       "h": "7f3f11f5"
@@ -415,10 +403,6 @@
     "domains.grc.lead": {
       "t": "Risco, frameworks, terceiros, princípios de arquitetura, evidência de conformidade, métricas, estratégia e comunicação de crise: o lado de negócio da segurança.",
       "h": "301de34a"
-    },
-    "domains.grc.mapIntro": {
-      "t": "Cada tópico fica na coluna da fase a que pertence. Passe o mouse sobre um card para ver onde ele se liga; linhas tracejadas são relações entre tópicos.",
-      "h": "67e2e8d9"
     },
     "domains.grc.name": {
       "t": "GRC e liderança",
@@ -452,10 +436,6 @@
       "t": "O método, a ética e as lições de testar sistemas de propósito: escopo, reconhecimento, testes web e de API, caminhos de ataque, phishing, red e purple team e relatórios que viram correção.",
       "h": "9dc4cbb8"
     },
-    "domains.offsec.mapIntro": {
-      "t": "Cada tópico fica na coluna da fase a que pertence. Passe o mouse sobre um card para ver onde ele se liga; linhas tracejadas são relações entre tópicos.",
-      "h": "67e2e8d9"
-    },
     "domains.offsec.name": {
       "t": "Segurança ofensiva",
       "h": "ac7f259a"
@@ -487,10 +467,6 @@
     "domains.owasp.lead": {
       "t": "Cada um dos dez riscos web explicado, com código vulnerável e corrigido em várias linguagens e o teste que prova a correção.",
       "h": "2c369f6c"
-    },
-    "domains.owasp.mapIntro": {
-      "t": "Cada risco fica na coluna da fase em que a correção é mais barata. Passe o mouse sobre um card para ver onde ele se liga; linhas tracejadas são relações entre riscos.",
-      "h": "7650d8e5"
     },
     "domains.owasp.name": {
       "t": "OWASP Top 10",
@@ -524,10 +500,6 @@
       "t": "Como se preparar para, detectar, conter e investigar uma intrusão: o ciclo de vida, threat hunting e inteligência, ransomware, forense e triagem de malware.",
       "h": "495e4e58"
     },
-    "domains.response.mapIntro": {
-      "t": "Cada tópico fica na coluna da fase a que pertence. Passe o mouse sobre um card para ver onde ele se liga; linhas tracejadas são relações entre tópicos.",
-      "h": "67e2e8d9"
-    },
     "domains.response.name": {
       "t": "Resposta a incidentes",
       "h": "6e590d95"
@@ -559,10 +531,6 @@
     "domains.seceng.lead": {
       "t": "Um mapa interativo da engenharia por trás da segurança: IaC, políticas como código, esteiras endurecidas, confiabilidade em escala, automação e IA, do código à plataforma.",
       "h": "7f71f747"
-    },
-    "domains.seceng.mapIntro": {
-      "t": "Cada controle fica na coluna da fase em que atua. Linhas animadas são o fluxo do ciclo de engenharia; tracejados são relações entre conceitos.",
-      "h": "c65a1e8e"
     },
     "domains.seceng.name": {
       "t": "Engenharia",
@@ -596,10 +564,6 @@
       "t": "Um mapa interativo da operação de segurança na borda: telemetria, detecção, WAF, rate limiting, bots e a métrica que prova que funciona — do log ao bloqueio.",
       "h": "2f775315"
     },
-    "domains.secops.mapIntro": {
-      "t": "Cada controle fica na coluna da fase em que atua. Linhas animadas são o fluxo do ciclo de defesa; tracejados são relações entre conceitos.",
-      "h": "e452fd3f"
-    },
     "domains.secops.name": {
       "t": "SecOps",
       "h": "891cb5e9"
@@ -631,10 +595,6 @@
     "domains.vibecoding.lead": {
       "t": "O que Claude Code, OpenCode, OMP, OMO, herdr e os modelos por trás deles realmente são, como diferem, quando usar cada um e como manter o resultado seguro.",
       "h": "08ffcb37"
-    },
-    "domains.vibecoding.mapIntro": {
-      "t": "Cada tópico fica na coluna da fase a que pertence. Passe o mouse sobre um card para ver onde ele se liga; linhas tracejadas são relações entre tópicos.",
-      "h": "67e2e8d9"
     },
     "domains.vibecoding.name": {
       "t": "Vibecoding",
@@ -744,21 +704,9 @@
       "t": "filtrar termos... (ex.: cve, iam, cspm, sbom)",
       "h": "331a282e"
     },
-    "graph.allRelations": {
-      "t": "todas as relações",
-      "h": "9de6ae38"
-    },
-    "graph.also": {
-      "t": "também: {items}",
-      "h": "31d287d6"
-    },
-    "graph.alsoInStage": {
-      "t": "também aparece em outra etapa",
-      "h": "399ddb6c"
-    },
-    "graph.closeDetails": {
-      "t": "Fechar detalhes",
-      "h": "433da6d1"
+    "graph.allPrereqs": {
+      "t": "todos os pré-requisitos",
+      "h": "b62261ec"
     },
     "graph.copied": {
       "t": "copiado",
@@ -768,37 +716,33 @@
       "t": "link",
       "h": "4f0aa52d"
     },
-    "graph.crossCutting": {
-      "t": "camadas transversais",
-      "h": "a1713d96"
-    },
-    "graph.detailsAria": {
-      "t": "Detalhes: {title}",
-      "h": "d298d3af"
+    "graph.details": {
+      "t": "Detalhes do tópico",
+      "h": "c5f6674d"
     },
     "graph.gate": {
       "t": "gate: {gate}",
       "h": "5e1d5eda"
     },
-    "graph.kindHide": {
-      "t": "esconder este tipo",
-      "h": "59cd9b69"
+    "graph.hint": {
+      "t": "Selecione um tópico para ver o que ele exige e o que ele abre.",
+      "h": "afa76274"
     },
-    "graph.kindShow": {
-      "t": "mostrar este tipo",
-      "h": "d8ce0b0e"
+    "graph.keyPoints": {
+      "t": "pontos-chave",
+      "h": "6b4e8f43"
     },
     "graph.legend": {
-      "t": "linhas animadas = fluxo da esteira · passe o mouse ou clique num card para ver as relações dele",
-      "h": "a1067e9d"
+      "t": "as setas vão do pré-requisito para o que se apoia nele",
+      "h": "79f18837"
     },
     "graph.mark": {
       "t": "marcar",
       "h": "f1b5a91d"
     },
-    "graph.nodeDetails": {
-      "t": "{name} (ver detalhes)",
-      "h": "4fb6e812"
+    "graph.needsElsewhere": {
+      "t": "também exige, em outro domínio",
+      "h": "f40a1284"
     },
     "graph.openTopic": {
       "t": "abrir tópico",
@@ -808,29 +752,21 @@
       "t": "relações",
       "h": "9649007e"
     },
-    "graph.stageAria": {
-      "t": "Etapa {name}",
-      "h": "e4cfbd40"
+    "graph.selected": {
+      "t": "{title} selecionado",
+      "h": "d39211cf"
     },
     "graph.stageEyebrow": {
       "t": "etapa {index}",
       "h": "509a96a1"
     },
+    "graph.startHere": {
+      "t": "comece aqui",
+      "h": "bc0c2a25"
+    },
     "graph.studied": {
       "t": "estudado",
       "h": "0739a9e0"
-    },
-    "graph.viewList": {
-      "t": "lista",
-      "h": "38b62be4"
-    },
-    "graph.viewMap": {
-      "t": "mapa",
-      "h": "37745ed7"
-    },
-    "graph.viewMode": {
-      "t": "Modo de visualização",
-      "h": "1b360329"
     },
     "hub.badge": {
       "t": "knowledge base · segurança de software",

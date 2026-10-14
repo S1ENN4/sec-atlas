@@ -1,33 +1,5 @@
 {
   "entries": {
-    "graph.0.label": {
-      "t": "define las reglas de",
-      "h": "65278aba"
-    },
-    "graph.1.label": {
-      "t": "puede eludir",
-      "h": "40e256d9"
-    },
-    "graph.2.label": {
-      "t": "protege las credenciales de",
-      "h": "c745fca1"
-    },
-    "graph.3.label": {
-      "t": "aporta identidad a",
-      "h": "3a1553d3"
-    },
-    "graph.4.label": {
-      "t": "se detiene al verificar",
-      "h": "002a3f8f"
-    },
-    "graph.5.label": {
-      "t": "depende de configuraciones seguras",
-      "h": "18b5a555"
-    },
-    "graph.6.label": {
-      "t": "registra",
-      "h": "86761b63"
-    },
     "pipeline.0.description": {
       "t": "decide qué debe ser imposible",
       "h": "ca342602"

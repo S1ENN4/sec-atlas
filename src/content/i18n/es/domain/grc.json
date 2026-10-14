@@ -1,33 +1,5 @@
 {
   "entries": {
-    "graph.0.label": {
-      "t": "alimenta",
-      "h": "56222773"
-    },
-    "graph.1.label": {
-      "t": "está estructurado por",
-      "h": "e7b05f61"
-    },
-    "graph.2.label": {
-      "t": "se implementa mediante",
-      "h": "d8cd470b"
-    },
-    "graph.3.label": {
-      "t": "se evidencia con",
-      "h": "9cc58a7e"
-    },
-    "graph.4.label": {
-      "t": "aporta datos a",
-      "h": "ca64136e"
-    },
-    "graph.5.label": {
-      "t": "informa a",
-      "h": "17160d2b"
-    },
-    "graph.6.label": {
-      "t": "incluye",
-      "h": "01c7ed68"
-    },
     "pipeline.0.description": {
       "t": "saber qué puede salir mal y por quién puede llegar",
       "h": "e896f528"
