@@ -169,7 +169,6 @@ export const ui = {
 
   sourcesNote: {
     updated: "updated on {date}",
-    aiNote: "content produced with AI assistance, under review",
     sources: "sources to go deeper",
     report: "report an error",
   },

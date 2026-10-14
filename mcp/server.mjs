@@ -22,6 +22,13 @@ import { spawnSync } from "node:child_process";
 import { domains, getTopic, relationsOf } from "@/content/registry";
 import { getQuiz } from "@/content/quiz";
 import { bridgesOf } from "@/content/bridges";
+import { LOCALES } from "@/i18n/config";
+import { localizeDomain, localizedTopic } from "@/i18n/content";
+
+// Optional `locale` (en | pt | es) on the read tools. Untranslated text falls back to the source language.
+const LOCALE_PROP = { type: "string", enum: [...LOCALES], description: "language of the returned text (en, pt or es); default: the source language" };
+const localeOk = (l) => l === undefined || LOCALES.includes(l);
+const topicsOf = (d, locale) => (locale ? localizeDomain(d.id, locale).domain.topics : d.topics);
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const pkg = JSON.parse(readFileSync(resolve(ROOT, "package.json"), "utf8"));
@@ -49,8 +56,8 @@ function domainOrError(id) {
   return d ? { d } : { err: fail(`Unknown domain "${id}". Valid: ${Object.keys(domains).join(", ")}`) };
 }
 
-function topicToMarkdown(domainId, slug) {
-  const t = getTopic({ domain: domainId, slug });
+function topicToMarkdown(domainId, slug, locale) {
+  const t = locale ? localizedTopic(domainId, slug, locale) : getTopic({ domain: domainId, slug });
   if (!t) return null;
   const out = [`# ${t.title}`, "", `> ${t.tagline}`, "", `- domínio: ${domainId} · tipo: ${t.kind} · etapa: ${t.stage ?? "(camada transversal)"}`, `- ferramentas: ${t.tools.join(", ")}`, ""];
   for (const s of t.sections) {
@@ -129,11 +136,12 @@ const tools = [
   {
     name: "list_topics",
     description: "List topics (slug, title, kind, stage, one-line summary), optionally for one domain.",
-    inputSchema: { type: "object", properties: { domain: { type: "string", description: "domain id, e.g. secops" } }, additionalProperties: false },
-    run: ({ domain }) => {
+    inputSchema: { type: "object", properties: { domain: { type: "string", description: "domain id, e.g. secops" }, locale: LOCALE_PROP }, additionalProperties: false },
+    run: ({ domain, locale }) => {
+      if (!localeOk(locale)) return fail(`Unknown locale "${locale}". Valid: ${LOCALES.join(", ")}`);
       const list = domain ? (domains[domain] ? [domains[domain]] : null) : Object.values(domains);
       if (!list) return fail(`Unknown domain "${domain}". Valid: ${Object.keys(domains).join(", ")}`);
-      return text(list.flatMap((d) => d.topics.map((t) => `${d.id}/${t.slug} [${t.kind}${t.stage ? ", " + t.stage : ""}] ${t.title}: ${t.short}`)).join("\n"));
+      return text(list.flatMap((d) => topicsOf(d, locale).map((t) => `${d.id}/${t.slug} [${t.kind}${t.stage ? ", " + t.stage : ""}] ${t.title}: ${t.short}`)).join("\n"));
     },
   },
   {
@@ -141,14 +149,15 @@ const tools = [
     description: "Return a topic as Markdown: sections, code samples, relations, cross-domain bridges and quiz size.",
     inputSchema: {
       type: "object",
-      properties: { domain: { type: "string" }, slug: { type: "string" } },
+      properties: { domain: { type: "string" }, slug: { type: "string" }, locale: LOCALE_PROP },
       required: ["domain", "slug"],
       additionalProperties: false,
     },
-    run: ({ domain, slug }) => {
+    run: ({ domain, slug, locale }) => {
+      if (!localeOk(locale)) return fail(`Unknown locale "${locale}". Valid: ${LOCALES.join(", ")}`);
       const { err } = domainOrError(domain);
       if (err) return err;
-      const md = topicToMarkdown(domain, slug);
+      const md = topicToMarkdown(domain, slug, locale);
       return md ? text(md) : fail(`No topic "${slug}" in domain "${domain}".`);
     },
   },
@@ -157,16 +166,17 @@ const tools = [
     description: "Search topics by title, summary, tools and body text. Returns the best matches.",
     inputSchema: {
       type: "object",
-      properties: { query: { type: "string" }, limit: { type: "integer", minimum: 1, maximum: 25, default: 8 } },
+      properties: { query: { type: "string" }, limit: { type: "integer", minimum: 1, maximum: 25, default: 8 }, locale: LOCALE_PROP },
       required: ["query"],
       additionalProperties: false,
     },
-    run: ({ query, limit = 8 }) => {
+    run: ({ query, limit = 8, locale }) => {
+      if (!localeOk(locale)) return fail(`Unknown locale "${locale}". Valid: ${LOCALES.join(", ")}`);
       const tokens = norm(String(query)).split(/\s+/).filter(Boolean);
       if (!tokens.length) return fail("Empty query.");
       const scored = [];
       for (const d of Object.values(domains)) {
-        for (const t of d.topics) {
+        for (const t of topicsOf(d, locale)) {
           const title = norm(t.title), short = norm(t.short + " " + t.tagline), tools = norm(t.tools.join(" "));
           const body = norm(t.sections.map((s) => [s.heading, ...(s.body ?? []), ...(s.bullets ?? [])].join(" ")).join(" "));
           let score = 0;

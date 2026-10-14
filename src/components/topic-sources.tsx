@@ -12,7 +12,7 @@ export function TopicSources({ domain, locale, t }: { domain: DomainId; locale: 
   const n = t.sourcesNote;
   return (
     <p className="mt-14 border-t border-border pt-6 font-mono text-[11px] leading-relaxed text-muted-foreground">
-      {fmt(n.updated, { date: formatDate(profile.contentUpdated) })} · {n.aiNote} ·{" "}
+      {fmt(n.updated, { date: formatDate(profile.contentUpdated) })} ·{" "}
       <Link href={`${localePath(locale, "/sources")}#${domain}`} className="text-primary/90 hover:text-primary">
         {n.sources}
       </Link>{" "}

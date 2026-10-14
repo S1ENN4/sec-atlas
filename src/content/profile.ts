@@ -86,10 +86,9 @@ export const profile = {
     { title: "CNSE · Certified Network Security Expert", detail: "Acadi-TI · 2022" },
   ] as ProfileItem[],
 
-  // Shown on every topic page and on /sobre. Be honest about how the content
-  // is produced; change the text once you have reviewed it yourself.
+  // Shown on /sobre and /fontes: how to report an error.
   contentNote:
-    "O texto foi produzido com apoio de IA (Claude) e está em revisão técnica contínua. Encontrou um erro ou uma imprecisão? Me avise pelo LinkedIn: corrijo e registro em /novidades.",
+    "Encontrou um erro ou uma imprecisão? Me avise pelo LinkedIn: corrijo e registro no changelog.",
 
   // ISO date of the last content update, shown as "atualizado em".
   contentUpdated: "2026-10-13",

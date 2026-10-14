@@ -62,6 +62,9 @@ try {
   const domainsText = txt(await tool("list_domains", {}));
   check("list_domains lists every domain", ["appsec", "cloudsec", "ai-agents", "secops", "seceng", "owasp", "vibecoding", "devops", "response", "offsec", "grc"].every((d) => domainsText.includes(d)));
   check("get_topic returns Markdown", txt(await tool("get_topic", { domain: "secops", slug: "waf" })).startsWith("# "));
+  check("get_topic honours locale (es)", /Qué es|Cómo|Por qué/.test(txt(await tool("get_topic", { domain: "owasp", slug: "injection", locale: "es" }))));
+  check("get_topic rejects an unknown locale", (await tool("get_topic", { domain: "owasp", slug: "injection", locale: "xx" })).result?.isError === true);
+  check("search honours locale (pt)", txt(await tool("search", { query: "prove a correção", locale: "pt", limit: 25 })).includes("owasp/injection"));
   check("get_topic unknown slug is an error", (await tool("get_topic", { domain: "secops", slug: "nope" })).result?.isError === true);
   check("search finds a topic", txt(await tool("search", { query: "rate limiting" })).includes("secops/rate-limiting"));
   check("authoring guide is returned", txt(await tool("get_authoring_guide", {})).includes("Como contribuir"));
