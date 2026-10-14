@@ -24,6 +24,10 @@
       "t": "El proyecto ahora se llama sec/atlas.",
       "h": "9f95df98"
     },
+    "items.0.items.6": {
+      "t": "Mapa explorable: sigue un commit hasta producción, abre cada parada (CI, escáneres, registry, clúster) y cumple misiones y desafíos.",
+      "h": "e088414f"
+    },
     "items.0.title": {
       "t": "sec/atlas: once dominios, un mapa de aprendizaje y carreras",
       "h": "55798f56"

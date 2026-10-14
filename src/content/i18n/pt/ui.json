@@ -800,6 +800,14 @@
       "t": "Jornada guiada",
       "h": "5a550d11"
     },
+    "hub.explore.map.body": {
+      "t": "Abra o repositório, o arquivo de CI e os scanners. Vá mais fundo, volte, cumpra missões.",
+      "h": "25c53c27"
+    },
+    "hub.explore.map.title": {
+      "t": "Mapa explorável",
+      "h": "d9bce3a6"
+    },
     "hub.explore.paths.body": {
       "t": "Uma ordem pensada para cada objetivo, com progresso salvo no seu navegador.",
       "h": "60918f07"
@@ -1479,6 +1487,14 @@
     "nav.learn": {
       "t": "Aprender",
       "h": "b048378e"
+    },
+    "nav.learnItems.explore": {
+      "t": "Mapa explorável",
+      "h": "d9bce3a6"
+    },
+    "nav.learnItems.exploreDesc": {
+      "t": "Siga um commit até a produção e abra cada parada: arquivos, scanners, desafios.",
+      "h": "2e3c4198"
     },
     "nav.learnItems.glossary": {
       "t": "Glossário",

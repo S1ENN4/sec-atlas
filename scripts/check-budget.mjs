@@ -218,6 +218,11 @@ import { gzipSync } from "node:zlib";
 // (about 1.5 KB per page). Measured: first-load 14,218,709 / rsc 17,702,104 / total
 // 31,920,813 / all locales 91,027,183. Caps ~3% above that.
 
+// Explorable map (/explore, client component + progress store, loaded only on that
+// route; its prose ships as one more translated unit). Measured: JS raw 776,445 /
+// JS gzip 241,649 / first-load 14,425,147 / rsc 17,958,906 / total 32,384,053. JS caps
+// ~3% above that; the other caps already had room.
+
 const OUT_DIR = resolve(process.cwd(), "out");
 
 // Phase 3.A3 reconciliation (copy-code button on every <pre>): the new
@@ -236,8 +241,8 @@ const CAPS = [
   { key: "total",       label: "total",                 limit: 32_900_000, scope: "total" },
   { key: "all_locales", label: "all locales (sanity)", limit: 93_800_000, scope: "all_locales" },
   { key: "css",         label: "CSS raw",               limit:    98_000, scope: "css" },
-  { key: "js",          label: "JS raw",                limit:   770_000, scope: "js" },
-  { key: "js_gz",       label: "JS gzip",               limit:   241_000, scope: "js_gz" },
+  { key: "js",          label: "JS raw",                limit:   800_000, scope: "js" },
+  { key: "js_gz",       label: "JS gzip",               limit:   249_000, scope: "js_gz" },
   { key: "index",       label: "out/index.html raw",    limit:   130_000, scope: "index" },
 ];
 

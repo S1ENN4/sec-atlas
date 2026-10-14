@@ -50,6 +50,8 @@ export const ui = {
       scenariosDesc: "Follow an incident step by step and see which control stops each move.",
       glossary: "Glossary",
       glossaryDesc: "Acronyms, standards and concepts in one place.",
+      explore: "Explorable map",
+      exploreDesc: "Follow a commit to production and open each stop: files, scanners, challenges.",
     },
     projectItems: {
       manifesto: "Manifesto",
@@ -238,6 +240,10 @@ export const ui = {
     continueWhere: "Continue where you left off",
     continueRead: "Continue reading",
     explore: {
+      map: {
+        title: "Explorable map",
+        body: "Open the repository, the CI file and the scanners. Go deeper, come back, take missions.",
+      },
       journey: {
         title: "Guided journey",
         body: "A map that teaches from the basics to advanced, unlocking as you learn.",

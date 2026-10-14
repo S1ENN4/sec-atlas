@@ -24,6 +24,10 @@
       "t": "The project is now called sec/atlas.",
       "h": "9f95df98"
     },
+    "items.0.items.6": {
+      "t": "Explorable map: follow a commit to production, open each stop (CI, scanners, registry, cluster) and take missions and challenges.",
+      "h": "e088414f"
+    },
     "items.0.title": {
       "t": "sec/atlas: eleven domains, a learning map and careers",
       "h": "55798f56"

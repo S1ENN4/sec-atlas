@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowUpRight, Compass, Route, Swords, Briefcase } from "lucide-react";
+import { ArrowUpRight, Compass, Map as MapIcon, Route, Swords, Briefcase } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -27,6 +27,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
   const liveCount = domainList.filter((d) => d.status === "live").length;
   const draftCount = domainList.length - liveCount;
   const explore = [
+    { href: lp("/explore"), icon: MapIcon, ...t.hub.explore.map },
     { href: lp("/journey"), icon: Compass, ...t.hub.explore.journey },
     { href: lp("/careers"), icon: Briefcase, ...t.hub.explore.careers },
     { href: lp("/paths"), icon: Route, ...t.hub.explore.paths },
@@ -159,7 +160,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         <h2 id="explore-title" className="font-mono text-sm uppercase tracking-wider text-muted-foreground">
           {t.hub.exploreTitle}
         </h2>
-        <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {explore.map((e) => (
             <Link
               key={e.href}

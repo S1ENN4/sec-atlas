@@ -212,7 +212,7 @@ export function SiteNav({ data }: { data: NavData }) {
         >
           {data.careers.label}
         </Link>
-        {trigger("learn", data.learn.label, ["journey", "paths", "scenarios", "glossary"].includes(section))}
+        {trigger("learn", data.learn.label, ["explore", "journey", "paths", "scenarios", "glossary"].includes(section))}
         {trigger("project", data.project.label, ["manifesto", "about", "changelog", "sources", "security"].includes(section))}
       </nav>
 

@@ -18,6 +18,7 @@ export const changelog: ChangelogEntry[] = [
       "Termos do glossário no texto abrem um popup com a definição; tema claro, sumário lateral e botão de copiar código.",
       "Tudo em português, inglês e espanhol, com verificação automática contra tradução desatualizada, e exportação para o Obsidian.",
       "O projeto agora se chama sec/atlas.",
+      "Mapa explorável: siga um commit até a produção, abra cada parada (CI, scanners, registry, cluster) e cumpra missões e desafios.",
     ],
   },
   {

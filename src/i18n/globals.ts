@@ -5,6 +5,7 @@
 import { bridges } from "@/content/bridges";
 import { roles } from "@/content/careers";
 import { changelog } from "@/content/changelog";
+import { exploreText } from "@/content/explore/text";
 import { paths } from "@/content/paths";
 import { profile } from "@/content/profile";
 import { scenarios } from "@/content/scenarios";
@@ -33,6 +34,7 @@ const sourcesSource = () => ({ notes: Object.fromEntries(Object.entries(sources)
 export const GLOBAL_UNITS: { id: string; source: () => unknown; strict: boolean; lang?: SourceLang }[] = [
   // Authored in English: strict, so all three languages must be complete and fresh.
   { id: "careers", source: () => ({ roles }), strict: true, lang: "en" },
+  { id: "explore", source: () => exploreText, strict: true, lang: "en" },
   { id: "bridges", source: () => ({ items: bridges }), strict: false },
   { id: "paths", source: () => ({ items: paths }), strict: false },
   { id: "scenarios", source: () => ({ items: scenarios }), strict: false },
@@ -42,7 +44,7 @@ export const GLOBAL_UNITS: { id: string; source: () => unknown; strict: boolean;
 ];
 
 export const globalUnitInfos = (): UnitInfo[] =>
-  GLOBAL_UNITS.map((u) => ({ id: u.id, source: u.source(), lang: u.lang ?? LANG, strict: u.strict, group: u.id === "careers" ? "careers" : "global" }));
+  GLOBAL_UNITS.map((u) => ({ id: u.id, source: u.source(), lang: u.lang ?? LANG, strict: u.strict, group: u.id === "careers" || u.id === "explore" ? u.id : "global" }));
 
 const get = (id: string) => GLOBAL_UNITS.find((u) => u.id === id)!;
 const localized = (id: string, locale: Locale) => localizeUnit(id, get(id).source(), get(id).lang ?? LANG, locale);
@@ -74,3 +76,5 @@ export const localizedRoles = (locale: Locale): Localized<typeof roles> => {
   const l = localized("careers", locale) as Localized<{ roles: typeof roles }>;
   return { ...l, value: l.value.roles };
 };
+
+export const localizedExplore = (locale: Locale): Localized<typeof exploreText> => localized("explore", locale) as Localized<typeof exploreText>;

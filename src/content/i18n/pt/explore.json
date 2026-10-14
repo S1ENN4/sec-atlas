@@ -1,0 +1,1020 @@
+{
+  "entries": {
+    "challenges.ci-injection.hint": {
+      "t": "Procure uma expressão dentro de run.",
+      "h": "3e65aa79"
+    },
+    "challenges.ci-injection.prompt": {
+      "t": "Qual passo deixa o título de um pull request rodar como comandos de shell?",
+      "h": "d4ec8255"
+    },
+    "challenges.ci-injection.why": {
+      "t": "Na linha 6 a expressão é substituída no texto do script antes de o shell executá-lo, então um título com sintaxe de shell vira parte do comando. As linhas 7 a 9 passam o título como variável de ambiente, que o shell trata como dado puro.",
+      "h": "0c8d0de3"
+    },
+    "challenges.ci-permissions.hint": {
+      "t": "Uma linha.",
+      "h": "db0be459"
+    },
+    "challenges.ci-permissions.prompt": {
+      "t": "Um workflow de release só precisa publicar um pacote. Qual linha concede muito mais que isso?",
+      "h": "af22cbf0"
+    },
+    "challenges.ci-permissions.why": {
+      "t": "permissions: write-all dá a todos os passos, inclusive actions de terceiros, acesso de escrita ao repositório, pacotes, issues e mais. Declare contents: read globalmente e adicione só o que cada job precisa.",
+      "h": "01ff3bb8"
+    },
+    "challenges.ci-pinning.hint": {
+      "t": "Uma é um branch, outra é uma tag.",
+      "h": "9a4048de"
+    },
+    "challenges.ci-pinning.prompt": {
+      "t": "Quais passos usam uma referência que pode mudar sem você perceber?",
+      "h": "9ec4cacc"
+    },
+    "challenges.ci-pinning.why": {
+      "t": "Um branch (linha 6) se move a cada push, e uma tag de versão (linha 7) pode ser reapontada pelo dono, ou por um atacante que tome o repositório. Só o SHA de commit completo da linha 5 é imutável.",
+      "h": "e41a1de6"
+    },
+    "challenges.ci-trigger.hint": {
+      "t": "Duas linhas: o gatilho e o lugar onde o código não confiável é buscado.",
+      "h": "d99af6e6"
+    },
+    "challenges.ci-trigger.prompt": {
+      "t": "Este workflow roda para pull requests vindos de forks. Quais linhas o tornam perigoso?",
+      "h": "67cf6bce"
+    },
+    "challenges.ci-trigger.why": {
+      "t": "pull_request_target roda com os segredos do repositório base e um token de escrita (linha 3). Fazer checkout do commit head do pull request (linha 10) e executá-lo significa que o código de um contribuidor externo roda com esses privilégios. Use pull_request para código não confiável, ou separe o trabalho para que os passos privilegiados nunca o executem.",
+      "h": "c71ead7f"
+    },
+    "challenges.dockerfile.hint": {
+      "t": "Três linhas: uma tag base, um download e um segredo.",
+      "h": "9a550ad2"
+    },
+    "challenges.dockerfile.prompt": {
+      "t": "Quais linhas deixam esta imagem menos segura?",
+      "h": "8cbf9d02"
+    },
+    "challenges.dockerfile.why": {
+      "t": "latest é uma base móvel e sem versão fixa (linha 1). ADD a partir de uma URL baixa código não verificado no build (linha 4). Uma senha em ENV fica guardada nas camadas da imagem, legível por quem puder baixá-la (linha 6). Também não há instrução USER, então o processo roda como root.",
+      "h": "675e029c"
+    },
+    "missions.follow-commit.intro": {
+      "t": "Percorra a rota inteira do notebook até a produção, uma parada por vez.",
+      "h": "13d82167"
+    },
+    "missions.follow-commit.title": {
+      "t": "Siga um commit",
+      "h": "1eea2258"
+    },
+    "missions.harden-pipeline.intro": {
+      "t": "Encontre as linhas de risco nos quatro erros clássicos de CI.",
+      "h": "7843455f"
+    },
+    "missions.harden-pipeline.title": {
+      "t": "Endureça o pipeline",
+      "h": "ebbb3583"
+    },
+    "missions.stop-leaks.intro": {
+      "t": "Ache todos os lugares onde uma chave vazada pode ser pega, do notebook ao app no ar.",
+      "h": "5e4695b7"
+    },
+    "missions.stop-leaks.title": {
+      "t": "Barre um vazamento de segredo",
+      "h": "4a336b45"
+    },
+    "missions.trust-dependencies.intro": {
+      "t": "Do bot de atualização ao portão do cluster: como um pacote arriscado é barrado.",
+      "h": "fc25abe3"
+    },
+    "missions.trust-dependencies.title": {
+      "t": "Confie nas dependências",
+      "h": "2509c74e"
+    },
+    "nodes.admission.points.0": {
+      "t": "É o último portão: funciona mesmo se alguém contornar o pipeline.",
+      "h": "fc419edd"
+    },
+    "nodes.admission.points.1": {
+      "t": "Comece em modo de auditoria e depois passe para enforce.",
+      "h": "8e959e92"
+    },
+    "nodes.admission.points.2": {
+      "t": "Verificar assinaturas aqui fecha o ciclo com a etapa de assinatura.",
+      "h": "35afb2c5"
+    },
+    "nodes.admission.summary": {
+      "t": "O próprio cluster recusa cargas de trabalho que quebram as regras, como imagens sem assinatura ou pods privilegiados.",
+      "h": "287edfd4"
+    },
+    "nodes.admission.title": {
+      "t": "Política de admissão",
+      "h": "62cc4de9"
+    },
+    "nodes.admission.where": {
+      "t": "cluster Kubernetes, admission controller",
+      "h": "bfbe7cfc"
+    },
+    "nodes.branch-protection.points.0": {
+      "t": "Exija pelo menos uma revisão e bloqueie aprovar a própria mudança.",
+      "h": "3d344cfe"
+    },
+    "nodes.branch-protection.points.1": {
+      "t": "Torne os jobs de scanner checks de status obrigatórios, para que um scan reprovado bloqueie o merge.",
+      "h": "0f1e3cab"
+    },
+    "nodes.branch-protection.points.2": {
+      "t": "Inclua administradores, ou a regra tem uma porta dos fundos.",
+      "h": "30fc93ce"
+    },
+    "nodes.branch-protection.summary": {
+      "t": "Regras para o branch principal: revisões obrigatórias, checks de status obrigatórios e nada de force-push.",
+      "h": "2df64151"
+    },
+    "nodes.branch-protection.title": {
+      "t": "Proteção de branch",
+      "h": "e2cc3e16"
+    },
+    "nodes.branch-protection.where": {
+      "t": "GitHub, Settings, Branches (ou rulesets)",
+      "h": "009a7351"
+    },
+    "nodes.build.points.0": {
+      "t": "O que você escaneia, assina e implanta deve ser exatamente o mesmo artefato, identificado pelo digest.",
+      "h": "c5bb0405"
+    },
+    "nodes.build.points.1": {
+      "t": "Builds devem ser reproduzíveis e rodar em runners limpos e de curta duração.",
+      "h": "fedd9f05"
+    },
+    "nodes.build.points.2": {
+      "t": "As evidências do artefato (assinatura, SBOM, proveniência) viajam com ele.",
+      "h": "8e8e3fe5"
+    },
+    "nodes.build.summary": {
+      "t": "O pipeline transforma o código-fonte em algo que roda, normalmente uma imagem de contêiner, e a armazena.",
+      "h": "b1029ccc"
+    },
+    "nodes.build.title": {
+      "t": "Build e artefato",
+      "h": "6d08977e"
+    },
+    "nodes.ci-injection.points.0": {
+      "t": "Títulos de pull request, nomes de branch, corpos de issue e mensagens de commit são controlados por atacantes.",
+      "h": "df8ea517"
+    },
+    "nodes.ci-injection.points.1": {
+      "t": "Passe o valor por uma variável de ambiente e coloque entre aspas no script.",
+      "h": "178e126a"
+    },
+    "nodes.ci-injection.points.2": {
+      "t": "Melhor ainda: use uma action ou arquivo de script que receba o valor como argumento.",
+      "h": "bea73380"
+    },
+    "nodes.ci-injection.summary": {
+      "t": "Expressões entre chaves duplas são coladas no script do shell antes de ele rodar, então texto controlado por um atacante vira comando.",
+      "h": "cfa1a817"
+    },
+    "nodes.ci-injection.title": {
+      "t": "Injeção de script",
+      "h": "3d97ed12"
+    },
+    "nodes.ci-permissions.points.0": {
+      "t": "Defina permissions como contents: read no topo e conceda mais por job.",
+      "h": "e1bf3a7c"
+    },
+    "nodes.ci-permissions.points.1": {
+      "t": "write-all dá a todos os passos, inclusive actions de terceiros, acesso total de escrita.",
+      "h": "31858ded"
+    },
+    "nodes.ci-permissions.points.2": {
+      "t": "Prefira credenciais OIDC de curta duração a chaves de nuvem armazenadas.",
+      "h": "34468ca5"
+    },
+    "nodes.ci-permissions.summary": {
+      "t": "Toda execução recebe um GITHUB_TOKEN. O escopo dele define quanto estrago um passo comprometido pode fazer.",
+      "h": "bb3ae91b"
+    },
+    "nodes.ci-permissions.title": {
+      "t": "Permissões do token",
+      "h": "6bdde217"
+    },
+    "nodes.ci-pinning.points.0": {
+      "t": "Fixe actions de terceiros num SHA de commit completo de 40 caracteres e deixe a versão num comentário.",
+      "h": "12713da0"
+    },
+    "nodes.ci-pinning.points.1": {
+      "t": "Tags podem ser movidas, e um branch como main muda a cada push.",
+      "h": "bc009d9f"
+    },
+    "nodes.ci-pinning.points.2": {
+      "t": "O Dependabot pode atualizar os SHAs fixados para você.",
+      "h": "e3f5c056"
+    },
+    "nodes.ci-pinning.summary": {
+      "t": "uses: aponta para código de outra pessoa. Uma tag ou branch móvel significa que esse código pode mudar sem você perceber.",
+      "h": "01f15d10"
+    },
+    "nodes.ci-pinning.title": {
+      "t": "Actions fixadas",
+      "h": "a6e000db"
+    },
+    "nodes.ci-trigger.points.0": {
+      "t": "pull_request roda código de fork com token somente leitura e sem segredos, o que é seguro por padrão.",
+      "h": "27e7a30d"
+    },
+    "nodes.ci-trigger.points.1": {
+      "t": "pull_request_target e workflow_run rodam no contexto do repositório base, com segredos e token de escrita.",
+      "h": "4f9b7b3c"
+    },
+    "nodes.ci-trigger.points.2": {
+      "t": "Nunca faça checkout e rode código de pull request a partir de um gatilho privilegiado.",
+      "h": "5e1320a9"
+    },
+    "nodes.ci-trigger.summary": {
+      "t": "O bloco on: decide quem pode iniciar uma execução e com quais privilégios. Alguns gatilhos rodam código não confiável com segredos confiáveis.",
+      "h": "b6944e56"
+    },
+    "nodes.ci-trigger.title": {
+      "t": "Gatilhos",
+      "h": "047708b2"
+    },
+    "nodes.ci.points.0": {
+      "t": "O arquivo é código: revise, dê um dono e limite o que ele pode fazer.",
+      "h": "f21488a1"
+    },
+    "nodes.ci.points.1": {
+      "t": "Cada job roda em sua própria máquina, com permissões e segredos próprios.",
+      "h": "19c30180"
+    },
+    "nodes.ci.points.2": {
+      "t": "Abra os ramos abaixo para ver as verificações e os erros clássicos.",
+      "h": "0d9307d8"
+    },
+    "nodes.ci.summary": {
+      "t": "Um arquivo YAML no repositório diz ao GitHub Actions o que rodar a cada mudança. As verificações de segurança moram aqui, ao lado do build.",
+      "h": "0a6bbb09"
+    },
+    "nodes.ci.title": {
+      "t": "Workflow de CI",
+      "h": "d1653b9a"
+    },
+    "nodes.codeowners.points.0": {
+      "t": "Coloque pipelines, código de autenticação e infraestrutura sob o time de segurança.",
+      "h": "dc639d18"
+    },
+    "nodes.codeowners.points.1": {
+      "t": "Combine com a proteção de branch: exija revisão dos code owners.",
+      "h": "dda31686"
+    },
+    "nodes.codeowners.points.2": {
+      "t": "Use times, não indivíduos, para sobreviver a quem muda de função.",
+      "h": "f87b9349"
+    },
+    "nodes.codeowners.summary": {
+      "t": "Um arquivo que liga caminhos às pessoas ou times que precisam aprovar mudanças neles.",
+      "h": "e43a1edf"
+    },
+    "nodes.codeowners.title": {
+      "t": "CODEOWNERS",
+      "h": "abe89576"
+    },
+    "nodes.dependabot.points.0": {
+      "t": "Cubra todos os ecossistemas que você usa, inclusive github-actions e docker.",
+      "h": "97a6f3c5"
+    },
+    "nodes.dependabot.points.1": {
+      "t": "Atualizações pequenas e frequentes são mais fáceis de revisar do que um salto anual.",
+      "h": "7305e8b1"
+    },
+    "nodes.dependabot.points.2": {
+      "t": "Atualizações de segurança são separadas das de versão e devem ser mescladas rápido.",
+      "h": "6f78d574"
+    },
+    "nodes.dependabot.summary": {
+      "t": "Um bot abre pull requests quando dependências, actions ou imagens base ganham novas versões.",
+      "h": "ef06d876"
+    },
+    "nodes.dependabot.title": {
+      "t": "Atualizações automáticas",
+      "h": "7a0bd84a"
+    },
+    "nodes.deploy.points.0": {
+      "t": "Deploys de produção devem usar credenciais de curta duração e exigir aprovação.",
+      "h": "e4421c6b"
+    },
+    "nodes.deploy.points.1": {
+      "t": "O mesmo artefato passa do staging à produção; não o reconstrua.",
+      "h": "8225ddbd"
+    },
+    "nodes.deploy.points.2": {
+      "t": "Mudanças de infraestrutura merecem a mesma revisão que o código da aplicação.",
+      "h": "dccaf0f7"
+    },
+    "nodes.deploy.summary": {
+      "t": "A mudança é publicada num ambiente. O acesso aqui é a coisa mais valiosa que um atacante pode alcançar.",
+      "h": "3d34b010"
+    },
+    "nodes.deploy.title": {
+      "t": "Deploy",
+      "h": "fb4192a0"
+    },
+    "nodes.detect.points.0": {
+      "t": "Registre eventos de segurança (logins, mudanças de permissão, deploys) num lugar central.",
+      "h": "89bce841"
+    },
+    "nodes.detect.points.1": {
+      "t": "Alertas precisam de dono e de runbook, ou viram ruído.",
+      "h": "83b0636b"
+    },
+    "nodes.detect.points.2": {
+      "t": "Teste as suas detecções com passos de ataque realistas.",
+      "h": "dd9361d4"
+    },
+    "nodes.detect.summary": {
+      "t": "Logs, métricas e alertas mostram o que o sistema está fazendo, para um ataque ficar visível em vez de silencioso.",
+      "h": "e1c6c715"
+    },
+    "nodes.detect.title": {
+      "t": "Detecção e logs",
+      "h": "a031ee6f"
+    },
+    "nodes.detect.where": {
+      "t": "pipeline de logs e SIEM",
+      "h": "4ba2f42d"
+    },
+    "nodes.dev.points.0": {
+      "t": "Feedback rápido vence descoberta tardia: um segredo pego aqui nunca chega ao histórico do repositório.",
+      "h": "c3ed5cad"
+    },
+    "nodes.dev.points.1": {
+      "t": "Verificações locais podem ser puladas, então são uma comodidade e nunca o único controle.",
+      "h": "cf3b16db"
+    },
+    "nodes.dev.points.2": {
+      "t": "Tudo o que existe aqui é repetido por uma verificação no servidor mais adiante.",
+      "h": "d5a245d2"
+    },
+    "nodes.dev.summary": {
+      "t": "Onde a mudança começa. Verificações baratas e rápidas aqui barram erros antes de saírem do notebook.",
+      "h": "024d37c8"
+    },
+    "nodes.dev.title": {
+      "t": "Máquina de quem desenvolve",
+      "h": "e3d79539"
+    },
+    "nodes.dockerfile.points.0": {
+      "t": "Use uma imagem base mínima e fixada, e um build multi-stage.",
+      "h": "e9475c8d"
+    },
+    "nodes.dockerfile.points.1": {
+      "t": "Rode como usuário não-root e mantenha segredos fora das camadas.",
+      "h": "ca773931"
+    },
+    "nodes.dockerfile.points.2": {
+      "t": "Escaneie a imagem, não só o código: as camadas base também têm vulnerabilidades.",
+      "h": "0d3a02bb"
+    },
+    "nodes.dockerfile.summary": {
+      "t": "A receita da imagem. Pequenas escolhas aqui definem o tamanho da superfície de ataque.",
+      "h": "83b28376"
+    },
+    "nodes.dockerfile.title": {
+      "t": "Dockerfile",
+      "h": "6651ddff"
+    },
+    "nodes.envs.points.0": {
+      "t": "Limite os segredos ao ambiente para que um job de teste não leia os de produção.",
+      "h": "ec23d23e"
+    },
+    "nodes.envs.points.1": {
+      "t": "Exija revisores em produção e restrinja quais branches podem fazer deploy.",
+      "h": "d8730635"
+    },
+    "nodes.envs.points.2": {
+      "t": "Use OIDC para assumir um papel na nuvem em vez de guardar chaves de longa duração.",
+      "h": "6a8e0450"
+    },
+    "nodes.envs.summary": {
+      "t": "Os ambientes de deploy guardam segredos, revisores obrigatórios e regras de branch, separados do código.",
+      "h": "69ceb4eb"
+    },
+    "nodes.envs.title": {
+      "t": "Ambientes e aprovações",
+      "h": "11183622"
+    },
+    "nodes.feedback.points.0": {
+      "t": "Acompanhe o tempo para corrigir, não só o número de achados.",
+      "h": "ee1901fd"
+    },
+    "nodes.feedback.points.1": {
+      "t": "Transforme cada incidente numa verificação, para não acontecer do mesmo jeito duas vezes.",
+      "h": "82aec269"
+    },
+    "nodes.feedback.points.2": {
+      "t": "Leve os achados a quem desenvolve nas ferramentas que já usam.",
+      "h": "5ffc128a"
+    },
+    "nodes.feedback.summary": {
+      "t": "O que o runtime e os scanners encontram volta ao início: um ticket, uma correção, uma regra nova, um pipeline melhor.",
+      "h": "5744ffc4"
+    },
+    "nodes.feedback.title": {
+      "t": "Ciclo de feedback",
+      "h": "6f36f876"
+    },
+    "nodes.iac-scan.points.0": {
+      "t": "Pega buckets públicos, security groups abertos e contêineres privilegiados já na revisão.",
+      "h": "cf60dc7b"
+    },
+    "nodes.iac-scan.points.1": {
+      "t": "As mesmas regras podem rodar localmente, no CI e de novo no deploy.",
+      "h": "15decee6"
+    },
+    "nodes.iac-scan.points.2": {
+      "t": "Trate os arquivos de política como código, com donos e testes.",
+      "h": "583e73e8"
+    },
+    "nodes.iac-scan.summary": {
+      "t": "Lê Terraform, manifestos do Kubernetes e Dockerfiles atrás de configurações arriscadas antes de qualquer coisa ser criada.",
+      "h": "3b01a4dd"
+    },
+    "nodes.iac-scan.title": {
+      "t": "Escaneamento de IaC",
+      "h": "15014637"
+    },
+    "nodes.iac.points.0": {
+      "t": "Rode plan no pull request e revise o diff, não só o código.",
+      "h": "052f4477"
+    },
+    "nodes.iac.points.1": {
+      "t": "Confira o plano contra a política antes de aplicá-lo.",
+      "h": "8addcb25"
+    },
+    "nodes.iac.points.2": {
+      "t": "Mantenha os arquivos de state privados: eles podem conter segredos.",
+      "h": "0e28b85b"
+    },
+    "nodes.iac.summary": {
+      "t": "Servidores, redes e permissões são definidos em arquivos e aplicados pelo pipeline.",
+      "h": "283bab84"
+    },
+    "nodes.iac.title": {
+      "t": "Infraestrutura como código",
+      "h": "a50d125d"
+    },
+    "nodes.pipeline.points.0": {
+      "t": "Os controles são em camadas: um erro que passa em uma parada deve ser pego na próxima.",
+      "h": "961e720c"
+    },
+    "nodes.pipeline.points.1": {
+      "t": "Quase todo o pipeline é configuração em arquivos, e arquivos podem ser revisados como código.",
+      "h": "b751b82b"
+    },
+    "nodes.pipeline.points.2": {
+      "t": "Abra um lugar para entrar nele, ou escolha uma missão para ser guiado.",
+      "h": "71386da2"
+    },
+    "nodes.pipeline.summary": {
+      "t": "Uma mudança viaja do notebook de quem desenvolve até usuários reais. Há controles de segurança em cada parada; este mapa mostra onde cada um mora e o que faz.",
+      "h": "5af6946e"
+    },
+    "nodes.pipeline.title": {
+      "t": "Do commit à produção",
+      "h": "72d2c719"
+    },
+    "nodes.precommit.points.0": {
+      "t": "Instale uma vez com pre-commit install; os hooks rodam só nos arquivos em staging.",
+      "h": "4562ef7e"
+    },
+    "nodes.precommit.points.1": {
+      "t": "Quem desenvolve pode pular os hooks com --no-verify, então repita a verificação no CI.",
+      "h": "05b40320"
+    },
+    "nodes.precommit.points.2": {
+      "t": "Mantenha os hooks rápidos, no máximo alguns segundos. Hooks lentos acabam desligados.",
+      "h": "09fbeedb"
+    },
+    "nodes.precommit.summary": {
+      "t": "Uma configuração pequena que roda scanners (segredos, chaves privadas, arquivos enormes) antes mesmo de o commit ser criado.",
+      "h": "6ae96942"
+    },
+    "nodes.precommit.title": {
+      "t": "Hooks de pre-commit",
+      "h": "1ab30811"
+    },
+    "nodes.precommit.where": {
+      "t": "raiz do repositório, roda a cada git commit",
+      "h": "31cbf8f3"
+    },
+    "nodes.registry.points.0": {
+      "t": "Referencie imagens pelo digest, não por uma tag mutável.",
+      "h": "93ec1e86"
+    },
+    "nodes.registry.points.1": {
+      "t": "A assinatura keyless com Sigstore usa a identidade OIDC do workflow, então não há chave privada para vazar.",
+      "h": "03688412"
+    },
+    "nodes.registry.points.2": {
+      "t": "A verificação só ajuda se algo a impuser no momento do deploy.",
+      "h": "c3ec94e6"
+    },
+    "nodes.registry.summary": {
+      "t": "A imagem vai para um registry e é assinada, para que as etapas seguintes verifiquem quem a construiu.",
+      "h": "f010b005"
+    },
+    "nodes.registry.title": {
+      "t": "Registry e assinatura",
+      "h": "fad04be6"
+    },
+    "nodes.registry.where": {
+      "t": "registry de contêineres (GHCR, ECR e similares)",
+      "h": "cc36ee52"
+    },
+    "nodes.repo.points.0": {
+      "t": "Quem pode mudar os arquivos de workflow controla o que roda com os seus segredos.",
+      "h": "602f45e5"
+    },
+    "nodes.repo.points.1": {
+      "t": "Proteja o branch padrão e trate .github/ como código de produção.",
+      "h": "f47550a4"
+    },
+    "nodes.repo.points.2": {
+      "t": "Quase tudo aqui é configuração que dá para revisar num pull request.",
+      "h": "22a854f5"
+    },
+    "nodes.repo.summary": {
+      "t": "A fonte da verdade. Guarda o código, as definições do pipeline e as regras sobre quem pode alterá-los.",
+      "h": "59e5d0d4"
+    },
+    "nodes.repo.title": {
+      "t": "Repositório Git",
+      "h": "799843a1"
+    },
+    "nodes.repo.where": {
+      "t": "GitHub: configurações do repositório e a pasta .github",
+      "h": "a379af75"
+    },
+    "nodes.runtime-secrets.points.0": {
+      "t": "Rotacione automaticamente e dê a cada carga acesso só aos seus próprios segredos.",
+      "h": "7166ecb6"
+    },
+    "nodes.runtime-secrets.points.1": {
+      "t": "Os logs de auditoria mostram quem leu o quê e quando.",
+      "h": "2382f336"
+    },
+    "nodes.runtime-secrets.points.2": {
+      "t": "Credenciais escopadas e de curta duração limitam o estrago de um vazamento.",
+      "h": "71ae1e79"
+    },
+    "nodes.runtime-secrets.summary": {
+      "t": "O app busca credenciais em tempo de execução num repositório gerenciado, em vez de lê-las de arquivos ou variáveis embutidas na imagem.",
+      "h": "4a2c70b3"
+    },
+    "nodes.runtime-secrets.title": {
+      "t": "Gerenciador de segredos",
+      "h": "61f55759"
+    },
+    "nodes.runtime-secrets.where": {
+      "t": "gerenciador de segredos da nuvem ou vault",
+      "h": "99f1ed6a"
+    },
+    "nodes.runtime.points.0": {
+      "t": "Assuma que algo vai passar e garanta que você perceberia.",
+      "h": "60eda949"
+    },
+    "nodes.runtime.points.1": {
+      "t": "Controles de runtime protegem o app enquanto a correção de verdade ainda está sendo feita.",
+      "h": "1393039f"
+    },
+    "nodes.runtime.points.2": {
+      "t": "O que você aprende aqui volta para as paradas anteriores.",
+      "h": "eda515c5"
+    },
+    "nodes.runtime.summary": {
+      "t": "O serviço está no ar, diante de tráfego real. A prevenção nunca é perfeita, então esta parada é sobre bloquear, enxergar e responder.",
+      "h": "1399237d"
+    },
+    "nodes.runtime.title": {
+      "t": "Runtime",
+      "h": "c4740e4c"
+    },
+    "nodes.sast-gate.points.0": {
+      "t": "Bloqueie só achados novos de alta severidade; não reprove builds por dívida antiga.",
+      "h": "942645ff"
+    },
+    "nodes.sast-gate.points.1": {
+      "t": "Comece em modo de aviso e passe a exigir quando o ruído estiver sob controle.",
+      "h": "5488266b"
+    },
+    "nodes.sast-gate.points.2": {
+      "t": "Faça do gate um check de status obrigatório, senão ele é só uma sugestão.",
+      "h": "e5b739ae"
+    },
+    "nodes.sast-gate.summary": {
+      "t": "Uma regra que transforma achados em decisão: bloquear o merge, avisar ou só registrar.",
+      "h": "594035e2"
+    },
+    "nodes.sast-gate.title": {
+      "t": "Quality gate",
+      "h": "593d8eab"
+    },
+    "nodes.sast-tool.points.0": {
+      "t": "Envie os resultados em SARIF para aparecerem na aba Security e no pull request.",
+      "h": "7960dc3c"
+    },
+    "nodes.sast-tool.points.1": {
+      "t": "As suítes security-extended acham mais, ao custo de mais ruído.",
+      "h": "4bb4b391"
+    },
+    "nodes.sast-tool.points.2": {
+      "t": "Escreva uma regra própria para padrões específicos da sua base de código.",
+      "h": "71a27821"
+    },
+    "nodes.sast-tool.summary": {
+      "t": "Dois motores comuns: o CodeQL consulta um banco de dados construído a partir do seu código, e o Semgrep casa padrões e é rápido de customizar.",
+      "h": "eb9219a8"
+    },
+    "nodes.sast-tool.title": {
+      "t": "CodeQL ou Semgrep",
+      "h": "1d1febb3"
+    },
+    "nodes.sast-triage.points.0": {
+      "t": "Siga o fluxo de dados da origem ao destino: a entrada do atacante consegue mesmo chegar lá?",
+      "h": "ebb57b3f"
+    },
+    "nodes.sast-triage.points.1": {
+      "t": "Marque falsos positivos com um motivo, para o mesmo alerta nunca voltar.",
+      "h": "ca435821"
+    },
+    "nodes.sast-triage.points.2": {
+      "t": "Corrija os reais no mesmo pull request e acompanhe o resto com dono e prazo.",
+      "h": "8cd956db"
+    },
+    "nodes.sast-triage.summary": {
+      "t": "Um achado é uma pergunta, não um veredito. Alguém precisa decidir se é real, alcançável e se vale corrigir agora.",
+      "h": "b935d2c0"
+    },
+    "nodes.sast-triage.title": {
+      "t": "Triagem de um achado",
+      "h": "0855a715"
+    },
+    "nodes.sast.points.0": {
+      "t": "Roda a cada pull request, então os achados aparecem onde o código é revisado.",
+      "h": "77f1d219"
+    },
+    "nodes.sast.points.1": {
+      "t": "Ela vê caminhos de código, não o app rodando, então espere falsos positivos que pedem triagem.",
+      "h": "799134c1"
+    },
+    "nodes.sast.points.2": {
+      "t": "Comece com um conjunto pequeno de regras de alta confiança e vá crescendo.",
+      "h": "3a526215"
+    },
+    "nodes.sast.summary": {
+      "t": "A análise estática lê o código-fonte sem executá-lo e aponta padrões inseguros, como injeção ou desserialização insegura.",
+      "h": "6d76e2c0"
+    },
+    "nodes.sast.title": {
+      "t": "SAST",
+      "h": "dc7c9db0"
+    },
+    "nodes.sbom.points.0": {
+      "t": "Quando surge uma nova CVE, o SBOM responde em minutos se você é afetado.",
+      "h": "24aba7e6"
+    },
+    "nodes.sbom.points.1": {
+      "t": "Anexe os dois à imagem como atestações assinadas.",
+      "h": "886223b5"
+    },
+    "nodes.sbom.points.2": {
+      "t": "Os níveis SLSA descrevem quão confiável é o próprio processo de build.",
+      "h": "42436f9e"
+    },
+    "nodes.sbom.summary": {
+      "t": "Um SBOM lista cada componente dentro do artefato; a proveniência registra como e onde ele foi construído.",
+      "h": "092fc1a1"
+    },
+    "nodes.sbom.title": {
+      "t": "SBOM e proveniência",
+      "h": "ae0183ec"
+    },
+    "nodes.sca.points.0": {
+      "t": "A maior parte do código que roda é de outras pessoas, então escaneie o lockfile e não só o manifesto.",
+      "h": "43c445fe"
+    },
+    "nodes.sca.points.1": {
+      "t": "A revisão de dependências no pull request pega um pacote ruim antes do merge.",
+      "h": "8c800b9d"
+    },
+    "nodes.sca.points.2": {
+      "t": "Olhe alcançabilidade e correção disponível antes de entrar em pânico com cada CVE.",
+      "h": "67531720"
+    },
+    "nodes.sca.summary": {
+      "t": "A análise de composição de software confere as bibliotecas que você usa contra bases de vulnerabilidades e licenças conhecidas.",
+      "h": "52473e2f"
+    },
+    "nodes.sca.title": {
+      "t": "Escaneamento de dependências",
+      "h": "54dd7b29"
+    },
+    "nodes.secret-push.points.0": {
+      "t": "Bloqueia formatos conhecidos de token dos principais provedores.",
+      "h": "6cf056db"
+    },
+    "nodes.secret-push.points.1": {
+      "t": "Um segredo vazado continua vazado: rotacione-o mesmo que o commit tenha sido removido.",
+      "h": "00f2fdb3"
+    },
+    "nodes.secret-push.points.2": {
+      "t": "Complementa o scan no CI, que pode procurar os seus padrões próprios.",
+      "h": "feaa7293"
+    },
+    "nodes.secret-push.summary": {
+      "t": "O servidor recusa um push que contém um segredo reconhecido, antes de ele cair no histórico.",
+      "h": "232b4d1c"
+    },
+    "nodes.secret-push.title": {
+      "t": "Push protection",
+      "h": "17b38cf9"
+    },
+    "nodes.secret-push.where": {
+      "t": "GitHub, Settings, Code security",
+      "h": "e2b066bb"
+    },
+    "nodes.secrets-scan.points.0": {
+      "t": "Escaneie o histórico completo uma vez e depois cada novo commit.",
+      "h": "74af8a0a"
+    },
+    "nodes.secrets-scan.points.1": {
+      "t": "Um segredo encontrado está comprometido: revogue e rotacione primeiro, limpe o histórico depois.",
+      "h": "5d17abfe"
+    },
+    "nodes.secrets-scan.points.2": {
+      "t": "Use um gerenciador de segredos para o código guardar só uma referência.",
+      "h": "a19be203"
+    },
+    "nodes.secrets-scan.summary": {
+      "t": "Procura no código e no histórico por chaves de API, tokens e chaves privadas que nunca deveriam ser commitados.",
+      "h": "e01f9431"
+    },
+    "nodes.secrets-scan.title": {
+      "t": "Escaneamento de segredos",
+      "h": "8ee73cce"
+    },
+    "nodes.signed-commits.points.0": {
+      "t": "Assine com chave SSH, GPG ou Sigstore gitsign; o GitHub mostra o selo Verified.",
+      "h": "344bfcf2"
+    },
+    "nodes.signed-commits.points.1": {
+      "t": "Regras de branch podem exigir commits assinados.",
+      "h": "fa0dc8cc"
+    },
+    "nodes.signed-commits.points.2": {
+      "t": "Uma assinatura prova a autoria, não que o código é seguro.",
+      "h": "a56e0ee0"
+    },
+    "nodes.signed-commits.summary": {
+      "t": "Uma assinatura criptográfica prova quem escreveu o commit, em vez de confiar num nome digitado no git config.",
+      "h": "3c6c5ce7"
+    },
+    "nodes.signed-commits.title": {
+      "t": "Commits assinados",
+      "h": "dbce16ff"
+    },
+    "nodes.waf.points.0": {
+      "t": "Bom para virtual patching enquanto a correção real é feita.",
+      "h": "48f47efa"
+    },
+    "nodes.waf.points.1": {
+      "t": "Comece só registrando e ajuste antes de bloquear.",
+      "h": "10925f0a"
+    },
+    "nodes.waf.points.2": {
+      "t": "Reduz o risco; não substitui corrigir o código.",
+      "h": "17db4879"
+    },
+    "nodes.waf.summary": {
+      "t": "Um web application firewall filtra requisições hostis antes de chegarem ao app.",
+      "h": "f4a5781b"
+    },
+    "nodes.waf.title": {
+      "t": "WAF e borda",
+      "h": "2be80920"
+    },
+    "nodes.waf.where": {
+      "t": "CDN ou load balancer na frente do app",
+      "h": "e70efe2b"
+    },
+    "ui.back": {
+      "t": "voltar",
+      "h": "61bb8d29"
+    },
+    "ui.backTo": {
+      "t": "Voltar para {name}",
+      "h": "5233d9d9"
+    },
+    "ui.challengeCheck": {
+      "t": "conferir resposta",
+      "h": "5878a4a1"
+    },
+    "ui.challengeClear": {
+      "t": "limpar",
+      "h": "168cbb2e"
+    },
+    "ui.challengeCorrect": {
+      "t": "Correto.",
+      "h": "1919e7be"
+    },
+    "ui.challengeSelect": {
+      "t": "Selecione as linhas de risco ({n} para achar) e confira a resposta.",
+      "h": "ffc20acc"
+    },
+    "ui.challengeShow": {
+      "t": "mostrar a resposta",
+      "h": "b65e5848"
+    },
+    "ui.challengeSolved": {
+      "t": "resolvido",
+      "h": "a0ac7419"
+    },
+    "ui.challengeTitle": {
+      "t": "desafio",
+      "h": "bb064b23"
+    },
+    "ui.challengeWrong": {
+      "t": "Quase: você achou {right} de {n} linhas de risco e marcou {extra} seguras.",
+      "h": "9635a870"
+    },
+    "ui.childrenHint": {
+      "t": "Abra um para ir mais fundo.",
+      "h": "00a2b8ee"
+    },
+    "ui.childrenTitle": {
+      "t": "Dentro de {name}",
+      "h": "e273d412"
+    },
+    "ui.codeTitle": {
+      "t": "exemplo",
+      "h": "c3499c27"
+    },
+    "ui.copied": {
+      "t": "copiado",
+      "h": "3b348838"
+    },
+    "ui.copy": {
+      "t": "copiar",
+      "h": "f84e2e2d"
+    },
+    "ui.description": {
+      "t": "Um mapa explorável de como o código chega à produção: abra o repositório, o workflow de CI, os scanners e o runtime, e veja onde cada controle de segurança mora.",
+      "h": "2a4008fa"
+    },
+    "ui.enter": {
+      "t": "abrir",
+      "h": "5fc7e38b"
+    },
+    "ui.explored": {
+      "t": "{done} de {total} lugares explorados",
+      "h": "9949a5f2"
+    },
+    "ui.eyebrow": {
+      "t": "mapa explorável",
+      "h": "886caedb"
+    },
+    "ui.heading": {
+      "t": "Do commit à produção",
+      "h": "72d2c719"
+    },
+    "ui.intro": {
+      "t": "Comece na entrada da trilha e abra qualquer lugar. Cada um tem mais por dentro: arquivos, ferramentas, verificações e pequenos desafios. Volte quando quiser. O que você explora fica guardado neste navegador.",
+      "h": "b16265d2"
+    },
+    "ui.keys": {
+      "t": "Esc ou Backspace volta um nível.",
+      "h": "94ba6e0d"
+    },
+    "ui.kinds.artifact": {
+      "t": "artefato",
+      "h": "1e5dcbb5"
+    },
+    "ui.kinds.check": {
+      "t": "verificação",
+      "h": "d56d9853"
+    },
+    "ui.kinds.concept": {
+      "t": "conceito",
+      "h": "49376c9c"
+    },
+    "ui.kinds.file": {
+      "t": "arquivo",
+      "h": "971c419d"
+    },
+    "ui.kinds.place": {
+      "t": "lugar",
+      "h": "9da8f1fa"
+    },
+    "ui.kinds.tool": {
+      "t": "ferramenta",
+      "h": "1937c4c2"
+    },
+    "ui.leaf": {
+      "t": "Fim desta trilha.",
+      "h": "b71f936a"
+    },
+    "ui.lineAria": {
+      "t": "Linha {n}",
+      "h": "1acb1c04"
+    },
+    "ui.missionActive": {
+      "t": "Missão: {name}",
+      "h": "3b771a0b"
+    },
+    "ui.missionAgain": {
+      "t": "de novo",
+      "h": "aaa4d5f8"
+    },
+    "ui.missionDone": {
+      "t": "Missão cumprida: {name}",
+      "h": "0037ab6a"
+    },
+    "ui.missionDoneBody": {
+      "t": "Você percorreu a trilha inteira. Escolha outra missão ou continue explorando.",
+      "h": "19ee13db"
+    },
+    "ui.missionGo": {
+      "t": "me leve até lá",
+      "h": "18623602"
+    },
+    "ui.missionLeave": {
+      "t": "sair da missão",
+      "h": "7dd9abea"
+    },
+    "ui.missionsHint": {
+      "t": "Escolha uma trilha guiada. O mapa aponta a sua próxima parada.",
+      "h": "9c300adc"
+    },
+    "ui.missionStart": {
+      "t": "começar",
+      "h": "2b020927"
+    },
+    "ui.missionStep": {
+      "t": "passo {n} de {total}",
+      "h": "900704d7"
+    },
+    "ui.missionsTitle": {
+      "t": "Missões",
+      "h": "323ea30c"
+    },
+    "ui.missionTarget": {
+      "t": "próxima parada",
+      "h": "7a390671"
+    },
+    "ui.nextOnTrail": {
+      "t": "próximo na trilha",
+      "h": "95fabc91"
+    },
+    "ui.pageTitle": {
+      "t": "explorar",
+      "h": "9dda9754"
+    },
+    "ui.pathAria": {
+      "t": "Onde você está",
+      "h": "cd3e9b3e"
+    },
+    "ui.pointsTitle": {
+      "t": "o que saber",
+      "h": "3077a75e"
+    },
+    "ui.reset": {
+      "t": "zerar exploração",
+      "h": "d6f76d7f"
+    },
+    "ui.stageAria": {
+      "t": "Mapa",
+      "h": "ab478f3e"
+    },
+    "ui.start": {
+      "t": "comece aqui",
+      "h": "bc0c2a25"
+    },
+    "ui.studyTitle": {
+      "t": "estude o tópico",
+      "h": "78add8d4"
+    },
+    "ui.trailhead": {
+      "t": "início da trilha",
+      "h": "cbb10f25"
+    },
+    "ui.visited": {
+      "t": "explorado",
+      "h": "7e8fd5eb"
+    },
+    "ui.whereTitle": {
+      "t": "onde mora",
+      "h": "7f22ac17"
+    }
+  }
+}

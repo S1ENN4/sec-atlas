@@ -30,6 +30,8 @@ import { scenarios } from "@/content/scenarios";
 import { allUnits, auditAll } from "@/i18n/audit";
 import { levels } from "@/content/levels";
 import { roles } from "@/content/careers";
+import { world, missions, flatten } from "@/content/explore/world";
+import { exploreText } from "@/content/explore/text";
 
 // ---------------------------------------------------------------------------
 // Tiny reporting helpers — no external deps.
@@ -402,6 +404,43 @@ const liveDomainIds = allDomainIds.filter((id) => domains[id].status === "live")
     if (r.certs.length === 0 && !r.certsNote) broken.push(`${r.id}: needs certs or a certsNote`);
   }
   record("R11 career roadmaps", broken.length === 0, `${roles.length} roles, ${roles.reduce((n, r) => n + r.stages.reduce((m, s) => m + s.topics.length, 0), 0)} topic links`, broken);
+}
+
+// ---------------------------------------------------------------------------
+// R12: explorable map. Every node has prose, topic links resolve, challenge
+// lines exist in the node's code, every mission step is a node, ids unique.
+// ---------------------------------------------------------------------------
+{
+  const broken = [];
+  const all = new Set();
+  for (const id of allDomainIds) for (const t of domains[id].topics) all.add(`${id}/${t.slug}`);
+  const flat = flatten(world);
+  const seen = new Set();
+  const walk = (n) => {
+    if (seen.has(n.id)) broken.push(`${n.id}: duplicate node id`);
+    seen.add(n.id);
+    (n.children ?? []).forEach(walk);
+  };
+  walk(world);
+  for (const n of Object.values(flat)) {
+    const t = exploreText.nodes[n.id];
+    if (!t) broken.push(`${n.id}: no entry in text.nodes`);
+    else if (!t.title || !t.summary || !t.points?.length) broken.push(`${n.id}: needs title, summary and points`);
+    for (const ref of n.topics ?? []) if (!all.has(ref)) broken.push(`${n.id}: unknown topic "${ref}"`);
+    if (n.risky) {
+      const count = (n.code?.text ?? "").split(String.fromCharCode(10)).length;
+      if (!n.code) broken.push(`${n.id}: risky lines without code`);
+      if (n.risky.some((l) => l < 1 || l > count)) broken.push(`${n.id}: risky line outside the ${count} code lines`);
+      if (!exploreText.challenges[n.id]) broken.push(`${n.id}: challenge has no text`);
+    } else if (exploreText.challenges[n.id]) broken.push(`${n.id}: challenge text without risky lines`);
+  }
+  for (const id of Object.keys(exploreText.nodes)) if (!flat[id]) broken.push(`text.nodes.${id}: no such node`);
+  for (const m of missions) {
+    if (!exploreText.missions[m.id]) broken.push(`mission ${m.id}: no text`);
+    if (m.steps.length < 2) broken.push(`mission ${m.id}: needs at least 2 steps`);
+    for (const st of m.steps) if (!flat[st]) broken.push(`mission ${m.id}: unknown step "${st}"`);
+  }
+  record("R12 explorable map", broken.length === 0, `${Object.keys(flat).length} nodes, ${missions.length} missions, ${Object.keys(exploreText.challenges).length} challenges`, broken);
 }
 
 // ---------------------------------------------------------------------------

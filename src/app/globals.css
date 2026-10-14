@@ -569,3 +569,53 @@ body {
 :root[data-theme="light"] .text-red-400 {
   color: oklch(0.45 0.18 25);
 }
+
+/* Explorable map: the stage slides in from the side you navigated towards
+ * (deeper from the right, back from the left); children rise in one by one.
+ * Reduced motion is covered by the global rule near the top of this file. */
+@keyframes explore-in {
+  from {
+    opacity: 0;
+    transform: translateX(32px) scale(0.985);
+  }
+}
+@keyframes explore-out {
+  from {
+    opacity: 0;
+    transform: translateX(-32px) scale(0.985);
+  }
+}
+@keyframes explore-side {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+@keyframes explore-ping {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in oklch, var(--primary) 55%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 12px transparent;
+  }
+}
+.explore-stage-in {
+  animation: explore-in 300ms var(--ease-out-quart) backwards;
+}
+.explore-stage-out {
+  animation: explore-out 300ms var(--ease-out-quart) backwards;
+}
+.explore-stage-side {
+  animation: explore-side 240ms var(--ease-out-quart) backwards;
+}
+.explore-rise {
+  animation: explore-side 260ms var(--ease-out-quart) backwards;
+}
+.explore-target {
+  animation: explore-ping 1.6s ease-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .explore-target {
+    animation: none;
+  }
+}

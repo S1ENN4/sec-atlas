@@ -800,6 +800,14 @@
       "t": "Recorrido guiado",
       "h": "5a550d11"
     },
+    "hub.explore.map.body": {
+      "t": "Abre el repositorio, el archivo de CI y los escáneres. Ve más a fondo, vuelve, cumple misiones.",
+      "h": "25c53c27"
+    },
+    "hub.explore.map.title": {
+      "t": "Mapa explorable",
+      "h": "d9bce3a6"
+    },
     "hub.explore.paths.body": {
       "t": "Un orden pensado para cada objetivo, con el progreso guardado en tu navegador.",
       "h": "60918f07"
@@ -1479,6 +1487,14 @@
     "nav.learn": {
       "t": "Aprender",
       "h": "b048378e"
+    },
+    "nav.learnItems.explore": {
+      "t": "Mapa explorable",
+      "h": "d9bce3a6"
+    },
+    "nav.learnItems.exploreDesc": {
+      "t": "Sigue un commit hasta producción y abre cada parada: archivos, escáneres, desafíos.",
+      "h": "2e3c4198"
     },
     "nav.learnItems.glossary": {
       "t": "Glosario",
