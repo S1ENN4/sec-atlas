@@ -8,7 +8,7 @@
 //   rsc prefetch        <= 14,700,000   (shared + heaviest locale)  (every *.txt under out/, raw)
 //   total               <= 26,700,000   (shared + heaviest locale)
 //   all locales         <= 75,000,000   (sanity: en + pt + es together)  (sanity cap: every file under out/)
-//   CSS raw             <=    77,000
+//   CSS raw             <=    98,000   (see Phase 2+3+4 bump block below)
 //   JS raw              <= 1,070,000
 //   JS gzip             <=   330,000  (gzipSync per .js file, summed)
 //   hub html (<locale>.html) <= 105,000
@@ -171,6 +171,17 @@
 // clean numbers so the next rebuild is green); CSS raw's 37-byte margin is
 // kept tight on purpose to preserve the byte ceiling on that row.
 //
+// Phase 2+3+4 CSS-cap bump (deliberate): Phase 1 already saturated the prior
+// 82,800 CSS cap. Phase 2 added a real light theme - a :root[data-theme]
+// mirror of every dark token, ten dark/light domain-accent pairs, the
+// color-scheme property and a focus utility - which the theme toggle and the
+// dropdown menus actually read. Phase 3 will add the topic-side summary
+// panel, the copy-code buttons, the reading-time stamp, the keyboard
+// shortcuts bar and the hub continue-card. Phase 4 adds the inline-SVG
+// learning panel. 98,000 is the deliberate ceiling for the close of
+// Phases 2+3+4; recalibrate again at the end of Phase 4 if a later wave
+// (off-plan) needs more.
+//
 // Exit 0 when every row is within its cap; exit 1 with a clear per-cap
 // message otherwise.
 
@@ -197,7 +208,7 @@ const CAPS = [
   { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 15_650_000, scope: "rsc_prefetch" },
   { key: "total",       label: "total",                 limit: 28_400_000, scope: "total" },
   { key: "all_locales", label: "all locales (sanity)", limit: 79_900_000, scope: "all_locales" },
-  { key: "css",         label: "CSS raw",               limit:    82_800, scope: "css" },
+  { key: "css",         label: "CSS raw",               limit:    98_000, scope: "css" },
   { key: "js",          label: "JS raw",                limit:   945_000, scope: "js" },
   { key: "js_gz",       label: "JS gzip",               limit:   297_000, scope: "js_gz" },
   { key: "index",       label: "out/index.html raw",    limit:   109_300, scope: "index" },
