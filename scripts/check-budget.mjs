@@ -211,6 +211,9 @@ import { gzipSync } from "node:zlib";
 // Phase 0 of the UI pass: the unused motion provider was removed. JS raw 1,031,953 ->
 // 917,862, JS gzip 326,132 -> 288,186. JS caps tightened to ~3% above that.
 
+// Phase 4: React Flow removed (own learning map). JS raw 917,862 -> 747,778,
+// JS gzip 288,186 -> 233,722. JS caps tightened to ~3% above that.
+
 const OUT_DIR = resolve(process.cwd(), "out");
 
 // Phase 3.A3 reconciliation (copy-code button on every <pre>): the new
@@ -229,8 +232,8 @@ const CAPS = [
   { key: "total",       label: "total",                 limit: 31_500_000, scope: "total" },
   { key: "all_locales", label: "all locales (sanity)", limit: 89_000_000, scope: "all_locales" },
   { key: "css",         label: "CSS raw",               limit:    98_000, scope: "css" },
-  { key: "js",          label: "JS raw",                limit:   945_000, scope: "js" },
-  { key: "js_gz",       label: "JS gzip",               limit:   297_000, scope: "js_gz" },
+  { key: "js",          label: "JS raw",                limit:   770_000, scope: "js" },
+  { key: "js_gz",       label: "JS gzip",               limit:   241_000, scope: "js_gz" },
   { key: "index",       label: "out/index.html raw",    limit:   130_000, scope: "index" },
 ];
 

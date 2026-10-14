@@ -13,6 +13,7 @@ import { ArrowRight, Check, Circle, Lock, Sparkles, X } from "lucide-react";
 import { DomainIcon } from "@/components/domain-icon";
 import { TopicIcon } from "@/components/topic-icon";
 import { fmt } from "@/i18n/format";
+import { missingPrereqs, pickNext, topicState } from "@/lib/learning";
 import { useProgress } from "@/lib/progress";
 import { cn } from "@/lib/utils";
 import type { DomainId } from "@/content/types";
@@ -108,17 +109,19 @@ export function JourneyMap({
   const levelDesc = (l: number) => (l === 1 ? t.level1Desc : l === 2 ? t.level2Desc : t.level3Desc);
 
   const seen = (n: JourneyNode) => isSeen(n.domain, n.slug);
-  const missing = useCallback(
-    (n: JourneyNode) => n.requires.filter((r) => byId.has(r) && !isSeen(byId.get(r)!.domain, byId.get(r)!.slug)).length,
-    [byId, isSeen],
-  );
-  const stateOf = (n: JourneyNode): State => (seen(n) ? "done" : missing(n) === 0 ? "ready" : "locked");
+  // One definition of ready / locked / next, shared with the domain map (src/lib/learning.ts).
+  const isDoneId = useCallback((id: string) => {
+    const n = byId.get(id);
+    return !!n && isSeen(n.domain, n.slug);
+  }, [byId, isSeen]);
+  const missing = useCallback((n: JourneyNode) => missingPrereqs(n, byId, isDoneId).length, [byId, isDoneId]);
+  const stateOf = (n: JourneyNode): State => topicState(n, byId, isDoneId);
 
   // Recommended next step: the first ready, unstudied topic in reading order.
-  const next = useMemo(() => {
-    const pool = nodes.filter((n) => (!onPath || onPath.has(n.id)) && (domainFilter === "all" || n.domain === domainFilter));
-    return pool.find((n) => !isSeen(n.domain, n.slug) && missing(n) === 0) ?? null;
-  }, [nodes, onPath, domainFilter, isSeen, missing]);
+  const next = useMemo(
+    () => pickNext(nodes, isDoneId, (n) => (!onPath || onPath.has(n.id)) && (domainFilter === "all" || n.domain === domainFilter)),
+    [nodes, onPath, domainFilter, isDoneId],
+  );
 
   const visibleLanes = lanes.filter((l) => domainFilter === "all" || l.id === domainFilter);
   const inLane = (lane: DomainId, level: number) => nodes.filter((n) => n.domain === lane && n.level === level);

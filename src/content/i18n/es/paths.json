@@ -49,44 +49,44 @@
       "h": "2f9aa99a"
     },
     "items.1.steps.0.why": {
-      "t": "El modelo mental: ningún origen es confiable por defecto.",
-      "h": "4e9b7d89"
+      "t": "La identidad es el nuevo perímetro: el punto de partida.",
+      "h": "cb5e777a"
     },
     "items.1.steps.1.why": {
-      "t": "La identidad es el nuevo perímetro.",
-      "h": "4c3b9169"
-    },
-    "items.1.steps.2.why": {
       "t": "Segmentar para limitar el movimiento lateral.",
       "h": "f6e7ff76"
     },
+    "items.1.steps.2.why": {
+      "t": "Sin señal no hay detección: los logs van primero.",
+      "h": "a5d00f14"
+    },
     "items.1.steps.3.why": {
+      "t": "El modelo mental que une identidad y red: ningún origen es confiable por defecto.",
+      "h": "dd8d245c"
+    },
+    "items.1.steps.4.why": {
       "t": "Cifrar bien depende de controlar las claves.",
       "h": "f100fcc4"
     },
-    "items.1.steps.4.why": {
-      "t": "Secretos efímeros, en bóveda, con rotación.",
+    "items.1.steps.5.why": {
+      "t": "Secretos efímeros, en una bóveda, con rotación.",
       "h": "a11aa1aa"
     },
-    "items.1.steps.5.why": {
+    "items.1.steps.6.why": {
       "t": "Imágenes inmutables y la cadena de suministro.",
       "h": "3abade41"
     },
-    "items.1.steps.6.why": {
+    "items.1.steps.7.why": {
       "t": "El clúster como sistema operativo distribuido.",
       "h": "76dd4aec"
     },
-    "items.1.steps.7.why": {
+    "items.1.steps.8.why": {
       "t": "Postura continua: detectar desvíos de configuración.",
       "h": "d1297c22"
     },
-    "items.1.steps.8.why": {
+    "items.1.steps.9.why": {
       "t": "Ver lo que ocurre dentro del workload.",
       "h": "0df931f2"
-    },
-    "items.1.steps.9.why": {
-      "t": "Sin señal, no hay detección.",
-      "h": "3e0a7231"
     },
     "items.1.steps.10.why": {
       "t": "De la alerta a la contención, con la prueba preservada.",
@@ -177,12 +177,12 @@
       "h": "eb5f0315"
     },
     "items.3.steps.5.why": {
-      "t": "En producción, el secreto viene de la bóveda.",
-      "h": "b945d24d"
+      "t": "El workload corre con el mínimo privilegio necesario.",
+      "h": "223b0c99"
     },
     "items.3.steps.6.why": {
-      "t": "El workload corre con el mínimo de privilegio.",
-      "h": "223b0c99"
+      "t": "En producción, el secreto sale de la bóveda.",
+      "h": "b945d24d"
     },
     "items.3.steps.7.why": {
       "t": "La postura del entorno se vigila continuamente.",

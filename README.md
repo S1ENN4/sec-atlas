@@ -56,7 +56,7 @@ Parte do texto foi produzida com apoio de IA (Claude) e está em **revisão téc
 - **11 domínios, 106 tópicos**, 15 cargos em Carreiras, em en/pt/es
 - **Next.js 16** (App Router) com `output: "export"`, site 100% estático, sem servidor
 - **Tailwind CSS 4** + componentes no estilo shadcn/ui
-- **React Flow** (`@xyflow/react`) para o grafo de estudos
+- Mapa de aprendizado próprio (DOM + SVG, sem biblioteca de grafos): colunas por nível, setas de pré-requisito, estados feito/pronto/bloqueado e painel de prévia
 - Conteúdo tipado em TypeScript (`src/content/`), sem CMS, sem banco
 
 Domínios e rotas (a única fonte é `domainMeta` em `src/content/registry.ts`):
@@ -94,11 +94,10 @@ src/
     paths.ts                 trilhas de estudo (ordem sugerida de tópicos)
     scenarios.ts             cenários de ataque passo a passo (/cenarios)
     <domain>/
-      index.ts               pacote do domínio (Domain = topics + relations + pipeline + glossary + graphLayout)
+      index.ts               pacote do domínio (Domain = topics + relations + pipeline + glossary)
       pipeline.ts            estágios da esteira (PipelineStage[])
       relations.ts           arestas concept-to-concept (Relation[])
       glossary.ts            agrupamentos de termos (GlossaryGroup[])
-      graph-layout.ts        posições e arestas do React Flow (DomainGraphLayout)
       topics/
         <slug>.ts            um arquivo por tópico (Topic), export const <slug>: Topic
 src/app/
@@ -117,7 +116,7 @@ src/app/
   agentes/                   /agentes (home + topico/[slug] dinâmico)
 src/components/              UI compartilhada (cards, badges, header, footer, motion/)
   domain-graph.tsx           wrapper de servidor: reduz o domínio a GraphData enxuto
-  domain-graph-client.tsx    renderer do mapa (React Flow): foco, filtros, painel, deep link ?foco=<slug>
+  learning-map.tsx           mapa de aprendizado: níveis, pré-requisitos, próximo passo, painel, deep link ?focus=<slug>
   graph-panel.tsx            painel de detalhes do nó selecionado
   domain-list.tsx            visão em lista por etapa (padrão no celular)
   search-palette.tsx         busca global (Ctrl/Cmd+K ou "/")
@@ -150,7 +149,6 @@ A rota de cada domínio é montada pelo Next a partir dos arquivos em `src/app/<
 | `relationsOf(ref)`    | `(TopicRef \| string) => Relation[]`             | arestas em que o ref entra como source ou target                           |
 | `getPipeline(id)`     | `(DomainId) => PipelineStage[]`                  | estágios da esteira do domínio                                             |
 | `getGlossary(id)`     | `(DomainId) => GlossaryGroup[]`                  | agrupamentos de glossário                                                  |
-| `getGraphLayout(id)`  | `(DomainId) => DomainGraphLayout \| undefined`   | layout do grafo; presente em domínios com `graphLayout`                     |
 
 Identidade de tópico é composta (`{domain, slug}`), não só o slug. Por isso dois domínios podem usar `secrets` (AppSec) e `secrets-cloud` (CloudSec) sem colidir.
 
@@ -187,12 +185,7 @@ O caminho canônico, do começo ao fim:
    topics: [/* ..., */ <slug>],
    ```
 
-3. **Posicione o nó** em `src/content/<domain>/graph-layout.ts`:
-
-   - tópico comum → entrada em `conceptPositions` com `{ x, y }`;
-   - tópico que age como camada/overlay (ex.: `zero-trust` no cloudsec) → adicione o slug em `layerSlugs` e em `layerPositions`;
-   - se o tópico se prende a um stage da esteira, registre em `conceptAttachments` com `sourceHandle` e `targetHandle`;
-   - arestas visíveis no canvas vão em `crossRelations`.
+3. **Dê um nível e pré-requisitos** em `src/content/levels.ts` (`"<domain>/<slug>": { level: 1 | 2 | 3, requires: [...] }`). Não há coordenadas para posicionar: o mapa organiza os tópicos por nível e desenha as setas de pré-requisito (R10 exige uma entrada por tópico, sem ciclos).
 
 4. **Costure o lado textual**. Em `src/content/<domain>/relations.ts` entram as conexões mostradas na página do tópico; se o tópico fizer parte da esteira, adicione `{ label, slug: "<slug>" }` no item do stage correspondente em `pipeline.ts`.
 
@@ -210,7 +203,7 @@ O caminho canônico, do começo ao fim:
 | R2    | Toda `Relation.source` e `Relation.target` resolve para um tópico existente                    |
 | R3    | Todo `PipelineStage.items[].slug` (quando presente) resolve para um tópico no mesmo domínio    |
 | R4    | Toda `GlossaryEntry.topic` (campo opcional) resolve; cross-domain é permitido                  |
-| R5    | Em domínios com `graphLayout`, todo tópico tem posição e não há posições órfãs                  |
+| R5    | A etapa (`stage`) de cada tópico é uma etapa da esteira do domínio (appsec é legado)           |
 | R6    | Floor de conteúdo por tópico, em domínios com `status: "live"`: `sections.length >= 4` E (`code >= 1` OU `bullets >= 3`) E `tagline` não vazia E `tools.length >= 3`. Em `status: "draft"`, R6 é pulado e só R1 a R5 rodam |
 | R7    | Todo tópico tem quiz válido (>= 3 perguntas, 4 opções distintas, `answer` em 0..3, `explain` não vazio) e não há quiz órfão |
 | R8    | Pontes, trilhas e cenários só apontam para tópicos existentes; pontes cruzam domínios; todo `stageId` de cenário existe na esteira do domínio |

@@ -354,6 +354,27 @@ const liveDomainIds = allDomainIds.filter((id) => domains[id].status === "live")
 }
 
 // ---------------------------------------------------------------------------
+// Advisory (does not fail the build): a study path step that comes BEFORE one of
+// its own prerequisites from levels.ts. Paths are curated and may differ on
+// purpose, but the mismatch should be a decision, not an accident.
+// ---------------------------------------------------------------------------
+{
+  const warn = [];
+  for (const p of paths) {
+    const pos = new Map(p.steps.map((st, i) => [`${st.ref.domain}/${st.ref.slug}`, i]));
+    for (const [key, i] of pos) {
+      for (const r of levels[key]?.requires ?? []) {
+        if (pos.has(r) && pos.get(r) > i) warn.push(`${p.id}: "${key}" comes before its prerequisite "${r}"`);
+      }
+    }
+  }
+  if (warn.length) {
+    console.log(YLW(`WARN  path order vs prerequisites (${warn.length})`));
+    for (const w of warn.slice(0, 12)) console.log(DIM(`       ${w}`));
+  }
+}
+
+// ---------------------------------------------------------------------------
 // R11: career roadmaps. Every role has the three stages (levels 1, 2, 3), every
 // topic reference resolves, a stage never lists a topic of a higher level than
 // itself, adjacent roles exist and ids are unique.

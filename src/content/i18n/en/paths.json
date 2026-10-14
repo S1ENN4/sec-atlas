@@ -49,44 +49,44 @@
       "h": "2f9aa99a"
     },
     "items.1.steps.0.why": {
-      "t": "The mental model: no origin is trusted by default.",
-      "h": "4e9b7d89"
+      "t": "Identity is the new perimeter: the place to start.",
+      "h": "cb5e777a"
     },
     "items.1.steps.1.why": {
-      "t": "Identity is the new perimeter.",
-      "h": "4c3b9169"
-    },
-    "items.1.steps.2.why": {
       "t": "Segment to limit lateral movement.",
       "h": "f6e7ff76"
     },
+    "items.1.steps.2.why": {
+      "t": "No signal, no detection: logs come first.",
+      "h": "a5d00f14"
+    },
     "items.1.steps.3.why": {
+      "t": "The mental model that joins identity and network: no origin is trusted by default.",
+      "h": "dd8d245c"
+    },
+    "items.1.steps.4.why": {
       "t": "Encrypting well depends on controlling the keys.",
       "h": "f100fcc4"
     },
-    "items.1.steps.4.why": {
+    "items.1.steps.5.why": {
       "t": "Ephemeral secrets, in a vault, with rotation.",
       "h": "a11aa1aa"
     },
-    "items.1.steps.5.why": {
+    "items.1.steps.6.why": {
       "t": "Immutable images and the supply chain.",
       "h": "3abade41"
     },
-    "items.1.steps.6.why": {
+    "items.1.steps.7.why": {
       "t": "The cluster as a distributed operating system.",
       "h": "76dd4aec"
     },
-    "items.1.steps.7.why": {
-      "t": "Continuous posture: detecting configuration drift.",
+    "items.1.steps.8.why": {
+      "t": "Continuous posture: detect configuration drift.",
       "h": "d1297c22"
     },
-    "items.1.steps.8.why": {
-      "t": "Seeing what happens inside the workload.",
-      "h": "0df931f2"
-    },
     "items.1.steps.9.why": {
-      "t": "Without signal, there is no detection.",
-      "h": "3e0a7231"
+      "t": "See what happens inside the workload.",
+      "h": "0df931f2"
     },
     "items.1.steps.10.why": {
       "t": "From alert to containment, with the evidence preserved.",
@@ -177,12 +177,12 @@
       "h": "eb5f0315"
     },
     "items.3.steps.5.why": {
-      "t": "In production, the secret comes from the vault.",
-      "h": "b945d24d"
+      "t": "The workload runs with the least privilege it needs.",
+      "h": "223b0c99"
     },
     "items.3.steps.6.why": {
-      "t": "The workload runs with least privilege.",
-      "h": "223b0c99"
+      "t": "In production, the secret comes from the vault.",
+      "h": "b945d24d"
     },
     "items.3.steps.7.why": {
       "t": "The environment's posture is watched continuously.",
