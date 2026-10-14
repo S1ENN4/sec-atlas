@@ -9,11 +9,27 @@ const o = (slug: string) => ({ domain: "owasp" as const, slug });
 const v = (slug: string) => ({ domain: "vibecoding" as const, slug });
 const d = (slug: string) => ({ domain: "devops" as const, slug });
 const r = (slug: string) => ({ domain: "response" as const, slug });
+const of = (slug: string) => ({ domain: "offsec" as const, slug });
+const gr = (slug: string) => ({ domain: "grc" as const, slug });
 
 // Cross-domain bridges: the same underlying problem showing up in two
 // domains. Each shows on both topic pages. Keep labels short, they read as
 // "<this topic> <label> <other topic>".
 export const bridges: Bridge[] = [
+  { a: of("web-and-api-testing"), b: o("broken-access-control"), label: "como encontrar o que o outro ensina a corrigir" },
+  { a: of("web-and-api-testing"), b: o("injection"), label: "como testar o que o outro ensina a corrigir" },
+  { a: of("reporting-and-remediation"), b: a("sast"), label: "achado bem escrito vira regra e teste na esteira" },
+  { a: of("recon-and-attack-surface"), b: c("cspm"), label: "o que o atacante enxerga de fora, o CSPM enxerga por dentro" },
+  { a: of("privilege-escalation-paths"), b: c("iam"), label: "caminhos de ataque nascem de permissões a mais" },
+  { a: of("red-team-and-adversary-emulation"), b: r("threat-hunting"), label: "o exercício ofensivo valida o que a caçada procura" },
+  { a: of("social-engineering-and-phishing"), b: s("bot-management"), label: "engenharia social e abuso automatizado atacam a identidade pelo mesmo lado" },
+  { a: gr("risk-management"), b: a("threat-modeling"), label: "o modelo de ameaças alimenta o registro de riscos" },
+  { a: gr("third-party-risk"), b: o("supply-chain-failures"), label: "o risco de fornecedor, visto como código de terceiros" },
+  { a: gr("third-party-risk"), b: a("sbom"), label: "o inventário que torna a avaliação de fornecedor concreta" },
+  { a: gr("security-architecture"), b: c("zero-trust"), label: "o princípio e a implementação em nuvem" },
+  { a: gr("compliance-in-practice"), b: e("policy-as-code"), label: "evidência automática nasce de política executável" },
+  { a: gr("crisis-communication-and-culture"), b: r("ir-lifecycle"), label: "a comunicação é uma trilha do mesmo ciclo de resposta" },
+  { a: gr("security-metrics"), b: s("slos-soc"), label: "do SLO operacional ao relatório para a diretoria" },
   { a: r("threat-hunting"), b: s("detection-engineering"), label: "o que a caçada acha vira detecção versionada" },
   { a: r("log-and-timeline-analysis"), b: s("telemetria-borda"), label: "só dá para reconstruir o que foi coletado" },
   { a: r("triage-and-containment"), b: c("incident-response"), label: "a mesma contenção, aplicada a contas e recursos de nuvem" },

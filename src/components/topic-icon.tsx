@@ -154,6 +154,15 @@ const icons: Record<string, LucideIcon> = {
   "social-engineering-and-phishing": Mail,
   "red-team-and-adversary-emulation": Swords,
   "reporting-and-remediation": FileCheck2,
+  // grc
+  "risk-management": Scale,
+  "third-party-risk": Network,
+  "security-frameworks": ClipboardCheck,
+  "security-architecture": Layers,
+  "compliance-in-practice": FileCheck2,
+  "security-metrics": Gauge,
+  "security-strategy-and-budget": Waypoints,
+  "crisis-communication-and-culture": Siren,
   // ai-agents
   rag: Library,
   chunking: Scissors,

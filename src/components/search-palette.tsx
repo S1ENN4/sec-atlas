@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 
 interface Item {
   k: "t" | "g" | "p";
-  d: "appsec" | "cloudsec" | "ai-agents" | "secops" | "seceng" | "owasp" | "vibecoding" | "devops" | "response" | "offsec" | "";
+  d: "appsec" | "cloudsec" | "ai-agents" | "secops" | "seceng" | "owasp" | "vibecoding" | "devops" | "response" | "offsec" | "grc" | "";
   t: string;
   s: string;
   u: string;
@@ -44,6 +44,7 @@ const DOMAIN_ROUTE: Record<string, string> = {
   "devops": "/devops",
   "response": "/response",
   "offsec": "/offensive",
+  "grc": "/grc",
 };
 
 const norm = (s: string) =>

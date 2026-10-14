@@ -84,6 +84,15 @@ export const sources: Record<DomainId, Source[]> = {
     { label: "Atomic Red Team", href: "https://github.com/redcanaryco/atomic-red-team", note: "testes pequenos mapeados ao ATT&CK para validar detecção" },
     { label: "BloodHound", href: "https://bloodhound.specterops.io/", note: "mapeamento de caminhos de ataque em Active Directory" },
   ],
+  grc: [
+    { label: "NIST Cybersecurity Framework 2.0", href: "https://www.nist.gov/cyberframework", note: "funções Govern, Identify, Protect, Detect, Respond e Recover" },
+    { label: "ISO/IEC 27001", href: "https://www.iso.org/standard/27001", note: "sistema de gestão de segurança da informação" },
+    { label: "CIS Critical Security Controls", href: "https://www.cisecurity.org/controls", note: "salvaguardas priorizadas" },
+    { label: "PCI Security Standards Council", href: "https://www.pcisecuritystandards.org/", note: "PCI DSS para dados de cartão" },
+    { label: "NIST SP 800-207: Zero Trust Architecture", href: "https://csrc.nist.gov/pubs/sp/800/207/final", note: "arquitetura zero trust" },
+    { label: "ISO 31000", href: "https://www.iso.org/iso-31000-risk-management.html", note: "gestão de riscos" },
+    { label: "FAIR Institute", href: "https://www.fairinstitute.org/", note: "análise quantitativa de risco" },
+  ],
   seceng: [
     { label: "Open Policy Agent", href: "https://www.openpolicyagent.org/docs/latest/", note: "policy as code com Rego" },
     { label: "Terraform: documentação", href: "https://developer.hashicorp.com/terraform/docs", note: "IaC, estado remoto e módulos" },

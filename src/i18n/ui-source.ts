@@ -675,5 +675,17 @@ export const ui = {
       pipelineIntro: "Scope, discover, attack safely, report: every engagement follows this path. Each chip opens the matching topic.",
       loop: "",
     },
+    grc: {
+      name: "GRC and leadership",
+      badge: "knowledge base · governance, risk and leadership",
+      title: "Governance and risk,",
+      titleAccent: "made practical.",
+      lead: "Risk, frameworks, third parties, architecture principles, compliance evidence, metrics, strategy and crisis communication: the business side of security.",
+      pitch: "How security is run as a business function: decisions on risk, controls that can be proven, numbers that matter and leadership that people trust.",
+      mapIntro: "Each topic sits in the column of the phase it belongs to. Hover a card to see where it attaches; dashed lines are relations between topics.",
+      pipelineTitle: "from risk to leadership",
+      pipelineIntro: "Identify, design, prove, lead: each phase turns risk into decisions. Each chip opens the matching topic.",
+      loop: "",
+    },
   },
 } as const;

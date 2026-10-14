@@ -408,6 +408,42 @@
       "t": "mapeados.",
       "h": "effd347c"
     },
+    "domains.grc.badge": {
+      "t": "base de conocimiento · gobernanza, riesgo y liderazgo",
+      "h": "74697cd3"
+    },
+    "domains.grc.lead": {
+      "t": "Riesgo, frameworks, terceros, principios de arquitectura, evidencia de cumplimiento, métricas, estrategia y comunicación de crisis: el lado de negocio de la seguridad.",
+      "h": "301de34a"
+    },
+    "domains.grc.mapIntro": {
+      "t": "Cada tema está en la columna de la fase a la que pertenece. Pasa el cursor sobre una tarjeta para ver dónde se conecta; las líneas discontinuas son relaciones entre temas.",
+      "h": "67e2e8d9"
+    },
+    "domains.grc.name": {
+      "t": "GRC y liderazgo",
+      "h": "fc78a133"
+    },
+    "domains.grc.pipelineIntro": {
+      "t": "Identificar, diseñar, demostrar, liderar: cada fase convierte el riesgo en decisión. Cada chip abre el tema correspondiente.",
+      "h": "6a36c684"
+    },
+    "domains.grc.pipelineTitle": {
+      "t": "del riesgo al liderazgo",
+      "h": "c20bf65e"
+    },
+    "domains.grc.pitch": {
+      "t": "Cómo se conduce la seguridad como función de negocio: decisiones sobre riesgo, controles que se pueden demostrar, números que importan y un liderazgo en quien la gente confía.",
+      "h": "f9bcf243"
+    },
+    "domains.grc.title": {
+      "t": "Gobernanza y riesgo,",
+      "h": "a28fc690"
+    },
+    "domains.grc.titleAccent": {
+      "t": "en la práctica.",
+      "h": "bacb36fc"
+    },
     "domains.offsec.badge": {
       "t": "base de conocimiento · seguridad ofensiva",
       "h": "9aba303a"

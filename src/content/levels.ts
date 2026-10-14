@@ -135,6 +135,16 @@ export const levels: Record<string, LevelInfo> = {
   "offsec/social-engineering-and-phishing": { level: 2, requires: ["offsec/engagement-scoping-and-ethics"] },
   "offsec/privilege-escalation-paths": { level: 3, requires: ["offsec/web-and-api-testing", "cloudsec/iam"] },
   "offsec/red-team-and-adversary-emulation": { level: 3, requires: ["offsec/privilege-escalation-paths", "offsec/social-engineering-and-phishing"] },
+
+  // --- GRC and leadership ----------------------------------------
+  "grc/risk-management": { level: 1 },
+  "grc/security-frameworks": { level: 1 },
+  "grc/third-party-risk": { level: 2, requires: ["grc/risk-management"] },
+  "grc/security-architecture": { level: 2, requires: ["grc/security-frameworks"] },
+  "grc/compliance-in-practice": { level: 2, requires: ["grc/security-frameworks"] },
+  "grc/security-metrics": { level: 2, requires: ["grc/risk-management"] },
+  "grc/security-strategy-and-budget": { level: 3, requires: ["grc/risk-management", "grc/security-metrics"] },
+  "grc/crisis-communication-and-culture": { level: 3, requires: ["response/ir-lifecycle"] },
 };
 
 export const levelOf = (domain: string, slug: string): Level => levels[`${domain}/${slug}`]?.level ?? 1;

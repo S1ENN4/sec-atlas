@@ -408,6 +408,42 @@
       "t": "mapeados.",
       "h": "effd347c"
     },
+    "domains.grc.badge": {
+      "t": "base de conhecimento · governança, risco e liderança",
+      "h": "74697cd3"
+    },
+    "domains.grc.lead": {
+      "t": "Risco, frameworks, terceiros, princípios de arquitetura, evidência de conformidade, métricas, estratégia e comunicação de crise: o lado de negócio da segurança.",
+      "h": "301de34a"
+    },
+    "domains.grc.mapIntro": {
+      "t": "Cada tópico fica na coluna da fase a que pertence. Passe o mouse sobre um card para ver onde ele se liga; linhas tracejadas são relações entre tópicos.",
+      "h": "67e2e8d9"
+    },
+    "domains.grc.name": {
+      "t": "GRC e liderança",
+      "h": "fc78a133"
+    },
+    "domains.grc.pipelineIntro": {
+      "t": "Identificar, desenhar, provar, liderar: cada fase transforma risco em decisão. Cada chip abre o tópico correspondente.",
+      "h": "6a36c684"
+    },
+    "domains.grc.pipelineTitle": {
+      "t": "do risco à liderança",
+      "h": "c20bf65e"
+    },
+    "domains.grc.pitch": {
+      "t": "Como a segurança é conduzida como função de negócio: decisões sobre risco, controles que se podem provar, números que importam e uma liderança em quem as pessoas confiam.",
+      "h": "f9bcf243"
+    },
+    "domains.grc.title": {
+      "t": "Governança e risco,",
+      "h": "a28fc690"
+    },
+    "domains.grc.titleAccent": {
+      "t": "na prática.",
+      "h": "bacb36fc"
+    },
     "domains.offsec.badge": {
       "t": "base de conhecimento · segurança ofensiva",
       "h": "9aba303a"

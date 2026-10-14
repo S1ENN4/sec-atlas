@@ -259,6 +259,12 @@ body {
   --ring: oklch(0.8 0.17 25 / 0.55);
 }
 
+[data-domain="grc"] {
+  --primary: oklch(0.8 0.17 262);
+  --primary-foreground: oklch(0.18 0.05 262);
+  --ring: oklch(0.8 0.17 262 / 0.55);
+}
+
 [data-domain="ai-agents"] {
   --primary: oklch(0.74 0.18 295);
   --primary-foreground: oklch(0.16 0.04 295);

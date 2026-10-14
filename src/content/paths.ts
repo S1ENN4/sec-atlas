@@ -9,6 +9,8 @@ const o = (slug: string) => ({ domain: "owasp" as const, slug });
 const v = (slug: string) => ({ domain: "vibecoding" as const, slug });
 const dv = (slug: string) => ({ domain: "devops" as const, slug });
 const ir = (slug: string) => ({ domain: "response" as const, slug });
+const of = (slug: string) => ({ domain: "offsec" as const, slug });
+const gr = (slug: string) => ({ domain: "grc" as const, slug });
 
 // Curated study paths. Order matters: each step assumes the previous ones.
 // Every ref must resolve to a topic (validator R8).
@@ -187,6 +189,38 @@ export const paths: StudyPath[] = [
       { ref: ir("ransomware-playbook"), why: "O caso mais difícil, tratado como crise de negócio." },
       { ref: ir("digital-forensics-basics"), why: "Coletar evidência que ninguém consegue contestar." },
       { ref: ir("malware-analysis-basics"), why: "Triar um arquivo suspeito com segurança e gerar detecção." },
+    ],
+  },
+  {
+    id: "seguranca-ofensiva",
+    title: "Segurança ofensiva, com autorização",
+    description: "Do que separa um teste de um crime até o relatório que vira correção.",
+    level: "intermediate",
+    steps: [
+      { ref: of("engagement-scoping-and-ethics"), why: "Autorização, escopo e ética antes de qualquer pacote." },
+      { ref: of("pentest-methodology"), why: "Fases e padrões que dão repetibilidade." },
+      { ref: of("recon-and-attack-surface"), why: "Descobrir o que está exposto, do lado de quem ataca e de quem defende." },
+      { ref: of("web-and-api-testing"), why: "Duas contas e um proxy respondem a maior parte das perguntas." },
+      { ref: of("privilege-escalation-paths"), why: "Como fraquezas pequenas se encadeiam, e como cortá-las." },
+      { ref: of("social-engineering-and-phishing"), why: "A superfície humana e os controles que não dependem de perfeição." },
+      { ref: of("red-team-and-adversary-emulation"), why: "Testar se a defesa detecta um adversário realista." },
+      { ref: of("reporting-and-remediation"), why: "O relatório é o produto: impacto, evidência e correção." },
+    ],
+  },
+  {
+    id: "grc-e-lideranca",
+    title: "GRC e liderança em segurança",
+    description: "Risco, frameworks, evidência, métricas e a conversa com a diretoria.",
+    level: "intermediate",
+    steps: [
+      { ref: gr("risk-management"), why: "Decidir por risco, não por urgência." },
+      { ref: gr("security-frameworks"), why: "O vocabulário comum e como escolher e combinar." },
+      { ref: gr("third-party-risk"), why: "A superfície de ataque que não está nos seus servidores." },
+      { ref: gr("security-architecture"), why: "Controles desenhados uma vez, como padrão." },
+      { ref: gr("compliance-in-practice"), why: "Evidência contínua em vez de correria de auditoria." },
+      { ref: gr("security-metrics"), why: "Resultados, não atividade." },
+      { ref: gr("security-strategy-and-budget"), why: "Prioridades, roadmap e orçamento." },
+      { ref: gr("crisis-communication-and-culture"), why: "O que dizer na crise e a cultura que a antecede." },
     ],
   },
 ];
