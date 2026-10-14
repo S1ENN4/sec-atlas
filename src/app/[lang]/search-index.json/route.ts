@@ -3,6 +3,7 @@ import { domains, getTopic } from "@/content/registry";
 import type { DomainId } from "@/content/types";
 import { LOCALES, isLocale, localePath, type Locale } from "@/i18n/config";
 import { localizeDomain } from "@/i18n/content";
+import { localizedRoles } from "@/i18n/globals";
 import { getUi } from "@/i18n/ui";
 
 // Static search index per locale, emitted at build time as
@@ -55,6 +56,9 @@ export async function GET(_req: Request, ctx: { params: Promise<{ lang: string }
   const { lang } = await ctx.params;
   if (!isLocale(lang)) return new Response("Not found", { status: 404 });
   const items: Item[] = pages(lang);
+  for (const r of localizedRoles(lang).value) {
+    items.push({ k: "p", d: "", t: r.title, s: clip(r.tagline), u: localePath(lang, `/careers/${r.id}`), x: r.summary });
+  }
   for (const id of Object.keys(domains) as DomainId[]) {
     const { domain } = localizeDomain(id, lang);
     const route = domain.route;

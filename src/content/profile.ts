@@ -91,7 +91,7 @@ export const profile = {
     "Encontrou um erro ou uma imprecisão? Me avise pelo LinkedIn: corrijo e registro no changelog.",
 
   // ISO date of the last content update, shown as "atualizado em".
-  contentUpdated: "2026-10-13",
+  contentUpdated: "2026-10-14",
 };
 
 export function contactLinks(): ProfileLink[] {

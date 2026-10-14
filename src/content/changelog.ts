@@ -9,6 +9,18 @@ export interface ChangelogEntry {
 // corrections.
 export const changelog: ChangelogEntry[] = [
   {
+    date: "2026-10-14",
+    title: "sec/atlas: onze domínios, mapa de aprendizado e carreiras",
+    items: [
+      "Novos domínios: OWASP Top 10 com código vulnerável e corrigido, DevOps, resposta a incidentes e forense, segurança ofensiva, GRC e liderança, e Vibecoding.",
+      "Mapa de aprendizado por nível e pré-requisitos em cada domínio, com o próximo passo, o estado de cada tópico e uma prévia com pontos-chave.",
+      "Carreiras: 15 roadmaps (AppSec, DevSecOps, DevOps, arquiteto, resposta a incidentes, pentester, red team, GRC, CISO e outros) ligados à Jornada.",
+      "Termos do glossário no texto abrem um popup com a definição; tema claro, sumário lateral e botão de copiar código.",
+      "Tudo em português, inglês e espanhol, com verificação automática contra tradução desatualizada, e exportação para o Obsidian.",
+      "O projeto agora se chama sec/atlas.",
+    ],
+  },
+  {
     date: "2026-10-13",
     title: "Manifesto e servidor MCP",
     items: [

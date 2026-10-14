@@ -1,122 +1,150 @@
 {
   "entries": {
     "items.0.items.0": {
+      "t": "New domains: OWASP Top 10 with vulnerable and fixed code, DevOps, incident response and forensics, offensive security, GRC and leadership, and Vibecoding.",
+      "h": "b07a4746"
+    },
+    "items.0.items.1": {
+      "t": "A learning map by level and prerequisites in every domain, with the next step, the state of each topic and a preview with key points.",
+      "h": "a4965e5b"
+    },
+    "items.0.items.2": {
+      "t": "Careers: 15 roadmaps (AppSec, DevSecOps, DevOps, architect, incident response, pentester, red team, GRC, CISO and more) linked to the Journey.",
+      "h": "a07402b1"
+    },
+    "items.0.items.3": {
+      "t": "Glossary terms in the text open a popup with the definition; light theme, a side summary and a copy-code button.",
+      "h": "bcf61b06"
+    },
+    "items.0.items.4": {
+      "t": "Everything in Portuguese, English and Spanish, with an automatic check against outdated translations, and an Obsidian export.",
+      "h": "e5aa9806"
+    },
+    "items.0.items.5": {
+      "t": "The project is now called sec/atlas.",
+      "h": "9f95df98"
+    },
+    "items.0.title": {
+      "t": "sec/atlas: eleven domains, a learning map and careers",
+      "h": "55798f56"
+    },
+    "items.1.items.0": {
       "t": "Manifesto page: why the way security is taught needs to change and what this project does differently.",
       "h": "d8c84efe"
     },
-    "items.0.items.1": {
+    "items.1.items.1": {
       "t": "Local MCP server (7 tools, no dependencies) for coding agents to read, search, validate and scaffold new topics.",
       "h": "419fda2a"
     },
-    "items.0.items.2": {
+    "items.1.items.2": {
       "t": "MCP server smoke test in CI, with checks on the security refusals.",
       "h": "cae16cdd"
     },
-    "items.0.title": {
+    "items.1.title": {
       "t": "Manifesto and MCP server",
       "h": "fa2a56b5"
     },
-    "items.1.items.0": {
+    "items.2.items.0": {
       "t": "Code under MIT and content under CC BY-SA 4.0, with a contribution guide, code of conduct and security policy.",
       "h": "4dc1e907"
     },
-    "items.1.items.1": {
+    "items.2.items.1": {
       "t": "CI with content validation and size budget, static analysis (CodeQL) and automatic dependency updates.",
       "h": "40fe769d"
     },
-    "items.1.items.2": {
+    "items.2.items.2": {
       "t": "Issue templates for content errors and topic proposals: corrections are the most welcome kind of contribution.",
       "h": "ef657193"
     },
-    "items.1.title": {
+    "items.2.title": {
       "t": "Open project",
       "h": "7419b28a"
     },
-    "items.2.items.0": {
+    "items.3.items.0": {
       "t": "Map with 8 topics: secure IaC, policy as code, CI/CD hardening, reliability at scale, platform observability, automation (SOAR), AI in security and security as a product.",
       "h": "7592ef90"
     },
-    "items.2.items.1": {
+    "items.3.items.1": {
       "t": "Study path, attack scenario (compromised pipeline) and quiz on every topic.",
       "h": "a46bf652"
     },
-    "items.2.items.2": {
+    "items.3.items.2": {
       "t": "Bridges to AppSec, CloudSec, SecOps and AI agents.",
       "h": "2d717ba1"
     },
-    "items.2.title": {
+    "items.3.title": {
       "t": "New domain: Security engineering",
       "h": "54936769"
     },
-    "items.3.items.0": {
+    "items.4.items.0": {
       "t": "Map with 10 topics: edge telemetry, scale, L7 attacks, detection engineering, WAF, rate limiting, bot management, runbooks, SOC SLOs and defense in depth.",
       "h": "f7f02086"
     },
-    "items.3.items.1": {
+    "items.4.items.1": {
       "t": "Study path and attack scenario (credential stuffing) for the new domain, with a quiz on every topic.",
       "h": "09afe039"
     },
-    "items.3.items.2": {
+    "items.4.items.2": {
       "t": "Bridges to AppSec, CloudSec and AI agents.",
       "h": "0d900aca"
     },
-    "items.3.title": {
+    "items.4.title": {
       "t": "New domain: SecOps and L7 defense",
       "h": "4721c923"
     },
-    "items.4.items.0": {
+    "items.5.items.0": {
       "t": "Introduction at the top of the hub, About page (experience, education, certifications), English summary and contact links.",
       "h": "4b0cc717"
     },
-    "items.4.items.1": {
+    "items.5.items.1": {
       "t": "Link preview (Open Graph), sitemap and robots for sharing.",
       "h": "2dc2b8b2"
     },
-    "items.4.items.2": {
+    "items.5.items.2": {
       "t": "Sources page per domain, and on every topic the update date and a link to report errors.",
       "h": "ebb432c2"
     },
-    "items.4.items.3": {
+    "items.5.items.3": {
       "t": "What's new page (this one) to record changes and fixes.",
       "h": "9d435cde"
     },
-    "items.4.title": {
+    "items.5.title": {
       "t": "Personal landing, supporting pages and sources",
       "h": "4007353c"
     },
-    "items.5.items.0": {
+    "items.6.items.0": {
       "t": "Study paths with progress saved only in the browser.",
       "h": "399382bd"
     },
-    "items.5.items.1": {
+    "items.6.items.1": {
       "t": "Step-by-step attack scenarios and a quiz on every topic (105 questions).",
       "h": "006b5290"
     },
-    "items.5.items.2": {
+    "items.6.items.2": {
       "t": "Global search (Ctrl+K), details panel on the map, filters and a list view on mobile.",
       "h": "e06856c8"
     },
-    "items.5.items.3": {
+    "items.6.items.3": {
       "t": "Bridges across domains: the same problem seen in AppSec, CloudSec and AI agents.",
       "h": "033cb99d"
     },
-    "items.5.title": {
+    "items.6.title": {
       "t": "Guided study",
       "h": "b1e01b90"
     },
-    "items.6.items.0": {
+    "items.7.items.0": {
       "t": "New topics: threat modeling (AppSec) and incident response (CloudSec).",
       "h": "36044310"
     },
-    "items.6.items.1": {
+    "items.7.items.1": {
       "t": "CI/CD now appears on the AppSec map.",
       "h": "cd52fbfa"
     },
-    "items.6.items.2": {
+    "items.7.items.2": {
       "t": "Maps reorganized: cards aligned by stage, relations only on focus and straight lines.",
       "h": "031be02a"
     },
-    "items.6.title": {
+    "items.7.title": {
       "t": "New content and more readable maps",
       "h": "78a139b6"
     }
