@@ -1,9 +1,11 @@
+import { labMoreExercises, labMoreUi } from "./text-lab-more";
+
 // Prose of the Atlas lab (English source; pt/es are overlays).
 
 export const labText = {
   ui: {
     pageTitle: "Atlas lab",
-    description: "Break and fix three real flaws in the Atlas Maps API and dashboard, in a safe simulation that runs in your browser.",
+    description: "Break, fix and harden real flaws in the Atlas Maps API, pipeline and cloud, and practise an incident, in a safe simulation that runs in your browser.",
     eyebrow: "atlas lab",
     heading: "Break it, fix it, prove it",
     intro:
@@ -36,10 +38,11 @@ export const labText = {
     why: "Why the fix works",
     solved: "solved",
     seeNode: "see it in the company",
-    done: "All three exercises solved. Atlas is a little safer today.",
+    done: "Every exercise solved. Atlas is a lot safer today.",
     attackedFixed: "Fixed code is active: run the attack again.",
     needBreak: "First break it, so you know what you are fixing.",
     hint: "Hint",
+    ...labMoreUi,
   },
   exercises: {
     idor: {
@@ -66,5 +69,6 @@ export const labText = {
       why: "The title is now rendered as text, so the framework escapes characters such as angle brackets. The markup reaches the page as plain letters instead of elements.",
       hint: "An image with a broken source and an error handler is the classic example.",
     },
+    ...labMoreExercises,
   },
 };

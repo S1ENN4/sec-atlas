@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { AtlasLab } from "@/components/atlas-lab";
-import { labExercises } from "@/content/explore/lab";
+import { allExercises } from "@/content/explore/lab-more";
 import { localePath } from "@/i18n/config";
 import { localizedExplore } from "@/i18n/globals";
 import { alternatesFor, resolveLocale } from "@/i18n/server";
@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 export default async function LabPage({ params }: { params: Promise<{ lang: string }> }) {
   const { locale } = await resolveLocale(params);
   const { lab } = localizedExplore(locale).value;
-  const nodeHrefs = Object.fromEntries(labExercises.map((e) => [e.id, `${localePath(locale, "/explore/atlas")}#${e.node}`]));
+  const nodeHrefs = Object.fromEntries(allExercises.map((e) => [e.id, `${localePath(locale, "/explore/atlas")}#${e.node}`]));
 
   return (
     <div className="animate-page-enter mx-auto max-w-7xl px-4 pb-24 pt-10">
@@ -25,7 +25,7 @@ export default async function LabPage({ params }: { params: Promise<{ lang: stri
         <p className="mt-3 max-w-2xl text-lg text-muted-foreground">{lab.ui.intro}</p>
       </header>
       <div className="mt-8">
-        <AtlasLab exercises={labExercises} ui={lab.ui} texts={lab.exercises} nodeHrefs={nodeHrefs} />
+        <AtlasLab exercises={allExercises} ui={lab.ui} texts={lab.exercises} nodeHrefs={nodeHrefs} />
       </div>
     </div>
   );

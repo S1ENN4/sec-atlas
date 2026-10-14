@@ -2,6 +2,7 @@
 // (unit "explore", strict: every string must be translated and fresh).
 // Keep ids in sync with ./world.ts (validate-content R12 checks it).
 
+import { agentsChallenges, agentsMissions, agentsNodes } from "./text-agents";
 import { atlasChallenges, atlasMissions, atlasNodes } from "./text-atlas";
 import { labText } from "./text-lab";
 import { netChallenges, netMissions, netNodes } from "./text-net";
@@ -97,6 +98,15 @@ export const exploreText = {
     seeAlso: "the same idea, in general",
     tryLab: "try it in the lab",
     caseStudy: "case study",
+    viewList: "View as a list",
+    viewMap: "View as a map",
+    startTitle: "New here? Start with a company.",
+    startBody: "Meet Atlas Maps, a made-up company with a website, an API, a repository, a cloud account and a SOC. Open its real files, follow an incident, then break and fix its flaws in the lab.",
+    startAtlas: "Explore Atlas Maps",
+    startLab: "Open the lab",
+    startMaps: "All maps",
+    labProgress: "{done} of {total} lab exercises solved",
+    continueMap: "continue where you left off",
   },
 
   nodes: {
@@ -420,6 +430,7 @@ export const exploreText = {
   ...worldsNodes,
   ...netNodes,
   ...atlasNodes,
+  ...agentsNodes,
   } satisfies Record<string, NodeText>,
 
   missions: {
@@ -442,6 +453,7 @@ export const exploreText = {
     ...worldsMissions,
     ...netMissions,
     ...atlasMissions,
+    ...agentsMissions,
   },
 
   challenges: {
@@ -473,6 +485,7 @@ export const exploreText = {
     ...worldsChallenges,
     ...netChallenges,
     ...atlasChallenges,
+    ...agentsChallenges,
   } satisfies Record<string, ChallengeText>,
 
   lab: labText,

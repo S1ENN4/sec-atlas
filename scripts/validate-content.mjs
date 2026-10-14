@@ -32,7 +32,7 @@ import { levels } from "@/content/levels";
 import { roles } from "@/content/careers";
 import { flatten } from "@/content/explore/world";
 import { worlds } from "@/content/explore/worlds";
-import { labExercises } from "@/content/explore/lab";
+import { allExercises as labExercises } from "@/content/explore/lab-more";
 import { exploreText } from "@/content/explore/text";
 
 // ---------------------------------------------------------------------------
@@ -447,9 +447,32 @@ const liveDomainIds = allDomainIds.filter((id) => domains[id].status === "live")
   for (const e of labExercises) {
     if (!flat[e.node]) broken.push(`lab ${e.id}: unknown node "${e.node}"`);
     if (!exploreText.lab.exercises[e.id]) broken.push(`lab ${e.id}: no text`);
-    const lines = (code) => code.split(String.fromCharCode(10)).length;
-    if (e.vulnLines.some((l) => l < 1 || l > lines(e.vulnerable))) broken.push(`lab ${e.id}: vulnerable line out of range`);
-    if (e.fixedLines.some((l) => l < 1 || l > lines(e.fixed))) broken.push(`lab ${e.id}: fixed line out of range`);
+    const txt = exploreText.lab.exercises[e.id];
+    if (!txt) continue;
+    if (e.kind === "attack") {
+      const lines = (code) => code.split(String.fromCharCode(10)).length;
+      if (e.vulnLines.some((l) => l < 1 || l > lines(e.vulnerable))) broken.push(`lab ${e.id}: vulnerable line out of range`);
+      if (e.fixedLines.some((l) => l < 1 || l > lines(e.fixed))) broken.push(`lab ${e.id}: fixed line out of range`);
+    } else if (e.kind === "harden") {
+      const ids = new Set(e.choices.map((c) => c.id));
+      for (const c of e.choices) {
+        if (!txt.choices?.[c.id]?.label) broken.push(`lab ${e.id}: choice ${c.id} has no label`);
+        if (!c.options.some((o) => o.kind === "vulnerable") || !c.options.some((o) => o.kind === "safe")) broken.push(`lab ${e.id}: choice ${c.id} needs a vulnerable and a safe option`);
+        for (const o of c.options) if (!txt.choices?.[c.id]?.options?.[o.id]) broken.push(`lab ${e.id}: option ${c.id}/${o.id} has no text`);
+        if (!e.template.includes("{" + c.id + "}")) broken.push(`lab ${e.id}: template misses {${c.id}}`);
+      }
+      for (const t of e.tests) {
+        if (!txt.tests?.[t.id]) broken.push(`lab ${e.id}: test ${t.id} has no text`);
+        for (const d of t.deps) if (!ids.has(d)) broken.push(`lab ${e.id}: test ${t.id} depends on unknown choice ${d}`);
+      }
+      if (!e.tests.some((t) => t.type === "attack") || !e.tests.some((t) => t.type === "legit")) broken.push(`lab ${e.id}: needs attack and legit tests`);
+    } else if (e.kind === "tabletop") {
+      for (const st of e.steps) {
+        if (!txt.steps?.[st.id]?.prompt) broken.push(`lab ${e.id}: step ${st.id} has no prompt`);
+        for (const o of st.options) if (!txt.steps?.[st.id]?.options?.[o.id]?.feedback) broken.push(`lab ${e.id}: option ${st.id}/${o.id} has no feedback`);
+      }
+      if (e.pass > e.steps.length * 2) broken.push(`lab ${e.id}: pass score is unreachable`);
+    }
   }
   const missionIds = new Set();
   for (const w of worlds) {

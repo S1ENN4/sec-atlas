@@ -40,6 +40,10 @@
       "t": "Atlas Maps, a case study: a made-up company (website, API, database, GitHub, cloud, SOC and compliance) with its real files, plus a lab to break, fix and prove three flaws in a safe simulation.",
       "h": "23668636"
     },
+    "items.0.items.10": {
+      "t": "A bigger lab: harden a CI workflow, a cloud role and a bucket, and practise a 3 a.m. incident; an AI agents map; a list view of the maps on phones; a start-here entry and progress on the home page; end-to-end and accessibility tests in CI.",
+      "h": "180825dc"
+    },
     "items.0.title": {
       "t": "sec/atlas: eleven domains, a learning map and careers",
       "h": "55798f56"

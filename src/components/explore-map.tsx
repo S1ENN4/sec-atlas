@@ -14,12 +14,14 @@ import {
   Check,
   ChevronRight,
   ChevronsDownUp,
+  List,
   ChevronsUpDown,
   Copy,
   FileCode2,
   Lightbulb,
   MapPin,
   Maximize2,
+  Network,
   Minus,
   Package,
   Plus,
@@ -246,6 +248,9 @@ export function ExploreMap({ nodes, rootId, missions, ui, eyebrow, heading, intr
     return () => ro.disconnect();
   }, []);
   const wide = size.w >= 640;
+  // Small screens read better as a list; anyone can switch.
+  const [forceList, setForceList] = useState<boolean | null>(null);
+  const listMode = forceList ?? (size.w > 0 && size.w < 640);
 
   // --- animation: node positions and camera ease towards their targets ---------------
   const pos = useRef<Record<string, Pt>>({});
@@ -587,12 +592,12 @@ export function ExploreMap({ nodes, rootId, missions, ui, eyebrow, heading, intr
     "grid size-9 place-items-center rounded-lg border border-border bg-background/85 text-foreground/90 backdrop-blur transition-colors hover:border-primary/60 hover:text-primary";
 
   return (
-    <div ref={boxRef} data-node-ids={Object.keys(nodes).join(" ")} className="explore-canvas relative h-[calc(100svh-3.5rem)] min-h-[30rem] w-full overflow-hidden bg-background">
+    <div ref={boxRef} data-node-ids={Object.keys(nodes).join(" ")} className={cn("explore-canvas relative h-[calc(100svh-3.5rem)] min-h-[30rem] w-full overflow-hidden bg-background", listMode && "flex flex-col")}>
       <svg
         ref={svgRef}
         role="group"
         aria-label={ui.stageAria}
-        className="absolute inset-0 size-full cursor-grab touch-none select-none active:cursor-grabbing"
+        className={cn("absolute inset-0 size-full cursor-grab touch-none select-none active:cursor-grabbing", listMode && "hidden")}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
@@ -718,7 +723,7 @@ export function ExploreMap({ nodes, rootId, missions, ui, eyebrow, heading, intr
       </svg>
 
       {/* info + missions */}
-      <div className={cn("pointer-events-none absolute left-3 top-3 flex max-h-[calc(100%-1.5rem)] w-[min(22rem,calc(100%-1.5rem))] flex-col gap-3 overflow-y-auto sm:left-4 sm:top-4", sel && "max-sm:hidden")}>
+      <div className={cn(listMode ? "relative z-[1] flex shrink-0 flex-col gap-3 p-3 sm:mx-auto sm:w-full sm:max-w-xl" : "pointer-events-none absolute left-3 top-3 flex max-h-[calc(100%-1.5rem)] w-[min(22rem,calc(100%-1.5rem))] flex-col gap-3 overflow-y-auto sm:left-4 sm:top-4", sel && "max-sm:hidden")}>
         <div className="pointer-events-auto rounded-2xl border border-border bg-background/85 p-4 backdrop-blur">
           <button
             type="button"
@@ -801,8 +806,38 @@ export function ExploreMap({ nodes, rootId, missions, ui, eyebrow, heading, intr
         {mission ? <div className="pointer-events-auto">{bar}</div> : null}
       </div>
 
+      {listMode ? (
+        <div className="min-h-0 flex-1 overflow-y-auto px-3 pb-28 sm:mx-auto sm:w-full sm:max-w-xl">
+          <button
+            type="button"
+            onClick={() => {
+              setForceList(false);
+              requestFocus([...visible]);
+            }}
+            className={cn("mb-2 inline-flex items-center gap-1.5 rounded-md border border-border px-2.5 py-1.5 font-mono text-xs text-muted-foreground hover:text-foreground", focusRing)}
+          >
+            <Network className="size-3.5" aria-hidden /> {ui.viewMap}
+          </button>
+          <TreeList
+            nodes={nodes}
+            rootId={rootId}
+            expanded={expanded}
+            seen={state.visited}
+            solved={state.solved}
+            selId={selId}
+            pulseId={pulseId}
+            ui={ui}
+            onOpen={go}
+            onToggle={toggle}
+          />
+        </div>
+      ) : null}
+
       {/* camera controls */}
-      <div className={cn("absolute bottom-4 flex flex-col gap-2", sel && wide ? "right-[27rem]" : "right-4", sel && "max-sm:hidden")}>
+      <div className={cn("absolute bottom-4 flex flex-col gap-2", sel && wide ? "right-[27rem]" : "right-4", sel && "max-sm:hidden", listMode && "hidden")}>
+        <button type="button" className={cn(btn, focusRing)} aria-label={ui.viewList} title={ui.viewList} onClick={() => setForceList(true)}>
+          <List className="size-4" aria-hidden />
+        </button>
         <button type="button" className={cn(btn, focusRing)} aria-label={ui.zoomIn} title={ui.zoomIn} onClick={() => zoomAt(size.w / 2, size.h / 2, 1.3)}>
           <Plus className="size-4" aria-hidden />
         </button>
@@ -821,7 +856,7 @@ export function ExploreMap({ nodes, rootId, missions, ui, eyebrow, heading, intr
       </div>
 
       {/* overview */}
-      {wide && visible.size > 10 ? (
+      {wide && !listMode && visible.size > 10 ? (
         <Minimap
           target={target}
           visible={visible}
@@ -950,6 +985,73 @@ function Minimap({
       <rect x={f1(vx)} y={f1(vy)} width={f1((size.w / view.k) * sc)} height={f1((size.h / view.k) * sc)} className="fill-primary/10 stroke-primary" strokeWidth={1} />
     </svg>
   );
+}
+
+function TreeList({
+  nodes,
+  rootId,
+  expanded,
+  seen,
+  solved,
+  selId,
+  pulseId,
+  ui,
+  onOpen,
+  onToggle,
+}: {
+  nodes: Record<string, ExploreNodeData>;
+  rootId: string;
+  expanded: Set<string>;
+  seen: Record<string, 1>;
+  solved: Record<string, 1>;
+  selId: string | null;
+  pulseId: string | null;
+  ui: ExploreUi;
+  onOpen: (id: string) => void;
+  onToggle: (id: string) => void;
+}) {
+  const row = (id: string, depth: number) => {
+    const n = nodes[id];
+    const Icon = KIND_ICON[n.kind];
+    const open = expanded.has(id);
+    return (
+      <li key={id}>
+        <div
+          className={cn(
+            "flex items-center rounded-lg",
+            selId === id && "bg-primary/10",
+            pulseId === id && "explore-target",
+          )}
+          style={{ paddingLeft: depth * 16 }}
+        >
+          <button
+            type="button"
+            onClick={() => onOpen(id)}
+            aria-current={selId === id ? "true" : undefined}
+            className={cn("flex min-h-11 min-w-0 flex-1 items-center gap-2.5 rounded-lg px-2 text-left text-sm", focusRing)}
+          >
+            <Icon className="size-4 shrink-0 text-muted-foreground" aria-hidden />
+            <span className={cn("truncate", depth === 0 && "font-semibold")}>{n.title}</span>
+            {seen[id] ? <Check className="size-3.5 shrink-0 text-emerald-400" aria-label={ui.visited} /> : null}
+            {n.challenge && !solved[id] ? <span aria-label={ui.challengeTitle} className="size-2 shrink-0 rounded-full bg-amber-400" /> : null}
+          </button>
+          {n.children.length > 0 ? (
+            <button
+              type="button"
+              onClick={() => onToggle(id)}
+              aria-expanded={open}
+              aria-label={`${n.title}: ${open ? ui.collapseAll : ui.expandAll}`}
+              className={cn("grid size-11 shrink-0 place-items-center rounded-lg text-muted-foreground hover:text-foreground", focusRing)}
+            >
+              <ChevronRight className={cn("size-4 transition-transform", open && "rotate-90")} aria-hidden />
+            </button>
+          ) : null}
+        </div>
+        {open && n.children.length > 0 ? <ul>{n.children.map((c) => row(c, depth + 1))}</ul> : null}
+      </li>
+    );
+  };
+  return <ul className="space-y-0.5">{nodes[rootId].children.map((c) => row(c, 0))}</ul>;
 }
 
 // ---------------------------------------------------------------------------

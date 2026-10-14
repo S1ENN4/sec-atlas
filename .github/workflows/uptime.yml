@@ -1,0 +1,65 @@
+name: Uptime
+
+# Probes the public site every 30 minutes. When something is down it opens (or updates)
+# an issue labelled "uptime", and closes it again when the site is back.
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: uptime
+  cancel-in-progress: false
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      SITE: https://atlas.rinngs.com
+      GH_TOKEN: ${{ github.token }}
+      REPO: ${{ github.repository }}
+    steps:
+      - name: Probe the site
+        id: probe
+        run: |
+          fail=0
+          report=""
+          for path in /en /pt/explore /es/explore/atlas /en/lab /sitemap.xml; do
+            code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 20 --retry 2 --retry-delay 5 "$SITE$path" || echo 000)
+            echo "$path -> $code"
+            report="$report- \`$path\`: $code"$'\n'
+            if [ "$code" != "200" ]; then fail=1; fi
+          done
+          {
+            echo "fail=$fail"
+            echo "report<<EOF"
+            printf '%s' "$report"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Open or update the incident issue
+        if: steps.probe.outputs.fail == '1'
+        env:
+          REPORT: ${{ steps.probe.outputs.report }}
+        run: |
+          gh label create uptime --repo "$REPO" --color B60205 --description "The public site is not answering" 2>/dev/null || true
+          body=$(printf 'The scheduled probe of %s failed at %s.\n\n%s\nThis issue closes itself when the site answers again.' "$SITE" "$(date -u +%FT%TZ)" "$REPORT")
+          existing=$(gh issue list --repo "$REPO" --label uptime --state open --json number --jq '.[0].number // empty')
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --repo "$REPO" --body "$body"
+          else
+            gh issue create --repo "$REPO" --label uptime --title "Site is down: $SITE" --body "$body"
+          fi
+
+      - name: Close the incident issue when the site is back
+        if: steps.probe.outputs.fail == '0'
+        run: |
+          existing=$(gh issue list --repo "$REPO" --label uptime --state open --json number --jq '.[0].number // empty')
+          if [ -n "$existing" ]; then
+            gh issue close "$existing" --repo "$REPO" --comment "The site answers again ($(date -u +%FT%TZ))."
+          fi

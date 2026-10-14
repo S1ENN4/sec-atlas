@@ -144,6 +144,7 @@ GRANT ALL ON ALL TABLES IN SCHEMA public TO atlas_migrate;`,
           path: "infra/storage.tf",
           topics: ["cloudsec/cspm", "cloudsec/iam"],
           see: ["c-buckets"],
+          lab: "bucket",
           code: {
             lang: "hcl",
             text: `resource "aws_s3_bucket" "tiles" {
@@ -220,6 +221,7 @@ new file mode 100644
           path: ".github/workflows/deploy.yml",
           topics: ["seceng/cicd-hardening"],
           see: ["ci-trigger", "ci-permissions", "ci-pinning", "ci-injection"],
+          lab: "ci",
           code: {
             lang: "yaml",
             text: `name: deploy
@@ -256,6 +258,7 @@ jobs:
           path: "infra/iam.tf",
           topics: ["cloudsec/iam"],
           see: ["c-iam-policies", "c-least-priv"],
+          lab: "iam",
           code: {
             lang: "hcl",
             text: `resource "aws_iam_role_policy" "api" {
@@ -286,6 +289,7 @@ jobs:
           path: "alert from the SIEM",
           topics: ["secops/detection-engineering", "response/triage-and-containment"],
           see: ["c-alerts", "s-severity", "s-context"],
+          lab: "tabletop",
           code: {
             lang: "json",
             text: `{

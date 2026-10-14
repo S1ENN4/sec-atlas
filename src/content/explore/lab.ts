@@ -1,10 +1,11 @@
 // Structure of the Atlas lab: code before and after the fix, attack presets.
 // The prose lives in text.ts (lab.*), keyed by exercise id.
 
-export type LabId = "idor" | "sqli" | "xss";
+export type LabId = "idor" | "sqli" | "xss" | "ci" | "iam" | "bucket" | "tabletop";
 
 export interface LabExercise {
-  id: LabId;
+  kind: "attack";
+  id: "idor" | "sqli" | "xss";
   /** Map node that explains the same flaw inside the company. */
   node: string;
   language: string;
@@ -17,8 +18,9 @@ export interface LabExercise {
   initial: string;
 }
 
-export const labExercises: LabExercise[] = [
+export const attackExercises: LabExercise[] = [
   {
+    kind: "attack",
     id: "idor",
     node: "a-api-idor",
     language: "js",
@@ -38,6 +40,7 @@ export const labExercises: LabExercise[] = [
     initial: "1",
   },
   {
+    kind: "attack",
     id: "sqli",
     node: "a-api-search",
     language: "js",
@@ -59,6 +62,7 @@ export const labExercises: LabExercise[] = [
     initial: "depot",
   },
   {
+    kind: "attack",
     id: "xss",
     node: "a-site-xss",
     language: "js",

@@ -12,9 +12,11 @@ export interface ExploreState {
   visited: Record<string, 1>;
   solved: Record<string, 1>;
   mission: string | null;
+  /** The last node opened, to continue from. */
+  last: string | null;
 }
 
-const EMPTY: ExploreState = { visited: {}, solved: {}, mission: null };
+const EMPTY: ExploreState = { visited: {}, solved: {}, mission: null, last: null };
 
 let cache: ExploreState = EMPTY;
 let loaded = false;
@@ -27,7 +29,7 @@ function read(): ExploreState {
     const p = JSON.parse(raw) as Partial<ExploreState>;
     const rec = (v: unknown): Record<string, 1> =>
       v && typeof v === "object" ? Object.fromEntries(Object.keys(v).map((k) => [k, 1 as const])) : {};
-    return { visited: rec(p.visited), solved: rec(p.solved), mission: typeof p.mission === "string" ? p.mission : null };
+    return { visited: rec(p.visited), solved: rec(p.solved), mission: typeof p.mission === "string" ? p.mission : null, last: typeof p.last === "string" ? p.last : null };
   } catch {
     return EMPTY;
   }
@@ -71,8 +73,8 @@ export function useExploreProgress() {
 
   const visit = useCallback((id: string) => {
     const cur = getSnapshot();
-    if (cur.visited[id]) return;
-    write({ ...cur, visited: { ...cur.visited, [id]: 1 } });
+    if (cur.visited[id] && cur.last === id) return;
+    write({ ...cur, visited: { ...cur.visited, [id]: 1 }, last: id });
   }, []);
 
   const solve = useCallback((id: string) => {
@@ -85,7 +87,7 @@ export function useExploreProgress() {
   const setMission = useCallback((mission: string | null, clear: string[] = []) => {
     const cur = getSnapshot();
     const drop = (r: Record<string, 1>) => Object.fromEntries(Object.entries(r).filter(([k]) => !clear.includes(k))) as Record<string, 1>;
-    write({ visited: drop(cur.visited), solved: drop(cur.solved), mission });
+    write({ visited: drop(cur.visited), solved: drop(cur.solved), mission, last: cur.last });
   }, []);
 
   const reset = useCallback(() => write(EMPTY), []);

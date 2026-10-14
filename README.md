@@ -34,6 +34,15 @@ npm run export:obsidian -- --locale pt --out ~/Notas/sec-atlas
 
 O vault é saída gerada e somente leitura: edite as fontes e exporte de novo. Aponte o Obsidian para a pasta do idioma que quiser.
 
+## Testes
+
+```bash
+npm run build      # valida o conteúdo e aplica o orçamento de tamanho
+npm run test:e2e   # Playwright contra out/: mapas, laboratório e acessibilidade (axe, dois temas)
+```
+
+Primeira vez: `npx playwright install chromium`. O CI roda tudo isso a cada push e pull request.
+
 ## Mapa explorável
 
 `/[lang]/explore` é um mapa em tela cheia, uma árvore que cresce ao clicar (arraste para mover, role ou use pinça para dar zoom), para aprofundar e voltar: começa no caminho do código (máquina de quem desenvolve, repositório, workflow de CI, build, deploy, runtime) e cada lugar abre por dentro (o `.yaml`, os scanners ao lado, o trecho de código, o desafio). O nó atual vive no hash da URL (`#sast`), então o botão voltar do navegador e os links profundos funcionam. Missões guiam uma trilha e os desafios pedem para achar as linhas de risco; o progresso fica só no navegador (`kb:explore:v1`).
@@ -46,6 +55,8 @@ O vault é saída gerada e somente leitura: edite as fontes e exporte de novo. A
 - Cada tópico mostra "veja no mapa" quando algum nó aponta para ele.
 
 ## Hospedagem
+
+Notas completas (timeouts em redes corporativas, Cloudflare, VPS, rotação do segredo do webhook, rollback): [`docs/hosting.md`](docs/hosting.md). Um workflow (`uptime.yml`) sonda o site a cada 30 minutos e abre uma issue se cair.
 
 É um site 100% estático (`output: "export"`). Qualquer host de arquivos serve; o repositório já traz o necessário para três formatos:
 

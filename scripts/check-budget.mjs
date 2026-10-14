@@ -231,6 +231,10 @@ import { gzipSync } from "node:zlib";
 // (client component + simulation). Measured: rsc 19,101,954 / total 34,376,709 / all
 // locales 98,060,134 / JS raw 803,773 / JS gzip 251,460. Caps ~3% above that.
 
+// Seventh map (AI agents), the "start here" card on the hub (+6 KB on index.html), more
+// labs and the list view. Measured: first-load 15,514,426 / index.html 131,357.
+// Caps ~3% above that.
+
 const OUT_DIR = resolve(process.cwd(), "out");
 
 // Phase 3.A3 reconciliation (copy-code button on every <pre>): the new
@@ -244,14 +248,14 @@ const OUT_DIR = resolve(process.cwd(), "out");
 // headroom-to-content ratio as the live floor.
 
 const CAPS = [
-  { key: "first_load",  label: "first-load assets",     limit: 15_320_000, scope: "first_load" },
+  { key: "first_load",  label: "first-load assets",     limit: 16_000_000, scope: "first_load" },
   { key: "rsc_prefetch",label: "rsc prefetch payloads", limit: 19_680_000, scope: "rsc_prefetch" },
   { key: "total",       label: "total",                 limit: 35_400_000, scope: "total" },
   { key: "all_locales", label: "all locales (sanity)", limit: 101_000_000, scope: "all_locales" },
   { key: "css",         label: "CSS raw",               limit:    98_000, scope: "css" },
   { key: "js",          label: "JS raw",                limit:   828_000, scope: "js" },
   { key: "js_gz",       label: "JS gzip",               limit:   259_000, scope: "js_gz" },
-  { key: "index",       label: "out/index.html raw",    limit:   130_000, scope: "index" },
+  { key: "index",       label: "out/index.html raw",    limit:   135_500, scope: "index" },
 ];
 
 function walk(dir) {

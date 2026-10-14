@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, FlaskConical, Map as MapIcon } from "lucide-react";
 
+import { allExercises } from "@/content/explore/lab-more";
 import { flatten } from "@/content/explore/world";
 import { worlds } from "@/content/explore/worlds";
 import { localePath } from "@/i18n/config";
 import { fmt } from "@/i18n/format";
+import { ContinueMap, ProgressLine } from "@/components/explore-progress-line";
 import { localizedExplore } from "@/i18n/globals";
 import { alternatesFor, resolveLocale } from "@/i18n/server";
 
@@ -19,6 +21,8 @@ export default async function ExploreIndexPage({ params }: { params: Promise<{ l
   const { locale } = await resolveLocale(params);
   const text = localizedExplore(locale).value;
   const nodeText = text.nodes as Record<string, { title: string; summary: string }>;
+  const lookup: Record<string, { world: string; title: string }> = {};
+  for (const w of worlds) for (const id of Object.keys(flatten(w.root))) lookup[id] = { world: w.id, title: nodeText[id].title };
 
   return (
     <div className="animate-page-enter mx-auto max-w-7xl px-4 pb-24 pt-10">
@@ -28,7 +32,9 @@ export default async function ExploreIndexPage({ params }: { params: Promise<{ l
         <p className="mt-3 max-w-2xl text-lg text-muted-foreground">{text.ui.indexIntro}</p>
       </header>
 
-      <ul className="mt-10 grid gap-5 sm:grid-cols-2">
+      <ContinueMap nodes={lookup} label={text.ui.continueMap} base={localePath(locale, "/explore")} />
+
+      <ul className="mt-6 grid gap-5 sm:grid-cols-2">
         {worlds.map((w) => {
           const flat = flatten(w.root);
           const places = Object.keys(flat).length - 1;
@@ -53,6 +59,11 @@ export default async function ExploreIndexPage({ params }: { params: Promise<{ l
                 <p className="mt-4 font-mono text-xs text-muted-foreground">
                   {fmt(text.ui.placesCount, { n: places })} · {fmt(text.ui.challengesCount, { n: challenges })}
                 </p>
+                <ProgressLine
+                  ids={Object.keys(flat).filter((id) => id !== w.id)}
+                  labIds={w.id === "atlas" ? allExercises.map((e) => e.id) : undefined}
+                  labels={{ explored: text.ui.explored, lab: text.ui.labProgress }}
+                />
                 <span className="mt-auto inline-flex items-center gap-1.5 pt-4 font-mono text-xs text-primary">
                   {text.ui.openMap} <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden />
                 </span>

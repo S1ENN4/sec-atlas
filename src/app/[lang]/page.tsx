@@ -1,6 +1,11 @@
+import { ProgressLine } from "@/components/explore-progress-line";
+import { atlasWorld } from "@/content/explore/atlas";
+import { allExercises } from "@/content/explore/lab-more";
+import { flatten } from "@/content/explore/world";
+import { localizedExplore } from "@/i18n/globals";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowUpRight, Compass, Map as MapIcon, Route, Swords, Briefcase } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Compass, FlaskConical, Map as MapIcon, Route, Swords, Briefcase } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -34,6 +39,9 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
     { href: lp("/scenarios"), icon: Swords, ...t.hub.explore.scenarios },
   ];
   const nav = t.nav as unknown as Record<string, string>;
+  const startUi = localizedExplore(locale).value.ui;
+  const atlasIds = Object.keys(flatten(atlasWorld)).filter((id) => id !== atlasWorld.id);
+  const labIds = allExercises.map((e) => e.id);
 
   // "Continue where you left off" (P3.7): pre-compute the localized
   // title + route for every topic in the locale so the client island
@@ -82,7 +90,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
           </div>
           <div className="mt-1 flex items-baseline justify-between gap-3 md:justify-end md:gap-6">
             <dt>{t.hub.statDraft}</dt>
-            <dd className={cn("text-base", draftCount > 0 ? "text-amber-400/90" : "text-muted-foreground/80")}>
+            <dd className={cn("text-base", draftCount > 0 ? "text-amber-400/90" : "text-muted-foreground")}>
               {String(draftCount).padStart(2, "0")}
             </dd>
           </div>
@@ -101,6 +109,32 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
           t={{ where: t.hub.continueWhere, read: t.hub.continueRead }}
         />
       </div>
+
+      <section className="mt-10 rounded-2xl border border-primary/40 bg-primary/5 p-6">
+        <h2 className="text-xl font-bold tracking-tight">{startUi.startTitle}</h2>
+        <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">{startUi.startBody}</p>
+        <div className="mt-4 flex flex-wrap gap-3">
+          <Link
+            href={lp("/explore/atlas")}
+            className="inline-flex items-center gap-2 rounded-lg border border-primary bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          >
+            <MapIcon className="size-4" aria-hidden /> {startUi.startAtlas}
+          </Link>
+          <Link
+            href={lp("/lab")}
+            className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-4 py-2 text-sm font-medium transition-colors hover:border-primary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            <FlaskConical className="size-4" aria-hidden /> {startUi.startLab}
+          </Link>
+          <Link
+            href={lp("/explore")}
+            className="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            {startUi.startMaps} <ArrowRight className="size-4" aria-hidden />
+          </Link>
+        </div>
+        <ProgressLine ids={atlasIds} labIds={labIds} labels={{ explored: startUi.explored, lab: startUi.labProgress }} />
+      </section>
 
       <section className="mt-10">
         <ProgressSummary

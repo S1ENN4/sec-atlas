@@ -8,6 +8,8 @@ import Link from "next/link";
 import { Check, Lock, Play, ShieldAlert, ShieldCheck, Wrench } from "lucide-react";
 
 import type { LabExercise } from "@/content/explore/lab";
+import type { AnyExercise } from "@/content/explore/lab-more";
+import { HardenLab, Tabletop } from "./atlas-lab-more";
 import type { labText } from "@/content/explore/text-lab";
 import { fmt } from "@/i18n/format";
 import { ME, runIdor, runSqli, runXss, type RunResult } from "@/lib/atlas-lab";
@@ -16,11 +18,13 @@ import { cn } from "@/lib/utils";
 
 type LabUi = Record<keyof (typeof labText)["ui"], string>;
 type ExerciseText = Record<"title" | "story" | "goal" | "field" | "why" | "hint", string>;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type AnyText = any;
 
 export interface AtlasLabProps {
-  exercises: LabExercise[];
+  exercises: AnyExercise[];
   ui: LabUi;
-  texts: Record<string, ExerciseText>;
+  texts: Record<string, AnyText>;
   /** Href of the company node that explains each exercise. */
   nodeHrefs: Record<string, string>;
 }
@@ -68,7 +72,13 @@ export function AtlasLab({ exercises, ui, texts, nodeHrefs }: AtlasLabProps) {
           {ui.done}
         </p>
       ) : null}
-      <Exercise key={current.id} ex={current} ui={ui} text={texts[current.id]} nodeHref={nodeHrefs[current.id]} />
+      {current.kind === "attack" ? (
+        <Exercise key={current.id} ex={current} ui={ui} text={texts[current.id] as ExerciseText} nodeHref={nodeHrefs[current.id]} />
+      ) : current.kind === "harden" ? (
+        <HardenLab key={current.id} ex={current} ui={ui} text={texts[current.id]} nodeHref={nodeHrefs[current.id]} />
+      ) : (
+        <Tabletop key={current.id} ex={current} ui={ui} text={texts[current.id]} nodeHref={nodeHrefs[current.id]} />
+      )}
     </div>
   );
 }

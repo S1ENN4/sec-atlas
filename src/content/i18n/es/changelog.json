@@ -40,6 +40,10 @@
       "t": "Atlas Maps, un caso de estudio: una empresa inventada (sitio web, API, base de datos, GitHub, nube, SOC y cumplimiento) con sus archivos reales, y un laboratorio para romper, arreglar y demostrar tres fallos en una simulación segura.",
       "h": "23668636"
     },
+    "items.0.items.10": {
+      "t": "Un laboratorio más grande: refuerza un workflow de CI, un rol de nube y un bucket, y practica un incidente de madrugada; un mapa de agentes de IA; vista de lista de los mapas en el móvil; entrada de inicio y progreso en la página principal; pruebas de extremo a extremo y de accesibilidad en el CI.",
+      "h": "180825dc"
+    },
     "items.0.title": {
       "t": "sec/atlas: once dominios, un mapa de aprendizaje y carreras",
       "h": "55798f56"

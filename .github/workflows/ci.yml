@@ -48,3 +48,8 @@ jobs:
 
       # Every internal link and anchor in the exported site must resolve.
       - run: npm run check:links
+
+      # End to end: the maps, the lab and accessibility (WCAG A/AA, both themes),
+      # against the exported site served the way production serves it.
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
