@@ -665,3 +665,21 @@ body {
     opacity: 0.8;
   }
 }
+
+/* Touch targets (Fitts's law, WCAG 2.5.8): on coarse pointers every control gets at least 44px. */
+@media (pointer: coarse) {
+  header :is(button, a),
+  footer a,
+  main :is(button, summary),
+  main a[class*="rounded"] {
+    min-height: 44px;
+  }
+  footer a {
+    display: inline-flex;
+    align-items: center;
+  }
+  header button {
+    min-width: 44px;
+    justify-content: center;
+  }
+}

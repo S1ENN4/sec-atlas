@@ -37,6 +37,9 @@ export function ProgressSummary({ domains, t }: { domains: DomainTotals[]; t: Pr
   // "{done}/{total} topics studied": keep the number emphasised wherever the translation puts it.
   const [before, after] = fmt(t.studiedOf, { done: "\u0000", total }).split("\u0000");
 
+  // Nothing to show until the reader has studied something.
+  if (done === 0 && quizzes.length === 0) return null;
+
   return (
     <section aria-labelledby="progress-title" className="rounded-xl border border-border bg-card p-5">
       <div className="flex flex-wrap items-baseline justify-between gap-3">
