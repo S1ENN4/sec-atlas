@@ -1306,6 +1306,7 @@ function Challenge({ node, ui, solved, onSolve }: { node: ExploreNodeData; ui: E
   const [result, setResult] = useState<null | { right: number; extra: number }>(null);
   const [shown, setShown] = useState(false);
   const reveal = solved || shown;
+  const preRef = useRef<HTMLPreElement>(null);
 
   const toggle = (n: number) => {
     if (reveal) return;
@@ -1323,7 +1324,16 @@ function Challenge({ node, ui, solved, onSolve }: { node: ExploreNodeData; ui: E
     if (right === risky.length && extra === 0) {
       setShown(true);
       onSolve();
-    } else setResult({ right, extra });
+    } else {
+      setResult({ right, extra });
+      // a short shake on a wrong answer (skipped when the reader prefers reduced motion)
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        preRef.current?.animate(
+          [{ transform: "translateX(0)" }, { transform: "translateX(-6px)" }, { transform: "translateX(6px)" }, { transform: "translateX(-3px)" }, { transform: "translateX(0)" }],
+          { duration: 320, easing: "ease-out" },
+        );
+      }
+    }
   };
 
   const c = node.challenge!;
@@ -1332,15 +1342,18 @@ function Challenge({ node, ui, solved, onSolve }: { node: ExploreNodeData; ui: E
       <h3 className="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-amber-400">
         <Swords className="size-3.5" aria-hidden /> {ui.challengeTitle}
         {solved ? (
-          <span className="ml-auto inline-flex items-center gap-1 text-emerald-400">
+          <span className="spark-burst ml-auto inline-flex items-center gap-1 text-emerald-400">
             <Check className="size-3" aria-hidden /> {ui.challengeSolved}
+            {[0, 1, 2, 3, 4, 5, 6, 7].map((k) => (
+              <i key={k} aria-hidden style={{ "--n": k } as React.CSSProperties} />
+            ))}
           </span>
         ) : null}
       </h3>
       <p className="mt-2 text-sm font-medium">{c.prompt}</p>
       {!reveal ? <p className="mt-1 text-xs text-muted-foreground">{fmt(ui.challengeSelect, { n: risky.length })}</p> : null}
 
-      <pre className="mt-3 overflow-x-auto rounded-lg border border-border bg-background p-2 font-mono text-xs leading-relaxed">
+      <pre ref={preRef} className="mt-3 overflow-x-auto rounded-lg border border-border bg-background p-2 font-mono text-xs leading-relaxed">
         <code className="block min-w-max">
           {lines.map((l, i) => {
             const n = i + 1;
@@ -1360,8 +1373,9 @@ function Challenge({ node, ui, solved, onSolve }: { node: ExploreNodeData; ui: E
                   focusRing,
                   !reveal && "hover:bg-muted",
                   !reveal && on && "bg-primary/15 ring-1 ring-primary/50",
-                  reveal && isRisky && "bg-red-500/10 ring-1 ring-red-400/40",
+                  reveal && isRisky && "line-flag bg-red-500/10 ring-1 ring-red-400/40",
                 )}
+                style={reveal && isRisky ? { animationDelay: `${risky.indexOf(n) * 140}ms` } : undefined}
               >
                 <span aria-hidden className="w-7 shrink-0 select-none pr-3 text-right text-muted-foreground">
                   {n}

@@ -24,7 +24,7 @@ export function MapPreview({ center, items }: { center: string; items: string[] 
 
   return (
     <svg viewBox={`${-reach} ${-H / 2} ${reach * 2} ${H}`} role="img" aria-hidden className="explore-canvas h-auto w-full" preserveAspectRatio="xMidYMid meet">
-      {nodes.map((n) => {
+      {nodes.map((n, i) => {
         const x1 = cx + n.side * (cw / 2);
         const x2 = n.x - n.side * (n.w / 2);
         const xm = (x1 + x2) / 2;
@@ -35,19 +35,24 @@ export function MapPreview({ center, items }: { center: string; items: string[] 
             fill="none"
             strokeWidth={1.6}
             strokeLinecap="round"
-            style={{ stroke: `oklch(var(--nl) var(--nc) ${n.hue})`, opacity: 0.7 }}
+            pathLength={1}
+            className="mp-edge"
+            style={{ animationDelay: `${150 + i * 90}ms`, stroke: `oklch(var(--nl) var(--nc) ${n.hue})`, opacity: 0.7 }}
           />
         );
       })}
-      {nodes.map((n) => (
+      {nodes.map((n, i) => (
         <g key={n.label} transform={`translate(${n.x} ${n.y})`}>
+          <g className="mp-node" style={{ animationDelay: `${450 + i * 90}ms` }}>
           <rect x={-n.w / 2} y={-13} width={n.w} height={26} rx={13} style={{ fill: "var(--card)", stroke: `oklch(var(--nl) var(--nc) ${n.hue})`, strokeWidth: 1.5 }} />
           <text textAnchor="middle" dominantBaseline="central" fontSize={11} fontWeight={500} className="fill-foreground">
             {n.label}
           </text>
+          </g>
         </g>
       ))}
       <g transform={`translate(${cx} ${cy})`}>
+        <rect className="mp-halo" x={-cw / 2 - 2} y={-19} width={cw + 4} height={38} rx={19} fill="none" style={{ stroke: "oklch(var(--nl) var(--nc) 152)", strokeWidth: 2 }} />
         <rect x={-cw / 2} y={-17} width={cw} height={34} rx={17} style={{ fill: "var(--card)", stroke: "oklch(var(--nl) var(--nc) 152)", strokeWidth: 2.2 }} />
         <text textAnchor="middle" dominantBaseline="central" fontSize={13} fontWeight={600} className="fill-foreground">
           {center}

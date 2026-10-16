@@ -683,3 +683,168 @@ body {
     justify-content: center;
   }
 }
+
+/* ---- Motion pass: ambient hero, drawn map preview, answer feedback. Transform/opacity only. ---- */
+.hero-glow {
+  position: relative;
+  isolation: isolate;
+}
+.hero-glow::before,
+.hero-glow::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 9999px;
+  filter: blur(56px);
+  opacity: 0.5;
+}
+.hero-glow::before {
+  width: 22rem;
+  height: 14rem;
+  left: -4rem;
+  top: -3rem;
+  background: color-mix(in oklch, var(--primary) 28%, transparent);
+  animation: glow-drift 16s ease-in-out infinite alternate;
+}
+.hero-glow::after {
+  width: 18rem;
+  height: 12rem;
+  right: 0;
+  top: 2rem;
+  background: color-mix(in oklch, var(--primary) 14%, transparent);
+  animation: glow-drift 22s ease-in-out infinite alternate-reverse;
+}
+@keyframes glow-drift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(3rem, 1.5rem, 0) scale(1.15);
+  }
+}
+
+/* underline that draws under the accent word of a headline */
+.accent-draw {
+  position: relative;
+  display: inline-block;
+}
+.accent-draw::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.04em;
+  height: 0.07em;
+  border-radius: 9999px;
+  background: currentColor;
+  opacity: 0.55;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: accent-draw 700ms 450ms var(--ease-out-quart, ease-out) forwards;
+}
+@keyframes accent-draw {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* map preview: edges draw, pills pop in one after another, the centre breathes */
+.mp-edge {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: mp-draw 900ms var(--ease-out-quart, ease-out) forwards;
+}
+.mp-node {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: mp-pop 420ms var(--ease-out-quart, ease-out) backwards;
+}
+.mp-halo {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: mp-breathe 3.4s ease-in-out infinite;
+}
+@keyframes mp-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes mp-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+}
+@keyframes mp-breathe {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0;
+    transform: scale(1.18);
+  }
+}
+
+/* challenge feedback: revealed lines flash in order, the solved badge pops with sparks */
+.line-flag {
+  animation: line-flag 500ms ease-out backwards;
+}
+@keyframes line-flag {
+  from {
+    background-color: color-mix(in oklch, var(--primary) 45%, transparent);
+    transform: translateX(-3px);
+  }
+}
+.spark-burst {
+  position: relative;
+  display: inline-flex;
+}
+.spark-burst > i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 4px;
+  height: 4px;
+  margin: -2px;
+  border-radius: 9999px;
+  background: currentColor;
+  opacity: 0;
+  animation: spark 700ms ease-out;
+  animation-delay: calc(var(--n) * 12ms);
+}
+@keyframes spark {
+  from {
+    opacity: 1;
+    transform: rotate(calc(var(--n) * 45deg)) translateX(2px);
+  }
+  to {
+    opacity: 0;
+    transform: rotate(calc(var(--n) * 45deg)) translateX(22px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-glow::before,
+  .hero-glow::after,
+  .mp-halo {
+    animation: none;
+  }
+  .spark-burst > i {
+    display: none;
+  }
+  .accent-draw::after {
+    animation: none;
+    transform: scaleX(1);
+  }
+  .mp-edge {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  .mp-node,
+  .line-flag {
+    animation: none;
+  }
+}

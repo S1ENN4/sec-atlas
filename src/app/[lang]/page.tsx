@@ -51,13 +51,13 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
 
   return (
     <div className="animate-page-enter mx-auto max-w-6xl px-4 pb-10 pt-12 md:pt-20">
-      <header>
+      <header className="hero-glow">
         <div>
           <Badge variant="outline" className="font-mono text-xs font-normal text-muted-foreground">
             {t.hub.badge}
           </Badge>
           <h1 className="mt-6 text-4xl font-bold tracking-tight md:text-6xl">
-            {t.hub.title} <span className="text-primary">{t.hub.titleAccent}</span>
+            {t.hub.title} <span className="accent-draw text-primary">{t.hub.titleAccent}</span>
           </h1>
           <p className="mt-4 max-w-2xl text-muted-foreground md:text-lg">{t.hub.lead}</p>
           <p className="mt-5">
