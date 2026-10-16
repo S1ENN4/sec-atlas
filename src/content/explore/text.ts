@@ -56,7 +56,6 @@ export const exploreText = {
       concept: "concept",
     },
     missionsTitle: "Missions",
-    missionsHint: "Pick a guided trail. The map points at your next stop.",
     missionActive: "Mission: {name}",
     missionStep: "step {n} of {total}",
     missionGo: "take me there",

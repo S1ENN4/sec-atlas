@@ -5580,10 +5580,6 @@
       "t": "salir de la misión",
       "h": "7dd9abea"
     },
-    "ui.missionsHint": {
-      "t": "Elige un sendero guiado. El mapa señala tu próxima parada.",
-      "h": "9c300adc"
-    },
     "ui.missionStart": {
       "t": "empezar",
       "h": "2b020927"

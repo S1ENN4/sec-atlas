@@ -6,19 +6,17 @@ import { flatten } from "@/content/explore/world";
 import { localizedExplore } from "@/i18n/globals";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, Compass, FlaskConical, Map as MapIcon, Route, Swords, Briefcase } from "lucide-react";
+import { ArrowRight, ArrowUpRight, FlaskConical, Map as MapIcon } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ContinueCard, type ContinueTopicRef } from "@/components/continue-card";
-import { ProfileStrip } from "@/components/profile-strip";
 import { ProgressSummary } from "@/components/progress-summary";
 import { domainMeta, domains } from "@/content/registry";
 import { localePath } from "@/i18n/config";
 import { localizeDomain } from "@/i18n/content";
-import { fmt, plural } from "@/i18n/format";
+import { plural } from "@/i18n/format";
 import { alternatesFor, resolveLocale } from "@/i18n/server";
-import { cn } from "@/lib/utils";
 import { estimateReadingMinutes, topicBodyText } from "@/lib/reading-time";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
@@ -30,12 +28,6 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
   const { locale, t } = await resolveLocale(params);
   const lp = (path: string) => localePath(locale, path);
   const domainList = Object.values(domains);
-  const explore = [
-    { href: lp("/journey"), icon: Compass, ...t.hub.explore.journey },
-    { href: lp("/careers"), icon: Briefcase, ...t.hub.explore.careers },
-    { href: lp("/paths"), icon: Route, ...t.hub.explore.paths },
-    { href: lp("/scenarios"), icon: Swords, ...t.hub.explore.scenarios },
-  ];
   const nav = t.nav as unknown as Record<string, string>;
   const startUi = localizedExplore(locale).value.ui;
   const atlasText = localizedExplore(locale).value.nodes as Record<string, { title: string }>;
@@ -57,9 +49,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
 
   return (
     <div className="animate-page-enter mx-auto max-w-6xl px-4 pb-10 pt-12 md:pt-20">
-      <ProfileStrip locale={locale} t={t} />
-
-      <header className="mt-10">
+      <header>
         <div>
           <Badge variant="outline" className="font-mono text-xs font-normal text-muted-foreground">
             {t.hub.badge}
@@ -178,25 +168,6 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
             </Link>
           );
         })}
-      </section>
-
-      <section aria-labelledby="explore-title" className="mt-14">
-        <h2 id="explore-title" className="font-mono text-sm uppercase tracking-wider text-muted-foreground">
-          {t.hub.exploreTitle}
-        </h2>
-        <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {explore.map((e) => (
-            <Link
-              key={e.href}
-              href={e.href}
-              className="group rounded-xl border border-border bg-card p-5 transition-[transform,border-color] duration-200 hover:-translate-y-0.5 hover:border-primary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            >
-              <e.icon className="size-5 text-primary" aria-hidden />
-              <p className="mt-3 font-semibold">{e.title}</p>
-              <p className="mt-1 text-sm leading-snug text-muted-foreground">{e.body}</p>
-            </Link>
-          ))}
-        </div>
       </section>
     </div>
   );

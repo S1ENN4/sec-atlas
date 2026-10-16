@@ -162,9 +162,6 @@ export const ui = {
   toolbar: {
     markStudied: "mark as studied",
     studied: "studied",
-    copyLink: "copy link",
-    linkCopied: "link copied",
-    print: "print / PDF",
   },
 
   quiz: {
@@ -230,35 +227,14 @@ export const ui = {
     titleAccent: "by doing.",
     lead: "Interactive maps, code that fails and code that holds, and labs where you break things and fix them.",
     manifestoLink: "read the manifesto: why this project exists",
-    exploreTitle: "ways to explore",
     // Added 2026-10-14 with phase 3.A4: "Continue where you left off" card on
     // the hub that surfaces the last topic the reader opened (read from
     // localStorage via the progress helper).
     continueWhere: "Continue where you left off",
     continueRead: "Continue reading",
-    explore: {
-      journey: {
-        title: "Guided journey",
-        body: "A map that teaches from the basics to advanced, unlocking as you learn.",
-      },
-      careers: {
-        title: "Careers",
-        body: "Roadmaps for AppSec, DevSecOps, DevOps and more: what the work is and how to get there.",
-      },
-      paths: {
-        title: "Study paths",
-        body: "A thoughtful order for each goal, with progress saved in your browser.",
-      },
-      scenarios: {
-        title: "Follow the attack",
-        body: "Follow an incident step by step and discover which control stops each move.",
-      },
-    },
   },
 
   profileStrip: {
-    aria: "About the author",
-    about: "about",
     site: "Site",
   },
 

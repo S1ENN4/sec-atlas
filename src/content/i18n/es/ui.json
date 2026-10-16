@@ -776,42 +776,6 @@
       "t": "Continuar donde lo dejaste",
       "h": "fe2d8685"
     },
-    "hub.explore.careers.body": {
-      "t": "Hojas de ruta para AppSec, DevSecOps, DevOps y más: qué hace el rol y cómo llegar.",
-      "h": "a35d9d04"
-    },
-    "hub.explore.careers.title": {
-      "t": "Carreras",
-      "h": "68d70e59"
-    },
-    "hub.explore.journey.body": {
-      "t": "Un mapa que enseña de lo básico a lo avanzado, desbloqueándose a medida que aprendes.",
-      "h": "a95d435e"
-    },
-    "hub.explore.journey.title": {
-      "t": "Recorrido guiado",
-      "h": "5a550d11"
-    },
-    "hub.explore.paths.body": {
-      "t": "Un orden pensado para cada objetivo, con el progreso guardado en tu navegador.",
-      "h": "60918f07"
-    },
-    "hub.explore.paths.title": {
-      "t": "Rutas de estudio",
-      "h": "9a6d602b"
-    },
-    "hub.explore.scenarios.body": {
-      "t": "Acompaña un incidente paso a paso y descubre qué control detiene cada movimiento.",
-      "h": "83cb1f86"
-    },
-    "hub.explore.scenarios.title": {
-      "t": "Sigue el ataque",
-      "h": "02582262"
-    },
-    "hub.exploreTitle": {
-      "t": "formas de explorar",
-      "h": "e492b0d9"
-    },
     "hub.lead": {
       "t": "Mapas interactivos, código que falla y código que resiste, y laboratorios donde rompes y arreglas.",
       "h": "e042ed71"
@@ -1656,14 +1620,6 @@
       "t": "gate: {gate}",
       "h": "5e1d5eda"
     },
-    "profileStrip.about": {
-      "t": "acerca de",
-      "h": "5780daf6"
-    },
-    "profileStrip.aria": {
-      "t": "Acerca del autor",
-      "h": "d24f4b50"
-    },
     "profileStrip.site": {
       "t": "Sitio",
       "h": "5b6825d3"
@@ -1924,21 +1880,9 @@
       "t": "Tema claro",
       "h": "9e5ba0f0"
     },
-    "toolbar.copyLink": {
-      "t": "copiar enlace",
-      "h": "31c15aab"
-    },
-    "toolbar.linkCopied": {
-      "t": "enlace copiado",
-      "h": "6d785d4f"
-    },
     "toolbar.markStudied": {
       "t": "marcar como estudiado",
       "h": "65390525"
-    },
-    "toolbar.print": {
-      "t": "imprimir / PDF",
-      "h": "df534d5a"
     },
     "toolbar.studied": {
       "t": "estudiado",

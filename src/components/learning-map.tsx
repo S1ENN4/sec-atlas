@@ -223,7 +223,6 @@ export function LearningMap({ data }: { data: GraphData }) {
                   <span className="rounded-full bg-primary px-2 py-px font-mono text-[9px] uppercase tracking-wider text-primary-foreground">{s.startHere}</span>
                 ) : null}
               </span>
-              <span className="mt-0.5 block text-sm text-muted-foreground">{next.short}</span>
             </button>
             <Link
               href={next.href}

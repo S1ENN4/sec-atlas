@@ -1505,7 +1505,6 @@ function MissionBar({
       <h2 id="explore-missions" className="font-mono text-xs uppercase tracking-wider text-primary">
         {ui.missionsTitle}
       </h2>
-      <p className="mt-1 text-sm text-muted-foreground">{ui.missionsHint}</p>
       <ul className="mt-3 grid gap-2">
         {missions.map((m) => {
           const done = m.steps.filter(stepDone).length;

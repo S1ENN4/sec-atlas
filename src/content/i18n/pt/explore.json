@@ -5580,10 +5580,6 @@
       "t": "sair da missão",
       "h": "7dd9abea"
     },
-    "ui.missionsHint": {
-      "t": "Escolha uma trilha guiada. O mapa aponta a sua próxima parada.",
-      "h": "9c300adc"
-    },
     "ui.missionStart": {
       "t": "começar",
       "h": "2b020927"
