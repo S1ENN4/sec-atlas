@@ -7,6 +7,7 @@ import { flatten } from "@/content/explore/world";
 import { worlds } from "@/content/explore/worlds";
 import { localePath } from "@/i18n/config";
 import { fmt, plural } from "@/i18n/format";
+import { MapPreview } from "@/components/map-preview";
 import { ContinueMap, ProgressLine } from "@/components/explore-progress-line";
 import { localizedExplore } from "@/i18n/globals";
 import { alternatesFor, resolveLocale } from "@/i18n/server";
@@ -21,6 +22,7 @@ export default async function ExploreIndexPage({ params }: { params: Promise<{ l
   const { locale } = await resolveLocale(params);
   const text = localizedExplore(locale).value;
   const nodeText = text.nodes as Record<string, { title: string; summary: string }>;
+  const short = (x: string, n: number) => (x.length > n ? `${x.slice(0, n - 1).trimEnd()}…` : x);
   const lookup: Record<string, { world: string; title: string }> = {};
   for (const w of worlds) for (const id of Object.keys(flatten(w.root))) lookup[id] = { world: w.id, title: nodeText[id].title };
 
@@ -54,6 +56,12 @@ export default async function ExploreIndexPage({ params }: { params: Promise<{ l
                     </span>
                   ) : null}
                 </span>
+                <div className="mt-4 flex aspect-[2.4/1] items-center rounded-xl border border-border bg-background/60 p-2 transition-colors group-hover:border-primary/40">
+                  <MapPreview
+                    center={short(t.title, 24)}
+                    items={(w.root.children ?? []).slice(0, 6).map((c) => short(nodeText[c.id].title, 22))}
+                  />
+                </div>
                 <h2 className="mt-3 text-xl font-semibold">{t.title}</h2>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t.summary}</p>
                 <p className="mt-4 font-mono text-xs text-muted-foreground">
