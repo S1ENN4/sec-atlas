@@ -12,7 +12,7 @@ export const ui = {
     title: "sec/atlas — an interactive atlas of security",
     description:
       "Learn security by level with interactive maps: OWASP Top 10 with code, DevOps, cloud, incident response, offensive security, GRC and AI agents, plus careers, attack scenarios and quizzes. Static content, no tracking.",
-    ogTitle: "Security, mapped to learn.",
+    ogTitle: "Learn security by doing.",
     ogTagline: "AppSec · OWASP · DevOps · Cloud · Response · Offensive · GRC · AI",
   },
 
@@ -226,9 +226,9 @@ export const ui = {
 
   hub: {
     badge: "knowledge base · software security",
-    title: "Security,",
-    titleAccent: "mapped to learn.",
-    lead: "Each domain is a learning map: topics by level, prerequisites, a guided next step, glossary and quizzes.",
+    title: "Learn security",
+    titleAccent: "by doing.",
+    lead: "Interactive maps, code that fails and code that holds, and labs where you break things and fix them.",
     manifestoLink: "read the manifesto: why this project exists",
     exploreTitle: "ways to explore",
     // Added 2026-10-14 with phase 3.A4: "Continue where you left off" card on
