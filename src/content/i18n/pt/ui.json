@@ -244,14 +244,6 @@
       "t": "novidades",
       "h": "05f39e0a"
     },
-    "domainPage.hint": {
-      "t": "$ clique num card para ver os detalhes · ctrl+k para buscar",
-      "h": "e97f92e2"
-    },
-    "domainPage.mapIntro": {
-      "t": "Os tópicos estão organizados por nível, dos fundamentos ao avançado. As setas vão do pré-requisito para o que se apoia nele. Selecione um tópico para ver uma prévia ou siga o próximo passo destacado.",
-      "h": "d78d8108"
-    },
     "domainPage.mapTitle": {
       "t": "mapa de aprendizado",
       "h": "89fc12ef"
@@ -285,8 +277,8 @@
       "h": "463a6c1b"
     },
     "domains.ai-agents.pitch": {
-      "t": "Segurança para agentes e workloads de IA — RAG, tool calling, MCP, guardrails. Mapa completo.",
-      "h": "c1dbea05"
+      "t": "Segurança para agentes e workloads de IA: RAG, tool calling, MCP e guardrails.",
+      "h": "23bcfd1f"
     },
     "domains.ai-agents.title": {
       "t": "AI Agents,",
@@ -321,8 +313,8 @@
       "h": "2fa4c3e8"
     },
     "domains.appsec.pitch": {
-      "t": "SAST, DAST, SCA, secrets, SBOM e a esteira — o mapa interativo que mostra cada verificação e onde ela entra na pipeline.",
-      "h": "cb153b9f"
+      "t": "SAST, DAST, SCA, secrets, SBOM e a esteira: cada verificação e onde ela entra no fluxo de entrega.",
+      "h": "0b608d9a"
     },
     "domains.appsec.title": {
       "t": "Segurança de software,",
@@ -353,8 +345,8 @@
       "h": "522c4950"
     },
     "domains.cloudsec.pitch": {
-      "t": "Postura em cloud, IAM, segmentação e supply chain — um grafo próprio, mesmo estilo do AppSec.",
-      "h": "09e6ecd1"
+      "t": "Postura em cloud, IAM, segmentação e supply chain.",
+      "h": "37f4fe8b"
     },
     "domains.cloudsec.title": {
       "t": "Cloud Security,",
@@ -800,14 +792,6 @@
       "t": "Jornada guiada",
       "h": "5a550d11"
     },
-    "hub.explore.map.body": {
-      "t": "Abra árvores vivas do pipeline, da nuvem, de um SOC e de uma requisição web. Vá mais fundo, volte, cumpra missões.",
-      "h": "3bf87b6e"
-    },
-    "hub.explore.map.title": {
-      "t": "Mapa explorável",
-      "h": "d9bce3a6"
-    },
     "hub.explore.paths.body": {
       "t": "Uma ordem pensada para cada objetivo, com progresso salvo no seu navegador.",
       "h": "60918f07"
@@ -829,32 +813,12 @@
       "h": "e492b0d9"
     },
     "hub.lead": {
-      "t": "Cada domínio é um mapa de aprendizado: tópicos por nível, pré-requisitos, um próximo passo guiado, glossário e quizzes. {n} mapas prontos, todos com o mesmo nível de profundidade.",
-      "h": "dd18bd7f"
+      "t": "Cada domínio é um mapa de aprendizado: tópicos por nível, pré-requisitos, um próximo passo guiado, glossário e quizzes.",
+      "h": "0dc98d2b"
     },
     "hub.manifestoLink": {
       "t": "ler o manifesto: por que este projeto existe",
       "h": "1ccd5c5b"
-    },
-    "hub.notify": {
-      "t": "me avise",
-      "h": "35e01eb9"
-    },
-    "hub.openMap": {
-      "t": "abrir mapa",
-      "h": "82d8e331"
-    },
-    "hub.statDomains": {
-      "t": "domínios",
-      "h": "e8a42c4c"
-    },
-    "hub.statDraft": {
-      "t": "draft",
-      "h": "0e7766b4"
-    },
-    "hub.statLive": {
-      "t": "live",
-      "h": "98aadb37"
     },
     "hub.title": {
       "t": "Segurança,",

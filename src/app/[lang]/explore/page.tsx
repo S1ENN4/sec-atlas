@@ -6,7 +6,7 @@ import { allExercises } from "@/content/explore/lab-more";
 import { flatten } from "@/content/explore/world";
 import { worlds } from "@/content/explore/worlds";
 import { localePath } from "@/i18n/config";
-import { fmt } from "@/i18n/format";
+import { fmt, plural } from "@/i18n/format";
 import { ContinueMap, ProgressLine } from "@/components/explore-progress-line";
 import { localizedExplore } from "@/i18n/globals";
 import { alternatesFor, resolveLocale } from "@/i18n/server";
@@ -57,16 +57,13 @@ export default async function ExploreIndexPage({ params }: { params: Promise<{ l
                 <h2 className="mt-3 text-xl font-semibold">{t.title}</h2>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t.summary}</p>
                 <p className="mt-4 font-mono text-xs text-muted-foreground">
-                  {fmt(text.ui.placesCount, { n: places })} · {fmt(text.ui.challengesCount, { n: challenges })}
+                  {fmt(text.ui.placesCount, { n: places })} · {plural(text.ui as unknown as Record<string, string>, "challengesCount", challenges)}
                 </p>
                 <ProgressLine
                   ids={Object.keys(flat).filter((id) => id !== w.id)}
                   labIds={w.id === "atlas" ? allExercises.map((e) => e.id) : undefined}
                   labels={{ explored: text.ui.explored, lab: text.ui.labProgress }}
                 />
-                <span className="mt-auto inline-flex items-center gap-1.5 pt-4 font-mono text-xs text-primary">
-                  {text.ui.openMap} <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden />
-                </span>
               </Link>
             </li>
           );

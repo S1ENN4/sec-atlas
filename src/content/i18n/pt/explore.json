@@ -5420,7 +5420,11 @@
       "t": "Correto.",
       "h": "1919e7be"
     },
-    "ui.challengesCount": {
+    "ui.challengesCount_one": {
+      "t": "{n} desafio",
+      "h": "12d1f24e"
+    },
+    "ui.challengesCount_other": {
       "t": "{n} desafios",
       "h": "98269d16"
     },
@@ -5509,8 +5513,8 @@
       "h": "a394e00a"
     },
     "ui.indexIntro": {
-      "t": "Escolha um mapa e abra. Cada um é uma árvore viva: abra um ramo para ver o que há dentro, siga uma missão e resolva pequenos desafios. O que você explora fica neste navegador.",
-      "h": "4777b2a1"
+      "t": "Escolha um mapa. Abra ramos, siga missões e resolva desafios. Seu progresso fica neste navegador.",
+      "h": "91b35daf"
     },
     "ui.keys": {
       "t": "Esc ou Backspace volta um nível.",
@@ -5603,10 +5607,6 @@
     "ui.onMap": {
       "t": "veja no mapa",
       "h": "0778feae"
-    },
-    "ui.openMap": {
-      "t": "abrir o mapa",
-      "h": "761bb871"
     },
     "ui.overview": {
       "t": "Visão geral do mapa",

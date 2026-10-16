@@ -30,10 +30,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
   const { locale, t } = await resolveLocale(params);
   const lp = (path: string) => localePath(locale, path);
   const domainList = Object.values(domains);
-  const liveCount = domainList.filter((d) => d.status === "live").length;
-  const draftCount = domainList.length - liveCount;
   const explore = [
-    { href: lp("/explore"), icon: MapIcon, ...t.hub.explore.map },
     { href: lp("/journey"), icon: Compass, ...t.hub.explore.journey },
     { href: lp("/careers"), icon: Briefcase, ...t.hub.explore.careers },
     { href: lp("/paths"), icon: Route, ...t.hub.explore.paths },
@@ -62,7 +59,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
     <div className="animate-page-enter mx-auto max-w-6xl px-4 pb-10 pt-12 md:pt-20">
       <ProfileStrip locale={locale} t={t} />
 
-      <header className="mt-10 grid gap-6 md:grid-cols-[2fr_1fr] md:items-end">
+      <header className="mt-10">
         <div>
           <Badge variant="outline" className="font-mono text-xs font-normal text-muted-foreground">
             {t.hub.badge}
@@ -70,7 +67,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
           <h1 className="mt-6 text-4xl font-bold tracking-tight md:text-6xl">
             {t.hub.title} <span className="text-primary">{t.hub.titleAccent}</span>
           </h1>
-          <p className="mt-4 max-w-2xl text-muted-foreground md:text-lg">{fmt(t.hub.lead, { n: domainList.length })}</p>
+          <p className="mt-4 max-w-2xl text-muted-foreground md:text-lg">{t.hub.lead}</p>
           <p className="mt-5">
             <Link
               href={lp("/manifesto")}
@@ -81,22 +78,6 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
             </Link>
           </p>
         </div>
-        <dl className="font-mono text-xs text-muted-foreground md:text-right">
-          <div className="flex items-baseline justify-between gap-3 md:justify-end md:gap-6">
-            <dt>{t.hub.statDomains}</dt>
-            <dd className="text-base text-foreground">{String(domainList.length).padStart(2, "0")}</dd>
-          </div>
-          <div className="mt-1 flex items-baseline justify-between gap-3 md:justify-end md:gap-6">
-            <dt>{t.hub.statLive}</dt>
-            <dd className="text-base text-primary">{String(liveCount).padStart(2, "0")}</dd>
-          </div>
-          <div className="mt-1 flex items-baseline justify-between gap-3 md:justify-end md:gap-6">
-            <dt>{t.hub.statDraft}</dt>
-            <dd className={cn("text-base", draftCount > 0 ? "text-amber-400/90" : "text-muted-foreground")}>
-              {String(draftCount).padStart(2, "0")}
-            </dd>
-          </div>
-        </dl>
       </header>
 
       <hr className="mt-10 border-border/60" />
@@ -191,10 +172,6 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
                     </div>
                     <CardTitle className="pt-2 text-2xl">{copy.name}</CardTitle>
                     <CardDescription className="leading-snug">{copy.pitch}</CardDescription>
-                    <div className={cn("flex items-center gap-1.5 pt-3 font-mono text-xs", isLive ? "text-primary/80" : "text-muted-foreground")}>
-                      {isLive ? t.hub.openMap : t.hub.notify}
-                      <ArrowUpRight className="size-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
-                    </div>
                   </CardHeader>
                 </Card>
               </div>
@@ -207,7 +184,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         <h2 id="explore-title" className="font-mono text-sm uppercase tracking-wider text-muted-foreground">
           {t.hub.exploreTitle}
         </h2>
-        <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {explore.map((e) => (
             <Link
               key={e.href}

@@ -134,9 +134,7 @@ export const ui = {
   },
 
   domainPage: {
-    hint: "$ click a card for details · ctrl+k to search",
     mapTitle: "learning map",
-    mapIntro: "Topics are laid out by level, from foundations to advanced. Arrows point from a prerequisite to what builds on it. Select a topic to preview it, or follow the highlighted next step.",
     topicsTitle: "topics",
     stageLabel: "stage: {stage}",
   },
@@ -230,13 +228,8 @@ export const ui = {
     badge: "knowledge base · software security",
     title: "Security,",
     titleAccent: "mapped to learn.",
-    lead: "Each domain is a learning map: topics by level, prerequisites, a guided next step, glossary and quizzes. {n} ready maps, all at the same level of depth.",
+    lead: "Each domain is a learning map: topics by level, prerequisites, a guided next step, glossary and quizzes.",
     manifestoLink: "read the manifesto: why this project exists",
-    statDomains: "domains",
-    statLive: "live",
-    statDraft: "draft",
-    openMap: "open map",
-    notify: "notify me",
     exploreTitle: "ways to explore",
     // Added 2026-10-14 with phase 3.A4: "Continue where you left off" card on
     // the hub that surfaces the last topic the reader opened (read from
@@ -244,10 +237,6 @@ export const ui = {
     continueWhere: "Continue where you left off",
     continueRead: "Continue reading",
     explore: {
-      map: {
-        title: "Explorable map",
-        body: "Open living trees of the pipeline, the cloud, a SOC and a web request. Go deeper, come back, take missions.",
-      },
       journey: {
         title: "Guided journey",
         body: "A map that teaches from the basics to advanced, unlocking as you learn.",
@@ -574,7 +563,7 @@ export const ui = {
       titleAccent: "mapped.",
       lead: "An interactive map of the concepts that protect a pipeline: SAST, DAST, SCA, secrets scanning, SBOM and CI/CD: what each one does, where it fits and how they connect.",
       pitch:
-        "SAST, DAST, SCA, secrets, SBOM and the pipeline: the interactive map that shows each check and where it enters the delivery flow.",
+        "SAST, DAST, SCA, secrets, SBOM and the pipeline: each check and where it enters the delivery flow.",
       pipelineTitle: "end-to-end pipeline",
       pipelineIntro:
         "The path of a commit to production, and the check that lives at each step. Each chip opens the matching topic.",
@@ -587,7 +576,7 @@ export const ui = {
       titleAccent: "mapped.",
       lead: "An interactive map of cloud security: identity, network, workloads, posture, cryptography and detection: what each piece does, where it lives and how it connects.",
       pitch:
-        "Cloud posture, IAM, segmentation and supply chain: its own graph, in the same style as AppSec.",
+        "Cloud posture, IAM, segmentation and supply chain.",
       pipelineTitle: "cloud security cycle",
       pipelineIntro:
         "From asset inventory to incident response: the control lives in every phase. Each chip opens the matching topic.",
@@ -600,7 +589,7 @@ export const ui = {
       titleAccent: "mapped.",
       lead: "From chunking to guardrails: how a modern agent is built, with the data pipeline (RAG), the action loop (frameworks, tool calling, MCP) and the evaluation mesh that decides whether it can ship.",
       pitch:
-        "Security for agents and AI workloads: RAG, tool calling, MCP, guardrails. A complete map.",
+        "Security for agents and AI workloads: RAG, tool calling, MCP and guardrails.",
       pipelineTitle: "AI pipeline",
       pipelineIntro:
         "From the raw document to the guardrail metric: the path of data and quality. Each chip opens the matching topic.",

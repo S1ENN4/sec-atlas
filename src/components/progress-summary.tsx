@@ -56,31 +56,15 @@ export function ProgressSummary({ domains, t }: { domains: DomainTotals[]; t: Pr
         </p>
       </div>
 
-      <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-        {domains.map((d) => {
-          const n = d.slugs.filter((s) => state.seen[`${d.id}/${s}`]).length;
-          const pct = d.slugs.length ? Math.round((n / d.slugs.length) * 100) : 0;
-          return (
-            <div key={d.id} data-domain={d.id}>
-              <div className="flex items-baseline justify-between font-mono text-xs">
-                <span>{d.name}</span>
-                <span className="text-muted-foreground">
-                  {n}/{d.slugs.length}
-                </span>
-              </div>
-              <div
-                className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-muted"
-                role="progressbar"
-                aria-label={fmt(t.progressIn, { name: d.name })}
-                aria-valuemin={0}
-                aria-valuemax={100}
-                aria-valuenow={pct}
-              >
-                <div className="h-full rounded-full bg-primary transition-[width] duration-500 ease-out" style={{ width: `${pct}%` }} />
-              </div>
-            </div>
-          );
-        })}
+      <div
+        className="mt-4 h-1.5 overflow-hidden rounded-full bg-muted"
+        role="progressbar"
+        aria-label={t.title}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-valuenow={total ? Math.round((done / total) * 100) : 0}
+      >
+        <div className="h-full rounded-full bg-primary transition-[width] duration-500 ease-out" style={{ width: `${total ? (done / total) * 100 : 0}%` }} />
       </div>
 
       <div className="mt-4 flex items-center gap-3 font-mono text-[11px] text-muted-foreground">

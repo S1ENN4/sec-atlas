@@ -86,10 +86,10 @@ export const exploreText = {
     close: "Close",
     indexHeading: "Explorable maps",
     indexIntro:
-      "Pick a map and open it. Each one is a living tree: open a branch to see what is inside, follow a mission, and solve small challenges. What you explore stays in this browser.",
-    openMap: "open the map",
+      "Pick a map. Open branches, follow missions and solve challenges. Your progress stays in this browser.",
     placesCount: "{n} places",
-    challengesCount: "{n} challenges",
+    challengesCount_one: "{n} challenge",
+    challengesCount_other: "{n} challenges",
     allMaps: "all maps",
     searchLabel: "Search this map",
     searchPlaceholder: "Search places…",

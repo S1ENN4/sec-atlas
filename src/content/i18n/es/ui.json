@@ -244,14 +244,6 @@
       "t": "novedades",
       "h": "05f39e0a"
     },
-    "domainPage.hint": {
-      "t": "$ haz clic en una tarjeta para ver los detalles · ctrl+k para buscar",
-      "h": "e97f92e2"
-    },
-    "domainPage.mapIntro": {
-      "t": "Los temas están organizados por nivel, de los fundamentos a lo avanzado. Las flechas van del requisito previo a lo que se apoya en él. Selecciona un tema para ver una vista previa o sigue el siguiente paso destacado.",
-      "h": "d78d8108"
-    },
     "domainPage.mapTitle": {
       "t": "mapa de aprendizaje",
       "h": "89fc12ef"
@@ -285,8 +277,8 @@
       "h": "463a6c1b"
     },
     "domains.ai-agents.pitch": {
-      "t": "Seguridad para agentes y cargas de trabajo de IA: RAG, tool calling, MCP, guardrails. Un mapa completo.",
-      "h": "c1dbea05"
+      "t": "Seguridad para agentes y cargas de trabajo de IA: RAG, tool calling, MCP y guardrails.",
+      "h": "23bcfd1f"
     },
     "domains.ai-agents.title": {
       "t": "Agentes de IA,",
@@ -321,8 +313,8 @@
       "h": "2fa4c3e8"
     },
     "domains.appsec.pitch": {
-      "t": "SAST, DAST, SCA, secrets, SBOM y el pipeline: el mapa interactivo que muestra cada verificación y dónde entra en el flujo de entrega.",
-      "h": "cb153b9f"
+      "t": "SAST, DAST, SCA, secrets, SBOM y el pipeline: cada verificación y dónde entra en el flujo de entrega.",
+      "h": "0b608d9a"
     },
     "domains.appsec.title": {
       "t": "Seguridad de software,",
@@ -353,8 +345,8 @@
       "h": "522c4950"
     },
     "domains.cloudsec.pitch": {
-      "t": "Postura en la nube, IAM, segmentación y cadena de suministro: un grafo propio, con el mismo estilo que AppSec.",
-      "h": "09e6ecd1"
+      "t": "Postura en la nube, IAM, segmentación y cadena de suministro.",
+      "h": "37f4fe8b"
     },
     "domains.cloudsec.title": {
       "t": "Seguridad en la nube,",
@@ -800,14 +792,6 @@
       "t": "Recorrido guiado",
       "h": "5a550d11"
     },
-    "hub.explore.map.body": {
-      "t": "Abre árboles vivos del pipeline, la nube, un SOC y una petición web. Ve más a fondo, vuelve, cumple misiones.",
-      "h": "3bf87b6e"
-    },
-    "hub.explore.map.title": {
-      "t": "Mapa explorable",
-      "h": "d9bce3a6"
-    },
     "hub.explore.paths.body": {
       "t": "Un orden pensado para cada objetivo, con el progreso guardado en tu navegador.",
       "h": "60918f07"
@@ -829,32 +813,12 @@
       "h": "e492b0d9"
     },
     "hub.lead": {
-      "t": "Cada dominio es un mapa de aprendizaje: temas por nivel, requisitos previos, un siguiente paso guiado, glosario y quizzes. {n} mapas listos, todos con el mismo nivel de profundidad.",
-      "h": "dd18bd7f"
+      "t": "Cada dominio es un mapa de aprendizaje: temas por nivel, prerrequisitos, un siguiente paso guiado, glosario y quizzes.",
+      "h": "0dc98d2b"
     },
     "hub.manifestoLink": {
       "t": "leer el manifiesto: por qué existe este proyecto",
       "h": "1ccd5c5b"
-    },
-    "hub.notify": {
-      "t": "avísame",
-      "h": "35e01eb9"
-    },
-    "hub.openMap": {
-      "t": "abrir mapa",
-      "h": "82d8e331"
-    },
-    "hub.statDomains": {
-      "t": "dominios",
-      "h": "e8a42c4c"
-    },
-    "hub.statDraft": {
-      "t": "draft",
-      "h": "0e7766b4"
-    },
-    "hub.statLive": {
-      "t": "live",
-      "h": "98aadb37"
     },
     "hub.title": {
       "t": "Seguridad,",

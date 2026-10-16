@@ -64,9 +64,6 @@ export default async function DomainHome({ params }: { params: Params }) {
         <p className="animate-hero-enter mx-auto mt-4 max-w-2xl text-muted-foreground md:text-lg" style={anim(140)}>
           {copy.lead}
         </p>
-        <p className="animate-hero-enter mt-6 font-mono text-xs text-primary/80" style={anim(220)}>
-          {t.domainPage.hint}
-        </p>
       </section>
 
       <div className="px-4">
@@ -95,7 +92,6 @@ export default async function DomainHome({ params }: { params: Params }) {
 
       <section id="map" className="mx-auto max-w-6xl scroll-mt-20 px-4 pb-16">
         <h2 className="reveal font-mono text-sm uppercase tracking-wider text-muted-foreground">{t.domainPage.mapTitle}</h2>
-        <p className="mt-2 max-w-2xl text-sm text-muted-foreground">{t.domainPage.mapIntro}</p>
         <div className="mt-6">
           <DomainGraph domainId={id} locale={locale} t={t} />
         </div>
@@ -110,7 +106,10 @@ export default async function DomainHome({ params }: { params: Params }) {
       </section>
 
       <section id="topics" className="mx-auto max-w-6xl scroll-mt-20 px-4 pb-24">
-        <h2 className="reveal font-mono text-sm uppercase tracking-wider text-muted-foreground">{t.domainPage.topicsTitle}</h2>
+        <details className="group/list">
+          <summary className="focus-ring cursor-pointer font-mono text-sm uppercase tracking-wider text-muted-foreground hover:text-foreground">
+            {t.domainPage.topicsTitle} ({domain.topics.length})
+          </summary>
         <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {domain.topics.map((tp) => (
             <Link key={tp.slug} href={localePath(locale, `${domain.route}/topic/${tp.slug}`)} className="group">
@@ -133,6 +132,7 @@ export default async function DomainHome({ params }: { params: Params }) {
             </Link>
           ))}
         </div>
+        </details>
       </section>
     </div>
   );
